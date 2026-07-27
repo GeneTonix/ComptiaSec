@@ -1,3 +1,8 @@
+// JSONBin.io config — auto-sync quiz results to cloud
+const JSONBIN_BIN_ID = "6a678c96f5f4af5e29c8ccd2";
+const JSONBIN_API_KEY = "$2a$10$41Iw7PMalAC3GKnXkL.jn.N29Emw7PWJik2wHFL2uRC8qMKwpoH2O";
+const JSONBIN_BASE = "https://api.jsonbin.io/v3/b";
+
 let cards = [];
 let currentIndex = 0;
 let selectedChoice = null;
@@ -197,6 +202,9 @@ function showResults() {
 
   // Persist to localStorage
   saveSessionToStorage();
+
+  // Auto-sync to JSONBin cloud (works from any device)
+  syncToCloud();
 }
 
 function showQuizView() {
@@ -272,6 +280,49 @@ function saveSessionToStorage() {
     metaEl.textContent = `Score saved locally. ${sessionAnswers.filter(a=>a.correct).length}/${sessionAnswers.length} correct.`;
   } catch (e) {
     console.warn("localStorage save failed", e);
+  }
+}
+
+// ──────────────────────────────────────────────
+//  Cloud sync — auto-send results to JSONBin.io
+// ──────────────────────────────────────────────
+async function syncToCloud() {
+  const sessionData = {
+    date: new Date().toISOString().slice(0, 10),
+    completed_at: new Date().toISOString(),
+    total_questions: sessionAnswers.length,
+    correct: sessionAnswers.filter(a => a.correct).length,
+    incorrect: sessionAnswers.filter(a => !a.correct).length,
+    score_percent: Math.round((sessionAnswers.filter(a => a.correct).length / sessionAnswers.length) * 100),
+    session: sessionAnswers
+  };
+
+  try {
+    // Read current cloud data
+    const readRes = await fetch(`${JSONBIN_BASE}/${JSONBIN_BIN_ID}/latest`, {
+      headers: { "X-Master-Key": JSONBIN_API_KEY }
+    });
+    const cloudData = await readRes.json();
+    const sessions = cloudData.record.sessions || [];
+
+    // Append this session
+    sessions.push(sessionData);
+    if (sessions.length > 100) sessions.slice(-100); // keep last 100
+
+    // Write back
+    await fetch(`${JSONBIN_BASE}/${JSONBIN_BIN_ID}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": JSONBIN_API_KEY
+      },
+      body: JSON.stringify({ sessions })
+    });
+
+    metaEl.textContent = `Score synced to cloud. ${sessionData.correct}/${sessionData.total_questions} correct.`;
+  } catch (e) {
+    console.warn("Cloud sync failed (results still saved locally)", e);
+    metaEl.textContent = `Score saved locally (cloud sync failed). ${sessionData.correct}/${sessionData.total_questions} correct.`;
   }
 }
 
