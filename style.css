@@ -22,6 +22,7 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* ── Header ── */
 .header {
   margin-bottom: 16px;
 }
@@ -36,9 +37,11 @@ body {
   color: #9ca3af;
 }
 
-.card h2 {
-  font-size: 1.2rem;
-  margin: 12px 0 16px;
+/* ── Badges ── */
+.badges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .badge {
@@ -48,13 +51,20 @@ body {
   border-radius: 999px;
   background: #1f2937;
   color: #e5e7eb;
-  margin-right: 6px;
 }
 
 .badge-secondary {
   background: #4b5563;
 }
 
+/* ── Card ── */
+.card h2 {
+  font-size: 1.2rem;
+  margin: 12px 0 16px;
+  line-height: 1.4;
+}
+
+/* ── Choices ── */
 .choices {
   list-style: none;
   margin-bottom: 20px;
@@ -86,6 +96,7 @@ body {
   background: #111827;
 }
 
+/* ── Controls ── */
 .controls {
   display: flex;
   gap: 8px;
@@ -100,6 +111,11 @@ body {
   color: #e5e7eb;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: #6366f1;
 }
 
 .btn.primary {
@@ -112,25 +128,119 @@ body {
   cursor: not-allowed;
 }
 
+/* ── Feedback ── */
 .feedback {
   padding: 12px;
   border-radius: 8px;
   background: #0b1120;
   border: 1px solid #1f2937;
   font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.feedback p {
+  margin-bottom: 8px;
+}
+
+.feedback p:last-child {
+  margin-bottom: 0;
 }
 
 .feedback strong {
   display: block;
   margin-bottom: 4px;
+  color: #c7d2fe;
 }
 
 .hidden {
   display: none;
 }
 
+/* ── Footer ── */
 .footer {
   margin-top: 10px;
   font-size: 0.8rem;
   color: #9ca3af;
+}
+
+/* ── Score Board ── */
+.score-board {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.score-item {
+  flex: 1;
+  text-align: center;
+  padding: 16px;
+  border-radius: 10px;
+  background: #0b1120;
+  border: 1px solid #1f2937;
+}
+
+.score-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.score-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+#score-correct { color: #22c55e; }
+#score-incorrect { color: #ef4444; }
+#score-percent { color: #6366f1; }
+
+/* ── Topic Breakdown ── */
+.topic-breakdown {
+  margin: 20px 0;
+}
+
+.topic-breakdown h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #c7d2fe;
+}
+
+.topic-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.topic-name {
+  width: 140px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.topic-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #1f2937;
+  overflow: hidden;
+}
+
+.topic-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: #6366f1;
+  transition: width 0.3s ease;
+}
+
+.topic-stat {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  width: 120px;
+  text-align: right;
+  flex-shrink: 0;
 }
