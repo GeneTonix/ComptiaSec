@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  max-width: 700px;
+  width: 100%;
+  background: #020617;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin: 12px 0 16px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #1f2937;
+  color: #e5e7eb;
+  margin-right: 6px;
+}
+
+.badge-secondary {
+  background: #4b5563;
+}
+
+.choices {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.choice-item {
+  margin-bottom: 8px;
+}
+
+.choice-button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #e5e7eb;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.choice-button:hover {
+  background: #111827;
+  border-color: #6366f1;
+}
+
+.choice-button.selected {
+  border-color: #6366f1;
+  background: #111827;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  background: #111827;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn.primary {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.feedback {
+  padding: 12px;
+  border-radius: 8px;
+  background: #0b1120;
+  border: 1px solid #1f2937;
+  font-size: 0.9rem;
+}
+
+.feedback strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}

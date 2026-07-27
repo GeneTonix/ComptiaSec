@@ -1,0 +1,346 @@
+{
+  "cards": [
+    {
+      "card_id": "sec_controls_001",
+      "topic": "Security Controls",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which of the following is an example of a technical security control?",
+      "choices": [
+        "Security guard stationed at the entrance",
+        "Firewall rule blocking port 443",
+        "Written security policy document",
+        "Fence around the building perimeter"
+      ],
+      "answer": "Firewall rule blocking port 443",
+      "explanation_correct": "Firewall rules are implemented using technology (software/hardware), which makes them a technical control. Technical controls are enforced by systems rather than people or physical barriers.",
+      "explanation_wrong_common": "A security guard is an operational control (carried out by people). A written policy is a managerial control (documentation/procedures). A fence is a physical control (tangible barrier)."
+    },
+    {
+      "card_id": "sec_controls_002",
+      "topic": "Security Controls",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What category of security control involves policies, procedures, and documentation?",
+      "choices": [
+        "Technical",
+        "Managerial",
+        "Operational",
+        "Physical"
+      ],
+      "answer": "Managerial",
+      "explanation_correct": "Managerial controls are policies, procedures, and documentation that govern how security is managed. Examples include security policies, onboarding procedures, and standard operating procedures.",
+      "explanation_wrong_common": "Technical controls use technology (firewalls, antivirus). Operational controls are carried out by people (guards, training). Physical controls are tangible barriers (locks, fences)."
+    },
+    {
+      "card_id": "sec_controls_003",
+      "topic": "Security Controls",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company deploys motion sensors in its server room after hours. What type AND category of control is this?",
+      "choices": [
+        "Detective / Physical",
+        "Preventive / Physical",
+        "Detective / Technical",
+        "Corrective / Operational"
+      ],
+      "answer": "Detective / Physical",
+      "explanation_correct": "Motion sensors identify and warn that someone may be in an area after hours — that is a detective function. Since motion sensors are a tangible device in a physical space, they fall under the physical category.",
+      "explanation_wrong_common": "Preventive is wrong because the sensor does not stop access; it only detects it after the fact. Technical is wrong because the sensor is a physical device in the room, not a software/OS control. Corrective is wrong because the sensor does not reverse any damage."
+    },
+    {
+      "card_id": "sec_controls_004",
+      "topic": "Security Controls",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "An application has a known vulnerability, but the patch will not be ready for two weeks. The security team adds a firewall rule to block traffic that could exploit the vulnerability. What type of control is this?",
+      "choices": [
+        "Preventive",
+        "Compensating",
+        "Detective",
+        "Directive"
+      ],
+      "answer": "Compensating",
+      "explanation_correct": "A compensating control is an alternative measure used when the ideal control (patching the application) is not yet available. The firewall rule temporarily compensates for the unpatched vulnerability.",
+      "explanation_wrong_common": "Preventive is partially true but the key concept is that it compensates for a missing control. Detective is wrong because it does not just log — it actively blocks. Directive is wrong because it does not merely direct behavior."
+    },
+    {
+      "card_id": "sec_controls_005",
+      "topic": "Security Controls",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which control type is designed to discourage an attacker but does not actually prevent the attack?",
+      "choices": [
+        "Preventive",
+        "Deterrent",
+        "Detective",
+        "Corrective"
+      ],
+      "answer": "Deterrent",
+      "explanation_correct": "A deterrent control discourages attacks by making them less appealing (splash screens, warning signs, threat of dismissal) but does not technically prevent them.",
+      "explanation_wrong_common": "Preventive controls actually block access. Detective controls identify breaches after they occur. Corrective controls reverse damage after detection."
+    },
+    {
+      "card_id": "sec_controls_006",
+      "topic": "Security Controls",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "A security team restores encrypted files from a backup after a ransomware attack. What control type and category does this represent?",
+      "choices": [
+        "Corrective / Technical",
+        "Preventive / Technical",
+        "Compensating / Managerial",
+        "Detective / Operational"
+      ],
+      "answer": "Corrective / Technical",
+      "explanation_correct": "Restoring from backup reverses the impact of the ransomware attack — that is corrective. Using backup software and storage systems to perform the restore makes it a technical control.",
+      "explanation_wrong_common": "Preventive is wrong because the attack already happened. Compensating is wrong because this is not a temporary alternative — it is a direct fix. Detective is wrong because restoring does not identify or warn; it fixes."
+    },
+    {
+      "card_id": "sec_controls_007",
+      "topic": "Security Controls",
+      "difficulty": "medium",
+      "question_type": "definition",
+      "question_text": "Which of the following is the best example of an operational control?",
+      "choices": [
+        "Antivirus software running on all endpoints",
+        "A fence surrounding the data center",
+        "Security awareness training for all employees",
+        "A formal data classification policy"
+      ],
+      "answer": "Security awareness training for all employees",
+      "explanation_correct": "Operational controls are carried out by people. Security awareness training involves educating people — that is an operational control.",
+      "explanation_wrong_common": "Antivirus software is technical (technology-based). A fence is physical (tangible barrier). A data classification policy is managerial (documentation/policy)."
+    },
+    {
+      "card_id": "cia_triad_001",
+      "topic": "CIA Triad",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What does the 'C' in the CIA Triad stand for?",
+      "choices": [
+        "Central Intelligence Agency",
+        "Confidentiality",
+        "Compliance",
+        "Cryptography"
+      ],
+      "answer": "Confidentiality",
+      "explanation_correct": "The C in the CIA Triad stands for Confidentiality — ensuring that data is only accessible to authorized individuals.",
+      "explanation_wrong_common": "Central Intelligence Agency is a US government organization, not part of the triad (though the acronym is borrowed from it). Compliance and Cryptography are security concepts but not part of the CIA Triad acronym."
+    },
+    {
+      "card_id": "cia_triad_002",
+      "topic": "CIA Triad",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which leg of the CIA Triad is primarily protected by encryption?",
+      "choices": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Accounting"
+      ],
+      "answer": "Confidentiality",
+      "explanation_correct": "Encryption protects confidentiality by making data unreadable to anyone who does not have the decryption key. Even if intercepted, the data cannot be understood.",
+      "explanation_wrong_common": "Integrity is protected by hashing, not encryption alone. Availability is about uptime and redundancy. Accounting is part of AAA, not the CIA Triad."
+    },
+    {
+      "card_id": "cia_triad_003",
+      "topic": "CIA Triad",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company implements RAID disk arrays and a backup generator. Which leg of the CIA Triad are they primarily addressing?",
+      "choices": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Non-repudiation"
+      ],
+      "answer": "Availability",
+      "explanation_correct": "RAID provides fault tolerance (if one disk fails, others continue) and a backup generator ensures power during outages. Both ensure systems remain available and running.",
+      "explanation_wrong_common": "Confidentiality is about preventing unauthorized access. Integrity is about data not being altered. Non-repudiation is about proving origin of data."
+    },
+    {
+      "card_id": "cia_triad_004",
+      "topic": "CIA Triad",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A file server sends a hash of a file along with the file itself. The recipient computes their own hash and compares it. Which security principle does this primarily support?",
+      "choices": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Authentication"
+      ],
+      "answer": "Integrity",
+      "explanation_correct": "Hashing verifies that the data received is exactly the same as the data sent. If the hashes match, the data has not been altered — that is the core of integrity.",
+      "explanation_wrong_common": "Confidentiality is about preventing unauthorized access (encryption). Availability is about uptime. Authentication is about proving identity, which is part of AAA."
+    },
+    {
+      "card_id": "cia_triad_005",
+      "topic": "CIA Triad",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What does the 'A' in the CIA Triad stand for?",
+      "choices": [
+        "Authentication",
+        "Authorization",
+        "Availability",
+        "Accounting"
+      ],
+      "answer": "Availability",
+      "explanation_correct": "The A in the CIA Triad stands for Availability — ensuring systems and data are accessible when needed. Methods include fault tolerance, redundancy, and patching.",
+      "explanation_wrong_common": "Authentication, Authorization, and Accounting are all part of the AAA framework, not the CIA Triad. These are commonly confused on the exam."
+    },
+    {
+      "card_id": "cia_triad_006",
+      "topic": "CIA Triad",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "A hospital's electronic health record (EHR) system is accessed by doctors, nurses, and administrators. The system uses role-based access control so that only doctors can view psychiatric notes, all data transmissions are encrypted with TLS, the system runs on clustered servers with automatic failover, and all patient records are digitally signed by the attending physician. Which combination of CIA Triad principles and non-repudiation is addressed by these controls? Select the most complete answer.",
+      "choices": [
+        "Confidentiality only",
+        "Confidentiality + Integrity + Availability",
+        "Confidentiality + Integrity + Availability + Non-repudiation",
+        "Integrity + Availability only"
+      ],
+      "answer": "Confidentiality + Integrity + Availability + Non-repudiation",
+      "explanation_correct": "RBAC limits who can view psychiatric notes (Confidentiality). TLS encryption protects data in transit (Confidentiality). Digital signatures verify the physician who signed the record (Integrity + Non-repudiation). Clustered servers with failover ensure the system stays up (Availability). All four are addressed.",
+      "explanation_wrong_common": "Answer A is incomplete — only confidentiality is considered. Answer B is close but misses non-repudiation from digital signatures. Answer D misses confidentiality from RBAC and TLS encryption."
+    },
+    {
+      "card_id": "non_repudiation_001",
+      "topic": "Non-repudiation",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the minimum combination needed to provide non-repudiation?",
+      "choices": [
+        "Hashing only",
+        "Encryption only",
+        "Hashing + digital signature (private key encryption of the hash)",
+        "A strong password policy"
+      ],
+      "answer": "Hashing + digital signature (private key encryption of the hash)",
+      "explanation_correct": "Non-repudiation requires both proof of integrity (hashing) and proof of origin (encrypting the hash with the sender's private key). Hashing alone only proves the data was not changed — it cannot prove who sent it.",
+      "explanation_wrong_common": "Hashing alone provides integrity but not non-repudiation because anyone can create a hash. Encryption alone does not prove the data was not changed. A password policy is unrelated to non-repudiation."
+    },
+    {
+      "card_id": "non_repudiation_002",
+      "topic": "Non-repudiation",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "Alice sends Bob a signed contract via email. Alice's email client hashes the document, encrypts the hash with Alice's private key, and attaches it as a digital signature. What does Bob need to verify the signature?",
+      "choices": [
+        "Alice's private key",
+        "Alice's public key",
+        "Bob's private key",
+        "A shared symmetric key"
+      ],
+      "answer": "Alice's public key",
+      "explanation_correct": "Bob uses Alice's public key to decrypt the digital signature and recover the original hash. He then hashes the document himself and compares. If the hashes match, he knows the document came from Alice (only Alice has her private key) and was not altered.",
+      "explanation_wrong_common": "Alice's private key is only known to Alice — Bob should never have it. Bob's private key is irrelevant to verifying Alice's signature. A symmetric key is not used in asymmetric digital signatures."
+    },
+    {
+      "card_id": "non_repudiation_003",
+      "topic": "Non-repudiation",
+      "difficulty": "medium",
+      "question_type": "definition",
+      "question_text": "Which of the following provides proof of integrity but NOT proof of origin?",
+      "choices": [
+        "Digital signature",
+        "Hash",
+        "Digital signature + hash",
+        "Public key infrastructure"
+      ],
+      "answer": "Hash",
+      "explanation_correct": "A hash verifies that data has not been altered (proof of integrity) but does not identify who sent it (no proof of origin). Anyone can create a hash — it does not require a private key.",
+      "explanation_wrong_common": "A digital signature provides both integrity and origin. A digital signature + hash is the full non-repudiation package. PKI is a system for managing certificates, not a single control."
+    },
+    {
+      "card_id": "non_repudiation_004",
+      "topic": "Non-repudiation",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An employee sends an email to a client with a purchase order. The email includes a hash of the purchase order attached. Later, the client claims they received a different purchase order with different quantities. Upon investigation, the hash on the received email matches the hash of the received document. However, the employee denies sending the modified document. What security principle is missing that would have prevented this dispute?",
+      "choices": [
+        "Encryption at rest",
+        "Non-repudiation via digital signature",
+        "Availability via redundancy",
+        "Physical access control"
+      ],
+      "answer": "Non-repudiation via digital signature",
+      "explanation_correct": "The hash only proves the document was not altered in transit (integrity). It does not prove who sent it. A digital signature (hashing + encrypting with the sender's private key) would provide non-repudiation, meaning the sender cannot deny sending it.",
+      "explanation_wrong_common": "Encryption at rest protects stored data but does not address sender identity. Availability is about uptime. Physical access control prevents physical entry — irrelevant here."
+    },
+    {
+      "card_id": "aaa_001",
+      "topic": "AAA",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "In the AAA framework, what does the first 'A' (Authentication) refer to?",
+      "choices": [
+        "Determining what resources a user can access",
+        "Proving you are who you say you are",
+        "Logging user activity for audit purposes",
+        "Claiming to be a particular user"
+      ],
+      "answer": "Proving you are who you say you are",
+      "explanation_correct": "Authentication is the process of proving your identity, typically with a password, biometric, or certificate. Identification is claiming an identity (entering a username); authentication is proving it.",
+      "explanation_wrong_common": "Determining resource access is authorization (the second A). Logging activity is accounting (the third A). Claiming an identity is identification, which comes before authentication."
+    },
+    {
+      "card_id": "aaa_002",
+      "topic": "AAA",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A user logs into a VPN with their username and password. The VPN concentrator forwards the credentials to a RADIUS server for validation. The RADIUS server confirms the credentials are correct. The VPN then grants access based on the user's department group membership. Which AAA component is responsible for determining the user's access level?",
+      "choices": [
+        "Authentication",
+        "Authorization",
+        "Accounting",
+        "Identification"
+      ],
+      "answer": "Authorization",
+      "explanation_correct": "Authorization determines what resources and access a user has after authentication. In this case, granting access based on department group membership is the authorization step.",
+      "explanation_wrong_common": "Authentication was already completed (validating the username/password via RADIUS). Accounting would log the session details. Identification is the initial username claim."
+    },
+    {
+      "card_id": "aaa_003",
+      "topic": "AAA",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An organization has 500 employees in the Sales department who need access to the CRM system, email, and shared drives. The security administrator is considering two approaches: (A) Manually assign CRM, email, and shared drive permissions to each of the 500 user accounts, or (B) Create a 'Sales' group, assign all permissions to the group, and add the 500 users to the group. Which approach is correct and what principle does it demonstrate?",
+      "choices": [
+        "Approach A — it provides more granular control",
+        "Approach B — it demonstrates authorization through group-based abstraction, which scales efficiently",
+        "Approach A — it follows least privilege better",
+        "Both approaches are equally effective"
+      ],
+      "answer": "Approach B — it demonstrates authorization through group-based abstraction, which scales efficiently",
+      "explanation_correct": "Approach B uses an authorization model (group-based RBAC) that abstracts the relationship between users and resources. Adding users to a group automatically grants all the group's permissions. This scales to thousands of users without individual permission management.",
+      "explanation_wrong_common": "Approach A does not scale — manually managing 500 users x 3 resources = 1500 individual permission assignments. Approach B can still follow least privilege by only granting the permissions the Sales group needs. The approaches are not equally effective for large organizations."
+    }
+  ],
+  "scheduling_updates": [
+    {"card_id": "sec_controls_001", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New card, scheduled for tomorrow (1-day interval for new material)"},
+    {"card_id": "sec_controls_002", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New card, scheduled for tomorrow (1-day interval for new material)"},
+    {"card_id": "sec_controls_003", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "sec_controls_004", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "sec_controls_005", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New easy card, 1-day interval for initial reinforcement"},
+    {"card_id": "sec_controls_006", "next_due_at": "2026-07-30T09:00:00Z", "reason": "New hard card, 3-day interval for challenging material"},
+    {"card_id": "sec_controls_007", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "cia_triad_001", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New easy card, 1-day interval for initial reinforcement"},
+    {"card_id": "cia_triad_002", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New easy card, 1-day interval for initial reinforcement"},
+    {"card_id": "cia_triad_003", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "cia_triad_004", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "cia_triad_005", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New easy card, 1-day interval for initial reinforcement"},
+    {"card_id": "cia_triad_006", "next_due_at": "2026-07-30T09:00:00Z", "reason": "New hard case study, 3-day interval for challenging material"},
+    {"card_id": "non_repudiation_001", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New easy card, 1-day interval for initial reinforcement"},
+    {"card_id": "non_repudiation_002", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "non_repudiation_003", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "non_repudiation_004", "next_due_at": "2026-07-30T09:00:00Z", "reason": "New hard case study, 3-day interval for challenging material"},
+    {"card_id": "aaa_001", "next_due_at": "2026-07-28T09:00:00Z", "reason": "New easy card, 1-day interval for initial reinforcement"},
+    {"card_id": "aaa_002", "next_due_at": "2026-07-29T09:00:00Z", "reason": "New medium-difficulty card, 2-day interval for initial spacing"},
+    {"card_id": "aaa_003", "next_due_at": "2026-07-30T09:00:00Z", "reason": "New hard case study, 3-day interval for challenging material"}
+  ]
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Study Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Adaptive Study Quiz</h1>
+      <p id="meta"></p>
+    </header>
+
+    <main class="card">
+      <div id="question-topic" class="badge"></div>
+      <div id="question-difficulty" class="badge badge-secondary"></div>
+      <h2 id="question-text"></h2>
+
+      <ul id="choices" class="choices"></ul>
+
+      <div class="controls">
+        <button id="reveal-btn" class="btn primary">Check Answer</button>
+        <button id="next-btn" class="btn" disabled>Next Question</button>
+      </div>
+
+      <section id="feedback" class="feedback hidden">
+        <p id="result-label"></p>
+        <p id="explanation-correct"></p>
+        <p id="explanation-wrong"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="progress"></span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
