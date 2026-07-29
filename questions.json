@@ -1,425 +1,425 @@
 {
   "cards": [
     {
-      "card_id": "sec_controls_014",
-      "topic": "Security Controls",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "Which security control function is intended to guide or influence behavior through policies, rules, or signage?",
-      "choices": [
-        "Directive",
-        "Corrective",
-        "Detective",
-        "Recovery"
-      ],
-      "answer": "Directive",
-      "explanation_correct": "Directive controls guide behavior through policies, rules, signs, or instructions. They direct users toward compliant behavior rather than preventing, detecting, or correcting violations.",
-      "explanation_wrong_common": "Corrective fixes damage after an incident. Detective identifies events after they occur. Recovery restores operations after a failure. None of these guide behavior proactively."
-    },
-    {
-      "card_id": "sec_controls_015",
-      "topic": "Security Controls",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A company installs an access control vestibule (mantrap) at the entrance to its server room. An employee enters the first door, which closes and locks behind them. They must be authenticated before the second door opens. If someone tries to tailgate, both doors lock and an alarm sounds. What control functions does the mantrap provide?",
-      "choices": [
-        "Preventive and Detective",
-        "Preventive only",
-        "Detective and Deterrent",
-        "Corrective and Detective"
-      ],
-      "answer": "Preventive and Detective",
-      "explanation_correct": "The mantrap prevents tailgating by requiring authentication before the second door opens (preventive). The alarm that sounds when tailgating is detected is a detective function, alerting security personnel to the attempted breach.",
-      "explanation_wrong_common": "Preventive only misses the alarm/detection capability. Detective and Deterrent misses the prevention aspect — the mantrap physically blocks unauthorized entry. Corrective doesn't apply — the mantrap doesn't fix damage after an incident."
-    },
-    {
-      "card_id": "sec_controls_016",
+      "card_id": "sec_controls_020",
       "topic": "Security Controls",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A hospital's security program includes: (1) A written policy requiring all medical devices to be inventoried monthly, (2) Automated network segmentation that isolates medical devices from the administrative network, (3) Security guards patrolling the data center 24/7, (4) A honeypot designed to lure attackers probing the network. Classify each control by CATEGORY (Managerial/Technical/Physical/Operational):",
+      "question_text": "A company's security program includes the following controls: (1) A firewall ACL that blocks all inbound traffic except ports 80 and 443, (2) A written policy requiring employees to report suspicious emails within 1 hour, (3) Biometric fingerprint scanners on the data center entrance, (4) Automated patch deployment every Tuesday night. Classify each control by FUNCTION (Preventive/Detective/Corrective/Deterrent/Recovery/Compensating):",
       "choices": [
-        "(1) Managerial (2) Technical (3) Physical (4) Technical",
-        "(1) Operational (2) Technical (3) Physical (4) Managerial",
-        "(1) Managerial (2) Operational (3) Technical (4) Physical",
-        "(1) Managerial (2) Technical (3) Operational (4) Technical"
+        "(1) Preventive (2) Directive (3) Preventive (4) Corrective",
+        "(1) Preventive (2) Detective (3) Deterrent (4) Preventive",
+        "(1) Detective (2) Directive (3) Preventive (4) Recovery",
+        "(1) Compensating (2) Detective (3) Preventive (4) Corrective"
       ],
-      "answer": "(1) Managerial (2) Technical (3) Physical (4) Technical",
-      "explanation_correct": "The written policy is managerial (governing documentation). Automated network segmentation is technical (technology-enforced). Security guards are physical (tangible personnel controlling physical access). The honeypot is technical (software-based deception system).",
-      "explanation_wrong_common": "Option B misclassifies the policy as operational — it's a governing document, not a people-driven process. Option C misclassifies guards as technical — they are physical personnel. Option D misclassifies guards as operational — guards physically control access, which is physical."
+      "answer": "(1) Preventive (2) Directive (3) Preventive (4) Corrective",
+      "explanation_correct": "The firewall ACL blocks unauthorized traffic (preventive). The policy directs employee behavior (directive). Biometric scanners prevent unauthorized physical access (preventive). Patching fixes known vulnerabilities after discovery (corrective — it remediates an identified gap).",
+      "explanation_wrong_common": "Option B misclassifies the reporting policy as detective — it directs behavior, it doesn't detect. Option C misclassifies the firewall as detective — it blocks, not monitors. Option D misclassifies the firewall as compensating — it's a primary preventive control, not a substitute for one."
     },
     {
-      "card_id": "sec_controls_017",
-      "topic": "Security Controls",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A security team deploys a honeypot — a fake database server filled with dummy data — on their network. Attackers probing the network are drawn to the honeypot. The team monitors all attacker activity within it. What is the PRIMARY control function of the honeypot?",
-      "choices": [
-        "Detective",
-        "Preventive",
-        "Deterrent",
-        "Compensating"
-      ],
-      "answer": "Detective",
-      "explanation_correct": "A honeypot's primary function is detective — it lures attackers and monitors their activity, providing visibility into attack methods and alerting defenders to threats. While it may have some deterrent value, its core purpose is detection and intelligence gathering.",
-      "explanation_wrong_common": "Preventive is wrong — the honeypot doesn't block attacks on real systems. Deterrent is secondary — its main role is detection, not discouragement. Compensating is wrong — it doesn't replace a missing primary control."
-    },
-    {
-      "card_id": "sec_controls_018",
+      "card_id": "sec_controls_021",
       "topic": "Security Controls",
       "difficulty": "hard",
       "question_type": "scenario_mcq",
-      "question_text": "An annual security audit reveals three findings: (1) The firewall ruleset has not been reviewed in 12 months, (2) The incident response plan was last updated 3 years ago, and (3) Server patches are 6 months behind. The team prioritizes updating the IR plan first, then patching servers, then reviewing firewall rules. What control function is being applied by prioritizing and updating the IR plan to address the audit finding?",
+      "question_text": "A security team discovers that their primary SIEM solution has gone end-of-life and the vendor has stopped providing signature updates. While they wait for budget approval to purchase a replacement, they deploy an open-source IDS and increase the frequency of manual log reviews. What type of control is the open-source IDS, and what function does it serve?",
       "choices": [
-        "Corrective",
-        "Preventive",
-        "Directive",
-        "Detective"
+        "Compensating control — it substitutes for the unavailable primary SIEM, serving a detective function",
+        "Corrective control — it fixes the end-of-life SIEM problem",
+        "Preventive control — it prevents attacks that the SIEM would have caught",
+        "Recovery control — it restores the SIEM to operational status"
       ],
-      "answer": "Corrective",
-      "explanation_correct": "The audit identified a deficiency (outdated IR plan). Updating it corrects the identified gap — this is a corrective action. The audit itself was detective; the update fixes the finding. Corrective controls address and remediate identified problems.",
-      "explanation_wrong_common": "Preventive is wrong — the IR plan update doesn't prevent the audit finding, it corrects it. Directive is wrong — while the IR plan is a directive document, the act of updating it to fix an audit finding is corrective. Detective describes the audit, not the fix."
+      "answer": "Compensating control — it substitutes for the unavailable primary SIEM, serving a detective function",
+      "explanation_correct": "A compensating control is an alternative measure put in place when a primary control is unavailable or impractical. The open-source IDS compensates for the loss of the SIEM and serves a detective function by monitoring for threats. It doesn't prevent or fix anything — it detects.",
+      "explanation_wrong_common": "Corrective fixes damage after an incident — this IDS doesn't fix the SIEM. Preventive blocks attacks — the IDS monitors and alerts, it doesn't block. Recovery restores operations after a failure — deploying a new IDS is not restoring the SIEM."
     },
     {
-      "card_id": "sec_controls_019",
+      "card_id": "sec_controls_022",
       "topic": "Security Controls",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "Which of the following is NOT one of the three main categories of security controls?",
-      "choices": [
-        "Directive",
-        "Operational",
-        "Technical",
-        "Managerial"
-      ],
-      "answer": "Directive",
-      "explanation_correct": "The three main categories of security controls are Managerial (policies/procedures), Technical (technology-based), and Operational (people-driven processes). Directive is a control FUNCTION (like preventive, detective, corrective), not a category.",
-      "explanation_wrong_common": "Operational, Technical, and Managerial are all valid categories. Directive is a function that describes what a control does, not which bucket it falls into."
-    },
-    {
-      "card_id": "cia_triad_013",
-      "topic": "CIA Triad",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company deploys a Data Loss Prevention (DLP) system that scans all outgoing emails and blocks any email containing credit card numbers. Which CIA Triad principle does the DLP system PRIMARILY protect?",
+      "question_text": "An organization requires all employees to complete a 30-minute cybersecurity awareness training module annually. The module covers phishing recognition, password hygiene, and reporting procedures. What category and function does this control BEST represent?",
       "choices": [
-        "Confidentiality",
-        "Integrity",
-        "Availability",
-        "Non-repudiation"
+        "Managerial / Directive — it governs behavior through policy-based education",
+        "Technical / Preventive — it uses technology to block phishing attempts",
+        "Physical / Deterrent — it discourages attackers from targeting employees",
+        "Operational / Corrective — it fixes security incidents after they occur"
       ],
-      "answer": "Confidentiality",
-      "explanation_correct": "DLP prevents sensitive data (credit card numbers) from leaving the organization, which directly protects confidentiality — ensuring data is only accessible to authorized parties. Blocking unauthorized exfiltration is a confidentiality control.",
-      "explanation_wrong_common": "Integrity is about data accuracy and preventing unauthorized modification, not access control. Availability is about uptime and access to systems. Non-repudiation is about proving origin and is not part of the CIA Triad."
+      "answer": "Managerial / Directive — it governs behavior through policy-based education",
+      "explanation_correct": "Security awareness training is a managerial control (policy-driven, governing documentation) that serves a directive function — it guides employee behavior by instructing them on what to do and how to recognize threats. It doesn't use technology to block attacks, nor does it fix incidents after they occur.",
+      "explanation_wrong_common": "Technical/Preventive is wrong — training is not a technology-based blocking control. Physical/Deterrent is wrong — training is not a physical measure. Operational/Corrective is wrong — training doesn't fix incidents after the fact, it directs behavior proactively."
     },
     {
-      "card_id": "cia_triad_014",
+      "card_id": "sec_controls_023",
+      "topic": "Security Controls",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "A data center experiences a ransomware attack that encrypts all file servers. The team activates their incident response plan, isolates the affected systems, restores from offline backups, and verifies the restored data integrity before bringing systems back online. Which control function does restoring from offline backups represent?",
+      "choices": [
+        "Recovery — it restores systems and data to a known-good state after an incident",
+        "Corrective — it fixes the ransomware vulnerability that allowed the attack",
+        "Preventive — it prevents the ransomware from spreading further",
+        "Detective — it identifies which files were encrypted"
+      ],
+      "answer": "Recovery — it restores systems and data to a known-good state after an incident",
+      "explanation_correct": "Recovery controls restore operations to a known-good state after an incident. Restoring from offline backups brings systems back to their pre-attack condition. Isolating systems would be corrective (stopping the ongoing attack), and the backups themselves are a recovery mechanism.",
+      "explanation_wrong_common": "Corrective addresses the root cause or stops the active threat — restoring backups doesn't fix the vulnerability. Preventive blocks attacks before they happen — this is after the fact. Detective identifies that an incident occurred — the backups don't detect anything."
+    },
+    {
+      "card_id": "sec_controls_024",
+      "topic": "Security Controls",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A retail store places visible security cameras at all entrances and exits, posts signs reading 'Smile, you're on camera,' and installs monitors showing the camera feeds near the entrance. The store has not yet experienced any theft. What is the PRIMARY control function of these measures?",
+      "choices": [
+        "Deterrent — the visible cameras and signs discourage potential attackers before they act",
+        "Detective — the cameras detect theft as it happens",
+        "Preventive — the cameras prevent theft from occurring",
+        "Compensating — the cameras compensate for the lack of security guards"
+      ],
+      "answer": "Deterrent — the visible cameras and signs discourage potential attackers before they act",
+      "explanation_correct": "Visible cameras, warning signs, and monitor displays are classic deterrent controls — they discourage potential attackers from attempting theft by making them aware they are being watched. While cameras can also serve a detective function (recording incidents), the PRIMARY intent of making them visible with signs is deterrence.",
+      "explanation_wrong_common": "Detective is a secondary function — the primary intent of the visibility and signs is to discourage attacks. Preventive is wrong — cameras don't physically block theft. Compensating is wrong — these cameras are a standalone deterrent measure, not a substitute for a missing primary control."
+    },
+    {
+      "card_id": "sec_controls_025",
+      "topic": "Security Controls",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An organization implements the following: (1) A security guard checks badges at the building entrance, (2) An IDS monitors network traffic for suspicious patterns, (3) The IT team applies security patches within 48 hours of release, (4) The company restores a compromised web server from a clean image after a breach. Match each control to its correct CATEGORY and FUNCTION pair:",
+      "choices": [
+        "(1) Physical/Preventive (2) Technical/Detective (3) Technical/Corrective (4) Technical/Recovery",
+        "(1) Operational/Preventive (2) Technical/Preventive (3) Managerial/Corrective (4) Technical/Corrective",
+        "(1) Physical/Deterrent (2) Operational/Detective (3) Technical/Preventive (4) Managerial/Recovery",
+        "(1) Physical/Preventive (2) Technical/Detective (3) Technical/Preventive (4) Technical/Corrective"
+      ],
+      "answer": "(1) Physical/Preventive (2) Technical/Detective (3) Technical/Corrective (4) Technical/Recovery",
+      "explanation_correct": "Badge checking by a guard is physical (tangible personnel) and preventive (blocks unauthorized access). IDS is technical (software) and detective (monitors for threats). Patching is technical (software updates) and corrective (remediates known vulnerabilities). Restoring from a clean image is technical and recovery (restores to a known-good state after an incident).",
+      "explanation_wrong_common": "Option B misclassifies the guard as operational — guards are physical. Option C misclassifies the guard as deterrent — badge checking actively blocks unauthorized entry (preventive). Option D misclassifies patching as preventive and restoration as corrective — patching fixes existing vulnerabilities (corrective), and restoring from an image is recovery, not corrective."
+    },
+    {
+      "card_id": "cia_triad_018",
       "topic": "CIA Triad",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A financial services firm implements: (1) All data encrypted at rest using AES-256, (2) A WAF inspects and filters all incoming HTTP traffic for SQL injection, (3) The system is deployed across three availability zones with automatic failover, (4) All API responses include HMAC signatures. Match each control to the CIA Triad principle it PRIMARILY protects: (1) Encryption, (2) WAF, (3) Multi-zone deployment, (4) HMAC signatures.",
+      "question_text": "An e-commerce platform implements the following: (1) TLS 1.3 for all client-server communication, (2) SHA-256 hashing of all order records with digital signatures, (3) The platform runs on a load balancer with 5 web servers and auto-scaling, (4) All customer passwords stored using bcrypt with a per-user salt. Which CIA principle does control (4) PRIMARILY protect, and what additional security property does the salt provide?",
       "choices": [
-        "(1) Confidentiality (2) Integrity (3) Availability (4) Integrity",
-        "(1) Confidentiality (2) Availability (3) Availability (4) Integrity",
+        "Confidentiality — the salt prevents rainbow table attacks and ensures identical passwords produce different hashes",
+        "Integrity — the salt ensures password data hasn't been tampered with",
+        "Availability — the salt ensures users can always authenticate",
+        "Confidentiality — the salt encrypts the password so it cannot be reversed"
+      ],
+      "answer": "Confidentiality — the salt prevents rainbow table attacks and ensures identical passwords produce different hashes",
+      "explanation_correct": "bcrypt with a per-user salt protects confidentiality of stored credentials. The salt prevents rainbow table attacks (precomputed hash lookups fail because each password has a unique salt) and ensures that two users with the same password will have different hashes. The salt does not encrypt — bcrypt is a one-way hashing algorithm.",
+      "explanation_wrong_common": "Integrity is about preventing unauthorized modification — password hashing is about keeping passwords confidential. Availability is about uptime — salts don't ensure access. The salt does not encrypt — it modifies the hash input to prevent precomputed attacks; bcrypt is a one-way hash, not encryption."
+    },
+    {
+      "card_id": "cia_triad_019",
+      "topic": "CIA Triad",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "A healthcare system stores patient medical records. An attacker breaches the system and modifies patient allergy information in multiple records, changing 'penicillin allergy' to 'no known allergies.' The attacker does not read or copy any other data. Which CIA Triad principle(s) are violated?",
+      "choices": [
+        "Integrity only — the data was modified without authorization, but no data was read or stolen",
+        "Confidentiality and Integrity — the attacker accessed the system and modified data",
+        "Integrity and Availability — the modified records are unavailable to doctors",
+        "Confidentiality only — the attacker gained unauthorized access to patient records"
+      ],
+      "answer": "Integrity only — the data was modified without authorization, but no data was read or stolen",
+      "explanation_correct": "The attacker modified the allergy records — this is an integrity violation (unauthorized data modification). Since the attacker did not read or copy any data, confidentiality was not violated (no unauthorized disclosure). The records are still accessible to doctors (availability intact), just with incorrect data. The core violation is integrity — the data's accuracy and trustworthiness were compromised.",
+      "explanation_wrong_common": "Confidentiality requires unauthorized reading/disclosure — the scenario states no data was read or copied. Availability is not affected — the records are still accessible, just wrong. Confidentiality only is wrong — the attack modified data, which is an integrity violation, not a confidentiality one."
+    },
+    {
+      "card_id": "cia_triad_020",
+      "topic": "CIA Triad",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company uses RAID 6 (double parity) across 12 disks for their primary database. When two disks fail simultaneously, the system continues operating without data loss. Which CIA Triad principle does RAID 6 PRIMARILY protect?",
+      "choices": [
+        "Availability — the system remains operational and data remains accessible despite hardware failures",
+        "Integrity — the parity checks ensure data has not been corrupted",
+        "Confidentiality — the data is striped across multiple disks so no single disk contains readable data",
+        "Integrity and Availability — RAID provides both data accuracy and uptime"
+      ],
+      "answer": "Availability — the system remains operational and data remains accessible despite hardware failures",
+      "explanation_correct": "RAID 6's primary purpose is availability — it ensures the system continues operating and data remains accessible even when up to two disks fail. While parity provides some integrity checking, RAID's core function is preventing downtime and data loss from hardware failure, which is an availability concern.",
+      "explanation_wrong_common": "Integrity is a secondary benefit — RAID's primary goal is keeping the system running. Confidentiality is wrong — striping data across disks does not protect confidentiality; the data is still readable. Integrity and Availability overstates the role — RAID is primarily an availability technology."
+    },
+    {
+      "card_id": "cia_triad_021",
+      "topic": "CIA Triad",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "An organization implements the following controls: (1) Full disk encryption on all laptops, (2) File integrity monitoring (FIM) on all critical servers, (3) Redundant power supplies and UPS for the data center, (4) Network access control (NAC) that checks device compliance before granting network access. Which pairing correctly maps each control to its PRIMARY CIA Triad principle?",
+      "choices": [
+        "(1) Confidentiality (2) Integrity (3) Availability (4) Confidentiality",
+        "(1) Confidentiality (2) Availability (3) Integrity (4) Availability",
         "(1) Integrity (2) Confidentiality (3) Availability (4) Integrity",
-        "(1) Confidentiality (2) Availability (3) Integrity (4) Confidentiality"
+        "(1) Confidentiality (2) Integrity (3) Availability (4) Integrity"
       ],
-      "answer": "(1) Confidentiality (2) Integrity (3) Availability (4) Integrity",
-      "explanation_correct": "Encryption at rest protects confidentiality. The WAF filters SQL injection attacks that could manipulate data, protecting integrity. Multi-zone deployment with failover protects availability. HMAC signatures verify data hasn't been tampered with, protecting integrity.",
-      "explanation_wrong_common": "Option B misclassifies the WAF as availability — it protects integrity by blocking data manipulation attacks. Option C misclassifies encryption as integrity — encryption protects confidentiality. Option D misclassifies multi-zone as integrity and HMAC as confidentiality — both are wrong."
+      "answer": "(1) Confidentiality (2) Integrity (3) Availability (4) Confidentiality",
+      "explanation_correct": "Full disk encryption protects data at rest from unauthorized access (confidentiality). FIM detects unauthorized file modifications (integrity). Redundant power and UPS ensure systems stay running during power events (availability). NAC ensures only compliant, authorized devices can access the network (confidentiality — preventing unauthorized access to network resources).",
+      "explanation_wrong_common": "Option B misclassifies FIM as availability — it detects modifications, which is integrity. Option C misclassifies encryption as integrity — it protects against unauthorized reading (confidentiality). Option D misclassifies NAC as integrity — NAC controls access, which is confidentiality."
     },
     {
-      "card_id": "cia_triad_015",
-      "topic": "CIA Triad",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "Which of the following attacks threatens INTEGRITY but NOT necessarily confidentiality?",
-      "choices": [
-        "An attacker modifies a public Wikipedia article with false information",
-        "An attacker reads a private email without permission",
-        "A DDoS attack takes down a web server",
-        "An attacker steals a database of customer records"
-      ],
-      "answer": "An attacker modifies a public Wikipedia article with false information",
-      "explanation_correct": "Modifying a public article alters data without authorization — this is an integrity violation. The information was already public (no confidentiality breach), but the data's accuracy and trustworthiness were compromised.",
-      "explanation_wrong_common": "Reading a private email is a confidentiality breach. DDoS is an availability attack. Stealing a database is a confidentiality breach, not integrity."
-    },
-    {
-      "card_id": "cia_triad_016",
-      "topic": "CIA Triad",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A company encrypts all customer data at rest using AES-256 and stores the encryption keys in a Hardware Security Module (HSM). One day, the HSM hardware fails and cannot be replaced for 48 hours. During this time, the company cannot decrypt any customer data and cannot process orders. Which CIA Triad principle was compromised by the HSM failure?",
-      "choices": [
-        "Availability",
-        "Confidentiality",
-        "Integrity",
-        "Non-repudiation"
-      ],
-      "answer": "Availability",
-      "explanation_correct": "The HSM failure made customer data inaccessible — the company could not decrypt or process orders. This is an availability failure. The data was still encrypted (confidentiality intact) and uncorrupted (integrity intact), but it was not available. This illustrates how a confidentiality control can impact availability.",
-      "explanation_wrong_common": "Confidentiality was not compromised — data remained encrypted and unreadable. Integrity was not affected — data was not altered. Non-repudiation is not part of the CIA Triad."
-    },
-    {
-      "card_id": "cia_triad_017",
+      "card_id": "cia_triad_022",
       "topic": "CIA Triad",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An attacker poisons a company's DNS server so that users visiting 'company-bank.com' are redirected to a fake website that looks identical. The fake site captures user credentials. Which CIA Triad principle(s) are violated?",
+      "question_text": "A university's online exam platform experiences a DDoS attack during final exam week. Students cannot access the platform to submit their exams. The attack does not modify any data or access any student records. Which CIA Triad principle is violated?",
       "choices": [
-        "Integrity and Confidentiality",
-        "Confidentiality only",
-        "Availability only",
-        "Integrity only"
+        "Availability only — the platform is inaccessible to legitimate users, but no data was modified or exposed",
+        "Confidentiality and Availability — the attack exposed the system's vulnerability",
+        "Integrity and Availability — the exam submissions may be incomplete",
+        "All three CIA principles — a DDoS attack affects the entire system"
       ],
-      "answer": "Integrity and Confidentiality",
-      "explanation_correct": "DNS poisoning alters the DNS records (integrity violation — data was modified without authorization). The fake site captures credentials, exposing them to the attacker (confidentiality violation). Both integrity and confidentiality are compromised in this attack.",
-      "explanation_wrong_common": "Confidentiality only misses the DNS record modification (integrity). Availability only is wrong — the service is still accessible, just redirected. Integrity only misses the credential theft (confidentiality)."
+      "answer": "Availability only — the platform is inaccessible to legitimate users, but no data was modified or exposed",
+      "explanation_correct": "A DDoS attack overwhelms systems with traffic, making them unavailable to legitimate users. Since no data was modified (integrity intact) and no data was accessed or stolen (confidentiality intact), only availability is violated. The system and its data are fine — they're just not accessible.",
+      "explanation_wrong_common": "Confidentiality is not violated — no data was read or stolen. Integrity is not violated — no data was modified. 'All three' is wrong — DDoS is specifically an availability attack; it doesn't inherently compromise confidentiality or integrity."
     },
     {
-      "card_id": "aaa_008",
-      "topic": "AAA",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A network administrator needs to manage multiple network devices (routers, switches) from different vendors. They want centralized authentication where each device sends the admin's credentials to a central server for verification, with granular control over which commands each admin can run on each device. Which protocol is BEST suited for this?",
-      "choices": [
-        "TACACS+ — it separates authentication, authorization, and accounting into distinct services",
-        "RADIUS — it combines authentication and authorization in a single exchange for efficiency",
-        "Kerberos — it uses ticket-based authentication for network devices",
-        "SAML — it provides web-based SSO for device management"
-      ],
-      "answer": "TACACS+ — it separates authentication, authorization, and accounting into distinct services",
-      "explanation_correct": "TACACS+ is designed for network device administration and separates AAA into distinct services, allowing granular control over what commands a user can run on each device. RADIUS combines authentication and authorization, which is less flexible for per-command device management.",
-      "explanation_wrong_common": "RADIUS combines auth and authz, making it less granular for device command-level control. Kerberos is for domain authentication, not network device administration. SAML is for web-based SSO, not device management."
-    },
-    {
-      "card_id": "aaa_009",
-      "topic": "AAA",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "In a SAML SSO flow, an employee authenticates at the Identity Provider (IdP) by entering their password, receives a SAML assertion, and presents it to the Service Provider (HR portal). The HR portal reads the assertion's role attribute ('manager') and grants access to the payroll module. The portal then logs the session start time, user ID, and actions performed. Which AAA mapping is correct?",
-      "choices": [
-        "Auth: IdP credential verification. Authz: SP role-based access decision. Accounting: SP session logging.",
-        "Auth: SP role check. Authz: IdP credential verification. Accounting: SP session logging.",
-        "Auth: SP session logging. Authz: IdP credential verification. Accounting: SP role check.",
-        "Auth: IdP credential verification. Authz: SP session logging. Accounting: SP role-based access decision."
-      ],
-      "answer": "Auth: IdP credential verification. Authz: SP role-based access decision. Accounting: SP session logging.",
-      "explanation_correct": "The IdP verifies credentials (authentication). The SP reads the role attribute and decides what access to grant (authorization). The SP logs the session (accounting). This separation is fundamental to SAML SSO — the IdP handles authentication, the SP handles authorization and accounting.",
-      "explanation_wrong_common": "All other options scramble the AAA components. The IdP verifies credentials (auth), not authorization. The SP grants access (authz), not authentication. Session logging is accounting, not authorization or authentication."
-    },
-    {
-      "card_id": "aaa_010",
-      "topic": "AAA",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is the difference between identification and authentication?",
-      "choices": [
-        "Identification is claiming an identity; authentication is proving it",
-        "Identification is proving an identity; authentication is claiming it",
-        "They are the same process with different names",
-        "Identification requires a password; authentication requires a biometric"
-      ],
-      "answer": "Identification is claiming an identity; authentication is proving it",
-      "explanation_correct": "Identification is the act of claiming an identity (e.g., entering a username). Authentication is the act of proving that claimed identity (e.g., entering a password). Identification comes first, then authentication verifies the claim.",
-      "explanation_wrong_common": "The reversed definition is incorrect — proving comes after claiming. They are not the same — one is a claim, the other is proof. Identification doesn't require a password — that's authentication. Authentication can use passwords, biometrics, tokens, or any factor."
-    },
-    {
-      "card_id": "aaa_011",
-      "topic": "AAA",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A user logs into a VPN using a password and a time-based one-time password (TOTP) from their phone. The VPN server records the login time, session duration, and data transferred. Which AAA component does the TOTP represent?",
-      "choices": [
-        "Authentication (something you have)",
-        "Authorization (something you have)",
-        "Accounting (something you have)",
-        "Authentication (something you know)"
-      ],
-      "answer": "Authentication (something you have)",
-      "explanation_correct": "The TOTP generated by the phone is a possession factor (something you have) used for authentication. Combined with the password (something you know), this creates multi-factor authentication. The VPN server's recording of session details is accounting.",
-      "explanation_wrong_common": "Authorization determines what the user can access, not the TOTP itself. Accounting logs activity, not authentication factors. 'Something you know' describes the password, not the TOTP on the phone."
-    },
-    {
-      "card_id": "non_repudiation_009",
-      "topic": "Non-repudiation",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A company requires employees to use digital signatures on all contract approvals. An employee signs a contract, but later claims their private key was stolen before the signing date. Investigation shows the key was reported stolen AFTER the contract was signed. What is the outcome?",
-      "choices": [
-        "The signature is valid — non-repudiation holds because the key was not compromised at the time of signing",
-        "The signature is invalid — any claim of key theft voids non-repudiation",
-        "The contract must be re-signed with a new key",
-        "Non-repudiation cannot be determined without a witness"
-      ],
-      "answer": "The signature is valid — non-repudiation holds because the key was not compromised at the time of signing",
-      "explanation_correct": "Non-repudiation depends on the private key being under the owner's sole control at the time of signing. Since the key was reported stolen AFTER the contract was signed, the key was under the employee's control when the signature was created. The signature is valid and non-repudiation holds.",
-      "explanation_wrong_common": "A claim of theft alone doesn't void non-repudiation — timing matters. Re-signing is unnecessary if the original signature is valid. A witness is not required for digital signature non-repudiation."
-    },
-    {
-      "card_id": "non_repudiation_010",
+      "card_id": "non_repudiation_014",
       "topic": "Non-repudiation",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A blockchain-based supply chain system records each transfer of goods. Each transfer is signed with the sender's private key and includes a timestamp from a trusted timestamping authority. A supplier later denies sending a shipment. Investigation shows: (1) The transaction signature verifies with the supplier's public key, (2) The timestamp authority confirms the signing time, (3) The supplier's private key was never reported compromised. What establishes non-repudiation?",
+      "question_text": "An online banking system implements the following for fund transfers: (1) The user enters their password and a one-time SMS code, (2) The system logs the transfer amount, timestamp, source account, destination account, and the IP address, (3) The transfer confirmation is digitally signed using the bank's private key and stored in an immutable audit log. A customer later disputes a transfer, claiming they didn't authorize it. Which component provides non-repudiation of the transaction?",
       "choices": [
-        "The verified signature + uncompromised private key + trusted timestamp together establish non-repudiation",
-        "Only the signature verification establishes non-repudiation",
-        "Only the trusted timestamp establishes non-repudiation",
-        "Non-repudiation requires a separate audit log in addition to the blockchain record"
+        "The digital signature on the transfer confirmation stored in the immutable audit log — it proves the bank processed the transaction and the log cannot be altered",
+        "The password and SMS OTP — they prove the customer authorized the transfer",
+        "The IP address in the log — it proves which device initiated the transfer",
+        "The timestamp in the log — it proves when the transfer occurred"
       ],
-      "answer": "The verified signature + uncompromised private key + trusted timestamp together establish non-repudiation",
-      "explanation_correct": "Non-repudiation is established by three factors: the signature verifies with the supplier's public key (proving it was signed with their private key), the private key was never compromised (no one else could have signed), and the trusted timestamp proves when the signing occurred (preventing the supplier from claiming the key was stolen later). All three together create irrefutable non-repudiation.",
-      "explanation_wrong_common": "Signature verification alone doesn't prove the key wasn't stolen. The timestamp alone doesn't prove who signed. An audit log is supplementary — the blockchain's cryptographic evidence is sufficient for non-repudiation."
+      "answer": "The digital signature on the transfer confirmation stored in the immutable audit log — it proves the bank processed the transaction and the log cannot be altered",
+      "explanation_correct": "Non-repudiation requires cryptographic proof that cannot be denied. The digital signature (created with the bank's private key) proves the bank issued the confirmation, and the immutable audit log prevents tampering. The password/SMS provides authentication but not non-repudiation (the customer could claim their phone was stolen). The IP and timestamp provide evidence but are not cryptographically verifiable — they can be spoofed or disputed.",
+      "explanation_wrong_common": "Password/SMS provides authentication but not non-repudiation — the user can claim their credentials or phone were compromised. An IP address can be spoofed and doesn't cryptographically prove identity. A timestamp alone doesn't prove who initiated the transaction — it only shows when it happened."
     },
     {
-      "card_id": "non_repudiation_011",
-      "topic": "Non-repudiation",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "Which of the following provides non-repudiation?",
-      "choices": [
-        "Digital signature",
-        "Hash",
-        "Symmetric encryption",
-        "MAC (Message Authentication Code)"
-      ],
-      "answer": "Digital signature",
-      "explanation_correct": "A digital signature uses the sender's private key, providing proof of origin that the sender cannot deny. Hashes provide integrity only. Symmetric encryption provides confidentiality. MAC provides integrity and authentication but not non-repudiation because the shared key means either party could have created it.",
-      "explanation_wrong_common": "A hash provides integrity but no proof of origin. Symmetric encryption provides confidentiality, not non-repudiation. MAC uses a shared key, so either party could have created it — no non-repudiation."
-    },
-    {
-      "card_id": "non_repudiation_012",
-      "topic": "Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "An organization uses a key escrow service where all employees' private signing keys are stored. An employee signs a document with their private key and later claims they did not sign it, arguing that since the key is in escrow, someone else could have used it. What is the security implication?",
-      "choices": [
-        "Key escrow weakens non-repudiation because a third party has access to the private key, making it impossible to prove only the employee signed",
-        "Key escrow strengthens non-repudiation because the key is professionally managed",
-        "Key escrow has no impact on non-repudiation",
-        "The employee's claim is automatically valid because key escrow is inherently insecure"
-      ],
-      "answer": "Key escrow weakens non-repudiation because a third party has access to the private key, making it impossible to prove only the employee signed",
-      "explanation_correct": "Non-repudiation requires that only the signer has access to their private key. If the key is in escrow, the escrow agent (or anyone who compromises the escrow) could have used the key to sign. This breaks the exclusivity requirement of non-repudiation. The employee's claim is plausible because a third party had access.",
-      "explanation_wrong_common": "Key escrow does not strengthen non-repudiation — it weakens it by removing exclusivity. It does have an impact on non-repudiation. The claim is not 'automatically valid' — it's plausible, and the burden shifts, but it's not an automatic win."
-    },
-    {
-      "card_id": "non_repudiation_013",
+      "card_id": "non_repudiation_015",
       "topic": "Non-repudiation",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "In a legal dispute, Company A claims they received an email from Company B confirming a contract. Company B denies sending it. The email was sent over plain SMTP without any digital signature or encryption. Company A only has the email header showing Company B's mail server IP. Can Company A prove non-repudiation?",
+      "question_text": "Two companies exchange purchase orders via email. Company A sends an order to Company B. Company B fulfills the order but Company A later denies sending it. They used plain email with no digital signatures. Company B shows the email as evidence. Why does this NOT provide non-repudiation?",
       "choices": [
-        "No — SMTP without a digital signature does not provide non-repudiation; the sender can deny sending",
-        "Yes — the email header with the sender's IP proves origin",
-        "Yes — the fact that Company B's mail server sent it is sufficient",
-        "No — email is always anonymous and cannot be traced"
+        "Plain email can be spoofed — there is no cryptographic proof tying the email to Company A's private key, so Company A can plausibly deny sending it",
+        "Email is not a legally binding communication method",
+        "Company B should have used registered mail instead",
+        "Non-repudiation only applies to financial transactions, not purchase orders"
       ],
-      "answer": "No — SMTP without a digital signature does not provide non-repudiation; the sender can deny sending",
-      "explanation_correct": "Plain SMTP email does not provide non-repudiation. Without a digital signature, there is no cryptographic proof that Company B's authorized representative sent the email. IP addresses and mail server logs can be spoofed or compromised. Non-repudiation requires cryptographic proof (digital signature) that ties the message to the sender's private key.",
-      "explanation_wrong_common": "An email header with an IP is not cryptographic proof — IPs can be spoofed. The mail server sending it doesn't prove which person at Company B sent it. Email is not 'always anonymous' — it can be traced, but tracing is not the same as non-repudiation."
+      "answer": "Plain email can be spoofed — there is no cryptographic proof tying the email to Company A's private key, so Company A can plausibly deny sending it",
+      "explanation_correct": "Non-repudiation requires cryptographic proof (like a digital signature) that ties a message to a specific sender's private key. Plain email has no such proof — sender addresses can be spoofed, email can be forged, and there's no way to prove Company A's authorized representative actually sent it. Without cryptographic evidence, Company A can plausibly deny sending the email.",
+      "explanation_wrong_common": "Email can be legally binding in many jurisdictions, but that's a legal question, not a non-repudiation question. Registered mail is a physical alternative but irrelevant to digital non-repudiation. Non-repudiation applies to any communication, not just financial transactions."
+    },
+    {
+      "card_id": "non_repudiation_016",
+      "topic": "Non-repudiation",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "An employee uses their company-issued smart card to digitally sign a sensitive document. The smart card requires a PIN and stores the employee's private key on the card itself (the key never leaves the card). The employee later claims they did not sign the document. Which factor makes the employee's denial MOST difficult to sustain?",
+      "choices": [
+        "The private key never left the smart card and required a PIN — this proves only the employee (who knew the PIN and had the card) could have created the signature",
+        "The document was sensitive, so the employee must have signed it",
+        "The company issued the smart card, so the company is responsible",
+        "Digital signatures are always legally binding regardless of circumstances"
+      ],
+      "answer": "The private key never left the smart card and required a PIN — this proves only the employee (who knew the PIN and had the card) could have created the signature",
+      "explanation_correct": "Non-repudiation is strongest when the private key is protected by both possession (the smart card) and knowledge (the PIN). Since the key never left the card and required the employee's PIN to use, only someone with both the card and the PIN could have signed. The employee is responsible for safeguarding both, making their denial very difficult to sustain.",
+      "explanation_wrong_common": "The sensitivity of the document doesn't prove who signed it. The company issuing the card doesn't make the company responsible — the employee is accountable for their own credentials. Digital signatures are generally legally binding, but circumstances (like key compromise) can invalidate them — it's not absolute."
+    },
+    {
+      "card_id": "non_repudiation_017",
+      "topic": "Non-repudiation",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "A software vendor digitally signs their application using a code signing certificate. A customer downloads the application and verifies the signature. Later, a security researcher discovers malware in the application. The vendor claims their signing key was compromised. Investigation reveals the key was stored on a network-accessible HSM that was breached. What is the impact on non-repudiation?",
+      "choices": [
+        "Non-repudiation is weakened — the compromised HSM means a third party could have signed the malware, so the vendor can plausibly deny responsibility",
+        "Non-repudiation is maintained — the vendor signed it, so they are responsible regardless of key storage",
+        "Non-repudiation is strengthened — the HSM breach proves the vendor was negligent",
+        "Non-repudiation is irrelevant — malware in signed software is a quality issue, not a non-repudiation issue"
+      ],
+      "answer": "Non-repudiation is weakened — the compromised HSM means a third party could have signed the malware, so the vendor can plausibly deny responsibility",
+      "explanation_correct": "Non-repudiation depends on the signer's exclusive control of their private key. If the HSM was breached, a third party could have used the vendor's key to sign the malware. The vendor can plausibly deny signing it because the key was no longer under their sole control. This is why key protection is critical to non-repudiation — compromised keys destroy the exclusivity that makes denial impossible.",
+      "explanation_wrong_common": "Non-repudiation is not maintained — the breach means the key was not exclusively controlled. The HSM breach may prove negligence, but that's a liability question, not non-repudiation. Non-repudiation is directly relevant — the question is whether the vendor can deny signing the malware."
+    },
+    {
+      "card_id": "non_repudiation_018",
+      "topic": "Non-repudiation",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company uses a PKI system where each employee has a key pair for digital signatures. The private key is generated on the employee's workstation and stored in the operating system's certificate store. The CA does not escrow signing keys. An employee signs a document and later denies it, claiming their workstation was infected with malware that stole their private key. What impact does the non-escrow policy have?",
+      "choices": [
+        "It strengthens non-repudiation — since only the employee had access to their private key (no escrow), the denial is harder to sustain unless they can prove the malware actually stole the key",
+        "It weakens non-repudiation — without escrow, there is no backup to verify the signature",
+        "It has no impact — non-repudiation depends only on the signature algorithm, not key storage",
+        "It eliminates non-repudiation — workstation-stored keys are always considered compromised"
+      ],
+      "answer": "It strengthens non-repudiation — since only the employee had access to their private key (no escrow), the denial is harder to sustain unless they can prove the malware actually stole the key",
+      "explanation_correct": "Non-escrow means only the employee had access to their private key — no third party could have used it. This strengthens non-repudiation because the employee must prove their key was actually stolen (not just claim it). The burden of proof shifts to the employee to demonstrate the malware compromised their key. Without escrow, there's no alternative explanation for who signed.",
+      "explanation_wrong_common": "Escrow is for key recovery, not signature verification — the signature is already verifiable with the public key. Key storage does impact non-repudiation — exclusivity of key access is a core requirement. Workstation-stored keys are not 'always compromised' — they're less secure than HSM keys, but non-repudiation still applies unless proven otherwise."
+    },
+    {
+      "card_id": "aaa_012",
+      "topic": "AAA",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A cloud service uses OAuth 2.0 for API access. A mobile app wants to access a user's cloud storage on their behalf. The user authenticates with the cloud provider, which issues an access token with a 'read-only' scope. The app presents this token to the storage API and can only read files — it cannot delete or modify them. Which AAA component does the 'read-only' scope represent?",
+      "choices": [
+        "Authorization — the scope defines what actions the app is permitted to perform on the user's behalf",
+        "Authentication — the scope proves the user's identity to the storage API",
+        "Accounting — the scope tracks which files the app reads",
+        "Identification — the scope identifies which app is making the request"
+      ],
+      "answer": "Authorization — the scope defines what actions the app is permitted to perform on the user's behalf",
+      "explanation_correct": "The 'read-only' scope is an authorization mechanism — it defines what the app is allowed to do (read only, not delete or modify). The user authenticated with the provider (authentication), and the token carries the authorization decision. The storage API enforces the scope by allowing only read operations.",
+      "explanation_wrong_common": "Authentication verifies identity — the scope doesn't prove who the user is, it defines what can be done. Accounting logs activity — the scope doesn't track file access. Identification claims an identity — the scope defines permissions, not identity."
+    },
+    {
+      "card_id": "aaa_013",
+      "topic": "AAA",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "A company implements the following access system: (1) Users enter a username and password, (2) The system checks the password against a hash stored in LDAP, (3) The system queries a database to determine the user's department and role, (4) Based on the role, the system grants access to specific file shares, (5) The system logs the login time, files accessed, and session duration to a SIEM. Match each step to the correct AAA component:",
+      "choices": [
+        "(1) Identification (2) Authentication (3) Authorization (input) (4) Authorization (decision) (5) Accounting",
+        "(1) Authentication (2) Authentication (3) Authorization (4) Accounting (5) Accounting",
+        "(1) Identification (2) Authorization (3) Authentication (4) Authorization (5) Identification",
+        "(1) Authentication (2) Identification (3) Accounting (4) Authorization (5) Authentication"
+      ],
+      "answer": "(1) Identification (2) Authentication (3) Authorization (input) (4) Authorization (decision) (5) Accounting",
+      "explanation_correct": "Entering a username is identification (claiming an identity). Checking the password hash is authentication (verifying the claimed identity). Querying the department/role gathers authorization inputs. Granting access based on role is the authorization decision. Logging session details to SIEM is accounting (recording what happened).",
+      "explanation_wrong_common": "Option B conflates identification with authentication — entering a username is identification, not authentication. Option C scrambles the components — checking the password is authentication, not authorization. Option D mislabels nearly every step — logging is accounting, not authentication."
+    },
+    {
+      "card_id": "aaa_014",
+      "topic": "AAA",
+      "difficulty": "hard",
+      "question_type": "scenario_mcq",
+      "question_text": "A network engineer configures RADIUS for VPN access. When a user connects, the VPN concentrator sends the user's credentials to the RADIUS server. The RADIUS server verifies the credentials and returns an Access-Accept message that includes a set of filter rules (ACLs) the VPN concentrator applies to the user's session. The concentrator also sends accounting start and stop messages to the RADIUS server. What does this scenario reveal about RADIUS's approach to AAA?",
+      "choices": [
+        "RADIUS combines authentication and authorization in the same exchange — the Access-Accept carries both the auth result and authorization attributes (ACLs), while accounting is handled separately",
+        "RADIUS separates authentication, authorization, and accounting into completely independent services",
+        "RADIUS only provides authentication — the ACLs are configured locally on the VPN concentrator",
+        "RADIUS handles authentication and accounting but not authorization"
+      ],
+      "answer": "RADIUS combines authentication and authorization in the same exchange — the Access-Accept carries both the auth result and authorization attributes (ACLs), while accounting is handled separately",
+      "explanation_correct": "RADIUS combines authentication and authorization in a single exchange — the Access-Accept message contains both the authentication result and authorization attributes (like filter rules/ACLs). This contrasts with TACACS+, which separates AAA into distinct services. RADIUS accounting (start/stop messages) is handled as a separate process.",
+      "explanation_wrong_common": "RADIUS does NOT separate AAA into independent services — that's TACACS+. RADIUS does provide authorization via attributes in the Access-Accept, not just locally. RADIUS does handle all three AAA components, but auth and authz are combined."
+    },
+    {
+      "card_id": "aaa_015",
+      "topic": "AAA",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company implements Role-Based Access Control (RBAC). Employee Alice is in the 'Finance' role, which grants read access to the accounting database. She is temporarily assigned to a project requiring write access to a specific table. The admin adds her to a 'Project-Accounting' role that grants write access to that table. What AAA principle does this role assignment demonstrate, and what is an advantage of this approach?",
+      "choices": [
+        "Authorization — RBAC simplifies management because permissions are assigned to roles, not individuals, making it easy to grant/revoke access by changing role membership",
+        "Authentication — adding Alice to a role proves her identity for the project",
+        "Accounting — the role tracks Alice's access to the accounting table",
+        "Identification — the role identifies Alice as a finance employee"
+      ],
+      "answer": "Authorization — RBAC simplifies management because permissions are assigned to roles, not individuals, making it easy to grant/revoke access by changing role membership",
+      "explanation_correct": "Role assignment is an authorization decision — it determines what Alice can access. RBAC's advantage is manageability: permissions are tied to roles, not individuals. To grant access, you add the user to a role; to revoke, you remove them. This scales better than assigning permissions per-user.",
+      "explanation_wrong_common": "Authentication verifies identity — adding someone to a role doesn't verify who they are. Accounting logs activity — the role doesn't track what Alice does. Identification claims an identity — the role defines permissions, not identity."
     }
   ],
   "scheduling_updates": [
     {
-      "card_id": "sec_controls_014",
-      "next_due_at": "2026-07-30T09:00:00Z",
-      "reason": "easy card, 1-day interval (reinforcement)"
-    },
-    {
-      "card_id": "sec_controls_015",
-      "next_due_at": "2026-07-31T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
-    },
-    {
-      "card_id": "sec_controls_016",
-      "next_due_at": "2026-08-01T09:00:00Z",
+      "card_id": "sec_controls_020",
+      "next_due_at": "2026-08-02T09:00:00Z",
       "reason": "hard card, 3-day interval (strong performer)"
     },
     {
-      "card_id": "sec_controls_017",
-      "next_due_at": "2026-07-31T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
-    },
-    {
-      "card_id": "sec_controls_018",
-      "next_due_at": "2026-08-01T09:00:00Z",
+      "card_id": "sec_controls_021",
+      "next_due_at": "2026-08-02T09:00:00Z",
       "reason": "hard card, 3-day interval (strong performer)"
     },
     {
-      "card_id": "sec_controls_019",
-      "next_due_at": "2026-07-30T09:00:00Z",
-      "reason": "easy card, 1-day interval (reinforcement)"
-    },
-    {
-      "card_id": "cia_triad_013",
-      "next_due_at": "2026-07-31T09:00:00Z",
+      "card_id": "sec_controls_022",
+      "next_due_at": "2026-08-01T09:00:00Z",
       "reason": "medium card, 2-day interval (medium spacing)"
     },
     {
-      "card_id": "cia_triad_014",
-      "next_due_at": "2026-08-01T09:00:00Z",
+      "card_id": "sec_controls_023",
+      "next_due_at": "2026-08-02T09:00:00Z",
       "reason": "hard card, 3-day interval (strong performer)"
     },
     {
-      "card_id": "cia_triad_015",
-      "next_due_at": "2026-07-30T09:00:00Z",
-      "reason": "easy card, 1-day interval (reinforcement)"
-    },
-    {
-      "card_id": "cia_triad_016",
+      "card_id": "sec_controls_024",
       "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
-    },
-    {
-      "card_id": "cia_triad_017",
-      "next_due_at": "2026-07-31T09:00:00Z",
       "reason": "medium card, 2-day interval (medium spacing)"
     },
     {
-      "card_id": "aaa_008",
-      "next_due_at": "2026-07-31T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
-    },
-    {
-      "card_id": "aaa_009",
-      "next_due_at": "2026-08-01T09:00:00Z",
+      "card_id": "sec_controls_025",
+      "next_due_at": "2026-08-02T09:00:00Z",
       "reason": "hard card, 3-day interval (strong performer)"
     },
     {
-      "card_id": "aaa_010",
-      "next_due_at": "2026-07-30T09:00:00Z",
-      "reason": "easy card, 1-day interval (reinforcement)"
-    },
-    {
-      "card_id": "aaa_011",
-      "next_due_at": "2026-07-31T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
-    },
-    {
-      "card_id": "non_repudiation_009",
-      "next_due_at": "2026-07-31T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
-    },
-    {
-      "card_id": "non_repudiation_010",
-      "next_due_at": "2026-08-01T09:00:00Z",
+      "card_id": "cia_triad_018",
+      "next_due_at": "2026-08-02T09:00:00Z",
       "reason": "hard card, 3-day interval (strong performer)"
     },
     {
-      "card_id": "non_repudiation_011",
-      "next_due_at": "2026-07-30T09:00:00Z",
-      "reason": "easy card, 1-day interval (reinforcement)"
-    },
-    {
-      "card_id": "non_repudiation_012",
-      "next_due_at": "2026-08-01T09:00:00Z",
+      "card_id": "cia_triad_019",
+      "next_due_at": "2026-08-02T09:00:00Z",
       "reason": "hard card, 3-day interval (strong performer)"
     },
     {
-      "card_id": "non_repudiation_013",
-      "next_due_at": "2026-07-31T09:00:00Z",
+      "card_id": "cia_triad_020",
+      "next_due_at": "2026-08-01T09:00:00Z",
+      "reason": "medium card, 2-day interval (medium spacing)"
+    },
+    {
+      "card_id": "cia_triad_021",
+      "next_due_at": "2026-08-02T09:00:00Z",
+      "reason": "hard card, 3-day interval (strong performer)"
+    },
+    {
+      "card_id": "cia_triad_022",
+      "next_due_at": "2026-08-01T09:00:00Z",
+      "reason": "medium card, 2-day interval (medium spacing)"
+    },
+    {
+      "card_id": "non_repudiation_014",
+      "next_due_at": "2026-08-02T09:00:00Z",
+      "reason": "hard card, 3-day interval (strong performer)"
+    },
+    {
+      "card_id": "non_repudiation_015",
+      "next_due_at": "2026-08-01T09:00:00Z",
+      "reason": "medium card, 2-day interval (medium spacing)"
+    },
+    {
+      "card_id": "non_repudiation_016",
+      "next_due_at": "2026-08-02T09:00:00Z",
+      "reason": "hard card, 3-day interval (strong performer)"
+    },
+    {
+      "card_id": "non_repudiation_017",
+      "next_due_at": "2026-08-02T09:00:00Z",
+      "reason": "hard card, 3-day interval (strong performer)"
+    },
+    {
+      "card_id": "non_repudiation_018",
+      "next_due_at": "2026-08-01T09:00:00Z",
+      "reason": "medium card, 2-day interval (medium spacing)"
+    },
+    {
+      "card_id": "aaa_012",
+      "next_due_at": "2026-08-01T09:00:00Z",
+      "reason": "medium card, 2-day interval (medium spacing)"
+    },
+    {
+      "card_id": "aaa_013",
+      "next_due_at": "2026-08-02T09:00:00Z",
+      "reason": "hard card, 3-day interval (strong performer)"
+    },
+    {
+      "card_id": "aaa_014",
+      "next_due_at": "2026-08-02T09:00:00Z",
+      "reason": "hard card, 3-day interval (strong performer)"
+    },
+    {
+      "card_id": "aaa_015",
+      "next_due_at": "2026-08-01T09:00:00Z",
       "reason": "medium card, 2-day interval (medium spacing)"
     }
   ]
