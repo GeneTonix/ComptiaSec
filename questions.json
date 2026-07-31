@@ -5,402 +5,402 @@
       "topic": "Zero Trust",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the core principle of Zero Trust architecture?",
+      "question_text": "What is the foundational principle of Zero Trust architecture?",
       "choices": [
-        "Never trust, always verify \u2014 every access request is authenticated and authorized regardless of location",
-        "Trust internal network traffic by default and only verify external traffic",
-        "Trust users once they log in at the start of the day and cache that trust for 24 hours",
-        "Trust all traffic that passes through the perimeter firewall without further inspection"
+        "Never trust, always verify — every access request is fully authenticated, authorized, and encrypted regardless of origin",
+        "Trust internal network traffic by default and only inspect traffic at the perimeter",
+        "Trust users once they log in at the start of the day and cache that trust for 8 hours",
+        "Trust devices that are managed by the organization without further verification"
       ],
-      "answer": "Never trust, always verify \u2014 every access request is authenticated and authorized regardless of location",
-      "explanation_correct": "Zero Trust eliminates implicit trust based on network location. Every request \u2014 whether from inside or outside the network \u2014 must be authenticated, authorized, and continuously validated before access is granted.",
-      "explanation_wrong_common": "Trusting internal traffic by default is the traditional castle-and-moat model that Zero Trust explicitly rejects. Caching trust for a session or trusting firewall-passed traffic both introduce implicit trust, which Zero Trust removes."
+      "answer": "Never trust, always verify — every access request is fully authenticated, authorized, and encrypted regardless of origin",
+      "explanation_correct": "Zero Trust eliminates implicit trust based on network location. Every request — internal or external — must be authenticated, authorized, and encrypted before access is granted. The model assumes a breach has already occurred.",
+      "explanation_wrong_common": "Options B, C, and D all describe the legacy perimeter-based model where being inside the network implies trust. Zero Trust explicitly rejects this assumption because lateral movement after a breach makes the internal network untrustworthy."
     },
     {
       "card_id": "zero_trust_002",
       "topic": "Zero Trust",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which two planes make up the Zero Trust architecture as defined by NIST SP 800-207?",
+      "question_text": "In Zero Trust architecture, what are the two primary planes that separate decision-making from data flow?",
       "choices": [
-        "The Control Plane and the Data Plane",
-        "The Management Plane and the User Plane",
-        "The Security Plane and the Network Plane",
-        "The Access Plane and the Authentication Plane"
+        "Control Plane and Data Plane",
+        "Management Plane and Security Plane",
+        "Network Plane and Application Plane",
+        "Identity Plane and Access Plane"
       ],
-      "answer": "The Control Plane and the Data Plane",
-      "explanation_correct": "NIST SP 800-207 defines Zero Trust architecture with two planes: the Control Plane (handles policy decisions, authentication, and authorization) and the Data Plane (handles the actual data traffic and enforces the decisions made by the Control Plane).",
-      "explanation_wrong_common": "The other options invent plane names that are not part of the NIST Zero Trust model. The key distinction is decision-making (Control) vs data forwarding (Data)."
+      "answer": "Control Plane and Data Plane",
+      "explanation_correct": "NIST SP 800-207 defines the Control Plane (makes access decisions: policy engine, policy administrator) and the Data Plane (enforces those decisions and carries the actual application traffic via the policy enforcement point). Separating them prevents a compromise of data flow from affecting policy decisions.",
+      "explanation_wrong_common": "A common mistake is confusing the planes with management tiers. The Control Plane is the brain (decides), the Data Plane is the muscle (enforces). They are not management/security or network/application pairs."
     },
     {
       "card_id": "zero_trust_003",
       "topic": "Zero Trust",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company implements a policy engine that evaluates user identity, device posture, time of day, and data sensitivity before granting access to each application. Access is granted for only 15 minutes before re-evaluation. Which Zero Trust concept does the 15-minute re-evaluation represent?",
+      "question_text": "A company implements Zero Trust. An employee on a corporate laptop inside the office network tries to access an internal HR portal. Under Zero Trust, what happens?",
       "choices": [
-        "Continuous verification \u2014 trust is never static and is re-evaluated dynamically",
-        "Least privilege \u2014 users get only the minimum access needed",
-        "Microsegmentation \u2014 the network is divided into small zones",
-        "Implicit trust \u2014 users are trusted once initial authentication succeeds"
+        "The system verifies the user identity, device posture, and context (time, location) before granting least-privilege access to only the HR portal",
+        "The employee is granted access automatically because the request originates from inside the corporate network",
+        "The employee is blocked entirely because Zero Trust means no one gets access",
+        "The employee must rejoin the VPN before access is considered valid"
       ],
-      "answer": "Continuous verification \u2014 trust is never static and is re-evaluated dynamically",
-      "explanation_correct": "Zero Trust requires continuous verification \u2014 trust is not a one-time event. By re-evaluating every 15 minutes based on multiple signals (identity, device, context), the system ensures that any change in conditions can revoke access immediately.",
-      "explanation_wrong_common": "Least privilege limits what users can access but doesn't define the re-evaluation frequency. Microsegmentation divides the network but is about zoning, not time-based trust. Implicit trust is the opposite of Zero Trust."
+      "answer": "The system verifies the user identity, device posture, and context (time, location) before granting least-privilege access to only the HR portal",
+      "explanation_correct": "Zero Trust evaluates every request dynamically — identity, device health, and contextual signals — regardless of network location. Access is granted at least privilege to only the requested resource, not the entire network.",
+      "explanation_wrong_common": "Option B is the old perimeter model. Option C misunderstands Zero Trust as zero access. Option D reintroduces VPN-based trust, which Zero Trust is designed to replace."
     },
     {
       "card_id": "zero_trust_004",
       "topic": "Zero Trust",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization divides its network into small, isolated zones, each protected by its own policy enforcement point. A compromised web server in one zone cannot directly access the database server in another zone without passing through a new authentication check. What is this Zero Trust concept called?",
+      "question_text": "Which component in Zero Trust architecture is responsible for making the actual access decision based on policy, subject identity, and device posture?",
       "choices": [
-        "Microsegmentation \u2014 the network is divided into granular security zones",
-        "Perimeter security \u2014 a single firewall protects the entire network boundary",
-        "VPN tunneling \u2014 encrypted tunnels connect zones securely",
-        "Deception technology \u2014 honeypots lure attackers into isolated zones"
+        "Policy Engine (PE)",
+        "Policy Enforcement Point (PEP)",
+        "Policy Administrator (PA)",
+        "Trust Broker (TB)"
       ],
-      "answer": "Microsegmentation \u2014 the network is divided into granular security zones",
-      "explanation_correct": "Microsegmentation divides the network into small, isolated zones with individual security policies. Each zone has its own policy enforcement point, so lateral movement between zones requires new authentication \u2014 a core Zero Trust implementation strategy.",
-      "explanation_wrong_common": "Perimeter security is the traditional single-boundary model, the opposite of Zero Trust. VPN tunneling is about encrypted transport, not zone isolation. Deception technology uses honeypots, which is a different concept entirely."
+      "answer": "Policy Engine (PE)",
+      "explanation_correct": "The Policy Engine (PE) is the decision-maker — it evaluates subject identity, device posture, and resource policy to grant, deny, or revoke access. The Policy Administrator (PA) then builds the session, and the Policy Enforcement Point (PEP) enforces the decision on the data plane.",
+      "explanation_wrong_common": "The PEP enforces but does not decide. The PA manages session creation but relies on the PE's decision. 'Trust Broker' is not a NIST SP 800-207 component."
     },
     {
       "card_id": "zero_trust_005",
       "topic": "Zero Trust",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "In Zero Trust, what does the policy engine (PE) do?",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An organization is migrating from a VPN-based perimeter model to Zero Trust. Their current architecture: employees connect via VPN to reach internal apps; once on the VPN, they have broad network access. Identify the TWO most critical changes required to align with NIST SP 800-207 Zero Trust principles.",
       "choices": [
-        "It makes the final authorization decision based on policies, identity, and context signals",
-        "It encrypts data traffic between the user and the application",
-        "It physically isolates network segments using hardware firewalls",
-        "It stores and manages user passwords and certificates"
+        "(1) Replace broad VPN network access with per-application Policy Enforcement Points, and (2) Implement continuous device-posture evaluation at every access request rather than a one-time VPN login",
+        "(1) Deploy a stronger VPN with multi-factor authentication, and (2) Add a next-generation firewall at the perimeter",
+        "(1) Move all applications to the public internet without VPN, and (2) Require employees to use personal devices only",
+        "(1) Segment the network into VLANs and (2) Deploy an IDS on each segment"
       ],
-      "answer": "It makes the final authorization decision based on policies, identity, and context signals",
-      "explanation_correct": "The Policy Engine (PE) in Zero Trust is the brain of the Control Plane. It evaluates policies, user identity, device posture, and contextual signals to make the authorization decision. The Policy Administrator then instructs the Policy Enforcement Point to allow or deny.",
-      "explanation_wrong_common": "Encryption is handled by the Data Plane, not the PE. Physical isolation is not the PE's role. Password/certificate management is handled by identity providers and PKI, not the policy engine."
+      "answer": "(1) Replace broad VPN network access with per-application Policy Enforcement Points, and (2) Implement continuous device-posture evaluation at every access request rather than a one-time VPN login",
+      "explanation_correct": "The core shift is eliminating implicit trust from network location (VPN) and replacing it with per-resource, continuously-evaluated access. Broad VPN access gives lateral-movement ability; per-app PEPs confine access to the specific resource. Continuous posture evaluation ensures a compromised or non-compliant device loses access immediately, not at the next VPN reconnect.",
+      "explanation_wrong_common": "Option B just hardens the old model — still perimeter-based. Option C removes security entirely. Option D is network segmentation, which is useful but doesn't address the trust model itself."
     },
     {
-      "card_id": "zero_trust_006",
-      "topic": "Zero Trust",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A remote employee logs in from a corporate laptop to access a cloud CRM. The Zero Trust system checks: (1) the user's MFA token, (2) whether the laptop's OS is patched, (3) that the CRM is the only app requested. It grants read-only access for 30 minutes. Which Zero Trust principle is demonstrated by granting only read-only CRM access?",
-      "choices": [
-        "Least privilege \u2014 the user receives only the minimum access required for their task",
-        "Continuous verification \u2014 access is re-checked every 30 minutes",
-        "Microsegmentation \u2014 the CRM is isolated from other applications",
-        "Assume breach \u2014 the system assumes the laptop may be compromised"
-      ],
-      "answer": "Least privilege \u2014 the user receives only the minimum access required for their task",
-      "explanation_correct": "Least privilege grants users only the minimum access needed to perform their task. Read-only access to just the CRM \u2014 not write access, not access to other apps \u2014 is the principle of least privilege in action. The 30-minute window is continuous verification, a separate principle.",
-      "explanation_wrong_common": "The 30-minute re-check is continuous verification, not least privilege. Microsegmentation is about network zoning. Assume breach is a mindset, not the specific mechanism described here."
-    },
-    {
-      "card_id": "symmetric_crypto_001",
-      "topic": "Symmetric Cryptography",
+      "card_id": "symmetric_001",
+      "topic": "Symmetric Encryption",
       "difficulty": "easy",
       "question_type": "definition",
       "question_text": "What is the defining characteristic of symmetric encryption?",
       "choices": [
         "The same key is used for both encryption and decryption",
-        "One key encrypts and a different key decrypts",
-        "No key is used \u2014 encryption relies on a hashing algorithm",
-        "Two parties use a public key pair to derive a shared secret"
+        "Two mathematically related keys are used — one public, one private",
+        "A hash function transforms plaintext into a fixed-length digest",
+        "A certificate authority issues keys to both parties"
       ],
       "answer": "The same key is used for both encryption and decryption",
-      "explanation_correct": "Symmetric encryption uses a single shared key for both encrypting and decrypting data. Both the sender and receiver must have the same key, which means secure key distribution is a primary challenge.",
-      "explanation_wrong_common": "Using different keys for encryption and decryption is asymmetric encryption. Hashing algorithms don't use keys for decryption (they're one-way). Public key pairs are asymmetric cryptography, not symmetric."
+      "explanation_correct": "Symmetric encryption uses a single shared secret key for both operations. Examples include AES, DES, 3DES, and ChaCha20. It is fast and efficient for bulk data but the key must be securely shared between parties.",
+      "explanation_wrong_common": "Option B describes asymmetric encryption. Option C describes hashing (a one-way function, not encryption). Option D describes a PKI process, not a property of symmetric encryption."
     },
     {
-      "card_id": "symmetric_crypto_002",
-      "topic": "Symmetric Cryptography",
+      "card_id": "symmetric_002",
+      "topic": "Symmetric Encryption",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which of the following is a symmetric encryption algorithm?",
+      "question_text": "Which symmetric encryption algorithm is the current U.S. federal standard for protecting sensitive (unclassified) information and supports 128, 192, and 256-bit key sizes?",
       "choices": [
         "AES (Advanced Encryption Standard)",
+        "DES (Data Encryption Standard)",
         "RSA (Rivest-Shamir-Adleman)",
-        "ECDSA (Elliptic Curve Digital Signature Algorithm)",
-        "Diffie-Hellman"
+        "ECC (Elliptic Curve Cryptography)"
       ],
       "answer": "AES (Advanced Encryption Standard)",
-      "explanation_correct": "AES is a symmetric block cipher that uses the same key for encryption and decryption. It is the most widely used symmetric encryption standard, approved by NIST and used globally.",
-      "explanation_wrong_common": "RSA is an asymmetric algorithm using public/private key pairs. ECDSA is an asymmetric digital signature algorithm. Diffie-Hellman is a key exchange protocol (asymmetric), not a symmetric cipher."
+      "explanation_correct": "AES was selected by NIST in 2001 as the replacement for DES. It operates on 128-bit blocks and supports key sizes of 128, 192, and 256 bits. AES-256 is approved for Top Secret data by NSA.",
+      "explanation_wrong_common": "DES is the deprecated predecessor with only a 56-bit key. RSA and ECC are asymmetric algorithms, not symmetric."
     },
     {
-      "card_id": "symmetric_crypto_003",
-      "topic": "Symmetric Cryptography",
+      "card_id": "symmetric_003",
+      "topic": "Symmetric Encryption",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company needs to encrypt a 500 GB database backup stored on an external hard drive. They want the encryption to be fast and efficient. Which type of encryption should they use, and why?",
+      "question_text": "A company needs to encrypt a 500 GB database backup stored on tape. The security team must choose an algorithm. Given performance and security requirements, which is the best choice?",
       "choices": [
-        "Symmetric (AES) \u2014 it is much faster for large data volumes because it uses a single shared key",
-        "Asymmetric (RSA) \u2014 it provides better security for stored data",
-        "Hashing (SHA-256) \u2014 it is the fastest method for large files",
-        "Asymmetric (Diffie-Hellman) \u2014 it handles large data more efficiently"
+        "AES-256 — symmetric encryption is orders of magnitude faster than asymmetric for bulk data and 256-bit provides strong security",
+        "RSA-4096 — the large key size provides the strongest security for bulk encryption",
+        "SHA-256 — a one-way hash ensures data integrity for the backup",
+        "3DES — three passes of DES provide equivalent security to AES with backwards compatibility"
       ],
-      "answer": "Symmetric (AES) \u2014 it is much faster for large data volumes because it uses a single shared key",
-      "explanation_correct": "Symmetric encryption like AES is significantly faster than asymmetric encryption for large data volumes. The math is simpler (shared key operations vs complex key-pair math), making it ideal for encrypting large files like database backups.",
-      "explanation_wrong_common": "RSA is far too slow for 500 GB of data \u2014 asymmetric encryption is used for small data or key exchange. Hashing is one-way and cannot decrypt. Diffie-Hellman is a key exchange protocol, not a bulk encryption method."
+      "answer": "AES-256 — symmetric encryption is orders of magnitude faster than asymmetric for bulk data and 256-bit provides strong security",
+      "explanation_correct": "For bulk data encryption, symmetric algorithms like AES are the clear choice — they are 100-1000x faster than asymmetric algorithms. AES-256 offers strong security. RSA is impractically slow for 500 GB. Hashing provides integrity, not confidentiality. 3DES is deprecated and far slower than AES.",
+      "explanation_wrong_common": "RSA is for small data like key exchange, not bulk encryption. SHA provides integrity, not encryption. 3DES is deprecated by NIST (SP 800-131A) due to its small block size and performance cost."
     },
     {
-      "card_id": "symmetric_crypto_004",
-      "topic": "Symmetric Cryptography",
+      "card_id": "symmetric_004",
+      "topic": "Symmetric Encryption",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Two branch offices need to exchange encrypted files daily. They decide to use AES-256 with a shared key. What is the BIGGEST challenge with this approach?",
+      "question_text": "Two offices in different cities need to securely share a symmetric AES key so they can encrypt inter-office file transfers. What is the most practical method to establish this shared secret?",
       "choices": [
-        "Securely distributing and managing the shared key between both offices",
-        "AES-256 is not strong enough for inter-office communication",
-        "AES cannot encrypt files larger than 1 GB",
-        "The key must be regenerated for every single file sent"
+        "Use asymmetric encryption (e.g., RSA or Diffie-Hellman) to securely exchange the symmetric key, then use AES for the actual file encryption",
+        "Email the AES key to the other office using a password-protected zip file",
+        "Send the key over a separate phone call and hope no one is listening",
+        "Use the same AES key for both key exchange and file encryption with no separate mechanism"
       ],
-      "answer": "Securely distributing and managing the shared key between both offices",
-      "explanation_correct": "The biggest challenge with symmetric encryption is key distribution \u2014 how to securely share the key with the other party without it being intercepted. If an attacker gets the key, all encrypted data is compromised. This is called the key distribution problem.",
-      "explanation_wrong_common": "AES-256 is extremely strong and widely used. AES can encrypt files of any size. The same key can be reused for multiple files \u2014 it does not need to be regenerated each time."
+      "answer": "Use asymmetric encryption (e.g., RSA or Diffie-Hellman) to securely exchange the symmetric key, then use AES for the actual file encryption",
+      "explanation_correct": "This is a hybrid approach: asymmetric crypto solves the key-distribution problem (you can share a secret over an untrusted channel), and symmetric AES handles the bulk encryption efficiently. This is how TLS, SSH, and most modern crypto systems work.",
+      "explanation_wrong_common": "Emailing a key (even in a zip) is insecure — email is plaintext in transit and the zip password is weak. A phone call has no cryptographic guarantee. Using AES to exchange its own key is circular and impossible without a pre-shared channel."
     },
     {
-      "card_id": "symmetric_crypto_005",
-      "topic": "Symmetric Cryptography",
+      "card_id": "symmetric_005",
+      "topic": "Symmetric Encryption",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An attacker captures an AES-128 encrypted file and its ciphertext. They attempt a brute-force attack, trying every possible key. Approximately how many keys would they need to try, and why is this considered computationally infeasible?",
+      "choices": [
+        "2^128 (≈3.4 × 10^38) keys — at a billion keys/second this would take ~10^22 years, far exceeding the age of the universe (~1.4 × 10^10 years)",
+        "2^56 (≈7.2 × 10^16) keys — feasible with modern hardware in a few days",
+        "2^128 (≈3.4 × 10^38) keys — but quantum computers with Shor's algorithm reduce this to 2^64, making it trivial",
+        "128 keys — the key size in bits equals the number of attempts needed"
+      ],
+      "answer": "2^128 (≈3.4 × 10^38) keys — at a billion keys/second this would take ~10^22 years, far exceeding the age of the universe (~1.4 × 10^10 years)",
+      "explanation_correct": "AES-128 has a 128-bit key space, meaning 2^128 possible keys. Even at a billion (10^9) keys/second, the time is 3.4×10^38 / 10^9 ≈ 3.4×10^29 seconds ≈ 10^22 years. The universe is ~10^10 years old. This is why AES-128 is considered secure against brute force.",
+      "explanation_wrong_common": "Option B is DES's key space (2^56), which IS feasible. Option C confuses Shor's algorithm (which breaks asymmetric crypto like RSA, not symmetric) — Grover's algorithm is the relevant quantum threat to symmetric crypto and only halves the effective key space to 2^64, which is still not 'trivial'. Option D fundamentally misunderstands key space."
+    },
+    {
+      "card_id": "asymmetric_001",
+      "topic": "Asymmetric Encryption",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What key length does AES-256 use, and how does it compare to AES-128 in terms of security?",
+      "question_text": "What is the key relationship in asymmetric (public-key) cryptography?",
       "choices": [
-        "256-bit key \u2014 stronger than AES-128 due to a longer key, making brute-force exponentially harder",
-        "256-bit key \u2014 weaker than AES-128 because longer keys are harder to manage",
-        "128-bit key \u2014 same as AES-128, the '256' refers to block size",
-        "256-character password \u2014 the key is a 256-character alphanumeric string"
+        "Two mathematically related keys: a public key that can be freely shared and a private key that is kept secret",
+        "One shared secret key used by both parties",
+        "A single key generated from a password using a key-derivation function",
+        "A random session key exchanged at the start of each connection"
       ],
-      "answer": "256-bit key \u2014 stronger than AES-128 due to a longer key, making brute-force exponentially harder",
-      "explanation_correct": "AES-256 uses a 256-bit key, which is stronger than AES-128's 128-bit key. A longer key means exponentially more possible key combinations, making brute-force attacks much harder. The '256' refers to key length, not block size (AES always uses 128-bit blocks).",
-      "explanation_wrong_common": "Longer keys are not harder to manage in a meaningful way and are stronger, not weaker. AES always uses 128-bit blocks regardless of key size. The key is a 256-bit binary value, not a 256-character string."
+      "answer": "Two mathematically related keys: a public key that can be freely shared and a private key that is kept secret",
+      "explanation_correct": "Asymmetric cryptography uses a key pair — what one key encrypts, the other decrypts. The public key can be shared openly; the private key must never be disclosed. This eliminates the key-distribution problem of symmetric crypto. Examples: RSA, ECC, Diffie-Hellman.",
+      "explanation_wrong_common": "Option B describes symmetric encryption. Option C describes password-based key derivation (PBKDF2, bcrypt). Option D describes a session key, which is typically symmetric."
     },
     {
-      "card_id": "asymmetric_crypto_001",
-      "topic": "Asymmetric Cryptography",
+      "card_id": "asymmetric_002",
+      "topic": "Asymmetric Encryption",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "How does asymmetric encryption differ from symmetric encryption?",
+      "question_text": "If Alice wants to send Bob a confidential message using asymmetric encryption, whose public key does she use to encrypt the message?",
       "choices": [
-        "It uses a pair of keys \u2014 a public key for encryption and a private key for decryption",
-        "It uses the same key for both encryption and decryption",
-        "It uses no keys and relies on a one-way hash function",
-        "It uses a key that changes automatically every 60 seconds"
+        "Bob's public key — only Bob's matching private key can decrypt it",
+        "Alice's public key — so she can decrypt it later with her private key",
+        "A shared secret key they both know",
+        "The certificate authority's public key"
       ],
-      "answer": "It uses a pair of keys \u2014 a public key for encryption and a private key for decryption",
-      "explanation_correct": "Asymmetric encryption (public-key cryptography) uses a key pair: a public key that can be freely shared for encrypting data, and a private key that is kept secret for decrypting data. This solves the key distribution problem of symmetric encryption.",
-      "explanation_wrong_common": "Using the same key for both is symmetric encryption, not asymmetric. Hashing is not encryption. Auto-rotating keys is not a defining feature of asymmetric cryptography."
+      "answer": "Bob's public key — only Bob's matching private key can decrypt it",
+      "explanation_correct": "To send confidential data to someone in asymmetric crypto, you encrypt with THEIR public key. Only their corresponding private key can decrypt it. This ensures confidentiality — even the sender cannot decrypt the message after encrypting it.",
+      "explanation_wrong_common": "Using Alice's own public key would mean only Alice can decrypt it, defeating the purpose. A shared secret is symmetric, not asymmetric. The CA's key is for verifying certificates, not for message encryption."
     },
     {
-      "card_id": "asymmetric_crypto_002",
-      "topic": "Asymmetric Cryptography",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "Which of the following is an asymmetric encryption algorithm?",
-      "choices": [
-        "RSA (Rivest-Shamir-Adleman)",
-        "AES (Advanced Encryption Standard)",
-        "3DES (Triple Data Encryption Standard)",
-        "Blowfish"
-      ],
-      "answer": "RSA (Rivest-Shamir-Adleman)",
-      "explanation_correct": "RSA is an asymmetric algorithm that uses a public/private key pair. It is widely used for secure data transmission, digital signatures, and key exchange. AES, 3DES, and Blowfish are all symmetric algorithms.",
-      "explanation_wrong_common": "AES, 3DES, and Blowfish are all symmetric encryption algorithms that use a single shared key. They do not use public/private key pairs."
-    },
-    {
-      "card_id": "asymmetric_crypto_003",
-      "topic": "Asymmetric Cryptography",
+      "card_id": "asymmetric_003",
+      "topic": "Asymmetric Encryption",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Alice wants to send a confidential message to Bob. Bob has a public/private key pair. Alice uses Bob's public key to encrypt the message. What happens next?",
+      "question_text": "Why is elliptic curve cryptography (ECC) increasingly preferred over RSA in modern systems, especially for mobile and IoT devices?",
       "choices": [
-        "Bob decrypts the message using his private key \u2014 only he can read it",
-        "Bob decrypts the message using his public key \u2014 anyone can read it",
-        "Bob decrypts the message using Alice's private key",
-        "Bob cannot decrypt the message \u2014 he needs Alice's public key"
+        "ECC achieves equivalent security to RSA with much smaller key sizes, reducing storage, bandwidth, and computation requirements",
+        "ECC uses symmetric keys which are faster than RSA's asymmetric keys",
+        "ECC is immune to all known quantum attacks unlike RSA",
+        "ECC does not require a certificate authority, simplifying deployment"
       ],
-      "answer": "Bob decrypts the message using his private key \u2014 only he can read it",
-      "explanation_correct": "In asymmetric encryption, data encrypted with a public key can only be decrypted with the corresponding private key. Since Bob's public key was used to encrypt, only Bob's private key can decrypt it. This ensures confidentiality \u2014 only Bob can read the message.",
-      "explanation_wrong_common": "The public key cannot decrypt what it encrypted \u2014 that would defeat the purpose. Alice's private key is irrelevant here. Bob doesn't need Alice's public key to decrypt his own messages."
+      "answer": "ECC achieves equivalent security to RSA with much smaller key sizes, reducing storage, bandwidth, and computation requirements",
+      "explanation_correct": "A 256-bit ECC key provides comparable security to a 3072-bit RSA key. Smaller keys mean faster computations, less storage, and lower bandwidth — critical for constrained devices. This is why ECC is used in TLS 1.3, Signal, and Apple iMessage.",
+      "explanation_wrong_common": "ECC is still asymmetric, not symmetric. Both ECC and RSA are vulnerable to Shor's algorithm on a sufficiently powerful quantum computer. ECC still uses PKI/certificates like RSA."
     },
     {
-      "card_id": "asymmetric_crypto_004",
-      "topic": "Asymmetric Cryptography",
+      "card_id": "asymmetric_004",
+      "topic": "Asymmetric Encryption",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Alice wants to digitally sign a document to prove she authored it. Which key does she use to create the signature, and which key does a verifier use to check it?",
+      "question_text": "In a Diffie-Hellman key exchange between Alice and Bob, what is the shared secret used for, and what does DH NOT provide?",
       "choices": [
-        "Alice signs with her private key; the verifier checks with Alice's public key",
-        "Alice signs with her public key; the verifier checks with Alice's private key",
-        "Alice signs with Bob's public key; the verifier checks with Bob's private key",
-        "Alice signs with a shared symmetric key; the verifier checks with the same key"
+        "The shared secret is used as a symmetric session key for subsequent encryption; DH does NOT provide authentication of the parties",
+        "The shared secret is used to sign messages; DH does not provide confidentiality",
+        "The shared secret is a permanent private key stored for future use; DH does not provide key rotation",
+        "The shared secret is used to verify certificates; DH does not provide encryption"
       ],
-      "answer": "Alice signs with her private key; the verifier checks with Alice's public key",
-      "explanation_correct": "Digital signatures work in reverse of encryption for confidentiality. Alice signs with her private key (proving only she could have created it), and anyone can verify the signature using Alice's public key. This provides authentication, integrity, and non-repudiation.",
-      "explanation_wrong_common": "Signing with the public key would mean anyone could forge the signature. Using Bob's keys makes no sense for proving Alice's authorship. Symmetric keys don't provide non-repudiation since both parties share the key."
+      "answer": "The shared secret is used as a symmetric session key for subsequent encryption; DH does NOT provide authentication of the parties",
+      "explanation_correct": "Diffie-Hellman allows two parties to establish a shared secret over an insecure channel without the secret being transmitted. That secret typically becomes a symmetric session key (e.g., for AES). However, basic DH has no authentication — a man-in-the-middle can intercept and establish separate keys with each party.",
+      "explanation_wrong_common": "DH produces a shared secret, not a signing key. The secret is ephemeral (per-session), not permanent. DH's output is used for encryption (as a key), not certificate verification."
     },
     {
-      "card_id": "asymmetric_crypto_005",
-      "topic": "Asymmetric Cryptography",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is the primary disadvantage of asymmetric encryption compared to symmetric encryption?",
+      "card_id": "asymmetric_005",
+      "topic": "Asymmetric Encryption",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An attacker performs a man-in-the-middle attack during a Diffie-Hellman key exchange between Alice and Bob. The attacker intercepts Alice's public value, sends their own public value to Bob, intercepts Bob's public value, and sends their own to Alice. What is the result, and what would prevent this attack?",
       "choices": [
-        "It is significantly slower and computationally more expensive",
-        "It is less secure than symmetric encryption",
-        "It cannot be used for any real-world applications",
-        "It requires a dedicated hardware security module to function"
+        "The attacker establishes separate shared secrets with Alice and Bob, decrypting/re-encrypting all traffic. Prevention: authenticate the DH exchange using digital signatures or certificates (authenticated DH / TLS)",
+        "The attack fails because DH is mathematically unbreakable, so the attacker cannot compute either shared secret",
+        "The attacker learns both private keys and can impersonate Alice and Bob permanently. Prevention: use longer key sizes",
+        "The attack is detected automatically by the DH protocol. Prevention: none needed, DH is self-protecting"
       ],
-      "answer": "It is significantly slower and computationally more expensive",
-      "explanation_correct": "Asymmetric encryption uses complex mathematical operations (large prime factorization, elliptic curve math), making it much slower than symmetric encryption. In practice, asymmetric encryption is used for key exchange and small data, while symmetric encryption handles bulk data.",
-      "explanation_wrong_common": "Asymmetric encryption is not less secure \u2014 both can be highly secure. It is widely used in TLS, SSH, PGP, and more. No dedicated HSM is required, though they can enhance security."
+      "answer": "The attacker establishes separate shared secrets with Alice and Bob, decrypting/re-encrypting all traffic. Prevention: authenticate the DH exchange using digital signatures or certificates (authenticated DH / TLS)",
+      "explanation_correct": "In unauthenticated DH, the MITM creates two independent channels: Alice↔Attacker and Attacker↔Bob. Each party thinks they share a secret with the other, but actually both share secrets with the attacker who relays (and reads) everything. The fix is authenticated DH — each party signs their DH public value with their private key, verified via certificates. This is exactly what TLS does.",
+      "explanation_wrong_common": "DH's math is sound, but the MITM doesn't break the math — they exploit the lack of authentication. The attacker doesn't learn private keys; they create their own key pairs for each leg. DH has no built-in detection of MITM."
     },
     {
       "card_id": "pki_001",
-      "topic": "Public Key Infrastructure",
+      "topic": "PKI",
       "difficulty": "easy",
       "question_type": "definition",
       "question_text": "What is a Certificate Authority (CA) in a Public Key Infrastructure?",
       "choices": [
-        "A trusted entity that issues and manages digital certificates to verify identity",
-        "A hardware device that stores private keys securely",
-        "A protocol for encrypting web traffic between client and server",
-        "A database that stores all public keys in a network"
+        "A trusted third party that issues digital certificates binding a public key to a verified identity",
+        "A hardware device that generates symmetric encryption keys",
+        "A protocol for exchanging encrypted messages between two parties",
+        "A database that stores all private keys for an organization"
       ],
-      "answer": "A trusted entity that issues and manages digital certificates to verify identity",
-      "explanation_correct": "A Certificate Authority (CA) is a trusted third-party organization that verifies the identity of entities and issues digital certificates binding their identity to their public key. Examples include DigiCert, Let's Encrypt, and GlobalSign.",
-      "explanation_wrong_common": "A hardware key storage device is an HSM, not a CA. TLS/SSL is the protocol, not the CA. A key database is a key store, not a CA \u2014 the CA's role is identity verification and certificate issuance."
+      "answer": "A trusted third party that issues digital certificates binding a public key to a verified identity",
+      "explanation_correct": "A CA verifies the identity of an applicant and issues a digital certificate that binds their identity to their public key, signed by the CA's own private key. This allows others to trust that a public key genuinely belongs to the claimed entity. Examples: DigiCert, Let's Encrypt, GlobalSign.",
+      "explanation_wrong_common": "A CA does not generate symmetric keys, is not a protocol, and critically does NOT store private keys — the private key never leaves the certificate holder's control."
     },
     {
       "card_id": "pki_002",
-      "topic": "Public Key Infrastructure",
+      "topic": "PKI",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What does a digital certificate contain?",
+      "question_text": "What is the purpose of a digital certificate in PKI?",
       "choices": [
-        "The certificate holder's identity and their public key, signed by a CA",
-        "The certificate holder's private key and password",
-        "The CA's private key for decrypting messages",
-        "A list of all revoked certificates in the network"
+        "To bind a verified identity to a public key, allowing others to trust that the key belongs to the claimed entity",
+        "To encrypt messages so only the certificate holder can read them",
+        "To store the private key securely on the holder's device",
+        "To revoke access when an employee leaves the organization"
       ],
-      "answer": "The certificate holder's identity and their public key, signed by a CA",
-      "explanation_correct": "A digital certificate binds an entity's identity to their public key. It contains the holder's identity information, their public key, the CA's digital signature, validity dates, and the serial number. It never contains private keys.",
-      "explanation_wrong_common": "A certificate must never contain a private key \u2014 that would compromise security. The CA's private key is never shared. A list of revoked certificates is a CRL (Certificate Revocation List), a separate component."
+      "answer": "To bind a verified identity to a public key, allowing others to trust that the key belongs to the claimed entity",
+      "explanation_correct": "A digital certificate (typically X.509 format) contains the subject's identity, their public key, validity dates, and the CA's digital signature. The CA's signature is the trust anchor — if you trust the CA, you trust that the public key belongs to the named entity.",
+      "explanation_wrong_common": "The certificate itself doesn't encrypt messages — the public key inside it does. Certificates never contain private keys. Revocation is handled by CRLs/OCSP, not the certificate itself."
     },
     {
       "card_id": "pki_003",
-      "topic": "Public Key Infrastructure",
+      "topic": "PKI",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A user visits a banking website. Their browser receives the site's digital certificate and checks it against a list of trusted CAs built into the operating system. The browser then uses the site's public key to establish an encrypted TLS session. What is the role of the CA's signature on the certificate?",
+      "question_text": "A web browser connects to https://example.com. The server presents a certificate. How does the browser verify that the certificate is legitimate and not forged?",
       "choices": [
-        "It proves the certificate is authentic and the site's identity was verified by a trusted third party",
-        "It encrypts the user's banking credentials during transmission",
-        "It decrypts the bank's private key so the browser can use it",
-        "It acts as a firewall rule to block unauthorized traffic to the bank"
+        "The browser checks that the certificate is signed by a trusted CA (in its trust store), the domain matches, and the certificate is within its validity period and not revoked",
+        "The browser sends the certificate back to the server for verification",
+        "The browser checks that the certificate's serial number matches a government registry",
+        "The browser compares the certificate's public key against a pre-shared symmetric key"
       ],
-      "answer": "It proves the certificate is authentic and the site's identity was verified by a trusted third party",
-      "explanation_correct": "The CA's digital signature on the certificate allows the browser to verify that a trusted CA vouches for the site's identity. The browser checks the signature using the CA's public key (from its trusted root store). If valid, it trusts the site's public key is genuine, enabling secure TLS.",
-      "explanation_wrong_common": "The CA signature doesn't encrypt credentials \u2014 that's done by the TLS session keys. It doesn't decrypt the private key. It has nothing to do with firewall rules."
+      "answer": "The browser checks that the certificate is signed by a trusted CA (in its trust store), the domain matches, and the certificate is within its validity period and not revoked",
+      "explanation_correct": "Browser verification involves: (1) validating the CA's digital signature using the CA's public key from the browser's trust store, (2) confirming the certificate's CN/SAN matches the requested domain, (3) checking validity dates, and (4) checking revocation status via CRL or OCSP.",
+      "explanation_wrong_common": "The browser doesn't send the certificate back. There is no government registry of serial numbers. The comparison is against the CA's public key (asymmetric), not a pre-shared symmetric key."
     },
     {
       "card_id": "pki_004",
-      "topic": "Public Key Infrastructure",
+      "topic": "PKI",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization discovers that one of its server certificates has been compromised. They need to invalidate the certificate before its natural expiration date. Which PKI mechanism should they use?",
+      "question_text": "A company discovers that an employee's private key has been compromised. The employee's certificate is still valid for 10 more months. What must the CA do to prevent others from trusting the compromised certificate?",
       "choices": [
-        "Certificate Revocation List (CRL) or OCSP \u2014 to publish that the certificate is revoked before its expiry",
-        "Delete the certificate from the server and generate a new key pair on the spot",
-        "Change the certificate's expiration date to today using the server's private key",
-        "Contact every user individually and tell them not to trust the certificate"
+        "Revoke the certificate and publish it in a Certificate Revocation List (CRL) or respond to OCSP queries marking it as revoked",
+        "Nothing — the certificate will naturally expire in 10 months",
+        "Issue a new certificate with the same public key to overwrite the old one",
+        "Contact every user individually and tell them to stop trusting the certificate"
       ],
-      "answer": "Certificate Revocation List (CRL) or OCSP \u2014 to publish that the certificate is revoked before its expiry",
-      "explanation_correct": "When a certificate needs to be invalidated before its expiration date, the CA adds it to a Certificate Revocation List (CRL) or makes it available via OCSP (Online Certificate Status Protocol). Browsers check these to determine if a certificate has been revoked.",
-      "explanation_wrong_common": "Simply deleting the certificate doesn't inform relying parties \u2014 the old certificate could still be presented. The expiration date is signed by the CA and cannot be changed locally. Contacting users individually is impractical and not how PKI works."
+      "answer": "Revoke the certificate and publish it in a Certificate Revocation List (CRL) or respond to OCSP queries marking it as revoked",
+      "explanation_correct": "Certificate revocation is the mechanism for invalidating a certificate before its expiry date. The CA adds the certificate's serial number to a CRL (a published list of revoked certificates) and/or responds to real-time OCSP (Online Certificate Status Protocol) queries. Clients check these before trusting a certificate.",
+      "explanation_wrong_common": "Waiting 10 months for natural expiry leaves the compromised key usable. Issuing a new cert with the same public key doesn't invalidate the old one. Contacting every user individually is impractical — that's why CRL/OCSP exist."
+    },
+    {
+      "card_id": "pki_005",
+      "topic": "PKI",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An organization deploys an internal PKI with a Root CA (offline, air-gapped), an Intermediate CA (online, issues end-user certificates), and end-entity certificates for servers. Why is this three-tier hierarchy preferred over having the Root CA issue all certificates directly?",
+      "choices": [
+        "It isolates the Root CA from compromise — if the Intermediate CA is breached, only the Intermediate's certificates are revoked and reissued, while the Root CA (trust anchor) remains secure and offline",
+        "It is faster because the Root CA can delegate all signing to the Intermediate without verification",
+        "It eliminates the need for certificate revocation since the hierarchy self-heals",
+        "It allows the organization to avoid using asymmetric encryption for end-entity certificates"
+      ],
+      "answer": "It isolates the Root CA from compromise — if the Intermediate CA is breached, only the Intermediate's certificates are revoked and reissued, while the Root CA (trust anchor) remains secure and offline",
+      "explanation_correct": "The Root CA is the ultimate trust anchor — if compromised, ALL certificates in the entire PKI are untrustworthy. Keeping it offline and using an online Intermediate CA for day-to-day signing limits blast radius: an Intermediate compromise requires revoking only that Intermediate's certificate and reissuing its subtree, while the Root stays secure. This is standard practice in enterprise PKI.",
+      "explanation_wrong_common": "The Intermediate still verifies identities before issuing — delegation doesn't skip verification. The hierarchy doesn't eliminate revocation; it makes it more manageable. End-entity certificates are still asymmetric."
     }
   ],
   "scheduling_updates": [
     {
       "card_id": "zero_trust_001",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "zero_trust_002",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "zero_trust_003",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "zero_trust_004",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "zero_trust_005",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "zero_trust_006",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "symmetric_001",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "symmetric_crypto_001",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "symmetric_002",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "symmetric_crypto_002",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "symmetric_003",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "symmetric_crypto_003",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "symmetric_004",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "symmetric_crypto_004",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "symmetric_005",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "symmetric_crypto_005",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "asymmetric_001",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "asymmetric_crypto_001",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "asymmetric_002",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "asymmetric_crypto_002",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "asymmetric_003",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "asymmetric_crypto_003",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "asymmetric_004",
+      "next_due_at": "2026-08-01"
     },
     {
-      "card_id": "asymmetric_crypto_004",
-      "next_due_at": "2026-08-01T00:00:00Z"
-    },
-    {
-      "card_id": "asymmetric_crypto_005",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "card_id": "asymmetric_005",
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "pki_001",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "pki_002",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "pki_003",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
     },
     {
       "card_id": "pki_004",
-      "next_due_at": "2026-08-01T00:00:00Z"
+      "next_due_at": "2026-08-01"
+    },
+    {
+      "card_id": "pki_005",
+      "next_due_at": "2026-08-01"
     }
   ]
 }
