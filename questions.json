@@ -1,426 +1,406 @@
 {
   "cards": [
     {
-      "card_id": "sec_controls_020",
-      "topic": "Security Controls",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A company's security program includes the following controls: (1) A firewall ACL that blocks all inbound traffic except ports 80 and 443, (2) A written policy requiring employees to report suspicious emails within 1 hour, (3) Biometric fingerprint scanners on the data center entrance, (4) Automated patch deployment every Tuesday night. Classify each control by FUNCTION (Preventive/Detective/Corrective/Deterrent/Recovery/Compensating):",
+      "card_id": "zero_trust_001",
+      "topic": "Zero Trust",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the core principle of Zero Trust architecture?",
       "choices": [
-        "(1) Preventive (2) Directive (3) Preventive (4) Corrective",
-        "(1) Preventive (2) Detective (3) Deterrent (4) Preventive",
-        "(1) Detective (2) Directive (3) Preventive (4) Recovery",
-        "(1) Compensating (2) Detective (3) Preventive (4) Corrective"
+        "Never trust, always verify \u2014 every access request is authenticated and authorized regardless of location",
+        "Trust internal network traffic by default and only verify external traffic",
+        "Trust users once they log in at the start of the day and cache that trust for 24 hours",
+        "Trust all traffic that passes through the perimeter firewall without further inspection"
       ],
-      "answer": "(1) Preventive (2) Directive (3) Preventive (4) Corrective",
-      "explanation_correct": "The firewall ACL blocks unauthorized traffic (preventive). The policy directs employee behavior (directive). Biometric scanners prevent unauthorized physical access (preventive). Patching fixes known vulnerabilities after discovery (corrective — it remediates an identified gap).",
-      "explanation_wrong_common": "Option B misclassifies the reporting policy as detective — it directs behavior, it doesn't detect. Option C misclassifies the firewall as detective — it blocks, not monitors. Option D misclassifies the firewall as compensating — it's a primary preventive control, not a substitute for one."
+      "answer": "Never trust, always verify \u2014 every access request is authenticated and authorized regardless of location",
+      "explanation_correct": "Zero Trust eliminates implicit trust based on network location. Every request \u2014 whether from inside or outside the network \u2014 must be authenticated, authorized, and continuously validated before access is granted.",
+      "explanation_wrong_common": "Trusting internal traffic by default is the traditional castle-and-moat model that Zero Trust explicitly rejects. Caching trust for a session or trusting firewall-passed traffic both introduce implicit trust, which Zero Trust removes."
     },
     {
-      "card_id": "sec_controls_021",
-      "topic": "Security Controls",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A security team discovers that their primary SIEM solution has gone end-of-life and the vendor has stopped providing signature updates. While they wait for budget approval to purchase a replacement, they deploy an open-source IDS and increase the frequency of manual log reviews. What type of control is the open-source IDS, and what function does it serve?",
+      "card_id": "zero_trust_002",
+      "topic": "Zero Trust",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which two planes make up the Zero Trust architecture as defined by NIST SP 800-207?",
       "choices": [
-        "Compensating control — it substitutes for the unavailable primary SIEM, serving a detective function",
-        "Corrective control — it fixes the end-of-life SIEM problem",
-        "Preventive control — it prevents attacks that the SIEM would have caught",
-        "Recovery control — it restores the SIEM to operational status"
+        "The Control Plane and the Data Plane",
+        "The Management Plane and the User Plane",
+        "The Security Plane and the Network Plane",
+        "The Access Plane and the Authentication Plane"
       ],
-      "answer": "Compensating control — it substitutes for the unavailable primary SIEM, serving a detective function",
-      "explanation_correct": "A compensating control is an alternative measure put in place when a primary control is unavailable or impractical. The open-source IDS compensates for the loss of the SIEM and serves a detective function by monitoring for threats. It doesn't prevent or fix anything — it detects.",
-      "explanation_wrong_common": "Corrective fixes damage after an incident — this IDS doesn't fix the SIEM. Preventive blocks attacks — the IDS monitors and alerts, it doesn't block. Recovery restores operations after a failure — deploying a new IDS is not restoring the SIEM."
+      "answer": "The Control Plane and the Data Plane",
+      "explanation_correct": "NIST SP 800-207 defines Zero Trust architecture with two planes: the Control Plane (handles policy decisions, authentication, and authorization) and the Data Plane (handles the actual data traffic and enforces the decisions made by the Control Plane).",
+      "explanation_wrong_common": "The other options invent plane names that are not part of the NIST Zero Trust model. The key distinction is decision-making (Control) vs data forwarding (Data)."
     },
     {
-      "card_id": "sec_controls_022",
-      "topic": "Security Controls",
+      "card_id": "zero_trust_003",
+      "topic": "Zero Trust",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization requires all employees to complete a 30-minute cybersecurity awareness training module annually. The module covers phishing recognition, password hygiene, and reporting procedures. What category and function does this control BEST represent?",
+      "question_text": "A company implements a policy engine that evaluates user identity, device posture, time of day, and data sensitivity before granting access to each application. Access is granted for only 15 minutes before re-evaluation. Which Zero Trust concept does the 15-minute re-evaluation represent?",
       "choices": [
-        "Managerial / Directive — it governs behavior through policy-based education",
-        "Technical / Preventive — it uses technology to block phishing attempts",
-        "Physical / Deterrent — it discourages attackers from targeting employees",
-        "Operational / Corrective — it fixes security incidents after they occur"
+        "Continuous verification \u2014 trust is never static and is re-evaluated dynamically",
+        "Least privilege \u2014 users get only the minimum access needed",
+        "Microsegmentation \u2014 the network is divided into small zones",
+        "Implicit trust \u2014 users are trusted once initial authentication succeeds"
       ],
-      "answer": "Managerial / Directive — it governs behavior through policy-based education",
-      "explanation_correct": "Security awareness training is a managerial control (policy-driven, governing documentation) that serves a directive function — it guides employee behavior by instructing them on what to do and how to recognize threats. It doesn't use technology to block attacks, nor does it fix incidents after they occur.",
-      "explanation_wrong_common": "Technical/Preventive is wrong — training is not a technology-based blocking control. Physical/Deterrent is wrong — training is not a physical measure. Operational/Corrective is wrong — training doesn't fix incidents after the fact, it directs behavior proactively."
+      "answer": "Continuous verification \u2014 trust is never static and is re-evaluated dynamically",
+      "explanation_correct": "Zero Trust requires continuous verification \u2014 trust is not a one-time event. By re-evaluating every 15 minutes based on multiple signals (identity, device, context), the system ensures that any change in conditions can revoke access immediately.",
+      "explanation_wrong_common": "Least privilege limits what users can access but doesn't define the re-evaluation frequency. Microsegmentation divides the network but is about zoning, not time-based trust. Implicit trust is the opposite of Zero Trust."
     },
     {
-      "card_id": "sec_controls_023",
-      "topic": "Security Controls",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A data center experiences a ransomware attack that encrypts all file servers. The team activates their incident response plan, isolates the affected systems, restores from offline backups, and verifies the restored data integrity before bringing systems back online. Which control function does restoring from offline backups represent?",
-      "choices": [
-        "Recovery — it restores systems and data to a known-good state after an incident",
-        "Corrective — it fixes the ransomware vulnerability that allowed the attack",
-        "Preventive — it prevents the ransomware from spreading further",
-        "Detective — it identifies which files were encrypted"
-      ],
-      "answer": "Recovery — it restores systems and data to a known-good state after an incident",
-      "explanation_correct": "Recovery controls restore operations to a known-good state after an incident. Restoring from offline backups brings systems back to their pre-attack condition. Isolating systems would be corrective (stopping the ongoing attack), and the backups themselves are a recovery mechanism.",
-      "explanation_wrong_common": "Corrective addresses the root cause or stops the active threat — restoring backups doesn't fix the vulnerability. Preventive blocks attacks before they happen — this is after the fact. Detective identifies that an incident occurred — the backups don't detect anything."
-    },
-    {
-      "card_id": "sec_controls_024",
-      "topic": "Security Controls",
+      "card_id": "zero_trust_004",
+      "topic": "Zero Trust",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A retail store places visible security cameras at all entrances and exits, posts signs reading 'Smile, you're on camera,' and installs monitors showing the camera feeds near the entrance. The store has not yet experienced any theft. What is the PRIMARY control function of these measures?",
+      "question_text": "An organization divides its network into small, isolated zones, each protected by its own policy enforcement point. A compromised web server in one zone cannot directly access the database server in another zone without passing through a new authentication check. What is this Zero Trust concept called?",
       "choices": [
-        "Deterrent — the visible cameras and signs discourage potential attackers before they act",
-        "Detective — the cameras detect theft as it happens",
-        "Preventive — the cameras prevent theft from occurring",
-        "Compensating — the cameras compensate for the lack of security guards"
+        "Microsegmentation \u2014 the network is divided into granular security zones",
+        "Perimeter security \u2014 a single firewall protects the entire network boundary",
+        "VPN tunneling \u2014 encrypted tunnels connect zones securely",
+        "Deception technology \u2014 honeypots lure attackers into isolated zones"
       ],
-      "answer": "Deterrent — the visible cameras and signs discourage potential attackers before they act",
-      "explanation_correct": "Visible cameras, warning signs, and monitor displays are classic deterrent controls — they discourage potential attackers from attempting theft by making them aware they are being watched. While cameras can also serve a detective function (recording incidents), the PRIMARY intent of making them visible with signs is deterrence.",
-      "explanation_wrong_common": "Detective is a secondary function — the primary intent of the visibility and signs is to discourage attacks. Preventive is wrong — cameras don't physically block theft. Compensating is wrong — these cameras are a standalone deterrent measure, not a substitute for a missing primary control."
+      "answer": "Microsegmentation \u2014 the network is divided into granular security zones",
+      "explanation_correct": "Microsegmentation divides the network into small, isolated zones with individual security policies. Each zone has its own policy enforcement point, so lateral movement between zones requires new authentication \u2014 a core Zero Trust implementation strategy.",
+      "explanation_wrong_common": "Perimeter security is the traditional single-boundary model, the opposite of Zero Trust. VPN tunneling is about encrypted transport, not zone isolation. Deception technology uses honeypots, which is a different concept entirely."
     },
     {
-      "card_id": "sec_controls_025",
-      "topic": "Security Controls",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "An organization implements the following: (1) A security guard checks badges at the building entrance, (2) An IDS monitors network traffic for suspicious patterns, (3) The IT team applies security patches within 48 hours of release, (4) The company restores a compromised web server from a clean image after a breach. Match each control to its correct CATEGORY and FUNCTION pair:",
+      "card_id": "zero_trust_005",
+      "topic": "Zero Trust",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "In Zero Trust, what does the policy engine (PE) do?",
       "choices": [
-        "(1) Physical/Preventive (2) Technical/Detective (3) Technical/Corrective (4) Technical/Recovery",
-        "(1) Operational/Preventive (2) Technical/Preventive (3) Managerial/Corrective (4) Technical/Corrective",
-        "(1) Physical/Deterrent (2) Operational/Detective (3) Technical/Preventive (4) Managerial/Recovery",
-        "(1) Physical/Preventive (2) Technical/Detective (3) Technical/Preventive (4) Technical/Corrective"
+        "It makes the final authorization decision based on policies, identity, and context signals",
+        "It encrypts data traffic between the user and the application",
+        "It physically isolates network segments using hardware firewalls",
+        "It stores and manages user passwords and certificates"
       ],
-      "answer": "(1) Physical/Preventive (2) Technical/Detective (3) Technical/Corrective (4) Technical/Recovery",
-      "explanation_correct": "Badge checking by a guard is physical (tangible personnel) and preventive (blocks unauthorized access). IDS is technical (software) and detective (monitors for threats). Patching is technical (software updates) and corrective (remediates known vulnerabilities). Restoring from a clean image is technical and recovery (restores to a known-good state after an incident).",
-      "explanation_wrong_common": "Option B misclassifies the guard as operational — guards are physical. Option C misclassifies the guard as deterrent — badge checking actively blocks unauthorized entry (preventive). Option D misclassifies patching as preventive and restoration as corrective — patching fixes existing vulnerabilities (corrective), and restoring from an image is recovery, not corrective."
+      "answer": "It makes the final authorization decision based on policies, identity, and context signals",
+      "explanation_correct": "The Policy Engine (PE) in Zero Trust is the brain of the Control Plane. It evaluates policies, user identity, device posture, and contextual signals to make the authorization decision. The Policy Administrator then instructs the Policy Enforcement Point to allow or deny.",
+      "explanation_wrong_common": "Encryption is handled by the Data Plane, not the PE. Physical isolation is not the PE's role. Password/certificate management is handled by identity providers and PKI, not the policy engine."
     },
     {
-      "card_id": "cia_triad_018",
-      "topic": "CIA Triad",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "An e-commerce platform implements the following: (1) TLS 1.3 for all client-server communication, (2) SHA-256 hashing of all order records with digital signatures, (3) The platform runs on a load balancer with 5 web servers and auto-scaling, (4) All customer passwords stored using bcrypt with a per-user salt. Which CIA principle does control (4) PRIMARILY protect, and what additional security property does the salt provide?",
-      "choices": [
-        "Confidentiality — the salt prevents rainbow table attacks and ensures identical passwords produce different hashes",
-        "Integrity — the salt ensures password data hasn't been tampered with",
-        "Availability — the salt ensures users can always authenticate",
-        "Confidentiality — the salt encrypts the password so it cannot be reversed"
-      ],
-      "answer": "Confidentiality — the salt prevents rainbow table attacks and ensures identical passwords produce different hashes",
-      "explanation_correct": "bcrypt with a per-user salt protects confidentiality of stored credentials. The salt prevents rainbow table attacks (precomputed hash lookups fail because each password has a unique salt) and ensures that two users with the same password will have different hashes. The salt does not encrypt — bcrypt is a one-way hashing algorithm.",
-      "explanation_wrong_common": "Integrity is about preventing unauthorized modification — password hashing is about keeping passwords confidential. Availability is about uptime — salts don't ensure access. The salt does not encrypt — it modifies the hash input to prevent precomputed attacks; bcrypt is a one-way hash, not encryption."
-    },
-    {
-      "card_id": "cia_triad_019",
-      "topic": "CIA Triad",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A healthcare system stores patient medical records. An attacker breaches the system and modifies patient allergy information in multiple records, changing 'penicillin allergy' to 'no known allergies.' The attacker does not read or copy any other data. Which CIA Triad principle(s) are violated?",
-      "choices": [
-        "Integrity only — the data was modified without authorization, but no data was read or stolen",
-        "Confidentiality and Integrity — the attacker accessed the system and modified data",
-        "Integrity and Availability — the modified records are unavailable to doctors",
-        "Confidentiality only — the attacker gained unauthorized access to patient records"
-      ],
-      "answer": "Integrity only — the data was modified without authorization, but no data was read or stolen",
-      "explanation_correct": "The attacker modified the allergy records — this is an integrity violation (unauthorized data modification). Since the attacker did not read or copy any data, confidentiality was not violated (no unauthorized disclosure). The records are still accessible to doctors (availability intact), just with incorrect data. The core violation is integrity — the data's accuracy and trustworthiness were compromised.",
-      "explanation_wrong_common": "Confidentiality requires unauthorized reading/disclosure — the scenario states no data was read or copied. Availability is not affected — the records are still accessible, just wrong. Confidentiality only is wrong — the attack modified data, which is an integrity violation, not a confidentiality one."
-    },
-    {
-      "card_id": "cia_triad_020",
-      "topic": "CIA Triad",
+      "card_id": "zero_trust_006",
+      "topic": "Zero Trust",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company uses RAID 6 (double parity) across 12 disks for their primary database. When two disks fail simultaneously, the system continues operating without data loss. Which CIA Triad principle does RAID 6 PRIMARILY protect?",
+      "question_text": "A remote employee logs in from a corporate laptop to access a cloud CRM. The Zero Trust system checks: (1) the user's MFA token, (2) whether the laptop's OS is patched, (3) that the CRM is the only app requested. It grants read-only access for 30 minutes. Which Zero Trust principle is demonstrated by granting only read-only CRM access?",
       "choices": [
-        "Availability — the system remains operational and data remains accessible despite hardware failures",
-        "Integrity — the parity checks ensure data has not been corrupted",
-        "Confidentiality — the data is striped across multiple disks so no single disk contains readable data",
-        "Integrity and Availability — RAID provides both data accuracy and uptime"
+        "Least privilege \u2014 the user receives only the minimum access required for their task",
+        "Continuous verification \u2014 access is re-checked every 30 minutes",
+        "Microsegmentation \u2014 the CRM is isolated from other applications",
+        "Assume breach \u2014 the system assumes the laptop may be compromised"
       ],
-      "answer": "Availability — the system remains operational and data remains accessible despite hardware failures",
-      "explanation_correct": "RAID 6's primary purpose is availability — it ensures the system continues operating and data remains accessible even when up to two disks fail. While parity provides some integrity checking, RAID's core function is preventing downtime and data loss from hardware failure, which is an availability concern.",
-      "explanation_wrong_common": "Integrity is a secondary benefit — RAID's primary goal is keeping the system running. Confidentiality is wrong — striping data across disks does not protect confidentiality; the data is still readable. Integrity and Availability overstates the role — RAID is primarily an availability technology."
+      "answer": "Least privilege \u2014 the user receives only the minimum access required for their task",
+      "explanation_correct": "Least privilege grants users only the minimum access needed to perform their task. Read-only access to just the CRM \u2014 not write access, not access to other apps \u2014 is the principle of least privilege in action. The 30-minute window is continuous verification, a separate principle.",
+      "explanation_wrong_common": "The 30-minute re-check is continuous verification, not least privilege. Microsegmentation is about network zoning. Assume breach is a mindset, not the specific mechanism described here."
     },
     {
-      "card_id": "cia_triad_021",
-      "topic": "CIA Triad",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "An organization implements the following controls: (1) Full disk encryption on all laptops, (2) File integrity monitoring (FIM) on all critical servers, (3) Redundant power supplies and UPS for the data center, (4) Network access control (NAC) that checks device compliance before granting network access. Which pairing correctly maps each control to its PRIMARY CIA Triad principle?",
+      "card_id": "symmetric_crypto_001",
+      "topic": "Symmetric Cryptography",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the defining characteristic of symmetric encryption?",
       "choices": [
-        "(1) Confidentiality (2) Integrity (3) Availability (4) Confidentiality",
-        "(1) Confidentiality (2) Availability (3) Integrity (4) Availability",
-        "(1) Integrity (2) Confidentiality (3) Availability (4) Integrity",
-        "(1) Confidentiality (2) Integrity (3) Availability (4) Integrity"
+        "The same key is used for both encryption and decryption",
+        "One key encrypts and a different key decrypts",
+        "No key is used \u2014 encryption relies on a hashing algorithm",
+        "Two parties use a public key pair to derive a shared secret"
       ],
-      "answer": "(1) Confidentiality (2) Integrity (3) Availability (4) Confidentiality",
-      "explanation_correct": "Full disk encryption protects data at rest from unauthorized access (confidentiality). FIM detects unauthorized file modifications (integrity). Redundant power and UPS ensure systems stay running during power events (availability). NAC ensures only compliant, authorized devices can access the network (confidentiality — preventing unauthorized access to network resources).",
-      "explanation_wrong_common": "Option B misclassifies FIM as availability — it detects modifications, which is integrity. Option C misclassifies encryption as integrity — it protects against unauthorized reading (confidentiality). Option D misclassifies NAC as integrity — NAC controls access, which is confidentiality."
+      "answer": "The same key is used for both encryption and decryption",
+      "explanation_correct": "Symmetric encryption uses a single shared key for both encrypting and decrypting data. Both the sender and receiver must have the same key, which means secure key distribution is a primary challenge.",
+      "explanation_wrong_common": "Using different keys for encryption and decryption is asymmetric encryption. Hashing algorithms don't use keys for decryption (they're one-way). Public key pairs are asymmetric cryptography, not symmetric."
     },
     {
-      "card_id": "cia_triad_022",
-      "topic": "CIA Triad",
+      "card_id": "symmetric_crypto_002",
+      "topic": "Symmetric Cryptography",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which of the following is a symmetric encryption algorithm?",
+      "choices": [
+        "AES (Advanced Encryption Standard)",
+        "RSA (Rivest-Shamir-Adleman)",
+        "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+        "Diffie-Hellman"
+      ],
+      "answer": "AES (Advanced Encryption Standard)",
+      "explanation_correct": "AES is a symmetric block cipher that uses the same key for encryption and decryption. It is the most widely used symmetric encryption standard, approved by NIST and used globally.",
+      "explanation_wrong_common": "RSA is an asymmetric algorithm using public/private key pairs. ECDSA is an asymmetric digital signature algorithm. Diffie-Hellman is a key exchange protocol (asymmetric), not a symmetric cipher."
+    },
+    {
+      "card_id": "symmetric_crypto_003",
+      "topic": "Symmetric Cryptography",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A university's online exam platform experiences a DDoS attack during final exam week. Students cannot access the platform to submit their exams. The attack does not modify any data or access any student records. Which CIA Triad principle is violated?",
+      "question_text": "A company needs to encrypt a 500 GB database backup stored on an external hard drive. They want the encryption to be fast and efficient. Which type of encryption should they use, and why?",
       "choices": [
-        "Availability only — the platform is inaccessible to legitimate users, but no data was modified or exposed",
-        "Confidentiality and Availability — the attack exposed the system's vulnerability",
-        "Integrity and Availability — the exam submissions may be incomplete",
-        "All three CIA principles — a DDoS attack affects the entire system"
+        "Symmetric (AES) \u2014 it is much faster for large data volumes because it uses a single shared key",
+        "Asymmetric (RSA) \u2014 it provides better security for stored data",
+        "Hashing (SHA-256) \u2014 it is the fastest method for large files",
+        "Asymmetric (Diffie-Hellman) \u2014 it handles large data more efficiently"
       ],
-      "answer": "Availability only — the platform is inaccessible to legitimate users, but no data was modified or exposed",
-      "explanation_correct": "A DDoS attack overwhelms systems with traffic, making them unavailable to legitimate users. Since no data was modified (integrity intact) and no data was accessed or stolen (confidentiality intact), only availability is violated. The system and its data are fine — they're just not accessible.",
-      "explanation_wrong_common": "Confidentiality is not violated — no data was read or stolen. Integrity is not violated — no data was modified. 'All three' is wrong — DDoS is specifically an availability attack; it doesn't inherently compromise confidentiality or integrity."
+      "answer": "Symmetric (AES) \u2014 it is much faster for large data volumes because it uses a single shared key",
+      "explanation_correct": "Symmetric encryption like AES is significantly faster than asymmetric encryption for large data volumes. The math is simpler (shared key operations vs complex key-pair math), making it ideal for encrypting large files like database backups.",
+      "explanation_wrong_common": "RSA is far too slow for 500 GB of data \u2014 asymmetric encryption is used for small data or key exchange. Hashing is one-way and cannot decrypt. Diffie-Hellman is a key exchange protocol, not a bulk encryption method."
     },
     {
-      "card_id": "non_repudiation_014",
-      "topic": "Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "An online banking system implements the following for fund transfers: (1) The user enters their password and a one-time SMS code, (2) The system logs the transfer amount, timestamp, source account, destination account, and the IP address, (3) The transfer confirmation is digitally signed using the bank's private key and stored in an immutable audit log. A customer later disputes a transfer, claiming they didn't authorize it. Which component provides non-repudiation of the transaction?",
-      "choices": [
-        "The digital signature on the transfer confirmation stored in the immutable audit log — it proves the bank processed the transaction and the log cannot be altered",
-        "The password and SMS OTP — they prove the customer authorized the transfer",
-        "The IP address in the log — it proves which device initiated the transfer",
-        "The timestamp in the log — it proves when the transfer occurred"
-      ],
-      "answer": "The digital signature on the transfer confirmation stored in the immutable audit log — it proves the bank processed the transaction and the log cannot be altered",
-      "explanation_correct": "Non-repudiation requires cryptographic proof that cannot be denied. The digital signature (created with the bank's private key) proves the bank issued the confirmation, and the immutable audit log prevents tampering. The password/SMS provides authentication but not non-repudiation (the customer could claim their phone was stolen). The IP and timestamp provide evidence but are not cryptographically verifiable — they can be spoofed or disputed.",
-      "explanation_wrong_common": "Password/SMS provides authentication but not non-repudiation — the user can claim their credentials or phone were compromised. An IP address can be spoofed and doesn't cryptographically prove identity. A timestamp alone doesn't prove who initiated the transaction — it only shows when it happened."
-    },
-    {
-      "card_id": "non_repudiation_015",
-      "topic": "Non-repudiation",
+      "card_id": "symmetric_crypto_004",
+      "topic": "Symmetric Cryptography",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Two companies exchange purchase orders via email. Company A sends an order to Company B. Company B fulfills the order but Company A later denies sending it. They used plain email with no digital signatures. Company B shows the email as evidence. Why does this NOT provide non-repudiation?",
+      "question_text": "Two branch offices need to exchange encrypted files daily. They decide to use AES-256 with a shared key. What is the BIGGEST challenge with this approach?",
       "choices": [
-        "Plain email can be spoofed — there is no cryptographic proof tying the email to Company A's private key, so Company A can plausibly deny sending it",
-        "Email is not a legally binding communication method",
-        "Company B should have used registered mail instead",
-        "Non-repudiation only applies to financial transactions, not purchase orders"
+        "Securely distributing and managing the shared key between both offices",
+        "AES-256 is not strong enough for inter-office communication",
+        "AES cannot encrypt files larger than 1 GB",
+        "The key must be regenerated for every single file sent"
       ],
-      "answer": "Plain email can be spoofed — there is no cryptographic proof tying the email to Company A's private key, so Company A can plausibly deny sending it",
-      "explanation_correct": "Non-repudiation requires cryptographic proof (like a digital signature) that ties a message to a specific sender's private key. Plain email has no such proof — sender addresses can be spoofed, email can be forged, and there's no way to prove Company A's authorized representative actually sent it. Without cryptographic evidence, Company A can plausibly deny sending the email.",
-      "explanation_wrong_common": "Email can be legally binding in many jurisdictions, but that's a legal question, not a non-repudiation question. Registered mail is a physical alternative but irrelevant to digital non-repudiation. Non-repudiation applies to any communication, not just financial transactions."
+      "answer": "Securely distributing and managing the shared key between both offices",
+      "explanation_correct": "The biggest challenge with symmetric encryption is key distribution \u2014 how to securely share the key with the other party without it being intercepted. If an attacker gets the key, all encrypted data is compromised. This is called the key distribution problem.",
+      "explanation_wrong_common": "AES-256 is extremely strong and widely used. AES can encrypt files of any size. The same key can be reused for multiple files \u2014 it does not need to be regenerated each time."
     },
     {
-      "card_id": "non_repudiation_016",
-      "topic": "Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "An employee uses their company-issued smart card to digitally sign a sensitive document. The smart card requires a PIN and stores the employee's private key on the card itself (the key never leaves the card). The employee later claims they did not sign the document. Which factor makes the employee's denial MOST difficult to sustain?",
+      "card_id": "symmetric_crypto_005",
+      "topic": "Symmetric Cryptography",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What key length does AES-256 use, and how does it compare to AES-128 in terms of security?",
       "choices": [
-        "The private key never left the smart card and required a PIN — this proves only the employee (who knew the PIN and had the card) could have created the signature",
-        "The document was sensitive, so the employee must have signed it",
-        "The company issued the smart card, so the company is responsible",
-        "Digital signatures are always legally binding regardless of circumstances"
+        "256-bit key \u2014 stronger than AES-128 due to a longer key, making brute-force exponentially harder",
+        "256-bit key \u2014 weaker than AES-128 because longer keys are harder to manage",
+        "128-bit key \u2014 same as AES-128, the '256' refers to block size",
+        "256-character password \u2014 the key is a 256-character alphanumeric string"
       ],
-      "answer": "The private key never left the smart card and required a PIN — this proves only the employee (who knew the PIN and had the card) could have created the signature",
-      "explanation_correct": "Non-repudiation is strongest when the private key is protected by both possession (the smart card) and knowledge (the PIN). Since the key never left the card and required the employee's PIN to use, only someone with both the card and the PIN could have signed. The employee is responsible for safeguarding both, making their denial very difficult to sustain.",
-      "explanation_wrong_common": "The sensitivity of the document doesn't prove who signed it. The company issuing the card doesn't make the company responsible — the employee is accountable for their own credentials. Digital signatures are generally legally binding, but circumstances (like key compromise) can invalidate them — it's not absolute."
+      "answer": "256-bit key \u2014 stronger than AES-128 due to a longer key, making brute-force exponentially harder",
+      "explanation_correct": "AES-256 uses a 256-bit key, which is stronger than AES-128's 128-bit key. A longer key means exponentially more possible key combinations, making brute-force attacks much harder. The '256' refers to key length, not block size (AES always uses 128-bit blocks).",
+      "explanation_wrong_common": "Longer keys are not harder to manage in a meaningful way and are stronger, not weaker. AES always uses 128-bit blocks regardless of key size. The key is a 256-bit binary value, not a 256-character string."
     },
     {
-      "card_id": "non_repudiation_017",
-      "topic": "Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A software vendor digitally signs their application using a code signing certificate. A customer downloads the application and verifies the signature. Later, a security researcher discovers malware in the application. The vendor claims their signing key was compromised. Investigation reveals the key was stored on a network-accessible HSM that was breached. What is the impact on non-repudiation?",
+      "card_id": "asymmetric_crypto_001",
+      "topic": "Asymmetric Cryptography",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "How does asymmetric encryption differ from symmetric encryption?",
       "choices": [
-        "Non-repudiation is weakened — the compromised HSM means a third party could have signed the malware, so the vendor can plausibly deny responsibility",
-        "Non-repudiation is maintained — the vendor signed it, so they are responsible regardless of key storage",
-        "Non-repudiation is strengthened — the HSM breach proves the vendor was negligent",
-        "Non-repudiation is irrelevant — malware in signed software is a quality issue, not a non-repudiation issue"
+        "It uses a pair of keys \u2014 a public key for encryption and a private key for decryption",
+        "It uses the same key for both encryption and decryption",
+        "It uses no keys and relies on a one-way hash function",
+        "It uses a key that changes automatically every 60 seconds"
       ],
-      "answer": "Non-repudiation is weakened — the compromised HSM means a third party could have signed the malware, so the vendor can plausibly deny responsibility",
-      "explanation_correct": "Non-repudiation depends on the signer's exclusive control of their private key. If the HSM was breached, a third party could have used the vendor's key to sign the malware. The vendor can plausibly deny signing it because the key was no longer under their sole control. This is why key protection is critical to non-repudiation — compromised keys destroy the exclusivity that makes denial impossible.",
-      "explanation_wrong_common": "Non-repudiation is not maintained — the breach means the key was not exclusively controlled. The HSM breach may prove negligence, but that's a liability question, not non-repudiation. Non-repudiation is directly relevant — the question is whether the vendor can deny signing the malware."
+      "answer": "It uses a pair of keys \u2014 a public key for encryption and a private key for decryption",
+      "explanation_correct": "Asymmetric encryption (public-key cryptography) uses a key pair: a public key that can be freely shared for encrypting data, and a private key that is kept secret for decrypting data. This solves the key distribution problem of symmetric encryption.",
+      "explanation_wrong_common": "Using the same key for both is symmetric encryption, not asymmetric. Hashing is not encryption. Auto-rotating keys is not a defining feature of asymmetric cryptography."
     },
     {
-      "card_id": "non_repudiation_018",
-      "topic": "Non-repudiation",
+      "card_id": "asymmetric_crypto_002",
+      "topic": "Asymmetric Cryptography",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which of the following is an asymmetric encryption algorithm?",
+      "choices": [
+        "RSA (Rivest-Shamir-Adleman)",
+        "AES (Advanced Encryption Standard)",
+        "3DES (Triple Data Encryption Standard)",
+        "Blowfish"
+      ],
+      "answer": "RSA (Rivest-Shamir-Adleman)",
+      "explanation_correct": "RSA is an asymmetric algorithm that uses a public/private key pair. It is widely used for secure data transmission, digital signatures, and key exchange. AES, 3DES, and Blowfish are all symmetric algorithms.",
+      "explanation_wrong_common": "AES, 3DES, and Blowfish are all symmetric encryption algorithms that use a single shared key. They do not use public/private key pairs."
+    },
+    {
+      "card_id": "asymmetric_crypto_003",
+      "topic": "Asymmetric Cryptography",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company uses a PKI system where each employee has a key pair for digital signatures. The private key is generated on the employee's workstation and stored in the operating system's certificate store. The CA does not escrow signing keys. An employee signs a document and later denies it, claiming their workstation was infected with malware that stole their private key. What impact does the non-escrow policy have?",
+      "question_text": "Alice wants to send a confidential message to Bob. Bob has a public/private key pair. Alice uses Bob's public key to encrypt the message. What happens next?",
       "choices": [
-        "It strengthens non-repudiation — since only the employee had access to their private key (no escrow), the denial is harder to sustain unless they can prove the malware actually stole the key",
-        "It weakens non-repudiation — without escrow, there is no backup to verify the signature",
-        "It has no impact — non-repudiation depends only on the signature algorithm, not key storage",
-        "It eliminates non-repudiation — workstation-stored keys are always considered compromised"
+        "Bob decrypts the message using his private key \u2014 only he can read it",
+        "Bob decrypts the message using his public key \u2014 anyone can read it",
+        "Bob decrypts the message using Alice's private key",
+        "Bob cannot decrypt the message \u2014 he needs Alice's public key"
       ],
-      "answer": "It strengthens non-repudiation — since only the employee had access to their private key (no escrow), the denial is harder to sustain unless they can prove the malware actually stole the key",
-      "explanation_correct": "Non-escrow means only the employee had access to their private key — no third party could have used it. This strengthens non-repudiation because the employee must prove their key was actually stolen (not just claim it). The burden of proof shifts to the employee to demonstrate the malware compromised their key. Without escrow, there's no alternative explanation for who signed.",
-      "explanation_wrong_common": "Escrow is for key recovery, not signature verification — the signature is already verifiable with the public key. Key storage does impact non-repudiation — exclusivity of key access is a core requirement. Workstation-stored keys are not 'always compromised' — they're less secure than HSM keys, but non-repudiation still applies unless proven otherwise."
+      "answer": "Bob decrypts the message using his private key \u2014 only he can read it",
+      "explanation_correct": "In asymmetric encryption, data encrypted with a public key can only be decrypted with the corresponding private key. Since Bob's public key was used to encrypt, only Bob's private key can decrypt it. This ensures confidentiality \u2014 only Bob can read the message.",
+      "explanation_wrong_common": "The public key cannot decrypt what it encrypted \u2014 that would defeat the purpose. Alice's private key is irrelevant here. Bob doesn't need Alice's public key to decrypt his own messages."
     },
     {
-      "card_id": "aaa_012",
-      "topic": "AAA",
+      "card_id": "asymmetric_crypto_004",
+      "topic": "Asymmetric Cryptography",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A cloud service uses OAuth 2.0 for API access. A mobile app wants to access a user's cloud storage on their behalf. The user authenticates with the cloud provider, which issues an access token with a 'read-only' scope. The app presents this token to the storage API and can only read files — it cannot delete or modify them. Which AAA component does the 'read-only' scope represent?",
+      "question_text": "Alice wants to digitally sign a document to prove she authored it. Which key does she use to create the signature, and which key does a verifier use to check it?",
       "choices": [
-        "Authorization — the scope defines what actions the app is permitted to perform on the user's behalf",
-        "Authentication — the scope proves the user's identity to the storage API",
-        "Accounting — the scope tracks which files the app reads",
-        "Identification — the scope identifies which app is making the request"
+        "Alice signs with her private key; the verifier checks with Alice's public key",
+        "Alice signs with her public key; the verifier checks with Alice's private key",
+        "Alice signs with Bob's public key; the verifier checks with Bob's private key",
+        "Alice signs with a shared symmetric key; the verifier checks with the same key"
       ],
-      "answer": "Authorization — the scope defines what actions the app is permitted to perform on the user's behalf",
-      "explanation_correct": "The 'read-only' scope is an authorization mechanism — it defines what the app is allowed to do (read only, not delete or modify). The user authenticated with the provider (authentication), and the token carries the authorization decision. The storage API enforces the scope by allowing only read operations.",
-      "explanation_wrong_common": "Authentication verifies identity — the scope doesn't prove who the user is, it defines what can be done. Accounting logs activity — the scope doesn't track file access. Identification claims an identity — the scope defines permissions, not identity."
+      "answer": "Alice signs with her private key; the verifier checks with Alice's public key",
+      "explanation_correct": "Digital signatures work in reverse of encryption for confidentiality. Alice signs with her private key (proving only she could have created it), and anyone can verify the signature using Alice's public key. This provides authentication, integrity, and non-repudiation.",
+      "explanation_wrong_common": "Signing with the public key would mean anyone could forge the signature. Using Bob's keys makes no sense for proving Alice's authorship. Symmetric keys don't provide non-repudiation since both parties share the key."
     },
     {
-      "card_id": "aaa_013",
-      "topic": "AAA",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A company implements the following access system: (1) Users enter a username and password, (2) The system checks the password against a hash stored in LDAP, (3) The system queries a database to determine the user's department and role, (4) Based on the role, the system grants access to specific file shares, (5) The system logs the login time, files accessed, and session duration to a SIEM. Match each step to the correct AAA component:",
+      "card_id": "asymmetric_crypto_005",
+      "topic": "Asymmetric Cryptography",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the primary disadvantage of asymmetric encryption compared to symmetric encryption?",
       "choices": [
-        "(1) Identification (2) Authentication (3) Authorization (input) (4) Authorization (decision) (5) Accounting",
-        "(1) Authentication (2) Authentication (3) Authorization (4) Accounting (5) Accounting",
-        "(1) Identification (2) Authorization (3) Authentication (4) Authorization (5) Identification",
-        "(1) Authentication (2) Identification (3) Accounting (4) Authorization (5) Authentication"
+        "It is significantly slower and computationally more expensive",
+        "It is less secure than symmetric encryption",
+        "It cannot be used for any real-world applications",
+        "It requires a dedicated hardware security module to function"
       ],
-      "answer": "(1) Identification (2) Authentication (3) Authorization (input) (4) Authorization (decision) (5) Accounting",
-      "explanation_correct": "Entering a username is identification (claiming an identity). Checking the password hash is authentication (verifying the claimed identity). Querying the department/role gathers authorization inputs. Granting access based on role is the authorization decision. Logging session details to SIEM is accounting (recording what happened).",
-      "explanation_wrong_common": "Option B conflates identification with authentication — entering a username is identification, not authentication. Option C scrambles the components — checking the password is authentication, not authorization. Option D mislabels nearly every step — logging is accounting, not authentication."
+      "answer": "It is significantly slower and computationally more expensive",
+      "explanation_correct": "Asymmetric encryption uses complex mathematical operations (large prime factorization, elliptic curve math), making it much slower than symmetric encryption. In practice, asymmetric encryption is used for key exchange and small data, while symmetric encryption handles bulk data.",
+      "explanation_wrong_common": "Asymmetric encryption is not less secure \u2014 both can be highly secure. It is widely used in TLS, SSH, PGP, and more. No dedicated HSM is required, though they can enhance security."
     },
     {
-      "card_id": "aaa_014",
-      "topic": "AAA",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A network engineer configures RADIUS for VPN access. When a user connects, the VPN concentrator sends the user's credentials to the RADIUS server. The RADIUS server verifies the credentials and returns an Access-Accept message that includes a set of filter rules (ACLs) the VPN concentrator applies to the user's session. The concentrator also sends accounting start and stop messages to the RADIUS server. What does this scenario reveal about RADIUS's approach to AAA?",
+      "card_id": "pki_001",
+      "topic": "Public Key Infrastructure",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is a Certificate Authority (CA) in a Public Key Infrastructure?",
       "choices": [
-        "RADIUS combines authentication and authorization in the same exchange — the Access-Accept carries both the auth result and authorization attributes (ACLs), while accounting is handled separately",
-        "RADIUS separates authentication, authorization, and accounting into completely independent services",
-        "RADIUS only provides authentication — the ACLs are configured locally on the VPN concentrator",
-        "RADIUS handles authentication and accounting but not authorization"
+        "A trusted entity that issues and manages digital certificates to verify identity",
+        "A hardware device that stores private keys securely",
+        "A protocol for encrypting web traffic between client and server",
+        "A database that stores all public keys in a network"
       ],
-      "answer": "RADIUS combines authentication and authorization in the same exchange — the Access-Accept carries both the auth result and authorization attributes (ACLs), while accounting is handled separately",
-      "explanation_correct": "RADIUS combines authentication and authorization in a single exchange — the Access-Accept message contains both the authentication result and authorization attributes (like filter rules/ACLs). This contrasts with TACACS+, which separates AAA into distinct services. RADIUS accounting (start/stop messages) is handled as a separate process.",
-      "explanation_wrong_common": "RADIUS does NOT separate AAA into independent services — that's TACACS+. RADIUS does provide authorization via attributes in the Access-Accept, not just locally. RADIUS does handle all three AAA components, but auth and authz are combined."
+      "answer": "A trusted entity that issues and manages digital certificates to verify identity",
+      "explanation_correct": "A Certificate Authority (CA) is a trusted third-party organization that verifies the identity of entities and issues digital certificates binding their identity to their public key. Examples include DigiCert, Let's Encrypt, and GlobalSign.",
+      "explanation_wrong_common": "A hardware key storage device is an HSM, not a CA. TLS/SSL is the protocol, not the CA. A key database is a key store, not a CA \u2014 the CA's role is identity verification and certificate issuance."
     },
     {
-      "card_id": "aaa_015",
-      "topic": "AAA",
+      "card_id": "pki_002",
+      "topic": "Public Key Infrastructure",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What does a digital certificate contain?",
+      "choices": [
+        "The certificate holder's identity and their public key, signed by a CA",
+        "The certificate holder's private key and password",
+        "The CA's private key for decrypting messages",
+        "A list of all revoked certificates in the network"
+      ],
+      "answer": "The certificate holder's identity and their public key, signed by a CA",
+      "explanation_correct": "A digital certificate binds an entity's identity to their public key. It contains the holder's identity information, their public key, the CA's digital signature, validity dates, and the serial number. It never contains private keys.",
+      "explanation_wrong_common": "A certificate must never contain a private key \u2014 that would compromise security. The CA's private key is never shared. A list of revoked certificates is a CRL (Certificate Revocation List), a separate component."
+    },
+    {
+      "card_id": "pki_003",
+      "topic": "Public Key Infrastructure",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company implements Role-Based Access Control (RBAC). Employee Alice is in the 'Finance' role, which grants read access to the accounting database. She is temporarily assigned to a project requiring write access to a specific table. The admin adds her to a 'Project-Accounting' role that grants write access to that table. What AAA principle does this role assignment demonstrate, and what is an advantage of this approach?",
+      "question_text": "A user visits a banking website. Their browser receives the site's digital certificate and checks it against a list of trusted CAs built into the operating system. The browser then uses the site's public key to establish an encrypted TLS session. What is the role of the CA's signature on the certificate?",
       "choices": [
-        "Authorization — RBAC simplifies management because permissions are assigned to roles, not individuals, making it easy to grant/revoke access by changing role membership",
-        "Authentication — adding Alice to a role proves her identity for the project",
-        "Accounting — the role tracks Alice's access to the accounting table",
-        "Identification — the role identifies Alice as a finance employee"
+        "It proves the certificate is authentic and the site's identity was verified by a trusted third party",
+        "It encrypts the user's banking credentials during transmission",
+        "It decrypts the bank's private key so the browser can use it",
+        "It acts as a firewall rule to block unauthorized traffic to the bank"
       ],
-      "answer": "Authorization — RBAC simplifies management because permissions are assigned to roles, not individuals, making it easy to grant/revoke access by changing role membership",
-      "explanation_correct": "Role assignment is an authorization decision — it determines what Alice can access. RBAC's advantage is manageability: permissions are tied to roles, not individuals. To grant access, you add the user to a role; to revoke, you remove them. This scales better than assigning permissions per-user.",
-      "explanation_wrong_common": "Authentication verifies identity — adding someone to a role doesn't verify who they are. Accounting logs activity — the role doesn't track what Alice does. Identification claims an identity — the role defines permissions, not identity."
+      "answer": "It proves the certificate is authentic and the site's identity was verified by a trusted third party",
+      "explanation_correct": "The CA's digital signature on the certificate allows the browser to verify that a trusted CA vouches for the site's identity. The browser checks the signature using the CA's public key (from its trusted root store). If valid, it trusts the site's public key is genuine, enabling secure TLS.",
+      "explanation_wrong_common": "The CA signature doesn't encrypt credentials \u2014 that's done by the TLS session keys. It doesn't decrypt the private key. It has nothing to do with firewall rules."
+    },
+    {
+      "card_id": "pki_004",
+      "topic": "Public Key Infrastructure",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "An organization discovers that one of its server certificates has been compromised. They need to invalidate the certificate before its natural expiration date. Which PKI mechanism should they use?",
+      "choices": [
+        "Certificate Revocation List (CRL) or OCSP \u2014 to publish that the certificate is revoked before its expiry",
+        "Delete the certificate from the server and generate a new key pair on the spot",
+        "Change the certificate's expiration date to today using the server's private key",
+        "Contact every user individually and tell them not to trust the certificate"
+      ],
+      "answer": "Certificate Revocation List (CRL) or OCSP \u2014 to publish that the certificate is revoked before its expiry",
+      "explanation_correct": "When a certificate needs to be invalidated before its expiration date, the CA adds it to a Certificate Revocation List (CRL) or makes it available via OCSP (Online Certificate Status Protocol). Browsers check these to determine if a certificate has been revoked.",
+      "explanation_wrong_common": "Simply deleting the certificate doesn't inform relying parties \u2014 the old certificate could still be presented. The expiration date is signed by the CA and cannot be changed locally. Contacting users individually is impractical and not how PKI works."
     }
   ],
   "scheduling_updates": [
     {
-      "card_id": "sec_controls_020",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "zero_trust_001",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "sec_controls_021",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "zero_trust_002",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "sec_controls_022",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "zero_trust_003",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "sec_controls_023",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "zero_trust_004",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "sec_controls_024",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "zero_trust_005",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "sec_controls_025",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "zero_trust_006",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "cia_triad_018",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "symmetric_crypto_001",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "cia_triad_019",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "symmetric_crypto_002",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "cia_triad_020",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "symmetric_crypto_003",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "cia_triad_021",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "symmetric_crypto_004",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "cia_triad_022",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "symmetric_crypto_005",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "non_repudiation_014",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "asymmetric_crypto_001",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "non_repudiation_015",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "asymmetric_crypto_002",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "non_repudiation_016",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "asymmetric_crypto_003",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "non_repudiation_017",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "asymmetric_crypto_004",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "non_repudiation_018",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "asymmetric_crypto_005",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "aaa_012",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "pki_001",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "aaa_013",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "pki_002",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "aaa_014",
-      "next_due_at": "2026-08-02T09:00:00Z",
-      "reason": "hard card, 3-day interval (strong performer)"
+      "card_id": "pki_003",
+      "next_due_at": "2026-08-01T00:00:00Z"
     },
     {
-      "card_id": "aaa_015",
-      "next_due_at": "2026-08-01T09:00:00Z",
-      "reason": "medium card, 2-day interval (medium spacing)"
+      "card_id": "pki_004",
+      "next_due_at": "2026-08-01T00:00:00Z"
     }
   ]
 }
