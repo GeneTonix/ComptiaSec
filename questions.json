@@ -1,346 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "firewall_001",
-      "topic": "Firewalls",
+      "card_id": "cloud_001",
+      "topic": "Cloud Shared Responsibility",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the key difference between a stateless (packet-filtering) firewall and a stateful firewall?",
+      "question_text": "What is the cloud shared responsibility model, and why does it matter for security?",
       "choices": [
-        "A stateless firewall filters each packet in isolation using only ACL rules (IP, port, protocol), while a stateful firewall tracks the state of connections (SYN, ESTABLISHED, FIN) and can allow return traffic for an established session",
-        "A stateless firewall is faster because it inspects the full packet payload, while a stateful firewall only looks at headers",
-        "A stateful firewall can only block traffic but never allow it, while a stateless firewall can do both",
-        "A stateless firewall operates at Layer 7 only, while a stateful firewall operates at Layer 3 only"
+        "A framework that defines which security responsibilities belong to the cloud provider and which belong to the customer, varying by service model (IaaS, PaaS, SaaS)",
+        "A legal contract where the cloud provider takes full responsibility for all security, absolving the customer of any liability",
+        "A model where the customer is responsible for physical data center security and the provider handles everything else",
+        "An agreement that security responsibilities are shared equally 50/50 regardless of the cloud service model used"
       ],
-      "answer": "A stateless firewall filters each packet in isolation using only ACL rules (IP, port, protocol), while a stateful firewall tracks the state of connections (SYN, ESTABLISHED, FIN) and can allow return traffic for an established session",
-      "explanation_correct": "Stateless firewalls evaluate each packet independently against static rules — they don't know if a packet is part of an existing connection. Stateful firewalls maintain a state table that tracks active connections, so when an internal host initiates a connection, the firewall automatically allows the return traffic. This makes stateful firewalls more secure and easier to configure, since you don't need explicit rules for return traffic.",
-      "explanation_wrong_common": "Option B reverses the inspection depth — stateless is simpler, not deeper. Option C is nonsensical — both can allow and block. Option D is backwards — stateless typically operates at Layers 3-4, stateful can also operate at those layers plus track session state."
+      "answer": "A framework that defines which security responsibilities belong to the cloud provider and which belong to the customer, varying by service model (IaaS, PaaS, SaaS)",
+      "explanation_correct": "The shared responsibility model divides security duties based on the level of control each party has. In IaaS, the provider secures the physical infrastructure (facilities, hardware, hypervisor) while the customer secures everything above — OS, apps, data, identity. In PaaS, the provider also manages the OS and runtime, so the customer focuses on application code and data. In SaaS, the provider manages almost everything and the customer is mainly responsible for data access, identity, and configuration. Understanding this split is critical — assuming the provider handles something they don't is a common cause of cloud security breaches.",
+      "explanation_wrong_common": "Option B is wrong — the customer always retains some responsibilities, especially data-level security. Option C is wrong — physical security is always the provider's responsibility, not the customer's. Option D is wrong — the split is NOT equal; it shifts dramatically depending on whether you use IaaS, PaaS, or SaaS."
     },
     {
-      "card_id": "firewall_002",
-      "topic": "Firewalls",
+      "card_id": "cloud_002",
+      "topic": "Cloud Shared Responsibility",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a Next-Generation Firewall (NGFW), and what capability distinguishes it from a traditional stateful firewall?",
+      "question_text": "In a SaaS model like Microsoft 365 or Google Workspace, which security responsibilities does the customer retain?",
       "choices": [
-        "An NGFW combines traditional stateful filtering with deep packet inspection, application awareness (identifying specific apps like Facebook or BitTorrent regardless of port), integrated IPS/IDS, and threat intelligence feeds",
-        "An NGFW is a firewall that uses AI to automatically block all unknown traffic without any administrator configuration",
-        "An NGFW is a cloud-only firewall that cannot be deployed on-premises",
-        "An NGFW is identical to a stateful firewall but runs on faster hardware"
+        "Data access controls, user identity and authentication (MFA), data classification, configuration of security settings within the app, and compliance obligations for the data stored",
+        "Patching the underlying operating system and runtime, securing the hypervisor, and managing network infrastructure",
+        "Physical data center security, HVAC, power redundancy, and hardware maintenance of the servers hosting the SaaS",
+        "All responsibilities — in SaaS the customer manages everything including the application code and database engine"
       ],
-      "answer": "An NGFW combines traditional stateful filtering with deep packet inspection, application awareness (identifying specific apps like Facebook or BitTorrent regardless of port), integrated IPS/IDS, and threat intelligence feeds",
-      "explanation_correct": "NGFWs go beyond port/protocol filtering. They inspect packet payloads to identify the actual application (e.g., detecting SSH traffic on port 443), integrate intrusion prevention, and can use real-time threat intelligence to block known-malicious IPs/domains. This application-layer awareness is the key differentiator — a traditional firewall sees 'TCP port 443' while an NGFW sees 'WhatsApp over TCP 443' and can apply app-specific policies.",
-      "explanation_wrong_common": "Option B is wrong — NGFWs still require configuration and policy rules. Option C is wrong — NGFWs are deployed both on-premises and in the cloud. Option D misses the point — the difference is capability, not hardware speed."
+      "answer": "Data access controls, user identity and authentication (MFA), data classification, configuration of security settings within the app, and compliance obligations for the data stored",
+      "explanation_correct": "In SaaS, the provider handles the infrastructure, OS, middleware, and application itself. The customer's responsibilities are focused on the data layer and identity: deciding who can access what (RBAC), enforcing MFA, configuring data loss prevention policies, ensuring sensitive data isn't stored inappropriately, and meeting regulatory compliance (GDPR, HIPAA) for the data they put into the service. A common mistake is assuming the SaaS provider handles identity security — the customer must configure MFA, conditional access, and proper permission models themselves.",
+      "explanation_wrong_common": "Option B describes IaaS customer responsibilities (OS patching) — in SaaS the provider patches the OS. Option C is always the provider's job. Option D is the opposite of SaaS — the provider manages the application and database engine, not the customer."
     },
     {
-      "card_id": "firewall_003",
-      "topic": "Firewalls",
+      "card_id": "cloud_003",
+      "topic": "Cloud Shared Responsibility",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company discovers that employees are using personal cloud storage services (like Dropbox) over HTTPS to exfiltrate sensitive data. Their current stateful firewall allows outbound TCP 443. What is the most effective firewall upgrade to address this?",
+      "question_text": "A company deploys virtual machines on AWS EC2 (IaaS). After a security audit, they realize their VMs are running unpatched operating systems with default credentials. Who is responsible for this security gap?",
       "choices": [
-        "Deploy an NGFW with application awareness to identify and block specific cloud storage applications (Dropbox, Google Drive) even though they use port 443, while still allowing legitimate HTTPS web traffic",
-        "Block all outbound TCP 443 traffic entirely — this stops all encrypted exfiltration",
-        "Replace the stateful firewall with a stateless packet filter and block Dropbox's known IP addresses",
-        "Add a rule to block all traffic to any IP address outside Singapore"
+        "The customer — in IaaS, the customer is responsible for OS patching, hardening, credential management, and all security above the hypervisor layer",
+        "AWS — the cloud provider is responsible for patching all customer VM operating systems automatically",
+        "Shared equally — both AWS and the customer should patch the OS, so it's a joint failure",
+        "Neither — IaaS VMs are automatically hardened by the hypervisor and do not require OS-level patching"
       ],
-      "answer": "Deploy an NGFW with application awareness to identify and block specific cloud storage applications (Dropbox, Google Drive) even though they use port 443, while still allowing legitimate HTTPS web traffic",
-      "explanation_correct": "The problem is that Dropbox and similar services use standard HTTPS (port 443), so port-based filtering can't distinguish them from legitimate web traffic. An NGFW with application awareness performs deep packet inspection to identify the specific application protocol within the TLS session (via SNI, certificate analysis, or TLS fingerprinting), allowing granular policies: block Dropbox but allow access to legitimate HTTPS sites. Blocking all 443 would break most web browsing.",
-      "explanation_wrong_common": "Option B breaks nearly all web browsing — most sites use HTTPS. Option C is ineffective — cloud services use many dynamic IPs and CDNs, and stateless filtering is a downgrade. Option D is overly broad and would block legitimate international business sites."
+      "answer": "The customer — in IaaS, the customer is responsible for OS patching, hardening, credential management, and all security above the hypervisor layer",
+      "explanation_correct": "In IaaS (like AWS EC2, Azure VMs), the provider secures the physical data center, network hardware, and hypervisor. Everything above that — the guest OS, applications, data, identity, and access management — is the customer's responsibility. Running unpatched VMs with default credentials is a customer-side failure. AWS provides tools (Inspector, Systems Manager Patch Manager) but the customer must configure and use them. This is one of the most common cloud security mistakes: customers assume the provider patches their VMs, but in IaaS that is explicitly the customer's job.",
+      "explanation_wrong_common": "Option B is wrong — AWS does not patch customer VMs; that's the customer's responsibility in IaaS. Option C is wrong — it's not shared; the responsibility boundary is clear. Option D is dangerously wrong — the hypervisor doesn't harden guest OSs, and OS patching is always required."
     },
     {
-      "card_id": "firewall_004",
-      "topic": "Firewalls",
+      "card_id": "cloud_004",
+      "topic": "Cloud Shared Responsibility",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A web application is receiving SQL injection and cross-site scripting (XSS) attacks from the internet. The company already has a stateful firewall at the network perimeter. What additional security control should they deploy specifically to protect the web application layer?",
+      "question_text": "A startup uses a PaaS platform (Heroku/AWS Elastic Beanstalk) to host their web application. The platform automatically manages the OS and runtime. During a breach investigation, they discover attackers exploited a vulnerability in their custom application code. Who is responsible for securing the application code?",
       "choices": [
-        "A Web Application Firewall (WAF) that inspects HTTP/HTTPS traffic at Layer 7, filtering malicious requests based on OWASP rulesets (SQLi, XSS, CSRF patterns) before they reach the web server",
-        "A second stateful firewall placed behind the web server for defense in depth",
-        "An IDS configured in passive mode that logs SQL injection attempts for later review",
-        "A VPN concentrator that requires all web visitors to authenticate before accessing the site"
+        "The customer — even in PaaS, the customer is responsible for the security of their own application code, data, and access configuration",
+        "The PaaS provider — since they manage the platform, they are responsible for all code running on it",
+        "Shared responsibility — the provider must audit all customer code for vulnerabilities before deployment",
+        "A third-party security vendor — PaaS requires outsourced application security review by law"
       ],
-      "answer": "A Web Application Firewall (WAF) that inspects HTTP/HTTPS traffic at Layer 7, filtering malicious requests based on OWASP rulesets (SQLi, XSS, CSRF patterns) before they reach the web server",
-      "explanation_correct": "A WAF operates at Layer 7 (application layer), inspecting the actual HTTP request content — query strings, headers, body payloads — to detect and block SQL injection, XSS, CSRF, and other web-specific attacks. A stateful firewall operates at Layers 3-4 and cannot inspect HTTP payloads. The WAF sits in front of the web server (reverse proxy mode) and blocks malicious requests before they reach the application. WAFs use signature-based, behavioral, and heuristic detection against OWASP Top 10 threats.",
-      "explanation_wrong_common": "Option B adds another Layer 3-4 firewall — it still can't inspect HTTP payloads. Option C (IDS in passive mode) only logs, doesn't block — an IPS would block, but a WAF is purpose-built for web attacks. Option D would break public access to the website."
+      "answer": "The customer — even in PaaS, the customer is responsible for the security of their own application code, data, and access configuration",
+      "explanation_correct": "In PaaS, the provider manages the OS, runtime (Java, Python, Node.js), middleware, and infrastructure. But the application code the customer writes and deploys is entirely their responsibility. This includes secure coding practices (input validation, parameterized queries, proper authentication), dependency management (patching vulnerable libraries), and data access controls. The PaaS provider secures the platform, not what you build on top of it. A vulnerability in custom code (like SQL injection or XSS) is the customer's fault, not the provider's.",
+      "explanation_wrong_common": "Option B is wrong — the provider manages the platform layer, not customer code. Option C is wrong — providers don't audit customer code; that's the customer's DevSecOps responsibility. Option D is fabricated — there is no legal requirement for third-party code review in PaaS."
     },
     {
-      "card_id": "firewall_005",
-      "topic": "Firewalls",
+      "card_id": "cloud_005",
+      "topic": "Cloud Shared Responsibility",
       "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A network engineer is configuring firewall rules and needs to follow the principle of 'default deny.' What does this mean, and how should the final rule be configured?",
+      "question_type": "definition",
+      "question_text": "Which statement correctly describes the security responsibility shift as you move from IaaS to PaaS to SaaS?",
       "choices": [
-        "Default deny means the last rule in the ACL blocks all traffic that hasn't been explicitly allowed by earlier rules — every permitted connection must have an explicit allow rule, and anything unmatched is dropped",
-        "Default deny means the firewall denies traffic by default but allows all traffic if no rules are configured",
-        "Default deny means only deny rules are used, and no allow rules are ever needed",
-        "Default deny means the firewall blocks traffic from denylisted IPs but allows everything else by default"
+        "The cloud provider takes on more security responsibility as you move from IaaS → PaaS → SaaS, while the customer's responsibility shifts toward data, identity, and configuration",
+        "The customer takes on more security responsibility as you move from IaaS → PaaS → SaaS, because the provider does less",
+        "Security responsibilities remain identical across IaaS, PaaS, and SaaS — only the pricing model changes",
+        "In SaaS the customer has the most security responsibilities because they must secure the application layer themselves"
       ],
-      "answer": "Default deny means the last rule in the ACL blocks all traffic that hasn't been explicitly allowed by earlier rules — every permitted connection must have an explicit allow rule, and anything unmatched is dropped",
-      "explanation_correct": "Default deny (also called 'deny all, allow by exception') is the most secure firewall posture. The ACL contains explicit allow rules for each permitted service/flow, and the final catch-all rule denies everything else. This means any new service or protocol automatically gets blocked unless an administrator deliberately adds a rule for it. The opposite — default allow — is dangerous because new services are automatically permitted.",
-      "explanation_wrong_common": "Option B is the opposite of default deny. Option C is wrong — allow rules are absolutely needed; default deny just means everything else is denied. Option D describes a denylist approach, which is default allow (the less secure posture)."
+      "answer": "The cloud provider takes on more security responsibility as you move from IaaS → PaaS → SaaS, while the customer's responsibility shifts toward data, identity, and configuration",
+      "explanation_correct": "As you move up the stack from IaaS to SaaS, the provider assumes more of the infrastructure security burden. IaaS: provider handles physical + hypervisor, customer handles OS + apps + data. PaaS: provider adds OS + runtime, customer handles apps + data. SaaS: provider handles almost everything, customer focuses on data access, identity/MFA, configuration, and compliance. The customer's responsibility doesn't disappear — it narrows and shifts upward toward data governance, identity management, and secure configuration of the service. This is why SaaS misconfigurations (like public S3 buckets or open SharePoint links) are still the customer's fault.",
+      "explanation_wrong_common": "Option B is backwards — the provider does MORE, not less, as you move to SaaS. Option C is wrong — responsibilities shift significantly between models. Option D is the opposite of reality — in SaaS the customer has the FEWEST infrastructure responsibilities."
     },
     {
-      "card_id": "ids_ips_001",
-      "topic": "IDS/IPS",
+      "card_id": "sase_001",
+      "topic": "SASE",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the fundamental difference between an Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS)?",
+      "question_text": "What is Secure Access Service Edge (SASE), and what problem does it solve?",
       "choices": [
-        "An IDS detects and alerts on suspicious activity but does not block it (passive/out-of-band), while an IPS detects AND actively blocks or drops malicious traffic (active/in-line)",
-        "An IDS is hardware-based and an IPS is software-based",
-        "An IDS monitors network traffic and an IPS monitors host activity only",
-        "An IDS uses signatures and an IPS uses behavioral analysis only — they use different detection methods"
+        "A cloud-based architecture that converges network security (SWGs, CASBs, ZTNA, FWaaS) and WAN connectivity (SD-WAN) into a single integrated service delivered from the cloud",
+        "A hardware appliance that combines a firewall and a router for small branch offices",
+        "A protocol for encrypting traffic between on-premises data centers and cloud providers",
+        "A security framework that replaces all physical firewalls with software running on endpoint devices only"
       ],
-      "answer": "An IDS detects and alerts on suspicious activity but does not block it (passive/out-of-band), while an IPS detects AND actively blocks or drops malicious traffic (active/in-line)",
-      "explanation_correct": "The key distinction is response: an IDS is a detective control — it sends alerts when it detects suspicious patterns but the traffic still reaches its destination. An IPS is a preventive control — it sits in-line (inline) with traffic flow and can drop malicious packets before they reach the target. IDS is typically deployed out-of-band using a SPAN/mirror port. IPS must be in-line to block. Both can use signature-based and anomaly-based detection.",
-      "explanation_wrong_common": "Option B is wrong — both can be hardware or software. Option C is wrong — both can monitor network or host (NIDS/NIPS vs HIDS/HIPS). Option D is wrong — both IDS and IPS can use signatures AND behavioral analysis; the difference is response, not detection method."
+      "answer": "A cloud-based architecture that converges network security (SWGs, CASBs, ZTNA, FWaaS) and WAN connectivity (SD-WAN) into a single integrated service delivered from the cloud",
+      "explanation_correct": "SASE (pronounced 'sassy') addresses the problem of securing a distributed workforce. Traditional network security assumed users were inside the corporate perimeter. With remote work, cloud apps, and mobile devices, that model broke. SASE moves security to the cloud edge, delivering it as a service wherever users connect. It combines SD-WAN (optimized routing) with security functions: Secure Web Gateway (web filtering), CASB (cloud app security), ZTNA (zero trust access), and Firewall-as-a-Service. Instead of backhauling traffic through a central data center for inspection, SASE inspects traffic at the nearest cloud PoP, reducing latency and improving security for remote users.",
+      "explanation_wrong_common": "Option B is wrong — SASE is a cloud-delivered architecture, not a single hardware appliance. Option C is wrong — SASE is not a protocol, it's an architectural framework. Option D is wrong — SASE includes cloud-based firewalls (FWaaS), not just endpoint software."
     },
     {
-      "card_id": "ids_ips_002",
-      "topic": "IDS/IPS",
+      "card_id": "sase_002",
+      "topic": "SASE",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between signature-based detection and anomaly-based (heuristic) detection in an IDS/IPS?",
+      "question_text": "Which of the following are the core security components typically included in a SASE architecture?",
       "choices": [
-        "Signature-based compares traffic against a database of known attack patterns (like antivirus definitions); anomaly-based establishes a baseline of normal behavior and flags deviations from that baseline",
-        "Signature-based uses AI to predict future attacks; anomaly-based only looks at past traffic logs",
-        "Signature-based detects zero-day attacks; anomaly-based only detects known attacks",
-        "Signature-based is always more accurate than anomaly-based in all scenarios"
+        "SD-WAN, Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Zero Trust Network Access (ZTNA), and Firewall-as-a-Service (FWaaS)",
+        "VPN concentrator, RADIUS server, physical firewall, and load balancer",
+        "SIEM, SOAR, EDR, and vulnerability scanner",
+        "RAID controller, UPS, HVAC monitoring, and physical access control system"
       ],
-      "answer": "Signature-based compares traffic against a database of known attack patterns (like antivirus definitions); anomaly-based establishes a baseline of normal behavior and flags deviations from that baseline",
-      "explanation_correct": "Signature-based detection is like pattern matching — it has a database of known attack signatures (e.g., a specific SQL injection string, a known malware C2 beacon) and alerts when traffic matches. It's fast and accurate for known threats but misses zero-day attacks. Anomaly-based detection learns what 'normal' looks like (traffic volume, port usage, login times) and alerts on significant deviations. It can catch novel attacks but produces more false positives because legitimate unusual behavior also triggers alerts.",
-      "explanation_wrong_common": "Option B reverses the concepts. Option C is the opposite — signature-based misses zero-days, anomaly-based can potentially catch them. Option D is wrong — anomaly-based can be more accurate for novel attacks; each method has different strengths."
+      "answer": "SD-WAN, Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Zero Trust Network Access (ZTNA), and Firewall-as-a-Service (FWaaS)",
+      "explanation_correct": "SASE converges these five core components into one cloud-delivered service: SD-WAN provides optimized, intelligent routing of traffic. SWG filters web traffic and blocks malicious sites. CASB monitors and enforces security policies for cloud applications (shadow IT detection, DLP). ZTNA provides zero trust access to applications without requiring a VPN. FWaaS delivers firewall capabilities (IPS, URL filtering, DNS filtering) from the cloud. Together, they replace the traditional hub-and-spoke model where all traffic was backhauled through a central data center for security inspection.",
+      "explanation_wrong_common": "Option B describes traditional on-premises network security, not SASE. Option C describes SecOps tools (SIEM, SOAR, EDR) — related to security monitoring, not SASE network architecture. Option D describes physical data center infrastructure, completely unrelated to SASE."
     },
     {
-      "card_id": "ids_ips_003",
-      "topic": "IDS/IPS",
+      "card_id": "sase_003",
+      "topic": "SASE",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company deploys a network-based IDS (NIDS) using a SPAN/mirror port on their core switch. They notice the IDS is missing some attack traffic. Investigation shows the switch port is oversubscribed — traffic exceeds the SPAN port's capacity during peak hours. What is the consequence and how should it be addressed?",
+      "question_text": "A company with 500 remote employees spread across Southeast Asia finds that their traditional VPN is slow, frequently disconnects, and doesn't provide consistent web security filtering when users access cloud apps like Microsoft 365. What is the best architectural solution?",
       "choices": [
-        "The switch drops mirrored packets during peak traffic, causing the IDS to miss attacks — replace the SPAN-based IDS with an in-line IPS (network tap or in-line deployment) that sees 100% of traffic without oversubscription",
-        "The IDS will detect more attacks because the dropped packets reduce noise — no action needed",
-        "Move the IDS to a different VLAN to reduce traffic load",
-        "Increase the IDS alert sensitivity threshold to compensate for dropped packets"
+        "Deploy a SASE solution that uses ZTNA for application access (replacing VPN), SWG for web filtering, and CASB for cloud app security — all delivered from nearby cloud PoPs to reduce latency",
+        "Buy a more powerful VPN concentrator and increase bandwidth at the headquarters data center",
+        "Require all remote employees to RDP into a desktop at headquarters and access cloud apps from there",
+        "Install individual firewalls on each employee's laptop and disable VPN entirely"
       ],
-      "answer": "The switch drops mirrored packets during peak traffic, causing the IDS to miss attacks — replace the SPAN-based IDS with an in-line IPS (network tap or in-line deployment) that sees 100% of traffic without oversubscription",
-      "explanation_correct": "SPAN/mirror ports have limited bandwidth — if the monitored traffic exceeds the mirror port's capacity, the switch silently drops excess mirrored packets. The IDS never sees them, creating blind spots during exactly the high-traffic periods when attacks are most likely to be hidden. An in-line IPS or a network TAP (Test Access Point) avoids this because it processes traffic in-line at full line rate — no mirroring, no oversubscription. A hardware TAP provides a permanent, passive copy of traffic at full speed.",
-      "explanation_wrong_common": "Option B is dangerous — dropped packets mean missed attacks, not less noise. Option C doesn't solve the core issue — the IDS would still miss traffic on the monitored VLAN. Option D is nonsensical — increasing sensitivity doesn't compensate for packets the IDS never received."
+      "answer": "Deploy a SASE solution that uses ZTNA for application access (replacing VPN), SWG for web filtering, and CASB for cloud app security — all delivered from nearby cloud PoPs to reduce latency",
+      "explanation_correct": "This is a textbook SASE use case. The traditional VPN backhauls all traffic through HQ for inspection, creating latency for users accessing cloud apps that may be hosted closer to them than to HQ. SASE solves this by: (1) ZTNA replaces VPN — users get authenticated, context-aware access to specific applications without network-level tunneling. (2) SWG provides web filtering at the cloud edge, nearest to the user. (3) CASB enforces security policies for Microsoft 365 and other cloud apps. Traffic is inspected at a local cloud PoP (e.g., in Singapore) rather than backhauled to HQ, dramatically reducing latency while maintaining consistent security.",
+      "explanation_wrong_common": "Option B doesn't solve the fundamental problem — VPN backhaul is architecturally wrong for cloud access. Option C (RDP to HQ desktops) is extremely slow and creates a terrible user experience. Option D removes centralized security visibility entirely — endpoint firewalls alone can't provide SWG or CASB functionality."
     },
     {
-      "card_id": "ids_ips_004",
-      "topic": "IDS/IPS",
+      "card_id": "sase_004",
+      "topic": "SASE",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team deploys a HIDS (Host-based IDS) on all Windows servers. What type of threats can the HIDS detect that a NIDS (Network-based IDS) positioned at the perimeter would likely miss?",
+      "question_text": "An organization discovers that employees are using unauthorized cloud storage services (shadow IT) to share company documents externally. Which SASE component is specifically designed to address this problem?",
       "choices": [
-        "Unauthorized file changes on the server's filesystem, suspicious local process execution, and lateral movement via encrypted internal traffic — all of which occur on the host itself and may never traverse the network perimeter",
-        "Port scans originating from the internet against the company's public-facing servers",
-        "DDoS volumetric attacks flooding the company's internet connection",
-        "Network-level packet crafting attacks against the perimeter firewall"
+        "Cloud Access Security Broker (CASB) — it discovers shadow IT, monitors cloud app usage, enforces DLP policies, and can block unauthorized cloud services",
+        "Secure Web Gateway (SWG) — it filters web traffic based on URL categories",
+        "Zero Trust Network Access (ZTNA) — it authenticates users before granting network access",
+        "SD-WAN — it optimizes routing between branch offices and cloud services"
       ],
-      "answer": "Unauthorized file changes on the server's filesystem, suspicious local process execution, and lateral movement via encrypted internal traffic — all of which occur on the host itself and may never traverse the network perimeter",
-      "explanation_correct": "A HIDS monitors the host directly — filesystem integrity, running processes, system logs, registry changes, and local network connections. It detects threats that never cross the network perimeter: an insider modifying files locally, malware that's already on the host, or lateral movement over encrypted channels (RDP, SSH) that a NIDS can't inspect. A NIDS sees network traffic at the perimeter but is blind to host-internal activity and encrypted east-west traffic. Defense in depth means using both.",
-      "explanation_wrong_common": "Options B, C, and D are all network-level threats that a NIDS at the perimeter is well-positioned to detect — they involve traffic crossing the network boundary. The HIDS's unique value is visibility into what's happening ON the host itself."
+      "answer": "Cloud Access Security Broker (CASB) — it discovers shadow IT, monitors cloud app usage, enforces DLP policies, and can block unauthorized cloud services",
+      "explanation_correct": "CASB is the SASE component purpose-built for cloud application security. It operates at the API level and proxy level to: (1) Shadow IT discovery — identify all cloud services employees are using, even unsanctioned ones, by analyzing traffic patterns and DNS logs. (2) DLP — prevent sensitive data (credit cards, PII, source code) from being uploaded to cloud services. (3) Compliance — enforce GDPR/HIPAA policies on data stored in cloud apps. (4) Threat protection — detect compromised accounts and anomalous cloud access. While SWG can block URLs, only CASB has deep visibility into cloud app data flows and can enforce granular policies like 'users can access Google Drive but cannot share documents externally.'",
+      "explanation_wrong_common": "Option B (SWG) can block a URL but can't see inside cloud app data flows or enforce DLP — that's CASB's job. Option C (ZTNA) is about access authentication, not cloud app monitoring. Option D (SD-WAN) is about network routing optimization, completely unrelated to shadow IT detection."
     },
     {
-      "card_id": "seg_001",
-      "topic": "Network Segmentation",
+      "card_id": "endpoint_001",
+      "topic": "Endpoint Protection",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a VLAN, and how does it contribute to network security?",
+      "question_text": "What is the key difference between traditional antivirus (AV) and Endpoint Detection and Response (EDR)?",
       "choices": [
-        "A VLAN (Virtual LAN) is a logical grouping of devices on a switch that creates separate broadcast domains at Layer 2 — devices in different VLANs cannot communicate without a router or Layer 3 firewall, isolating traffic between segments",
-        "A VLAN is a physical separation of network cables into different rooms",
-        "A VLAN encrypts all traffic between devices on the same switch",
-        "A VLAN is a VPN tunnel that connects remote offices securely"
+        "Traditional AV uses signature-based detection to identify known malware, while EDR provides continuous monitoring, behavioral analysis, threat hunting, and incident response capabilities across endpoints",
+        "Traditional AV is cloud-based while EDR runs only on local hardware",
+        "EDR is a type of antivirus that scans faster but uses the same signature-based detection method",
+        "There is no difference — EDR is simply a rebranding of traditional antivirus by vendors"
       ],
-      "answer": "A VLAN (Virtual LAN) is a logical grouping of devices on a switch that creates separate broadcast domains at Layer 2 — devices in different VLANs cannot communicate without a router or Layer 3 firewall, isolating traffic between segments",
-      "explanation_correct": "VLANs segment a physical switch into multiple logical networks. Each VLAN is its own broadcast domain — broadcast traffic (ARP, DHCP) stays within the VLAN. Inter-VLAN traffic must pass through a router or Layer 3 switch/firewall where ACLs can control access. This limits the blast radius: if a device in the guest VLAN is compromised, the attacker cannot directly reach servers in the production VLAN without traversing a controlled routing boundary.",
-      "explanation_wrong_common": "Option B describes physical isolation, not VLANs (which are logical). Option C is wrong — VLANs don't encrypt; encryption is handled by protocols like TLS/IPsec. Option D confuses VLANs with VPNs — they are completely different technologies."
+      "answer": "Traditional AV uses signature-based detection to identify known malware, while EDR provides continuous monitoring, behavioral analysis, threat hunting, and incident response capabilities across endpoints",
+      "explanation_correct": "Traditional AV relies on signature databases — it can only detect malware that has a known signature. This means zero-day threats and fileless malware (PowerShell-based attacks, living-off-the-land) evade it entirely. EDR goes far beyond signatures: it continuously collects endpoint data (process trees, network connections, file modifications, registry changes), uses behavioral analytics to detect anomalous activity, provides a centralized dashboard for threat hunting across all endpoints, and enables incident response actions (isolate endpoint, kill process, collect forensic data) remotely. EDR detects threats based on behavior, not just signatures, making it effective against novel and sophisticated attacks.",
+      "explanation_wrong_common": "Option B is wrong — both can be cloud-managed or local; the difference is capability, not deployment model. Option C is wrong — EDR is fundamentally different in approach (behavioral, not just signatures). Option D is dangerously wrong — EDR represents a significant evolution in endpoint security capabilities."
     },
     {
-      "card_id": "seg_002",
-      "topic": "Network Segmentation",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A hospital network has medical devices (infusion pumps, MRI machines), guest Wi-Fi, and an electronic health records (EHR) system all on the same flat network. A security consultant recommends segmenting these into separate VLANs with a firewall controlling inter-VLAN traffic. What is the primary security benefit?",
-      "choices": [
-        "If a guest's compromised laptop attempts to spread malware, the firewall between VLANs blocks lateral movement to medical devices and the EHR system — each segment is isolated and traffic between them is explicitly controlled",
-        "Segmentation will make the network faster by reducing the number of IP addresses needed",
-        "Segmentation eliminates the need for any other security controls like antivirus or patching",
-        "Segmentation ensures all devices get the same level of access for simplicity"
-      ],
-      "answer": "If a guest's compromised laptop attempts to spread malware, the firewall between VLANs blocks lateral movement to medical devices and the EHR system — each segment is isolated and traffic between them is explicitly controlled",
-      "explanation_correct": "On a flat network, any compromised device can reach any other device — a guest laptop can scan and exploit medical devices or the EHR system. VLAN segmentation with firewall enforcement creates security zones: guest traffic stays in the guest VLAN, medical devices in a medical IoT VLAN (with strict allow rules only for required protocols), and the EHR in a protected VLAN. The firewall only permits explicitly allowed inter-VLAN flows (e.g., EHR server → database port), blocking everything else. This is critical in healthcare where medical device compromise can be life-threatening.",
-      "explanation_wrong_common": "Option B is a side effect, not the security benefit. Option C is wrong — segmentation is defense in depth, not a replacement for other controls. Option D is the opposite of segmentation's purpose — different segments get different access levels."
-    },
-    {
-      "card_id": "seg_003",
-      "topic": "Network Segmentation",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "An organization's internal network uses a flat topology — all servers and workloads are on the same subnet. After a phishing attack compromises one workstation, the attacker pivots to multiple internal servers within minutes. What network design change would most effectively limit this lateral movement?",
-      "choices": [
-        "Implement microsegmentation — place each critical workload (or small group) in its own segment with granular firewall rules controlling exactly which other workloads can communicate with it, limiting an attacker's east-west movement",
-        "Install antivirus on all workstations and run a full scan",
-        "Move all servers to a single new VLAN but leave workstations on the old network",
-        "Change all server passwords and require longer user passwords"
-      ],
-      "answer": "Implement microsegmentation — place each critical workload (or small group) in its own segment with granular firewall rules controlling exactly which other workloads can communicate with it, limiting an attacker's east-west movement",
-      "explanation_correct": "In a flat network, once an attacker compromises one host, they can scan and attack any other host on the same subnet — there's no internal boundary. Microsegmentation creates fine-grained zones (down to individual workloads) with explicit allow rules: a web server can only talk to the app server on specific ports, the app server can only talk to the database on port 3306. This means compromising the web server doesn't give access to the file server or other unrelated systems. East-west traffic (server-to-server) is the primary vector for lateral movement, and microsegmentation directly addresses it.",
-      "explanation_wrong_common": "Option B (antivirus) is important but doesn't address the network architecture problem — it detects malware, not lateral movement. Option C is a coarse improvement but doesn't stop an attacker who reaches the server VLAN. Option D is a credential control, not a network control — it doesn't prevent lateral movement through compromised accounts."
-    },
-    {
-      "card_id": "seg_004",
-      "topic": "Network Segmentation",
-      "difficulty": "medium",
-      "question_type": "definition",
-      "question_text": "What is east-west traffic in a data center context, and why is it a security concern that differs from north-south traffic?",
-      "choices": [
-        "East-west traffic is server-to-server communication within the data center (internal), while north-south is traffic entering/leaving the data center (external). East-west is a concern because perimeter firewalls don't see it — lateral movement happens internally between compromised and target systems",
-        "East-west traffic is traffic between data centers in different geographic regions; north-south is traffic within a single data center",
-        "East-west traffic refers to traffic during business hours; north-south refers to after-hours traffic",
-        "East-west traffic is encrypted traffic; north-south is unencrypted traffic"
-      ],
-      "answer": "East-west traffic is server-to-server communication within the data center (internal), while north-south is traffic entering/leaving the data center (external). East-west is a concern because perimeter firewalls don't see it — lateral movement happens internally between compromised and target systems",
-      "explanation_correct": "In modern data centers, the vast majority of traffic is east-west — server-to-server communication (web→app→database, microservice-to-microservice). Traditional perimeter security focuses on north-south (internet→DMZ→internal), but once an attacker breaches the perimeter, they move east-west between servers. Perimeter firewalls don't inspect this internal traffic. This is why microsegmentation and internal firewalls/IPS are critical — they bring firewall enforcement to the east-west plane where most modern attack movement occurs.",
-      "explanation_wrong_common": "Option B reverses the definitions. Option C is a made-up distinction based on time of day. Option D is wrong — both east-west and north-south traffic can be encrypted or unencrypted; the terms describe traffic direction, not encryption."
-    },
-    {
-      "card_id": "topology_001",
-      "topic": "Secure Topology",
+      "card_id": "endpoint_002",
+      "topic": "Endpoint Protection",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a DMZ (Demilitarized Zone) in network architecture, and what is its purpose?",
+      "question_text": "What is Mobile Device Management (MDM), and what is its primary security purpose?",
       "choices": [
-        "A DMZ is a isolated network segment (screened subnet) placed between the internet and the internal network, hosting public-facing services (web, email, DNS) so that if they're compromised, the attacker still faces a firewall before reaching internal systems",
-        "A DMZ is a military-grade encryption standard used for government networks",
-        "A DMZ is a backup network that activates only when the primary network fails",
-        "A DMZ is a zone where all traffic is allowed without filtering to maximize performance"
+        "A system for centrally managing, configuring, securing, and monitoring mobile devices (phones, tablets, laptops) across an organization, enforcing security policies remotely",
+        "A physical device that stores all mobile phones in a secure locker when not in use",
+        "A mobile app that individual users install to clean up storage space on their phones",
+        "A network protocol for transferring files between mobile devices and desktop computers"
       ],
-      "answer": "A DMZ is a isolated network segment (screened subnet) placed between the internet and the internal network, hosting public-facing services (web, email, DNS) so that if they're compromised, the attacker still faces a firewall before reaching internal systems",
-      "explanation_correct": "A DMZ (also called a screened subnet or perimeter network) is a buffer zone between the untrusted internet and the trusted internal network. Public-facing servers (web, mail, DNS) are placed in the DMZ because they must be accessible from the internet and are therefore higher-risk. If an attacker compromises a DMZ server, they are still separated from the internal network by an internal firewall. The DMZ is typically separated from both the internet and the internal network by firewalls (two-firewall architecture: external firewall → DMZ → internal firewall → LAN).",
-      "explanation_wrong_common": "Option B confuses the military term with network architecture. Option C describes a failover network, not a DMZ. Option D is the opposite of a DMZ's purpose — it's a controlled, filtered zone, not an open one."
+      "answer": "A system for centrally managing, configuring, securing, and monitoring mobile devices (phones, tablets, laptops) across an organization, enforcing security policies remotely",
+      "explanation_correct": "MDM (Mobile Device Management) or MAM (Mobile Application Management) allows organizations to centrally manage mobile devices at scale. Key security capabilities include: enforcing strong passcodes and biometric authentication, remotely locking or wiping lost/stolen devices, pushing security patches and OS updates, restricting app installation to approved apps, enforcing encryption, configuring VPN and email settings, and segregating personal and corporate data (containerization). With BYOD (Bring Your Own Device), MDM uses containerization to keep corporate data in an encrypted sandbox separate from the employee's personal apps, so a remote wipe only affects corporate data, not personal photos or messages.",
+      "explanation_wrong_common": "Option B is a physical locker, not software management. Option C describes a phone cleaner utility, not enterprise MDM. Option D describes a file transfer protocol, completely unrelated to device management and security policy enforcement."
     },
     {
-      "card_id": "topology_002",
-      "topic": "Secure Topology",
+      "card_id": "endpoint_003",
+      "topic": "Endpoint Protection",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company's IT team has 300 endpoints running various versions of Windows 10/11, with some machines missing critical security patches from as far back as 6 months ago. What is the best approach to remediate this vulnerability?",
+      "choices": [
+        "Implement a centralized patch management system that inventories all endpoints, identifies missing patches, tests patches in a pilot group, then deploys systematically with automated reporting and rollback capability",
+        "Send an email to all employees asking them to manually run Windows Update on their machines",
+        "Disable all network access for unpatched machines until users bring their devices to IT",
+        "Wait for the next major OS upgrade cycle and replace all machines with newer hardware"
+      ],
+      "answer": "Implement a centralized patch management system that inventories all endpoints, identifies missing patches, tests patches in a pilot group, then deploys systematically with automated reporting and rollback capability",
+      "explanation_correct": "Centralized patch management (via tools like Microsoft WSUS, SCCM/MECM, or cloud-based MDM like Intune) is the standard enterprise approach. It provides: (1) Inventory — identifies exactly which patches are missing on which machines. (2) Testing — deploys to a pilot group first to catch compatibility issues. (3) Phased deployment — rolls out to ring groups (pilot → broad → remaining) to minimize disruption. (4) Reporting — tracks compliance across all endpoints. (5) Rollback — can uninstall a problematic patch. Manual updates (Option B) are unreliable — users ignore them or don't understand them. Automated, centralized management ensures consistent, verifiable patch coverage.",
+      "explanation_wrong_common": "Option B is unreliable — users won't consistently patch, and some may break things. Option C is disruptive and punitive without solving the root cause (no patch management process). Option D ignores the risk entirely — 6 months of unpatched vulnerabilities is an active risk that can't wait for a hardware refresh cycle."
+    },
+    {
+      "card_id": "endpoint_004",
+      "topic": "Endpoint Protection",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A security team needs to establish a hardening baseline for all Windows servers in their environment. Which approach follows best practices for endpoint hardening?",
+      "choices": [
+        "Apply CIS Benchmarks or STIGs: disable unnecessary services, remove default accounts, enforce strong password policies, enable audit logging, configure host-based firewalls, disable SMBv1, and restrict Remote Desktop to specific admin IPs",
+        "Install antivirus software and set it to auto-update — that alone provides sufficient hardening",
+        "Rename the Administrator account and change the desktop wallpaper to a security reminder",
+        "Format the servers and reinstall the OS every 30 days to ensure a clean state"
+      ],
+      "answer": "Apply CIS Benchmarks or STIGs: disable unnecessary services, remove default accounts, enforce strong password policies, enable audit logging, configure host-based firewalls, disable SMBv1, and restrict Remote Desktop to specific admin IPs",
+      "explanation_correct": "Endpoint hardening reduces the attack surface by removing unnecessary functionality and securing configurations. CIS Benchmarks (Center for Internet Security) and DISA STIGs (Security Technical Implementation Guides) are industry-standard hardening baselines. Key hardening actions: disable unneeded services and protocols (SMBv1, Telnet, FTP), remove or disable default/guest accounts, enforce account lockout and strong password policies, enable comprehensive audit logging (logon events, privilege use, object access), configure host-based firewalls with default deny, restrict RDP/SSH to admin jump boxes, enable BitLocker or LUKS disk encryption, and set file system permissions to least privilege. Hardening is about reducing what an attacker can exploit.",
+      "explanation_wrong_common": "Option B is insufficient — AV is one layer but doesn't address misconfigurations, unnecessary services, or weak credentials. Option C is security theater — renaming the admin account and a wallpaper do nothing meaningful. Option D is impractical and disruptive — hardening is about configuration, not reinstalling the OS."
+    },
+    {
+      "card_id": "endpoint_005",
+      "topic": "Endpoint Protection",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the 'defense in depth' principle as applied to network security architecture?",
+      "question_text": "What is application allowlisting, and how does it differ from traditional antivirus in approach?",
       "choices": [
-        "Layering multiple independent security controls (firewall, IDS/IPS, endpoint protection, encryption, access control) so that if one fails, others still protect the system — no single point of failure",
-        "Deploying many firewalls in a row to maximize packet inspection depth",
-        "Hiring more security analysts to monitor the network in shifts",
-        "Making the network architecture documentation extremely detailed"
+        "Application allowlisting permits only pre-approved, known-good applications to execute and blocks everything else by default — a default-deny approach, whereas AV allows everything and blocks known-bad signatures",
+        "Application allowlisting is a feature of antivirus that automatically adds safe applications to a whitelist",
+        "Allowlisting blocks all network traffic except from approved IP addresses, similar to a firewall rule",
+        "Application allowlisting is the same as patch management — it ensures only patched versions of software can run"
       ],
-      "answer": "Layering multiple independent security controls (firewall, IDS/IPS, endpoint protection, encryption, access control) so that if one fails, others still protect the system — no single point of failure",
-      "explanation_correct": "Defense in depth assumes no single control is perfect. If the perimeter firewall is misconfigured, the IDS may still detect the intrusion. If malware gets past the firewall, endpoint protection may catch it. If an attacker steals credentials, MFA may still block them. Each layer addresses different attack vectors and failure modes. The layers should be independent — a vulnerability in one shouldn't disable the others. Classic layers: physical security → perimeter firewall → DMZ → internal firewall → host hardening → application security → data encryption.",
-      "explanation_wrong_common": "Option B is a narrow interpretation — defense in depth is about diverse control types, not just more firewalls. Option C is about staffing, not architecture. Option D confuses documentation depth with security depth."
+      "answer": "Application allowlisting permits only pre-approved, known-good applications to execute and blocks everything else by default — a default-deny approach, whereas AV allows everything and blocks known-bad signatures",
+      "explanation_correct": "Application allowlisting inverts the traditional security model. AV uses a default-allow approach: everything can run unless it matches a known malware signature. This means zero-day malware, fileless attacks, and novel threats run freely until a signature is created. Allowlisting uses default-deny: only explicitly approved applications (by hash, publisher, or path) can execute — anything else is blocked. This is far more secure because even unknown/new malware is blocked by default. Tools like Microsoft AppLocker, Windows Defender Application Control (WDAC), and Carbon Black implement this. The tradeoff is operational overhead — maintaining the approved list requires effort as new legitimate apps are introduced.",
+      "explanation_wrong_common": "Option B is backwards — allowlisting is not a feature of AV; it's a fundamentally different approach. Option C confuses application allowlisting with network IP allowlisting — they operate at different layers. Option D is wrong — allowlisting controls what can execute, not whether software is patched."
     },
     {
-      "card_id": "topology_003",
-      "topic": "Secure Topology",
+      "card_id": "endpoint_006",
+      "topic": "Endpoint Protection",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company has a public-facing web server and an internal database server. The web server needs to query the database. A junior administrator proposes placing both servers on the same internal subnet for simplicity. Why is this a security risk, and what is the better architecture?",
+      "question_text": "A company is concerned about employees exfiltrating sensitive customer data via personal email, USB drives, and cloud storage services. Which endpoint security control should they deploy to prevent this?",
       "choices": [
-        "If the web server is compromised (it's internet-facing), placing it on the internal subnet gives the attacker direct access to the database and the entire internal network — the web server should be in a DMZ, and the database should be on the internal network behind a firewall that only allows the web server's IP on the specific database port",
-        "It's not a risk — placing them together reduces latency and simplifies management",
-        "Both servers should be placed in the DMZ so they're equally accessible",
-        "The database should be placed in the DMZ and the web server on the internal network"
+        "Endpoint Data Loss Prevention (DLP) — monitors and blocks sensitive data transfers based on content inspection and policies, covering email, USB, cloud uploads, and clipboard transfers",
+        "A stronger firewall rule blocking all outbound email traffic",
+        "Disabling all USB ports physically by filling them with epoxy resin",
+        "Installing keylogger software to monitor everything employees type"
       ],
-      "answer": "If the web server is compromised (it's internet-facing), placing it on the internal subnet gives the attacker direct access to the database and the entire internal network — the web server should be in a DMZ, and the database should be on the internal network behind a firewall that only allows the web server's IP on the specific database port",
-      "explanation_correct": "The web server is internet-facing and therefore at higher risk of compromise. If it's on the internal subnet, an attacker who exploits it has a foothold inside the trusted network with access to the database and all internal systems. The correct architecture: web server in the DMZ, database on the internal network. An internal firewall allows only the web server's IP address to connect to the database on the specific port (e.g., 3306/5432), and nothing else. This way, even if the web server is compromised, the attacker can only reach the database — not file servers, workstations, or other internal systems.",
-      "explanation_wrong_common": "Option B prioritizes convenience over security — a common but dangerous mistake. Option C puts the database in the DMZ, exposing it to the internet — databases should never be internet-accessible. Option D reverses the correct placement — the web server needs to be in the DMZ (public-facing), not the database."
+      "answer": "Endpoint Data Loss Prevention (DLP) — monitors and blocks sensitive data transfers based on content inspection and policies, covering email, USB, cloud uploads, and clipboard transfers",
+      "explanation_correct": "Endpoint DLP is purpose-built for this scenario. It inspects data content at the endpoint — before it leaves — and enforces policies like: block credit card numbers from being emailed, prevent PII from being copied to USB drives, stop source code from being uploaded to personal cloud storage, and alert on mass file transfers. DLP uses content-aware analysis (regex patterns for SSNs, credit cards, keyword matching, document fingerprinting) to classify data and apply actions (allow, block, quarantine, alert, encrypt). Unlike a firewall (which can't inspect content), DLP understands WHAT data is being transferred, not just where it's going. It also covers channels that firewalls can't see — USB drives, clipboard copy/paste, and personal email via web browsers.",
+      "explanation_wrong_common": "Option B is too broad — blocking all outbound email would break business communication and doesn't address USB or cloud exfiltration. Option C is drastic and permanent — software-based DLP can selectively block writes while allowing approved USB devices. Option D (keylogger) is surveillance, not prevention — and it's unethical and potentially illegal without proper controls."
     },
     {
-      "card_id": "topology_004",
-      "topic": "Secure Topology",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "An organization needs to provide SSH access for remote administrators to an internal jump server. The jump server then connects to internal production servers. What is this architecture called, and what security benefit does it provide?",
-      "choices": [
-        "This is a bastion host (jump box) architecture — all administrative access flows through a single hardened, monitored choke point, so the bastion can enforce MFA, log all sessions, and restrict which internal servers each admin can reach — internal servers never need to be directly exposed to the internet",
-        "This is a VPN architecture — the jump server encrypts all traffic between the admin and the internal network",
-        "This is a load balancer architecture — the jump server distributes SSH connections across multiple servers",
-        "This is a honeypot architecture — the jump server is designed to attract attackers"
-      ],
-      "answer": "This is a bastion host (jump box) architecture — all administrative access flows through a single hardened, monitored choke point, so the bastion can enforce MFA, log all sessions, and restrict which internal servers each admin can reach — internal servers never need to be directly exposed to the internet",
-      "explanation_correct": "A bastion host (jump box) is the only server exposed to the internet for administrative access. It's heavily hardened (minimal services, strong authentication, full logging). Admins SSH to the bastion, then from the bastion to internal servers. Benefits: (1) internal servers aren't exposed to the internet, (2) all admin activity is logged at a single point, (3) MFA and access policies are enforced at one choke point, (4) if an admin's credentials are stolen, the attacker still needs to get through the bastion. Modern equivalents include PAM (Privileged Access Management) solutions and Zero Trust access brokers.",
-      "explanation_wrong_common": "Option B confuses a bastion host with a VPN — a VPN provides network-level access, while a bastion provides application-level relay with monitoring. Option C describes load balancing, not administrative access. Option D describes a honeypot (deception), not a jump server."
-    },
-    {
-      "card_id": "proxy_001",
-      "topic": "Proxy Servers",
+      "card_id": "resilience_001",
+      "topic": "System Resilience",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a forward proxy and a reverse proxy?",
+      "question_text": "Which RAID level provides disk redundancy by mirroring data across two drives, and what is its fault tolerance?",
       "choices": [
-        "A forward proxy sits between internal clients and the internet, intercepting outbound traffic (often for filtering, caching, or anonymity); a reverse proxy sits in front of web servers, intercepting inbound traffic from the internet (for load balancing, WAF, caching, or TLS termination)",
-        "A forward proxy speeds up traffic by forwarding packets faster; a reverse proxy slows down traffic for inspection",
-        "A forward proxy is used for email; a reverse proxy is used for web browsing",
-        "A forward proxy encrypts traffic; a reverse proxy decrypts traffic"
+        "RAID 1 — mirrors data across two drives, can survive the failure of one drive with no data loss. Fault tolerance: 1 drive failure",
+        "RAID 0 — stripes data across two drives for performance, can survive one drive failure",
+        "RAID 5 — stripes data with parity across three or more drives, can survive two simultaneous drive failures",
+        "RAID 10 — mirrors and stripes across four drives, cannot survive any drive failure"
       ],
-      "answer": "A forward proxy sits between internal clients and the internet, intercepting outbound traffic (often for filtering, caching, or anonymity); a reverse proxy sits in front of web servers, intercepting inbound traffic from the internet (for load balancing, WAF, caching, or TLS termination)",
-      "explanation_correct": "A forward proxy (like Squid) is client-side: internal users' web traffic goes through the proxy, which can filter URLs, cache content, log activity, and hide the client's IP. A reverse proxy (like Nginx, HAProxy, Cloudflare) is server-side: it receives requests from the internet and forwards them to backend servers. Reverse proxies provide load balancing, TLS termination (offloading SSL from backend servers), WAF functionality, and DDoS protection. The key distinction: forward proxy protects the client, reverse proxy protects the server.",
-      "explanation_wrong_common": "Option B is about speed, not the architectural difference. Option C is wrong — both primarily handle web/HTTP traffic. Option D is wrong — both can encrypt or decrypt; the difference is traffic direction, not encryption."
+      "answer": "RAID 1 — mirrors data across two drives, can survive the failure of one drive with no data loss. Fault tolerance: 1 drive failure",
+      "explanation_correct": "RAID 1 (mirroring) writes identical data to two drives simultaneously. If one drive fails, the other continues to operate with a full copy of all data. Fault tolerance: 1 drive can fail without data loss. RAID 1 is simple and reliable but has 50% storage efficiency (two 1TB drives yield 1TB usable). It's commonly used for OS drives where reliability matters more than capacity. Note: RAID is NOT a backup — it protects against hardware failure but not against data corruption, accidental deletion, or ransomware (which encrypts both mirrored copies simultaneously). RAID improves availability; backups provide recovery.",
+      "explanation_wrong_common": "Option B is wrong — RAID 0 has NO redundancy; it's striping for performance only, and a single drive failure loses ALL data. Option C is wrong — RAID 5 can survive only ONE drive failure, not two (that's RAID 6). Option D is wrong — RAID 10 can survive at least one drive failure in each mirrored pair."
     },
     {
-      "card_id": "proxy_002",
-      "topic": "Proxy Servers",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A company deploys a reverse proxy (Nginx) in front of three identical web servers. The reverse proxy handles TLS termination and distributes requests using round-robin. What are the key benefits of this architecture compared to exposing the web servers directly?",
+      "card_id": "resilience_002",
+      "topic": "System Resilience",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the difference between a full backup, an incremental backup, and a differential backup?",
       "choices": [
-        "TLS termination offloads encryption from the web servers (saving CPU), the backend servers' IP addresses are hidden from the internet (internal IPs not exposed), and load is distributed across three servers — improving performance, security, and availability",
-        "The reverse proxy automatically patches vulnerabilities on all three web servers",
-        "The reverse proxy ensures all three servers return identical content by merging their responses",
-        "The reverse proxy eliminates the need for any firewall because it filters all malicious traffic"
+        "Full backup copies all data every time. Incremental copies only data changed since the last backup (any type). Differential copies all data changed since the last FULL backup",
+        "Full backup copies only new files. Incremental copies everything. Differential copies nothing — it just verifies existing backups",
+        "Full backup is performed daily. Incremental is performed weekly. Differential is performed monthly",
+        "All three are identical — they are different names for the same backup method used by different vendors"
       ],
-      "answer": "TLS termination offloads encryption from the web servers (saving CPU), the backend servers' IP addresses are hidden from the internet (internal IPs not exposed), and load is distributed across three servers — improving performance, security, and availability",
-      "explanation_correct": "A reverse proxy provides multiple benefits: (1) TLS termination — the proxy handles SSL/TLS, so backend servers communicate over plain HTTP internally, saving CPU and simplifying certificate management. (2) IP hiding — the internet only sees the proxy's IP; backend servers have private IPs and aren't directly reachable, reducing attack surface. (3) Load balancing — requests are distributed across servers, so if one fails, the others continue serving. (4) The proxy can also add WAF rules, rate limiting, and caching. This is the standard architecture for production web deployments.",
-      "explanation_wrong_common": "Option B is wrong — proxies don't patch servers. Option C is wrong — the proxy distributes requests, it doesn't merge responses. Option D overstates the proxy's role — a firewall is still needed; the proxy handles HTTP-layer filtering but not network-layer security."
+      "answer": "Full backup copies all data every time. Incremental copies only data changed since the last backup (any type). Differential copies all data changed since the last FULL backup",
+      "explanation_correct": "Full backup: copies all selected data regardless of what changed. Takes the longest and uses the most storage, but restores are simple (one backup set). Incremental: copies only data that changed since the last backup of ANY type (full or incremental). Very fast and storage-efficient, but restoration requires the full backup PLUS every incremental in sequence — slowest restore. Differential: copies all data changed since the last FULL backup. Each differential grows larger over time, but restoration only needs the full backup plus the latest differential — faster restore than incremental. Common strategy: weekly full + daily differential (balance of speed and restore simplicity) or weekly full + daily incremental (minimal backup time, slower restore).",
+      "explanation_wrong_common": "Option B is nonsensical — full backups copy everything, not just new files. Option C is wrong — the difference is in what data is copied, not the schedule frequency. Option D is wrong — they are fundamentally different methods with distinct restore characteristics."
     },
     {
-      "card_id": "proxy_003",
-      "topic": "Proxy Servers",
+      "card_id": "resilience_003",
+      "topic": "System Resilience",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A school wants to prevent students from accessing social media and gaming sites while on the campus Wi-Fi. They also want to log all web browsing activity for compliance. What type of proxy should they deploy, and how should it be configured?",
+      "question_text": "An e-commerce company needs to ensure their web application stays available even if one of their two database servers fails. They are considering active-active vs active-passive clustering. Which statement correctly describes the trade-off?",
       "choices": [
-        "A forward proxy (like Squid) configured as a transparent proxy or via PAC file — all student web traffic routes through the proxy, which checks each URL against a blocklist/category filter, logs the request (student ID, URL, timestamp), and allows or denies accordingly",
-        "A reverse proxy placed in front of the school's web server to filter incoming traffic",
-        "A VPN concentrator that encrypts all student traffic and blocks social media at the VPN layer",
-        "A firewall rule that blocks all outbound traffic except port 443"
+        "Active-active: both servers handle requests simultaneously, maximizing resource utilization and load distribution, but requires careful data synchronization. Active-passive: one server handles requests while the other stands by as a failover, simpler but wastes the standby server's capacity",
+        "Active-active: one server works while the other is turned off to save power. Active-passive: both servers work but one is slower",
+        "Active-active: both servers share the same IP address and cannot be distinguished. Active-passive: each server has its own IP address",
+        "Active-active costs less because you only need one server license. Active-passive requires two licenses"
       ],
-      "answer": "A forward proxy (like Squid) configured as a transparent proxy or via PAC file — all student web traffic routes through the proxy, which checks each URL against a blocklist/category filter, logs the request (student ID, URL, timestamp), and allows or denies accordingly",
-      "explanation_correct": "A forward proxy is designed for exactly this use case. It intercepts outbound web traffic from clients (students) and applies URL filtering (blocking social media, gaming, adult content categories), logging (who accessed what and when), and caching (speeding up frequently accessed educational content). It can be deployed transparently (redirecting traffic at the network layer via WCCP or iptables) or via a PAC file (proxy auto-configuration). The proxy can authenticate users to tie browsing activity to specific students. This is a classic forward proxy / content filtering deployment.",
-      "explanation_wrong_common": "Option B is wrong — a reverse proxy handles inbound traffic to servers, not outbound student browsing. Option C is overkill and doesn't provide URL-level filtering. Option D only blocks by port, not by URL/category — social media sites use port 443 (HTTPS), so this would block nothing."
+      "answer": "Active-active: both servers handle requests simultaneously, maximizing resource utilization and load distribution, but requires careful data synchronization. Active-passive: one server handles requests while the other stands by as a failover, simpler but wastes the standby server's capacity",
+      "explanation_correct": "In active-active clustering, both (or all) nodes serve traffic simultaneously. Benefits: better performance (load is distributed), no wasted resources, and if one node fails, the other(s) simply absorb the load. Challenges: requires sophisticated data synchronization (shared storage or replication), and care must be taken to avoid split-brain scenarios (both nodes thinking the other is dead and trying to take over). In active-passive, one node does all the work while the other waits. Benefits: simpler to configure and troubleshoot, no data sync complexity during normal operation. Drawbacks: the standby node's resources are wasted until failover, and there's a brief interruption during failover as the passive node activates. Active-active is preferred for performance-critical applications; active-passive for simpler setups.",
+      "explanation_wrong_common": "Option B is wrong — active-active means both are working, not one turned off. Option C is about IP addressing, not the clustering model's trade-offs. Option D is about licensing, which varies by vendor and is not the primary technical trade-off."
+    },
+    {
+      "card_id": "resilience_004",
+      "topic": "System Resilience",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A small business asks for a simple, effective backup strategy for their file server. They have 2TB of important business documents and want protection against ransomware, hardware failure, and accidental deletion. What do you recommend?",
+      "choices": [
+        "Follow the 3-2-1 rule: keep 3 copies of data, on 2 different media types, with 1 copy stored offsite (or in immutable cloud storage) — e.g., primary server + local NAS backup + encrypted cloud backup with immutability to defeat ransomware",
+        "Use RAID 1 on the file server — mirroring provides complete protection against all data loss scenarios",
+        "Email a ZIP copy of all files to the owner's Gmail account every Friday",
+        "Make a single backup to an external USB drive and keep it plugged into the server at all times"
+      ],
+      "answer": "Follow the 3-2-1 rule: keep 3 copies of data, on 2 different media types, with 1 copy stored offsite (or in immutable cloud storage) — e.g., primary server + local NAS backup + encrypted cloud backup with immutability to defeat ransomware",
+      "explanation_correct": "The 3-2-1 backup rule is the gold standard for data resilience: 3 copies of data (primary + 2 backups), 2 different media types (e.g., NAS and cloud, or NAS and tape — protects against media-specific failures), 1 copy offsite (protects against physical disasters like fire/flood). For ransomware protection specifically, the offsite copy should be immutable (write-once-read-many) or air-gapped — ransomware can encrypt connected backups but cannot touch immutable or disconnected copies. Adding immutability to the cloud backup means even if an attacker compromises the server, they cannot delete or encrypt the cloud backup. The 3-2-1 rule ensures no single point of failure destroys all copies.",
+      "explanation_wrong_common": "Option B is wrong — RAID is NOT a backup. Ransomware encrypts both mirrored copies simultaneously. Option C is impractical for 2TB and provides no versioning or ransomware protection. Option D keeps the backup connected — ransomware will encrypt it along with the server, providing zero protection."
+    },
+    {
+      "card_id": "resilience_005",
+      "topic": "System Resilience",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A hospital's IT department is defining their disaster recovery plan. They determine that patient records must be recoverable within 4 hours of a disaster, and they can tolerate losing no more than 1 hour of data. What are their RTO and RPO respectively?",
+      "choices": [
+        "RTO = 4 hours (maximum downtime to restore service), RPO = 1 hour (maximum acceptable data loss measured backward from the incident)",
+        "RTO = 1 hour (time to detect the disaster), RPO = 4 hours (time to back up data after recovery)",
+        "RTO = 4 hours (how often to run backups), RPO = 1 hour (how long backups are retained)",
+        "RTO = 5 hours (RTO + RPO combined), RPO = 3 hours (RTO minus RPO)"
+      ],
+      "answer": "RTO = 4 hours (maximum downtime to restore service), RPO = 1 hour (maximum acceptable data loss measured backward from the incident)",
+      "explanation_correct": "RTO (Recovery Time Objective) is the maximum acceptable downtime — how long it takes to restore service after a disaster. Here, systems must be back online within 4 hours. RPO (Recovery Point Objective) is the maximum acceptable data loss — measured as the time window of data you can afford to lose. An RPO of 1 hour means you need backups at least every hour, so at most 1 hour of transactions/records could be lost. These metrics drive infrastructure decisions: RTO=4h might allow for restoring from backups rather than needing instant failover. RPO=1h requires near-continuous replication or hourly snapshots. Lower RTO/RPO = more expensive infrastructure (HA clusters, real-time replication, hot sites).",
+      "explanation_wrong_common": "Option B swaps the definitions and mischaracterizes them — RTO is about restoration time, not detection time. Option C is wrong — RTO is not a backup frequency, and RPO is not a retention period. Option D is fabricated math — RTO and RPO are independent metrics, not additive or subtractive."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "firewall_001", "next_due_at": "2026-08-15" },
-    { "card_id": "firewall_002", "next_due_at": "2026-08-15" },
-    { "card_id": "firewall_003", "next_due_at": "2026-08-15" },
-    { "card_id": "firewall_004", "next_due_at": "2026-08-15" },
-    { "card_id": "firewall_005", "next_due_at": "2026-08-15" },
-    { "card_id": "ids_ips_001", "next_due_at": "2026-08-15" },
-    { "card_id": "ids_ips_002", "next_due_at": "2026-08-15" },
-    { "card_id": "ids_ips_003", "next_due_at": "2026-08-15" },
-    { "card_id": "ids_ips_004", "next_due_at": "2026-08-15" },
-    { "card_id": "seg_001", "next_due_at": "2026-08-15" },
-    { "card_id": "seg_002", "next_due_at": "2026-08-15" },
-    { "card_id": "seg_003", "next_due_at": "2026-08-15" },
-    { "card_id": "seg_004", "next_due_at": "2026-08-15" },
-    { "card_id": "topology_001", "next_due_at": "2026-08-15" },
-    { "card_id": "topology_002", "next_due_at": "2026-08-15" },
-    { "card_id": "topology_003", "next_due_at": "2026-08-15" },
-    { "card_id": "topology_004", "next_due_at": "2026-08-15" },
-    { "card_id": "proxy_001", "next_due_at": "2026-08-15" },
-    { "card_id": "proxy_002", "next_due_at": "2026-08-15" },
-    { "card_id": "proxy_003", "next_due_at": "2026-08-15" }
+    {"card_id": "cloud_001", "next_due_at": "2026-08-16"},
+    {"card_id": "cloud_002", "next_due_at": "2026-08-16"},
+    {"card_id": "cloud_003", "next_due_at": "2026-08-17"},
+    {"card_id": "cloud_004", "next_due_at": "2026-08-17"},
+    {"card_id": "cloud_005", "next_due_at": "2026-08-17"},
+    {"card_id": "sase_001", "next_due_at": "2026-08-16"},
+    {"card_id": "sase_002", "next_due_at": "2026-08-16"},
+    {"card_id": "sase_003", "next_due_at": "2026-08-17"},
+    {"card_id": "sase_004", "next_due_at": "2026-08-17"},
+    {"card_id": "endpoint_001", "next_due_at": "2026-08-16"},
+    {"card_id": "endpoint_002", "next_due_at": "2026-08-16"},
+    {"card_id": "endpoint_003", "next_due_at": "2026-08-17"},
+    {"card_id": "endpoint_004", "next_due_at": "2026-08-17"},
+    {"card_id": "endpoint_005", "next_due_at": "2026-08-16"},
+    {"card_id": "endpoint_006", "next_due_at": "2026-08-17"},
+    {"card_id": "resilience_001", "next_due_at": "2026-08-16"},
+    {"card_id": "resilience_002", "next_due_at": "2026-08-16"},
+    {"card_id": "resilience_003", "next_due_at": "2026-08-17"},
+    {"card_id": "resilience_004", "next_due_at": "2026-08-17"},
+    {"card_id": "resilience_005", "next_due_at": "2026-08-17"}
   ]
 }
