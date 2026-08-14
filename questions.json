@@ -1,346 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "zero_trust_006",
-      "topic": "Zero Trust",
+      "card_id": "firewall_001",
+      "topic": "Firewalls",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "In Zero Trust, what does 'verify explicitly' require beyond just a username and password?",
+      "question_text": "What is the key difference between a packet-filtering firewall and a stateful inspection firewall?",
       "choices": [
-        "Multiple signals: user identity, device posture, location, time, and behavioral analytics — all evaluated together before granting access",
-        "A longer password with special characters and mandatory monthly rotation",
-        "A hardware security key in addition to the password, with no other context checked",
-        "Verification that the user's device has antivirus installed, regardless of other factors"
+        "A stateful firewall tracks the state of connections (using a state table) and can allow return traffic that belongs to an established session, while a packet-filtering firewall evaluates each packet in isolation without connection context",
+        "A packet-filtering firewall can inspect application-layer payload data, while a stateful firewall only looks at headers",
+        "A stateful firewall operates at Layer 1, while a packet-filtering firewall operates at Layer 3",
+        "A packet-filtering firewall encrypts traffic, while a stateful firewall does not"
       ],
-      "answer": "Multiple signals: user identity, device posture, location, time, and behavioral analytics — all evaluated together before granting access",
-      "explanation_correct": "Zero Trust's 'verify explicitly' principle means every access decision incorporates as many signals as possible — not just credentials but device health, geolocation, time of day, and behavioral patterns. This multi-signal approach makes it far harder for an attacker with stolen credentials to gain access, since they would also need a compliant device and the right context.",
-      "explanation_wrong_common": "Options B, C, and D each focus on a single factor. Zero Trust explicitly rejects single-signal verification — even strong MFA alone isn't enough if device posture and context are ignored. A stolen hardware key on a compromised device from an unusual location should still be denied."
+      "answer": "A stateful firewall tracks the state of connections (using a state table) and can allow return traffic that belongs to an established session, while a packet-filtering firewall evaluates each packet in isolation without connection context",
+      "explanation_correct": "Stateful inspection maintains a state table that records active connections — source/dest IP, ports, TCP sequence numbers, and connection state (SYN, ESTABLISHED, etc.). This allows it to intelligently permit return traffic for outgoing connections. A packet-filtering (stateless) firewall checks each packet against ACL rules independently — it cannot distinguish a legitimate response from a crafted inbound packet.",
+      "explanation_wrong_common": "Option B reverses the roles — packet-filtering firewalls do NOT inspect payload; that's application-layer filtering. Option C is wrong — both operate at Layer 3/4. Option D is nonsensical — firewalls don't encrypt traffic by default."
     },
     {
-      "card_id": "zero_trust_007",
-      "topic": "Zero Trust",
+      "card_id": "firewall_002",
+      "topic": "Firewalls",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is 'least privilege access' in the context of Zero Trust architecture?",
+      "question_text": "What is a proxy server (specifically a forward proxy), and what security benefit does it provide?",
       "choices": [
-        "Granting users only the minimum access required to perform their task, for only the duration needed — nothing more",
-        "Giving every user the same baseline access level so administration is simpler",
-        "Restricting all users to read-only access unless they explicitly request write access from IT",
-        "Ensuring privileged accounts like admin and root are used for all daily tasks to reduce account count"
+        "An intermediary server that sits between internal clients and the internet, making requests on behalf of clients — it hides internal IP addresses and can filter content",
+        "A server that caches DNS queries to speed up name resolution across the network",
+        "A server that encrypts all traffic between the client and the destination using IPsec tunnels",
+        "A server that load-balances incoming web traffic across multiple backend servers"
       ],
-      "answer": "Granting users only the minimum access required to perform their task, for only the duration needed — nothing more",
-      "explanation_correct": "Least privilege is a core Zero Trust pillar. Users get exactly the access they need for a specific task — no broad network access, no standing privileges. Access is scoped to individual resources and time-bound (just-in-time), reducing the blast radius of a compromised account.",
-      "explanation_wrong_common": "Option B is uniform access (opposite of least privilege). Option C is overly restrictive and impractical. Option D is the opposite — using admin accounts for daily work maximizes blast radius and violates least privilege."
+      "answer": "An intermediary server that sits between internal clients and the internet, making requests on behalf of clients — it hides internal IP addresses and can filter content",
+      "explanation_correct": "A forward proxy intercepts outbound traffic from internal clients, makes the request to the external server itself, and returns the response. The external server only sees the proxy's IP, not the client's. Proxies can also inspect and filter content (URL filtering, malware scanning). This is different from a reverse proxy, which sits in front of servers to handle inbound traffic.",
+      "explanation_wrong_common": "Option B describes a DNS cache/resolver, not a proxy. Option C describes a VPN gateway. Option D describes a load balancer or reverse proxy function, not a forward proxy."
     },
     {
-      "card_id": "zero_trust_008",
-      "topic": "Zero Trust",
+      "card_id": "firewall_003",
+      "topic": "Firewalls",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An employee's personal phone (BYOD) has not installed the latest OS security patch. Under a Zero Trust policy, they attempt to access the corporate email server. What is the most appropriate Zero Trust response?",
+      "question_text": "A company deploys a next-generation firewall (NGFW) that includes deep packet inspection, an integrated IPS, and application awareness. A user attempts to use port 443 (HTTPS) to tunnel a non-web application (a gaming protocol) through the firewall. How does the NGFW's application awareness handle this?",
       "choices": [
-        "Allow access to email but deny access to the finance application, since the device posture fails the stricter policy for sensitive resources — apply different trust levels per resource",
-        "Block all access entirely until the device is patched, regardless of which resource is requested",
-        "Allow full access since email is low-risk and the user authenticated correctly",
-        "Allow access but silently log the non-compliance for the IT team to review later"
+        "It inspects the packet payload and protocol behavior to identify the actual application, then applies policy regardless of the port number — port 443 does not automatically mean HTTPS traffic is allowed",
+        "It allows the traffic because port 443 is the standard HTTPS port and the firewall trusts TLS-encrypted traffic",
+        "It blocks all port 443 traffic since it cannot inspect encrypted payloads",
+        "It logs the traffic but takes no action, since application awareness only works on unencrypted protocols"
       ],
-      "answer": "Allow access to email but deny access to the finance application, since the device posture fails the stricter policy for sensitive resources — apply different trust levels per resource",
-      "explanation_correct": "Zero Trust applies resource-specific policies. A non-compliant device might still access low-sensitivity resources (email) while being denied high-sensitivity ones (finance). This nuanced, per-resource decision-making is what makes Zero Trust more practical than a binary all-or-nothing approach. The policy engine evaluates device posture against each resource's requirements independently.",
-      "explanation_wrong_common": "Option B is a blunt instrument — Zero Trust is designed to avoid this. Option C ignores device posture entirely, which is the old model. Option D allows access without enforcing policy — logging without enforcement is not Zero Trust."
+      "answer": "It inspects the packet payload and protocol behavior to identify the actual application, then applies policy regardless of the port number — port 443 does not automatically mean HTTPS traffic is allowed",
+      "explanation_correct": "NGFWs use application-layer inspection and behavioral analysis to identify applications by their protocol signatures and patterns, not just port numbers. Even if a gaming protocol uses port 443, the NGFW can detect that the traffic doesn't match genuine HTTPS/TLS behavior and apply the appropriate allow/deny policy. This is a key advantage over traditional port-based firewalls.",
+      "explanation_wrong_common": "Option B is the old port-based firewall model — NGFWs specifically overcome this limitation. Option C is overly aggressive — NGFWs can inspect TLS using SSL decryption/inspection. Option D is wrong — application awareness works on encrypted traffic through behavioral analysis and SNI inspection."
     },
     {
-      "card_id": "zero_trust_009",
-      "topic": "Zero Trust",
+      "card_id": "firewall_004",
+      "topic": "Firewalls",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team is implementing Zero Trust and wants to use microsegmentation. What is the primary security benefit of microsegmentation in this context?",
+      "question_text": "A network administrator needs to place a firewall between the internal network and a DMZ that hosts public-facing web servers. Which firewall rule set follows the principle of least privilege for this setup?",
       "choices": [
-        "It limits lateral movement by containing an attacker within a single segment, so a compromise of one workload cannot spread to others",
-        "It speeds up network performance by reducing the size of broadcast domains",
-        "It eliminates the need for encryption between segments since traffic stays within trusted boundaries",
-        "It automatically patches vulnerabilities within each segment without administrator intervention"
+        "Allow inbound traffic from the internet to the DMZ web servers on ports 80 and 443 only; allow the DMZ web servers to initiate connections to the internal database on the specific database port only; deny all other traffic by default",
+        "Allow all inbound traffic from the internet to the DMZ, then allow all traffic from the DMZ to the internal network for maximum flexibility",
+        "Allow inbound traffic from the internet to the DMZ on all ports, and block all traffic from the DMZ to the internal network",
+        "Allow inbound traffic from the internet directly to the internal network on ports 80 and 443, bypassing the DMZ"
       ],
-      "answer": "It limits lateral movement by containing an attacker within a single segment, so a compromise of one workload cannot spread to others",
-      "explanation_correct": "Microsegmentation divides the network into fine-grained zones (down to individual workloads) with strict access policies between them. In Zero Trust, this means even if an attacker compromises one application, they cannot pivot to others — every inter-segment request is authenticated and authorized. This directly addresses the lateral-movement problem that flat networks suffer from.",
-      "explanation_wrong_common": "Option B is a network performance concept, not a security benefit. Option C is the opposite of Zero Trust — encryption is still required. Option D is fictional — segmentation doesn't patch anything."
+      "answer": "Allow inbound traffic from the internet to the DMZ web servers on ports 80 and 443 only; allow the DMZ web servers to initiate connections to the internal database on the specific database port only; deny all other traffic by default",
+      "explanation_correct": "Least privilege means only the minimum necessary traffic is permitted. Internet users only need HTTP/HTTPS to reach the web servers. The web servers only need the specific database port to reach the internal DB. All other traffic is denied by default. This limits the attack surface — even if a web server is compromised, the attacker can only reach the database on one port, not the entire internal network.",
+      "explanation_wrong_common": "Option B allows everything — maximum flexibility equals maximum attack surface. Option C opens all inbound ports to the DMZ (unnecessary) and blocks all internal access (web servers can't reach the DB). Option D bypasses the DMZ entirely, exposing the internal network directly to the internet."
     },
     {
-      "card_id": "zero_trust_010",
-      "topic": "Zero Trust",
+      "card_id": "firewall_005",
+      "topic": "Firewalls",
       "difficulty": "medium",
       "question_type": "definition",
-      "question_text": "NIST SP 800-207 describes the Policy Enforcement Point (PEP). What is the PEP's role in Zero Trust architecture?",
+      "question_text": "What is the difference between a network-based firewall and a host-based firewall, and when should each be used?",
       "choices": [
-        "It sits between the subject and resource on the Data Plane, enforcing the access decision made by the Policy Engine — it allows, blocks, or terminates the connection",
-        "It evaluates subject identity, device posture, and policy to make the access decision itself",
-        "It stores and manages all cryptographic keys used for encrypting Zero Trust connections",
-        "It collects telemetry and logs from all systems for the Security Information and Event Management (SIEM) platform"
+        "A network-based firewall protects an entire network segment at the perimeter (e.g., between LAN and internet), while a host-based firewall runs on individual endpoints to filter traffic to/from that specific host — both should be used together for defense in depth",
+        "A network-based firewall inspects only Layer 2 traffic, while a host-based firewall inspects Layer 7 traffic",
+        "A network-based firewall is always superior and replaces the need for host-based firewalls on endpoints",
+        "A host-based firewall can only block inbound traffic, while a network-based firewall can only block outbound traffic"
       ],
-      "answer": "It sits between the subject and resource on the Data Plane, enforcing the access decision made by the Policy Engine — it allows, blocks, or terminates the connection",
-      "explanation_correct": "The PEP is the enforcement mechanism on the Data Plane. It receives the decision from the Policy Administrator (which got it from the Policy Engine on the Control Plane) and physically allows, denies, or disconnects the session. Think of it as the security guard at the door — it doesn't make the rules, it enforces them.",
-      "explanation_wrong_common": "Option B describes the Policy Engine (PE), not the PEP — the PE decides, the PEP enforces. Option C describes a key management system. Option D describes a telemetry/logging function, not the PEP's enforcement role."
+      "answer": "A network-based firewall protects an entire network segment at the perimeter (e.g., between LAN and internet), while a host-based firewall runs on individual endpoints to filter traffic to/from that specific host — both should be used together for defense in depth",
+      "explanation_correct": "Network-based firewalls (e.g., a hardware appliance at the network edge) filter traffic for the whole segment. Host-based firewalls (e.g., Windows Defender Firewall) run on each machine and can enforce policies specific to that host's applications. Using both provides defense in depth — if an attacker bypasses the network firewall (e.g., via a compromised VPN), the host firewall still provides a layer of protection.",
+      "explanation_wrong_common": "Option B is wrong — both can inspect multiple layers. Option C is dangerous — relying on a single layer contradicts defense in depth. Option D is wrong — both can filter traffic in both directions."
     },
     {
-      "card_id": "symmetric_006",
-      "topic": "Symmetric Encryption",
+      "card_id": "ids_ips_001",
+      "topic": "IDS/IPS",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the 'key distribution problem' in symmetric encryption, and why is it significant?",
+      "question_text": "What is the fundamental difference between an Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS)?",
       "choices": [
-        "The challenge of securely sharing the secret key with all parties who need it — if the key is intercepted during distribution, the encryption is compromised",
-        "The difficulty of generating keys that are random enough to be unpredictable",
-        "The problem of distributing encrypted ciphertext over unreliable network connections",
-        "The challenge of distributing different encryption algorithms to different users"
+        "An IDS only detects and alerts on suspicious activity (passive), while an IPS detects and actively blocks or drops the malicious traffic (active)",
+        "An IDS operates at the network layer, while an IPS operates at the application layer",
+        "An IDS uses signature-based detection only, while an IPS uses anomaly-based detection only",
+        "An IDS is hardware-based, while an IPS is software-based"
       ],
-      "answer": "The challenge of securely sharing the secret key with all parties who need it — if the key is intercepted during distribution, the encryption is compromised",
-      "explanation_correct": "Symmetric encryption's biggest weakness is key distribution: both sender and receiver need the same key, but sending it over an insecure channel defeats the purpose of encryption. This is why hybrid systems use asymmetric encryption to establish a shared symmetric key (e.g., TLS handshake), combining the speed of symmetric with the secure key exchange of asymmetric.",
-      "explanation_wrong_common": "Option B is about key generation quality, not distribution. Option C is about network reliability, not the key distribution problem. Option D is about algorithm deployment, not the core challenge of sharing a secret key."
+      "answer": "An IDS only detects and alerts on suspicious activity (passive), while an IPS detects and actively blocks or drops the malicious traffic (active)",
+      "explanation_correct": "The key distinction is the response: an IDS is a passive system — it monitors traffic (often via a SPAN/mirror port) and sends alerts when it detects threats, but does not intervene. An IPS is inline and can take action — dropping packets, resetting connections, or blocking the source IP. An IDS is like a security camera; an IPS is like a security guard who can physically stop an intruder.",
+      "explanation_wrong_common": "Option B is wrong — both can operate at multiple layers. Option C is wrong — both can use signatures and anomalies. Option D is wrong — both can be either hardware or software."
     },
     {
-      "card_id": "symmetric_007",
-      "topic": "Symmetric Encryption",
+      "card_id": "ids_ips_002",
+      "topic": "IDS/IPS",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a block cipher and a stream cipher?",
+      "question_text": "What is the difference between signature-based detection and anomaly-based (heuristic) detection in an IDS/IPS?",
       "choices": [
-        "A block cipher encrypts fixed-size blocks of data (e.g., 128 bits) at a time, while a stream cipher encrypts data one bit or byte at a time as a continuous stream",
-        "A block cipher is used for files and a stream cipher is used for network traffic — they are otherwise identical",
-        "A block cipher uses two keys and a stream cipher uses one key",
-        "A block cipher is always more secure than a stream cipher regardless of key size"
+        "Signature-based matches traffic against known attack patterns (like antivirus definitions), while anomaly-based establishes a baseline of normal behavior and flags deviations from that baseline",
+        "Signature-based uses AI to predict new attacks, while anomaly-based only detects previously seen attacks",
+        "Signature-based is always more accurate than anomaly-based detection",
+        "Anomaly-based detection requires no configuration, while signature-based requires extensive tuning"
       ],
-      "answer": "A block cipher encrypts fixed-size blocks of data (e.g., 128 bits) at a time, while a stream cipher encrypts data one bit or byte at a time as a continuous stream",
-      "explanation_correct": "Block ciphers (AES, DES) process fixed-size blocks and require padding for data that doesn't fill a block. Stream ciphers (ChaCha20, RC4) generate a keystream that is XORed with plaintext, processing data continuously. Stream ciphers are useful for real-time communication where data arrives in variable sizes; block ciphers are common for stored data.",
-      "explanation_wrong_common": "Option B oversimplifies — both can be used for either purpose with appropriate modes. Option C is wrong — both use one key. Option D is false — security depends on key size and implementation, not the cipher type."
+      "answer": "Signature-based matches traffic against known attack patterns (like antivirus definitions), while anomaly-based establishes a baseline of normal behavior and flags deviations from that baseline",
+      "explanation_correct": "Signature-based detection compares network traffic to a database of known attack signatures — it's highly accurate for known threats but cannot detect zero-day or novel attacks. Anomaly-based detection first learns what 'normal' traffic looks like (baseline), then alerts on anything that deviates significantly. This can catch unknown attacks but tends to produce more false positives, especially if the baseline isn't well-tuned.",
+      "explanation_wrong_common": "Option B reverses the definitions. Option C is wrong — anomaly-based can catch unknown attacks that signature-based misses. Option D is wrong — anomaly-based requires careful baseline tuning to minimize false positives."
     },
     {
-      "card_id": "symmetric_008",
-      "topic": "Symmetric Encryption",
+      "card_id": "ids_ips_003",
+      "topic": "IDS/IPS",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A developer needs to encrypt database columns that contain sensitive customer PII. They must choose between AES-CBC and AES-GCM modes. Why is AES-GCM generally the better choice for this use case?",
+      "question_text": "A Security Operations Center (SOC) deploys a NIDS (network-based IDS) using a SPAN/mirror port on a core switch. They notice the IDS is missing some attack traffic that the IPS on the perimeter catches. What is the most likely cause?",
       "choices": [
-        "AES-GCM provides both confidentiality and integrity (authenticated encryption), detecting if ciphertext has been tampered with — CBC provides confidentiality only and is vulnerable to padding oracle attacks without additional MAC",
-        "AES-GCM is faster because it uses a shorter key length than AES-CBC",
-        "AES-GCM does not require an initialization vector, making implementation simpler",
-        "AES-CBC is deprecated and must not be used in any context"
+        "The SPAN port may be dropping packets during high traffic volume (oversubscription), causing the IDS to miss traffic — SPAN ports are not guaranteed to deliver 100% of packets under load",
+        "The NIDS is using anomaly-based detection while the IPS uses signature-based, so they detect different threats",
+        "The NIDS cannot see encrypted traffic, but the IPS can because it is inline",
+        "The IDS and IPS are on different network segments and monitoring different traffic flows entirely"
       ],
-      "answer": "AES-GCM provides both confidentiality and integrity (authenticated encryption), detecting if ciphertext has been tampered with — CBC provides confidentiality only and is vulnerable to padding oracle attacks without additional MAC",
-      "explanation_correct": "GCM (Galois/Counter Mode) is an authenticated encryption mode — it produces a tag that verifies the ciphertext hasn't been modified. CBC alone provides no integrity; an attacker can modify ciphertext without detection, and CBC is susceptible to padding oracle attacks. GCM is the recommended mode in modern applications (TLS 1.3 uses it).",
-      "explanation_wrong_common": "GCM and CBC use the same key sizes. GCM still uses an IV/nonce (and reusing it is catastrophic). CBC isn't fully deprecated — it's still usable with a separate MAC (Encrypt-then-MAC), but GCM is simpler and safer."
+      "answer": "The SPAN port may be dropping packets during high traffic volume (oversubscription), causing the IDS to miss traffic — SPAN ports are not guaranteed to deliver 100% of packets under load",
+      "explanation_correct": "SPAN/mirror ports copy traffic to the IDS for analysis, but under heavy load, the switch may prioritize forwarding traffic over mirroring, resulting in dropped packets on the SPAN port. This is a well-known limitation of out-of-band IDS deployments. An inline IPS sees 100% of traffic because it's directly in the traffic path. For high-throughput environments, network TAPs (Test Access Points) are preferred over SPAN ports because they guarantee full packet capture.",
+      "explanation_wrong_common": "Option B is possible but less likely — the question specifically mentions the IPS 'catches' traffic the IDS misses, suggesting a visibility issue, not a detection method issue. Option C doesn't explain why the IPS catches it — both would struggle with encrypted traffic unless SSL inspection is used. Option D would be a deployment design error, not a common technical issue."
     },
     {
-      "card_id": "symmetric_009",
-      "topic": "Symmetric Encryption",
+      "card_id": "ids_ips_004",
+      "topic": "IDS/IPS",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company is still using 3DES to encrypt legacy ATM communications. Their security team recommends migrating to AES-256. Which combination of reasons best justifies this migration?",
+      "question_text": "A company's IPS has been generating a high volume of false positives after a new application was deployed. The security team needs to reduce false positives without weakening security. What is the best approach?",
       "choices": [
-        "3DES has a small effective block size (64-bit) making it vulnerable to birthday attacks (Sweet32), is ~3x slower than AES, and is deprecated by NIST SP 800-131A — AES-256 has a 128-bit block size and is the current standard",
-        "3DES keys are too long and waste storage compared to AES-256's shorter key",
-        "3DES is symmetric while AES is asymmetric, providing better key distribution",
-        "3DES can only encrypt text, not binary data, while AES handles both"
+        "Tune the IPS rules by creating exceptions or adjusting thresholds for the specific traffic patterns of the new application, while keeping the core detection rules active",
+        "Disable the IPS rules that are generating the false positives entirely",
+        "Switch the IPS from signature-based to anomaly-based detection only",
+        "Move the IPS from inline mode to passive IDS mode so it only alerts without blocking"
       ],
-      "answer": "3DES has a small effective block size (64-bit) making it vulnerable to birthday attacks (Sweet32), is ~3x slower than AES, and is deprecated by NIST SP 800-131A — AES-256 has a 128-bit block size and is the current standard",
-      "explanation_correct": "3DES inherits DES's 64-bit block size. With enough encrypted data (~785 GB), the Sweet32 attack can recover plaintext via birthday-bound collisions. 3DES is also far slower (three DES operations per block). NIST deprecated 3DES in 2023. AES uses 128-bit blocks (vastly larger collision space) and is hardware-accelerated on modern CPUs.",
-      "explanation_wrong_common": "3DES keys are actually shorter in effective strength (112-bit) than AES-256. AES is symmetric, not asymmetric — option C is categorically wrong. Both algorithms encrypt binary data; option D is false."
+      "answer": "Tune the IPS rules by creating exceptions or adjusting thresholds for the specific traffic patterns of the new application, while keeping the core detection rules active",
+      "explanation_correct": "False positives often occur when legitimate application traffic matches attack signatures. The proper response is to tune the rules — create allowlist exceptions for known-good traffic patterns, adjust sensitivity thresholds, or modify rule parameters. This maintains security coverage while reducing noise. Disabling rules entirely (Option B) creates blind spots. Switching detection methods (Option C) or moving to passive mode (Option D) doesn't address the root cause and weakens the security posture.",
+      "explanation_wrong_common": "Option B creates a security gap by completely disabling detection. Option C doesn't solve the problem — anomaly-based detection also generates false positives and would need its own tuning. Option D downgrades prevention to detection-only, reducing the IPS's protective capability."
     },
     {
-      "card_id": "symmetric_010",
-      "topic": "Symmetric Encryption",
+      "card_id": "ids_ips_005",
+      "topic": "IDS/IPS",
       "difficulty": "medium",
       "question_type": "definition",
-      "question_text": "What is a key derivation function (KDF) such as PBKDF2 or bcrypt, and why is it used instead of directly hashing a password to generate an encryption key?",
+      "question_text": "What is a HIDS (Host-based Intrusion Detection System), and how does it differ from a NIDS in terms of what it monitors?",
       "choices": [
-        "A KDF deliberately slows down key generation (via many iterations / work factor) and adds a salt, making brute-force attacks on passwords computationally expensive — direct hashing is too fast and vulnerable to rainbow tables",
-        "A KDF compresses a long password into a shorter key to save storage space",
-        "A KDF generates random keys so users don't have to remember passwords",
-        "A KDF encrypts the password before storing it in a database for later retrieval"
+        "A HIDS monitors activity on a single host — file integrity, system logs, running processes, and registry changes — while a NIDS monitors network traffic flows across a network segment",
+        "A HIDS monitors network traffic on a single host's network interface, while a NIDS monitors traffic on the entire network",
+        "A HIDS can only detect malware, while a NIDS can only detect network attacks",
+        "A HIDS is always more accurate than a NIDS because it has less traffic to analyze"
       ],
-      "answer": "A KDF deliberately slows down key generation (via many iterations / work factor) and adds a salt, making brute-force attacks on passwords computationally expensive — direct hashing is too fast and vulnerable to rainbow tables",
-      "explanation_correct": "KDFs like PBKDF2, bcrypt, scrypt, and Argon2 are designed to be deliberately slow (configurable work factor/iterations) and use a unique salt per password. This means an attacker brute-forcing passwords can't try millions per second (as with raw SHA-256), and can't use precomputed rainbow tables because the salt changes the output. They turn human passwords into cryptographically strong symmetric keys.",
-      "explanation_wrong_common": "KDFs don't compress — they produce a fixed-length key regardless of input length. They don't replace passwords; they derive keys FROM passwords. They don't encrypt passwords for retrieval — that would be reversible, which is the opposite of what you want."
+      "answer": "A HIDS monitors activity on a single host — file integrity, system logs, running processes, and registry changes — while a NIDS monitors network traffic flows across a network segment",
+      "explanation_correct": "A HIDS is installed on individual hosts and monitors host-level indicators: file integrity (using checksums/hashes), system event logs, process activity, registry modifications, and local network connections. This allows it to detect attacks that don't generate suspicious network traffic (e.g., a local privilege escalation). A NIDS sees the network picture but can't tell what's happening inside a host. Using both provides comprehensive coverage.",
+      "explanation_wrong_common": "Option B is partially correct but incomplete — a HIDS does monitor the host's network interface, but its primary value is host-level monitoring (files, processes, logs), not just network traffic. Option C is wrong — both can detect various attack types. Option D is not necessarily true — each has different visibility, not different accuracy."
     },
     {
-      "card_id": "asymmetric_006",
-      "topic": "Asymmetric Encryption",
+      "card_id": "netseg_001",
+      "topic": "Network Segmentation",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a digital signature, and which key is used to create it?",
+      "question_text": "What is a DMZ (Demilitarized Zone) in network architecture, and what is its primary purpose?",
       "choices": [
-        "A cryptographic proof of authenticity and integrity, created by encrypting a hash of the message with the sender's PRIVATE key — anyone with the sender's public key can verify it",
-        "An encrypted copy of the message created with the sender's public key, so only the sender can read it",
-        "A hash of the message created with a shared symmetric key, providing integrity but not authenticity",
-        "A timestamp applied to the message by a trusted third party, proving when it was sent"
+        "A separate network segment that hosts public-facing services (web, email, DNS) so that if they are compromised, the attacker does not have direct access to the internal network",
+        "A buffer zone where all network traffic is encrypted before being sent to the internal network",
+        "A zone where all firewall rules are disabled to allow unrestricted communication between segments",
+        "A physical area in the data center where only authorized personnel can access servers"
       ],
-      "answer": "A cryptographic proof of authenticity and integrity, created by encrypting a hash of the message with the sender's PRIVATE key — anyone with the sender's public key can verify it",
-      "explanation_correct": "Digital signatures provide non-repudiation, authenticity, and integrity. The sender hashes the message and encrypts the hash with their private key. The recipient decrypts the signature with the sender's public key and compares the hash to a freshly computed hash of the message. If they match, the message is authentic and unmodified — and only the private key holder could have signed it.",
-      "explanation_wrong_common": "Option B reverses the key usage (signing uses private, not public). Option C describes a MAC (symmetric), which doesn't provide non-repudiation. Option D describes timestamping, which is a different service."
+      "answer": "A separate network segment that hosts public-facing services (web, email, DNS) so that if they are compromised, the attacker does not have direct access to the internal network",
+      "explanation_correct": "A DMZ isolates public-facing servers from the internal network. Internet users can reach the DMZ servers (on limited ports), but the DMZ has restricted access to the internal network. If an attacker compromises a web server in the DMZ, they are still separated from the internal network by an additional firewall. This is a fundamental principle of defense in depth — compartmentalizing risk.",
+      "explanation_wrong_common": "Option B describes a VPN tunnel, not a DMZ. Option C is the opposite of what a DMZ does — a DMZ has strict firewall rules. Option D describes a physical security zone, not a network DMZ."
     },
     {
-      "card_id": "asymmetric_007",
-      "topic": "Asymmetric Encryption",
+      "card_id": "netseg_002",
+      "topic": "Network Segmentation",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the current NIST-recommended minimum RSA key size for general-purpose encryption, and why?",
+      "question_text": "What is a VLAN (Virtual LAN), and how does it contribute to network security?",
       "choices": [
-        "2048 bits — 1024-bit RSA is no longer considered secure against modern computing power; 2048 provides ~112 bits of security, sufficient through 2030 per NIST SP 800-57",
-        "512 bits — sufficient for all non-government use cases",
-        "1024 bits — still recommended by NIST for backwards compatibility",
-        "4096 bits — the only key size approved by NIST for any use"
+        "A logical grouping of devices on different physical switches that behaves as if they are on the same network segment, isolating broadcast domains and limiting the scope of attacks",
+        "A virtual machine that runs as a firewall between network segments",
+        "A protocol that encrypts all traffic between switches in a data center",
+        "A physical cable that connects multiple network segments into one logical network"
       ],
-      "answer": "2048 bits — 1024-bit RSA is no longer considered secure against modern computing power; 2048 provides ~112 bits of security, sufficient through 2030 per NIST SP 800-57",
-      "explanation_correct": "NIST SP 800-57 recommends a minimum of 2048-bit RSA keys, providing approximately 112 bits of security, considered acceptable through 2030. 1024-bit keys (~80 bits of security) have been deprecated since 2013. 3072-bit (~128 bits) is recommended for longer-term protection. 4096 is stronger but slower and unnecessary for most use cases.",
-      "explanation_wrong_common": "512-bit RSA was broken in 1999. 1024-bit is deprecated. 4096 is overkill for general use and adds significant computational overhead — it's not the minimum, it's an option for extra security."
+      "answer": "A logical grouping of devices on different physical switches that behaves as if they are on the same network segment, isolating broadcast domains and limiting the scope of attacks",
+      "explanation_correct": "VLANs create separate broadcast domains at Layer 2, even when devices are connected to the same physical switch. By putting different departments or device types (e.g., servers, guest Wi-Fi, IoT) in separate VLANs, you limit lateral movement — a compromised device in one VLAN cannot directly access devices in another without routing through a firewall or Layer 3 switch with ACLs. Inter-VLAN routing can be controlled with firewall policies.",
+      "explanation_wrong_common": "Option B describes a virtual firewall appliance, not a VLAN. Option C describes a link encryption protocol. Option D describes a physical cable — VLANs are logical, not physical."
     },
     {
-      "card_id": "asymmetric_008",
-      "topic": "Asymmetric Encryption",
+      "card_id": "netseg_003",
+      "topic": "Network Segmentation",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A software company wants to digitally sign its application releases so users can verify authenticity. Which key does the company use to sign, and how does a user verify the signature?",
+      "question_text": "A hospital network has medical devices (infusion pumps, patient monitors), staff workstations, guest Wi-Fi, and a data center. The security team needs to segment these. Which VLAN strategy follows security best practices?",
       "choices": [
-        "The company signs the release with its PRIVATE key; the user verifies the signature using the company's PUBLIC key (obtained via its certificate or website)",
-        "The company signs the release with its PUBLIC key; the user verifies with the company's private key",
-        "The company signs the release with a shared symmetric key; the user verifies with the same key",
-        "The company signs the release with the user's public key; the user verifies with their own private key"
+        "Separate VLANs for each device category: medical devices on one VLAN with strict access controls, staff workstations on another, guest Wi-Fi on an isolated VLAN with internet-only access, and the data center on a highly restricted VLAN — all separated by a firewall with explicit allow rules",
+        "Put all devices on the same VLAN but use strong passwords to protect sensitive systems",
+        "Put medical devices and staff workstations on the same VLAN since they are both used by hospital staff, and isolate only the guest Wi-Fi",
+        "Create two VLANs: one for all internal devices and one for guest Wi-Fi"
       ],
-      "answer": "The company signs the release with its PRIVATE key; the user verifies the signature using the company's PUBLIC key (obtained via its certificate or website)",
-      "explanation_correct": "Digital signatures use the signer's private key to create the signature. Anyone can verify using the corresponding public key. This ensures that only the company (holding the private key) could have produced the signature, providing authenticity and non-repudiation. The public key is typically distributed via a code-signing certificate from a trusted CA.",
-      "explanation_wrong_common": "Option B reverses the keys — signing with a public key would mean anyone can sign. Option C is symmetric (MAC), which doesn't prove who signed it. Option D would only let the user verify their own signature, not the company's."
+      "answer": "Separate VLANs for each device category: medical devices on one VLAN with strict access controls, staff workstations on another, guest Wi-Fi on an isolated VLAN with internet-only access, and the data center on a highly restricted VLAN — all separated by a firewall with explicit allow rules",
+      "explanation_correct": "Medical IoT devices are high-risk (often can't be patched, run legacy OS) and need isolation. Staff workstations need access to hospital systems but could be compromised. Guest Wi-Fi must be completely isolated from internal systems. The data center holds sensitive data (patient records) and needs the strictest controls. Separate VLANs with firewall-enforced inter-VLAN rules ensure that a compromise in one segment cannot easily spread to others — this is defense in depth applied to network architecture.",
+      "explanation_wrong_common": "Option B relies on passwords alone — no network isolation means lateral movement is trivial. Option C mixes medical devices with workstations — a compromised workstation could attack medical devices. Option D is too coarse — medical devices and workstations have very different risk profiles and should be separated."
     },
     {
-      "card_id": "asymmetric_009",
-      "topic": "Asymmetric Encryption",
+      "card_id": "netseg_004",
+      "topic": "Network Segmentation",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization implements key escrow: copies of all employees' private encryption keys are stored with a trusted third party. What is the primary security risk introduced by this arrangement?",
+      "question_text": "An attacker gains access to a web server in a company's DMZ through a vulnerable web application. The company's network is flat (no segmentation) between the DMZ and internal network. What could have limited the damage, and what should they implement?",
       "choices": [
-        "The escrow agent becomes a single point of compromise — if breached, all employees' private keys are exposed, defeating the confidentiality of all encrypted data",
-        "Key escrow slows down encryption performance because keys must be fetched from the escrow server each time",
-        "Key escrow prevents employees from changing their passwords without escrow agent approval",
-        "Key escrow makes asymmetric encryption revert to symmetric encryption automatically"
+        "Implement network segmentation with a firewall between the DMZ and internal network that only allows the web server to communicate with the specific database server on the specific database port — nothing else",
+        "Install antivirus on the web server to prevent the initial compromise",
+        "Move the web server to the internal network so it is behind the main firewall",
+        "Encrypt all traffic between the DMZ and internal network using IPsec"
       ],
-      "answer": "The escrow agent becomes a single point of compromise — if breached, all employees' private keys are exposed, defeating the confidentiality of all encrypted data",
-      "explanation_correct": "Key escrow creates a central repository of private keys. While it enables key recovery (useful if an employee leaves or loses their key), it introduces a massive attack surface: a single breach of the escrow agent exposes every key. This is why key escrow is controversial — the Clipper Chip proposal in the 1990s was rejected largely for this reason.",
-      "explanation_wrong_common": "Keys aren't fetched from escrow during encryption — they're stored locally. Key escrow doesn't affect password changes. It doesn't change the encryption type. The real risk is the centralized trust model."
+      "answer": "Implement network segmentation with a firewall between the DMZ and internal network that only allows the web server to communicate with the specific database server on the specific database port — nothing else",
+      "explanation_correct": "In a flat network, a compromised DMZ server gives the attacker a direct path to the internal network. Proper segmentation with a deny-by-default firewall between the DMZ and internal network ensures the web server can only reach the database on the exact port needed — not file shares, not RDP, not other internal services. This containment strategy means even a full web server compromise has a minimal blast radius.",
+      "explanation_wrong_common": "Option B doesn't address lateral movement — antivirus might not catch a web exploit. Option C moves the public server inside, exposing the internal network directly to the internet. Option D encrypts the attacker's traffic too — encryption provides confidentiality but does nothing for access control."
     },
     {
-      "card_id": "asymmetric_010",
-      "topic": "Asymmetric Encryption",
+      "card_id": "netseg_005",
+      "topic": "Network Segmentation",
       "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A TLS certificate provider offers RSA-2048 and ECC-256 (P-256) certificates at the same price. For a high-traffic web server, why might ECC-256 be the better choice?",
+      "question_type": "definition",
+      "question_text": "What is network zoning, and how do trusted, semi-trusted, and untrusted zones differ in a secure network architecture?",
       "choices": [
-        "ECC-256 provides equivalent security to RSA-3072 with much smaller keys, resulting in faster TLS handshakes, lower CPU usage, and reduced bandwidth — critical for high-traffic servers",
-        "ECC-256 is more secure than RSA-4096 because elliptic curves cannot be attacked by quantum computers",
-        "ECC-256 certificates are free while RSA certificates require annual renewal fees",
-        "ECC-256 supports both encryption and signing while RSA only supports signing"
+        "Trusted zone = internal corporate network (highest trust); semi-trusted = DMZ with public-facing servers (limited trust); untrusted = the internet (no trust) — traffic flows are controlled by firewalls between each zone based on trust level",
+        "Trusted zone = the internet; semi-trusted = DMZ; untrusted = internal network — the order is reversed from internal perspective",
+        "Zones are physical locations in the building: trusted = server room, semi-trusted = office floor, untrusted = lobby",
+        "All zones have the same trust level — zoning is only about organizing IP address ranges for routing efficiency"
       ],
-      "answer": "ECC-256 provides equivalent security to RSA-3072 with much smaller keys, resulting in faster TLS handshakes, lower CPU usage, and reduced bandwidth — critical for high-traffic servers",
-      "explanation_correct": "ECC P-256 (256-bit key) provides ~128 bits of security, comparable to RSA-3072. The smaller key size means smaller certificates, fewer bytes in TLS handshakes, and faster key exchange computations. On a high-traffic server, this translates to measurable CPU savings and faster page loads. Major providers like Cloudflare and Google use ECC certificates for this reason.",
-      "explanation_wrong_common": "ECC is still vulnerable to Shor's algorithm on quantum computers — option B is false. Pricing isn't key-size-dependent in this scenario. Both RSA and ECC support encryption and signing — option D is false."
+      "answer": "Trusted zone = internal corporate network (highest trust); semi-trusted = DMZ with public-facing servers (limited trust); untrusted = the internet (no trust) — traffic flows are controlled by firewalls between each zone based on trust level",
+      "explanation_correct": "Network zoning classifies network segments by trust level. The internal network is trusted (users and servers are authenticated and managed). The DMZ is semi-trusted (public servers face the internet but are not fully trusted by the internal network). The internet is untrusted (no inherent trust). Firewalls enforce traffic policies between zones: internet→DMZ (limited ports), DMZ→internal (restricted), internet→internal (denied). This graduated trust model is fundamental to secure network architecture.",
+      "explanation_wrong_common": "Option B reverses the trust model. Option C confuses physical security zones with network zones. Option D is wrong — zoning is fundamentally about trust and access control, not just IP address management."
     },
     {
-      "card_id": "pki_006",
-      "topic": "PKI",
+      "card_id": "topology_001",
+      "topic": "Secure Topology",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a Certificate Revocation List (CRL) and the Online Certificate Status Protocol (OCSP)?",
+      "question_text": "What is 'defense in depth' in the context of secure network architecture?",
       "choices": [
-        "A CRL is a periodically published list of all revoked certificate serial numbers; OCSP is a real-time protocol where a client queries the CA to check a specific certificate's status on demand",
-        "A CRL checks certificate status in real time; OCSP is a published list of revoked certificates",
-        "A CRL is used for SSL certificates only; OCSP is used for code-signing certificates only",
-        "A CRL is maintained by the certificate owner; OCSP is maintained by the end user's browser"
+        "Layering multiple independent security controls (firewalls, IDS/IPS, segmentation, endpoint protection, encryption) so that if one layer fails, others still provide protection",
+        "Deploying multiple firewalls in a row to filter the same traffic multiple times",
+        "Digging a physical trench around the data center for perimeter security",
+        "Using only one very strong security control to protect the entire network"
       ],
-      "answer": "A CRL is a periodically published list of all revoked certificate serial numbers; OCSP is a real-time protocol where a client queries the CA to check a specific certificate's status on demand",
-      "explanation_correct": "CRLs are batch lists — the CA publishes a file containing all currently revoked certificates, which clients download and cache. This can be large and stale. OCSP is real-time: the client sends a query for one certificate's serial number and gets back 'good', 'revoked', or 'unknown'. OCSP is more current but adds per-request latency. OCSP Stapling (server fetches OCSP response and includes it in TLS handshake) combines the best of both.",
-      "explanation_wrong_common": "Options B, C, and D all reverse or misassign the roles. CRL is a list (not real-time), OCSP is real-time (not a list). Both work for any certificate type. Both are maintained by the CA, not the certificate owner or browser."
+      "answer": "Layering multiple independent security controls (firewalls, IDS/IPS, segmentation, endpoint protection, encryption) so that if one layer fails, others still provide protection",
+      "explanation_correct": "Defense in depth recognizes that no single security control is perfect. By layering controls — perimeter firewall, network segmentation, host-based firewalls, IDS/IPS, endpoint detection and response, encryption, access controls — an attacker must breach multiple independent layers to reach critical assets. Each layer provides a different type of protection, so a failure in one doesn't compromise the entire system.",
+      "explanation_wrong_common": "Option B is redundant, not defense in depth — multiple identical controls don't add independent protection. Option C is a literal interpretation, not the cybersecurity concept. Option D is the opposite of defense in depth — single points of failure are exactly what it avoids."
     },
     {
-      "card_id": "pki_007",
-      "topic": "PKI",
+      "card_id": "topology_002",
+      "topic": "Secure Topology",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a self-signed certificate, and in what scenario is its use acceptable?",
+      "question_text": "What is NAT (Network Address Translation), and what security benefit does it provide as a side effect?",
       "choices": [
-        "A certificate signed by its own private key rather than a trusted CA — acceptable for internal/dev environments or testing, but NOT for public-facing production services",
-        "A certificate that has been signed by two different CAs simultaneously for redundancy",
-        "A certificate that expires automatically after 24 hours without CA involvement",
-        "A certificate where the subject and issuer are different entities, used for cross-domain trust"
+        "NAT translates private IP addresses to a public IP address for outbound traffic — as a side effect, it hides internal IP addresses from the external network, providing a basic level of address obfuscation",
+        "NAT encrypts all outgoing traffic so external parties cannot read the data",
+        "NAT is a firewall feature that blocks all incoming traffic by default",
+        "NAT assigns static IP addresses to all internal devices for easier management"
       ],
-      "answer": "A certificate signed by its own private key rather than a trusted CA — acceptable for internal/dev environments or testing, but NOT for public-facing production services",
-      "explanation_correct": "A self-signed certificate has the same entity as both subject and issuer. Since no trusted CA vouches for it, browsers will show security warnings. It's fine for internal development, testing, or closed systems where you control all clients. But for public services, users have no way to verify the certificate's authenticity — an attacker could create an identical self-signed certificate and impersonate the server.",
-      "explanation_wrong_common": "Option B describes cross-signing, not self-signing. Option C describes short-lived certificates, not self-signed. Option D is the opposite — a self-signed cert has subject = issuer."
+      "answer": "NAT translates private IP addresses to a public IP address for outbound traffic — as a side effect, it hides internal IP addresses from the external network, providing a basic level of address obfuscation",
+      "explanation_correct": "NAT (specifically PAT/overload NAT) maps multiple private IPs to one public IP. When internal devices access the internet, their private source IP is replaced with the router's public IP. External systems only see the public IP, not the internal addressing scheme. While NAT was designed for IP conservation, this address hiding provides incidental security by making internal network reconnaissance harder. However, NAT is NOT a security control — it should not be relied upon as a firewall.",
+      "explanation_wrong_common": "Option B confuses NAT with encryption (VPN/IPsec). Option C confuses NAT with a firewall's default-deny rule. Option D describes static DHCP assignment, not NAT."
     },
     {
-      "card_id": "pki_008",
-      "topic": "PKI",
+      "card_id": "topology_003",
+      "topic": "Secure Topology",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A mobile banking app implements certificate pinning — it stores a known-good copy of the bank's server certificate or public key. What attack does certificate pinning primarily prevent?",
+      "question_text": "A company is designing a secure network topology for a new office. They have: 200 employee workstations, a server room with 15 servers, guest Wi-Fi for visitors, and an IoT building management system (HVAC, door access). Which topology best follows secure architecture principles?",
       "choices": [
-        "Man-in-the-middle attacks using a rogue CA-issued certificate — the app rejects any certificate that doesn't match the pinned one, even if a CA signed it",
-        "SQL injection attacks against the bank's database",
-        "Brute-force attacks on the user's login password",
-        "Phishing emails that impersonate the bank's customer service"
+        "Internet → Edge Firewall → Core Switch with VLANs: VLAN 10 (workstations), VLAN 20 (servers, restricted), VLAN 30 (guest Wi-Fi, internet-only), VLAN 40 (IoT, isolated, no internet unless required) — inter-VLAN traffic routed through firewall with explicit allow rules",
+        "Internet → Edge Firewall → Single flat network for all devices, with a separate SSID for guest Wi-Fi",
+        "Internet → Edge Firewall → All servers and workstations on the same network, with IoT on a separate SSID",
+        "Internet → Edge Firewall → Guest Wi-Fi and IoT on the same network, workstations and servers on another"
       ],
-      "answer": "Man-in-the-middle attacks using a rogue CA-issued certificate — the app rejects any certificate that doesn't match the pinned one, even if a CA signed it",
-      "explanation_correct": "Certificate pinning hard-codes or stores the expected server certificate/public key in the app. Even if an attacker obtains a valid certificate for the bank's domain from a compromised or rogue CA, the app will refuse the connection because the certificate doesn't match the pin. This prevents MITM even when the CA trust model fails. Note: pinning is less common in browsers now (HPKP was deprecated) but still used in mobile apps.",
-      "explanation_wrong_common": "Pinning has nothing to do with SQL injection, password brute-force, or phishing emails — those are entirely different attack categories. Pinning specifically addresses the trust chain at the TLS layer."
+      "answer": "Internet → Edge Firewall → Core Switch with VLANs: VLAN 10 (workstations), VLAN 20 (servers, restricted), VLAN 40 (guest Wi-Fi, internet-only), VLAN 40 (IoT, isolated, no internet unless required) — inter-VLAN traffic routed through firewall with explicit allow rules",
+      "explanation_correct": "This topology properly segments each device class: workstations get their own VLAN, servers are isolated and restricted, guest Wi-Fi has internet-only access (no internal network access), and IoT is fully isolated (IoT devices are notoriously insecure and often can't be patched). Inter-VLAN traffic passes through the firewall with explicit allow rules, implementing least privilege between segments. This is defense in depth at the network architecture level.",
+      "explanation_wrong_common": "Option B puts everything on a flat network — one compromise spreads everywhere. Option C mixes servers and workstations — a compromised workstation can attack servers directly. Option D mixes guest Wi-Fi with IoT — both are untrusted and should be separately isolated."
     },
     {
-      "card_id": "pki_009",
-      "topic": "PKI",
+      "card_id": "topology_004",
+      "topic": "Secure Topology",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A web server administrator wants to obtain a TLS certificate from Let's Encrypt. They generate a Certificate Signing Request (CSR) on their server. What does the CSR contain, and what must the CA verify before issuing the certificate?",
+      "question_text": "An organization wants to implement a reverse proxy in front of their three web servers. What security benefits does this provide compared to exposing the web servers directly to the internet?",
       "choices": [
-        "The CSR contains the server's public key and identifying info (domain name, organization); the CA must verify domain control (the applicant can serve a challenge response on the requested domain) before issuing a certificate signed by the CA's private key",
-        "The CSR contains the server's private key; the CA verifies the private key is strong enough before issuing a public key certificate",
-        "The CSR contains only the domain name; the CA verifies the organization's legal registration before issuing any certificate",
-        "The CSR contains the CA's public key; the CA verifies it matches their own records before issuing"
+        "The reverse proxy hides the real IP addresses and internal architecture of the web servers, performs TLS termination and inspection, can filter malicious requests (WAF functionality), and load-balances traffic — only the proxy's IP is exposed",
+        "The reverse proxy encrypts all traffic between the web servers so attackers cannot intercept it",
+        "The reverse proxy speeds up web traffic by caching DNS records",
+        "The reverse proxy replaces the need for a firewall since it filters all traffic"
       ],
-      "answer": "The CSR contains the server's public key and identifying info (domain name, organization); the CA must verify domain control (the applicant can serve a challenge response on the requested domain) before issuing a certificate signed by the CA's private key",
-      "explanation_correct": "A CSR is generated on the server alongside the key pair. It contains the public key and subject information (CN/SAN domain names, organization). The CSR is signed by the server's private key to prove possession. The CA then verifies domain control (via DNS TXT record, HTTP challenge, or TLS-ALPN) before issuing the certificate. The private key NEVER leaves the server — it is not in the CSR.",
-      "explanation_wrong_common": "The CSR never contains the private key — option B is a critical security violation if it did. Option C is wrong for DV certificates (Let's Encrypt only verifies domain control, not legal registration). Option D reverses the roles — the CSR contains the applicant's key, not the CA's."
+      "answer": "The reverse proxy hides the real IP addresses and internal architecture of the web servers, performs TLS termination and inspection, can filter malicious requests (WAF functionality), and load-balances traffic — only the proxy's IP is exposed",
+      "explanation_correct": "A reverse proxy (like Nginx, HAProxy, or a WAF) sits in front of web servers and handles all inbound traffic. Benefits: (1) Servers' real IPs are hidden — attackers only see the proxy. (2) TLS termination at the proxy allows inspection of encrypted traffic for malicious payloads. (3) The proxy can filter requests (block SQL injection, XSS, known attack patterns via WAF rules). (4) Load balancing distributes traffic across servers. (5) If a server is compromised, the proxy can isolate it. This is a key component of secure web architecture.",
+      "explanation_wrong_common": "Option B describes server-to-server encryption, not the primary benefit of a reverse proxy. Option C describes a DNS cache. Option D is wrong — a reverse proxy complements but does not replace a firewall; firewalls operate at the network layer while proxies operate at the application layer."
     },
     {
-      "card_id": "pki_010",
-      "topic": "PKI",
+      "card_id": "topology_005",
+      "topic": "Secure Topology",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company needs TLS certificates for example.com, www.example.com, api.example.com, and portal.example.com. They can choose a wildcard certificate (*.example.com) or a SAN (Subject Alternative Name) certificate listing all four. What is a key trade-off to consider?",
+      "question_text": "A company has a flat network where all 500 employees' computers, servers, and printers are on the same subnet. After a ransomware incident where malware spread from one infected workstation to several servers, the security team recommends network segmentation. Which approach provides the best balance of security and operational practicality?",
       "choices": [
-        "A wildcard certificate is convenient (one cert covers all subdomains) but if the private key is compromised, ALL subdomains are affected at once — a SAN certificate limits exposure to only the listed domains and allows adding/removing individual entries",
-        "A wildcard certificate is always more secure because it covers more domains",
-        "A SAN certificate cannot be used with modern browsers and is deprecated",
-        "A wildcard certificate requires a separate certificate for each subdomain"
+        "Segment by function: separate VLANs for workstations, servers, printers, and management networks, with a firewall controlling inter-VLAN traffic using allow-list rules — deny by default, allow only necessary flows",
+        "Put every single device on its own VLAN for maximum isolation",
+        "Segment by department (HR VLAN, Finance VLAN, IT VLAN) with no firewall between VLANs",
+        "Keep the flat network but install antivirus on all devices to prevent the initial infection"
       ],
-      "answer": "A wildcard certificate is convenient (one cert covers all subdomains) but if the private key is compromised, ALL subdomains are affected at once — a SAN certificate limits exposure to only the listed domains and allows adding/removing individual entries",
-      "explanation_correct": "The wildcard (*.example.com) is easy to manage — one cert, one key, unlimited subdomains. But the shared private key means a single compromise affects every subdomain. A SAN certificate explicitly lists each domain; if one domain's usage is compromised, the others can be managed separately (though they share the same cert, reissuance can exclude a domain). SAN also allows mixing domains (example.com + example.org), which wildcards cannot. Best practice for high-security: separate certs per service.",
-      "explanation_wrong_common": "A wildcard isn't more secure — it's a broader trust scope. SAN certificates are the modern standard (browsers actually prefer SAN over the old CN field). A wildcard covers subdomains with one cert, not separate certs per subdomain."
+      "answer": "Segment by function: separate VLANs for workstations, servers, printers, and management networks, with a firewall controlling inter-VLAN traffic using allow-list rules — deny by default, allow only necessary flows",
+      "explanation_correct": "Functional segmentation groups devices by their role and risk profile. Workstations (high risk of compromise) are separated from servers (high value targets). Printers (often unpatched, vulnerable) are isolated. Management networks (admin access) are strictly controlled. A firewall with deny-by-default rules between VLANs ensures that malware on a workstation cannot spread to servers — it must traverse the firewall, which can block lateral movement patterns. This is practical to implement and maintain while dramatically reducing blast radius.",
+      "explanation_wrong_common": "Option B is impractical — 500 VLANs with 500 firewall policies is unmanageable and provides no additional security over functional segmentation. Option C segments by department but without firewall controls between VLANs, lateral movement is still possible. Option D doesn't address the network architecture problem — antivirus can be bypassed, and the flat network allows unrestricted spread."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "zero_trust_006", "next_due_at": "2026-08-02" },
-    { "card_id": "zero_trust_007", "next_due_at": "2026-08-02" },
-    { "card_id": "zero_trust_008", "next_due_at": "2026-08-02" },
-    { "card_id": "zero_trust_009", "next_due_at": "2026-08-02" },
-    { "card_id": "zero_trust_010", "next_due_at": "2026-08-02" },
-    { "card_id": "symmetric_006", "next_due_at": "2026-08-02" },
-    { "card_id": "symmetric_007", "next_due_at": "2026-08-02" },
-    { "card_id": "symmetric_008", "next_due_at": "2026-08-02" },
-    { "card_id": "symmetric_009", "next_due_at": "2026-08-02" },
-    { "card_id": "symmetric_010", "next_due_at": "2026-08-02" },
-    { "card_id": "asymmetric_006", "next_due_at": "2026-08-02" },
-    { "card_id": "asymmetric_007", "next_due_at": "2026-08-02" },
-    { "card_id": "asymmetric_008", "next_due_at": "2026-08-02" },
-    { "card_id": "asymmetric_009", "next_due_at": "2026-08-02" },
-    { "card_id": "asymmetric_010", "next_due_at": "2026-08-02" },
-    { "card_id": "pki_006", "next_due_at": "2026-08-02" },
-    { "card_id": "pki_007", "next_due_at": "2026-08-02" },
-    { "card_id": "pki_008", "next_due_at": "2026-08-02" },
-    { "card_id": "pki_009", "next_due_at": "2026-08-02" },
-    { "card_id": "pki_010", "next_due_at": "2026-08-02" }
+    { "card_id": "firewall_001", "next_due_at": "2026-08-15" },
+    { "card_id": "firewall_002", "next_due_at": "2026-08-15" },
+    { "card_id": "firewall_003", "next_due_at": "2026-08-16" },
+    { "card_id": "firewall_004", "next_due_at": "2026-08-16" },
+    { "card_id": "firewall_005", "next_due_at": "2026-08-16" },
+    { "card_id": "ids_ips_001", "next_due_at": "2026-08-15" },
+    { "card_id": "ids_ips_002", "next_due_at": "2026-08-15" },
+    { "card_id": "ids_ips_003", "next_due_at": "2026-08-16" },
+    { "card_id": "ids_ips_004", "next_due_at": "2026-08-16" },
+    { "card_id": "ids_ips_005", "next_due_at": "2026-08-16" },
+    { "card_id": "netseg_001", "next_due_at": "2026-08-15" },
+    { "card_id": "netseg_002", "next_due_at": "2026-08-15" },
+    { "card_id": "netseg_003", "next_due_at": "2026-08-16" },
+    { "card_id": "netseg_004", "next_due_at": "2026-08-16" },
+    { "card_id": "netseg_005", "next_due_at": "2026-08-16" },
+    { "card_id": "topology_001", "next_due_at": "2026-08-15" },
+    { "card_id": "topology_002", "next_due_at": "2026-08-15" },
+    { "card_id": "topology_003", "next_due_at": "2026-08-16" },
+    { "card_id": "topology_004", "next_due_at": "2026-08-16" },
+    { "card_id": "topology_005", "next_due_at": "2026-08-16" }
   ]
 }
