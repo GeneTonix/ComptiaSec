@@ -1,346 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "cloud_001",
-      "topic": "Cloud Shared Responsibility",
+      "card_id": "ir_001",
+      "topic": "Incident Response",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the cloud shared responsibility model, and why does it matter for security?",
+      "question_text": "What are the six steps of the NIST SP 800-61 incident response lifecycle, in order?",
       "choices": [
-        "A framework that defines which security responsibilities belong to the cloud provider and which belong to the customer, varying by service model (IaaS, PaaS, SaaS)",
-        "A legal contract where the cloud provider takes full responsibility for all security, absolving the customer of any liability",
-        "A model where the customer is responsible for physical data center security and the provider handles everything else",
-        "An agreement that security responsibilities are shared equally 50/50 regardless of the cloud service model used"
+        "Preparation → Detection & Analysis → Containment, Eradication & Recovery → Post-Incident Activity",
+        "Detection → Containment → Eradication → Recovery → Reporting → Closure",
+        "Identification → Triage → Remediation → Forensics → Reporting → Lessons Learned",
+        "Prevent → Detect → Respond → Recover → Report → Retire"
       ],
-      "answer": "A framework that defines which security responsibilities belong to the cloud provider and which belong to the customer, varying by service model (IaaS, PaaS, SaaS)",
-      "explanation_correct": "The shared responsibility model divides security duties based on the level of control each party has. In IaaS, the provider secures the physical infrastructure (facilities, hardware, hypervisor) while the customer secures everything above — OS, apps, data, identity. In PaaS, the provider also manages the OS and runtime, so the customer focuses on application code and data. In SaaS, the provider manages almost everything and the customer is mainly responsible for data access, identity, and configuration. Understanding this split is critical — assuming the provider handles something they don't is a common cause of cloud security breaches.",
-      "explanation_wrong_common": "Option B is wrong — the customer always retains some responsibilities, especially data-level security. Option C is wrong — physical security is always the provider's responsibility, not the customer's. Option D is wrong — the split is NOT equal; it shifts dramatically depending on whether you use IaaS, PaaS, or SaaS."
+      "answer": "Preparation → Detection & Analysis → Containment, Eradication & Recovery → Post-Incident Activity",
+      "explanation_correct": "NIST SP 800-61 defines four phases: (1) Preparation — building toolkits, training teams, establishing policies and communication channels before an incident. (2) Detection & Analysis — identifying incidents from alerts, logs, SIEM, or user reports, then triaging and analyzing scope. (3) Containment, Eradication & Recovery — stopping the spread (isolate hosts, block IPs), removing the threat (delete malware, close vulnerabilities), and restoring systems to normal operation. (4) Post-Incident Activity — lessons learned, documentation, process improvement. The list in Option A covers all four phases (phase 3 has three sub-steps). Preparation is the most important phase because it's the only one you control before an incident occurs.",
+      "explanation_wrong_common": "Option B is a simplified ad-hoc list, not NIST's structured lifecycle. Option C uses different terminology (Triage, Remediation, Forensics) that doesn't match NIST SP 800-61 phases. Option D (Prevent, Detect, Respond, Recover, Report, Retire) is not a recognized IR framework — it resembles generic risk management cycles."
     },
     {
-      "card_id": "cloud_002",
-      "topic": "Cloud Shared Responsibility",
+      "card_id": "ir_002",
+      "topic": "Incident Response",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "In a SaaS model like Microsoft 365 or Google Workspace, which security responsibilities does the customer retain?",
+      "question_text": "What is the single most important phase of incident response, and why?",
       "choices": [
-        "Data access controls, user identity and authentication (MFA), data classification, configuration of security settings within the app, and compliance obligations for the data stored",
-        "Patching the underlying operating system and runtime, securing the hypervisor, and managing network infrastructure",
-        "Physical data center security, HVAC, power redundancy, and hardware maintenance of the servers hosting the SaaS",
-        "All responsibilities — in SaaS the customer manages everything including the application code and database engine"
+        "Preparation — it is the only phase performed before an incident occurs, and it determines how effectively all other phases execute",
+        "Detection — because finding the incident first is harder than fixing it",
+        "Recovery — because restoring service is what the business ultimately cares about",
+        "Post-Incident Activity — because lessons learned prevent all future incidents"
       ],
-      "answer": "Data access controls, user identity and authentication (MFA), data classification, configuration of security settings within the app, and compliance obligations for the data stored",
-      "explanation_correct": "In SaaS, the provider handles the infrastructure, OS, middleware, and application itself. The customer's responsibilities are focused on the data layer and identity: deciding who can access what (RBAC), enforcing MFA, configuring data loss prevention policies, ensuring sensitive data isn't stored inappropriately, and meeting regulatory compliance (GDPR, HIPAA) for the data they put into the service. A common mistake is assuming the SaaS provider handles identity security — the customer must configure MFA, conditional access, and proper permission models themselves.",
-      "explanation_wrong_common": "Option B describes IaaS customer responsibilities (OS patching) — in SaaS the provider patches the OS. Option C is always the provider's job. Option D is the opposite of SaaS — the provider manages the application and database engine, not the customer."
+      "answer": "Preparation — it is the only phase performed before an incident occurs, and it determines how effectively all other phases execute",
+      "explanation_correct": "Preparation is foundational: establishing IR policies, training the response team, building contact lists, pre-deploying forensic toolkits, configuring logging and alerting, setting up communication channels (out-of-band if email is compromised), defining escalation thresholds, and running tabletop exercises. Without preparation, teams scramble during an actual incident — wasting critical time, making mistakes, and missing evidence. A well-prepared team can execute containment in minutes instead of hours. Tabletop exercises (simulated incident walk-throughs) during preparation expose gaps before they matter. Preparation is the phase you fully control; once an incident starts, you're reactive.",
+      "explanation_wrong_common": "Option B is wrong — detection is critical but relies on preparation (logging, SIEM rules, alerting). Option C is wrong — recovery is important but depends on clean containment and eradication first. Option D is wrong — lessons learned improve future response but don't prevent ALL future incidents; new threats always emerge."
     },
     {
-      "card_id": "cloud_003",
-      "topic": "Cloud Shared Responsibility",
+      "card_id": "ir_003",
+      "topic": "Incident Response",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company deploys virtual machines on AWS EC2 (IaaS). After a security audit, they realize their VMs are running unpatched operating systems with default credentials. Who is responsible for this security gap?",
+      "question_text": "A SOC analyst detects unusual outbound traffic from a web server at 2 AM. The server is sending 500MB/s to an unknown IP address. What should be the FIRST action in the incident response process?",
       "choices": [
-        "The customer — in IaaS, the customer is responsible for OS patching, hardening, credential management, and all security above the hypervisor layer",
-        "AWS — the cloud provider is responsible for patching all customer VM operating systems automatically",
-        "Shared equally — both AWS and the customer should patch the OS, so it's a joint failure",
-        "Neither — IaaS VMs are automatically hardened by the hypervisor and do not require OS-level patching"
+        "Follow the pre-established IR plan: verify the alert is a true positive (correlate with other logs/SIEM), then escalate to the IR team lead who authorizes containment — do not immediately power off the server",
+        "Immediately shut down the server to stop the data exfiltration and preserve evidence",
+        "Immediately block the destination IP on the firewall and continue business as usual",
+        "Call the police and report a cybersecurity crime before doing anything else"
       ],
-      "answer": "The customer — in IaaS, the customer is responsible for OS patching, hardening, credential management, and all security above the hypervisor layer",
-      "explanation_correct": "In IaaS (like AWS EC2, Azure VMs), the provider secures the physical data center, network hardware, and hypervisor. Everything above that — the guest OS, applications, data, identity, and access management — is the customer's responsibility. Running unpatched VMs with default credentials is a customer-side failure. AWS provides tools (Inspector, Systems Manager Patch Manager) but the customer must configure and use them. This is one of the most common cloud security mistakes: customers assume the provider patches their VMs, but in IaaS that is explicitly the customer's job.",
-      "explanation_wrong_common": "Option B is wrong — AWS does not patch customer VMs; that's the customer's responsibility in IaaS. Option C is wrong — it's not shared; the responsibility boundary is clear. Option D is dangerously wrong — the hypervisor doesn't harden guest OSs, and OS patching is always required."
+      "answer": "Follow the pre-established IR plan: verify the alert is a true positive (correlate with other logs/SIEM), then escalate to the IR team lead who authorizes containment — do not immediately power off the server",
+      "explanation_correct": "The first step in NIST's Detection & Analysis phase is to verify the incident is real (true positive vs false positive). This means correlating the alert with SIEM data, checking other logs, and confirming scope before acting. Premature actions — like shutting down the server — destroy volatile evidence (RAM contents, network connections, running processes) that are critical for forensics. Powering off can also trigger anti-forensic measures in malware (e.g., deleting itself on shutdown). The correct flow is: verify → escalate per IR plan → get authorization → contain strategically (network isolation, not power-off). Containment decisions should follow the plan, not be improvised.",
+      "explanation_wrong_common": "Option B (immediate shutdown) is a classic mistake — it destroys volatile evidence (RAM, network state, running processes) and may trigger malware anti-forensic cleanup. Option C (block IP only) addresses the symptom but not the root cause — the server is compromised and needs full investigation. Option D (call police first) is premature — internal IR handles initial response; law enforcement is engaged later if warranted."
     },
     {
-      "card_id": "cloud_004",
-      "topic": "Cloud Shared Responsibility",
+      "card_id": "ir_004",
+      "topic": "Incident Response",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A startup uses a PaaS platform (Heroku/AWS Elastic Beanstalk) to host their web application. The platform automatically manages the OS and runtime. During a breach investigation, they discover attackers exploited a vulnerability in their custom application code. Who is responsible for securing the application code?",
+      "question_text": "During a ransomware incident, the IR team is debating between short-term containment (isolate infected hosts from the network) and long-term containment (rebuild systems from clean images). What is the correct sequencing?",
       "choices": [
-        "The customer — even in PaaS, the customer is responsible for the security of their own application code, data, and access configuration",
-        "The PaaS provider — since they manage the platform, they are responsible for all code running on it",
-        "Shared responsibility — the provider must audit all customer code for vulnerabilities before deployment",
-        "A third-party security vendor — PaaS requires outsourced application security review by law"
+        "Short-term containment first (immediately isolate infected hosts to stop lateral spread), then proceed to eradication and recovery (rebuild from clean images), then long-term containment becomes part of recovery",
+        "Long-term containment first — immediately rebuild all systems to ensure they're clean, then isolate what's left",
+        "Skip containment entirely and go straight to eradication — delete the ransomware and decrypt files",
+        "Containment is optional — if you have good backups, just restore everything immediately without isolating anything"
       ],
-      "answer": "The customer — even in PaaS, the customer is responsible for the security of their own application code, data, and access configuration",
-      "explanation_correct": "In PaaS, the provider manages the OS, runtime (Java, Python, Node.js), middleware, and infrastructure. But the application code the customer writes and deploys is entirely their responsibility. This includes secure coding practices (input validation, parameterized queries, proper authentication), dependency management (patching vulnerable libraries), and data access controls. The PaaS provider secures the platform, not what you build on top of it. A vulnerability in custom code (like SQL injection or XSS) is the customer's fault, not the provider's.",
-      "explanation_wrong_common": "Option B is wrong — the provider manages the platform layer, not customer code. Option C is wrong — providers don't audit customer code; that's the customer's DevSecOps responsibility. Option D is fabricated — there is no legal requirement for third-party code review in PaaS."
+      "answer": "Short-term containment first (immediately isolate infected hosts to stop lateral spread), then proceed to eradication and recovery (rebuild from clean images), then long-term containment becomes part of recovery",
+      "explanation_correct": "NIST recommends short-term containment immediately — isolate infected hosts (network segmentation, disable accounts, block C2 traffic) to prevent the ransomware from spreading to other systems. This buys time for proper investigation. Long-term containment (rebuilding from clean images, applying patches, hardening) happens during the eradication and recovery phases. The sequence matters: if you try to rebuild while the threat is still active, the ransomware will re-infect the rebuilt systems. Containment must precede eradication. Short-term containment is a tactical emergency action; long-term containment is strategic and deliberate.",
+      "explanation_wrong_common": "Option B is backwards — you can't rebuild while the threat is active (reinfection risk). Option C is wrong — containment is mandatory, not optional; without it the ransomware keeps spreading during eradication. Option D is dangerous — restoring from backups while the threat is active means the ransomware encrypts the restored data too."
     },
     {
-      "card_id": "cloud_005",
-      "topic": "Cloud Shared Responsibility",
+      "card_id": "ir_005",
+      "topic": "Incident Response",
       "difficulty": "medium",
-      "question_type": "definition",
-      "question_text": "Which statement correctly describes the security responsibility shift as you move from IaaS to PaaS to SaaS?",
+      "question_type": "scenario_mcq",
+      "question_text": "After containing a phishing campaign that compromised several employee accounts, the IR team moves to eradication. Which actions are part of the eradication phase?",
       "choices": [
-        "The cloud provider takes on more security responsibility as you move from IaaS → PaaS → SaaS, while the customer's responsibility shifts toward data, identity, and configuration",
-        "The customer takes on more security responsibility as you move from IaaS → PaaS → SaaS, because the provider does less",
-        "Security responsibilities remain identical across IaaS, PaaS, and SaaS — only the pricing model changes",
-        "In SaaS the customer has the most security responsibilities because they must secure the application layer themselves"
+        "Disable compromised accounts, remove malicious mailbox rules the attackers created, delete phishing emails from all mailboxes, patch the vulnerability (e.g., MFA bypass), and remove any backdoor accounts or malware planted by the attackers",
+        "Restore email service from backup and send a company-wide notification that the incident is over",
+        "Conduct forensic disk imaging on all compromised machines and write a formal incident report",
+        "Interview each phishing victim about what they clicked and file an HR complaint against them"
       ],
-      "answer": "The cloud provider takes on more security responsibility as you move from IaaS → PaaS → SaaS, while the customer's responsibility shifts toward data, identity, and configuration",
-      "explanation_correct": "As you move up the stack from IaaS to SaaS, the provider assumes more of the infrastructure security burden. IaaS: provider handles physical + hypervisor, customer handles OS + apps + data. PaaS: provider adds OS + runtime, customer handles apps + data. SaaS: provider handles almost everything, customer focuses on data access, identity/MFA, configuration, and compliance. The customer's responsibility doesn't disappear — it narrows and shifts upward toward data governance, identity management, and secure configuration of the service. This is why SaaS misconfigurations (like public S3 buckets or open SharePoint links) are still the customer's fault.",
-      "explanation_wrong_common": "Option B is backwards — the provider does MORE, not less, as you move to SaaS. Option C is wrong — responsibilities shift significantly between models. Option D is the opposite of reality — in SaaS the customer has the FEWEST infrastructure responsibilities."
+      "answer": "Disable compromised accounts, remove malicious mailbox rules the attackers created, delete phishing emails from all mailboxes, patch the vulnerability (e.g., MFA bypass), and remove any backdoor accounts or malware planted by the attackers",
+      "explanation_correct": "Eradication is about removing the root cause and all traces of the threat. In a phishing campaign: (1) Disable compromised accounts to stop attacker access. (2) Remove malicious mailbox rules — attackers often create forwarding rules (e.g., 'forward all emails with 'invoice' to external@evil.com') that persist even after password resets. Missing these means the attacker continues receiving data. (3) Purge phishing emails from all mailboxes to prevent re-clicking. (4) Patch the vulnerability that enabled the attack (if it was a technical exploit, not just social engineering). (5) Remove any backdoor accounts or persistent malware. Eradication must be thorough — any leftover artifact can lead to re-infection.",
+      "explanation_wrong_common": "Option B describes recovery and notification, not eradication — the threat isn't removed, just restored around. Option C describes forensic collection and reporting — these happen in parallel but aren't eradication actions. Option D is an HR process — while user awareness matters, blaming victims is counterproductive and doesn't eradicate the threat."
     },
     {
-      "card_id": "sase_001",
-      "topic": "SASE",
+      "card_id": "ioc_001",
+      "topic": "Indicators of Compromise",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is Secure Access Service Edge (SASE), and what problem does it solve?",
+      "question_text": "What is an Indicator of Compromise (IoC), and how does it differ from a regular log entry?",
       "choices": [
-        "A cloud-based architecture that converges network security (SWGs, CASBs, ZTNA, FWaaS) and WAN connectivity (SD-WAN) into a single integrated service delivered from the cloud",
-        "A hardware appliance that combines a firewall and a router for small branch offices",
-        "A protocol for encrypting traffic between on-premises data centers and cloud providers",
-        "A security framework that replaces all physical firewalls with software running on endpoint devices only"
+        "An IoC is a forensic artifact (file hash, IP address, domain, registry key, behavioral pattern) that with high confidence indicates a system has been compromised or an attack is in progress — a regular log entry is just a record of activity, not necessarily malicious",
+        "An IoC is any error message in a system log, and a log entry is any informational message",
+        "An IoC is a type of antivirus signature, and a log entry is a firewall rule",
+        "An IoC is a legal document proving a breach occurred, while a log entry is an IT ticket"
       ],
-      "answer": "A cloud-based architecture that converges network security (SWGs, CASBs, ZTNA, FWaaS) and WAN connectivity (SD-WAN) into a single integrated service delivered from the cloud",
-      "explanation_correct": "SASE (pronounced 'sassy') addresses the problem of securing a distributed workforce. Traditional network security assumed users were inside the corporate perimeter. With remote work, cloud apps, and mobile devices, that model broke. SASE moves security to the cloud edge, delivering it as a service wherever users connect. It combines SD-WAN (optimized routing) with security functions: Secure Web Gateway (web filtering), CASB (cloud app security), ZTNA (zero trust access), and Firewall-as-a-Service. Instead of backhauling traffic through a central data center for inspection, SASE inspects traffic at the nearest cloud PoP, reducing latency and improving security for remote users.",
-      "explanation_wrong_common": "Option B is wrong — SASE is a cloud-delivered architecture, not a single hardware appliance. Option C is wrong — SASE is not a protocol, it's an architectural framework. Option D is wrong — SASE includes cloud-based firewalls (FWaaS), not just endpoint software."
+      "answer": "An IoC is a forensic artifact (file hash, IP address, domain, registry key, behavioral pattern) that with high confidence indicates a system has been compromised or an attack is in progress — a regular log entry is just a record of activity, not necessarily malicious",
+      "explanation_correct": "IoCs are specific, actionable artifacts that signal compromise. Common IoC types: file hashes (MD5/SHA256 of known malware), network indicators (C2 server IPs, suspicious domains, anomalous DNS queries), host indicators (unexpected registry modifications, new scheduled tasks, unauthorized service installations), and behavioral indicators (beaconing patterns, data exfiltration volume, lateral movement). A log entry (e.g., 'user jsmith logged in at 9:00 AM') is neutral data. An IoC transforms that data into a threat signal (e.g., 'user jsmith logged in from Russia at 3:00 AM — impossible travel IoC'). IoCs are shared via threat intelligence platforms (MISP, STIX/TAXII) and fed into SIEM/EDR for automated detection.",
+      "explanation_wrong_common": "Option B is wrong — not all error messages are IoCs; IoCs require context and correlation. Option C is wrong — IoCs are broader than AV signatures (they include network and behavioral indicators). Option D is wrong — IoCs are technical artifacts, not legal documents."
     },
     {
-      "card_id": "sase_002",
-      "topic": "SASE",
+      "card_id": "ioc_002",
+      "topic": "Indicators of Compromise",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which of the following are the core security components typically included in a SASE architecture?",
+      "question_text": "What is the difference between an IoC (Indicator of Compromise) and an IoA (Indicator of Attack)?",
       "choices": [
-        "SD-WAN, Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Zero Trust Network Access (ZTNA), and Firewall-as-a-Service (FWaaS)",
-        "VPN concentrator, RADIUS server, physical firewall, and load balancer",
-        "SIEM, SOAR, EDR, and vulnerability scanner",
-        "RAID controller, UPS, HVAC monitoring, and physical access control system"
+        "IoCs are forensic artifacts found AFTER a compromise (reactive — evidence the attack succeeded), while IoAs are behaviors and techniques observed DURING an attack (proactive — evidence the attack is happening now, before damage is done)",
+        "IoCs are for malware and IoAs are for network attacks",
+        "IoCs are generated by SIEM and IoAs are generated by firewalls",
+        "There is no difference — they are two names for the same thing"
       ],
-      "answer": "SD-WAN, Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Zero Trust Network Access (ZTNA), and Firewall-as-a-Service (FWaaS)",
-      "explanation_correct": "SASE converges these five core components into one cloud-delivered service: SD-WAN provides optimized, intelligent routing of traffic. SWG filters web traffic and blocks malicious sites. CASB monitors and enforces security policies for cloud applications (shadow IT detection, DLP). ZTNA provides zero trust access to applications without requiring a VPN. FWaaS delivers firewall capabilities (IPS, URL filtering, DNS filtering) from the cloud. Together, they replace the traditional hub-and-spoke model where all traffic was backhauled through a central data center for security inspection.",
-      "explanation_wrong_common": "Option B describes traditional on-premises network security, not SASE. Option C describes SecOps tools (SIEM, SOAR, EDR) — related to security monitoring, not SASE network architecture. Option D describes physical data center infrastructure, completely unrelated to SASE."
+      "answer": "IoCs are forensic artifacts found AFTER a compromise (reactive — evidence the attack succeeded), while IoAs are behaviors and techniques observed DURING an attack (proactive — evidence the attack is happening now, before damage is done)",
+      "explanation_correct": "IoCs (Indicator of Compromise) are post-incident artifacts: a malware hash on disk, a C2 IP in firewall logs, a modified registry key. They tell you 'this system was compromised.' IoAs (Indicator of Attack) are real-time behaviors: PowerShell executing encoded commands, a process injecting into another process, credential dumping via LSASS access, anomalous SMB lateral movement. IoAs tell you 'an attack is actively in progress.' IoAs map to MITRE ATT&CK techniques and are behavior-based — they catch novel attacks that don't have known IoCs (zero-days). IoCs are static (hashes, IPs) and can be evaded; IoAs focus on what the attacker is DOING, which is harder to disguise. Modern EDR/XDR platforms increasingly emphasize IoA detection.",
+      "explanation_wrong_common": "Option B is wrong — both apply to any attack vector. Option C is wrong — both can be detected by various tools (SIEM, EDR, NDR). Option D is wrong — the distinction matters: IoCs are reactive (after), IoAs are proactive (during)."
     },
     {
-      "card_id": "sase_003",
-      "topic": "SASE",
+      "card_id": "ioc_003",
+      "topic": "Indicators of Compromise",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company with 500 remote employees spread across Southeast Asia finds that their traditional VPN is slow, frequently disconnects, and doesn't provide consistent web security filtering when users access cloud apps like Microsoft 365. What is the best architectural solution?",
+      "question_text": "A security analyst reviews a workstation and finds the following: a scheduled task named 'SystemUpdate' running PowerShell with an encoded command every 30 minutes, outbound connections to an IP in a country where the company has no business, and a new service binary in C:\\\\Temp\\\\. Which combination of these represents behavioral IoCs?",
       "choices": [
-        "Deploy a SASE solution that uses ZTNA for application access (replacing VPN), SWG for web filtering, and CASB for cloud app security — all delivered from nearby cloud PoPs to reduce latency",
-        "Buy a more powerful VPN concentrator and increase bandwidth at the headquarters data center",
-        "Require all remote employees to RDP into a desktop at headquarters and access cloud apps from there",
-        "Install individual firewalls on each employee's laptop and disable VPN entirely"
+        "The PowerShell encoded command execution (living-off-the-land technique), the periodic scheduled task (beaconing pattern), and the outbound connection to an unexpected geo — all are behavioral IoCs indicating active compromise",
+        "Only the IP address is an IoC — IPs are the only true indicators of compromise",
+        "Only the file in C:\\\\Temp\\\\ is an IoC — unexpected file locations are the sole indicator",
+        "None of these are IoCs unless the antivirus software flags them as malicious"
       ],
-      "answer": "Deploy a SASE solution that uses ZTNA for application access (replacing VPN), SWG for web filtering, and CASB for cloud app security — all delivered from nearby cloud PoPs to reduce latency",
-      "explanation_correct": "This is a textbook SASE use case. The traditional VPN backhauls all traffic through HQ for inspection, creating latency for users accessing cloud apps that may be hosted closer to them than to HQ. SASE solves this by: (1) ZTNA replaces VPN — users get authenticated, context-aware access to specific applications without network-level tunneling. (2) SWG provides web filtering at the cloud edge, nearest to the user. (3) CASB enforces security policies for Microsoft 365 and other cloud apps. Traffic is inspected at a local cloud PoP (e.g., in Singapore) rather than backhauled to HQ, dramatically reducing latency while maintaining consistent security.",
-      "explanation_wrong_common": "Option B doesn't solve the fundamental problem — VPN backhaul is architecturally wrong for cloud access. Option C (RDP to HQ desktops) is extremely slow and creates a terrible user experience. Option D removes centralized security visibility entirely — endpoint firewalls alone can't provide SWG or CASB functionality."
+      "answer": "The PowerShell encoded command execution (living-off-the-land technique), the periodic scheduled task (beaconing pattern), and the outbound connection to an unexpected geo — all are behavioral IoCs indicating active compromise",
+      "explanation_correct": "All three artifacts are behavioral IoCs: (1) PowerShell with -EncodedCommand is a classic living-off-the-land (LotL) technique — attackers use legitimate system tools to avoid detection. Encoded commands hide the payload from casual inspection. (2) A scheduled task running every 30 minutes suggests beaconing — malware checking in with C2 at regular intervals. (3) Outbound connections to unexpected geolocations are a network behavioral IoC. The file in C:\\Temp\\ is a static IoC (file artifact), not behavioral. Together, these form a kill chain: persistence (scheduled task) → execution (PowerShell) → C2 (outbound connection). This pattern maps to MITRE ATT&CK techniques T1053 (Scheduled Task), T1059 (PowerShell), T1071 (Application Layer Protocol).",
+      "explanation_wrong_common": "Option B is wrong — IPs are just one IoC type; behavioral indicators are equally or more important. Option C is wrong — file location is one indicator but ignoring behavioral patterns misses the full picture. Option D is wrong — IoCs are independent of AV detection; many sophisticated attacks evade AV but leave behavioral traces."
     },
     {
-      "card_id": "sase_004",
-      "topic": "SASE",
+      "card_id": "ioc_004",
+      "topic": "Indicators of Compromise",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization discovers that employees are using unauthorized cloud storage services (shadow IT) to share company documents externally. Which SASE component is specifically designed to address this problem?",
+      "question_text": "Your SIEM generates an alert: a user account that normally logs in from Singapore at 9 AM just authenticated from an IP in Eastern Europe at 3 AM local time, then immediately attempted to download the entire customer database via a bulk export API. Which framework would best help classify what stage of attack this represents?",
       "choices": [
-        "Cloud Access Security Broker (CASB) — it discovers shadow IT, monitors cloud app usage, enforces DLP policies, and can block unauthorized cloud services",
-        "Secure Web Gateway (SWG) — it filters web traffic based on URL categories",
-        "Zero Trust Network Access (ZTNA) — it authenticates users before granting network access",
-        "SD-WAN — it optimizes routing between branch offices and cloud services"
+        "MITRE ATT&CK — it maps the observed techniques (anomalous login = Initial Access/Credential Access; bulk data export = Exfiltration) to specific tactics and techniques, helping the IR team understand the attack stage and predict next steps",
+        "ISO 27001 — it provides the compliance checklist for reporting the breach to regulators",
+        "COBIT — it defines IT governance frameworks for database access policies",
+        "ITIL — it provides the incident management ticketing framework for the helpdesk"
       ],
-      "answer": "Cloud Access Security Broker (CASB) — it discovers shadow IT, monitors cloud app usage, enforces DLP policies, and can block unauthorized cloud services",
-      "explanation_correct": "CASB is the SASE component purpose-built for cloud application security. It operates at the API level and proxy level to: (1) Shadow IT discovery — identify all cloud services employees are using, even unsanctioned ones, by analyzing traffic patterns and DNS logs. (2) DLP — prevent sensitive data (credit cards, PII, source code) from being uploaded to cloud services. (3) Compliance — enforce GDPR/HIPAA policies on data stored in cloud apps. (4) Threat protection — detect compromised accounts and anomalous cloud access. While SWG can block URLs, only CASB has deep visibility into cloud app data flows and can enforce granular policies like 'users can access Google Drive but cannot share documents externally.'",
-      "explanation_wrong_common": "Option B (SWG) can block a URL but can't see inside cloud app data flows or enforce DLP — that's CASB's job. Option C (ZTNA) is about access authentication, not cloud app monitoring. Option D (SD-WAN) is about network routing optimization, completely unrelated to shadow IT detection."
+      "answer": "MITRE ATT&CK — it maps the observed techniques (anomalous login = Initial Access/Credential Access; bulk data export = Exfiltration) to specific tactics and techniques, helping the IR team understand the attack stage and predict next steps",
+      "explanation_correct": "MITRE ATT&CK is the industry-standard framework for classifying adversary behaviors. It organizes attacks into Tactics (the 'why' — what the attacker is trying to achieve) and Techniques (the 'how' — specific methods). This scenario maps to: Initial Access (T1078 — Valid Accounts, the compromised credentials), Collection (T1005 — Data from Local System, gathering the database), and Exfiltration (T1041 — Exfiltration Over C2 Channel or T1567 — Exfiltration Over Web Service). By mapping IoCs/IoAs to ATT&CK, the IR team understands the attack stage (here: late stage — exfiltration), predicts what the attacker might do next, and can prioritize containment of the highest-risk actions. ATT&CK also helps with threat hunting by identifying gaps in detection coverage.",
+      "explanation_wrong_common": "Option B (ISO 27001) is a compliance standard, not an attack classification framework. Option C (COBIT) is IT governance, not threat behavior mapping. Option D (ITIL) is service management — useful for ticketing but doesn't classify attack stages."
     },
     {
-      "card_id": "endpoint_001",
-      "topic": "Endpoint Protection",
+      "card_id": "forensics_001",
+      "topic": "Digital Forensics",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the key difference between traditional antivirus (AV) and Endpoint Detection and Response (EDR)?",
+      "question_text": "What is the 'order of volatility' in digital forensics, and why does it matter?",
       "choices": [
-        "Traditional AV uses signature-based detection to identify known malware, while EDR provides continuous monitoring, behavioral analysis, threat hunting, and incident response capabilities across endpoints",
-        "Traditional AV is cloud-based while EDR runs only on local hardware",
-        "EDR is a type of antivirus that scans faster but uses the same signature-based detection method",
-        "There is no difference — EDR is simply a rebranding of traditional antivirus by vendors"
+        "It is the sequence in which evidence should be collected, starting from the most volatile (RAM, CPU cache, network connections) to the least volatile (hard drives, optical media) — because volatile data is lost when power is removed and must be captured first",
+        "It is the order in which forensic tools should be run: antivirus first, then disk imaging, then memory dump",
+        "It is the ranking of how dangerous a piece of evidence is to the investigator's safety",
+        "It is the order in which suspects should be interviewed based on how nervous they appear"
       ],
-      "answer": "Traditional AV uses signature-based detection to identify known malware, while EDR provides continuous monitoring, behavioral analysis, threat hunting, and incident response capabilities across endpoints",
-      "explanation_correct": "Traditional AV relies on signature databases — it can only detect malware that has a known signature. This means zero-day threats and fileless malware (PowerShell-based attacks, living-off-the-land) evade it entirely. EDR goes far beyond signatures: it continuously collects endpoint data (process trees, network connections, file modifications, registry changes), uses behavioral analytics to detect anomalous activity, provides a centralized dashboard for threat hunting across all endpoints, and enables incident response actions (isolate endpoint, kill process, collect forensic data) remotely. EDR detects threats based on behavior, not just signatures, making it effective against novel and sophisticated attacks.",
-      "explanation_wrong_common": "Option B is wrong — both can be cloud-managed or local; the difference is capability, not deployment model. Option C is wrong — EDR is fundamentally different in approach (behavioral, not just signatures). Option D is dangerously wrong — EDR represents a significant evolution in endpoint security capabilities."
+      "answer": "It is the sequence in which evidence should be collected, starting from the most volatile (RAM, CPU cache, network connections) to the least volatile (hard drives, optical media) — because volatile data is lost when power is removed and must be captured first",
+      "explanation_correct": "The order of volatility (from RFC 3227) guides forensic collection priority: (1) CPU cache/registers — lost in milliseconds. (2) RAM — lost on power-off; contains running processes, network connections, encryption keys, decrypted data in memory. (3) Network state (connections, routing tables, ARP cache) — changes rapidly. (4) Running processes — terminate on shutdown. (5) Temporary files/swap — may be overwritten. (6) Hard drives — persistent but can be modified by malware. (7) Remote logs — persistent on log servers. (8) Physical configuration, network topology — least volatile. Collecting in this order ensures the most easily-lost evidence is captured before it disappears. RAM capture is critical — it can reveal decrypted files, in-memory malware, and active network connections that disk forensics cannot find.",
+      "explanation_wrong_common": "Option B is wrong — the order of volatility is about evidence types, not tool sequencing. Option C is wrong — volatility refers to data persistence, not physical danger. Option D is wrong — it has nothing to do with interviewing suspects."
     },
     {
-      "card_id": "endpoint_002",
-      "topic": "Endpoint Protection",
+      "card_id": "forensics_002",
+      "topic": "Digital Forensics",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is Mobile Device Management (MDM), and what is its primary security purpose?",
+      "question_text": "What is a forensic hash, and why are TWO different hash algorithms (e.g., MD5 and SHA-256) sometimes computed for the same evidence?",
       "choices": [
-        "A system for centrally managing, configuring, securing, and monitoring mobile devices (phones, tablets, laptops) across an organization, enforcing security policies remotely",
-        "A physical device that stores all mobile phones in a secure locker when not in use",
-        "A mobile app that individual users install to clean up storage space on their phones",
-        "A network protocol for transferring files between mobile devices and desktop computers"
+        "A forensic hash is a fixed-size fingerprint of data used to prove integrity. Two algorithms are used for redundancy — if a collision is found in one algorithm (like MD5's known weaknesses), the other (SHA-256) still verifies the evidence hasn't been tampered with",
+        "A forensic hash is a type of encryption that protects evidence from being read by unauthorized parties",
+        "A forensic hash is a timestamp applied to evidence to prove when it was collected",
+        "A forensic hash is a digital signature that proves who collected the evidence"
       ],
-      "answer": "A system for centrally managing, configuring, securing, and monitoring mobile devices (phones, tablets, laptops) across an organization, enforcing security policies remotely",
-      "explanation_correct": "MDM (Mobile Device Management) or MAM (Mobile Application Management) allows organizations to centrally manage mobile devices at scale. Key security capabilities include: enforcing strong passcodes and biometric authentication, remotely locking or wiping lost/stolen devices, pushing security patches and OS updates, restricting app installation to approved apps, enforcing encryption, configuring VPN and email settings, and segregating personal and corporate data (containerization). With BYOD (Bring Your Own Device), MDM uses containerization to keep corporate data in an encrypted sandbox separate from the employee's personal apps, so a remote wipe only affects corporate data, not personal photos or messages.",
-      "explanation_wrong_common": "Option B is a physical locker, not software management. Option C describes a phone cleaner utility, not enterprise MDM. Option D describes a file transfer protocol, completely unrelated to device management and security policy enforcement."
+      "answer": "A forensic hash is a fixed-size fingerprint of data used to prove integrity. Two algorithms are used for redundancy — if a collision is found in one algorithm (like MD5's known weaknesses), the other (SHA-256) still verifies the evidence hasn't been tampered with",
+      "explanation_correct": "A forensic hash (MD5, SHA-256, SHA-512) creates a unique fingerprint of data. If even one bit changes, the hash changes completely. In forensics, you hash evidence at collection time and again at analysis/presentation time — if the hashes match, the evidence is proven unaltered (integrity). Two algorithms provide defense-in-depth: MD5 has known collision vulnerabilities (two different inputs can produce the same hash), so using SHA-256 alongside it means even if MD5 is challenged in court, SHA-256 provides independent verification. The hash doesn't prove authenticity (who created it) or confidentiality (it's not encryption) — it proves integrity (the data hasn't changed).",
+      "explanation_wrong_common": "Option B is wrong — hashing is not encryption; it's one-way and doesn't protect confidentiality. Option C is wrong — a hash is not a timestamp; it's a content fingerprint. Option D is wrong — a hash proves data integrity, not the identity of the collector (that's a digital signature)."
     },
     {
-      "card_id": "endpoint_003",
-      "topic": "Endpoint Protection",
+      "card_id": "forensics_003",
+      "topic": "Digital Forensics",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's IT team has 300 endpoints running various versions of Windows 10/11, with some machines missing critical security patches from as far back as 6 months ago. What is the best approach to remediate this vulnerability?",
+      "question_text": "A forensic investigator arrives at a crime scene where a suspect's laptop is powered on and logged in. The screen shows a VPN connection to an overseas server and a chat application with messages visible. What should the investigator do FIRST?",
       "choices": [
-        "Implement a centralized patch management system that inventories all endpoints, identifies missing patches, tests patches in a pilot group, then deploys systematically with automated reporting and rollback capability",
-        "Send an email to all employees asking them to manually run Windows Update on their machines",
-        "Disable all network access for unpatched machines until users bring their devices to IT",
-        "Wait for the next major OS upgrade cycle and replace all machines with newer hardware"
+        "Photograph the screen (including visible chat messages and VPN connection details), then capture RAM (which contains decrypted VPN keys, chat session data, and running processes), then proceed to disk imaging — following the order of volatility",
+        "Immediately pull the power cable to shut down the laptop and prevent remote data deletion",
+        "Close the chat application and disconnect the VPN to stop any ongoing communication",
+        "Start imaging the hard drive first since it contains the most persistent evidence"
       ],
-      "answer": "Implement a centralized patch management system that inventories all endpoints, identifies missing patches, tests patches in a pilot group, then deploys systematically with automated reporting and rollback capability",
-      "explanation_correct": "Centralized patch management (via tools like Microsoft WSUS, SCCM/MECM, or cloud-based MDM like Intune) is the standard enterprise approach. It provides: (1) Inventory — identifies exactly which patches are missing on which machines. (2) Testing — deploys to a pilot group first to catch compatibility issues. (3) Phased deployment — rolls out to ring groups (pilot → broad → remaining) to minimize disruption. (4) Reporting — tracks compliance across all endpoints. (5) Rollback — can uninstall a problematic patch. Manual updates (Option B) are unreliable — users ignore them or don't understand them. Automated, centralized management ensures consistent, verifiable patch coverage.",
-      "explanation_wrong_common": "Option B is unreliable — users won't consistently patch, and some may break things. Option C is disruptive and punitive without solving the root cause (no patch management process). Option D ignores the risk entirely — 6 months of unpatched vulnerabilities is an active risk that can't wait for a hardware refresh cycle."
+      "answer": "Photograph the screen (including visible chat messages and VPN connection details), then capture RAM (which contains decrypted VPN keys, chat session data, and running processes), then proceed to disk imaging — following the order of volatility",
+      "explanation_correct": "With a powered-on system, the investigator must follow the order of volatility. First: photograph the screen — it shows transient data (chat messages, VPN connection, open files) that will disappear on shutdown. Second: capture RAM — this is the highest-value volatile evidence. RAM contains: decrypted VPN session keys (the disk only has encrypted keys), active chat session data, running malware in memory, network connections, and decrypted files. Tools like FTK Imager, WinPMEM, or LiME (Linux) capture RAM to a file. Third: after RAM capture, proceed to disk imaging. Pulling the power (Option B) destroys all volatile evidence — RAM contents, network state, and running processes are lost forever, and the VPN/chat data vanishes.",
+      "explanation_wrong_common": "Option B (pull power) is the worst mistake — it destroys RAM evidence, triggers potential anti-forensic scripts, and loses all transient data. Option C (close apps/VPN) alters the system state and destroys evidence — never interact with a suspect machine's applications. Option D (disk first) skips the most volatile evidence (RAM, screen) which will be lost by the time disk imaging completes."
     },
     {
-      "card_id": "endpoint_004",
-      "topic": "Endpoint Protection",
+      "card_id": "forensics_004",
+      "topic": "Digital Forensics",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team needs to establish a hardening baseline for all Windows servers in their environment. Which approach follows best practices for endpoint hardening?",
+      "question_text": "A forensic analyst needs to create a bit-for-bit copy of a 2TB hard drive for evidence. Which statement correctly describes best practices for forensic disk imaging?",
       "choices": [
-        "Apply CIS Benchmarks or STIGs: disable unnecessary services, remove default accounts, enforce strong password policies, enable audit logging, configure host-based firewalls, disable SMBv1, and restrict Remote Desktop to specific admin IPs",
-        "Install antivirus software and set it to auto-update — that alone provides sufficient hardening",
-        "Rename the Administrator account and change the desktop wallpaper to a security reminder",
-        "Format the servers and reinstall the OS every 30 days to ensure a clean state"
+        "Use a write blocker (hardware or software) to prevent any writes to the original drive, image to a sterile target drive (pre-wiped and verified), compute hashes (MD5 + SHA-256) of the original and the image to verify they match, and document the entire process with timestamps",
+        "Use a standard USB cable to copy files from the original drive to a new drive using Windows Explorer, then hash the copied files",
+        "Boot the original computer from the evidence drive, then use a forensic tool to copy files selectively",
+        "Use dd to copy the drive, then securely erase the original drive immediately after imaging to prevent contamination"
       ],
-      "answer": "Apply CIS Benchmarks or STIGs: disable unnecessary services, remove default accounts, enforce strong password policies, enable audit logging, configure host-based firewalls, disable SMBv1, and restrict Remote Desktop to specific admin IPs",
-      "explanation_correct": "Endpoint hardening reduces the attack surface by removing unnecessary functionality and securing configurations. CIS Benchmarks (Center for Internet Security) and DISA STIGs (Security Technical Implementation Guides) are industry-standard hardening baselines. Key hardening actions: disable unneeded services and protocols (SMBv1, Telnet, FTP), remove or disable default/guest accounts, enforce account lockout and strong password policies, enable comprehensive audit logging (logon events, privilege use, object access), configure host-based firewalls with default deny, restrict RDP/SSH to admin jump boxes, enable BitLocker or LUKS disk encryption, and set file system permissions to least privilege. Hardening is about reducing what an attacker can exploit.",
-      "explanation_wrong_common": "Option B is insufficient — AV is one layer but doesn't address misconfigurations, unnecessary services, or weak credentials. Option C is security theater — renaming the admin account and a wallpaper do nothing meaningful. Option D is impractical and disruptive — hardening is about configuration, not reinstalling the OS."
+      "answer": "Use a write blocker (hardware or software) to prevent any writes to the original drive, image to a sterile target drive (pre-wiped and verified), compute hashes (MD5 + SHA-256) of the original and the image to verify they match, and document the entire process with timestamps",
+      "explanation_correct": "Forensic disk imaging must preserve the original evidence without alteration. A write blocker ensures no data (even automatic OS writes like mounting timestamps) is written to the original drive. The target drive must be sterile (wiped and verified with a hash showing all zeros) before imaging. The image is a bit-for-bit copy (including slack space, deleted files, and unallocated space — not just visible files). Hashing the original and the image with two algorithms proves they're identical. Documentation (who, what, when, where, how) maintains the chain of custody. Tools like FTK Imager, dd with a write blocker, or Tableau hardware imagers are standard. File copy (Option B) misses deleted files, slack space, and unallocated sectors.",
+      "explanation_wrong_common": "Option B (file copy) is not forensic imaging — it only copies visible files, missing deleted data, slack space, and unallocated space where evidence often hides. Option C (boot from evidence drive) writes to the evidence drive (OS creates log files, updates timestamps) — it alters the original. Option D (erase original) destroys evidence — the original must be preserved for re-examination and court admissibility."
     },
     {
-      "card_id": "endpoint_005",
-      "topic": "Endpoint Protection",
+      "card_id": "forensics_005",
+      "topic": "Digital Forensics",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "An investigator analyzing a forensic disk image needs to recover deleted files and examine data in unallocated space. Which type of forensic analysis should they perform, and what data might they find?",
+      "choices": [
+        "File carving and slack space analysis — they may find deleted files (whose data remains in unallocated clusters until overwritten), remnants in file slack (data between end of file and end of cluster), and fragments of previous file systems or browser artifacts in unallocated space",
+        "Password cracking — they should brute-force the user's password to unlock encrypted volumes",
+        "Network traffic analysis — they should reconstruct network packets from the disk image",
+        "Memory forensics — they should analyze the page file for RAM artifacts"
+      ],
+      "answer": "File carving and slack space analysis — they may find deleted files (whose data remains in unallocated clusters until overwritten), remnants in file slack (data between end of file and end of cluster), and fragments of previous file systems or browser artifacts in unallocated space",
+      "explanation_correct": "When a file is deleted, the OS marks its clusters as available but doesn't erase the data — it remains until overwritten. File carving tools (like Autopsy, Foremost, Scalpel) scan unallocated space for file signatures (JPEG headers, PDF magic bytes, ZIP structures) and reconstruct files without relying on the file table. Slack space (file slack) contains data from the end of a file to the end of its last cluster — remnants of previous files that occupied that cluster. Unallocated space may contain deleted browser history, temporary files, previous file system remnants, and evidence the suspect tried to delete. This is why forensic imaging captures the entire disk (bit-for-bit), not just visible files — the invisible data is often the most valuable evidence.",
+      "explanation_wrong_common": "Option B (password cracking) is a separate process — it may be necessary for encrypted volumes but isn't about recovering deleted files. Option C (network traffic from disk) is possible (pcap files) but isn't the primary method for deleted file recovery. Option D (page file analysis) is memory forensics, not disk forensics — the page file can contain RAM artifacts but that's a different analysis type."
+    },
+    {
+      "card_id": "chain_001",
+      "topic": "Chain of Custody",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is application allowlisting, and how does it differ from traditional antivirus in approach?",
+      "question_text": "What is the chain of custody, and what must it document for each piece of evidence?",
       "choices": [
-        "Application allowlisting permits only pre-approved, known-good applications to execute and blocks everything else by default — a default-deny approach, whereas AV allows everything and blocks known-bad signatures",
-        "Application allowlisting is a feature of antivirus that automatically adds safe applications to a whitelist",
-        "Allowlisting blocks all network traffic except from approved IP addresses, similar to a firewall rule",
-        "Application allowlisting is the same as patch management — it ensures only patched versions of software can run"
+        "A chronological record documenting who collected, handled, transported, stored, and accessed each piece of evidence, with timestamps, locations, hash values, and the purpose of each transfer — proving the evidence hasn't been altered from collection to court presentation",
+        "A physical chain (like a padlock chain) used to lock evidence storage rooms",
+        "A digital certificate that proves evidence is authentic",
+        "A chain of command showing who authorized the investigation"
       ],
-      "answer": "Application allowlisting permits only pre-approved, known-good applications to execute and blocks everything else by default — a default-deny approach, whereas AV allows everything and blocks known-bad signatures",
-      "explanation_correct": "Application allowlisting inverts the traditional security model. AV uses a default-allow approach: everything can run unless it matches a known malware signature. This means zero-day malware, fileless attacks, and novel threats run freely until a signature is created. Allowlisting uses default-deny: only explicitly approved applications (by hash, publisher, or path) can execute — anything else is blocked. This is far more secure because even unknown/new malware is blocked by default. Tools like Microsoft AppLocker, Windows Defender Application Control (WDAC), and Carbon Black implement this. The tradeoff is operational overhead — maintaining the approved list requires effort as new legitimate apps are introduced.",
-      "explanation_wrong_common": "Option B is backwards — allowlisting is not a feature of AV; it's a fundamentally different approach. Option C confuses application allowlisting with network IP allowlisting — they operate at different layers. Option D is wrong — allowlisting controls what can execute, not whether software is patched."
+      "answer": "A chronological record documenting who collected, handled, transported, stored, and accessed each piece of evidence, with timestamps, locations, hash values, and the purpose of each transfer — proving the evidence hasn't been altered from collection to court presentation",
+      "explanation_correct": "Chain of custody is the legal documentation that proves evidence integrity from the moment it's collected to the moment it's presented in court. Each entry must record: (1) Who — name and role of person handling the evidence. (2) What — description of the evidence and its hash value. (3) When — date and time of collection/transfer. (4) Where — location where evidence was found and where it was stored. (5) Why — purpose of transfer (e.g., 'transported to forensic lab for imaging'). Any gap in the chain — an undocumented period where someone could have altered the evidence — can render the evidence inadmissible in court. The chain is typically a form (paper or digital) signed by each handler, with evidence stored in tamper-evident bags.",
+      "explanation_wrong_common": "Option B is wrong — while physical chains/locks may be used, chain of custody is documentation, not hardware. Option C is wrong — it's a record, not a digital certificate. Option D is wrong — it's about evidence handling, not command authority."
     },
     {
-      "card_id": "endpoint_006",
-      "topic": "Endpoint Protection",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A company is concerned about employees exfiltrating sensitive customer data via personal email, USB drives, and cloud storage services. Which endpoint security control should they deploy to prevent this?",
-      "choices": [
-        "Endpoint Data Loss Prevention (DLP) — monitors and blocks sensitive data transfers based on content inspection and policies, covering email, USB, cloud uploads, and clipboard transfers",
-        "A stronger firewall rule blocking all outbound email traffic",
-        "Disabling all USB ports physically by filling them with epoxy resin",
-        "Installing keylogger software to monitor everything employees type"
-      ],
-      "answer": "Endpoint Data Loss Prevention (DLP) — monitors and blocks sensitive data transfers based on content inspection and policies, covering email, USB, cloud uploads, and clipboard transfers",
-      "explanation_correct": "Endpoint DLP is purpose-built for this scenario. It inspects data content at the endpoint — before it leaves — and enforces policies like: block credit card numbers from being emailed, prevent PII from being copied to USB drives, stop source code from being uploaded to personal cloud storage, and alert on mass file transfers. DLP uses content-aware analysis (regex patterns for SSNs, credit cards, keyword matching, document fingerprinting) to classify data and apply actions (allow, block, quarantine, alert, encrypt). Unlike a firewall (which can't inspect content), DLP understands WHAT data is being transferred, not just where it's going. It also covers channels that firewalls can't see — USB drives, clipboard copy/paste, and personal email via web browsers.",
-      "explanation_wrong_common": "Option B is too broad — blocking all outbound email would break business communication and doesn't address USB or cloud exfiltration. Option C is drastic and permanent — software-based DLP can selectively block writes while allowing approved USB devices. Option D (keylogger) is surveillance, not prevention — and it's unethical and potentially illegal without proper controls."
-    },
-    {
-      "card_id": "resilience_001",
-      "topic": "System Resilience",
+      "card_id": "chain_002",
+      "topic": "Chain of Custody",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which RAID level provides disk redundancy by mirroring data across two drives, and what is its fault tolerance?",
+      "question_text": "What is a tamper-evident seal/bag, and why is it used in forensic evidence collection?",
       "choices": [
-        "RAID 1 — mirrors data across two drives, can survive the failure of one drive with no data loss. Fault tolerance: 1 drive failure",
-        "RAID 0 — stripes data across two drives for performance, can survive one drive failure",
-        "RAID 5 — stripes data with parity across three or more drives, can survive two simultaneous drive failures",
-        "RAID 10 — mirrors and stripes across four drives, cannot survive any drive failure"
+        "A sealed container (bag or tape with a unique serial number) that shows visible signs if someone has opened or tampered with it — providing physical proof that evidence hasn't been accessed between collection and lab analysis",
+        "A bag that destroys the evidence inside if someone tries to open it",
+        "A bag that encrypts the evidence so it can't be read without a password",
+        "A bag that blocks electromagnetic signals to prevent remote wiping of devices"
       ],
-      "answer": "RAID 1 — mirrors data across two drives, can survive the failure of one drive with no data loss. Fault tolerance: 1 drive failure",
-      "explanation_correct": "RAID 1 (mirroring) writes identical data to two drives simultaneously. If one drive fails, the other continues to operate with a full copy of all data. Fault tolerance: 1 drive can fail without data loss. RAID 1 is simple and reliable but has 50% storage efficiency (two 1TB drives yield 1TB usable). It's commonly used for OS drives where reliability matters more than capacity. Note: RAID is NOT a backup — it protects against hardware failure but not against data corruption, accidental deletion, or ransomware (which encrypts both mirrored copies simultaneously). RAID improves availability; backups provide recovery.",
-      "explanation_wrong_common": "Option B is wrong — RAID 0 has NO redundancy; it's striping for performance only, and a single drive failure loses ALL data. Option C is wrong — RAID 5 can survive only ONE drive failure, not two (that's RAID 6). Option D is wrong — RAID 10 can survive at least one drive failure in each mirrored pair."
+      "answer": "A sealed container (bag or tape with a unique serial number) that shows visible signs if someone has opened or tampered with it — providing physical proof that evidence hasn't been accessed between collection and lab analysis",
+      "explanation_correct": "Tamper-evident bags (also called evidence bags) have serialized seals that break visibly if opened. Once sealed, the bag shows a VOID pattern or torn seal if tampered with. The serial number is recorded in the chain of custody. When the evidence reaches the lab, the analyst verifies the seal is intact before opening — if the seal is broken, the chain of custody is compromised and the evidence may be inadmissible. Tamper-evident tape works similarly on larger items. Faraday bags (Option D) are different — they block electromagnetic signals to prevent remote wiping of phones/laptops, but they're about signal isolation, not tamper evidence. Both are used together: a device goes in a Faraday bag, which is then sealed in a tamper-evident bag.",
+      "explanation_wrong_common": "Option B is wrong — tamper-evident bags don't destroy evidence; they reveal tampering. Option C is wrong — they don't encrypt; they provide physical tamper detection. Option D describes a Faraday bag, which is a different tool (signal blocking, not tamper evidence)."
     },
     {
-      "card_id": "resilience_002",
-      "topic": "System Resilience",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is the difference between a full backup, an incremental backup, and a differential backup?",
-      "choices": [
-        "Full backup copies all data every time. Incremental copies only data changed since the last backup (any type). Differential copies all data changed since the last FULL backup",
-        "Full backup copies only new files. Incremental copies everything. Differential copies nothing — it just verifies existing backups",
-        "Full backup is performed daily. Incremental is performed weekly. Differential is performed monthly",
-        "All three are identical — they are different names for the same backup method used by different vendors"
-      ],
-      "answer": "Full backup copies all data every time. Incremental copies only data changed since the last backup (any type). Differential copies all data changed since the last FULL backup",
-      "explanation_correct": "Full backup: copies all selected data regardless of what changed. Takes the longest and uses the most storage, but restores are simple (one backup set). Incremental: copies only data that changed since the last backup of ANY type (full or incremental). Very fast and storage-efficient, but restoration requires the full backup PLUS every incremental in sequence — slowest restore. Differential: copies all data changed since the last FULL backup. Each differential grows larger over time, but restoration only needs the full backup plus the latest differential — faster restore than incremental. Common strategy: weekly full + daily differential (balance of speed and restore simplicity) or weekly full + daily incremental (minimal backup time, slower restore).",
-      "explanation_wrong_common": "Option B is nonsensical — full backups copy everything, not just new files. Option C is wrong — the difference is in what data is copied, not the schedule frequency. Option D is wrong — they are fundamentally different methods with distinct restore characteristics."
-    },
-    {
-      "card_id": "resilience_003",
-      "topic": "System Resilience",
+      "card_id": "chain_003",
+      "topic": "Chain of Custody",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An e-commerce company needs to ensure their web application stays available even if one of their two database servers fails. They are considering active-active vs active-passive clustering. Which statement correctly describes the trade-off?",
+      "question_text": "During a court proceeding, the defense attorney challenges a hard drive image, stating there was a 3-hour gap in the chain of custody log between when the evidence was collected and when it was logged into the evidence locker. What is the likely consequence?",
       "choices": [
-        "Active-active: both servers handle requests simultaneously, maximizing resource utilization and load distribution, but requires careful data synchronization. Active-passive: one server handles requests while the other stands by as a failover, simpler but wastes the standby server's capacity",
-        "Active-active: one server works while the other is turned off to save power. Active-passive: both servers work but one is slower",
-        "Active-active: both servers share the same IP address and cannot be distinguished. Active-passive: each server has its own IP address",
-        "Active-active costs less because you only need one server license. Active-passive requires two licenses"
+        "The evidence may be ruled inadmissible — the undocumented 3-hour gap means the prosecution cannot prove the drive wasn't accessed, modified, or swapped during that period, breaking the integrity guarantee that chain of custody provides",
+        "Nothing — a 3-hour gap is within the acceptable tolerance for evidence handling",
+        "The evidence is still admissible but the forensic analyst must re-hash the drive in court",
+        "The judge will automatically convict the investigator of evidence tampering"
       ],
-      "answer": "Active-active: both servers handle requests simultaneously, maximizing resource utilization and load distribution, but requires careful data synchronization. Active-passive: one server handles requests while the other stands by as a failover, simpler but wastes the standby server's capacity",
-      "explanation_correct": "In active-active clustering, both (or all) nodes serve traffic simultaneously. Benefits: better performance (load is distributed), no wasted resources, and if one node fails, the other(s) simply absorb the load. Challenges: requires sophisticated data synchronization (shared storage or replication), and care must be taken to avoid split-brain scenarios (both nodes thinking the other is dead and trying to take over). In active-passive, one node does all the work while the other waits. Benefits: simpler to configure and troubleshoot, no data sync complexity during normal operation. Drawbacks: the standby node's resources are wasted until failover, and there's a brief interruption during failover as the passive node activates. Active-active is preferred for performance-critical applications; active-passive for simpler setups.",
-      "explanation_wrong_common": "Option B is wrong — active-active means both are working, not one turned off. Option C is about IP addressing, not the clustering model's trade-offs. Option D is about licensing, which varies by vendor and is not the primary technical trade-off."
+      "answer": "The evidence may be ruled inadmissible — the undocumented 3-hour gap means the prosecution cannot prove the drive wasn't accessed, modified, or swapped during that period, breaking the integrity guarantee that chain of custody provides",
+      "explanation_correct": "Chain of custody must be continuous and unbroken. A gap — even a short one — creates reasonable doubt about evidence integrity. The defense will argue: 'During those 3 hours, someone could have modified the image, planted evidence, or swapped the drive.' The prosecution cannot prove otherwise because there's no documentation. Judges take this seriously — if the chain is broken, the evidence may be excluded entirely (the legal standard varies by jurisdiction, but inadmissibility is the risk). This is why every transfer, no matter how brief, must be documented: '14:00 — Evidence collected by Investigator A at suspect's office. 14:05 — Transported to vehicle. 14:30 — Arrived at evidence locker. 14:35 — Logged in by Evidence Custodian B.' No gaps.",
+      "explanation_wrong_common": "Option B is wrong — there is no 'acceptable tolerance' for gaps in chain of custody; any undocumented period is a break. Option C is wrong — re-hashing in court proves the current state matches but doesn't prove the gap period didn't include tampering. Option D is wrong — a gap suggests negligence, not necessarily criminal tampering by the investigator."
     },
     {
-      "card_id": "resilience_004",
-      "topic": "System Resilience",
+      "card_id": "containment_001",
+      "topic": "Containment & Eradication",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A small business asks for a simple, effective backup strategy for their file server. They have 2TB of important business documents and want protection against ransomware, hardware failure, and accidental deletion. What do you recommend?",
+      "question_text": "A compromised web server is actively exfiltrating data to a C2 server. The IR team has three options: (A) pull the network cable, (B) isolate via VLAN change, (C) shut down the server. Which is the best containment strategy and why?",
       "choices": [
-        "Follow the 3-2-1 rule: keep 3 copies of data, on 2 different media types, with 1 copy stored offsite (or in immutable cloud storage) — e.g., primary server + local NAS backup + encrypted cloud backup with immutability to defeat ransomware",
-        "Use RAID 1 on the file server — mirroring provides complete protection against all data loss scenarios",
-        "Email a ZIP copy of all files to the owner's Gmail account every Friday",
-        "Make a single backup to an external USB drive and keep it plugged into the server at all times"
+        "Isolate via VLAN change — it cuts off C2 communication while keeping the server powered on, preserving volatile evidence (RAM, running processes, network connections) for forensic analysis and allowing monitoring of the attacker's persistence attempts",
+        "Pull the network cable — it's the fastest and most direct way to stop exfiltration",
+        "Shut down the server — it immediately stops all malicious activity and is the safest option",
+        "Do nothing and let the attacker continue — monitoring their activity provides intelligence"
       ],
-      "answer": "Follow the 3-2-1 rule: keep 3 copies of data, on 2 different media types, with 1 copy stored offsite (or in immutable cloud storage) — e.g., primary server + local NAS backup + encrypted cloud backup with immutability to defeat ransomware",
-      "explanation_correct": "The 3-2-1 backup rule is the gold standard for data resilience: 3 copies of data (primary + 2 backups), 2 different media types (e.g., NAS and cloud, or NAS and tape — protects against media-specific failures), 1 copy offsite (protects against physical disasters like fire/flood). For ransomware protection specifically, the offsite copy should be immutable (write-once-read-many) or air-gapped — ransomware can encrypt connected backups but cannot touch immutable or disconnected copies. Adding immutability to the cloud backup means even if an attacker compromises the server, they cannot delete or encrypt the cloud backup. The 3-2-1 rule ensures no single point of failure destroys all copies.",
-      "explanation_wrong_common": "Option B is wrong — RAID is NOT a backup. Ransomware encrypts both mirrored copies simultaneously. Option C is impractical for 2TB and provides no versioning or ransomware protection. Option D keeps the backup connected — ransomware will encrypt it along with the server, providing zero protection."
+      "answer": "Isolate via VLAN change — it cuts off C2 communication while keeping the server powered on, preserving volatile evidence (RAM, running processes, network connections) for forensic analysis and allowing monitoring of the attacker's persistence attempts",
+      "explanation_correct": "VLAN isolation is the gold standard for network containment of a compromised server. It achieves: (1) Stops C2 communication — the server can't reach the attacker or exfiltrate data. (2) Preserves volatile evidence — the server stays on, so RAM (containing decrypted data, running malware, C2 keys) is intact for forensic capture. (3) Allows monitoring — the IR team can observe if the attacker has persistence mechanisms (scheduled tasks, new services) that try to reconnect. (4) Maintains business context — the server's state is preserved for root-cause analysis. Pulling the cable (Option A) works but is less elegant — it's physical and doesn't allow network-level monitoring of reconnection attempts. Shutting down (Option C) destroys volatile evidence. Option D (do nothing) is unacceptable — active exfiltration must be contained.",
+      "explanation_wrong_common": "Option A (pull cable) works but is less useful than VLAN isolation — no network telemetry, and physical access is needed. Option C (shutdown) destroys RAM evidence and may trigger anti-forensic cleanup. Option D (let it run) is only acceptable in rare 'watch and learn' scenarios with senior approval — active data exfiltration must be contained."
     },
     {
-      "card_id": "resilience_005",
-      "topic": "System Resilience",
+      "card_id": "containment_002",
+      "topic": "Containment & Eradication",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A hospital's IT department is defining their disaster recovery plan. They determine that patient records must be recoverable within 4 hours of a disaster, and they can tolerate losing no more than 1 hour of data. What are their RTO and RPO respectively?",
+      "question_text": "After eradicating a malware infection from a network of 200 endpoints, the IR team moves to the recovery phase. What are the key activities in recovery, and what critical check must be performed before returning systems to production?",
       "choices": [
-        "RTO = 4 hours (maximum downtime to restore service), RPO = 1 hour (maximum acceptable data loss measured backward from the incident)",
-        "RTO = 1 hour (time to detect the disaster), RPO = 4 hours (time to back up data after recovery)",
-        "RTO = 4 hours (how often to run backups), RPO = 1 hour (how long backups are retained)",
-        "RTO = 5 hours (RTO + RPO combined), RPO = 3 hours (RTO minus RPO)"
+        "Restore systems from known-clean backups or rebuild from gold images, apply all security patches, verify system integrity (compare to hardened baseline), monitor for re-infection indicators, and confirm the original vulnerability is patched before returning to production",
+        "Simply turn the systems back on and let users resume work — eradication means the threat is gone",
+        "Reformat all hard drives and reinstall the OS, then immediately return to production without testing",
+        "Purchase new hardware for all 200 endpoints — compromised machines can never be trusted again"
       ],
-      "answer": "RTO = 4 hours (maximum downtime to restore service), RPO = 1 hour (maximum acceptable data loss measured backward from the incident)",
-      "explanation_correct": "RTO (Recovery Time Objective) is the maximum acceptable downtime — how long it takes to restore service after a disaster. Here, systems must be back online within 4 hours. RPO (Recovery Point Objective) is the maximum acceptable data loss — measured as the time window of data you can afford to lose. An RPO of 1 hour means you need backups at least every hour, so at most 1 hour of transactions/records could be lost. These metrics drive infrastructure decisions: RTO=4h might allow for restoring from backups rather than needing instant failover. RPO=1h requires near-continuous replication or hourly snapshots. Lower RTO/RPO = more expensive infrastructure (HA clusters, real-time replication, hot sites).",
-      "explanation_wrong_common": "Option B swaps the definitions and mischaracterizes them — RTO is about restoration time, not detection time. Option C is wrong — RTO is not a backup frequency, and RPO is not a retention period. Option D is fabricated math — RTO and RPO are independent metrics, not additive or subtractive."
+      "answer": "Restore systems from known-clean backups or rebuild from gold images, apply all security patches, verify system integrity (compare to hardened baseline), monitor for re-infection indicators, and confirm the original vulnerability is patched before returning to production",
+      "explanation_correct": "Recovery is about safely returning systems to normal operation. Key steps: (1) Restore from clean backups or rebuild from gold/master images — don't trust the compromised system state. (2) Apply all patches and hardening before reconnecting to the network. (3) Verify integrity — compare the rebuilt system to the hardened baseline (CIS Benchmarks); ensure no backdoors remain. (4) Confirm the original vulnerability that enabled the breach is fixed — if it isn't, the same attack will recur. (5) Phase the return — bring systems back in monitored stages, watching for IoCs. (6) Enhanced monitoring — heightened SIEM/EDR alerts for 2-4 weeks post-recovery to catch re-infection early. Recovery without patching the root cause guarantees recurrence.",
+      "explanation_wrong_common": "Option B is dangerously wrong — 'eradication complete' doesn't mean systems are safe to use; they may still have backdoors or unpatched vulnerabilities. Option C is partially right (rebuilding) but wrong to skip integrity verification and patching before returning to production. Option D is overkill — most systems can be rebuilt from clean images; replacing hardware is unnecessary unless physically compromised."
+    },
+    {
+      "card_id": "post_incident_001",
+      "topic": "Incident Response",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "Two weeks after a major ransomware incident was contained and systems were recovered, the IR team holds a post-incident review (lessons learned) meeting. Which of the following is the most valuable outcome of this meeting?",
+      "choices": [
+        "Actionable improvements to detection, response procedures, and security controls — identifying what worked, what failed, and specific changes (new SIEM rules, faster escalation paths, additional training) with assigned owners and deadlines to prevent or improve response to the next incident",
+        "A formal report to blame the individuals who failed to detect the initial intrusion and recommend disciplinary action",
+        "A document confirming that the incident is fully resolved and no further investigation is needed",
+        "A marketing statement declaring the organization's security is now impenetrable"
+      ],
+      "answer": "Actionable improvements to detection, response procedures, and security controls — identifying what worked, what failed, and specific changes (new SIEM rules, faster escalation paths, additional training) with assigned owners and deadlines to prevent or improve response to the next incident",
+      "explanation_correct": "The post-incident activity phase (NIST's 4th phase) is where organizations learn from the incident. A blameless post-mortem focuses on systems and processes, not individuals. Key outcomes: (1) What worked well — e.g., EDR detected the ransomware in 5 minutes. (2) What failed — e.g., SIEM alert for lateral movement was ignored for 2 hours due to alert fatigue. (3) Action items with owners and deadlines — e.g., 'Tune SIEM rules to reduce false positives (SOC lead, 2 weeks),' 'Add MFA to all VPN accounts (IT lead, 1 month),' 'Run quarterly tabletop exercises (IR lead, ongoing).' (4) Update IR playbooks with lessons learned. (5) Share findings (sanitized) with broader teams. Without this phase, the same vulnerabilities and response gaps will persist.",
+      "explanation_wrong_common": "Option B is wrong — blame culture destroys trust and makes people hide incidents; blameless post-mortems focus on systemic improvements. Option C is wrong — the review isn't about closing the case; it's about learning and improving. Option D is dangerously wrong — no security is 'impenetrable,' and claiming so is both false and legally risky."
     }
   ],
   "scheduling_updates": [
-    {"card_id": "cloud_001", "next_due_at": "2026-08-16"},
-    {"card_id": "cloud_002", "next_due_at": "2026-08-16"},
-    {"card_id": "cloud_003", "next_due_at": "2026-08-17"},
-    {"card_id": "cloud_004", "next_due_at": "2026-08-17"},
-    {"card_id": "cloud_005", "next_due_at": "2026-08-17"},
-    {"card_id": "sase_001", "next_due_at": "2026-08-16"},
-    {"card_id": "sase_002", "next_due_at": "2026-08-16"},
-    {"card_id": "sase_003", "next_due_at": "2026-08-17"},
-    {"card_id": "sase_004", "next_due_at": "2026-08-17"},
-    {"card_id": "endpoint_001", "next_due_at": "2026-08-16"},
-    {"card_id": "endpoint_002", "next_due_at": "2026-08-16"},
-    {"card_id": "endpoint_003", "next_due_at": "2026-08-17"},
-    {"card_id": "endpoint_004", "next_due_at": "2026-08-17"},
-    {"card_id": "endpoint_005", "next_due_at": "2026-08-16"},
-    {"card_id": "endpoint_006", "next_due_at": "2026-08-17"},
-    {"card_id": "resilience_001", "next_due_at": "2026-08-16"},
-    {"card_id": "resilience_002", "next_due_at": "2026-08-16"},
-    {"card_id": "resilience_003", "next_due_at": "2026-08-17"},
-    {"card_id": "resilience_004", "next_due_at": "2026-08-17"},
-    {"card_id": "resilience_005", "next_due_at": "2026-08-17"}
+    {"card_id": "ir_001", "next_due_at": "2026-08-25"},
+    {"card_id": "ir_002", "next_due_at": "2026-08-25"},
+    {"card_id": "ir_003", "next_due_at": "2026-08-26"},
+    {"card_id": "ir_004", "next_due_at": "2026-08-26"},
+    {"card_id": "ir_005", "next_due_at": "2026-08-26"},
+    {"card_id": "ioc_001", "next_due_at": "2026-08-25"},
+    {"card_id": "ioc_002", "next_due_at": "2026-08-25"},
+    {"card_id": "ioc_003", "next_due_at": "2026-08-26"},
+    {"card_id": "ioc_004", "next_due_at": "2026-08-26"},
+    {"card_id": "forensics_001", "next_due_at": "2026-08-25"},
+    {"card_id": "forensics_002", "next_due_at": "2026-08-25"},
+    {"card_id": "forensics_003", "next_due_at": "2026-08-26"},
+    {"card_id": "forensics_004", "next_due_at": "2026-08-26"},
+    {"card_id": "forensics_005", "next_due_at": "2026-08-26"},
+    {"card_id": "chain_001", "next_due_at": "2026-08-25"},
+    {"card_id": "chain_002", "next_due_at": "2026-08-25"},
+    {"card_id": "chain_003", "next_due_at": "2026-08-26"},
+    {"card_id": "containment_001", "next_due_at": "2026-08-26"},
+    {"card_id": "containment_002", "next_due_at": "2026-08-26"},
+    {"card_id": "post_incident_001", "next_due_at": "2026-08-27"}
   ]
 }
