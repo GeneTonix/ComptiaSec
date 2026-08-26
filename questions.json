@@ -5,342 +5,402 @@
       "topic": "Incident Response",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "According to NIST SP 800-61, what is the FIRST step an organization should take when establishing an incident response capability?",
+      "question_text": "In the NIST SP 800-61 incident response lifecycle, which phase involves profiling network traffic and establishing baseline behavior to recognize anomalies?",
       "choices": [
-        "Establish an incident response policy that defines what constitutes an incident, roles and responsibilities, and management commitment",
-        "Purchase a SIEM platform with pre-built detection rules",
-        "Hire a team of certified forensic investigators",
-        "Conduct a full penetration test to identify vulnerabilities"
+        "Detection & Analysis",
+        "Preparation",
+        "Containment, Eradication & Recovery",
+        "Post-Incident Activity"
       ],
-      "answer": "Establish an incident response policy that defines what constitutes an incident, roles and responsibilities, and management commitment",
-      "explanation_correct": "NIST SP 800-61 states that the first step is creating an incident response policy approved by senior management. The policy defines what constitutes an incident, the IR team's authority, roles, responsibilities, and reporting requirements. Without management-approved policy, the IR team has no mandate to act, no budget, and no legal authority to isolate systems or preserve evidence. Tools and hiring come after policy.",
-      "explanation_wrong_common": "Option B — a SIEM is a tool, not a foundational policy; tools support the capability but don't define it. Option C — hiring comes after policy defines roles. Option D — pen testing is a vulnerability management activity, not the first step of IR capability building."
+      "answer": "Detection & Analysis",
+      "explanation_correct": "Detection & Analysis is where the team monitors for and identifies potential incidents using SIEM alerts, IDS/IPS signatures, anomaly detection, and threat intelligence. Profiling network traffic and establishing baselines allows the team to recognize deviations that signal an incident. This phase includes triage, scoping, and initial investigation to confirm whether an event is a true incident.",
+      "explanation_wrong_common": "Option B (Preparation) is about building capability before an incident occurs. Option C is about stopping and cleaning up after an incident is confirmed. Option D is after resolution. Baseline profiling for detection belongs in Detection & Analysis."
     },
     {
       "card_id": "ir_012",
       "topic": "Incident Response",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between an 'event' and an 'incident' in the NIST SP 800-61 framework?",
+      "question_text": "What is a CSIRT, and what is its primary function within an organization?",
       "choices": [
-        "An event is any observable occurrence in a system or network; an incident is an event that violates security policies or threatens assets and requires a response",
-        "An event is always malicious; an incident is always accidental",
-        "An event is logged by the SIEM; an incident is logged by the firewall",
-        "An event occurs during business hours; an incident occurs after hours"
+        "Computer Security Incident Response Team — a group of trained personnel responsible for receiving, triaging, and responding to computer security incidents",
+        "Cyber Security Incident Remediation Tool — an automated software platform that patches vulnerabilities",
+        "Centralized Security Incident Reporting Terminal — a single dashboard for logging security events",
+        "Certified Security Incident Response Technician — an individual certification for forensic analysts"
       ],
-      "answer": "An event is any observable occurrence in a system or network; an incident is a subset of events that violate security policies or threaten assets and require a response",
-      "explanation_correct": "NIST SP 800-61 draws a clear line: an event is any observable occurrence (user login, file access, network connection — most are benign). An incident is an event (or series of events) that has adverse consequences: violates security policy, threatens confidentiality/integrity/availability, or involves unauthorized access. Not all events are incidents, but all incidents are events. The SIEM correlates events to identify potential incidents.",
-      "explanation_wrong_common": "Option B — events can be benign (normal logins); incidents can be malicious or accidental (e.g., misconfigured server exposing data). Option C — both can be logged by various systems. Option D — timing is irrelevant to the definition."
+      "answer": "Computer Security Incident Response Team — a group of trained personnel responsible for receiving, triaging, and responding to computer security incidents",
+      "explanation_correct": "A CSIRT (Computer Security Incident Response Team) is a cross-functional team that handles security incidents. It typically includes SOC analysts, forensic investigators, IT operations, legal counsel, and communications staff. Its primary functions are: receiving and triaging incident reports, coordinating response across departments, performing forensic analysis, containing and eradicating threats, and conducting post-incident reviews. CSIRTs may be internal, outsourced (MSSP), or government-affiliated (e.g., US-CERT).",
+      "explanation_wrong_common": "Option B is a tool, not a team. Option C is a dashboard, not a team. Option D is an individual certification — CSIRT refers to the team as a whole, not a single person."
     },
     {
       "card_id": "ir_013",
       "topic": "Incident Response",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A SOC analyst receives an alert that a user account logged in from New York at 9 AM and from Tokyo at 9:30 AM the same day. The user is known to be based in New York. The analyst checks and finds the Tokyo login used a valid password but no MFA prompt was triggered. What is the MOST likely classification, and what should the analyst do FIRST?",
+      "question_text": "A company's SIEM generates a high-severity alert at 3 AM indicating a potential data exfiltration event. The on-call analyst reviews the alert, confirms suspicious outbound traffic to an unknown IP, but is unsure if it is a false positive. What should the analyst do FIRST according to NIST IR methodology?",
       "choices": [
-        "Likely credential compromise — immediately disable the account, revoke all active sessions, force password reset, and investigate the Tokyo login source IP and any actions taken during that session",
-        "Likely a false positive — the user may have been traveling; send an email asking if they logged in from Tokyo",
-        "Likely a VPN artifact — the user may have been on a VPN with a Tokyo exit node; close the alert",
-        "Likely impossible travel alert tuning needed — add New York-to-Tokyo to the SIEM whitelist"
+        "Document the findings, classify the event as a suspected incident, escalate to the IR team lead, and begin scoping the impact — treating it as real until proven otherwise",
+        "Wait until business hours to investigate further, since the analyst is unsure and it might be a false positive",
+        "Immediately shut down the affected server to stop the exfiltration, then document the action",
+        "Dismiss the alert as a false positive since the analyst cannot confirm it with certainty"
       ],
-      "answer": "Likely credential compromise — immediately disable the account, revoke all active sessions, force password reset, and investigate the Tokyo login source IP and any actions taken during that session",
-      "explanation_correct": "Impossible travel (NY to Tokyo in 30 minutes) with a valid password but no MFA is a strong indicator of credential compromise — the attacker has the password but not the MFA device (MFA may have been bypassed, not enrolled, or fatigued). The correct response: disable the account to stop further access, revoke active sessions (including the attacker's Tokyo session), force password reset, then investigate what the Tokyo session accessed (data exfiltration, email forwarding rules, lateral movement). Waiting for user confirmation wastes time while the attacker operates.",
-      "explanation_wrong_common": "Option B — sending an email and waiting gives the attacker time. If the user IS in Tokyo, disabling the account temporarily is a minor inconvenience. Option C — assuming VPN without checking is dangerous. Option D — whitelisting this route would blind the SIEM to future real attacks on this path."
+      "answer": "Document the findings, classify the event as a suspected incident, escalate to the IR team lead, and begin scoping the impact — treating it as real until proven otherwise",
+      "explanation_correct": "NIST SP 800-61 requires that during Detection & Analysis, the analyst documents observations, triages the event, and escalates if it meets incident criteria. Outbound traffic to an unknown IP with high-severity alerting warrants treating as a suspected incident. Scoping involves identifying which systems are affected, what data may have been exfiltrated, and the timeline of the activity. Erring on the side of caution prevents delays that could allow further exfiltration. The IR lead can then authorize containment actions.",
+      "explanation_wrong_common": "Option B delays response — exfiltration may continue for hours. Option C is premature — shutting down destroys volatile evidence (RAM, network connections) and should only be done with IR lead authorization after evidence collection. Option D is dangerous — dismissing unconfirmed high-severity alerts is how breaches go undetected for months."
     },
     {
       "card_id": "ir_014",
       "topic": "Incident Response",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "During a ransomware incident, the IR team identifies the patient zero (initial compromised machine) but discovers the attacker used a living-off-the-land technique — legitimate administrative tools (PsExec, WMI, PowerShell) were used for lateral movement. Traditional AV did not flag any of these. What detection approach should the IR team recommend for future detection of this TTP?",
+      "question_text": "During an active ransomware incident, the IR team needs to communicate updates but the corporate email system is compromised. Management suggests using personal Gmail accounts. Why is this a bad idea, and what should be used instead?",
       "choices": [
-        "Implement behavioral analytics and EDR with process lineage tracking to detect anomalous use of administrative tools (e.g., PsExec from a non-admin account, PowerShell executing encoded commands from a remote system), combined with Windows Event Log monitoring for event ID 4688 (process creation) with command-line logging enabled",
-        "Install additional signature-based AV on all endpoints with updated definitions",
-        "Block PsExec, WMI, and PowerShell entirely across the organization via Group Policy",
-        "Disable Remote Desktop Protocol on all endpoints to prevent lateral movement"
+        "Personal email is on compromised infrastructure and creates uncontrolled evidence — use pre-established out-of-band communication channels (Signal group, dedicated burner phones, or a separate physical network) that the attacker cannot access or monitor",
+        "Personal email is fine as long as the team uses strong passwords",
+        "Use SMS text messaging instead, since it is always secure and cannot be intercepted",
+        "Continue using corporate email but encrypt the messages with PGP"
       ],
-      "answer": "Implement behavioral analytics and EDR with process lineage tracking to detect anomalous use of administrative tools (e.g., PsExec from a non-admin account, PowerShell executing encoded commands from a remote system), combined with Windows Event Log monitoring for event ID 4688 (process creation) with command-line logging enabled",
-      "explanation_correct": "Living-off-the-land (LotL) attacks use legitimate tools, so signature-based AV cannot detect them — the tools are not malware. The defense is behavioral: EDR tracks process lineage (who spawned what, from where), identifies anomalous patterns (PsExec from a workstation instead of a jump box, PowerShell with encoded/obfuscated commands, WMI remote execution from unexpected hosts). Enabling Windows Event 4688 with command-line logging (via Group Policy) provides the telemetry for SIEM correlation. This is how modern SOC teams detect LotL attacks.",
-      "explanation_wrong_common": "Option B — signatures can't detect legitimate tools used maliciously. Option C — blocking these tools breaks legitimate admin workflows; whitelisting or constrained PowerShell (Constrained Language Mode) is better. Option D — RDP wasn't the vector here, and blocking it doesn't stop PsExec/WMI lateral movement."
-    },
-    {
-      "card_id": "ir_015",
-      "topic": "Incident Response",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A healthcare organization experiences a ransomware attack that encrypts electronic health records (EHR). The attackers threaten to publish patient data if the ransom is not paid within 48 hours. The organization has HIPAA obligations. The IR team has confirmed the attacker still has active C2 connections. Legal counsel is unsure about breach notification requirements. As IR lead, what is the correct sequence of actions in the FIRST hour after confirming the ransomware?",
-      "choices": [
-        "1) Isolate affected systems to cut C2 and prevent further encryption (containment), 2) Preserve evidence (memory captures, log snapshots) before any rebuilding, 3) Activate the breach notification clock — HIPAA requires notification within 60 days of discovery, 4) Engage law enforcement (HHS, FBI, CISA), 5) Assess whether backups exist and are unencrypted, 6) Notify executive leadership and activate the crisis communications plan",
-        "1) Pay the ransom immediately to stop data publication since patient safety is at risk, 2) Notify patients after the incident is resolved",
-        "1) Notify all patients immediately via email about the breach, 2) Shut down all systems to stop the attack, 3) Contact the media",
-        "1) Restore from backups immediately without containing the attacker, 2) Investigate the root cause after systems are back online"
-      ],
-      "answer": "1) Isolate affected systems to cut C2 and prevent further encryption (containment), 2) Preserve evidence (memory captures, log snapshots) before any rebuilding, 3) Activate the breach notification clock — HIPAA requires notification within 60 days of discovery, 4) Engage law enforcement (HHS, FBI, CISA), 5) Assess whether backups exist and are unencrypted, 6) Notify executive leadership and activate the crisis communications plan",
-      "explanation_correct": "The correct first-hour sequence: (1) Containment is always first — the attacker still has C2, meaning they can encrypt more systems or exfiltrate more data. Isolate affected network segments. (2) Evidence preservation must happen BEFORE rebuilding — once you wipe and restore, the forensic trail is gone. Capture RAM, snapshot logs, image affected drives. (3) The HIPAA Breach Notification Rule clock starts at discovery — covered entities must notify affected individuals within 60 days (HHS OCR guidance). Document discovery time. (4) Law engagement: HHS Office for Civil Rights (HIPAA breach reporting), FBI/CISA for the ransomware investigation. (5) Backup assessment determines recovery options — if backups are intact, rebuilding may be viable without paying. (6) Executive notification triggers crisis comms (internal staff, potentially patients, potentially media if the breach is large enough). Payment is a leadership decision with legal counsel — never the IR team's call.",
-      "explanation_wrong_common": "Option B — paying first without containment means the attacker remains in the network and can re-encrypt. HIPAA notification cannot wait until 'after resolution.' Option C — premature patient notification causes panic before the scope is understood. Shutting down ALL systems may destroy volatile evidence. Option D — restoring without containment allows the attacker to re-encrypt the restored systems, and investigating after rebuilding means root cause evidence is destroyed."
+      "answer": "Personal email is on compromised infrastructure and creates uncontrolled evidence — use pre-established out-of-band communication channels (Signal group, dedicated burner phones, or a separate physical network) that the attacker cannot access or monitor",
+      "explanation_correct": "If the attacker has access to corporate email, they can read IR communications, anticipate containment actions, and counter them. Personal Gmail is on infrastructure the organization doesn't control — it may be subject to personal account compromise, mixes personal and incident data (legal discovery issues), and lacks the organization's security controls. Pre-established out-of-band channels (Signal/WhatsApp groups, dedicated phones, a separate network) are set up during the Preparation phase specifically for this scenario.",
+      "explanation_wrong_common": "Option B — passwords don't help if the attacker can intercept email. Option C — SMS is unencrypted and can be intercepted via SIM swapping. Option D — PGP-encrypted email still reveals metadata (who is communicating) and if the attacker controls the mail server, they can block or delay messages."
     },
     {
       "card_id": "ioc_009",
       "topic": "Indicators of Compromise",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which of the following BEST describes a 'behavioral IoC' (also called an IoA — Indicator of Attack) compared to an atomic IoC?",
+      "question_text": "What is the difference between an Indicator of Compromise (IoC) and an Indicator of Attack (IoA)?",
       "choices": [
-        "A behavioral IoC describes a pattern of actions (e.g., 'PowerShell spawns cmd.exe which downloads a file from an unknown IP, then creates a scheduled task') rather than a single artifact like a hash or IP address",
-        "A behavioral IoC is always more reliable than an atomic IoC because it uses machine learning",
-        "A behavioral IoC is a list of IP addresses known to be malicious, updated daily",
-        "A behavioral IoC is a cryptographic signature of a malware binary"
+        "An IoC is evidence that a compromise has already occurred (e.g., a known malware hash), while an IoA is evidence that an attack is actively in progress (e.g., unusual process execution patterns, privilege escalation attempts)",
+        "An IoC is a type of firewall rule; an IoA is a type of antivirus signature",
+        "An IoC is used for prevention; an IoA is used for compliance auditing",
+        "There is no difference — they are synonymous terms for the same concept"
       ],
-      "answer": "A behavioral IoC describes a pattern of actions (e.g., 'PowerShell spawns cmd.exe which downloads a file from an unknown IP, then creates a scheduled task') rather than a single artifact like a hash or IP address",
-      "explanation_correct": "Atomic IoCs are single artifacts (IP, domain, hash, registry key) — easy to detect but easy for attackers to change. Behavioral IoCs (IoAs) describe a sequence or pattern of activity that indicates an attack is in progress, regardless of the specific tools used. For example, 'a user account that has never accessed finance shares suddenly downloads 500 files from the finance server at 2 AM' is behavioral — it doesn't rely on a specific hash or IP that the attacker can rotate. Behavioral IoCs are harder to evade but harder to detect (require telemetry and correlation).",
-      "explanation_wrong_common": "Option B — behavioral IoCs aren't inherently more reliable; they're harder to evade but also harder to tune and can produce false positives. Option C — a list of IPs is an atomic IoC, not behavioral. Option D — a cryptographic signature is an atomic IoC (file hash)."
+      "answer": "An IoC is evidence that a compromise has already occurred (e.g., a known malware hash), while an IoA is evidence that an attack is actively in progress (e.g., unusual process execution patterns, privilege escalation attempts)",
+      "explanation_correct": "IoCs are retrospective — they identify artifacts left by a successful compromise (malicious file hashes, C2 IP addresses, registry keys). IoAs are proactive/real-time — they identify attacker behavior and techniques as they happen (e.g., a user account suddenly accessing multiple servers outside normal hours, PowerShell downloading and executing a remote script). Modern threat hunting emphasizes IoAs because attackers can change IoCs (new malware hash, new C2 IP) but cannot easily change their techniques.",
+      "explanation_wrong_common": "Option B is wrong — neither is a firewall rule or AV signature. Option C is wrong — both are used for detection/response. Option D is wrong — the distinction matters for detection strategy."
     },
     {
       "card_id": "ioc_010",
       "topic": "Indicators of Compromise",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a 'true positive' and a 'false positive' in the context of IoC-based detection, and why do false positives matter operationally?",
+      "question_text": "Which MITRE ATT&CK tactic describes an attacker attempting to discover what software, services, and systems exist in a compromised environment?",
       "choices": [
-        "A true positive is when the alert correctly identifies a real threat; a false positive is when the alert fires but no actual threat exists. False positives erode analyst trust in alerts, cause alert fatigue, and waste SOC resources investigating benign activity",
-        "A true positive is when the analyst confirms the alert; a false positive is when the SIEM crashes during analysis",
-        "A true positive means the IoC was from a commercial threat feed; a false positive means it was from an open-source feed",
-        "A true positive is when the malware executes; a false positive is when the malware fails to execute"
+        "Discovery (TA0040)",
+        "Initial Access (TA0001)",
+        "Impact (TA0042)",
+        "Defense Evasion (TA0005)"
       ],
-      "answer": "A true positive is when the alert correctly identifies a real threat; a false positive is when the alert fires but no actual threat exists. False positives erode analyst trust in alerts, cause alert fatigue, and waste SOC resources investigating benign activity",
-      "explanation_correct": "In IoC-based detection: true positive = alert fires AND a real threat exists (correct detection). False positive = alert fires BUT no real threat (benign activity matched the IoC). False negatives (missed detections) and true negatives (no alert, no threat) complete the matrix. High false positive rates are a critical operational problem: analysts begin ignoring alerts ('alert fatigue'), real threats get buried in noise, and SOC teams waste hours investigating benign activity. Tuning IoC feeds, adding context (asset criticality, user behavior baselines), and using correlation rules reduce false positives.",
-      "explanation_wrong_common": "Option B — SIEM crashes are operational issues, not false positives. Option C — the source of the IoC feed is irrelevant to true/false positive classification. Option D — malware execution is a host state, not an alert classification."
+      "answer": "Discovery (TA0040)",
+      "explanation_correct": "The MITRE ATT&CK framework organizes adversary behavior into Tactics (the 'why' — goals) and Techniques (the 'how' — methods). Discovery (TA0040) covers techniques where the adversary explores the environment: scanning internal networks, enumerating domain users, listing running services, querying group policies. This typically occurs after initial compromise and before lateral movement.",
+      "explanation_wrong_common": "Option B (Initial Access) is how the attacker gets in the first time. Option C (Impact) is the final stage — destroying data, encrypting systems. Option D (Defense Evasion) is about avoiding detection — disabling AV, clearing logs."
     },
     {
       "card_id": "ioc_011",
       "topic": "Indicators of Compromise",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Your threat intel team shares a list of 500 new IoCs (malicious IPs and domains). The SOC manager wants to block all of them at the firewall immediately. However, the network engineer points out that 3 of the IPs are shared cloud infrastructure used by legitimate business applications. What is the BEST approach?",
+      "question_text": "A threat hunter discovers that an attacker is using a legitimate remote administration tool (PsExec) to move laterally between servers. The tool is already installed and approved in the environment, so AV does not flag it. What type of detection strategy would best identify this activity?",
       "choices": [
-        "Block the 497 unambiguous IoCs immediately; for the 3 shared-infrastructure IPs, use detection-only mode (alert on connections) rather than blocking, document the exception, and escalate to the threat intel team to find more specific IoCs (URLs, paths, or behavioral patterns) for those 3",
-        "Block all 500 — security is more important than business application availability",
-        "Block none of them until every IP is fully verified, to avoid any false positives",
-        "Block only the domain IoCs, ignore the IP IoCs entirely"
+        "Behavioral analytics — correlating the source-destination pair, execution frequency, and comparing against baseline PsExec usage patterns to detect anomalous lateral movement",
+        "Signature-based AV — add a new signature for PsExec to the antivirus block list",
+        "File hash IoC blocking — compute and block the PsExec executable hash",
+        "DNS sinkholing — redirect all DNS queries from affected servers to a known-good resolver"
       ],
-      "answer": "Block the 497 unambiguous IoCs immediately; for the 3 shared-infrastructure IPs, use detection-only mode (alert on connections) rather than blocking, document the exception, and escalate to the threat intel team to find more specific IoCs (URLs, paths, or behavioral patterns) for those 3",
-      "explanation_correct": "Blindly blocking shared cloud infrastructure IPs (e.g., AWS, Azure, Cloudflare) would break legitimate business applications — this is a common false positive problem with IP-based IoCs. The correct approach balances security and operations: block the 497 clear-cut IoCs (dedicated malicious infrastructure), but for the 3 shared IPs, switch to detection mode (log and alert on connections to those IPs) rather than blocking. This preserves business continuity while maintaining visibility. The threat intel team should find more granular IoCs (specific URLs, file paths, user-agent strings) for those 3 IPs to enable precise blocking. This is threat-informed defense.",
-      "explanation_wrong_common": "Option B — blocking business-critical applications causes operational impact that may cost more than the threat. Option C — waiting for full verification delays protection against 497 confirmed IoCs. Option D — ignoring IP IoCs entirely loses detection value; many attacks use dedicated malicious IPs."
+      "answer": "Behavioral analytics — correlating the source-destination pair, execution frequency, and comparing against baseline PsExec usage patterns to detect anomalous lateral movement",
+      "explanation_correct": "When attackers use legitimate tools (living-off-the-land techniques), signature-based detection fails because the tool is known-good. Behavioral analytics can detect anomalous USE of the tool: PsExec running from a workstation (not an admin server), targeting multiple hosts in rapid succession, at unusual hours, or from a non-admin account. SIEM correlation rules or UEBA can establish baseline PsExec usage and flag deviations.",
+      "explanation_wrong_common": "Option B — blocking PsExec would break legitimate admin workflows. Option C — PsExec is a Microsoft Sysinternals tool with a well-known hash; blocking it would prevent legitimate use. Option D — DNS sinkholing is for blocking C2 domains, not for detecting lateral movement."
     },
     {
       "card_id": "ioc_012",
       "topic": "Indicators of Compromise",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A SOC team notices that their IoC-based detections have become less effective over the past 6 months — the same IoCs that used to generate alerts are no longer matching anything, but incidents are still occurring. The threat intel feeds are updating daily. What is the MOST likely explanation, and what should the team do?",
+      "question_text": "Your organization subscribes to a commercial threat intelligence feed that provides daily IoC lists (IPs, domains, file hashes). After importing 50,000 new IoCs into your SIEM, the team notices a surge in alerts, most of which are false positives. What is the best approach to improve the signal-to-noise ratio?",
       "choices": [
-        "Attackers are rotating their infrastructure (IPs, domains, hashes) faster than IoC feeds can track — the team should supplement atomic IoCs with behavioral detections, threat hunting based on TTPs (MITRE ATT&CK techniques), and anomaly detection that doesn't rely on known-bad artifacts",
-        "The SIEM is broken and needs to be replaced with a newer model",
-        "The threat intel feeds are intentionally providing false IoCs",
-        "The attackers have left the network and the current incidents are unrelated"
+        "Apply context-based filtering — weight IoCs by confidence scores, source reliability, and relevance to your industry/attack surface; prioritize high-confidence IoCs from trusted sources and de-prioritize or suppress low-confidence entries",
+        "Delete all IoCs and rely solely on behavioral analytics",
+        "Import only file hashes, since IPs and domains change too frequently",
+        "Add more IoC feeds from additional vendors to increase coverage"
       ],
-      "answer": "Attackers are rotating their infrastructure (IPs, domains, hashes) faster than IoC feeds can track — the team should supplement atomic IoCs with behavioral detections, threat hunting based on TTPs (MITRE ATT&CK techniques), and anomaly detection that doesn't rely on known-bad artifacts",
-      "explanation_correct": "This is IoC decay — attackers routinely rotate IPs, domains, and recompile malware (changing hashes) to evade atomic IoC-based detection. Threat intel feeds lag behind because they report what was already observed, not what the attacker will use next. The solution is defense-in-depth: (1) Keep atomic IoCs for known threats (they catch opportunistic/lazy attackers). (2) Add behavioral detections — alert on TTP patterns (e.g., 'credential dumping via lsass access' regardless of the tool used). (3) Threat hunting — proactively search for anomalies using MITRE ATT&CK as a framework. (4) Anomaly detection — baseline normal behavior and alert on deviations. This shifts from 'detect what we know is bad' to 'detect what looks bad.'",
-      "explanation_wrong_common": "Option B — the SIEM isn't broken; the detection strategy needs to evolve. Option C — feeds are generally reliable but are inherently reactive. Option D — the incidents are still occurring, meaning attackers are active but using new infrastructure."
+      "answer": "Apply context-based filtering — weight IoCs by confidence scores, source reliability, and relevance to your industry/attack surface; prioritize high-confidence IoCs from trusted sources and de-prioritize or suppress low-confidence entries",
+      "explanation_correct": "Threat intelligence feeds vary wildly in quality. Effective TI management requires: (1) Confidence scoring. (2) Relevance filtering — focus on IoCs relevant to your industry, geography, and technology stack. (3) Enrichment — cross-reference IoCs with other feeds before alerting. (4) Decay — automatically retire IoCs not observed in the wild after a set period.",
+      "explanation_wrong_common": "Option B is an overreaction — IoCs still catch known threats. Option C — all IoC types have value. Option D — more feeds means MORE noise, not less, unless filtering improves first."
     },
     {
       "card_id": "forensics_010",
       "topic": "Digital Forensics",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a 'forensic image' and how does it differ from a simple file copy of a hard drive?",
+      "question_text": "What is a forensic 'image' (also called a bitstream image or raw image), and how does it differ from a simple file copy?",
       "choices": [
-        "A forensic image is a bit-for-bit copy of the ENTIRE storage medium, including allocated files, unallocated space, slack space, deleted file remnants, and partition tables — a file copy only captures active, accessible files and ignores deleted data and disk structure",
-        "A forensic image is an encrypted backup of important files",
-        "A forensic image is a compressed zip archive of the user's documents folder",
-        "A forensic image is the same as a file copy but with a different file extension"
+        "A bit-for-bit copy of the entire storage medium, including all allocated and unallocated sectors, slack space, file system metadata, and deleted file remnants — a file copy only copies active files and ignores the rest",
+        "A compressed ZIP archive of all files on the drive, preserving folder structure",
+        "A screenshot of the file explorer showing all files and their timestamps",
+        "A backup created by the operating system's built-in backup utility"
       ],
-      "answer": "A forensic image is a bit-for-bit copy of the ENTIRE storage medium, including allocated files, unallocated space, slack space, deleted file remnants, and partition tables — a file copy only captures active, accessible files and ignores deleted data and disk structure",
-      "explanation_correct": "A forensic image (created with tools like dd, FTK Imager, or Guymager) copies every bit of the storage device — not just files the OS can see. This includes: unallocated space (where deleted files persist until overwritten), slack space (data between end of file and end of cluster), partition tables, boot sectors, file system metadata (MFT entries, inodes), and even HPA/DCO hidden areas. A file copy (e.g., copying all files to a USB drive) only copies accessible files and loses all deleted data, metadata, and disk structure — making it useless for forensic analysis or evidence in court.",
-      "explanation_wrong_common": "Option B — encryption is applied after imaging, not part of the imaging process. Option C — a zip archive only captures active files. Option D — a file copy and forensic image are fundamentally different in what they capture."
+      "answer": "A bit-for-bit copy of the entire storage medium, including all allocated and unallocated sectors, slack space, file system metadata, and deleted file remnants — a file copy only copies active files and ignores the rest",
+      "explanation_correct": "A forensic image (created with tools like dd, FTK Imager, or EnCase) copies every bit of the source media — including unallocated space, file slack, partition tables, boot sectors, and file system journals. A simple file copy only reads active files via the file system, skipping all the areas where forensic evidence hides. A hash is computed at imaging time to prove integrity.",
+      "explanation_wrong_common": "Option B — a ZIP archive only contains active files, not unallocated space or slack. Option C — a screenshot is not a forensic copy. Option D — OS backup utilities skip unallocated space and may modify metadata."
     },
     {
       "card_id": "forensics_011",
       "topic": "Digital Forensics",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Why is it important to capture volatile data (RAM contents) BEFORE powering off a suspect machine for disk imaging?",
+      "question_text": "In digital forensics, what is 'live forensics' (also called live response), and when is it preferred over traditional dead-box forensics?",
       "choices": [
-        "RAM contains running processes, network connections, encryption keys, and loaded malware that are permanently lost when power is removed — disk imaging can wait but volatile data cannot",
-        "RAM is faster to image than disk, so it should be done first to save time",
-        "Capturing RAM first prevents the suspect from encrypting the hard drive",
-        "It is a best practice but no critical data is actually lost when RAM is cleared"
+        "Collecting volatile data (RAM, running processes, network connections) from a running system before powering it off — preferred when the system must stay operational, or when volatile evidence like encryption keys in RAM would be lost on shutdown",
+        "Performing forensic analysis in real-time while the suspect is using the computer",
+        "Running a forensic toolkit on a live network without write blockers",
+        "Collecting evidence from cloud-based systems only, since local systems are 'dead'"
       ],
-      "answer": "RAM contains running processes, network connections, encryption keys, and loaded malware that are permanently lost when power is removed — disk imaging can wait but volatile data cannot",
-      "explanation_correct": "RAM is the second most volatile evidence source (after CPU cache/registers). When a machine is powered off, RAM contents are immediately lost. RAM may contain: running malware (which may not exist as a file on disk — fileless malware), encryption keys (BitLocker/FileVault keys in memory, allowing disk decryption), active network connections (C2 IPs, ports), logged-in user credentials, and running processes with their command-line arguments. Disk imaging preserves persistent data that survives power-off, so it can be done after volatile capture. The order of volatility (NIST SP 800-86) dictates: capture the most volatile data first.",
-      "explanation_wrong_common": "Option B — RAM imaging is slower than disk imaging (RAM is smaller but the process is careful and documented); speed isn't the reason. Option C — RAM capture doesn't prevent disk encryption; the suspect isn't interacting with the machine during forensic acquisition. Option D — critical data IS lost: encryption keys, running malware, network state."
+      "answer": "Collecting volatile data (RAM, running processes, network connections) from a running system before powering it off — preferred when the system must stay operational, or when volatile evidence like encryption keys in RAM would be lost on shutdown",
+      "explanation_correct": "Live forensics captures volatile data destroyed when power is removed: RAM contents (which may contain encryption keys, decrypted malware, active network sessions), running processes, open network connections, and loaded kernel modules. Critical when: (1) the system uses full-disk encryption and the key is in RAM. (2) The system is a production server that cannot be taken offline. (3) Malware only exists in memory (fileless malware).",
+      "explanation_wrong_common": "Option B implies real-time observation, but live forensics is about data collection. Option C is wrong — the principle of not modifying evidence still holds. Option D is wrong — live forensics applies to any running system, not just cloud."
     },
     {
       "card_id": "forensics_012",
       "topic": "Digital Forensics",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An investigator needs to image a server that uses full disk encryption (BitLocker). The server is currently running and the user is logged in. If the investigator powers off the server to use a hardware write blocker and image the drive, what will happen, and what should they do instead?",
+      "question_text": "A forensic examiner is analyzing a Windows system and needs to determine what USB devices have been connected to it historically. Which forensic artifact provides this information, and where is it stored?",
       "choices": [
-        "Powering off will lock the encrypted drive — the decryption key exists only in RAM (TPM-backed), making the disk image useless without the key. Instead, capture the BitLocker recovery key from memory (or export it from the TPM/AD), perform a live forensic image while the system is running and the key is active, OR use a memory capture tool to extract the key before powering off",
-        "Powering off is fine — BitLocker automatically decrypts the drive on shutdown for forensic purposes",
-        "Powering off will trigger BitLocker to permanently destroy the encryption keys, making data unrecoverable",
-        "The investigator should just copy the files through the OS since the user is logged in — no imaging needed"
+        "The Windows Registry — specifically SYSTEM and SOFTWARE hives contain USB device enumeration records (USBSTOR keys), device serial numbers, first/last insertion times, and assigned drive letters",
+        "The Windows Event Log — Security log records every USB insertion with device serial numbers",
+        "The Recycle Bin — deleted USB device drivers are stored there",
+        "The page file — USB device metadata is written to virtual memory when devices are connected"
       ],
-      "answer": "Powering off will lock the encrypted drive — the decryption key exists only in RAM (TPM-backed), making the disk image useless without the key. Instead, capture the BitLocker recovery key from memory (or export it from the TPM/AD), perform a live forensic image while the system is running and the key is active, OR use a memory capture tool to extract the key before powering off",
-      "explanation_correct": "With BitLocker (TPM-backed), the encryption key is released by the TPM at boot and held in RAM while the system runs. When the system powers off, the key is cleared from RAM and the drive is locked — the raw disk image would be encrypted ciphertext, useless without the key. Correct approaches: (1) Live imaging — image the logical (decrypted) volume while the OS is running using tools like FTK Imager Lite or x-ways. (2) Key extraction — use a memory capture tool (e.g., Volatility with BitLocker plugins, or Elcomsoft) to extract the key from RAM before power-off. (3) Recovery key — if the organization stores BitLocker recovery keys in Active Directory or Azure AD, retrieve the key to decrypt the image later. Option (1) is preferred because it preserves the decrypted state.",
-      "explanation_wrong_common": "Option B — BitLocker does NOT auto-decrypt on shutdown; it does the opposite. Option C — keys aren't destroyed; they're locked and recoverable with the recovery key. Option D — copying files through the OS misses deleted files, unallocated space, and file system metadata; it's not a forensic image."
+      "answer": "The Windows Registry — specifically SYSTEM and SOFTWARE hives contain USB device enumeration records (USBSTOR keys), device serial numbers, first/last insertion times, and assigned drive letters",
+      "explanation_correct": "Windows records USB device history in the Registry. The SYSTEM hive's USBSTOR key (under Enum\\USBSTOR) lists every USB storage device ever connected, including the device type, vendor, product name, and unique serial number. By correlating these with setupapi.dev.log and Event Log entries (Event ID 6416), an examiner can reconstruct a timeline of when specific USB devices were connected.",
+      "explanation_wrong_common": "Option B — Event Log does record some USB events (Event ID 6416), but the Registry is the primary historical record. Option C — the Recycle Bin stores deleted files, not USB metadata. Option D — the page file contains memory contents, not USB device records."
     },
     {
       "card_id": "forensics_013",
       "topic": "Digital Forensics",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A forensic examiner is analyzing a Windows system and finds that the suspect ran 'cipher /w:C:\\' before the machine was seized. What did this command do, and what impact does it have on the forensic investigation?",
+      "question_text": "An investigator is analyzing a suspected compromised Linux server. The attacker may have installed a rootkit. The investigator cannot trust the system's own binaries (ls, ps, netstat may be trojanized). What approach should be used to obtain reliable information about the system state?",
       "choices": [
-        "The cipher /w command overwrites all unallocated space on the C: drive with zeros, then random data, making deleted file recovery from unallocated space extremely difficult or impossible. The examiner should focus on allocated files, the MFT, volume shadow copies, and the page file instead",
-        "The command encrypted all files on the C: drive with EFS, making them inaccessible",
-        "The command deleted all files in the Recycle Bin permanently",
-        "The command defragmented the drive, which has no forensic impact"
+        "Use a trusted, statically-compiled forensic toolkit from read-only media (CD or write-protected USB) that includes known-good versions of essential tools — avoiding reliance on any binary on the suspect system",
+        "Reinstall the operating system and then check for rootkits using the fresh installation",
+        "Run the system's built-in rkhunter and chkrootkit tools — if they find nothing, the system is clean",
+        "Format the hard drive and restore from the last known good backup"
       ],
-      "answer": "The cipher /w command overwrites all unallocated space on the C: drive with zeros, then random data, making deleted file recovery from unallocated space extremely difficult or impossible. The examiner should focus on allocated files, the MFT, volume shadow copies, and the page file instead",
-      "explanation_correct": "Windows includes the 'cipher' utility for EFS encryption, but the '/w' switch performs a wipe of unallocated space — it overwrites all free space with zeros, then with random bytes, three passes total. This specifically targets deleted files that live in unallocated space, making file carving (recovering files by magic numbers) nearly impossible. The examiner should pivot to: (1) MFT analysis — the Master File Table may still contain metadata about deleted files (timestamps, names, sizes) even if the data is gone. (2) Volume Shadow Copies — if VSS snapshots existed before the wipe, they may contain pre-wipe copies of files. (3) The page file — may contain data from memory that was swapped to disk. (4) Allocated files — files the suspect kept are untouched by cipher /w. (5) USN Journal — may record file deletion events.",
-      "explanation_wrong_common": "Option B — cipher without /w manages EFS; /w is the wipe function. Option C — cipher /w doesn't target the Recycle Bin specifically; it wipes ALL unallocated space. Option D — defragmentation rearranges files but doesn't wipe data; cipher /w deliberately destroys recoverable data."
+      "answer": "Use a trusted, statically-compiled forensic toolkit from read-only media (CD or write-protected USB) that includes known-good versions of essential tools — avoiding reliance on any binary on the suspect system",
+      "explanation_correct": "A rootkit can replace system binaries with trojanized versions that hide the attacker's files, processes, and network connections. A trusted toolkit run from read-only media bypasses the rootkit — it reads raw disk, memory, and kernel structures directly rather than going through the compromised system's API. Additional techniques include comparing running process lists from /proc against ps output.",
+      "explanation_wrong_common": "Option B — reinstalling destroys all evidence. Option C — rkhunter and chkrootkit are themselves running on the compromised system; a sophisticated rootkit can hide from them. Option D — formatting destroys evidence; the goal is investigation, not remediation."
     },
     {
       "card_id": "chain_007",
       "topic": "Chain of Custody",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What information MUST be recorded on a chain of custody form every time evidence changes hands?",
+      "question_text": "What is the purpose of hashing evidence at the time of collection in digital forensics?",
       "choices": [
-        "Date and time of transfer, name and signature of person releasing the evidence, name and signature of person receiving the evidence, description of the evidence, reason for transfer, and storage location",
-        "Only the name of the person who currently holds the evidence",
-        "The monetary value of the evidence and the insurance policy number",
-        "The legal case number and the judge's name"
+        "To prove that the evidence has not been altered from the time of collection to the time of analysis or presentation in court — any change to the data would produce a different hash value",
+        "To compress the evidence so it takes up less storage space",
+        "To encrypt the evidence so unauthorized personnel cannot read it",
+        "To assign a unique identifier to the evidence for cataloging purposes only"
       ],
-      "answer": "Date and time of transfer, name and signature of person releasing the evidence, name and signature of person receiving the evidence, description of the evidence, reason for transfer, and storage location",
-      "explanation_correct": "Every transfer of evidence must be documented with: (1) Date and time of transfer — establishes the timeline. (2) Name and signature of the person releasing (relinquishing) the evidence. (3) Name and signature of the person receiving (taking custody of) the evidence. (4) Description of the evidence (serial number, make, model, identifying features). (5) Reason for transfer (e.g., 'transport to lab for imaging,' 'return to evidence storage'). (6) Storage location where the evidence will be kept. This unbroken chain proves in court that the evidence presented is the same evidence collected at the scene, and that no unauthorized person had access during the gap.",
-      "explanation_wrong_common": "Option B — the current holder's name alone doesn't establish the chain; you need the transfer details. Option C — monetary value and insurance are irrelevant to evidence custody. Option D — case number may be included for reference, but the judge's name is not a chain of custody requirement."
+      "answer": "To prove that the evidence has not been altered from the time of collection to the time of analysis or presentation in court — any change to the data would produce a different hash value",
+      "explanation_correct": "Hashing (typically MD5 and/or SHA-256) is performed at collection time and recorded on the chain of custody form. The hash acts as a digital fingerprint — if the evidence is later challenged in court, the opposing side can re-hash the evidence and compare it to the original recorded hash. Matching hashes mathematically prove the data is identical to what was originally collected.",
+      "explanation_wrong_common": "Option B — hashing is not compression. Option C — hashing is not encryption; hashes are one-way functions. Option D — while hashes do serve as unique identifiers, their PRIMARY purpose in forensics is integrity verification."
     },
     {
       "card_id": "chain_008",
       "topic": "Chain of Custody",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "During a trial, the defense attorney challenges digital evidence by pointing out that there is a 4-hour gap between when the evidence was collected at the crime scene (10 PM) and when it was checked into the evidence locker (2 AM). The investigator testifies they drove directly to the lab. What is the likely outcome, and what should have been done differently?",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What information must be recorded on a chain of custody form each time evidence changes hands?",
       "choices": [
-        "The 4-hour gap in the chain of custody may render the evidence inadmissible or reduce its weight. The investigator should have documented the transport in detail (departure time, route, arrival time, and who received the evidence at the locker) on the chain of custody form. If the seal was intact and the gap is explained, the judge may still admit it, but the defense will exploit the gap to cast doubt",
-        "The 4-hour gap is normal — no documentation is needed for transit time",
-        "The evidence is automatically inadmissible and the case must be dismissed entirely",
-        "The investigator should have mailed the evidence to the lab instead of driving it"
+        "Date and time of transfer, name and signature of person releasing the evidence, name and signature of person receiving the evidence, reason for transfer, and condition of evidence/seal",
+        "Only the name of the person who currently holds the evidence",
+        "A brief description of what the evidence is, with no signatures required",
+        "The case number and storage location only"
       ],
-      "answer": "The 4-hour gap in the chain of custody may render the evidence inadmissible or reduce its weight. The investigator should have documented the transport in detail (departure time, route, arrival time, and who received the evidence at the locker) on the chain of custody form. If the seal was intact and the gap is explained, the judge may still admit it, but the defense will exploit the gap to cast doubt",
-      "explanation_correct": "A 4-hour undocumented gap in the chain of custody is a significant weakness. The prosecution must show an unbroken chain — every moment the evidence was in someone's possession must be accounted for. During the gap, the defense can argue the evidence could have been tampered with. The correct practice: document EVERY transfer including transport. The form should show 'Collected 10:00 PM by Investigator A, transported via personal vehicle, departed 10:15 PM, arrived at lab 11:45 PM, stored in evidence locker at 12:00 AM, checked in by Evidence Custodian B at 2:00 AM.' The tamper-evident seal being intact helps, but the documentation gap is still a problem. Judges decide admissibility on a case-by-case basis — some will admit with the intact seal, others will exclude.",
-      "explanation_wrong_common": "Option B — transit time absolutely needs documentation; undocumented time is a gap in the chain. Option C — a gap doesn't automatically invalidate the entire case; the judge decides based on the totality. Option D — mailing evidence creates an even longer gap with less control."
+      "answer": "Date and time of transfer, name and signature of person releasing the evidence, name and signature of person receiving the evidence, reason for transfer, and condition of evidence/seal",
+      "explanation_correct": "A chain of custody form must document every transfer with: (1) Date and time. (2) Full name and signature of the releaser. (3) Full name and signature of the receiver. (4) Reason for the transfer. (5) Condition of the evidence and tamper-evident seal. This creates an unbroken documented chain from collection to courtroom. Any gap can render evidence inadmissible.",
+      "explanation_wrong_common": "Option B is insufficient — a single name doesn't document the transfer. Option C — without signatures, there is no accountability. Option D — case number and storage location are important but don't document the transfer between individuals."
     },
     {
       "card_id": "chain_009",
       "topic": "Chain of Custody",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization uses a cloud-based email provider (Microsoft 365). During an insider threat investigation, the security team needs to preserve a suspect's email data as evidence. Unlike a physical laptop, there is no physical device to seize and bag. How should the team establish and document chain of custody for cloud-based evidence?",
+      "question_text": "An organization collects a suspect's workstation, but the person who collected it forgot to record the collection time on the chain of custody form. The form was signed but the timestamp field was left blank. The defense attorney argues this gap makes the evidence inadmissible. How should the prosecution respond?",
       "choices": [
-        "Use the provider's eDiscovery/legal hold tools to export the mailbox to a PST file, record who initiated the export, when, what was exported, the export tool used, and the hash of the exported file. Store the PST on encrypted media with restricted access, and document every access to the file on the chain of custody form — same principles apply, just the 'evidence' is digital from the start",
-        "Take screenshots of the suspect's inbox as evidence",
-        "Forward all of the suspect's emails to the HR manager's personal email account",
-        "Ask the cloud provider to preserve the mailbox and rely on their word that nothing changed"
+        "Corroborate the collection time using other evidence — security camera footage, badge access logs, witness testimony from the collector, or system timestamps on the forensic image — and document the correction as an amendment to the chain of custody form with explanation for the omission",
+        "Dismiss the evidence entirely and proceed with the case without it",
+        "Fabricate a plausible timestamp and fill it in retroactively",
+        "Argue that timestamps are not required on chain of custody forms"
       ],
-      "answer": "Use the provider's eDiscovery/legal hold tools to export the mailbox to a PST file, record who initiated the export, when, what was exported, the export tool used, and the hash of the exported file. Store the PST on encrypted media with restricted access, and document every access to the file on the chain of custody form — same principles apply, just the 'evidence' is digital from the start",
-      "explanation_correct": "Cloud evidence requires adapting chain of custody principles: (1) Use the provider's legal/eDiscovery tools (Microsoft Purview, Google Vault) to place a legal hold (prevents deletion) and export data in a forensically sound format (PST for Exchange, MBOX for Google). (2) Record the metadata: who initiated the export, date/time, scope (which mailboxes, date range), tool used, and export configuration. (3) Hash the exported file (SHA-256) at the time of export to prove integrity. (4) Store the export on encrypted, access-controlled media. (5) Document every access on the chain of custody form — same as physical evidence. The key difference from physical evidence is that the 'collection' is a digital export, but the custody principles (who, what, when, where, why, integrity verification) are identical.",
-      "explanation_wrong_common": "Option B — screenshots are incomplete (only show visible emails, not headers, attachments, metadata) and are not a forensically sound export. Option C — forwarding emails to a personal account breaks chain of custody and may violate data privacy laws. Option D — relying on the provider's word without your own documented export and hash is not sufficient for legal proceedings."
+      "answer": "Corroborate the collection time using other evidence — security camera footage, badge access logs, witness testimony from the collector, or system timestamps on the forensic image — and document the correction as an amendment to the chain of custody form with explanation for the omission",
+      "explanation_correct": "A missing timestamp is a documentation gap, not necessarily fatal to admissibility. The prosecution can reconstruct the timeline using corroborating evidence. The key is transparency — documenting the omission, explaining it, and providing the reconstructed timeline. Courts evaluate whether the gap creates reasonable doubt about evidence integrity. Deliberate falsification (Option C) would destroy the case.",
+      "explanation_wrong_common": "Option B — dismissing evidence is premature; documentation gaps can often be remedied. Option C — fabricating timestamps is perjury and evidence tampering. Option D — timestamps ARE required; arguing otherwise shows incompetence."
     },
     {
       "card_id": "containment_006",
       "topic": "Containment & Eradication",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between 'eradication' and 'recovery' in the NIST SP 800-61 incident response lifecycle?",
+      "question_text": "In incident response, what is the difference between 'eradication' and 'recovery'?",
       "choices": [
-        "Eradication removes the threat (malware, attacker access, vulnerabilities) from the environment; recovery restores systems to normal operation (rebuilding, restoring from backup, reconnecting to the network) and verifies that the threat is gone",
-        "Eradication means erasing all hard drives; recovery means buying new computers",
-        "Eradication is done by the SOC; recovery is done by the help desk",
-        "Eradication happens before detection; recovery happens after detection"
+        "Eradication removes the threat (malware, attacker access, vulnerabilities) from the environment, while recovery restores systems to normal operation (rebuilding from clean images, restoring from backups, reconnecting to the network with monitoring)",
+        "Eradication means deleting all data on affected systems; recovery means reinstalling the operating system",
+        "Eradication is done by the SOC; recovery is done by the legal team",
+        "Eradication and recovery happen simultaneously — there is no difference"
       ],
-      "answer": "Eradication removes the threat (malware, attacker access, vulnerabilities) from the environment; recovery restores systems to normal operation (rebuilding, restoring from backup, reconnecting to the network) and verifies that the threat is gone",
-      "explanation_correct": "In NIST SP 800-61, eradication and recovery are distinct but sequential phases within 'Containment, Eradication, and Recovery': Eradication = eliminate the root cause and all traces of the threat. This includes: removing malware, disabling compromised accounts, deleting attacker-created persistence (scheduled tasks, services, backdoors), and patching the vulnerabilities that were exploited. Recovery = return systems to normal operation. This includes: rebuilding from clean images, restoring data from backups, reconnecting isolated systems to the network, and monitoring for reinfection. Recovery includes verification — confirming the attacker has not regained access and the systems are functioning normally.",
-      "explanation_wrong_common": "Option B — eradication is surgical (remove the threat), not a blanket wipe of all drives. Option C — both are performed by the IR team with relevant stakeholders. Option D — both eradication and recovery happen AFTER detection and containment."
+      "answer": "Eradication removes the threat (malware, attacker access, vulnerabilities) from the environment, while recovery restores systems to normal operation (rebuilding from clean images, restoring from backups, reconnecting to the network with monitoring)",
+      "explanation_correct": "Eradication is about eliminating the root cause: removing malware binaries, deleting attacker-created accounts, revoking stolen credentials, patching exploited vulnerabilities, removing persistence mechanisms. Recovery is about returning to normal operations: rebuilding systems from known-good images, restoring data from clean backups, validating system integrity, and reconnecting with enhanced monitoring. Eradication must be COMPLETE before recovery begins.",
+      "explanation_wrong_common": "Option B — eradication is targeted, not wholesale deletion. Option C — both are operational activities performed by the IR team. Option D — they are sequential phases: eradication first, then recovery."
     },
     {
       "card_id": "containment_007",
       "topic": "Containment & Eradication",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "An attacker is actively exfiltrating data from a compromised database server through a reverse shell on port 443. The server hosts a customer-facing application. The IR team has two options: (A) immediately isolate the server from the network (stops exfiltration but takes the application offline), or (B) redirect the attacker to a honeypot while maintaining the application. Which is the correct approach, and why?",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is an 'isolation' technique in incident response containment, and what is the risk of using network-level isolation versus host-level isolation?",
       "choices": [
-        "Option A — immediately isolate the server. Active data exfiltration is an ongoing breach; stopping data loss takes priority over application availability. The business impact of continued exfiltration (regulatory fines, customer trust, legal liability) exceeds the impact of temporary application downtime. Document the decision, notify stakeholders, and communicate the estimated downtime",
-        "Option B — redirect to a honeypot to observe the attacker's techniques while keeping the application running",
-        "Both options are equally valid — flip a coin",
-        "Neither — let the attacker continue while you investigate, to gather more intelligence"
+        "Network isolation disconnects the host from the network (VLAN segregation, ACL blocking, port disable) while host isolation locks down the host itself (disable accounts, kill processes). The risk of network-only isolation is that locally-installed malware can still execute, spread via USB, or destroy data on the isolated host",
+        "Network isolation means shutting down the network switch entirely; host isolation means unplugging the host's power cable",
+        "Network isolation is always superior to host isolation and should be the only method used",
+        "Host isolation means encrypting the hard drive; network isolation means encrypting the network traffic"
       ],
-      "answer": "Option A — immediately isolate the server. Active data exfiltration is an ongoing breach; stopping data loss takes priority over application availability. The business impact of continued exfiltration (regulatory fines, customer trust, legal liability) exceeds the impact of temporary application downtime. Document the decision, notify stakeholders, and communicate the estimated downtime",
-      "explanation_correct": "When active exfiltration is occurring, containment takes priority. Every minute the attacker retains access, more customer data is stolen — this creates direct legal, regulatory (GDPR, HIPAA, PDPA), and reputational damage. Option B (honeypot/diversion) is tempting for intelligence gathering but is inappropriate when active data theft is in progress — you cannot ethically or legally allow customer data to continue being stolen for the sake of observing the attacker. The correct IR approach: isolate immediately, preserve evidence (capture RAM before rebooting), notify application owners and stakeholders, activate failover/backup systems if available, and communicate the containment decision with rationale. Intelligence gathering can happen during post-incident analysis using captured logs and forensic images.",
-      "explanation_wrong_common": "Option B — using a honeypot during active exfiltration is reckless; you're allowing customer data to be stolen while you watch. Honeypots are pre-positioned for research, not deployed mid-incident against your own production data. Option C — this is a critical security decision, not a random choice. Option D — allowing continued exfiltration for 'intelligence' is a serious breach of duty to protect customer data."
+      "answer": "Network isolation disconnects the host from the network (VLAN segregation, ACL blocking, port disable) while host isolation locks down the host itself (disable accounts, kill processes). The risk of network-only isolation is that locally-installed malware can still execute, spread via USB, or destroy data on the isolated host",
+      "explanation_correct": "Network isolation cuts network communication, preventing C2 callbacks and lateral movement. Host isolation contains the threat on the machine itself. The risk of network-only isolation: malware with a data-destruction payload can still execute locally, encrypt local files, or destroy evidence. Best practice is often a combination of both, tailored to the specific incident.",
+      "explanation_wrong_common": "Option B — these are crude methods, not standard isolation techniques. Option C — neither is universally superior. Option D — encryption is not isolation."
     },
     {
       "card_id": "containment_008",
       "topic": "Containment & Eradication",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A manufacturing company's OT (Operational Technology) network was compromised through a connected IT system. The attacker gained access to a PLC (Programmable Logic Controller) controlling a chemical mixing process. The IR team has contained the IT-side compromise, but the PLC may have been modified with a malicious control logic that could cause a safety incident (over-pressurization). The safety team cannot verify the PLC's current logic without taking the production line offline, which costs $50K/hour. What is the correct approach to eradicate the threat from the OT environment while minimizing risk to human safety and production?",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "An IR team discovers that an attacker gained access through a compromised service account and has established persistence via a scheduled task that re-downloads malware every 4 hours. The team has identified the scheduled task name. What is the correct sequence of eradication steps?",
       "choices": [
-        "1) Treat this as a safety-first incident — human safety overrides production cost. 2) Immediately place the chemical process in a safe state (manual mode, reduce pressure to safe levels) per the plant's emergency procedures. 3) Take the affected production line offline to inspect the PLC logic — compare the current logic against the known-good backup (golden image). 4) If the logic was modified, restore from the verified backup (golden image) and verify integrity. 5) Apply network segmentation to prevent IT-to-OT lateral movement (firewall, data diode). 6) Monitor the restored PLC for anomalies. Production downtime cost ($50K/hr) is secondary to preventing a chemical safety incident",
-        "1) Keep the production line running to avoid the $50K/hour cost. 2) Monitor the PLC for anomalous behavior and hope the malicious logic doesn't trigger. 3) Schedule a maintenance window during the next quarterly shutdown",
-        "1) Immediately shut down the entire plant to be safe. 2) Investigate all PLCs across all production lines. 3) Restart after full inspection, regardless of timeline",
-        "1) Disconnect the PLC from the network and leave it running with its current (possibly malicious) logic. 2) Monitor from the outside using network traffic analysis only"
+        "Disable the compromised service account, remove the scheduled task, block the C2 download URL at the firewall/proxy, hunt for the same scheduled task across all endpoints, then reset the service account password and verify the vulnerability that allowed initial access is patched",
+        "Delete the scheduled task on the affected host only, then consider the incident resolved",
+        "Immediately reset the service account password — this alone will stop the persistence",
+        "Reboot all servers to clear the scheduled task from memory"
       ],
-      "answer": "1) Treat this as a safety-first incident — human safety overrides production cost. 2) Immediately place the chemical process in a safe state (manual mode, reduce pressure to safe levels) per the plant's emergency procedures. 3) Take the affected production line offline to inspect the PLC logic — compare the current logic against the known-good backup (golden image). 4) If the logic was modified, restore from the verified backup (golden image) and verify integrity. 5) Apply network segmentation to prevent IT-to-OT lateral movement (firewall, data diode). 6) Monitor the restored PLC for anomalies. Production downtime cost ($50K/hr) is secondary to preventing a chemical safety incident",
-      "explanation_correct": "OT/ICS incident response follows a different priority than IT: safety first, then production, then data. A malicious PLC logic change in a chemical mixing process is a potential safety-of-life issue — over-pressurization can cause explosions, chemical releases, injuries, or deaths. The correct approach: (1) Safe state first — switch the process to manual/safe mode per the plant's emergency response procedures (these should exist in any chemical facility). (2) Take the line offline and compare PLC logic to the golden image (known-good backup of the control logic). (3) If modified, restore the verified backup. (4) Verify the restored logic through testing before resuming production. (5) Hardening — apply proper IT/OT segmentation (the attacker crossed from IT to OT, meaning segmentation was inadequate). A data diode or strictly configured firewall should separate OT from IT. (6) Post-restoration monitoring. The $50K/hour cost is significant but is dwarfed by the cost of a chemical safety incident (loss of life, regulatory penalties, plant closure, criminal liability). This is the OT security principle: safety > availability > integrity > confidentiality.",
-      "explanation_wrong_common": "Option B — running with potentially malicious PLC logic is an unacceptable safety risk; hoping it doesn't trigger is not a strategy. Option C — shutting down the ENTIRE plant is overkill; only the affected production line needs inspection. Overreaction also has safety consequences (emergency shutdowns can themselves cause incidents). Option D — disconnecting the PLC from the network doesn't fix the malicious logic already loaded; the PLC will still execute the modified program."
+      "answer": "Disable the compromised service account, remove the scheduled task, block the C2 download URL at the firewall/proxy, hunt for the same scheduled task across all endpoints, then reset the service account password and verify the vulnerability that allowed initial access is patched",
+      "explanation_correct": "Eradication must address ALL persistence mechanisms and the root cause: (1) Disable the service account to cut current access. (2) Remove the scheduled task to eliminate persistence. (3) Block the C2 URL at network level. (4) Hunt across all endpoints for the same scheduled task. (5) Reset the service account password. (6) Patch the initial access vulnerability. Skipping any step leaves a path for the attacker to return.",
+      "explanation_wrong_common": "Option B — removing the task on one host leaves it on others. Option C — resetting the password doesn't remove the scheduled task or block the C2 URL. Option D — scheduled tasks persist across reboots by design."
     },
     {
-      "card_id": "post_incident_003",
+      "card_id": "ir_playbook_001",
       "topic": "Incident Response",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A post-incident review meeting reveals that during a major incident, three different teams (SOC, IT Operations, and Legal) each maintained their own separate incident timeline. The timelines had conflicting timestamps because they used different time sources (one used UTC, one used local time, one used an NTP-synced server that was 3 minutes off). The post-incident report was delayed by 2 weeks while analysts reconciled the timelines. What three process improvements should be implemented to prevent this?",
+      "question_text": "A healthcare organization's EHR (Electronic Health Records) system is hit by ransomware. The IR team has confirmed the ransomware entered via a phishing email that exploited a user who had local admin rights. The ransomware has encrypted the EHR database and backup snapshots on the same SAN. The organization has an offline backup that is 36 hours old. Regulatory requirements (HIPAA) mandate reporting breaches within 60 days. Management asks the IR team for a recovery plan. What is the most comprehensive and compliant approach?",
       "choices": [
-        "(1) Mandate a single time source — all systems, logs, and incident documentation must use UTC from a synchronized NTP infrastructure, with NTP health monitoring. (2) Implement a shared incident tracking system (e.g., a central incident ticket) that all teams update in real-time during the incident, with a single authoritative timeline. (3) Include timeline standardization in the IR plan and run tabletop exercises that specifically test cross-team timeline coordination before a real incident occurs",
-        "(1) Fire the analyst who used the wrong time zone. (2) Require all teams to submit their timelines to the IR lead within 24 hours. (3) Buy a more expensive NTP server",
-        "(1) Standardize on local time for all systems since that's what people understand. (2) Have the IR lead manually merge timelines post-incident. (3) Add more staff to speed up timeline reconciliation",
-        "(1) Use only one team's timeline and discard the others. (2) Ban UTC in favor of Unix timestamps. (3) Reconcile timelines during the post-incident meeting"
+        "(1) Contain: isolate affected systems, block the phishing sender domain, disable the compromised user account. (2) Eradicate: remove ransomware binaries, patch the email filtering gap, revoke local admin rights org-wide. (3) Recover: restore EHR from the 36-hour-old offline backup, validate data integrity with hash comparison, run in a clean segmented environment before reconnecting. (4) Notify: begin HIPAA breach notification process within 60 days, engage legal counsel, document the breach scope. (5) Post-incident: review why backups were on the same SAN, implement 3-2-1 backup strategy, add email security training, and remove local admin from standard users.",
+        "(1) Pay the ransom immediately to restore EHR access — patient safety is at risk. (2) Notify patients after decryption is confirmed.",
+        "(1) Restore from the 36-hour-old backup. (2) Resume operations. (3) Notify HIPAA authorities only if auditors ask.",
+        "(1) Rebuild all servers from scratch. (2) Manually re-enter 36 hours of patient records from paper notes. (3) Do not notify anyone — the backup covers the gap."
       ],
-      "answer": "(1) Mandate a single time source — all systems, logs, and incident documentation must use UTC from a synchronized NTP infrastructure, with NTP health monitoring. (2) Implement a shared incident tracking system (e.g., a central incident ticket) that all teams update in real-time during the incident, with a single authoritative timeline. (3) Include timeline standardization in the IR plan and run tabletop exercises that specifically test cross-team timeline coordination before a real incident occurs",
-      "explanation_correct": "Timeline inconsistencies are a common and serious IR problem. Three improvements address root causes: (1) Time synchronization — UTC should be the single standard for all logs, SIEM, and incident documentation. NTP infrastructure must be monitored (drift alerts). When every log source uses the same UTC clock, timestamps align automatically. (2) Shared incident tracking — a central incident ticket (Jira, ServiceNow, or a dedicated IR platform) that all teams update during the incident creates a single source of truth. Each team adds entries to the same timeline, eliminating the need to merge separate timelines post-incident. (3) Tabletop exercises — testing cross-team coordination in a low-pressure scenario reveals gaps (like time zone confusion) before a real incident. The IR plan should specify UTC as the standard and require NTP sync verification as a preparedness checklist item.",
-      "explanation_wrong_common": "Option B — the time zone issue is a process gap, not an individual failure. Buying a more expensive NTP server doesn't address the UTC vs. local time policy gap. Option C — local time causes confusion across teams in different regions; UTC is the global standard for incident response. Manual merging is what caused the 2-week delay. Option D — discarding timelines loses data. Unix timestamps are machine-readable but not human-readable (who can interpret 1724668800 as a date?). Reconciling during the meeting is too late."
+      "answer": "(1) Contain: isolate affected systems, block the phishing sender domain, disable the compromised user account. (2) Eradicate: remove ransomware binaries, patch the email filtering gap, revoke local admin rights org-wide. (3) Recover: restore EHR from the 36-hour-old offline backup, validate data integrity with hash comparison, run in a clean segmented environment before reconnecting. (4) Notify: begin HIPAA breach notification process within 60 days, engage legal counsel, document the breach scope. (5) Post-incident: review why backups were on the same SAN, implement 3-2-1 backup strategy, add email security training, and remove local admin from standard users.",
+      "explanation_correct": "This plan follows the full NIST IR lifecycle and addresses all regulatory requirements. Containment stops the spread. Eradication removes the threat AND the conditions that allowed it. Recovery from the offline backup is safe because it was not on the compromised SAN. HIPAA's Breach Notification Rule requires notification within 60 days. Post-incident addresses root causes: the 3-2-1 backup strategy prevents future backup loss; removing local admin limits ransomware spread.",
+      "explanation_wrong_common": "Option B — paying ransom without containment guarantees reinfection and violates FBI/CISA guidance. Option C — restoring without containment/eradication means the ransomware re-encrypts. Notifying only if auditors ask is a HIPAA violation. Option D — rebuilding is unnecessarily destructive when a clean backup exists. Not notifying violates HIPAA."
+    },
+    {
+      "card_id": "ioc_013",
+      "topic": "Indicators of Compromise",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "A SOC team observes the following on a single workstation within 10 minutes: (1) PowerShell spawned by Word.exe, (2) PowerShell downloading a script from a pastebin URL, (3) the downloaded script creating a new scheduled task, (4) an outbound HTTPS connection to a previously unseen IP on port 443 with a self-signed certificate, (5) the workstation then scanning the local subnet on port 445 (SMB). Using the MITRE ATT&CK framework, map these observations to the correct sequence of tactics.",
+      "choices": [
+        "Initial Access (phishing via Word doc) → Execution (PowerShell) → Persistence (scheduled task) → Command & Control (outbound HTTPS) → Discovery/Lateral Movement (SMB scanning)",
+        "Reconnaissance → Initial Access → Defense Evasion → Impact → Exfiltration",
+        "Execution → Persistence → Privilege Escalation → Credential Access → Defense Evasion",
+        "Initial Access → Lateral Movement → Collection → Exfiltration → Impact"
+      ],
+      "answer": "Initial Access (phishing via Word doc) → Execution (PowerShell) → Persistence (scheduled task) → Command & Control (outbound HTTPS) → Discovery/Lateral Movement (SMB scanning)",
+      "explanation_correct": "Each observation maps to a MITRE ATT&CK tactic: (1) Word.exe spawning PowerShell indicates a malicious document (T1566 Phishing, TA0001 Initial Access). (2) PowerShell executing a script is Execution (T1059.001, TA0002). (3) Creating a scheduled task is Persistence (T1053, TA0003). (4) Outbound HTTPS to an unknown IP is Command & Control (T1071.001, TA0011). (5) SMB scanning is Discovery (T1046, TA0040) combined with potential Lateral Movement preparation (TA0008).",
+      "explanation_wrong_common": "Option B is incorrect ordering — Reconnaissance happens before compromise. Option C misses Initial Access and C2, and includes unobserved tactics. Option D has the wrong sequence — Lateral Movement doesn't precede C2, and Collection/Exfiltration/Impact are not observed."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "ir_011", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "ir_012", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "ir_013", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "ir_014", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "ir_015", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "ioc_009", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "ioc_010", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "ioc_011", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "ioc_012", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "forensics_010", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "forensics_011", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "forensics_012", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "forensics_013", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "chain_007", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "chain_008", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "chain_009", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "containment_006", "next_due_at": "2026-08-27T00:00:00Z" },
-    { "card_id": "containment_007", "next_due_at": "2026-08-28T00:00:00Z" },
-    { "card_id": "containment_008", "next_due_at": "2026-08-29T00:00:00Z" },
-    { "card_id": "post_incident_003", "next_due_at": "2026-08-29T00:00:00Z" }
+    {
+      "card_id": "ir_011",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ir_012",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ir_013",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ir_014",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ioc_009",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ioc_010",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ioc_011",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ioc_012",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "forensics_010",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "forensics_011",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "forensics_012",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "forensics_013",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "chain_007",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "chain_008",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "chain_009",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "containment_006",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "containment_007",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "containment_008",
+      "next_due_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "card_id": "ir_playbook_001",
+      "next_due_at": "2026-08-28T00:00:00Z"
+    },
+    {
+      "card_id": "ioc_013",
+      "next_due_at": "2026-08-28T00:00:00Z"
+    }
   ]
 }
