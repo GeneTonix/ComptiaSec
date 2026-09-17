@@ -1,346 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "gov_006",
-      "topic": "Security Governance",
+      "card_id": "threat_011",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which term describes the system by which an organization directs and controls security through accountability, defined roles, and risk-based decision-making?",
+      "question_text": "What distinguishes an Advanced Persistent Threat (APT) from other types of threat actors?",
       "choices": [
-        "Security governance — it sets strategic direction and oversight, distinct from management which executes",
-        "Security management — it involves day-to-day operational decisions only",
-        "Security operations — it refers to monitoring and incident response activities",
-        "Security architecture — it describes the technical design of security controls"
+        "An APT is typically a nation-state or well-funded group that maintains long-term, stealthy access to a target network, combining multiple attack techniques with patience and significant resources",
+        "An APT is any hacker who uses advanced tools available on the dark web",
+        "An APT is a threat actor who only attacks government networks and never private companies",
+        "An APT refers to any single attack that uses more than two exploit techniques simultaneously"
       ],
-      "answer": "Security governance — it sets strategic direction and oversight, distinct from management which executes",
-      "explanation_correct": "Security governance is the framework of leadership, accountability, and oversight that aligns security with business objectives. It defines who is responsible, sets risk appetite, and ensures the board/leadership has visibility. Management is the execution layer — implementing the policies and controls that governance directs. This separation ensures strategic oversight is not lost in tactical operations.",
-      "explanation_wrong_common": "Option B confuses governance with management — management executes, governance directs. Option C is security operations (SOC activities), a subset of management. Option D is security architecture, which is a technical design discipline, not the governance framework."
+      "answer": "An APT is typically a nation-state or well-funded group that maintains long-term, stealthy access to a target network, combining multiple attack techniques with patience and significant resources",
+      "explanation_correct": "APTs are characterized by three key traits: (1) Advanced — they use sophisticated, multi-stage techniques (zero-days, custom malware, living-off-the-land). (2) Persistent — they maintain access for months or years, exfiltrating data slowly to avoid detection. (3) Threat — they are typically nation-states or organized crime groups with significant funding, intelligence, and motivation (espionage, sabotage, financial theft). APTs differ from opportunistic attackers because they target specific organizations and adapt their methods to evade that organization's defenses over time.",
+      "explanation_wrong_common": "Option B oversimplifies — using dark web tools doesn't make someone an APT; it's the persistence, targeting, and resources that define it. Option C is incorrect — APTs target private companies extensively (Sony, Colonial Pipeline, Equifax). Option D focuses on a single attack event rather than the sustained, long-term campaign that defines an APT."
     },
     {
-      "card_id": "gov_007",
-      "topic": "Security Governance",
+      "card_id": "threat_012",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "In the document hierarchy, which of the following correctly orders documents from most authoritative (mandatory, high-level) to least authoritative (optional, advisory)?",
+      "question_text": "What is the primary difference between a hacktivist and an organized crime threat actor?",
       "choices": [
-        "Policy → Standard → Baseline → Guideline",
-        "Guideline → Baseline → Standard → Policy",
-        "Standard → Policy → Guideline → Baseline",
-        "Baseline → Guideline → Policy → Standard"
+        "A hacktivist is motivated by political, social, or ideological causes and seeks to embarrass or disrupt a target, while organized crime is motivated by financial gain and seeks to monetize attacks through theft, fraud, or ransom",
+        "A hacktivist always works alone, while organized crime always operates in large groups",
+        "A hacktivist only targets government websites, while organized crime only targets banks",
+        "A hacktivist uses legal methods, while organized crime uses illegal methods"
       ],
-      "answer": "Policy → Standard → Baseline → Guideline",
-      "explanation_correct": "Policies are mandatory, high-level directives from management. Standards are mandatory and specify technical requirements to comply with the policy. Baselines are mandatory minimum security configurations (e.g., CIS benchmarks). Guidelines are optional, recommended practices that provide flexibility. This hierarchy ensures enforceable expectations cascade from strategic to tactical levels while allowing discretion where appropriate.",
-      "explanation_wrong_common": "Option B reverses the hierarchy entirely. Option C swaps policy and standard — policies are higher-level than standards. Option D places baseline and guideline above policy, which is incorrect — policies are the top of the hierarchy."
+      "answer": "A hacktivist is motivated by political, social, or ideological causes and seeks to embarrass or disrupt a target, while organized crime is motivated by financial gain and seeks to monetize attacks through theft, fraud, or ransom",
+      "explanation_correct": "Motivation is the key differentiator. Hacktivists (e.g., Anonymous) use attacks like DDoS, website defacement, and data leaks to promote a cause, punish perceived wrongdoing, or raise awareness — they often want publicity. Organized crime groups (e.g., ransomware gangs like LockBit) operate as businesses: they invest in tools and infrastructure, target high-value victims, and seek direct financial return through theft, extortion, or selling stolen data. Both use illegal methods, but their goals and target selection differ fundamentally.",
+      "explanation_wrong_common": "Option B is incorrect — hacktivists often operate in collectives (Anonymous, LulzSec), and organized crime can be small cells. Option C is wrong — hacktivists target corporations and individuals too, and organized crime targets healthcare, manufacturing, and more. Option D is incorrect — both use illegal methods; hacktivism is still cybercrime regardless of motivation."
     },
     {
-      "card_id": "gov_008",
-      "topic": "Security Governance",
+      "card_id": "threat_013",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A new CISO joins a company and discovers that the security policy was last updated 6 years ago, references technologies no longer in use, and does not mention cloud services or mobile devices. The policy is still technically 'in force.' What is the most appropriate governance action?",
+      "question_text": "A security analyst at a defense contractor discovers that an attacker has been quietly exfiltrating design documents for 8 months. The attacker used legitimate admin credentials, moved laterally via RDP, and avoided installing any malware that would trigger EDR alerts. The attacker adapted their techniques each time the security team changed monitoring rules. Which type of threat actor is MOST likely responsible?",
       "choices": [
-        "Initiate a comprehensive policy review and update cycle, establish a recurring review schedule (e.g., annual), and ensure the updated policy covers current technologies, cloud, BYOD, and emerging threats",
-        "Delete the old policy and operate without one until a new one can be written from scratch over the next year",
-        "Keep the existing policy since it is still technically in force and add a separate cloud security document alongside it",
-        "Delegate the policy rewrite to the most junior security analyst to save the CISO's time"
+        "An Advanced Persistent Threat (APT) — the long dwell time, stealthy exfiltration, use of legitimate credentials (living-off-the-land), and adaptive behavior indicate a well-funded, patient adversary with specific targeting goals",
+        "A script kiddie — they downloaded tools from the internet and got lucky by finding admin credentials",
+        "A hacktivist — they are making a political statement by slowly leaking defense documents",
+        "An insider threat — only an employee would know which documents to steal over such a long period"
       ],
-      "answer": "Initiate a comprehensive policy review and update cycle, establish a recurring review schedule (e.g., annual), and ensure the updated policy covers current technologies, cloud, BYOD, and emerging threats",
-      "explanation_correct": "An outdated policy is a governance failure — it provides false assurance of control. The CISO should: (1) Review and update the policy to reflect current technology and threat landscape. (2) Establish a recurring review cycle (annually or upon major change) to prevent future drift. (3) Cover cloud, mobile, BYOD, and remote work explicitly. A policy that doesn't reflect reality cannot guide effective security decisions and provides no legal or audit protection.",
-      "explanation_wrong_common": "Option B creates a gap period with no policy at all — risky and unnecessary. Option C fragments governance by having multiple disconnected documents instead of one coherent policy. Option D delegates a strategic governance task to junior staff who lack the authority and organizational context to write an enforceable policy."
+      "answer": "An Advanced Persistent Threat (APT) — the long dwell time, stealthy exfiltration, use of legitimate credentials (living-off-the-land), and adaptive behavior indicate a well-funded, patient adversary with specific targeting goals",
+      "explanation_correct": "Several indicators point to an APT: (1) 8-month dwell time — script kiddies and opportunistic attackers don't maintain stealthy access this long. (2) Living-off-the-land (using legitimate tools like RDP and admin credentials) — this avoids detection by traditional malware scanning. (3) Targeted exfiltration of design documents — indicates espionage, not random theft. (4) Adaptive behavior — adjusting techniques when monitoring changes requires intelligence and resources. APTs targeting defense contractors are often nation-state sponsored, seeking military technology and intellectual property.",
+      "explanation_wrong_common": "Option B is incorrect — script kiddies lack the skills for long-term stealthy operations and don't selectively target design documents. Option C is unlikely — hacktivists seek publicity and rapid disruption, not 8 months of quiet data theft. Option D is possible but less likely — the use of external credentials and adaptive evasion suggests an external adversary, though insider access may have been the initial compromise vector."
     },
     {
-      "card_id": "gov_009",
-      "topic": "Security Governance",
+      "card_id": "threat_014",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization's acceptable use policy (AUP) states that employees must not install unapproved software. An audit reveals that 40% of employees regularly install utilities and browser extensions. When questioned, managers say they unofficially approve tools verbally but never document it. What governance gap does this reveal?",
+      "question_text": "A company's CISO is briefing the board on insider threats. She explains that not all insider threats are malicious. Which of the following describes a NON-malicious insider threat, and what makes it dangerous?",
       "choices": [
-        "The AUP lacks an enforceable, documented exception/approval process — without a formal workflow, the policy is unenforceable in practice and managers are creating undocumented risk",
-        "The AUP is too restrictive and should allow employees to install any software they want",
-        "The problem is that the audit was conducted — audits should not check policy compliance",
-        "The IT department should block all USB ports and internet access to prevent installations"
+        "An employee accidentally emails a spreadsheet containing customer PII to an external vendor because they used auto-complete and selected the wrong contact — this is unintentional data exposure, which is dangerous because it bypasses technical controls that focus on external threats",
+        "An employee who sells customer data to a competitor for personal profit",
+        "An employee who intentionally introduces malware into the network as revenge for a denied promotion",
+        "An employee who is recruited by a foreign intelligence service to steal trade secrets"
       ],
-      "answer": "The AUP lacks an enforceable, documented exception/approval process — without a formal workflow, the policy is unenforceable in practice and managers are creating undocumented risk",
-      "explanation_correct": "A policy without an enforcement and exception mechanism creates a culture of non-compliance. The fix is: (1) Create a documented software approval workflow (ticket-based, with risk assessment). (2) Train managers on the process — verbal approvals are not governance. (3) Implement technical controls (application whitelisting or EDR) to enforce the policy. (4) Track exceptions and review them periodically. Policies must be enforceable to have value.",
-      "explanation_wrong_common": "Option B removes all controls — unrestricted software installation is a major malware risk. Option C is anti-governance — audits are how you verify policy effectiveness. Option D is a blunt technical control that doesn't address the governance gap and would harm productivity."
+      "answer": "An employee accidentally emails a spreadsheet containing customer PII to an external vendor because they used auto-complete and selected the wrong contact — this is unintentional data exposure, which is dangerous because it bypasses technical controls that focus on external threats",
+      "explanation_correct": "Non-malicious (unintentional) insider threats are the most common type of insider incident. They include: (1) Accidental data sharing (wrong recipient, misconfigured cloud bucket permissions). (2) Lost/stolen devices (laptop left in taxi, phone left at airport). (3) Policy violations (using personal email for work, shadow IT). (4) Social engineering victims (phished employees). These are dangerous because: the employee has legitimate access (so DLP may not flag it), they don't know they made a mistake (so they don't report it), and the data leaves through normal channels. Controls: DLP, email encryption, access reviews, training, and least-privilege principles.",
+      "explanation_wrong_common": "Option B is a malicious insider (data theft for financial gain). Option C is a malicious insider (sabotage). Option D is a malicious insider (espionage). All three are intentional — the question specifically asks about NON-malicious insider threats, which are accidental or negligent rather than deliberate."
     },
     {
-      "card_id": "gov_010",
-      "topic": "Security Governance",
+      "card_id": "threat_015",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A multinational company has a security policy written by HQ in the US. Its European subsidiary must comply with GDPR, which has stricter data protection requirements. The Asian subsidiary has different breach notification laws. The current policy does not account for these regional differences, and the European office has been following local practice instead of HQ policy. What is the best governance approach to resolve this?",
+      "question_text": "A mid-sized manufacturing company experiences a ransomware attack that encrypts all production systems. Investigation reveals the attack chain: (1) An employee clicked a phishing email 3 weeks ago that harvested their credentials. (2) The attacker used those credentials to access the VPN — no MFA was enforced. (3) The attacker spent 2 weeks mapping the network and identified the backup server. (4) The attacker deleted all backups before deploying ransomware. (5) The ransom demand is $2M. The company has no offline backups. The board asks: which of the following BEST describes the root cause failures, and what is the minimum set of controls that would have prevented this attack?",
       "choices": [
-        "Adopt a tiered governance model: a global baseline policy establishing minimum standards, supplemented by regional addenda that address local legal requirements (GDPR, PDPA, etc.), with a central governance body that reviews and harmonizes all variants",
-        "Force all subsidiaries to follow the US HQ policy exactly, overriding local laws",
-        "Let each subsidiary write its own completely independent policy with no central oversight",
-        "Eliminate the global policy and replace it with a single GDPR-compliant policy applied worldwide"
+        "Root causes: phishing success, no MFA, backups on the network, no network segmentation. Minimum preventive controls: (1) MFA on all remote access. (2) Security awareness training with phishing simulation. (3) Offline/immutable backups (3-2-1 rule). (4) Network segmentation isolating backups from production. These four controls would have blocked credential theft, unauthorized VPN access, and ensured recovery without paying ransom",
+        "Root cause: the ransomware itself. Fix: install better antivirus software on all endpoints",
+        "Root cause: the employee. Fix: fire employees who click phishing links. No technical controls needed",
+        "Root cause: the VPN. Fix: remove VPN access entirely and require all employees to work on-site only"
       ],
-      "answer": "Adopt a tiered governance model: a global baseline policy establishing minimum standards, supplemented by regional addenda that address local legal requirements (GDPR, PDPA, etc.), with a central governance body that reviews and harmonizes all variants",
-      "explanation_correct": "Multinational governance requires balancing global consistency with local compliance. A tiered model works: (1) Global baseline policy sets minimum security standards applicable everywhere. (2) Regional addenda address local legal requirements that exceed the baseline (GDPR's 72-hour breach notification, data residency rules, right to erasure). (3) A central governance body (security steering committee) reviews all variants to ensure no regional policy weakens the global baseline. (4) Local security officers own the regional addenda. This ensures both consistency and compliance.",
-      "explanation_wrong_common": "Option B creates legal liability — local laws override corporate policy, and non-compliance can result in massive fines (GDPR: up to 4% of global revenue). Option C creates fragmentation and gaps — no central oversight means standards vary wildly. Option D over-applies European requirements globally, which may be unnecessary or conflicting in other jurisdictions."
+      "answer": "Root causes: phishing success, no MFA, backups on the network, no network segmentation. Minimum preventive controls: (1) MFA on all remote access. (2) Security awareness training with phishing simulation. (3) Offline/immutable backups (3-2-1 rule). (4) Network segmentation isolating backups from production. These four controls would have blocked credential theft, unauthorized VPN access, and ensured recovery without paying ransom",
+      "explanation_correct": "This is a classic ransomware kill chain. Each failure compounds: (1) Phishing succeeded because the employee wasn't trained to recognize and report it — awareness training + phishing simulation reduces click rates. (2) Stolen credentials worked on VPN because there was no MFA — MFA would have blocked access even with valid credentials. (3) The attacker mapped the network undetected for 2 weeks because there was no segmentation or monitoring — segmentation limits lateral movement. (4) Backups were online and accessible from the compromised account — the 3-2-1 backup rule (3 copies, 2 media, 1 offline/immutable) ensures recovery. Even if phishing succeeded, MFA + offline backups would have prevented both the breach and the need to pay ransom.",
+      "explanation_wrong_common": "Option B is naive — antivirus alone cannot stop credential-based attacks and doesn't address the systemic failures (no MFA, online backups, no segmentation). Option C is punitive and ineffective — firing one employee doesn't fix the systemic issues; the next phishing email will catch someone else. Option D is impractical and doesn't address the root causes — remote work is a business requirement, and the fix is securing remote access with MFA, not eliminating it."
     },
     {
-      "card_id": "risk_006",
-      "topic": "Risk Management",
+      "card_id": "malware_011",
+      "topic": "Malware Types and Characteristics",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between an asset, a threat, and a vulnerability in risk management?",
+      "question_text": "What is the key difference between a virus and a worm?",
       "choices": [
-        "An asset is what you want to protect; a threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that allows a threat to cause harm",
-        "An asset is a type of malware; a threat is a firewall rule; a vulnerability is a patch",
-        "A threat is what you want to protect; an asset is a weakness; a vulnerability is a danger",
-        "All three terms describe the same concept from different angles"
+        "A virus requires a host file or program to attach to and a user action to spread, while a worm is self-replicating and can spread across networks without any user interaction or host file",
+        "A virus is more dangerous than a worm because it is harder to detect",
+        "A virus only infects Windows computers, while a worm only infects Linux servers",
+        "A virus spreads via email, while a worm spreads via USB drives"
       ],
-      "answer": "An asset is what you want to protect; a threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that allows a threat to cause harm",
-      "explanation_correct": "These are the building blocks of risk: (1) Asset — anything of value (data, systems, reputation, hardware). (2) Threat — any potential danger (hacker, natural disaster, insider, malware) that could exploit a vulnerability. (3) Vulnerability — a weakness (unpatched software, misconfiguration, weak password, lack of training) that a threat can exploit. Risk exists when a threat has the capability and opportunity to exploit a vulnerability affecting an asset.",
-      "explanation_wrong_common": "Option B reverses and misdefines all terms — an asset is not malware, a threat is not a firewall rule. Option C scrambles the definitions. Option D is incorrect — they are distinct concepts with specific roles in the risk equation."
+      "answer": "A virus requires a host file or program to attach to and a user action to spread, while a worm is self-replicating and can spread across networks without any user interaction or host file",
+      "explanation_correct": "The fundamental distinction is in replication method. A virus attaches itself to a host file (executable, document macro) and requires a trigger — the user opening the infected file — to execute and spread. A worm is standalone malware that self-propagates: it scans for vulnerable systems, exploits them, copies itself, and repeats — all automatically. Worms spread faster (e.g., Conficker infected millions of systems in days) because they don't need human action. Both can carry payloads (data theft, backdoors, ransomware), but the propagation mechanism is the differentiator.",
+      "explanation_wrong_common": "Option B is subjective and incorrect — worms can be equally or more dangerous due to rapid spread. Option C is incorrect — both can affect any OS; the malware type doesn't determine the target platform. Option D is wrong — both can use any propagation vector; the distinction is self-replication vs host-dependent spreading, not the transmission medium."
     },
     {
-      "card_id": "risk_007",
-      "topic": "Risk Management",
+      "card_id": "malware_012",
+      "topic": "Malware Types and Characteristics",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is Annualized Loss Expectancy (ALE) and how is it calculated?",
+      "question_text": "What is a rootkit, and why is it particularly difficult to detect?",
       "choices": [
-        "ALE = SLE × ARO, where SLE is the financial loss from a single occurrence and ARO is the estimated frequency per year",
-        "ALE = Total revenue divided by number of security incidents per year",
-        "ALE = The cost of all security controls multiplied by the number of employees",
-        "ALE = SLE divided by ARO, giving the cost per incident"
+        "A rootkit is malware designed to gain and maintain privileged (root/administrator) access while hiding its presence by modifying OS-level functions, making it difficult for security tools to detect because it can conceal files, processes, and network connections at the kernel level",
+        "A rootkit is a tool used by system administrators to manage root-level accounts, and it is difficult to detect because it is a legitimate tool",
+        "A rootkit is a type of ransomware that encrypts the root directory of a Linux system",
+        "A rootkit is a network scanner that looks for open root-level ports on remote systems"
       ],
-      "answer": "ALE = SLE × ARO, where SLE is the financial loss from a single occurrence and ARO is the estimated frequency per year",
-      "explanation_correct": "ALE quantifies expected annual financial loss from a risk. SLE (Single Loss Expectancy) = asset value × exposure factor (percentage of asset lost per incident). ARO (Annualized Rate of Occurrence) = how many times per year the event is expected. Example: If a breach costs $100,000 (SLE) and is expected once every 5 years (ARO = 0.2), ALE = $100,000 × 0.2 = $20,000/year. This helps compare risk against control costs for investment decisions.",
-      "explanation_wrong_common": "Option B is not a valid risk formula. Option C conflates control costs with risk. Option D divides instead of multiplies — ALE is the product of SLE and ARO, not the quotient."
+      "answer": "A rootkit is malware designed to gain and maintain privileged (root/administrator) access while hiding its presence by modifying OS-level functions, making it difficult for security tools to detect because it can conceal files, processes, and network connections at the kernel level",
+      "explanation_correct": "Rootkits operate at two levels: (1) User-mode rootkits modify applications and system binaries to hide their presence. (2) Kernel-mode rootkits modify the operating system kernel itself — they can intercept system calls and filter results so that security tools, file managers, and process monitors simply don't see the rootkit's files, processes, or network connections. Detection is hard because the very tools used to detect malware (antivirus, EDR) rely on OS APIs that the rootkit has compromised. Detection methods include: booting from a clean/live OS, hardware-based detection, behavioral analysis, and integrity checking of system files.",
+      "explanation_wrong_common": "Option B confuses a rootkit with legitimate admin tools — a rootkit is malware by definition, not a management utility. Option C is incorrect — a rootkit is not ransomware; it doesn't encrypt data but instead maintains stealthy access. Option D is wrong — a rootkit is not a network scanner; it is persistent, stealthy malware that hides itself and potentially other malware."
     },
     {
-      "card_id": "risk_008",
-      "topic": "Risk Management",
+      "card_id": "malware_013",
+      "topic": "Malware Types and Characteristics",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's risk register lists 50 risks. The CISO has budget to remediate only 10 this quarter. The risks are rated by likelihood and impact on a 1-5 scale. Which approach ensures the most risk reduction per dollar spent?",
+      "question_text": "A company's SOC team notices unusual outbound DNS traffic: every 60 seconds, a workstation sends a DNS query to a specific domain with a long base64-encoded subdomain string. The encoded data, when decoded, contains fragments of the company's customer database. What type of malware is MOST likely responsible for this behavior, and what is the technique called?",
       "choices": [
-        "Prioritize by risk score (likelihood × impact), but adjust for cost-effectiveness: remediate risks where the reduction in ALE per dollar spent is highest, considering both score and remediation cost",
-        "Remediate the 10 risks with the highest impact rating regardless of likelihood or cost",
-        "Remediate the 10 risks with the highest likelihood rating regardless of impact or cost",
-        "Remediate the 10 cheapest risks to maximize the number of risks addressed"
+        "This is a botnet agent using DNS tunneling for command-and-control (C2) and data exfiltration — the malware encodes stolen data into DNS queries to bypass firewall rules that typically allow DNS traffic outbound",
+        "This is a ransomware payload transmitting encryption keys via DNS before encrypting files",
+        "This is a legitimate DNS configuration error causing the workstation to query an incorrect domain",
+        "This is a DDoS attack where the workstation is participating in a DNS amplification attack against the target domain"
       ],
-      "answer": "Prioritize by risk score (likelihood × impact), but adjust for cost-effectiveness: remediate risks where the reduction in ALE per dollar spent is highest, considering both score and remediation cost",
-      "explanation_correct": "Risk prioritization should consider: (1) Risk score (likelihood × impact) to identify the most significant risks. (2) Cost-effectiveness — a risk scoring 20 that costs $500K to fix may be lower priority than a risk scoring 16 that costs $50K to fix. (3) The goal is maximizing total risk reduction per dollar. This is essentially an optimization problem: maximize Σ(risk reduction) subject to budget constraint. A risk matrix alone doesn't account for remediation cost.",
-      "explanation_wrong_common": "Option B ignores likelihood — a high-impact, very unlikely risk may be lower priority than a medium-impact, near-certain risk. Option C ignores impact — a frequent but trivial risk wastes budget. Option D optimizes for quantity over impact — fixing 10 trivial risks may reduce less total risk than fixing 3 critical ones."
+      "answer": "This is a botnet agent using DNS tunneling for command-and-control (C2) and data exfiltration — the malware encodes stolen data into DNS queries to bypass firewall rules that typically allow DNS traffic outbound",
+      "explanation_correct": "DNS tunneling is a common C2 and exfiltration technique used by botnets and APTs. The malware encodes data (commands, stolen data) into DNS queries (typically as subdomains of a domain the attacker controls). DNS is almost always allowed outbound through firewalls (port 53), making it an ideal covert channel. Indicators: high-frequency DNS queries, unusually long subdomain strings, base64/hex encoding, queries to rarely-used record types (TXT, NULL), and consistent query intervals (beaconing). Detection: DNS traffic analysis, DLP with DNS inspection, and blocking unsanctioned domains. This behavior is typical of botnet C2 beaconing with exfiltration.",
+      "explanation_wrong_common": "Option B is incorrect — ransomware doesn't use DNS tunneling for key exchange; it typically encrypts in place and demands payment. Option C is unlikely given the base64-encoded database fragments — this is clearly malicious data exfiltration, not a misconfiguration. Option D is wrong — DNS amplification attacks send queries with spoofed source IPs to overwhelm a victim; this workstation is sending data outbound, not participating in a reflection attack."
     },
     {
-      "card_id": "risk_009",
-      "topic": "Risk Management",
+      "card_id": "malware_014",
+      "topic": "Malware Types and Characteristics",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A startup stores customer credit card data and is subject to PCI-DSS. A risk assessment identifies that their payment page has a moderate-risk XSS vulnerability. The startup cannot afford to fix it immediately. Which compensating control would BEST reduce the risk in the interim?",
+      "question_text": "A financial services company discovers that an attacker has been intercepting web traffic between customers and the company's online banking portal. The attacker is not modifying the traffic but is silently capturing login credentials and session tokens. The attack was possible because the site used HTTPS but the attacker downgraded some connections to HTTP via a rogue WiFi access point. What type of attack is this, and what would have prevented it?",
       "choices": [
-        "Deploy a Web Application Firewall (WAF) with XSS filtering rules, implement Content Security Policy (CSP) headers, and add output encoding on user input fields — these reduce XSS exploitability while the code fix is pending",
-        "Accept the risk since the vulnerability is only moderate severity",
-        "Shut down the payment page entirely until the vulnerability can be patched",
-        "Transfer the risk by purchasing cyber insurance and taking no technical action"
+        "This is a man-in-the-middle (MITM) attack with SSL stripping — the attacker intercepts and downgrades HTTPS to HTTP. Prevention: HSTS (HTTP Strict Transport Security) headers that force browsers to only use HTTPS, plus certificate pinning and disabling HTTP fallback",
+        "This is a SQL injection attack exploiting the login form — Prevention: input validation and parameterized queries",
+        "This is a DDoS attack overwhelming the banking portal — Prevention: rate limiting and DDoS protection services",
+        "This is a cross-site scripting (XSS) attack — Prevention: output encoding and Content Security Policy"
       ],
-      "answer": "Deploy a Web Application Firewall (WAF) with XSS filtering rules, implement Content Security Policy (CSP) headers, and add output encoding on user input fields — these reduce XSS exploitability while the code fix is pending",
-      "explanation_correct": "Compensating controls reduce risk when a primary control (code fix) is delayed. For XSS: (1) WAF with XSS signatures blocks malicious input at the perimeter. (2) CSP headers restrict script execution sources, mitigating XSS impact. (3) Output encoding neutralizes malicious payloads. These don't fix the vulnerability but significantly reduce exploitability and impact. The code fix should still be scheduled with an SLA.",
-      "explanation_wrong_common": "Option B is pure risk acceptance — inappropriate for PCI-DSS compliance where vulnerabilities must be remediated within defined timeframes. Option C is risk avoidance — shutting down the payment page stops revenue, which is disproportionate for a moderate vulnerability. Option D is risk transference — insurance covers financial loss but doesn't reduce the actual vulnerability or protect customer data."
+      "answer": "This is a man-in-the-middle (MITM) attack with SSL stripping — the attacker intercepts and downgrades HTTPS to HTTP. Prevention: HSTS (HTTP Strict Transport Security) headers that force browsers to only use HTTPS, plus certificate pinning and disabling HTTP fallback",
+      "explanation_correct": "SSL stripping (a form of MITM) works when: (1) The attacker positions themselves between the client and server (rogue WiFi, ARP spoofing, compromised router). (2) The attacker intercepts the initial HTTP-to-HTTPS redirect and keeps the connection on HTTP. (3) The attacker reads all traffic in plaintext. HSTS prevents this by instructing browsers to always connect via HTTPS for a specified domain, even if the user types HTTP or clicks an HTTP link — the browser silently upgrades to HTTPS and refuses to connect over HTTP. Additional protections: certificate pinning (prevents rogue CA certificates), preload lists (browsers ship with HSTS for major sites), and redirecting all HTTP traffic to HTTPS at the server level.",
+      "explanation_wrong_common": "Option B is wrong — SQL injection exploits database queries through input fields, not network traffic interception. Option C is wrong — DDoS overwhelms systems with traffic; this attack intercepts and reads traffic, not floods it. Option D is wrong — XSS injects malicious scripts into web pages viewed by other users; this is a network-layer MITM attack exploiting protocol downgrade, not an application-layer injection."
     },
     {
-      "card_id": "risk_010",
-      "topic": "Risk Management",
+      "card_id": "malware_015",
+      "topic": "Malware Types and Characteristics",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company calculates the following for its customer database breach risk: Asset value = $5,000,000. Exposure factor = 40% (40% of data would be compromised in a breach). SLE = $2,000,000. ARO = 0.3 (breach every ~3.3 years). ALE = $600,000. A proposed DLP + encryption + access monitoring solution costs $200,000/year and would reduce the exposure factor to 10% and ARO to 0.1. Calculate the new ALE, the risk reduction value, and determine if the control is cost-effective.",
+      "question_text": "A hospital's ICU monitoring systems suddenly display ransom messages and stop reporting patient vitals. The IT team discovers: fileless malware executed directly in PowerShell memory (no files on disk), it used legitimate Windows admin tools (WMI, PsExec) to spread laterally, and it encrypted the database backing the patient monitoring system. The attacker gained initial access through a vulnerable IoT infusion pump running an unpatched embedded OS. The hospital has 200 IoT medical devices they cannot patch (vendor doesn't support updates). Given these constraints, what is the BEST combination of controls to prevent recurrence?",
       "choices": [
-        "New SLE = $5,000,000 × 10% = $500,000. New ALE = $500,000 × 0.1 = $50,000. Risk reduction = $600,000 - $50,000 = $550,000. Control cost = $200,000. Net benefit = $350,000/year — the control IS cost-effective",
-        "New ALE = $600,000. The control does not change the asset value so ALE stays the same",
-        "New ALE = $2,000,000 × 0.1 = $200,000. Risk reduction = $400,000. Control cost = $200,000. Net benefit = $200,000 — cost-effective",
-        "New ALE = $5,000,000 × 0.1 = $500,000. Risk reduction = $100,000. Control cost = $200,000. Not cost-effective"
+        "(1) Network segmentation isolating all IoT/medical devices on a separate VLAN with strict firewall rules limiting what they can communicate with. (2) Application whitelisting on all clinical workstations (only signed, approved executables and PowerShell scripts can run). (3) Fileless malware detection via behavioral/EDR monitoring (detecting anomalous PowerShell, WMI, and PsExec usage). (4) Compensating controls for unpatchable IoT: virtual patching via IPS/IDS signatures, and a clinical systems backup with immutable snapshots for rapid recovery",
+        "(1) Replace all 200 IoT devices immediately with newer models that support patching. (2) Install traditional signature-based antivirus on all IoT devices. (3) Disable PowerShell on all systems",
+        "(1) Air-gap the ICU network completely — no internet, no external connections. (2) Ban all IoT devices from the hospital. (3) Use paper charts for patient monitoring",
+        "(1) Patch all IoT devices by reverse-engineering the firmware and writing custom patches. (2) Disable all Windows admin tools (WMI, PsExec, PowerShell) on every machine. (3) Encrypt all hospital data at rest"
       ],
-      "answer": "New SLE = $5,000,000 × 10% = $500,000. New ALE = $500,000 × 0.1 = $50,000. Risk reduction = $600,000 - $50,000 = $550,000. Control cost = $200,000. Net benefit = $350,000/year — the control IS cost-effective",
-      "explanation_correct": "Step by step: (1) New SLE = Asset value × new exposure factor = $5,000,000 × 10% = $500,000. (2) New ALE = new SLE × new ARO = $500,000 × 0.1 = $50,000. (3) Original ALE = $600,000. (4) Risk reduction = $600,000 - $50,000 = $550,000/year. (5) Control cost = $200,000/year. (6) Net benefit = $550,000 - $200,000 = $350,000/year. The control saves $3.50 in expected losses for every $1 spent — clearly cost-effective.",
-      "explanation_wrong_common": "Option B misunderstands ALE — both exposure factor and ARO changed, so SLE and ALE both change. Option C uses the old SLE ($2,000,000) instead of recalculating with the new exposure factor. Option D calculates new ALE as asset value × ARO, skipping the exposure factor entirely and using the wrong formula."
+      "answer": "(1) Network segmentation isolating all IoT/medical devices on a separate VLAN with strict firewall rules limiting what they can communicate with. (2) Application whitelisting on all clinical workstations (only signed, approved executables and PowerShell scripts can run). (3) Fileless malware detection via behavioral/EDR monitoring (detecting anomalous PowerShell, WMI, and PsExec usage). (4) Compensating controls for unpatchable IoT: virtual patching via IPS/IDS signatures, and a clinical systems backup with immutable snapshots for rapid recovery",
+      "explanation_correct": "This scenario combines several hard realities: (1) Unpatchable IoT devices — you cannot patch them, so segmentation is essential. A dedicated medical device VLAN with strict east-west firewall rules prevents lateral movement from a compromised IoT device to clinical workstations. (2) Fileless malware evades signature-based AV because it runs in memory — application whitelisting (e.g., Windows Defender Application Control/AppLocker) prevents unsigned PowerShell and executables from running. (3) EDR with behavioral detection catches anomalous use of legitimate tools (living-off-the-land). (4) Virtual patching (IPS signatures that block known exploit traffic) compensates for unpatched devices. (5) Immutable backup snapshots enable rapid recovery without paying ransom. This is a defense-in-depth approach that accepts the constraint of unpatchable devices while maximizing protection.",
+      "explanation_wrong_common": "Option B is impractical — replacing 200 medical devices is extremely costly, time-consuming, and many devices are FDA-approved only with specific firmware. Installing AV on embedded OS devices is often impossible. Disabling PowerShell entirely breaks legitimate admin operations. Option C is overly extreme — air-gapping the ICU network may be feasible but banning all IoT devices is impossible in modern healthcare (infusion pumps, monitors, imaging equipment are all IoT). Paper charts are a downgrade in patient care quality. Option D is risky and potentially illegal — reverse-engineering medical device firmware could void warranties, violate FDA approvals, and introduce safety risks. Disabling all admin tools breaks operations."
     },
     {
-      "card_id": "audit_006",
-      "topic": "Security Audits and Assessments",
+      "card_id": "attack_011",
+      "topic": "Common Attack Methods",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between black-box, gray-box, and white-box penetration testing?",
+      "question_text": "What is a cross-site scripting (XSS) attack, and what are the three main types?",
       "choices": [
-        "Black-box: tester has no prior knowledge; gray-box: tester has partial knowledge (e.g., some credentials or architecture info); white-box: tester has full access to source code, documentation, and internal systems",
-        "Black-box: tester uses only automated tools; gray-box: tester uses manual techniques; white-box: tester uses both",
-        "Black-box: testing at night; gray-box: testing at dawn; white-box: testing during business hours",
-        "Black-box: tests network security only; gray-box: tests application security only; white-box: tests physical security only"
+        "XSS injects malicious scripts into web pages viewed by other users. The three types are: (1) Stored/Persistent — script is stored on the server (e.g., in a database comment) and served to all visitors. (2) Reflected — script is embedded in a URL/link and reflected back by the server to the victim. (3) DOM-based — script executes entirely client-side by manipulating the page's DOM without server involvement",
+        "XSS is a type of network attack that crosses site boundaries by scanning multiple websites for vulnerabilities",
+        "XSS is an attack that blocks users from accessing a website by overwhelming it with script requests",
+        "XSS is a server-side attack that exploits cross-site request forgery to steal cookies"
       ],
-      "answer": "Black-box: tester has no prior knowledge; gray-box: tester has partial knowledge (e.g., some credentials or architecture info); white-box: tester has full access to source code, documentation, and internal systems",
-      "explanation_correct": "The box color refers to the tester's level of prior knowledge: Black-box simulates an external attacker with no insider information — most realistic but may miss internal vulnerabilities. Gray-box provides limited context (user credentials, network diagrams) — balances realism with efficiency. White-box gives full access to source code and architecture — most thorough, finds deep vulnerabilities, but less realistic for external threat simulation. Each has different value depending on the assessment goal.",
-      "explanation_wrong_common": "Option B confuses test methodology with knowledge level — the box model is about information access, not tools used. Option C is nonsensical — time of day is irrelevant. Option D incorrectly limits each type to a specific security domain — all three can test any layer."
+      "answer": "XSS injects malicious scripts into web pages viewed by other users. The three types are: (1) Stored/Persistent — script is stored on the server (e.g., in a database comment) and served to all visitors. (2) Reflected — script is embedded in a URL/link and reflected back by the server to the victim. (3) DOM-based — script executes entirely client-side by manipulating the page's DOM without server involvement",
+      "explanation_correct": "XSS exploits the trust a user has in a website by injecting client-side scripts that execute in the victim's browser. Stored XSS is most dangerous — it affects every user who views the infected page (e.g., a malicious comment in a forum). Reflected XSS targets individual users via crafted links (e.g., phishing email with a link containing the script). DOM-based XSS doesn't involve the server at all — the vulnerability is in the page's JavaScript that processes user input unsafely. Impact: session/cookie theft, credential harvesting, defacement, malware delivery. Defense: input validation, output encoding (context-aware), CSP headers, HttpOnly cookies.",
+      "explanation_wrong_common": "Option B is incorrect — XSS is not a network scanning attack; it's an injection attack targeting web application users. Option C describes a DDoS attack, not XSS — XSS doesn't overwhelm servers with requests. Option D confuses XSS with CSRF — XSS injects scripts that execute in the browser; CSRF tricks authenticated users into performing actions they didn't intend. They are related but distinct attack types."
     },
     {
-      "card_id": "audit_007",
-      "topic": "Security Audits and Assessments",
+      "card_id": "attack_012",
+      "topic": "Common Attack Methods",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the purpose of a SOC 2 Type II audit, and how does it differ from a SOC 2 Type I audit?",
+      "question_text": "What is a buffer overflow attack, and why is it dangerous?",
       "choices": [
-        "Type II evaluates the design AND operating effectiveness of controls over a period of time (typically 6-12 months); Type I evaluates only the design of controls at a single point in time",
-        "Type II is for financial audits; Type I is for security audits",
-        "Type II is performed by internal staff; Type I is performed by external auditors",
-        "Type II is required by law; Type I is voluntary"
+        "A buffer overflow occurs when an attacker writes more data into a memory buffer than it can hold, causing the excess data to overwrite adjacent memory — this is dangerous because the overwritten memory may contain return addresses, function pointers, or executable code, allowing the attacker to redirect program execution to malicious code",
+        "A buffer overflow is when a network buffer fills up with too many packets, causing the server to crash and reboot",
+        "A buffer overflow is when a hard drive runs out of space and overwrites system files",
+        "A buffer overflow is when a user's clipboard is full and overwrites the previous copied content"
       ],
-      "answer": "Type II evaluates the design AND operating effectiveness of controls over a period of time (typically 6-12 months); Type I evaluates only the design of controls at a single point in time",
-      "explanation_correct": "SOC 2 audits assess controls related to the Trust Services Criteria (Security, Availability, Processing Integrity, Confidentiality, Privacy). Type I is a point-in-time assessment — it verifies that controls are suitably designed as of a specific date. Type II goes further — it tests whether controls actually operated effectively over a period (usually 6-12 months), providing stronger assurance. Customers and partners typically require Type II because it demonstrates sustained control effectiveness, not just a snapshot.",
-      "explanation_wrong_common": "Option B is incorrect — both are security/operational audits, not financial (SOC 1 covers financial reporting controls). Option C is wrong — both types must be performed by independent CPAs. Option D is incorrect — neither is legally required; they are driven by customer/vendor requirements and contractual obligations."
+      "answer": "A buffer overflow occurs when an attacker writes more data into a memory buffer than it can hold, causing the excess data to overwrite adjacent memory — this is dangerous because the overwritten memory may contain return addresses, function pointers, or executable code, allowing the attacker to redirect program execution to malicious code",
+      "explanation_correct": "Buffer overflows exploit poor input validation in programs written in languages like C/C++ that don't automatically check array bounds. The attack: (1) The program allocates a fixed-size buffer (e.g., 256 bytes). (2) The attacker sends input larger than the buffer. (3) The excess data overwrites adjacent memory on the stack or heap. (4) If the overwrite modifies the return address, the attacker can redirect execution to their shellcode. Stack-based overflows overwrite return addresses; heap-based overflows corrupt heap metadata. Defense: input validation/length checking, ASLR (Address Space Layout Randomization), DEP/NX bit (prevents code execution in data areas), stack canaries (detect overwrites), and compiled with safe functions (strncpy instead of strcpy). Modern OS protections make this harder but not impossible.",
+      "explanation_wrong_common": "Option B describes a network congestion/buffer exhaustion issue, not a buffer overflow exploit — network buffer exhaustion doesn't allow code execution. Option C is a disk space issue — unrelated to memory buffer overflows. Option D is a clipboard issue — a trivial user inconvenience, not a security vulnerability that enables code execution."
     },
     {
-      "card_id": "audit_008",
-      "topic": "Security Audits and Assessments",
+      "card_id": "attack_013",
+      "topic": "Common Attack Methods",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company conducts an internal vulnerability scan and finds 300 vulnerabilities. Before remediation, management asks the security team to validate which vulnerabilities are actually exploitable. What approach should the team take to efficiently prioritize remediation?",
+      "question_text": "An e-commerce website uses session cookies to track authenticated users. An attacker discovers that the site doesn't validate the origin of requests. The attacker creates a malicious webpage that contains a hidden form which auto-submits a POST request to the e-commerce site's 'change shipping address' endpoint when a logged-in user visits the attacker's page. What type of attack is this, and what is the BEST defense?",
       "choices": [
-        "Perform authenticated scanning and risk-based validation: correlate vulnerabilities with asset criticality and exposure, use exploit databases (CVE/EPSS) to check active exploitability, and prioritize vulnerabilities that are exploitable on internet-facing critical assets",
-        "Patch all 300 vulnerabilities immediately in order of CVSS score from highest to lowest",
-        "Ignore the findings since they were found by an internal scan and not an external attacker",
-        "Only fix vulnerabilities that have been actively exploited in the wild, ignoring all others"
+        "This is a Cross-Site Request Forgery (CSRF) attack — the attacker tricks an authenticated user's browser into submitting a malicious request to a trusted site. The best defense is anti-CSRF tokens (synchronizer token pattern): the server embeds a unique, unpredictable token in each form, and rejects requests that don't include the correct token, since the attacker's page cannot read the token due to same-origin policy",
+        "This is a Cross-Site Scripting (XSS) attack — the attacker injected a script into the e-commerce site. Defense: output encoding and Content Security Policy",
+        "This is a SQL injection attack — the attacker is injecting SQL into the shipping address field. Defense: parameterized queries",
+        "This is a man-in-the-middle (MITM) attack — the attacker is intercepting traffic between the user and the e-commerce site. Defense: HTTPS with HSTS"
       ],
-      "answer": "Perform authenticated scanning and risk-based validation: correlate vulnerabilities with asset criticality and exposure, use exploit databases (CVE/EPSS) to check active exploitability, and prioritize vulnerabilities that are exploitable on internet-facing critical assets",
-      "explanation_correct": "Not all 300 vulnerabilities are equal. Risk-based validation: (1) Authenticated scanning provides deeper, more accurate results (logged-in scans find more vulnerabilities and reduce false positives). (2) Cross-reference with exploit databases (CVE, EPSS, CISA KEV) to identify actively exploitable vulnerabilities. (3) Correlate with asset criticality — a CVSS 7.0 on a public-facing web server is higher priority than a CVSS 9.0 on an isolated test VM. (4) Consider exposure (internet-facing vs. internal-only). This ensures the most dangerous vulnerabilities are fixed first.",
-      "explanation_wrong_common": "Option B is inefficient — blindly patching by CVSS score ignores context and may waste effort on low-risk vulnerabilities. Option C is dangerous — internal scans identify real weaknesses that attackers could exploit if they gain access. Option D is too narrow — vulnerabilities without known active exploitation can still be leveraged, especially in targeted attacks."
+      "answer": "This is a Cross-Site Request Forgery (CSRF) attack — the attacker tricks an authenticated user's browser into submitting a malicious request to a trusted site. The best defense is anti-CSRF tokens (synchronizer token pattern): the server embeds a unique, unpredictable token in each form, and rejects requests that don't include the correct token, since the attacker's page cannot read the token due to same-origin policy",
+      "explanation_correct": "CSRF exploits the trust a website has in a user's browser. When a user is authenticated, their browser automatically sends session cookies with every request to that domain. The attacker's page triggers a cross-origin request (form auto-submit, img tag, fetch) to the target site. The browser attaches the session cookie, so the server sees it as a legitimate authenticated request. Anti-CSRF tokens prevent this: (1) Server generates a random token per session/form. (2) Token is included as a hidden form field. (3) Server validates the token on POST requests. (4) The attacker's page cannot read the token (same-origin policy blocks cross-origin DOM access), so they can't forge a valid request. Additional defenses: SameSite cookie attribute (Lax/Strict), requiring re-authentication for sensitive actions, and checking the Referer/Origin header.",
+      "explanation_wrong_common": "Option B is wrong — XSS injects scripts into the trusted site that execute in the victim's browser; CSRF sends requests TO the trusted site FROM an external page. The attacker here doesn't inject anything into the e-commerce site — they host their own malicious page. Option C is wrong — no SQL is being injected; the attack exploits the browser's automatic cookie attachment, not database query construction. Option D is wrong — the attacker isn't intercepting traffic; they're tricking the browser into making a legitimate-looking request through the normal channel."
     },
     {
-      "card_id": "audit_009",
-      "topic": "Security Audits and Assessments",
+      "card_id": "attack_014",
+      "topic": "Common Attack Methods",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization wants to assess how well its security team would respond to a real attack. They hire a red team to simulate a sophisticated attack, and a blue team to defend. After the exercise, both teams meet to discuss what happened. What is this exercise called, and what is the meeting's purpose?",
+      "question_text": "A company's database administrator notices that their customer database has been queried with unusual patterns: requests like 'admin'--' and 'OR 1=1' appear in the query logs. Some customer records have been modified, and the attacker was able to bypass the login screen without a valid password. What type of attack is this, what is the root cause, and what is the primary defense?",
       "choices": [
-        "A purple team exercise — the red team simulates attacks, the blue team defends, and the joint meeting (purple teaming) shares findings to improve detection and response capabilities through collaborative learning",
-        "A black-box penetration test — the meeting is to present the vulnerability report to management",
-        "A compliance audit — the meeting is to determine if the organization meets regulatory requirements",
-        "A tabletop exercise — the meeting is to discuss a hypothetical scenario without any actual testing"
+        "This is a SQL injection (SQLi) attack — the root cause is that user input is concatenated directly into SQL query strings without validation or parameterization. The primary defense is parameterized queries (prepared statements) that separate code from data, so user input is treated as a literal value and never as executable SQL",
+        "This is a brute force password attack — the root cause is weak passwords. Defense: enforce complex passwords and account lockout",
+        "This is a privilege escalation attack — the root cause is the admin account has too many permissions. Defense: least privilege principle",
+        "This is a cross-site scripting (XSS) attack — the root cause is unencoded user input. Defense: output encoding and CSP"
       ],
-      "answer": "A purple team exercise — the red team simulates attacks, the blue team defends, and the joint meeting (purple teaming) shares findings to improve detection and response capabilities through collaborative learning",
-      "explanation_correct": "Purple teaming combines red team (offensive) and blue team (defensive) activities into a collaborative learning exercise. The red team attacks using realistic adversary techniques (TTPs). The blue team attempts to detect and respond. Afterward, both sides share their perspectives — the red team reveals what attacks succeeded and why, the blue team explains what they detected and what they missed. This joint debrief (the 'purple' session) transforms adversarial findings into actionable improvements for detection rules, response procedures, and security gaps.",
-      "explanation_wrong_common": "Option B describes a standard penetration test, which is adversarial and one-directional — the red team reports to the client, not to the blue team. Option C is a compliance activity, not a security exercise. Option D describes a tabletop exercise, which is discussion-based and involves no actual technical testing."
+      "answer": "This is a SQL injection (SQLi) attack — the root cause is that user input is concatenated directly into SQL query strings without validation or parameterization. The primary defense is parameterized queries (prepared statements) that separate code from data, so user input is treated as a literal value and never as executable SQL",
+      "explanation_correct": "SQL injection occurs when user-supplied input is concatenated into SQL queries without sanitization. The classic payload ' OR 1=1 --' works by: (1) Closing the intended query string. (2) Adding 'OR 1=1' which is always true, returning all rows. (3) Adding '--' to comment out the rest of the query (including password checks). The attacker bypassed authentication because the modified query always evaluates to true. Parameterized queries/prepared statements fix this: the SQL structure is sent to the database engine first (with placeholders), then user input is bound as parameters. The database treats parameters strictly as data values, not as SQL syntax, making injection impossible. Additional defenses: input validation, least-privilege database accounts, WAF rules, stored procedures (if properly parameterized), and ORM frameworks.",
+      "explanation_wrong_common": "Option B is wrong — the attacker isn't guessing passwords; they're bypassing the login entirely by manipulating the SQL query. Account lockout wouldn't help because no password guessing occurred. Option C is partially related (the attacker may gain admin via SQLi) but the root cause is SQL injection, not excessive permissions. Option D is wrong — XSS attacks the browser by injecting scripts into web pages; SQL injection attacks the database by manipulating queries. Different layers, different root causes."
     },
     {
-      "card_id": "audit_010",
-      "topic": "Security Audits and Assessments",
+      "card_id": "attack_015",
+      "topic": "Common Attack Methods",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A SaaS company is preparing for its first SOC 2 Type II audit. The auditor requests evidence that access reviews were performed quarterly for the past 12 months. The company has been doing access reviews but only documented the most recent one — the prior three were done informally via email threads that have since been deleted. The auditor also finds that two developers had admin access to production databases without documented approval. How should the company address these findings, and what does it mean for the audit?",
+      "question_text": "A cloud-hosted web application experiences a credential stuffing attack: the attacker is using a leaked database of 5 million username/password pairs from a different breach, automated with a botnet of 10,000 IPs, and attempting to log in to the company's user portal. The company has 50,000 users. After 2 hours, 3,000 accounts have been compromised (users who reused passwords). The company needs to stop the attack immediately AND prevent future credential stuffing. Which combination of controls provides the BEST immediate and long-term protection?",
       "choices": [
-        "The company should acknowledge the documentation gaps, implement a formal access review process with automated logging and ticket-based approval for privileged access, and accept that the auditor will note these as exceptions in the SOC 2 report for the period when controls were not fully operating effectively",
-        "The company should fabricate access review records for the prior quarters to show the auditor",
-        "The company should cancel the SOC 2 audit and wait a full year until they have complete documentation",
-        "The company should fire the two developers who had admin access as punishment"
+        "Immediate: (1) Enable rate limiting and IP-based throttling (lock out IPs with >10 failed logins/minute). (2) Deploy CAPTCHA or behavioral biometrics to block automated bot traffic. (3) Force password reset for all 50,000 users and check new passwords against a breach database (HaveIBeenPwned API). Long-term: (1) Enforce MFA for all accounts. (2) Implement passwordless authentication (WebAuthn/FIDO2). (3) Continuous bot detection (device fingerprinting, ML-based anomaly detection). (4) Monitor for credential reuse via breach intelligence feeds",
+        "Immediate: block all login attempts and shut down the web application until the attack stops. Long-term: require users to visit a physical office to reset passwords in person",
+        "Immediate: install a web application firewall and block all traffic from the botnet IPs. Long-term: keep the WAF rules updated with new IP lists",
+        "Immediate: send an email to all users asking them to change their passwords if they think they were affected. Long-term: enforce a 90-day password rotation policy"
       ],
-      "answer": "The company should acknowledge the documentation gaps, implement a formal access review process with automated logging and ticket-based approval for privileged access, and accept that the auditor will note these as exceptions in the SOC 2 report for the period when controls were not fully operating effectively",
-      "explanation_correct": "SOC 2 Type II requires evidence that controls operated effectively throughout the entire period. Missing documentation means the auditor cannot verify control effectiveness for those quarters — these will be noted as exceptions in the report. The company should: (1) Be transparent — do not hide or fabricate evidence. (2) Implement remediation: automated access review tooling (e.g., IGA solutions), ticket-based privileged access approval workflow, and immutable audit logs. (3) Communicate the remediation plan to the auditor and report users. Exceptions in a SOC 2 report are not necessarily fatal — they are disclosed so users can assess residual risk. Honesty preserves trust; fabrication destroys it.",
-      "explanation_wrong_common": "Option B is fraud — fabricating audit evidence is illegal and can result in criminal charges, loss of CPA license for the auditor, and complete loss of trust. Option C is overly drastic — the audit can proceed with noted exceptions, and the company can demonstrate remediation going forward. Option D is punitive and misses the systemic issue — the problem is the lack of a formal approval process, not individual misconduct."
+      "answer": "Immediate: (1) Enable rate limiting and IP-based throttling (lock out IPs with >10 failed logins/minute). (2) Deploy CAPTCHA or behavioral biometrics to block automated bot traffic. (3) Force password reset for all 50,000 users and check new passwords against a breach database (HaveIBeenPwned API). Long-term: (1) Enforce MFA for all accounts. (2) Implement passwordless authentication (WebAuthn/FIDO2). (3) Continuous bot detection (device fingerprinting, ML-based anomaly detection). (4) Monitor for credential reuse via breach intelligence feeds",
+      "explanation_correct": "Credential stuffing exploits password reuse across services. Immediate response: (1) Rate limiting slows the attack — but with 10,000 IPs, per-IP limits alone aren't enough, so combine with CAPTCHA and behavioral analysis. (2) Forcing a global password reset stops ongoing compromise, and checking against breach databases (k-anonymity API) ensures users don't pick already-breached passwords. Long-term: (1) MFA is the strongest control — even if credentials are stolen, the attacker can't complete login without the second factor. (2) Passwordless (FIDO2/WebAuthn) eliminates passwords entirely, making credential stuffing impossible. (3) Bot detection (device fingerprinting, ML) identifies automated traffic patterns. (4) Breach intelligence feeds let you proactively force resets when users' credentials appear in new breaches. This is defense-in-depth: slow the attack, block automation, eliminate the root cause (passwords).",
+      "explanation_wrong_common": "Option B is a denial-of-service to your own users — shutting down the application is exactly what the attacker wants (business disruption). Physical password resets are impractical for a 50,000-user online service. Option C is insufficient — botnets rotate IPs rapidly; a WAF IP blocklist is a whack-a-mole approach that can't keep up. WAFs are part of the solution but not sufficient alone. Option D is too slow (users who don't check email stay compromised) and 90-day rotation is actually counterproductive per NIST 800-63B — it causes users to choose weaker, predictable passwords (Password1 → Password2)."
     },
     {
-      "card_id": "awareness_006",
-      "topic": "Security Awareness Training",
+      "card_id": "vuln_011",
+      "topic": "Vulnerability Types and Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is social engineering in the context of cybersecurity, and why is it a significant threat?",
+      "question_text": "What is the difference between a zero-day vulnerability and a known vulnerability?",
       "choices": [
-        "Social engineering is the manipulation of people into performing actions or divulging confidential information through psychological tricks — it is significant because no technical control can fully prevent a human from being deceived",
-        "Social engineering is the process of engineering social media algorithms to block malicious content",
-        "Social engineering is a type of network attack that exploits social media APIs",
-        "Social engineering is the practice of hiring engineers through social media recruitment"
+        "A zero-day vulnerability is a security flaw that has been discovered but no patch or fix is available yet (the vendor has had zero days to respond), while a known vulnerability has been disclosed and has a patch, mitigation, or documented workaround available",
+        "A zero-day vulnerability is one that was discovered today, while a known vulnerability was discovered yesterday",
+        "A zero-day vulnerability only affects zero systems, while a known vulnerability affects many systems",
+        "A zero-day vulnerability is one that cannot be exploited, while a known vulnerability can be exploited"
       ],
-      "answer": "Social engineering is the manipulation of people into performing actions or divulging confidential information through psychological tricks — it is significant because no technical control can fully prevent a human from being deceived",
-      "explanation_correct": "Social engineering exploits human psychology rather than technical vulnerabilities. Techniques include phishing, pretexting, baiting, tailgating, and quid pro quo. It is dangerous because: (1) Humans are unpredictable — even strong technical controls can be bypassed by a deceived employee. (2) Attackers exploit trust, authority, urgency, and curiosity. (3) It is often the first step in a larger attack (credential theft → network access → data exfiltration). This is why security awareness training is critical — it targets the human layer that technology cannot fully protect.",
-      "explanation_wrong_common": "Option B describes content moderation, not social engineering. Option C confuses social engineering with API exploitation — it is a human-targeted attack, not a technical one. Option D is about recruitment, completely unrelated to cybersecurity."
+      "answer": "A zero-day vulnerability is a security flaw that has been discovered but no patch or fix is available yet (the vendor has had zero days to respond), while a known vulnerability has been disclosed and has a patch, mitigation, or documented workaround available",
+      "explanation_correct": "The term 'zero-day' refers to the number of days the vendor has had to fix the vulnerability — zero. This means: (1) The vendor is unaware or has just been notified. (2) No official patch exists. (3) Attackers can exploit it with no available defense (except compensating controls like WAF rules, IPS signatures, or network isolation). Zero-days are dangerous because they are unknown to defenders — signature-based tools won't detect them. Known vulnerabilities have CVE IDs, CVSS scores, patches, and are tracked in vulnerability databases (NVD). Paradoxically, known vulnerabilities cause more breaches because many organizations don't patch promptly, while zero-days are limited to sophisticated attackers. Defense against zero-days: defense-in-depth, behavioral detection, least privilege, and application whitelisting.",
+      "explanation_wrong_common": "Option B is incorrect — 'zero-day' refers to the vendor's patch timeline, not the discovery date. A zero-day could be exploited for months before discovery. Option C is nonsensical — zero-day doesn't mean zero affected systems; it can affect millions. Option D is the opposite of reality — zero-days CAN be exploited (often more so because no patch exists), while known vulnerabilities can also be exploited but have available fixes."
     },
     {
-      "card_id": "awareness_007",
-      "topic": "Security Awareness Training",
+      "card_id": "vuln_012",
+      "topic": "Vulnerability Types and Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between phishing, spear phishing, and whaling?",
+      "question_text": "What is the Common Vulnerability Scoring System (CVSS), and what do the three CVSS severity categories (High, Medium, Low) generally indicate?",
       "choices": [
-        "Phishing: broad, untargeted emails to many recipients; spear phishing: targeted emails aimed at specific individuals or organizations; whaling: spear phishing targeting high-profile executives (CEO, CFO) or individuals with access to valuable assets",
-        "Phishing: emails about fishing; spear phishing: emails about fishing with spears; whaling: emails about whale watching",
-        "Phishing: attacks via phone; spear phishing: attacks via email; whaling: attacks via SMS",
-        "Phishing: low-risk attacks; spear phishing: medium-risk attacks; whaling: high-risk attacks based on technical severity"
+        "CVSS is a standardized framework for rating the severity of software vulnerabilities on a scale of 0.0 to 10.0, based on exploitability, impact, and scope. High (7.0-10.0) means the vulnerability is easily exploitable with significant impact; Medium (4.0-6.9) means moderate exploitability and impact; Low (0.1-3.9) means difficult to exploit with minimal impact",
+        "CVSS is a scoring system that ranks vulnerabilities by how many systems are affected worldwide",
+        "CVSS is a tool that automatically patches vulnerabilities based on their score",
+        "CVSS is a database that stores all known malware signatures for antivirus software"
       ],
-      "answer": "Phishing: broad, untargeted emails to many recipients; spear phishing: targeted emails aimed at specific individuals or organizations; whaling: spear phishing targeting high-profile executives (CEO, CFO) or individuals with access to valuable assets",
-      "explanation_correct": "These are tiers of social engineering via email: Phishing casts a wide net (mass emails impersonating banks, delivery services) — low effort, low success rate, high volume. Spear phishing targets specific individuals using personal info (name, role, company) — higher effort, higher success rate. Whaling targets executives or high-value individuals (CEO fraud, wire fraud) — highest effort, highest potential payoff. The defense strategy differs: phishing is blocked by email filters, spear phishing requires user awareness training, whaling requires executive-specific training and financial verification protocols.",
-      "explanation_wrong_common": "Option B is a literal interpretation of the fishing terms — incorrect. Option C confuses the attack vector — all three are primarily email-based (vishing is phone-based, smishing is SMS-based). Option D categorizes by technical risk severity, which is not how these terms are defined — they are defined by targeting specificity."
+      "answer": "CVSS is a standardized framework for rating the severity of software vulnerabilities on a scale of 0.0 to 10.0, based on exploitability, impact, and scope. High (7.0-10.0) means the vulnerability is easily exploitable with significant impact; Medium (4.0-6.9) means moderate exploitability and impact; Low (0.1-3.9) means difficult to exploit with minimal impact",
+      "explanation_correct": "CVSS (maintained by FIRST.org) provides a consistent way to assess vulnerability severity. The base score (0.0-10.0) considers: (1) Attack vector (network, adjacent, local, physical). (2) Attack complexity (low/high). (3) Privileges required (none/low/high). (4) User interaction (none/required). (5) Impact on confidentiality, integrity, and availability. (6) Scope (whether the vulnerability affects components beyond the vulnerable one). Critical (9.0-10.0) = remote code execution, no auth required. High (7.0-8.9) = significant impact. Medium (4.0-6.9) = moderate. Low (0.1-3.9) = minimal. Temporal and environmental scores adjust based on exploit availability and your specific environment. CVSS helps prioritize remediation but should not be the only factor — asset criticality and exposure matter too.",
+      "explanation_wrong_common": "Option B is incorrect — CVSS scores severity, not prevalence. A vulnerability affecting one system can score 10.0 if it's easily exploitable with full impact. Option C is wrong — CVSS is a scoring framework, not a patching tool. Scores inform prioritization but don't automate remediation. Option D is wrong — CVSS has nothing to do with malware signatures; it's a vulnerability assessment standard, not an antivirus database."
     },
     {
-      "card_id": "awareness_008",
-      "topic": "Security Awareness Training",
+      "card_id": "vuln_013",
+      "topic": "Vulnerability Types and Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An employee receives a phone call from someone claiming to be from the IT help desk. The caller says there is a urgent security issue with the employee's account and asks for their password to 'verify' the problem. The caller knows the employee's name, department, and manager's name. What type of attack is this, and what should the employee do?",
+      "question_text": "A vulnerability scan reports 200 vulnerabilities across a company's infrastructure. The security team has limited resources and can only remediate 30 this month. Which prioritization approach correctly considers BOTH CVSS score AND real-world exploitability?",
       "choices": [
-        "This is vishing (voice phishing) with pretexting — the caller used personal details to build credibility. The employee should not share any credentials, hang up, and report the call to the security team, then verify by calling the IT help desk through the official number",
-        "This is a legitimate IT call and the employee should provide their password to help resolve the urgent issue",
-        "This is a spam call but harmless — the employee should simply hang up and not report it",
-        "This is a physical security threat and the employee should lock their office door"
+        "Cross-reference each vulnerability with: (1) CVSS score for severity. (2) CISA KEV (Known Exploited Vulnerabilities) catalog for active exploitation. (3) EPSS (Exploit Prediction Scoring System) for likelihood of exploitation. (4) Asset criticality and exposure (internet-facing vs. internal). Prioritize vulnerabilities that are high-CVSS, in the KEV catalog, with high EPSS, on internet-facing critical assets",
+        "Remediate the 30 vulnerabilities with the highest CVSS scores, regardless of other factors",
+        "Remediate the 30 vulnerabilities on the oldest systems first, since older systems are more likely to be exploited",
+        "Remediate the 30 vulnerabilities that are easiest to fix (require the least effort), to maximize the number patched"
       ],
-      "answer": "This is vishing (voice phishing) with pretexting — the caller used personal details to build credibility. The employee should not share any credentials, hang up, and report the call to the security team, then verify by calling the IT help desk through the official number",
-      "explanation_correct": "Vishing (voice phishing) uses phone calls to manipulate victims. Pretexting creates a believable scenario (fake IT help desk) using gathered personal information (name, department, manager) to build trust. The employee should: (1) Never share passwords — legitimate IT staff never ask for them. (2) Hang up and report the incident to security. (3) Verify by calling the IT help desk using the official number from the company directory, not any number provided by the caller. This is why awareness training must cover voice-based social engineering, not just email phishing.",
-      "explanation_wrong_common": "Option B is exactly what the attacker wants — sharing a password gives full account access. Legitimate IT never asks for passwords. Option C underestimates the threat — vishing can lead to account compromise and should always be reported so security can warn other employees. Option D misidentifies the attack — it is a social engineering phone call, not a physical security issue."
+      "answer": "Cross-reference each vulnerability with: (1) CVSS score for severity. (2) CISA KEV (Known Exploited Vulnerabilities) catalog for active exploitation. (3) EPSS (Exploit Prediction Scoring System) for likelihood of exploitation. (4) Asset criticality and exposure (internet-facing vs. internal). Prioritize vulnerabilities that are high-CVSS, in the KEV catalog, with high EPSS, on internet-facing critical assets",
+      "explanation_correct": "Risk-based vulnerability management (RBVM) goes beyond CVSS alone. (1) CVSS tells you how bad it COULD be, not how likely it is to be exploited. (2) CISA KEV lists vulnerabilities actively exploited in the wild — these are the most urgent. (3) EPSS uses machine learning to predict the probability of exploitation within 30 days, based on historical data. (4) Context matters: a CVSS 9.0 on an isolated test VM is lower priority than a CVSS 7.5 on a public-facing payment system. Combining these factors creates a prioritized list that maximizes risk reduction per remediation effort. This approach has been shown to reduce risk significantly more than CVSS-only prioritization.",
+      "explanation_wrong_common": "Option B (CVSS-only) ignores real-world exploitability — a CVSS 9.8 with no public exploit on an internal system is lower risk than a CVSS 7.5 with active exploitation on a public server. Option C is flawed — age of the system doesn't correlate well with exploitation priority; a newer system with a critical, actively-exploited vulnerability is higher priority than an old system with low-severity issues. Option D optimizes for quantity over impact — patching 30 easy, low-risk vulnerabilities may reduce less risk than patching 5 hard, critical ones."
     },
     {
-      "card_id": "awareness_009",
-      "topic": "Security Awareness Training",
+      "card_id": "vuln_014",
+      "topic": "Vulnerability Types and Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company implements a new policy: any employee who fails three phishing simulations in a year will be terminated. After 6 months, the click rate has dropped from 30% to 5%, but the reporting rate has also dropped from 15% to 2%, and employees are deleting suspicious emails without reporting them. What is wrong with this approach, and what should be changed?",
+      "question_text": "A company discovers a misconfiguration in their AWS S3 bucket: it was set to public-read instead of private, exposing 100,000 customer records including names, emails, and phone numbers for 3 months. The bucket was created by a developer who left the company. No breach has been detected, but the company cannot confirm whether anyone accessed the data. What is the MOST appropriate incident response, and what configuration management failure caused this?",
       "choices": [
-        "The punitive policy created a culture of fear — employees hide failures instead of reporting. The company should replace termination threats with a no-blame learning culture, reward reporting, and focus on education rather than punishment",
-        "The policy is working perfectly — a 5% click rate is excellent and the low reporting rate means employees are handling threats independently",
-        "The company should increase the threshold to termination after one failure to eliminate all clickers",
-        "The company should stop phishing simulations entirely since the click rate is already low"
+        "Response: (1) Immediately set the bucket to private. (2) Enable S3 access logging and review logs for unauthorized access during the exposure period. (3) Notify affected customers per data breach notification laws (GDPR 72h, state laws vary). (4) Conduct a full audit of all cloud resources. Root cause: lack of Infrastructure as Code (IaC) with security policies, no cloud security posture management (CSPM), and no automated guardrails preventing public S3 buckets",
+        "Response: Delete the S3 bucket and all data immediately, then recreate it properly configured. No notification needed since no confirmed breach",
+        "Response: Fire the developer who created the bucket, even though they left the company. No other action needed",
+        "Response: Do nothing since no breach was detected — if nobody accessed the data, there is no incident"
       ],
-      "answer": "The punitive policy created a culture of fear — employees hide failures instead of reporting. The company should replace termination threats with a no-blame learning culture, reward reporting, and focus on education rather than punishment",
-      "explanation_correct": "The declining reporting rate is a red flag. Fear-based policies cause employees to: (1) Delete suspicious emails silently to avoid being flagged as a failure — this means real threats go unreported. (2) Not report actual security incidents for fear of blame. (3) Lose trust in the security team. The fix: (1) Replace punishment with immediate, constructive feedback for failed simulations. (2) Actively reward and recognize employees who report phishing (gamification, leaderboards, shout-outs). (3) Make reporting easy (one-click 'Report Phishing' button). A strong reporting culture is more valuable than a low click rate — reports enable the security team to identify campaigns and protect all employees.",
-      "explanation_wrong_common": "Option B misreads the metrics — a low reporting rate is dangerous because the SOC loses visibility into active threats. Option C would worsen the fear culture and drive reporting rates even lower. Option D is premature — simulations should continue but be paired with a positive, learning-focused approach."
+      "answer": "Response: (1) Immediately set the bucket to private. (2) Enable S3 access logging and review logs for unauthorized access during the exposure period. (3) Notify affected customers per data breach notification laws (GDPR 72h, state laws vary). (4) Conduct a full audit of all cloud resources. Root cause: lack of Infrastructure as Code (IaC) with security policies, no cloud security posture management (CSPM), and no automated guardrails preventing public S3 buckets",
+      "explanation_correct": "Cloud misconfiguration is the #1 cause of cloud data breaches. The response follows incident handling: (1) Containment — immediately restrict access (set bucket private). (2) Investigation — review S3 access logs, CloudTrail logs, and any analytics to determine if data was accessed. (3) Notification — many regulations (GDPR, CCPA, state breach laws) require notification when PII was exposed, even if unauthorized access can't be confirmed. The exposure itself constitutes a reportable event in many jurisdictions. (4) Remediation — audit ALL cloud resources for similar misconfigurations. Root cause: the developer manually configured the bucket (no IaC), there was no CSPM tool to detect public buckets, and no AWS Service Control Policy (SCP) or config rule to prevent/flag public S3 buckets. Fixes: IaC with security policies (Terraform + policy-as-code), CSPM tools (AWS Config, Prisma Cloud), automated guardrails (SCPs blocking public S3 creation), and least-privilege IAM.",
+      "explanation_wrong_common": "Option B is wrong — deleting the bucket destroys evidence needed for the investigation and doesn't address notification obligations. You must preserve evidence and determine what was accessed. Option C is punitive and ineffective — the developer already left, and the problem is systemic (lack of guardrails), not individual. Option D is dangerous — the exposure of PII is itself a notifiable event under many data protection laws, regardless of confirmed access. Waiting for confirmation of a breach can violate legal notification deadlines (GDPR: 72 hours)."
     },
     {
-      "card_id": "awareness_010",
-      "topic": "Security Awareness Training",
+      "card_id": "vuln_015",
+      "topic": "Vulnerability Types and Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A hospital's security awareness program shows strong metrics: phishing click rate at 4%, reporting rate at 60%, and mandatory annual training completion at 100%. However, a recent incident revealed that a nurse plugged in a USB drive found in the parking lot, which installed ransomware that encrypted patient records. The nurse had passed all phishing simulations and completed training. The training program never covered physical media threats or removable device policies. What does this reveal, and how should the program be improved?",
+      "question_text": "A large enterprise has a mature vulnerability management program: they run weekly scans, have a 30-day patch SLA for critical vulnerabilities, and use CVSS for prioritization. However, analysis shows that 40% of their breaches in the past year came from vulnerabilities that were scored Medium (CVSS 4.0-6.9) and were NOT prioritized for patching within the SLA. These vulnerabilities were on internet-facing systems and were exploited using publicly available PoC exploits within 14 days of disclosure. The CISO asks: what is wrong with the current vulnerability management strategy, and what changes would reduce breach risk while maintaining operational feasibility?",
       "choices": [
-        "The program has a coverage gap — it focuses on email phishing but neglects other attack vectors. The hospital should expand training to cover USB/removable media threats, implement technical controls (endpoint policies blocking unauthorized USB devices), add physical security scenarios to simulations (e.g., dropped USB drives in parking lots), and conduct regular threat-landscape reviews to identify emerging vectors",
-        "The nurse should be fired for plugging in an unknown USB drive — the training was adequate and this was individual negligence",
-        "The hospital should ban all USB drives permanently and physically epoxy all USB ports on all computers",
-        "The security awareness program has completely failed and should be rebuilt from scratch"
+        "The strategy relies solely on CVSS base scores, which don't account for real-world exploitability or asset exposure. Changes: (1) Add EPSS (Exploit Prediction Scoring System) to identify Medium-CVSS vulnerabilities with high exploitation probability. (2) Add CISA KEV catalog checks — any KEV-listed vulnerability gets critical SLA regardless of CVSS. (3) Factor in asset exposure — internet-facing systems get shorter SLAs than internal systems. (4) Implement exposure-based SLAs: Critical/KEV = 7 days, High+EPSS>0.5+internet-facing = 14 days, Medium+EPSS>0.2 = 30 days, Low = 90 days. (5) Deploy virtual patching (WAF/IPS) for vulnerabilities that can't be patched within SLA",
+        "The strategy is correct — Medium vulnerabilities should not be prioritized. The breaches were bad luck. No changes needed; just increase the critical patch SLA to 15 days to reduce workload",
+        "The problem is that the scan frequency is too low. Switch to daily scans and patch every vulnerability regardless of score. The 30-day SLA should apply to ALL vulnerabilities",
+        "The strategy should be replaced entirely — abandon CVSS and use only the CISA KEV catalog. If a vulnerability is not in KEV, don't patch it at all"
       ],
-      "answer": "The program has a coverage gap — it focuses on email phishing but neglects other attack vectors. The hospital should expand training to cover USB/removable media threats, implement technical controls (endpoint policies blocking unauthorized USB devices), add physical security scenarios to simulations (e.g., dropped USB drives in parking lots), and conduct regular threat-landscape reviews to identify emerging vectors",
-      "explanation_correct": "This is a coverage gap, not a total failure. The email phishing program is working well (4% click, 60% report). But awareness training must cover the full threat landscape, not just email. The improvements: (1) Training modules on physical attack vectors — USB drops, tailgating, shoulder surfing, dumpster diving. (2) Technical controls — endpoint DLP/Device Control policies that block or restrict unauthorized USB devices (allow only encrypted, company-issued drives). (3) Physical simulations — drop harmless USB drives in the parking lot and track who plugs them in, then provide immediate education. (4) Regular threat-landscape reviews to ensure training covers emerging attack vectors. Healthcare is especially vulnerable because patient safety depends on system availability.",
-      "explanation_wrong_common": "Option B is punitive and unfair — the nurse was never trained on this threat vector. Firing one person doesn't prevent the next incident. Option C is excessive — epoxying ports prevents legitimate use (medical devices, equipment updates) and doesn't address the awareness gap. Option D overreacts — the phishing metrics show the program is effective for its covered scope; the issue is coverage, not fundamental failure."
+      "answer": "The strategy relies solely on CVSS base scores, which don't account for real-world exploitability or asset exposure. Changes: (1) Add EPSS (Exploit Prediction Scoring System) to identify Medium-CVSS vulnerabilities with high exploitation probability. (2) Add CISA KEV catalog checks — any KEV-listed vulnerability gets critical SLA regardless of CVSS. (3) Factor in asset exposure — internet-facing systems get shorter SLAs than internal systems. (4) Implement exposure-based SLAs: Critical/KEV = 7 days, High+EPSS>0.5+internet-facing = 14 days, Medium+EPSS>0.2 = 30 days, Low = 90 days. (5) Deploy virtual patching (WAF/IPS) for vulnerabilities that can't be patched within SLA",
+      "explanation_correct": "This is a classic case of CVSS-only prioritization failing. The problem: CVSS measures theoretical severity, not real-world risk. A Medium (5.5) vulnerability with a public PoC exploit on an internet-facing web server is far more dangerous than a Critical (9.0) on an isolated internal system. The solution is risk-based vulnerability management (RBVM): (1) EPSS predicts exploitation probability — a Medium-CVSS vulnerability with EPSS > 0.5 is more likely to be exploited than a High-CVSS with EPSS < 0.05. (2) CISA KEV means active exploitation — these should always get the shortest SLA regardless of CVSS. (3) Asset context (exposure, criticality, data sensitivity) must factor into prioritization. (4) Tiered SLAs based on combined risk allow feasible remediation timelines while addressing the highest-risk items first. (5) Virtual patching (WAF/IPS rules) buys time when patches can't be deployed immediately (change windows, testing, legacy systems). This approach has been proven to reduce breach risk more effectively than CVSS-only strategies.",
+      "explanation_wrong_common": "Option B is complacent — 40% of breaches from Medium-CVSS vulnerabilities is a systemic failure, not bad luck. Extending the critical SLA to 15 days makes things worse, not better. Option C is infeasible — daily scans and patching every vulnerability regardless of score would overwhelm any IT team, cause excessive downtime, and isn't risk-based. Not all vulnerabilities are exploitable or on exposed systems. Option D is the opposite extreme — KEV only catches vulnerabilities that are ALREADY being exploited, missing those that will be exploited next. It's a valuable signal but not a complete strategy; you'd miss emerging threats and medium-risk issues that compound over time."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "gov_006", "next_due_at": "2026-09-18" },
-    { "card_id": "gov_007", "next_due_at": "2026-09-18" },
-    { "card_id": "gov_008", "next_due_at": "2026-09-19" },
-    { "card_id": "gov_009", "next_due_at": "2026-09-19" },
-    { "card_id": "gov_010", "next_due_at": "2026-09-20" },
-    { "card_id": "risk_006", "next_due_at": "2026-09-18" },
-    { "card_id": "risk_007", "next_due_at": "2026-09-18" },
-    { "card_id": "risk_008", "next_due_at": "2026-09-19" },
-    { "card_id": "risk_009", "next_due_at": "2026-09-19" },
-    { "card_id": "risk_010", "next_due_at": "2026-09-20" },
-    { "card_id": "audit_006", "next_due_at": "2026-09-18" },
-    { "card_id": "audit_007", "next_due_at": "2026-09-18" },
-    { "card_id": "audit_008", "next_due_at": "2026-09-19" },
-    { "card_id": "audit_009", "next_due_at": "2026-09-19" },
-    { "card_id": "audit_010", "next_due_at": "2026-09-20" },
-    { "card_id": "awareness_006", "next_due_at": "2026-09-18" },
-    { "card_id": "awareness_007", "next_due_at": "2026-09-18" },
-    { "card_id": "awareness_008", "next_due_at": "2026-09-19" },
-    { "card_id": "awareness_009", "next_due_at": "2026-09-19" },
-    { "card_id": "awareness_010", "next_due_at": "2026-09-20" }
+    { "card_id": "threat_011", "next_due_at": "2026-09-19" },
+    { "card_id": "threat_012", "next_due_at": "2026-09-19" },
+    { "card_id": "threat_013", "next_due_at": "2026-09-20" },
+    { "card_id": "threat_014", "next_due_at": "2026-09-20" },
+    { "card_id": "threat_015", "next_due_at": "2026-09-21" },
+    { "card_id": "malware_011", "next_due_at": "2026-09-19" },
+    { "card_id": "malware_012", "next_due_at": "2026-09-19" },
+    { "card_id": "malware_013", "next_due_at": "2026-09-20" },
+    { "card_id": "malware_014", "next_due_at": "2026-09-20" },
+    { "card_id": "malware_015", "next_due_at": "2026-09-21" },
+    { "card_id": "attack_011", "next_due_at": "2026-09-19" },
+    { "card_id": "attack_012", "next_due_at": "2026-09-19" },
+    { "card_id": "attack_013", "next_due_at": "2026-09-20" },
+    { "card_id": "attack_014", "next_due_at": "2026-09-20" },
+    { "card_id": "attack_015", "next_due_at": "2026-09-21" },
+    { "card_id": "vuln_011", "next_due_at": "2026-09-19" },
+    { "card_id": "vuln_012", "next_due_at": "2026-09-19" },
+    { "card_id": "vuln_013", "next_due_at": "2026-09-20" },
+    { "card_id": "vuln_014", "next_due_at": "2026-09-20" },
+    { "card_id": "vuln_015", "next_due_at": "2026-09-21" }
   ]
 }
