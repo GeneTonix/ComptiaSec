@@ -1,406 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "gov_001",
+      "card_id": "gov_006",
       "topic": "Security Governance",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is security governance in the context of an organization's overall strategy?",
+      "question_text": "Which term describes the system by which an organization directs and controls security through accountability, defined roles, and risk-based decision-making?",
       "choices": [
-        "The framework of policies, procedures, and oversight that ensures security aligns with business objectives and manages risk effectively",
-        "The technical implementation of firewalls, IDS/IPS, and endpoint protection across the network",
-        "The process of responding to security incidents after they have been detected",
-        "The daily monitoring of security alerts by the SOC team"
+        "Security governance — it sets strategic direction and oversight, distinct from management which executes",
+        "Security management — it involves day-to-day operational decisions only",
+        "Security operations — it refers to monitoring and incident response activities",
+        "Security architecture — it describes the technical design of security controls"
       ],
-      "answer": "The framework of policies, procedures, and oversight that ensures security aligns with business objectives and manages risk effectively",
-      "explanation_correct": "Security governance is the system by which an organization directs and controls its security. It establishes accountability, defines roles and responsibilities, sets risk appetite, and ensures that security investments support business goals. Governance is distinct from security management — governance sets the direction, management executes it. Key elements include policies, standards, risk assessment, and oversight by leadership/board.",
-      "explanation_wrong_common": "Option B is security operations/implementation, not governance. Option C is incident response. Option D is SOC monitoring. Governance is about strategic direction, oversight, and accountability — not tactical execution."
+      "answer": "Security governance — it sets strategic direction and oversight, distinct from management which executes",
+      "explanation_correct": "Security governance is the framework of leadership, accountability, and oversight that aligns security with business objectives. It defines who is responsible, sets risk appetite, and ensures the board/leadership has visibility. Management is the execution layer — implementing the policies and controls that governance directs. This separation ensures strategic oversight is not lost in tactical operations.",
+      "explanation_wrong_common": "Option B confuses governance with management — management executes, governance directs. Option C is security operations (SOC activities), a subset of management. Option D is security architecture, which is a technical design discipline, not the governance framework."
     },
     {
-      "card_id": "gov_002",
+      "card_id": "gov_007",
       "topic": "Security Governance",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a security policy, a standard, and a guideline?",
+      "question_text": "In the document hierarchy, which of the following correctly orders documents from most authoritative (mandatory, high-level) to least authoritative (optional, advisory)?",
       "choices": [
-        "A policy is mandatory and high-level; a standard is mandatory and specifies requirements; a guideline is a recommendation that is optional",
-        "A policy is optional; a standard is mandatory; a guideline is a legal requirement",
-        "A policy, standard, and guideline are all interchangeable terms for the same document type",
-        "A policy is technical; a standard is strategic; a guideline is enforced by law"
+        "Policy → Standard → Baseline → Guideline",
+        "Guideline → Baseline → Standard → Policy",
+        "Standard → Policy → Guideline → Baseline",
+        "Baseline → Guideline → Policy → Standard"
       ],
-      "answer": "A policy is mandatory and high-level; a standard is mandatory and specifies requirements; a guideline is a recommendation that is optional",
-      "explanation_correct": "Policies are mandatory, high-level directives from management that state what must be done (e.g., 'All data must be encrypted at rest'). Standards are mandatory and specify how to comply with the policy (e.g., 'Use AES-256 for encryption'). Guidelines are recommended practices that provide advice — they are optional and offer flexibility. This hierarchy ensures clear, enforceable security expectations.",
-      "explanation_wrong_common": "Option B reverses policy and guideline. Option C is wrong — they have distinct purposes and enforcement levels. Option D mischaracterizes all three — policies are strategic, standards are technical, and guidelines are advisory, not legal."
+      "answer": "Policy → Standard → Baseline → Guideline",
+      "explanation_correct": "Policies are mandatory, high-level directives from management. Standards are mandatory and specify technical requirements to comply with the policy. Baselines are mandatory minimum security configurations (e.g., CIS benchmarks). Guidelines are optional, recommended practices that provide flexibility. This hierarchy ensures enforceable expectations cascade from strategic to tactical levels while allowing discretion where appropriate.",
+      "explanation_wrong_common": "Option B reverses the hierarchy entirely. Option C swaps policy and standard — policies are higher-level than standards. Option D places baseline and guideline above policy, which is incorrect — policies are the top of the hierarchy."
     },
     {
-      "card_id": "gov_003",
+      "card_id": "gov_008",
       "topic": "Security Governance",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A mid-sized company has a security policy requiring 'strong authentication for all remote access' but no defined standard. Different departments implement different solutions — some use SMS MFA, others use hardware tokens, and some use password-only VPNs. What governance failure has occurred?",
+      "question_text": "A new CISO joins a company and discovers that the security policy was last updated 6 years ago, references technologies no longer in use, and does not mention cloud services or mobile devices. The policy is still technically 'in force.' What is the most appropriate governance action?",
       "choices": [
-        "The policy lacks a corresponding standard that defines what 'strong authentication' means, leading to inconsistent and weaker implementations",
-        "The policy is too long and should be shortened to one sentence",
-        "The company should not have a remote access policy at all",
-        "The governance failure is that employees are not reading the policy documentation"
+        "Initiate a comprehensive policy review and update cycle, establish a recurring review schedule (e.g., annual), and ensure the updated policy covers current technologies, cloud, BYOD, and emerging threats",
+        "Delete the old policy and operate without one until a new one can be written from scratch over the next year",
+        "Keep the existing policy since it is still technically in force and add a separate cloud security document alongside it",
+        "Delegate the policy rewrite to the most junior security analyst to save the CISO's time"
       ],
-      "answer": "The policy lacks a corresponding standard that defines what 'strong authentication' means, leading to inconsistent and weaker implementations",
-      "explanation_correct": "A policy without an enforceable standard creates ambiguity. 'Strong authentication' could mean anything from passwords to biometrics. A proper standard would specify 'All remote access requires MFA using FIDO2 or TOTP — SMS is not permitted.' Without this, each department interprets the policy differently, creating security gaps. Governance requires policies to be backed by specific, measurable standards.",
-      "explanation_wrong_common": "Option B is about document length, not governance structure. Option C is nonsensical — remote access policies are essential. Option D might be a contributing factor, but the root cause is the missing standard, not employee behavior."
+      "answer": "Initiate a comprehensive policy review and update cycle, establish a recurring review schedule (e.g., annual), and ensure the updated policy covers current technologies, cloud, BYOD, and emerging threats",
+      "explanation_correct": "An outdated policy is a governance failure — it provides false assurance of control. The CISO should: (1) Review and update the policy to reflect current technology and threat landscape. (2) Establish a recurring review cycle (annually or upon major change) to prevent future drift. (3) Cover cloud, mobile, BYOD, and remote work explicitly. A policy that doesn't reflect reality cannot guide effective security decisions and provides no legal or audit protection.",
+      "explanation_wrong_common": "Option B creates a gap period with no policy at all — risky and unnecessary. Option C fragments governance by having multiple disconnected documents instead of one coherent policy. Option D delegates a strategic governance task to junior staff who lack the authority and organizational context to write an enforceable policy."
     },
     {
-      "card_id": "gov_004",
+      "card_id": "gov_009",
       "topic": "Security Governance",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization's board of directors asks the CISO to demonstrate that the security program is effective. Which document or process would best provide this oversight?",
+      "question_text": "An organization's acceptable use policy (AUP) states that employees must not install unapproved software. An audit reveals that 40% of employees regularly install utilities and browser extensions. When questioned, managers say they unofficially approve tools verbally but never document it. What governance gap does this reveal?",
       "choices": [
-        "A security governance framework with metrics, risk registers, audit reports, and regular reporting to the board on security posture and risk acceptance",
-        "A list of all firewall rules currently in production",
-        "The raw output of the SIEM from the past 24 hours",
-        "An email from the SOC manager stating that no incidents occurred last month"
+        "The AUP lacks an enforceable, documented exception/approval process — without a formal workflow, the policy is unenforceable in practice and managers are creating undocumented risk",
+        "The AUP is too restrictive and should allow employees to install any software they want",
+        "The problem is that the audit was conducted — audits should not check policy compliance",
+        "The IT department should block all USB ports and internet access to prevent installations"
       ],
-      "answer": "A security governance framework with metrics, risk registers, audit reports, and regular reporting to the board on security posture and risk acceptance",
-      "explanation_correct": "Board-level oversight requires summarized, strategic information — not tactical detail. A governance framework provides: risk registers showing top risks and mitigation status, KPIs/KRIs (key risk indicators) tracked over time, audit and compliance reports, and a clear picture of residual risk the board is accepting. This is how leadership exercises due care and accountability.",
-      "explanation_wrong_common": "Option B is too granular for a board. Option C is operational data the board cannot interpret. Option D is anecdotal, not evidence-based — one month without incidents does not prove the program is effective."
+      "answer": "The AUP lacks an enforceable, documented exception/approval process — without a formal workflow, the policy is unenforceable in practice and managers are creating undocumented risk",
+      "explanation_correct": "A policy without an enforcement and exception mechanism creates a culture of non-compliance. The fix is: (1) Create a documented software approval workflow (ticket-based, with risk assessment). (2) Train managers on the process — verbal approvals are not governance. (3) Implement technical controls (application whitelisting or EDR) to enforce the policy. (4) Track exceptions and review them periodically. Policies must be enforceable to have value.",
+      "explanation_wrong_common": "Option B removes all controls — unrestricted software installation is a major malware risk. Option C is anti-governance — audits are how you verify policy effectiveness. Option D is a blunt technical control that doesn't address the governance gap and would harm productivity."
     },
     {
-      "card_id": "gov_005",
+      "card_id": "gov_010",
       "topic": "Security Governance",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A healthcare company has the following governance structure: the CEO sets security policy, the IT Director implements it, and there is no dedicated CISO or security committee. After a data breach, an investigation reveals that the IT Director had been delaying patching because the CEO prioritized new features. No risk assessment was ever performed. Which governance improvements should be made? (Select the best answer)",
+      "question_text": "A multinational company has a security policy written by HQ in the US. Its European subsidiary must comply with GDPR, which has stricter data protection requirements. The Asian subsidiary has different breach notification laws. The current policy does not account for these regional differences, and the European office has been following local practice instead of HQ policy. What is the best governance approach to resolve this?",
       "choices": [
-        "Appoint a CISO with independent reporting authority, establish a security committee, require annual risk assessments, and separate security oversight from IT operations",
-        "Fire the IT Director and hire a more compliant one who patches faster",
-        "Move all security responsibilities to the legal department since they understand compliance",
-        "Purchase a more expensive SIEM tool to detect breaches faster"
+        "Adopt a tiered governance model: a global baseline policy establishing minimum standards, supplemented by regional addenda that address local legal requirements (GDPR, PDPA, etc.), with a central governance body that reviews and harmonizes all variants",
+        "Force all subsidiaries to follow the US HQ policy exactly, overriding local laws",
+        "Let each subsidiary write its own completely independent policy with no central oversight",
+        "Eliminate the global policy and replace it with a single GDPR-compliant policy applied worldwide"
       ],
-      "answer": "Appoint a CISO with independent reporting authority, establish a security committee, require annual risk assessments, and separate security oversight from IT operations",
-      "explanation_correct": "The root failures are: (1) No separation of duties — the IT Director both implements and oversees security, creating a conflict of interest. (2) No independent risk assessment — without it, the CEO cannot make informed risk decisions. (3) No security committee or CISO to advocate for security at the executive level. Appointing a CISO with independent reporting (potentially to the board) ensures security has a voice equal to operations. A security committee provides shared accountability. Risk assessments give leadership the data to balance security vs. business priorities.",
-      "explanation_wrong_common": "Option B treats the symptom, not the structural problem — a new IT Director would face the same conflict of interest. Option C moves security to people who lack technical expertise. Option D is a technology purchase that doesn't address the governance gap — a better SIEM doesn't fix the lack of oversight and risk assessment."
+      "answer": "Adopt a tiered governance model: a global baseline policy establishing minimum standards, supplemented by regional addenda that address local legal requirements (GDPR, PDPA, etc.), with a central governance body that reviews and harmonizes all variants",
+      "explanation_correct": "Multinational governance requires balancing global consistency with local compliance. A tiered model works: (1) Global baseline policy sets minimum security standards applicable everywhere. (2) Regional addenda address local legal requirements that exceed the baseline (GDPR's 72-hour breach notification, data residency rules, right to erasure). (3) A central governance body (security steering committee) reviews all variants to ensure no regional policy weakens the global baseline. (4) Local security officers own the regional addenda. This ensures both consistency and compliance.",
+      "explanation_wrong_common": "Option B creates legal liability — local laws override corporate policy, and non-compliance can result in massive fines (GDPR: up to 4% of global revenue). Option C creates fragmentation and gaps — no central oversight means standards vary wildly. Option D over-applies European requirements globally, which may be unnecessary or conflicting in other jurisdictions."
     },
     {
-      "card_id": "risk_001",
+      "card_id": "risk_006",
       "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the basic formula for calculating risk in information security?",
+      "question_text": "What is the difference between an asset, a threat, and a vulnerability in risk management?",
       "choices": [
-        "Risk = Threat × Vulnerability × Impact (often expressed as Risk = Likelihood × Impact)",
-        "Risk = Number of firewalls × Number of incidents",
-        "Risk = Budget spent on security divided by total IT budget",
-        "Risk = Number of employees × Number of passwords"
+        "An asset is what you want to protect; a threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that allows a threat to cause harm",
+        "An asset is a type of malware; a threat is a firewall rule; a vulnerability is a patch",
+        "A threat is what you want to protect; an asset is a weakness; a vulnerability is a danger",
+        "All three terms describe the same concept from different angles"
       ],
-      "answer": "Risk = Threat × Vulnerability × Impact (often expressed as Risk = Likelihood × Impact)",
-      "explanation_correct": "Risk is fundamentally a function of the likelihood that a threat exploits a vulnerability and the impact of that event. Threat × Vulnerability gives the likelihood/probability, and Impact represents the consequence (financial, operational, reputational). This can be expressed qualitatively (Low/Medium/High) or quantitatively (e.g., Annualized Loss Expectancy = SLE × ARO). Understanding this formula is essential for prioritizing security investments.",
-      "explanation_wrong_common": "Option B conflates security tools with risk. Option C is a budget ratio, not a risk measure. Option D has no relationship to risk calculation — risk is about threats, vulnerabilities, and impact, not headcount."
+      "answer": "An asset is what you want to protect; a threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that allows a threat to cause harm",
+      "explanation_correct": "These are the building blocks of risk: (1) Asset — anything of value (data, systems, reputation, hardware). (2) Threat — any potential danger (hacker, natural disaster, insider, malware) that could exploit a vulnerability. (3) Vulnerability — a weakness (unpatched software, misconfiguration, weak password, lack of training) that a threat can exploit. Risk exists when a threat has the capability and opportunity to exploit a vulnerability affecting an asset.",
+      "explanation_wrong_common": "Option B reverses and misdefines all terms — an asset is not malware, a threat is not a firewall rule. Option C scrambles the definitions. Option D is incorrect — they are distinct concepts with specific roles in the risk equation."
     },
     {
-      "card_id": "risk_002",
+      "card_id": "risk_007",
       "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between risk acceptance, risk mitigation, risk transference, and risk avoidance?",
+      "question_text": "What is Annualized Loss Expectancy (ALE) and how is it calculated?",
       "choices": [
-        "Acceptance = acknowledge and live with it; Mitigation = reduce likelihood or impact; Transference = shift risk to a third party (e.g., insurance); Avoidance = eliminate the activity that creates the risk",
-        "Acceptance = buy insurance; Mitigation = ignore the risk; Transference = fix the vulnerability; Avoidance = document the risk",
-        "All four terms mean the same thing — they are synonyms for risk management",
-        "Acceptance = eliminate the risk; Mitigation = transfer to insurer; Transference = accept it; Avoidance = reduce it"
+        "ALE = SLE × ARO, where SLE is the financial loss from a single occurrence and ARO is the estimated frequency per year",
+        "ALE = Total revenue divided by number of security incidents per year",
+        "ALE = The cost of all security controls multiplied by the number of employees",
+        "ALE = SLE divided by ARO, giving the cost per incident"
       ],
-      "answer": "Acceptance = acknowledge and live with it; Mitigation = reduce likelihood or impact; Transference = shift risk to a third party (e.g., insurance); Avoidance = eliminate the activity that creates the risk",
-      "explanation_correct": "These are the four classic risk responses: (1) Acceptance — the risk is within the organization's risk appetite; no action taken beyond monitoring. (2) Mitigation — implementing controls (e.g., MFA, patching) to reduce likelihood or impact. (3) Transference — shifting the financial impact to another party, typically through cyber insurance or outsourcing. (4) Avoidance — stopping the activity entirely (e.g., not storing credit card data to avoid PCI scope). Each is appropriate in different scenarios.",
-      "explanation_wrong_common": "Option B mixes up all the definitions. Option C is wrong — they are distinct strategies with different implications. Option D reverses every definition — acceptance is not elimination, mitigation is not transfer, etc."
+      "answer": "ALE = SLE × ARO, where SLE is the financial loss from a single occurrence and ARO is the estimated frequency per year",
+      "explanation_correct": "ALE quantifies expected annual financial loss from a risk. SLE (Single Loss Expectancy) = asset value × exposure factor (percentage of asset lost per incident). ARO (Annualized Rate of Occurrence) = how many times per year the event is expected. Example: If a breach costs $100,000 (SLE) and is expected once every 5 years (ARO = 0.2), ALE = $100,000 × 0.2 = $20,000/year. This helps compare risk against control costs for investment decisions.",
+      "explanation_wrong_common": "Option B is not a valid risk formula. Option C conflates control costs with risk. Option D divides instead of multiplies — ALE is the product of SLE and ARO, not the quotient."
     },
     {
-      "card_id": "risk_003",
+      "card_id": "risk_008",
       "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company discovers that its legacy payroll system has an unpatchable vulnerability. Replacing the system would cost $500,000. A breach would cost an estimated $200,000. The system is only accessible from the internal network. What is the MOST appropriate risk response?",
+      "question_text": "A company's risk register lists 50 risks. The CISO has budget to remediate only 10 this quarter. The risks are rated by likelihood and impact on a 1-5 scale. Which approach ensures the most risk reduction per dollar spent?",
       "choices": [
-        "Risk mitigation — implement compensating controls like network segmentation, strict access controls, and enhanced monitoring, while planning for eventual replacement",
-        "Risk avoidance — immediately shut down the payroll system and stop paying employees until a new system is procured",
-        "Risk transference — purchase cyber insurance and take no other action",
-        "Risk acceptance — do nothing, since the system is internal-only and the breach cost is less than replacement"
+        "Prioritize by risk score (likelihood × impact), but adjust for cost-effectiveness: remediate risks where the reduction in ALE per dollar spent is highest, considering both score and remediation cost",
+        "Remediate the 10 risks with the highest impact rating regardless of likelihood or cost",
+        "Remediate the 10 risks with the highest likelihood rating regardless of impact or cost",
+        "Remediate the 10 cheapest risks to maximize the number of risks addressed"
       ],
-      "answer": "Risk mitigation — implement compensating controls like network segmentation, strict access controls, and enhanced monitoring, while planning for eventual replacement",
-      "explanation_correct": "Risk mitigation is the best response because: (1) Avoidance (shutting down payroll) would stop business operations — unacceptable. (2) Transference alone doesn't reduce the actual risk — insurance covers financial loss but not reputational damage or operational disruption. (3) Pure acceptance ignores the vulnerability. Mitigation reduces the likelihood (network segmentation limits attack surface, access controls prevent unauthorized use) and impact (monitoring enables fast detection), while a replacement plan addresses the root cause over time.",
-      "explanation_wrong_common": "Option B is extreme — shutting down payroll would harm employees and operations. Option C is incomplete — insurance helps with financial loss but doesn't reduce the vulnerability itself. Option D is reckless — even internal-only systems can be compromised via phishing or lateral movement."
+      "answer": "Prioritize by risk score (likelihood × impact), but adjust for cost-effectiveness: remediate risks where the reduction in ALE per dollar spent is highest, considering both score and remediation cost",
+      "explanation_correct": "Risk prioritization should consider: (1) Risk score (likelihood × impact) to identify the most significant risks. (2) Cost-effectiveness — a risk scoring 20 that costs $500K to fix may be lower priority than a risk scoring 16 that costs $50K to fix. (3) The goal is maximizing total risk reduction per dollar. This is essentially an optimization problem: maximize Σ(risk reduction) subject to budget constraint. A risk matrix alone doesn't account for remediation cost.",
+      "explanation_wrong_common": "Option B ignores likelihood — a high-impact, very unlikely risk may be lower priority than a medium-impact, near-certain risk. Option C ignores impact — a frequent but trivial risk wastes budget. Option D optimizes for quantity over impact — fixing 10 trivial risks may reduce less total risk than fixing 3 critical ones."
     },
     {
-      "card_id": "risk_004",
+      "card_id": "risk_009",
       "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A risk assessment identifies that an organization's customer data is stored without encryption on a cloud server. The likelihood of compromise is rated Medium, and the impact is rated High. The risk register shows this as a top-5 risk. However, the cloud provider's contract includes a liability cap that would cover the financial cost of a breach. What is the key limitation of relying solely on this contractual liability cap as a risk response?",
+      "question_text": "A startup stores customer credit card data and is subject to PCI-DSS. A risk assessment identifies that their payment page has a moderate-risk XSS vulnerability. The startup cannot afford to fix it immediately. Which compensating control would BEST reduce the risk in the interim?",
       "choices": [
-        "Contractual liability caps cover financial damages but do not address reputational harm, regulatory fines (e.g., GDPR/PDPA), loss of customer trust, or the actual data exposure itself",
-        "The liability cap is sufficient and no further action is needed",
-        "The cloud provider will always pay more than the cap in practice",
-        "Liability caps only apply to hardware failures, not data breaches"
+        "Deploy a Web Application Firewall (WAF) with XSS filtering rules, implement Content Security Policy (CSP) headers, and add output encoding on user input fields — these reduce XSS exploitability while the code fix is pending",
+        "Accept the risk since the vulnerability is only moderate severity",
+        "Shut down the payment page entirely until the vulnerability can be patched",
+        "Transfer the risk by purchasing cyber insurance and taking no technical action"
       ],
-      "answer": "Contractual liability caps cover financial damages but do not address reputational harm, regulatory fines (e.g., GDPR/PDPA), loss of customer trust, or the actual data exposure itself",
-      "explanation_correct": "Risk transference via contracts has limits. A liability cap may cover direct financial costs, but: (1) Regulatory fines (GDPR, PDPA, HIPAA) are often imposed on the data controller (your organization), not the cloud provider. (2) Reputational damage cannot be recovered through contract. (3) Customer churn and loss of trust are intangible costs. (4) The actual exposure of sensitive data (e.g., PII) has consequences regardless of financial compensation. Transference should complement, not replace, mitigation.",
-      "explanation_wrong_common": "Option B is dangerous — the liability cap alone is insufficient. Option C is an assumption with no basis — contracts are legally binding. Option D is incorrect — liability caps can cover data breaches, but the coverage scope is limited."
+      "answer": "Deploy a Web Application Firewall (WAF) with XSS filtering rules, implement Content Security Policy (CSP) headers, and add output encoding on user input fields — these reduce XSS exploitability while the code fix is pending",
+      "explanation_correct": "Compensating controls reduce risk when a primary control (code fix) is delayed. For XSS: (1) WAF with XSS signatures blocks malicious input at the perimeter. (2) CSP headers restrict script execution sources, mitigating XSS impact. (3) Output encoding neutralizes malicious payloads. These don't fix the vulnerability but significantly reduce exploitability and impact. The code fix should still be scheduled with an SLA.",
+      "explanation_wrong_common": "Option B is pure risk acceptance — inappropriate for PCI-DSS compliance where vulnerabilities must be remediated within defined timeframes. Option C is risk avoidance — shutting down the payment page stops revenue, which is disproportionate for a moderate vulnerability. Option D is risk transference — insurance covers financial loss but doesn't reduce the actual vulnerability or protect customer data."
     },
     {
-      "card_id": "risk_005",
+      "card_id": "risk_010",
       "topic": "Risk Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "An e-commerce company conducts a quantitative risk assessment for its online payment system. Annualized Loss Expectancy (ALE) for a data breach is calculated at $2,000,000 (SLE = $4,000,000, ARO = 0.5). A proposed control (WAF + MFA for admin access) costs $150,000/year to operate and would reduce ARO from 0.5 to 0.1. What is the new ALE after implementing the control, and is the control cost-effective?",
+      "question_text": "A company calculates the following for its customer database breach risk: Asset value = $5,000,000. Exposure factor = 40% (40% of data would be compromised in a breach). SLE = $2,000,000. ARO = 0.3 (breach every ~3.3 years). ALE = $600,000. A proposed DLP + encryption + access monitoring solution costs $200,000/year and would reduce the exposure factor to 10% and ARO to 0.1. Calculate the new ALE, the risk reduction value, and determine if the control is cost-effective.",
       "choices": [
-        "New ALE = $400,000. The control saves $1,600,000/year in expected losses vs. a cost of $150,000/year — the control is highly cost-effective (ROI = ~$10.67 per dollar spent)",
-        "New ALE = $400,000. The control costs $150,000/year which is more than the new ALE, so it is not cost-effective",
-        "New ALE = $2,000,000. The control does not change the SLE, so the ALE remains the same",
-        "New ALE = $3,850,000. The control adds cost without reducing risk, making it not cost-effective"
+        "New SLE = $5,000,000 × 10% = $500,000. New ALE = $500,000 × 0.1 = $50,000. Risk reduction = $600,000 - $50,000 = $550,000. Control cost = $200,000. Net benefit = $350,000/year — the control IS cost-effective",
+        "New ALE = $600,000. The control does not change the asset value so ALE stays the same",
+        "New ALE = $2,000,000 × 0.1 = $200,000. Risk reduction = $400,000. Control cost = $200,000. Net benefit = $200,000 — cost-effective",
+        "New ALE = $5,000,000 × 0.1 = $500,000. Risk reduction = $100,000. Control cost = $200,000. Not cost-effective"
       ],
-      "answer": "New ALE = $400,000. The control saves $1,600,000/year in expected losses vs. a cost of $150,000/year — the control is highly cost-effective (ROI = ~$10.67 per dollar spent)",
-      "explanation_correct": "ALE = SLE × ARO. Original ALE = $4,000,000 × 0.5 = $2,000,000. After the control, ARO drops to 0.1, so new ALE = $4,000,000 × 0.1 = $400,000. The reduction in ALE (risk reduction benefit) = $2,000,000 - $400,000 = $1,600,000. The control costs $150,000/year. Net benefit = $1,600,000 - $150,000 = $1,450,000. The control is clearly cost-effective — every dollar spent on the control saves ~$10.67 in expected losses. This is how quantitative risk analysis justifies security investment.",
-      "explanation_wrong_common": "Option B incorrectly compares control cost to new ALE instead of to the risk reduction. Option C misunderstands ALE — the SLE stays the same but ARO changes, so ALE changes. Option D is mathematically wrong — the control reduces risk, not increases it."
+      "answer": "New SLE = $5,000,000 × 10% = $500,000. New ALE = $500,000 × 0.1 = $50,000. Risk reduction = $600,000 - $50,000 = $550,000. Control cost = $200,000. Net benefit = $350,000/year — the control IS cost-effective",
+      "explanation_correct": "Step by step: (1) New SLE = Asset value × new exposure factor = $5,000,000 × 10% = $500,000. (2) New ALE = new SLE × new ARO = $500,000 × 0.1 = $50,000. (3) Original ALE = $600,000. (4) Risk reduction = $600,000 - $50,000 = $550,000/year. (5) Control cost = $200,000/year. (6) Net benefit = $550,000 - $200,000 = $350,000/year. The control saves $3.50 in expected losses for every $1 spent — clearly cost-effective.",
+      "explanation_wrong_common": "Option B misunderstands ALE — both exposure factor and ARO changed, so SLE and ALE both change. Option C uses the old SLE ($2,000,000) instead of recalculating with the new exposure factor. Option D calculates new ALE as asset value × ARO, skipping the exposure factor entirely and using the wrong formula."
     },
     {
-      "card_id": "audit_001",
+      "card_id": "audit_006",
       "topic": "Security Audits and Assessments",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a vulnerability assessment and a penetration test?",
+      "question_text": "What is the difference between black-box, gray-box, and white-box penetration testing?",
       "choices": [
-        "A vulnerability assessment identifies and catalogs known vulnerabilities; a penetration test actively attempts to exploit vulnerabilities to determine real-world impact",
-        "A vulnerability assessment is illegal; a penetration test is legal",
-        "A vulnerability assessment is more thorough than a penetration test",
-        "They are identical processes with different names"
+        "Black-box: tester has no prior knowledge; gray-box: tester has partial knowledge (e.g., some credentials or architecture info); white-box: tester has full access to source code, documentation, and internal systems",
+        "Black-box: tester uses only automated tools; gray-box: tester uses manual techniques; white-box: tester uses both",
+        "Black-box: testing at night; gray-box: testing at dawn; white-box: testing during business hours",
+        "Black-box: tests network security only; gray-box: tests application security only; white-box: tests physical security only"
       ],
-      "answer": "A vulnerability assessment identifies and catalogs known vulnerabilities; a penetration test actively attempts to exploit vulnerabilities to determine real-world impact",
-      "explanation_correct": "A vulnerability assessment is a scanning-based process that identifies weaknesses (missing patches, misconfigurations, weak passwords) and prioritizes them by severity. It does not exploit anything. A penetration test goes further — a tester actively exploits vulnerabilities to determine how far an attacker could penetrate, what data could be accessed, and whether detection/response controls work. Pen tests validate that vulnerabilities are actually exploitable and assess business impact.",
-      "explanation_wrong_common": "Option B is wrong — both are legal when authorized. Option C reverses the relationship — pen tests are typically more thorough and go deeper. Option D is incorrect — they serve different purposes and have different scopes."
+      "answer": "Black-box: tester has no prior knowledge; gray-box: tester has partial knowledge (e.g., some credentials or architecture info); white-box: tester has full access to source code, documentation, and internal systems",
+      "explanation_correct": "The box color refers to the tester's level of prior knowledge: Black-box simulates an external attacker with no insider information — most realistic but may miss internal vulnerabilities. Gray-box provides limited context (user credentials, network diagrams) — balances realism with efficiency. White-box gives full access to source code and architecture — most thorough, finds deep vulnerabilities, but less realistic for external threat simulation. Each has different value depending on the assessment goal.",
+      "explanation_wrong_common": "Option B confuses test methodology with knowledge level — the box model is about information access, not tools used. Option C is nonsensical — time of day is irrelevant. Option D incorrectly limits each type to a specific security domain — all three can test any layer."
     },
     {
-      "card_id": "audit_002",
+      "card_id": "audit_007",
       "topic": "Security Audits and Assessments",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a compliance audit, and how does it differ from a security audit?",
+      "question_text": "What is the purpose of a SOC 2 Type II audit, and how does it differ from a SOC 2 Type I audit?",
       "choices": [
-        "A compliance audit verifies adherence to specific regulations or standards (e.g., PCI-DSS, HIPAA, ISO 27001); a security audit evaluates the overall effectiveness of security controls against threats",
-        "A compliance audit tests for vulnerabilities; a security audit checks firewall configurations",
-        "A compliance audit is optional; a security audit is legally required",
-        "A compliance audit is performed by internal staff; a security audit is always performed by external consultants"
+        "Type II evaluates the design AND operating effectiveness of controls over a period of time (typically 6-12 months); Type I evaluates only the design of controls at a single point in time",
+        "Type II is for financial audits; Type I is for security audits",
+        "Type II is performed by internal staff; Type I is performed by external auditors",
+        "Type II is required by law; Type I is voluntary"
       ],
-      "answer": "A compliance audit verifies adherence to specific regulations or standards (e.g., PCI-DSS, HIPAA, ISO 27001); a security audit evaluates the overall effectiveness of security controls against threats",
-      "explanation_correct": "Compliance audits are checkbox-oriented — they verify whether an organization meets the requirements of a specific framework (PCI-DSS for payment processing, HIPAA for healthcare data, SOC 2 for service providers). They answer 'Are you meeting the standard?' Security audits are broader — they assess whether controls are effective at protecting against real threats, even those not covered by a compliance framework. An organization can be compliant but still insecure (e.g., meeting minimum requirements but lacking advanced threat protection).",
-      "explanation_wrong_common": "Option B is too narrow — both audit types are broader than just vulnerabilities or firewalls. Option C is wrong — compliance audits may be mandatory (regulatory) or voluntary (certification). Option D is wrong — either type can be performed by internal or external auditors, though independence is valued."
+      "answer": "Type II evaluates the design AND operating effectiveness of controls over a period of time (typically 6-12 months); Type I evaluates only the design of controls at a single point in time",
+      "explanation_correct": "SOC 2 audits assess controls related to the Trust Services Criteria (Security, Availability, Processing Integrity, Confidentiality, Privacy). Type I is a point-in-time assessment — it verifies that controls are suitably designed as of a specific date. Type II goes further — it tests whether controls actually operated effectively over a period (usually 6-12 months), providing stronger assurance. Customers and partners typically require Type II because it demonstrates sustained control effectiveness, not just a snapshot.",
+      "explanation_wrong_common": "Option B is incorrect — both are security/operational audits, not financial (SOC 1 covers financial reporting controls). Option C is wrong — both types must be performed by independent CPAs. Option D is incorrect — neither is legally required; they are driven by customer/vendor requirements and contractual obligations."
     },
     {
-      "card_id": "audit_003",
+      "card_id": "audit_008",
       "topic": "Security Audits and Assessments",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company hires a third-party firm to conduct a black-box penetration test of its web application. The testers are given only the URL and no other information. After two weeks, they report they could not find any exploitable vulnerabilities. However, the company's internal team knows the application has a critical SQL injection flaw on an internal admin page. What is the key limitation of this test type that was demonstrated?",
+      "question_text": "A company conducts an internal vulnerability scan and finds 300 vulnerabilities. Before remediation, management asks the security team to validate which vulnerabilities are actually exploitable. What approach should the team take to efficiently prioritize remediation?",
       "choices": [
-        "Black-box testing lacks internal knowledge, so it may miss vulnerabilities in areas that require authentication or knowledge of internal architecture — a gray-box or white-box test would have a better chance of finding the SQL injection",
-        "The penetration testers were not skilled enough and the company should hire a different firm",
-        "Black-box testing is always inferior to automated vulnerability scanning",
-        "The two-week engagement was too short — all penetration tests should run for at least one month"
+        "Perform authenticated scanning and risk-based validation: correlate vulnerabilities with asset criticality and exposure, use exploit databases (CVE/EPSS) to check active exploitability, and prioritize vulnerabilities that are exploitable on internet-facing critical assets",
+        "Patch all 300 vulnerabilities immediately in order of CVSS score from highest to lowest",
+        "Ignore the findings since they were found by an internal scan and not an external attacker",
+        "Only fix vulnerabilities that have been actively exploited in the wild, ignoring all others"
       ],
-      "answer": "Black-box testing lacks internal knowledge, so it may miss vulnerabilities in areas that require authentication or knowledge of internal architecture — a gray-box or white-box test would have a better chance of finding the SQL injection",
-      "explanation_correct": "Black-box testing simulates an external attacker with no insider knowledge, which is realistic but limited. If the SQL injection is on an admin page that requires authentication or knowledge of internal routing, a black-box tester may never reach it. Gray-box testing (providing some credentials or architecture info) or white-box testing (full access to source code and documentation) would give testers the context to find deeper vulnerabilities. The best approach is often a combination — black-box for external validation, white-box for comprehensive coverage.",
-      "explanation_wrong_common": "Option B assumes tester incompetence when the real issue is the test methodology. Option C is wrong — automated scanning finds even fewer issues than manual black-box testing. Option D may be true in some cases but the core limitation here is the lack of internal knowledge, not the duration."
+      "answer": "Perform authenticated scanning and risk-based validation: correlate vulnerabilities with asset criticality and exposure, use exploit databases (CVE/EPSS) to check active exploitability, and prioritize vulnerabilities that are exploitable on internet-facing critical assets",
+      "explanation_correct": "Not all 300 vulnerabilities are equal. Risk-based validation: (1) Authenticated scanning provides deeper, more accurate results (logged-in scans find more vulnerabilities and reduce false positives). (2) Cross-reference with exploit databases (CVE, EPSS, CISA KEV) to identify actively exploitable vulnerabilities. (3) Correlate with asset criticality — a CVSS 7.0 on a public-facing web server is higher priority than a CVSS 9.0 on an isolated test VM. (4) Consider exposure (internet-facing vs. internal-only). This ensures the most dangerous vulnerabilities are fixed first.",
+      "explanation_wrong_common": "Option B is inefficient — blindly patching by CVSS score ignores context and may waste effort on low-risk vulnerabilities. Option C is dangerous — internal scans identify real weaknesses that attackers could exploit if they gain access. Option D is too narrow — vulnerabilities without known active exploitation can still be leveraged, especially in targeted attacks."
     },
     {
-      "card_id": "audit_004",
+      "card_id": "audit_009",
       "topic": "Security Audits and Assessments",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization runs a vulnerability scanner monthly. The scanner consistently reports 200+ vulnerabilities, but the IT team only patches the Critical and High severity ones due to time constraints. After six months, the number of Medium and Low vulnerabilities has grown to over 800. What is the best approach to manage this vulnerability debt?",
+      "question_text": "An organization wants to assess how well its security team would respond to a real attack. They hire a red team to simulate a sophisticated attack, and a blue team to defend. After the exercise, both teams meet to discuss what happened. What is this exercise called, and what is the meeting's purpose?",
       "choices": [
-        "Implement a risk-based prioritization process: assess each vulnerability in context (exploitability, exposure, asset criticality), establish SLA-based remediation timelines for all severities, and use compensating controls for vulnerabilities that cannot be patched immediately",
-        "Ignore Medium and Low vulnerabilities since they are not Critical — they do not pose a real risk",
-        "Stop running the vulnerability scanner to avoid generating reports that cannot be actioned",
-        "Patch all 800+ vulnerabilities in a single weekend, regardless of testing"
+        "A purple team exercise — the red team simulates attacks, the blue team defends, and the joint meeting (purple teaming) shares findings to improve detection and response capabilities through collaborative learning",
+        "A black-box penetration test — the meeting is to present the vulnerability report to management",
+        "A compliance audit — the meeting is to determine if the organization meets regulatory requirements",
+        "A tabletop exercise — the meeting is to discuss a hypothetical scenario without any actual testing"
       ],
-      "answer": "Implement a risk-based prioritization process: assess each vulnerability in context (exploitability, exposure, asset criticality), establish SLA-based remediation timelines for all severities, and use compensating controls for vulnerabilities that cannot be patched immediately",
-      "explanation_correct": "Vulnerability debt accumulates when remediation can't keep pace with discovery. A risk-based approach: (1) Not all Medium/Low vulnerabilities are equal — a Medium on an internet-facing server is higher risk than a High on an isolated test VM. (2) Establish SLAs (e.g., Critical: 7 days, High: 30 days, Medium: 90 days, Low: 180 days). (3) Use compensating controls (WAF, network segmentation, IPS rules) when patches aren't available or break functionality. (4) Track and report vulnerability debt to management as a risk decision.",
-      "explanation_wrong_common": "Option B is dangerous — attackers chain Medium/Low vulns together, and some 'Low' vulnerabilities enable privilege escalation. Option C is shooting the messenger — the scanner is doing its job. Option D is reckless — untested patches can break production systems and cause outages."
+      "answer": "A purple team exercise — the red team simulates attacks, the blue team defends, and the joint meeting (purple teaming) shares findings to improve detection and response capabilities through collaborative learning",
+      "explanation_correct": "Purple teaming combines red team (offensive) and blue team (defensive) activities into a collaborative learning exercise. The red team attacks using realistic adversary techniques (TTPs). The blue team attempts to detect and respond. Afterward, both sides share their perspectives — the red team reveals what attacks succeeded and why, the blue team explains what they detected and what they missed. This joint debrief (the 'purple' session) transforms adversarial findings into actionable improvements for detection rules, response procedures, and security gaps.",
+      "explanation_wrong_common": "Option B describes a standard penetration test, which is adversarial and one-directional — the red team reports to the client, not to the blue team. Option C is a compliance activity, not a security exercise. Option D describes a tabletop exercise, which is discussion-based and involves no actual technical testing."
     },
     {
-      "card_id": "audit_005",
+      "card_id": "audit_010",
       "topic": "Security Audits and Assessments",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A financial services company undergoes a SOC 2 Type II audit. The auditor reviews 12 months of access logs and finds that 3% of privileged account logins lack documented approval, and 2 former contractors still had active accounts 60 days after termination. However, all other controls (encryption, MFA, change management) were operating effectively throughout the period. How should the auditor's report characterize these findings, and what should the company do?",
+      "question_text": "A SaaS company is preparing for its first SOC 2 Type II audit. The auditor requests evidence that access reviews were performed quarterly for the past 12 months. The company has been doing access reviews but only documented the most recent one — the prior three were done informally via email threads that have since been deleted. The auditor also finds that two developers had admin access to production databases without documented approval. How should the company address these findings, and what does it mean for the audit?",
       "choices": [
-        "The auditor should note the exceptions in the report with a description of the deficiencies. The company should remediate by implementing automated deprovisioning on termination, enforcing a privileged access approval workflow, and adding detective controls to alert on orphaned accounts. SOC 2 reports describe control effectiveness — they do not simply pass/fail",
-        "The auditor should fail the company entirely because any exception means the controls are ineffective",
-        "The auditor should ignore the exceptions since 95%+ of controls were operating effectively",
-        "The company should dispute the findings and refuse to accept the audit report"
+        "The company should acknowledge the documentation gaps, implement a formal access review process with automated logging and ticket-based approval for privileged access, and accept that the auditor will note these as exceptions in the SOC 2 report for the period when controls were not fully operating effectively",
+        "The company should fabricate access review records for the prior quarters to show the auditor",
+        "The company should cancel the SOC 2 audit and wait a full year until they have complete documentation",
+        "The company should fire the two developers who had admin access as punishment"
       ],
-      "answer": "The auditor should note the exceptions in the report with a description of the deficiencies. The company should remediate by implementing automated deprovisioning on termination, enforcing a privileged access approval workflow, and adding detective controls to alert on orphaned accounts. SOC 2 reports describe control effectiveness — they do not simply pass/fail",
-      "explanation_correct": "SOC 2 Type II audits assess whether controls were suitably designed and operating effectively over a period (usually 12 months). The report includes the auditor's opinion and a description of test results, including exceptions. A few exceptions do not necessarily invalidate the overall control set — they are disclosed so users of the report can assess residual risk. The company should remediate: (1) automated deprovisioning (HR-triggered), (2) PAM (Privileged Access Management) with workflow approvals, (3) quarterly access reviews to catch orphaned accounts. The remediation plan should be communicated to stakeholders.",
-      "explanation_wrong_common": "Option B is incorrect — SOC 2 is not binary pass/fail; exceptions are described in context. Option C is wrong — exceptions cannot be ignored; they must be disclosed. Option D is unproductive — disputing valid findings damages trust and doesn't fix the underlying control gaps."
+      "answer": "The company should acknowledge the documentation gaps, implement a formal access review process with automated logging and ticket-based approval for privileged access, and accept that the auditor will note these as exceptions in the SOC 2 report for the period when controls were not fully operating effectively",
+      "explanation_correct": "SOC 2 Type II requires evidence that controls operated effectively throughout the entire period. Missing documentation means the auditor cannot verify control effectiveness for those quarters — these will be noted as exceptions in the report. The company should: (1) Be transparent — do not hide or fabricate evidence. (2) Implement remediation: automated access review tooling (e.g., IGA solutions), ticket-based privileged access approval workflow, and immutable audit logs. (3) Communicate the remediation plan to the auditor and report users. Exceptions in a SOC 2 report are not necessarily fatal — they are disclosed so users can assess residual risk. Honesty preserves trust; fabrication destroys it.",
+      "explanation_wrong_common": "Option B is fraud — fabricating audit evidence is illegal and can result in criminal charges, loss of CPA license for the auditor, and complete loss of trust. Option C is overly drastic — the audit can proceed with noted exceptions, and the company can demonstrate remediation going forward. Option D is punitive and misses the systemic issue — the problem is the lack of a formal approval process, not individual misconduct."
     },
     {
-      "card_id": "awareness_001",
+      "card_id": "awareness_006",
       "topic": "Security Awareness Training",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the primary goal of a security awareness training program?",
+      "question_text": "What is social engineering in the context of cybersecurity, and why is it a significant threat?",
       "choices": [
-        "To reduce human-related security risk by changing employee behavior so they make safer decisions when handling data, using email, and responding to threats",
-        "To ensure every employee memorizes all company security policies verbatim",
-        "To satisfy compliance requirements with minimal effort by having employees watch a once-a-year video",
-        "To train all employees to perform the role of security analysts"
+        "Social engineering is the manipulation of people into performing actions or divulging confidential information through psychological tricks — it is significant because no technical control can fully prevent a human from being deceived",
+        "Social engineering is the process of engineering social media algorithms to block malicious content",
+        "Social engineering is a type of network attack that exploits social media APIs",
+        "Social engineering is the practice of hiring engineers through social media recruitment"
       ],
-      "answer": "To reduce human-related security risk by changing employee behavior so they make safer decisions when handling data, using email, and responding to threats",
-      "explanation_correct": "Security awareness training aims to reduce the risk that human error, social engineering, and unsafe behavior pose. The goal is behavioral change — employees who can recognize phishing, report suspicious activity, handle data appropriately, and follow policies. Effective programs are ongoing (not annual one-offs), measured (phishing simulations, reporting rates), and role-specific (developers get secure coding training, executives get whaling-awareness). The human layer is often the weakest link — awareness training strengthens it.",
-      "explanation_wrong_common": "Option B is unrealistic and misses the point — memorization doesn't change behavior. Option C describes a checkbox compliance approach that doesn't actually reduce risk. Option D is wrong — awareness training is for all staff, not making them security professionals."
+      "answer": "Social engineering is the manipulation of people into performing actions or divulging confidential information through psychological tricks — it is significant because no technical control can fully prevent a human from being deceived",
+      "explanation_correct": "Social engineering exploits human psychology rather than technical vulnerabilities. Techniques include phishing, pretexting, baiting, tailgating, and quid pro quo. It is dangerous because: (1) Humans are unpredictable — even strong technical controls can be bypassed by a deceived employee. (2) Attackers exploit trust, authority, urgency, and curiosity. (3) It is often the first step in a larger attack (credential theft → network access → data exfiltration). This is why security awareness training is critical — it targets the human layer that technology cannot fully protect.",
+      "explanation_wrong_common": "Option B describes content moderation, not social engineering. Option C confuses social engineering with API exploitation — it is a human-targeted attack, not a technical one. Option D is about recruitment, completely unrelated to cybersecurity."
     },
     {
-      "card_id": "awareness_002",
+      "card_id": "awareness_007",
       "topic": "Security Awareness Training",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a phishing simulation, and why is it used alongside awareness training?",
+      "question_text": "What is the difference between phishing, spear phishing, and whaling?",
       "choices": [
-        "A controlled exercise where the organization sends fake phishing emails to employees to test their ability to recognize and report suspicious messages, providing measurable data on training effectiveness",
-        "A real phishing attack launched by the security team against competitors to gather intelligence",
-        "A software tool that automatically blocks all external emails",
-        "A legal requirement that forces employees to click on links in training emails"
+        "Phishing: broad, untargeted emails to many recipients; spear phishing: targeted emails aimed at specific individuals or organizations; whaling: spear phishing targeting high-profile executives (CEO, CFO) or individuals with access to valuable assets",
+        "Phishing: emails about fishing; spear phishing: emails about fishing with spears; whaling: emails about whale watching",
+        "Phishing: attacks via phone; spear phishing: attacks via email; whaling: attacks via SMS",
+        "Phishing: low-risk attacks; spear phishing: medium-risk attacks; whaling: high-risk attacks based on technical severity"
       ],
-      "answer": "A controlled exercise where the organization sends fake phishing emails to employees to test their ability to recognize and report suspicious messages, providing measurable data on training effectiveness",
-      "explanation_correct": "Phishing simulations (also called phishing tests or phishing campaigns) send realistic but fake phishing emails to employees. They measure: (1) Click rate — who clicked the malicious link/attachment. (2) Report rate — who reported it to security. (3) Repeat offenders — who consistently fails. This data identifies weak spots, justifies additional training, and tracks improvement over time. Simulations should be educational — failed employees receive immediate, constructive feedback, not punishment.",
-      "explanation_wrong_common": "Option B describes an illegal attack, not a simulation. Option C is an email filter, not a simulation. Option D is nonsensical — the goal is to teach employees NOT to click, not to force them to."
+      "answer": "Phishing: broad, untargeted emails to many recipients; spear phishing: targeted emails aimed at specific individuals or organizations; whaling: spear phishing targeting high-profile executives (CEO, CFO) or individuals with access to valuable assets",
+      "explanation_correct": "These are tiers of social engineering via email: Phishing casts a wide net (mass emails impersonating banks, delivery services) — low effort, low success rate, high volume. Spear phishing targets specific individuals using personal info (name, role, company) — higher effort, higher success rate. Whaling targets executives or high-value individuals (CEO fraud, wire fraud) — highest effort, highest potential payoff. The defense strategy differs: phishing is blocked by email filters, spear phishing requires user awareness training, whaling requires executive-specific training and financial verification protocols.",
+      "explanation_wrong_common": "Option B is a literal interpretation of the fishing terms — incorrect. Option C confuses the attack vector — all three are primarily email-based (vishing is phone-based, smishing is SMS-based). Option D categorizes by technical risk severity, which is not how these terms are defined — they are defined by targeting specificity."
     },
     {
-      "card_id": "awareness_003",
+      "card_id": "awareness_008",
       "topic": "Security Awareness Training",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization's phishing simulation shows that 35% of employees click on simulated phishing links, despite annual training. The CISO wants to reduce this to under 10%. Which approach is most likely to achieve this goal?",
+      "question_text": "An employee receives a phone call from someone claiming to be from the IT help desk. The caller says there is a urgent security issue with the employee's account and asks for their password to 'verify' the problem. The caller knows the employee's name, department, and manager's name. What type of attack is this, and what should the employee do?",
       "choices": [
-        "Replace the annual training with a continuous program: monthly micro-training modules, quarterly phishing simulations with immediate feedback, role-specific training for high-risk groups, and gamified reporting incentives",
-        "Send a single, longer, more comprehensive training video once a year instead of the current one",
-        "Threaten termination for any employee who fails a phishing simulation",
-        "Disable all external email for all employees permanently"
+        "This is vishing (voice phishing) with pretexting — the caller used personal details to build credibility. The employee should not share any credentials, hang up, and report the call to the security team, then verify by calling the IT help desk through the official number",
+        "This is a legitimate IT call and the employee should provide their password to help resolve the urgent issue",
+        "This is a spam call but harmless — the employee should simply hang up and not report it",
+        "This is a physical security threat and the employee should lock their office door"
       ],
-      "answer": "Replace the annual training with a continuous program: monthly micro-training modules, quarterly phishing simulations with immediate feedback, role-specific training for high-risk groups, and gamified reporting incentives",
-      "explanation_correct": "Research shows annual training is ineffective at changing long-term behavior — people forget. A continuous approach works better: (1) Micro-training (5-10 min, monthly) keeps security top-of-mind. (2) Quarterly simulations with immediate, non-punitive feedback reinforce learning. (3) Role-specific training targets high-risk groups (finance for BEC, executives for whaling). (4) Gamification (rewards for reporting) builds a reporting culture. This multi-layered approach reduces click rates sustainably.",
-      "explanation_wrong_common": "Option B makes the same mistake — longer annual training doesn't solve the retention problem. Option C creates a culture of fear where employees hide mistakes instead of reporting them, making incidents worse. Option D is impractical — external email is essential for business operations."
+      "answer": "This is vishing (voice phishing) with pretexting — the caller used personal details to build credibility. The employee should not share any credentials, hang up, and report the call to the security team, then verify by calling the IT help desk through the official number",
+      "explanation_correct": "Vishing (voice phishing) uses phone calls to manipulate victims. Pretexting creates a believable scenario (fake IT help desk) using gathered personal information (name, department, manager) to build trust. The employee should: (1) Never share passwords — legitimate IT staff never ask for them. (2) Hang up and report the incident to security. (3) Verify by calling the IT help desk using the official number from the company directory, not any number provided by the caller. This is why awareness training must cover voice-based social engineering, not just email phishing.",
+      "explanation_wrong_common": "Option B is exactly what the attacker wants — sharing a password gives full account access. Legitimate IT never asks for passwords. Option C underestimates the threat — vishing can lead to account compromise and should always be reported so security can warn other employees. Option D misidentifies the attack — it is a social engineering phone call, not a physical security issue."
     },
     {
-      "card_id": "awareness_004",
+      "card_id": "awareness_009",
       "topic": "Security Awareness Training",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's security awareness program includes training for all staff, but the engineering team regularly bypasses security controls to meet deadlines — they share credentials, disable security tools, and skip code reviews. What is the most effective approach to address this specific behavior?",
+      "question_text": "A company implements a new policy: any employee who fails three phishing simulations in a year will be terminated. After 6 months, the click rate has dropped from 30% to 5%, but the reporting rate has also dropped from 15% to 2%, and employees are deleting suspicious emails without reporting them. What is wrong with this approach, and what should be changed?",
       "choices": [
-        "Implement role-specific training for developers on secure coding practices and the business impact of security debt, combine with executive-level mandate making security non-negotiable in the SDLC, and integrate security into DevOps workflows (DevSecOps) so it does not slow them down",
-        "Fire the lead engineer as an example to the rest of the team",
-        "Remove all security controls so the engineering team can work faster",
-        "Only train the engineering manager and assume they will communicate the message"
+        "The punitive policy created a culture of fear — employees hide failures instead of reporting. The company should replace termination threats with a no-blame learning culture, reward reporting, and focus on education rather than punishment",
+        "The policy is working perfectly — a 5% click rate is excellent and the low reporting rate means employees are handling threats independently",
+        "The company should increase the threshold to termination after one failure to eliminate all clickers",
+        "The company should stop phishing simulations entirely since the click rate is already low"
       ],
-      "answer": "Implement role-specific training for developers on secure coding practices and the business impact of security debt, combine with executive-level mandate making security non-negotiable in the SDLC, and integrate security into DevOps workflows (DevSecOps) so it does not slow them down",
-      "explanation_correct": "Engineers bypass security because it's perceived as an obstacle to speed. The solution is multi-faceted: (1) Role-specific training that speaks their language (secure coding, not generic 'don't click links'). (2) Executive mandate — leadership must clearly state security is non-negotiable, not optional. (3) DevSecOps integration — automated SAST/DAST in CI/CD, pre-commit hooks, infrastructure-as-code security — makes security part of the workflow rather than a manual gate. When security is integrated and automated, engineers stop bypassing it.",
-      "explanation_wrong_common": "Option B is draconian and doesn't address the systemic issue — other engineers will behave the same way. Option C is the opposite of security. Option D is insufficient — trickle-down training rarely works, and the manager may not have the technical depth to explain why specific practices matter."
+      "answer": "The punitive policy created a culture of fear — employees hide failures instead of reporting. The company should replace termination threats with a no-blame learning culture, reward reporting, and focus on education rather than punishment",
+      "explanation_correct": "The declining reporting rate is a red flag. Fear-based policies cause employees to: (1) Delete suspicious emails silently to avoid being flagged as a failure — this means real threats go unreported. (2) Not report actual security incidents for fear of blame. (3) Lose trust in the security team. The fix: (1) Replace punishment with immediate, constructive feedback for failed simulations. (2) Actively reward and recognize employees who report phishing (gamification, leaderboards, shout-outs). (3) Make reporting easy (one-click 'Report Phishing' button). A strong reporting culture is more valuable than a low click rate — reports enable the security team to identify campaigns and protect all employees.",
+      "explanation_wrong_common": "Option B misreads the metrics — a low reporting rate is dangerous because the SOC loses visibility into active threats. Option C would worsen the fear culture and drive reporting rates even lower. Option D is premature — simulations should continue but be paired with a positive, learning-focused approach."
     },
     {
-      "card_id": "awareness_005",
+      "card_id": "awareness_010",
       "topic": "Security Awareness Training",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "An organization has invested heavily in security awareness training, phishing simulations, and gamified reporting. After 12 months, phishing click rates dropped from 35% to 8%, and reporting rates rose from 5% to 45%. However, a recent breach occurred because an employee in the finance department was tricked by a Business Email Compromise (BEC) attack — a fake email from the 'CEO' requesting an urgent wire transfer. The employee had passed all phishing simulations. What does this reveal about the awareness program, and what should be improved?",
+      "question_text": "A hospital's security awareness program shows strong metrics: phishing click rate at 4%, reporting rate at 60%, and mandatory annual training completion at 100%. However, a recent incident revealed that a nurse plugged in a USB drive found in the parking lot, which installed ransomware that encrypted patient records. The nurse had passed all phishing simulations and completed training. The training program never covered physical media threats or removable device policies. What does this reveal, and how should the program be improved?",
       "choices": [
-        "The program is working for generic phishing but lacks role-specific training for high-risk groups like finance. The organization should add BEC-specific training for finance staff, implement a verification protocol for financial transactions (e.g., out-of-band verification for wire transfers), and include BEC scenarios in simulations",
-        "The awareness program has failed completely and should be scrapped and rebuilt from scratch",
-        "The employee should be fired for falling for the BEC attack despite training",
-        "The organization should stop doing phishing simulations since they clearly do not work"
+        "The program has a coverage gap — it focuses on email phishing but neglects other attack vectors. The hospital should expand training to cover USB/removable media threats, implement technical controls (endpoint policies blocking unauthorized USB devices), add physical security scenarios to simulations (e.g., dropped USB drives in parking lots), and conduct regular threat-landscape reviews to identify emerging vectors",
+        "The nurse should be fired for plugging in an unknown USB drive — the training was adequate and this was individual negligence",
+        "The hospital should ban all USB drives permanently and physically epoxy all USB ports on all computers",
+        "The security awareness program has completely failed and should be rebuilt from scratch"
       ],
-      "answer": "The program is working for generic phishing but lacks role-specific training for high-risk groups like finance. The organization should add BEC-specific training for finance staff, implement a verification protocol for financial transactions (e.g., out-of-band verification for wire transfers), and include BEC scenarios in simulations",
-      "explanation_correct": "The metrics show the program is effective overall (click rate down, reporting up). But generic phishing simulations test for credential-harvesting emails — BEC attacks are different: they use social engineering, urgency, and authority (CEO impersonation) without malicious links or attachments. Finance staff are the primary target and need: (1) BEC-specific training covering CEO fraud, vendor impersonation, and invoice fraud. (2) A verification protocol — any wire transfer request must be verified out-of-band (phone call to known number, not the number in the email). (3) BEC scenarios added to simulations. This is a targeted gap, not a total failure.",
-      "explanation_wrong_common": "Option B overreacts — the data shows the program is working for most threats; this is a specific gap, not a total failure. Option C punishes the victim of social engineering — the system should have prevented this, not the individual. Option D misreads the data — the simulations work for their designed purpose; they simply weren't designed for BEC."
+      "answer": "The program has a coverage gap — it focuses on email phishing but neglects other attack vectors. The hospital should expand training to cover USB/removable media threats, implement technical controls (endpoint policies blocking unauthorized USB devices), add physical security scenarios to simulations (e.g., dropped USB drives in parking lots), and conduct regular threat-landscape reviews to identify emerging vectors",
+      "explanation_correct": "This is a coverage gap, not a total failure. The email phishing program is working well (4% click, 60% report). But awareness training must cover the full threat landscape, not just email. The improvements: (1) Training modules on physical attack vectors — USB drops, tailgating, shoulder surfing, dumpster diving. (2) Technical controls — endpoint DLP/Device Control policies that block or restrict unauthorized USB devices (allow only encrypted, company-issued drives). (3) Physical simulations — drop harmless USB drives in the parking lot and track who plugs them in, then provide immediate education. (4) Regular threat-landscape reviews to ensure training covers emerging attack vectors. Healthcare is especially vulnerable because patient safety depends on system availability.",
+      "explanation_wrong_common": "Option B is punitive and unfair — the nurse was never trained on this threat vector. Firing one person doesn't prevent the next incident. Option C is excessive — epoxying ports prevents legitimate use (medical devices, equipment updates) and doesn't address the awareness gap. Option D overreacts — the phishing metrics show the program is effective for its covered scope; the issue is coverage, not fundamental failure."
     }
   ],
   "scheduling_updates": [
-    {
-      "card_id": "gov_001",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "gov_002",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "gov_003",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "gov_004",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "gov_005",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "risk_001",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "risk_002",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "risk_003",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "risk_004",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "risk_005",
-      "next_due_at": "2026-09-17"
-    },
-    {
-      "card_id": "audit_001",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "audit_002",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "audit_003",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "audit_004",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "audit_005",
-      "next_due_at": "2026-09-17"
-    },
-    {
-      "card_id": "awareness_001",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "awareness_002",
-      "next_due_at": "2026-09-15"
-    },
-    {
-      "card_id": "awareness_003",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "awareness_004",
-      "next_due_at": "2026-09-16"
-    },
-    {
-      "card_id": "awareness_005",
-      "next_due_at": "2026-09-17"
-    }
+    { "card_id": "gov_006", "next_due_at": "2026-09-18" },
+    { "card_id": "gov_007", "next_due_at": "2026-09-18" },
+    { "card_id": "gov_008", "next_due_at": "2026-09-19" },
+    { "card_id": "gov_009", "next_due_at": "2026-09-19" },
+    { "card_id": "gov_010", "next_due_at": "2026-09-20" },
+    { "card_id": "risk_006", "next_due_at": "2026-09-18" },
+    { "card_id": "risk_007", "next_due_at": "2026-09-18" },
+    { "card_id": "risk_008", "next_due_at": "2026-09-19" },
+    { "card_id": "risk_009", "next_due_at": "2026-09-19" },
+    { "card_id": "risk_010", "next_due_at": "2026-09-20" },
+    { "card_id": "audit_006", "next_due_at": "2026-09-18" },
+    { "card_id": "audit_007", "next_due_at": "2026-09-18" },
+    { "card_id": "audit_008", "next_due_at": "2026-09-19" },
+    { "card_id": "audit_009", "next_due_at": "2026-09-19" },
+    { "card_id": "audit_010", "next_due_at": "2026-09-20" },
+    { "card_id": "awareness_006", "next_due_at": "2026-09-18" },
+    { "card_id": "awareness_007", "next_due_at": "2026-09-18" },
+    { "card_id": "awareness_008", "next_due_at": "2026-09-19" },
+    { "card_id": "awareness_009", "next_due_at": "2026-09-19" },
+    { "card_id": "awareness_010", "next_due_at": "2026-09-20" }
   ]
 }
