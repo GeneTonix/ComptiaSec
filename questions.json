@@ -1,346 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "threat_011",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_021",
+      "topic": "Authentication Methods",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What distinguishes an Advanced Persistent Threat (APT) from other types of threat actors?",
+      "question_text": "What are the three categories of authentication factors, and what is an example of each?",
       "choices": [
-        "An APT is typically a nation-state or well-funded group that maintains long-term, stealthy access to a target network, combining multiple attack techniques with patience and significant resources",
-        "An APT is any hacker who uses advanced tools available on the dark web",
-        "An APT is a threat actor who only attacks government networks and never private companies",
-        "An APT refers to any single attack that uses more than two exploit techniques simultaneously"
+        "Something you know (password), something you have (smart card), something you are (fingerprint)",
+        "Something you type (username), something you show (ID badge), something you remember (PIN)",
+        "Something you own (laptop), something you control (email account), something you trust (certificate)",
+        "Something you learn (security question), something you build (firewall rule), something you test (pen test)"
       ],
-      "answer": "An APT is typically a nation-state or well-funded group that maintains long-term, stealthy access to a target network, combining multiple attack techniques with patience and significant resources",
-      "explanation_correct": "APTs are characterized by three key traits: (1) Advanced — they use sophisticated, multi-stage techniques (zero-days, custom malware, living-off-the-land). (2) Persistent — they maintain access for months or years, exfiltrating data slowly to avoid detection. (3) Threat — they are typically nation-states or organized crime groups with significant funding, intelligence, and motivation (espionage, sabotage, financial theft). APTs differ from opportunistic attackers because they target specific organizations and adapt their methods to evade that organization's defenses over time.",
-      "explanation_wrong_common": "Option B oversimplifies — using dark web tools doesn't make someone an APT; it's the persistence, targeting, and resources that define it. Option C is incorrect — APTs target private companies extensively (Sony, Colonial Pipeline, Equifax). Option D focuses on a single attack event rather than the sustained, long-term campaign that defines an APT."
+      "answer": "Something you know (password), something you have (smart card), something you are (fingerprint)",
+      "explanation_correct": "The three standard authentication factor categories are knowledge (something you know, like a password or PIN), possession (something you have, like a token or smart card), and inherence (something you are, like a biometric trait). Multi-factor authentication combines factors from at least two different categories.",
+      "explanation_wrong_common": "The other options invent non-standard categories. Username is an identifier, not an authentication factor. Trust and learning are not recognized factor categories. The key distinction is that factors must come from different categories — two passwords do not constitute multi-factor."
     },
     {
-      "card_id": "threat_012",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_022",
+      "topic": "Authentication Methods",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the primary difference between a hacktivist and an organized crime threat actor?",
+      "question_text": "What is the difference between authentication and authorization?",
       "choices": [
-        "A hacktivist is motivated by political, social, or ideological causes and seeks to embarrass or disrupt a target, while organized crime is motivated by financial gain and seeks to monetize attacks through theft, fraud, or ransom",
-        "A hacktivist always works alone, while organized crime always operates in large groups",
-        "A hacktivist only targets government websites, while organized crime only targets banks",
-        "A hacktivist uses legal methods, while organized crime uses illegal methods"
+        "Authentication verifies who you are; authorization determines what you are allowed to do",
+        "Authentication determines what you can access; authorization verifies your identity",
+        "Authentication encrypts your credentials; authorization decrypts the access token",
+        "Authentication is handled by the OS; authorization is handled by the application only"
       ],
-      "answer": "A hacktivist is motivated by political, social, or ideological causes and seeks to embarrass or disrupt a target, while organized crime is motivated by financial gain and seeks to monetize attacks through theft, fraud, or ransom",
-      "explanation_correct": "Motivation is the key differentiator. Hacktivists (e.g., Anonymous) use attacks like DDoS, website defacement, and data leaks to promote a cause, punish perceived wrongdoing, or raise awareness — they often want publicity. Organized crime groups (e.g., ransomware gangs like LockBit) operate as businesses: they invest in tools and infrastructure, target high-value victims, and seek direct financial return through theft, extortion, or selling stolen data. Both use illegal methods, but their goals and target selection differ fundamentally.",
-      "explanation_wrong_common": "Option B is incorrect — hacktivists often operate in collectives (Anonymous, LulzSec), and organized crime can be small cells. Option C is wrong — hacktivists target corporations and individuals too, and organized crime targets healthcare, manufacturing, and more. Option D is incorrect — both use illegal methods; hacktivism is still cybercrime regardless of motivation."
+      "answer": "Authentication verifies who you are; authorization determines what you are allowed to do",
+      "explanation_correct": "Authentication is the process of proving identity (e.g., logging in with a password). Authorization is the process of determining what resources and actions an authenticated identity is permitted to access. They are sequential — you must be authenticated before authorization decisions can be applied.",
+      "explanation_wrong_common": "Swapping the definitions is the most common error. Authentication is always about identity verification, and authorization is always about permissions. Neither concept is inherently tied to encryption/decryption, and authorization is not limited to the application layer."
     },
     {
-      "card_id": "threat_013",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_023",
+      "topic": "Authentication Methods",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security analyst at a defense contractor discovers that an attacker has been quietly exfiltrating design documents for 8 months. The attacker used legitimate admin credentials, moved laterally via RDP, and avoided installing any malware that would trigger EDR alerts. The attacker adapted their techniques each time the security team changed monitoring rules. Which type of threat actor is MOST likely responsible?",
+      "question_text": "A company implements a system where employees log in with a password and then receive a push notification on their phone to approve the login. What type of authentication is this, and what is its main advantage?",
       "choices": [
-        "An Advanced Persistent Threat (APT) — the long dwell time, stealthy exfiltration, use of legitimate credentials (living-off-the-land), and adaptive behavior indicate a well-funded, patient adversary with specific targeting goals",
-        "A script kiddie — they downloaded tools from the internet and got lucky by finding admin credentials",
-        "A hacktivist — they are making a political statement by slowly leaking defense documents",
-        "An insider threat — only an employee would know which documents to steal over such a long period"
+        "Multi-factor authentication using knowledge + possession factors; reduces risk of credential-only compromise",
+        "Single sign-on using a federated identity; reduces the number of passwords employees must remember",
+        "Biometric authentication using inherence factor; eliminates the need for passwords entirely",
+        "Token-based authentication using a hardware key; provides the strongest cryptographic proof of identity"
       ],
-      "answer": "An Advanced Persistent Threat (APT) — the long dwell time, stealthy exfiltration, use of legitimate credentials (living-off-the-land), and adaptive behavior indicate a well-funded, patient adversary with specific targeting goals",
-      "explanation_correct": "Several indicators point to an APT: (1) 8-month dwell time — script kiddies and opportunistic attackers don't maintain stealthy access this long. (2) Living-off-the-land (using legitimate tools like RDP and admin credentials) — this avoids detection by traditional malware scanning. (3) Targeted exfiltration of design documents — indicates espionage, not random theft. (4) Adaptive behavior — adjusting techniques when monitoring changes requires intelligence and resources. APTs targeting defense contractors are often nation-state sponsored, seeking military technology and intellectual property.",
-      "explanation_wrong_common": "Option B is incorrect — script kiddies lack the skills for long-term stealthy operations and don't selectively target design documents. Option C is unlikely — hacktivists seek publicity and rapid disruption, not 8 months of quiet data theft. Option D is possible but less likely — the use of external credentials and adaptive evasion suggests an external adversary, though insider access may have been the initial compromise vector."
+      "answer": "Multi-factor authentication using knowledge + possession factors; reduces risk of credential-only compromise",
+      "explanation_correct": "The password is a knowledge factor and the phone push notification is a possession factor, making this multi-factor authentication (MFA). The main advantage is that even if the password is stolen, an attacker cannot complete authentication without also having the registered phone, significantly reducing credential-only compromise risk.",
+      "explanation_wrong_common": "This is not SSO (which is about one login across multiple systems), not biometric (no biometric trait is used), and not a hardware key (a phone is not a dedicated hardware token). The defining feature is the combination of two different factor types."
     },
     {
-      "card_id": "threat_014",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_024",
+      "topic": "Authentication Methods",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's CISO is briefing the board on insider threats. She explains that not all insider threats are malicious. Which of the following describes a NON-malicious insider threat, and what makes it dangerous?",
+      "question_text": "A security team wants to eliminate password reuse across services. They implement a system where users authenticate once to a central identity provider and are then granted access to multiple applications without re-entering credentials. What is this called?",
       "choices": [
-        "An employee accidentally emails a spreadsheet containing customer PII to an external vendor because they used auto-complete and selected the wrong contact — this is unintentional data exposure, which is dangerous because it bypasses technical controls that focus on external threats",
-        "An employee who sells customer data to a competitor for personal profit",
-        "An employee who intentionally introduces malware into the network as revenge for a denied promotion",
-        "An employee who is recruited by a foreign intelligence service to steal trade secrets"
+        "Single sign-on (SSO) using federated identity management",
+        "Multi-factor authentication with a hardware token",
+        "Role-based access control with privilege escalation",
+        "Network access control with 802.1X authentication"
       ],
-      "answer": "An employee accidentally emails a spreadsheet containing customer PII to an external vendor because they used auto-complete and selected the wrong contact — this is unintentional data exposure, which is dangerous because it bypasses technical controls that focus on external threats",
-      "explanation_correct": "Non-malicious (unintentional) insider threats are the most common type of insider incident. They include: (1) Accidental data sharing (wrong recipient, misconfigured cloud bucket permissions). (2) Lost/stolen devices (laptop left in taxi, phone left at airport). (3) Policy violations (using personal email for work, shadow IT). (4) Social engineering victims (phished employees). These are dangerous because: the employee has legitimate access (so DLP may not flag it), they don't know they made a mistake (so they don't report it), and the data leaves through normal channels. Controls: DLP, email encryption, access reviews, training, and least-privilege principles.",
-      "explanation_wrong_common": "Option B is a malicious insider (data theft for financial gain). Option C is a malicious insider (sabotage). Option D is a malicious insider (espionage). All three are intentional — the question specifically asks about NON-malicious insider threats, which are accidental or negligent rather than deliberate."
+      "answer": "Single sign-on (SSO) using federated identity management",
+      "explanation_correct": "Single sign-on (SSO) allows a user to authenticate once to a central identity provider and access multiple applications without re-entering credentials. This is typically implemented using federated identity protocols like SAML or OAuth. It directly addresses password reuse by reducing the number of credentials a user must manage.",
+      "explanation_wrong_common": "MFA adds factors but does not eliminate re-authentication across services. RBAC is about authorization, not authentication consolidation. 802.1X is network-level port authentication, not application-level SSO. The key feature is one login → multiple services."
     },
     {
-      "card_id": "threat_015",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_025",
+      "topic": "Authentication Methods",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A mid-sized manufacturing company experiences a ransomware attack that encrypts all production systems. Investigation reveals the attack chain: (1) An employee clicked a phishing email 3 weeks ago that harvested their credentials. (2) The attacker used those credentials to access the VPN — no MFA was enforced. (3) The attacker spent 2 weeks mapping the network and identified the backup server. (4) The attacker deleted all backups before deploying ransomware. (5) The ransom demand is $2M. The company has no offline backups. The board asks: which of the following BEST describes the root cause failures, and what is the minimum set of controls that would have prevented this attack?",
+      "question_text": "A healthcare organization uses password-only logins for its EHR system. After a phishing attack compromises several clinician accounts, the CISO mandates MFA. Clinicians resist hardware tokens as too cumbersome during emergency patient care. Which solution best balances security and usability while still achieving multi-factor authentication?",
       "choices": [
-        "Root causes: phishing success, no MFA, backups on the network, no network segmentation. Minimum preventive controls: (1) MFA on all remote access. (2) Security awareness training with phishing simulation. (3) Offline/immutable backups (3-2-1 rule). (4) Network segmentation isolating backups from production. These four controls would have blocked credential theft, unauthorized VPN access, and ensured recovery without paying ransom",
-        "Root cause: the ransomware itself. Fix: install better antivirus software on all endpoints",
-        "Root cause: the employee. Fix: fire employees who click phishing links. No technical controls needed",
-        "Root cause: the VPN. Fix: remove VPN access entirely and require all employees to work on-site only"
+        "Deploy mobile push-notification MFA with a PIN backup, allowing clinicians to approve logins from their phones with a fallback code if the phone is unavailable",
+        "Require longer passwords (20+ characters) and enforce quarterly password changes to reduce compromise likelihood",
+        "Implement fingerprint scanners on all workstations, removing passwords entirely so no second factor is needed",
+        "Restrict EHR access to on-site IP ranges only, trusting the physical building security as the second factor"
       ],
-      "answer": "Root causes: phishing success, no MFA, backups on the network, no network segmentation. Minimum preventive controls: (1) MFA on all remote access. (2) Security awareness training with phishing simulation. (3) Offline/immutable backups (3-2-1 rule). (4) Network segmentation isolating backups from production. These four controls would have blocked credential theft, unauthorized VPN access, and ensured recovery without paying ransom",
-      "explanation_correct": "This is a classic ransomware kill chain. Each failure compounds: (1) Phishing succeeded because the employee wasn't trained to recognize and report it — awareness training + phishing simulation reduces click rates. (2) Stolen credentials worked on VPN because there was no MFA — MFA would have blocked access even with valid credentials. (3) The attacker mapped the network undetected for 2 weeks because there was no segmentation or monitoring — segmentation limits lateral movement. (4) Backups were online and accessible from the compromised account — the 3-2-1 backup rule (3 copies, 2 media, 1 offline/immutable) ensures recovery. Even if phishing succeeded, MFA + offline backups would have prevented both the breach and the need to pay ransom.",
-      "explanation_wrong_common": "Option B is naive — antivirus alone cannot stop credential-based attacks and doesn't address the systemic failures (no MFA, online backups, no segmentation). Option C is punitive and ineffective — firing one employee doesn't fix the systemic issues; the next phishing email will catch someone else. Option D is impractical and doesn't address the root causes — remote work is a business requirement, and the fix is securing remote access with MFA, not eliminating it."
+      "answer": "Deploy mobile push-notification MFA with a PIN backup, allowing clinicians to approve logins from their phones with a fallback code if the phone is unavailable",
+      "explanation_correct": "Mobile push-notification MFA with a PIN backup provides a possession factor (the phone) combined with the existing knowledge factor (password). It is less cumbersome than hardware tokens, and the PIN/backup code ensures clinicians can still authenticate during emergencies if the phone is temporarily unavailable. This satisfies MFA requirements while addressing usability concerns in a clinical setting.",
+      "explanation_wrong_common": "Longer passwords alone do not constitute MFA — it is still a single knowledge factor. Fingerprint-only is a single inherence factor (not multi-factor). IP restriction is network-level control, not an authentication factor, and does not verify identity. Only the push-notification solution combines two different factor types with a practical fallback."
     },
     {
-      "card_id": "malware_011",
-      "topic": "Malware Types and Characteristics",
+      "card_id": "iam_026",
+      "topic": "Access Control Models",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the key difference between a virus and a worm?",
+      "question_text": "In role-based access control (RBAC), how are permissions assigned to users?",
       "choices": [
-        "A virus requires a host file or program to attach to and a user action to spread, while a worm is self-replicating and can spread across networks without any user interaction or host file",
-        "A virus is more dangerous than a worm because it is harder to detect",
-        "A virus only infects Windows computers, while a worm only infects Linux servers",
-        "A virus spreads via email, while a worm spreads via USB drives"
+        "Permissions are assigned to roles, and users are assigned to roles — users inherit the permissions of their role",
+        "Permissions are assigned directly to each user based on their individual identity",
+        "Permissions are assigned based on the user's current location and time of access",
+        "Permissions are assigned by the operating system automatically when a user logs in"
       ],
-      "answer": "A virus requires a host file or program to attach to and a user action to spread, while a worm is self-replicating and can spread across networks without any user interaction or host file",
-      "explanation_correct": "The fundamental distinction is in replication method. A virus attaches itself to a host file (executable, document macro) and requires a trigger — the user opening the infected file — to execute and spread. A worm is standalone malware that self-propagates: it scans for vulnerable systems, exploits them, copies itself, and repeats — all automatically. Worms spread faster (e.g., Conficker infected millions of systems in days) because they don't need human action. Both can carry payloads (data theft, backdoors, ransomware), but the propagation mechanism is the differentiator.",
-      "explanation_wrong_common": "Option B is subjective and incorrect — worms can be equally or more dangerous due to rapid spread. Option C is incorrect — both can affect any OS; the malware type doesn't determine the target platform. Option D is wrong — both can use any propagation vector; the distinction is self-replication vs host-dependent spreading, not the transmission medium."
+      "answer": "Permissions are assigned to roles, and users are assigned to roles — users inherit the permissions of their role",
+      "explanation_correct": "In RBAC, permissions are grouped and assigned to predefined roles (e.g., 'admin', 'manager', 'read-only'). Users are then placed into roles, inheriting all permissions associated with that role. This simplifies administration because changing a role's permissions affects all users in that role, and user onboarding only requires role assignment rather than individual permission configuration.",
+      "explanation_wrong_common": "Direct per-user assignment describes discretionary access control (DAC) or an ACL-based model, not RBAC. Location/time-based assignment describes attribute-based access control (ABAC). Automatic OS assignment is not a recognized access control model — permissions must be explicitly defined and managed."
     },
     {
-      "card_id": "malware_012",
-      "topic": "Malware Types and Characteristics",
+      "card_id": "iam_027",
+      "topic": "Access Control Models",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a rootkit, and why is it particularly difficult to detect?",
+      "question_text": "What is the difference between mandatory access control (MAC) and discretionary access control (DAC)?",
       "choices": [
-        "A rootkit is malware designed to gain and maintain privileged (root/administrator) access while hiding its presence by modifying OS-level functions, making it difficult for security tools to detect because it can conceal files, processes, and network connections at the kernel level",
-        "A rootkit is a tool used by system administrators to manage root-level accounts, and it is difficult to detect because it is a legitimate tool",
-        "A rootkit is a type of ransomware that encrypts the root directory of a Linux system",
-        "A rootkit is a network scanner that looks for open root-level ports on remote systems"
+        "MAC uses security labels enforced by the system; DAC allows the resource owner to decide who gets access",
+        "MAC requires biometric authentication; DAC requires password authentication",
+        "MAC is used in cloud environments; DAC is used in on-premises environments",
+        "MAC is always more secure than DAC; DAC is always easier to use than MAC"
       ],
-      "answer": "A rootkit is malware designed to gain and maintain privileged (root/administrator) access while hiding its presence by modifying OS-level functions, making it difficult for security tools to detect because it can conceal files, processes, and network connections at the kernel level",
-      "explanation_correct": "Rootkits operate at two levels: (1) User-mode rootkits modify applications and system binaries to hide their presence. (2) Kernel-mode rootkits modify the operating system kernel itself — they can intercept system calls and filter results so that security tools, file managers, and process monitors simply don't see the rootkit's files, processes, or network connections. Detection is hard because the very tools used to detect malware (antivirus, EDR) rely on OS APIs that the rootkit has compromised. Detection methods include: booting from a clean/live OS, hardware-based detection, behavioral analysis, and integrity checking of system files.",
-      "explanation_wrong_common": "Option B confuses a rootkit with legitimate admin tools — a rootkit is malware by definition, not a management utility. Option C is incorrect — a rootkit is not ransomware; it doesn't encrypt data but instead maintains stealthy access. Option D is wrong — a rootkit is not a network scanner; it is persistent, stealthy malware that hides itself and potentially other malware."
+      "answer": "MAC uses security labels enforced by the system; DAC allows the resource owner to decide who gets access",
+      "explanation_correct": "In MAC, access decisions are enforced by the operating system based on security labels (e.g., classification levels like Secret, Top Secret) assigned to both subjects and objects. Users cannot override these decisions. In DAC, the owner of a resource decides who can access it, typically through ACLs or permissions. MAC is used in high-security environments (military, government) while DAC is common in commercial systems.",
+      "explanation_wrong_common": "The distinction is not about authentication method, deployment environment, or a simple 'more secure vs easier' trade-off. MAC and DAC differ fundamentally in who controls access decisions — the system (MAC) vs the resource owner (DAC). The security/usability comparison is context-dependent, not absolute."
     },
     {
-      "card_id": "malware_013",
-      "topic": "Malware Types and Characteristics",
+      "card_id": "iam_028",
+      "topic": "Access Control Models",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's SOC team notices unusual outbound DNS traffic: every 60 seconds, a workstation sends a DNS query to a specific domain with a long base64-encoded subdomain string. The encoded data, when decoded, contains fragments of the company's customer database. What type of malware is MOST likely responsible for this behavior, and what is the technique called?",
+      "question_text": "A financial institution needs an access control model where access decisions depend on the user's department, the time of day, the transaction amount, and whether the request originates from a trusted IP range. Which model best fits this requirement?",
       "choices": [
-        "This is a botnet agent using DNS tunneling for command-and-control (C2) and data exfiltration — the malware encodes stolen data into DNS queries to bypass firewall rules that typically allow DNS traffic outbound",
-        "This is a ransomware payload transmitting encryption keys via DNS before encrypting files",
-        "This is a legitimate DNS configuration error causing the workstation to query an incorrect domain",
-        "This is a DDoS attack where the workstation is participating in a DNS amplification attack against the target domain"
+        "Attribute-based access control (ABAC), because it evaluates multiple attributes of the subject, resource, and environment",
+        "Role-based access control (RBAC), because roles can be defined for each combination of department and transaction type",
+        "Mandatory access control (MAC), because security labels can encode all of these constraints",
+        "Discretionary access control (DAC), because resource owners can set permissions per scenario"
       ],
-      "answer": "This is a botnet agent using DNS tunneling for command-and-control (C2) and data exfiltration — the malware encodes stolen data into DNS queries to bypass firewall rules that typically allow DNS traffic outbound",
-      "explanation_correct": "DNS tunneling is a common C2 and exfiltration technique used by botnets and APTs. The malware encodes data (commands, stolen data) into DNS queries (typically as subdomains of a domain the attacker controls). DNS is almost always allowed outbound through firewalls (port 53), making it an ideal covert channel. Indicators: high-frequency DNS queries, unusually long subdomain strings, base64/hex encoding, queries to rarely-used record types (TXT, NULL), and consistent query intervals (beaconing). Detection: DNS traffic analysis, DLP with DNS inspection, and blocking unsanctioned domains. This behavior is typical of botnet C2 beaconing with exfiltration.",
-      "explanation_wrong_common": "Option B is incorrect — ransomware doesn't use DNS tunneling for key exchange; it typically encrypts in place and demands payment. Option C is unlikely given the base64-encoded database fragments — this is clearly malicious data exfiltration, not a misconfiguration. Option D is wrong — DNS amplification attacks send queries with spoofed source IPs to overwhelm a victim; this workstation is sending data outbound, not participating in a reflection attack."
+      "answer": "Attribute-based access control (ABAC), because it evaluates multiple attributes of the subject, resource, and environment",
+      "explanation_correct": "ABAC makes access decisions by evaluating attributes of the subject (department), resource (transaction amount), and environment (time of day, IP range) against policy rules. This dynamic, context-aware approach is ideal when access decisions depend on multiple variable conditions rather than static role assignments.",
+      "explanation_wrong_common": "RBAC would require an impractical number of roles to cover every combination of department, time, amount, and IP — causing role explosion. MAC labels cannot easily encode time-based or transaction-amount conditions. DAC relies on owner discretion, not policy-driven attribute evaluation. ABAC is the only model designed for multi-attribute, context-aware decisions."
     },
     {
-      "card_id": "malware_014",
-      "topic": "Malware Types and Characteristics",
+      "card_id": "iam_029",
+      "topic": "Access Control Models",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A financial services company discovers that an attacker has been intercepting web traffic between customers and the company's online banking portal. The attacker is not modifying the traffic but is silently capturing login credentials and session tokens. The attack was possible because the site used HTTPS but the attacker downgraded some connections to HTTP via a rogue WiFi access point. What type of attack is this, and what would have prevented it?",
+      "question_text": "An organization uses RBAC. An employee in the 'Finance Analyst' role transfers to the IT department. What is the correct access control procedure?",
       "choices": [
-        "This is a man-in-the-middle (MITM) attack with SSL stripping — the attacker intercepts and downgrades HTTPS to HTTP. Prevention: HSTS (HTTP Strict Transport Security) headers that force browsers to only use HTTPS, plus certificate pinning and disabling HTTP fallback",
-        "This is a SQL injection attack exploiting the login form — Prevention: input validation and parameterized queries",
-        "This is a DDoS attack overwhelming the banking portal — Prevention: rate limiting and DDoS protection services",
-        "This is a cross-site scripting (XSS) attack — Prevention: output encoding and Content Security Policy"
+        "Remove the employee from the 'Finance Analyst' role and assign them to the appropriate IT role — permissions update automatically through role membership",
+        "Delete the employee's account and create a new one with IT permissions to avoid any residual access",
+        "Manually revoke each individual permission the employee had under Finance and manually grant each IT permission",
+        "Keep the Finance role and add the IT role so the employee retains access to both sets of permissions"
       ],
-      "answer": "This is a man-in-the-middle (MITM) attack with SSL stripping — the attacker intercepts and downgrades HTTPS to HTTP. Prevention: HSTS (HTTP Strict Transport Security) headers that force browsers to only use HTTPS, plus certificate pinning and disabling HTTP fallback",
-      "explanation_correct": "SSL stripping (a form of MITM) works when: (1) The attacker positions themselves between the client and server (rogue WiFi, ARP spoofing, compromised router). (2) The attacker intercepts the initial HTTP-to-HTTPS redirect and keeps the connection on HTTP. (3) The attacker reads all traffic in plaintext. HSTS prevents this by instructing browsers to always connect via HTTPS for a specified domain, even if the user types HTTP or clicks an HTTP link — the browser silently upgrades to HTTPS and refuses to connect over HTTP. Additional protections: certificate pinning (prevents rogue CA certificates), preload lists (browsers ship with HSTS for major sites), and redirecting all HTTP traffic to HTTPS at the server level.",
-      "explanation_wrong_common": "Option B is wrong — SQL injection exploits database queries through input fields, not network traffic interception. Option C is wrong — DDoS overwhelms systems with traffic; this attack intercepts and reads traffic, not floods it. Option D is wrong — XSS injects malicious scripts into web pages viewed by other users; this is a network-layer MITM attack exploiting protocol downgrade, not an application-layer injection."
+      "answer": "Remove the employee from the 'Finance Analyst' role and assign them to the appropriate IT role — permissions update automatically through role membership",
+      "explanation_correct": "In RBAC, the correct procedure is to change the user's role assignment. Removing them from 'Finance Analyst' automatically revokes all Finance permissions, and assigning them to the IT role automatically grants the appropriate IT permissions. This is the primary administrative advantage of RBAC — no need to manage individual permissions.",
+      "explanation_wrong_common": "Deleting and recreating accounts is unnecessary and disruptive. Manually revoking individual permissions defeats the purpose of RBAC. Keeping both roles violates least privilege — the employee should not retain Finance access after transferring to IT. Only role reassignment is correct."
     },
     {
-      "card_id": "malware_015",
-      "topic": "Malware Types and Characteristics",
+      "card_id": "iam_030",
+      "topic": "Access Control Models",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A hospital's ICU monitoring systems suddenly display ransom messages and stop reporting patient vitals. The IT team discovers: fileless malware executed directly in PowerShell memory (no files on disk), it used legitimate Windows admin tools (WMI, PsExec) to spread laterally, and it encrypted the database backing the patient monitoring system. The attacker gained initial access through a vulnerable IoT infusion pump running an unpatched embedded OS. The hospital has 200 IoT medical devices they cannot patch (vendor doesn't support updates). Given these constraints, what is the BEST combination of controls to prevent recurrence?",
+      "question_text": "A defense contractor operates a classified network where documents are labeled 'Confidential', 'Secret', and 'Top Secret'. Users have clearances at corresponding levels. A user with 'Secret' clearance attempts to access a 'Top Secret' document. Under mandatory access control with the Bell-LaPadula model, what happens and why?",
       "choices": [
-        "(1) Network segmentation isolating all IoT/medical devices on a separate VLAN with strict firewall rules limiting what they can communicate with. (2) Application whitelisting on all clinical workstations (only signed, approved executables and PowerShell scripts can run). (3) Fileless malware detection via behavioral/EDR monitoring (detecting anomalous PowerShell, WMI, and PsExec usage). (4) Compensating controls for unpatchable IoT: virtual patching via IPS/IDS signatures, and a clinical systems backup with immutable snapshots for rapid recovery",
-        "(1) Replace all 200 IoT devices immediately with newer models that support patching. (2) Install traditional signature-based antivirus on all IoT devices. (3) Disable PowerShell on all systems",
-        "(1) Air-gap the ICU network completely — no internet, no external connections. (2) Ban all IoT devices from the hospital. (3) Use paper charts for patient monitoring",
-        "(1) Patch all IoT devices by reverse-engineering the firmware and writing custom patches. (2) Disable all Windows admin tools (WMI, PsExec, PowerShell) on every machine. (3) Encrypt all hospital data at rest"
+        "Access is denied because the Bell-LaPadula model enforces 'no read up' — a subject cannot read an object at a higher security level than their clearance",
+        "Access is granted because the user has a valid security clearance and the system trusts authenticated users",
+        "Access is denied because the Bell-LaPadula model enforces 'no write down' — users cannot write to lower-level objects",
+        "Access is prompted for supervisor approval, since the model allows discretionary overrides for urgent requests"
       ],
-      "answer": "(1) Network segmentation isolating all IoT/medical devices on a separate VLAN with strict firewall rules limiting what they can communicate with. (2) Application whitelisting on all clinical workstations (only signed, approved executables and PowerShell scripts can run). (3) Fileless malware detection via behavioral/EDR monitoring (detecting anomalous PowerShell, WMI, and PsExec usage). (4) Compensating controls for unpatchable IoT: virtual patching via IPS/IDS signatures, and a clinical systems backup with immutable snapshots for rapid recovery",
-      "explanation_correct": "This scenario combines several hard realities: (1) Unpatchable IoT devices — you cannot patch them, so segmentation is essential. A dedicated medical device VLAN with strict east-west firewall rules prevents lateral movement from a compromised IoT device to clinical workstations. (2) Fileless malware evades signature-based AV because it runs in memory — application whitelisting (e.g., Windows Defender Application Control/AppLocker) prevents unsigned PowerShell and executables from running. (3) EDR with behavioral detection catches anomalous use of legitimate tools (living-off-the-land). (4) Virtual patching (IPS signatures that block known exploit traffic) compensates for unpatched devices. (5) Immutable backup snapshots enable rapid recovery without paying ransom. This is a defense-in-depth approach that accepts the constraint of unpatchable devices while maximizing protection.",
-      "explanation_wrong_common": "Option B is impractical — replacing 200 medical devices is extremely costly, time-consuming, and many devices are FDA-approved only with specific firmware. Installing AV on embedded OS devices is often impossible. Disabling PowerShell entirely breaks legitimate admin operations. Option C is overly extreme — air-gapping the ICU network may be feasible but banning all IoT devices is impossible in modern healthcare (infusion pumps, monitors, imaging equipment are all IoT). Paper charts are a downgrade in patient care quality. Option D is risky and potentially illegal — reverse-engineering medical device firmware could void warranties, violate FDA approvals, and introduce safety risks. Disabling all admin tools breaks operations."
+      "answer": "Access is denied because the Bell-LaPadula model enforces 'no read up' — a subject cannot read an object at a higher security level than their clearance",
+      "explanation_correct": "The Bell-LaPadula model enforces the 'no read up' (simple security) property: a subject at a given security level cannot read an object at a higher level. A user with Secret clearance cannot read a Top Secret document because Top Secret > Secret. The model also enforces 'no write down' (the *-property) to prevent data leakage to lower levels. There are no discretionary overrides in MAC.",
+      "explanation_wrong_common": "Valid clearance does not mean universal access — clearance level must dominate the object's classification. 'No write down' is the *-property, not the read rule, and does not apply to this read attempt. MAC does not support discretionary overrides — access decisions are system-enforced based on labels, not supervisor approval."
     },
     {
-      "card_id": "attack_011",
-      "topic": "Common Attack Methods",
+      "card_id": "mfa_021",
+      "topic": "Multi-Factor Authentication",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a cross-site scripting (XSS) attack, and what are the three main types?",
+      "question_text": "Which of the following is NOT a valid example of multi-factor authentication?",
       "choices": [
-        "XSS injects malicious scripts into web pages viewed by other users. The three types are: (1) Stored/Persistent — script is stored on the server (e.g., in a database comment) and served to all visitors. (2) Reflected — script is embedded in a URL/link and reflected back by the server to the victim. (3) DOM-based — script executes entirely client-side by manipulating the page's DOM without server involvement",
-        "XSS is a type of network attack that crosses site boundaries by scanning multiple websites for vulnerabilities",
-        "XSS is an attack that blocks users from accessing a website by overwhelming it with script requests",
-        "XSS is a server-side attack that exploits cross-site request forgery to steal cookies"
+        "Entering a password and then a PIN sent to your phone",
+        "Scanning your fingerprint and entering a one-time code from a hardware token",
+        "Entering your password and then answering a security question you set up",
+        "Swiping a smart card and entering a PIN associated with that card"
       ],
-      "answer": "XSS injects malicious scripts into web pages viewed by other users. The three types are: (1) Stored/Persistent — script is stored on the server (e.g., in a database comment) and served to all visitors. (2) Reflected — script is embedded in a URL/link and reflected back by the server to the victim. (3) DOM-based — script executes entirely client-side by manipulating the page's DOM without server involvement",
-      "explanation_correct": "XSS exploits the trust a user has in a website by injecting client-side scripts that execute in the victim's browser. Stored XSS is most dangerous — it affects every user who views the infected page (e.g., a malicious comment in a forum). Reflected XSS targets individual users via crafted links (e.g., phishing email with a link containing the script). DOM-based XSS doesn't involve the server at all — the vulnerability is in the page's JavaScript that processes user input unsafely. Impact: session/cookie theft, credential harvesting, defacement, malware delivery. Defense: input validation, output encoding (context-aware), CSP headers, HttpOnly cookies.",
-      "explanation_wrong_common": "Option B is incorrect — XSS is not a network scanning attack; it's an injection attack targeting web application users. Option C describes a DDoS attack, not XSS — XSS doesn't overwhelm servers with requests. Option D confuses XSS with CSRF — XSS injects scripts that execute in the browser; CSRF tricks authenticated users into performing actions they didn't intend. They are related but distinct attack types."
+      "answer": "Entering your password and then answering a security question you set up",
+      "explanation_correct": "Both a password and a security question are 'something you know' (knowledge factor). Multi-factor authentication requires factors from at least two different categories. Two knowledge factors constitute multi-step authentication, not multi-factor authentication. The other options each combine two different factor categories (knowledge+possession, inherence+possession, possession+knowledge).",
+      "explanation_wrong_common": "A password + phone PIN combines knowledge with possession (the phone). Fingerprint + hardware token combines inherence with possession. Smart card + PIN combines possession with knowledge. Only the password + security question pair uses the same factor category twice, which is the trap — it feels like MFA but is not."
     },
     {
-      "card_id": "attack_012",
-      "topic": "Common Attack Methods",
+      "card_id": "mfa_022",
+      "topic": "Multi-Factor Authentication",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a buffer overflow attack, and why is it dangerous?",
+      "question_text": "What is a TOTP (Time-based One-Time Password), and how does it differ from an SMS-based OTP?",
       "choices": [
-        "A buffer overflow occurs when an attacker writes more data into a memory buffer than it can hold, causing the excess data to overwrite adjacent memory — this is dangerous because the overwritten memory may contain return addresses, function pointers, or executable code, allowing the attacker to redirect program execution to malicious code",
-        "A buffer overflow is when a network buffer fills up with too many packets, causing the server to crash and reboot",
-        "A buffer overflow is when a hard drive runs out of space and overwrites system files",
-        "A buffer overflow is when a user's clipboard is full and overwrites the previous copied content"
+        "TOTP is generated by an authenticator app using a shared secret and the current time; SMS OTP is sent via text message to the user's phone",
+        "TOTP is sent via email; SMS OTP is sent via text message — both use the same generation method",
+        "TOTP is a permanent password that changes monthly; SMS OTP is a temporary code that expires in 30 seconds",
+        "TOTP requires a biometric scan to generate; SMS OTP requires only the phone number"
       ],
-      "answer": "A buffer overflow occurs when an attacker writes more data into a memory buffer than it can hold, causing the excess data to overwrite adjacent memory — this is dangerous because the overwritten memory may contain return addresses, function pointers, or executable code, allowing the attacker to redirect program execution to malicious code",
-      "explanation_correct": "Buffer overflows exploit poor input validation in programs written in languages like C/C++ that don't automatically check array bounds. The attack: (1) The program allocates a fixed-size buffer (e.g., 256 bytes). (2) The attacker sends input larger than the buffer. (3) The excess data overwrites adjacent memory on the stack or heap. (4) If the overwrite modifies the return address, the attacker can redirect execution to their shellcode. Stack-based overflows overwrite return addresses; heap-based overflows corrupt heap metadata. Defense: input validation/length checking, ASLR (Address Space Layout Randomization), DEP/NX bit (prevents code execution in data areas), stack canaries (detect overwrites), and compiled with safe functions (strncpy instead of strcpy). Modern OS protections make this harder but not impossible.",
-      "explanation_wrong_common": "Option B describes a network congestion/buffer exhaustion issue, not a buffer overflow exploit — network buffer exhaustion doesn't allow code execution. Option C is a disk space issue — unrelated to memory buffer overflows. Option D is a clipboard issue — a trivial user inconvenience, not a security vulnerability that enables code execution."
+      "answer": "TOTP is generated by an authenticator app using a shared secret and the current time; SMS OTP is sent via text message to the user's phone",
+      "explanation_correct": "TOTP (Time-based One-Time Password, per RFC 6238) is generated locally by an authenticator app using a shared secret key and the current time as inputs to a hash function. It does not require network connectivity. SMS OTP is sent over the cellular network as a text message, making it vulnerable to SIM swapping and interception. TOTP is generally considered more secure than SMS OTP.",
+      "explanation_wrong_common": "TOTP is not email-based, not permanent, and does not require biometrics. The critical distinction is that TOTP is generated locally (offline) using a cryptographic algorithm, while SMS OTP depends on the cellular network for delivery, introducing interception risks."
     },
     {
-      "card_id": "attack_013",
-      "topic": "Common Attack Methods",
+      "card_id": "mfa_023",
+      "topic": "Multi-Factor Authentication",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An e-commerce website uses session cookies to track authenticated users. An attacker discovers that the site doesn't validate the origin of requests. The attacker creates a malicious webpage that contains a hidden form which auto-submits a POST request to the e-commerce site's 'change shipping address' endpoint when a logged-in user visits the attacker's page. What type of attack is this, and what is the BEST defense?",
+      "question_text": "An attacker calls a mobile carrier's customer support, impersonates a victim using stolen personal information, and convinces the carrier to port the victim's phone number to a new SIM card. The attacker then intercepts SMS-based MFA codes to access the victim's accounts. What is this attack called, and how could it have been prevented?",
       "choices": [
-        "This is a Cross-Site Request Forgery (CSRF) attack — the attacker tricks an authenticated user's browser into submitting a malicious request to a trusted site. The best defense is anti-CSRF tokens (synchronizer token pattern): the server embeds a unique, unpredictable token in each form, and rejects requests that don't include the correct token, since the attacker's page cannot read the token due to same-origin policy",
-        "This is a Cross-Site Scripting (XSS) attack — the attacker injected a script into the e-commerce site. Defense: output encoding and Content Security Policy",
-        "This is a SQL injection attack — the attacker is injecting SQL into the shipping address field. Defense: parameterized queries",
-        "This is a man-in-the-middle (MITM) attack — the attacker is intercepting traffic between the user and the e-commerce site. Defense: HTTPS with HSTS"
+        "SIM swapping attack; could be prevented by using app-based TOTP or hardware security keys instead of SMS for MFA",
+        "Phishing attack; could be prevented by training users to recognize suspicious emails",
+        "Man-in-the-browser attack; could be prevented by installing endpoint antivirus software",
+        "Brute force attack; could be prevented by enforcing account lockout after failed attempts"
       ],
-      "answer": "This is a Cross-Site Request Forgery (CSRF) attack — the attacker tricks an authenticated user's browser into submitting a malicious request to a trusted site. The best defense is anti-CSRF tokens (synchronizer token pattern): the server embeds a unique, unpredictable token in each form, and rejects requests that don't include the correct token, since the attacker's page cannot read the token due to same-origin policy",
-      "explanation_correct": "CSRF exploits the trust a website has in a user's browser. When a user is authenticated, their browser automatically sends session cookies with every request to that domain. The attacker's page triggers a cross-origin request (form auto-submit, img tag, fetch) to the target site. The browser attaches the session cookie, so the server sees it as a legitimate authenticated request. Anti-CSRF tokens prevent this: (1) Server generates a random token per session/form. (2) Token is included as a hidden form field. (3) Server validates the token on POST requests. (4) The attacker's page cannot read the token (same-origin policy blocks cross-origin DOM access), so they can't forge a valid request. Additional defenses: SameSite cookie attribute (Lax/Strict), requiring re-authentication for sensitive actions, and checking the Referer/Origin header.",
-      "explanation_wrong_common": "Option B is wrong — XSS injects scripts into the trusted site that execute in the victim's browser; CSRF sends requests TO the trusted site FROM an external page. The attacker here doesn't inject anything into the e-commerce site — they host their own malicious page. Option C is wrong — no SQL is being injected; the attack exploits the browser's automatic cookie attachment, not database query construction. Option D is wrong — the attacker isn't intercepting traffic; they're tricking the browser into making a legitimate-looking request through the normal channel."
+      "answer": "SIM swapping attack; could be prevented by using app-based TOTP or hardware security keys instead of SMS for MFA",
+      "explanation_correct": "SIM swapping (or SIM hijacking) is an attack where the attacker transfers the victim's phone number to a SIM card they control, allowing them to intercept SMS messages including MFA codes. The best prevention is to use MFA methods that do not rely on SMS — such as TOTP authenticator apps or FIDO2 hardware security keys — which are not vulnerable to SIM port-out attacks.",
+      "explanation_wrong_common": "This is not phishing (no deceptive email is involved), not a man-in-the-browser attack (no browser malware), and not brute force (no password guessing). The attack targets the MFA delivery channel itself, so only changing the MFA method away from SMS addresses the root cause."
     },
     {
-      "card_id": "attack_014",
-      "topic": "Common Attack Methods",
+      "card_id": "mfa_024",
+      "topic": "Multi-Factor Authentication",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's database administrator notices that their customer database has been queried with unusual patterns: requests like 'admin'--' and 'OR 1=1' appear in the query logs. Some customer records have been modified, and the attacker was able to bypass the login screen without a valid password. What type of attack is this, what is the root cause, and what is the primary defense?",
+      "question_text": "A company wants to implement phishing-resistant MFA for privileged administrator accounts. Which solution provides the strongest protection against phishing, including attacks where users are tricked into entering MFA codes on fake websites?",
       "choices": [
-        "This is a SQL injection (SQLi) attack — the root cause is that user input is concatenated directly into SQL query strings without validation or parameterization. The primary defense is parameterized queries (prepared statements) that separate code from data, so user input is treated as a literal value and never as executable SQL",
-        "This is a brute force password attack — the root cause is weak passwords. Defense: enforce complex passwords and account lockout",
-        "This is a privilege escalation attack — the root cause is the admin account has too many permissions. Defense: least privilege principle",
-        "This is a cross-site scripting (XSS) attack — the root cause is unencoded user input. Defense: output encoding and CSP"
+        "FIDO2/WebAuthn hardware security keys, which use public-key cryptography and origin binding to prevent credential entry on fake sites",
+        "SMS-based OTP, because the code changes every 60 seconds and cannot be reused",
+        "Email-based OTP, because email accounts require their own authentication as an additional layer",
+        "Security questions combined with passwords, because the answers are personal and hard to guess"
       ],
-      "answer": "This is a SQL injection (SQLi) attack — the root cause is that user input is concatenated directly into SQL query strings without validation or parameterization. The primary defense is parameterized queries (prepared statements) that separate code from data, so user input is treated as a literal value and never as executable SQL",
-      "explanation_correct": "SQL injection occurs when user-supplied input is concatenated into SQL queries without sanitization. The classic payload ' OR 1=1 --' works by: (1) Closing the intended query string. (2) Adding 'OR 1=1' which is always true, returning all rows. (3) Adding '--' to comment out the rest of the query (including password checks). The attacker bypassed authentication because the modified query always evaluates to true. Parameterized queries/prepared statements fix this: the SQL structure is sent to the database engine first (with placeholders), then user input is bound as parameters. The database treats parameters strictly as data values, not as SQL syntax, making injection impossible. Additional defenses: input validation, least-privilege database accounts, WAF rules, stored procedures (if properly parameterized), and ORM frameworks.",
-      "explanation_wrong_common": "Option B is wrong — the attacker isn't guessing passwords; they're bypassing the login entirely by manipulating the SQL query. Account lockout wouldn't help because no password guessing occurred. Option C is partially related (the attacker may gain admin via SQLi) but the root cause is SQL injection, not excessive permissions. Option D is wrong — XSS attacks the browser by injecting scripts into web pages; SQL injection attacks the database by manipulating queries. Different layers, different root causes."
+      "answer": "FIDO2/WebAuthn hardware security keys, which use public-key cryptography and origin binding to prevent credential entry on fake sites",
+      "explanation_correct": "FIDO2/WebAuthn security keys are phishing-resistant because they use public-key cryptography with origin binding — the key only authenticates to the legitimate domain registered during enrollment. Even if a user is tricked into visiting a fake login page, the security key will not authenticate to the attacker's domain. The private key never leaves the device, so no code can be intercepted or entered on a fake site.",
+      "explanation_wrong_common": "SMS OTP is vulnerable to SIM swapping and phishing — users can be tricked into entering the code on a fake site. Email OTP has the same phishing weakness plus email account compromise risk. Security questions are a knowledge factor, not MFA, and are easily bypassed via social engineering. Only FIDO2/WebAuthn provides cryptographic origin binding."
     },
     {
-      "card_id": "attack_015",
-      "topic": "Common Attack Methods",
+      "card_id": "mfa_025",
+      "topic": "Multi-Factor Authentication",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A cloud-hosted web application experiences a credential stuffing attack: the attacker is using a leaked database of 5 million username/password pairs from a different breach, automated with a botnet of 10,000 IPs, and attempting to log in to the company's user portal. The company has 50,000 users. After 2 hours, 3,000 accounts have been compromised (users who reused passwords). The company needs to stop the attack immediately AND prevent future credential stuffing. Which combination of controls provides the BEST immediate and long-term protection?",
+      "question_text": "An organization uses push-notification MFA. Attackers repeatedly trigger MFA prompts by attempting logins with compromised passwords, hoping a frustrated user will tap 'Approve' to stop the notifications. This is known as MFA fatigue (push bombing). Which combination of controls best mitigates this attack?",
       "choices": [
-        "Immediate: (1) Enable rate limiting and IP-based throttling (lock out IPs with >10 failed logins/minute). (2) Deploy CAPTCHA or behavioral biometrics to block automated bot traffic. (3) Force password reset for all 50,000 users and check new passwords against a breach database (HaveIBeenPwned API). Long-term: (1) Enforce MFA for all accounts. (2) Implement passwordless authentication (WebAuthn/FIDO2). (3) Continuous bot detection (device fingerprinting, ML-based anomaly detection). (4) Monitor for credential reuse via breach intelligence feeds",
-        "Immediate: block all login attempts and shut down the web application until the attack stops. Long-term: require users to visit a physical office to reset passwords in person",
-        "Immediate: install a web application firewall and block all traffic from the botnet IPs. Long-term: keep the WAF rules updated with new IP lists",
-        "Immediate: send an email to all users asking them to change their passwords if they think they were affected. Long-term: enforce a 90-day password rotation policy"
+        "Implement number-matching MFA (display a number on the login screen that the user must match on their phone) and rate-limit MFA prompts per account",
+        "Switch to SMS-based OTP, since text messages cannot be sent in rapid succession",
+        "Disable MFA for all accounts and rely solely on complex password policies",
+        "Require users to change passwords after every MFA prompt is received"
       ],
-      "answer": "Immediate: (1) Enable rate limiting and IP-based throttling (lock out IPs with >10 failed logins/minute). (2) Deploy CAPTCHA or behavioral biometrics to block automated bot traffic. (3) Force password reset for all 50,000 users and check new passwords against a breach database (HaveIBeenPwned API). Long-term: (1) Enforce MFA for all accounts. (2) Implement passwordless authentication (WebAuthn/FIDO2). (3) Continuous bot detection (device fingerprinting, ML-based anomaly detection). (4) Monitor for credential reuse via breach intelligence feeds",
-      "explanation_correct": "Credential stuffing exploits password reuse across services. Immediate response: (1) Rate limiting slows the attack — but with 10,000 IPs, per-IP limits alone aren't enough, so combine with CAPTCHA and behavioral analysis. (2) Forcing a global password reset stops ongoing compromise, and checking against breach databases (k-anonymity API) ensures users don't pick already-breached passwords. Long-term: (1) MFA is the strongest control — even if credentials are stolen, the attacker can't complete login without the second factor. (2) Passwordless (FIDO2/WebAuthn) eliminates passwords entirely, making credential stuffing impossible. (3) Bot detection (device fingerprinting, ML) identifies automated traffic patterns. (4) Breach intelligence feeds let you proactively force resets when users' credentials appear in new breaches. This is defense-in-depth: slow the attack, block automation, eliminate the root cause (passwords).",
-      "explanation_wrong_common": "Option B is a denial-of-service to your own users — shutting down the application is exactly what the attacker wants (business disruption). Physical password resets are impractical for a 50,000-user online service. Option C is insufficient — botnets rotate IPs rapidly; a WAF IP blocklist is a whack-a-mole approach that can't keep up. WAFs are part of the solution but not sufficient alone. Option D is too slow (users who don't check email stay compromised) and 90-day rotation is actually counterproductive per NIST 800-63B — it causes users to choose weaker, predictable passwords (Password1 → Password2)."
+      "answer": "Implement number-matching MFA (display a number on the login screen that the user must match on their phone) and rate-limit MFA prompts per account",
+      "explanation_correct": "Number-matching MFA defeats push bombing because the user must see and enter the matching number from the legitimate login screen — a blind 'Approve' tap is no longer sufficient. Rate-limiting MFA prompts prevents attackers from flooding the user with notifications. Together, these controls make MFA fatigue impractical while maintaining the usability of push-based MFA.",
+      "explanation_wrong_common": "SMS OTP is also vulnerable to rapid triggering and introduces SIM-swap risk. Disabling MFA removes the protection entirely. Forcing password changes after each prompt is operationally absurd and does not address the push bombing vector. Number-matching + rate-limiting directly targets the attack mechanism."
     },
     {
-      "card_id": "vuln_011",
-      "topic": "Vulnerability Types and Management",
+      "card_id": "sso_021",
+      "topic": "Single Sign-On and Federation",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a zero-day vulnerability and a known vulnerability?",
+      "question_text": "What is the difference between SSO and federation?",
       "choices": [
-        "A zero-day vulnerability is a security flaw that has been discovered but no patch or fix is available yet (the vendor has had zero days to respond), while a known vulnerability has been disclosed and has a patch, mitigation, or documented workaround available",
-        "A zero-day vulnerability is one that was discovered today, while a known vulnerability was discovered yesterday",
-        "A zero-day vulnerability only affects zero systems, while a known vulnerability affects many systems",
-        "A zero-day vulnerability is one that cannot be exploited, while a known vulnerability can be exploited"
+        "SSO allows one login to access multiple applications within an organization; federation extends this trust across separate organizations",
+        "SSO encrypts credentials at rest; federation encrypts credentials in transit",
+        "SSO is used for cloud applications; federation is used for on-premises applications",
+        "SSO requires biometric authentication; federation requires password authentication"
       ],
-      "answer": "A zero-day vulnerability is a security flaw that has been discovered but no patch or fix is available yet (the vendor has had zero days to respond), while a known vulnerability has been disclosed and has a patch, mitigation, or documented workaround available",
-      "explanation_correct": "The term 'zero-day' refers to the number of days the vendor has had to fix the vulnerability — zero. This means: (1) The vendor is unaware or has just been notified. (2) No official patch exists. (3) Attackers can exploit it with no available defense (except compensating controls like WAF rules, IPS signatures, or network isolation). Zero-days are dangerous because they are unknown to defenders — signature-based tools won't detect them. Known vulnerabilities have CVE IDs, CVSS scores, patches, and are tracked in vulnerability databases (NVD). Paradoxically, known vulnerabilities cause more breaches because many organizations don't patch promptly, while zero-days are limited to sophisticated attackers. Defense against zero-days: defense-in-depth, behavioral detection, least privilege, and application whitelisting.",
-      "explanation_wrong_common": "Option B is incorrect — 'zero-day' refers to the vendor's patch timeline, not the discovery date. A zero-day could be exploited for months before discovery. Option C is nonsensical — zero-day doesn't mean zero affected systems; it can affect millions. Option D is the opposite of reality — zero-days CAN be exploited (often more so because no patch exists), while known vulnerabilities can also be exploited but have available fixes."
+      "answer": "SSO allows one login to access multiple applications within an organization; federation extends this trust across separate organizations",
+      "explanation_correct": "SSO enables a user to authenticate once and access multiple applications within a single organization's domain. Federation extends this concept across organizational boundaries — a user authenticated by one organization (identity provider) can access services at another organization (service provider) without separate credentials, based on established trust between the parties.",
+      "explanation_wrong_common": "The distinction is not about encryption, deployment model, or authentication method. SSO is intra-organization; federation is inter-organization. Both can use various authentication methods. The key difference is the scope of the trust relationship — internal vs cross-organization."
     },
     {
-      "card_id": "vuln_012",
-      "topic": "Vulnerability Types and Management",
+      "card_id": "sso_022",
+      "topic": "Single Sign-On and Federation",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the Common Vulnerability Scoring System (CVSS), and what do the three CVSS severity categories (High, Medium, Low) generally indicate?",
+      "question_text": "Which protocol is commonly used for SSO in enterprise web applications, and what does it use to convey authentication information?",
       "choices": [
-        "CVSS is a standardized framework for rating the severity of software vulnerabilities on a scale of 0.0 to 10.0, based on exploitability, impact, and scope. High (7.0-10.0) means the vulnerability is easily exploitable with significant impact; Medium (4.0-6.9) means moderate exploitability and impact; Low (0.1-3.9) means difficult to exploit with minimal impact",
-        "CVSS is a scoring system that ranks vulnerabilities by how many systems are affected worldwide",
-        "CVSS is a tool that automatically patches vulnerabilities based on their score",
-        "CVSS is a database that stores all known malware signatures for antivirus software"
+        "SAML (Security Assertion Markup Language), which uses XML-based assertions to convey authentication and authorization data",
+        "SMTP (Simple Mail Transfer Protocol), which sends authentication tokens via email",
+        "FTP (File Transfer Protocol), which transfers credential files between servers",
+        "DHCP (Dynamic Host Configuration Protocol), which assigns authentication IP addresses"
       ],
-      "answer": "CVSS is a standardized framework for rating the severity of software vulnerabilities on a scale of 0.0 to 10.0, based on exploitability, impact, and scope. High (7.0-10.0) means the vulnerability is easily exploitable with significant impact; Medium (4.0-6.9) means moderate exploitability and impact; Low (0.1-3.9) means difficult to exploit with minimal impact",
-      "explanation_correct": "CVSS (maintained by FIRST.org) provides a consistent way to assess vulnerability severity. The base score (0.0-10.0) considers: (1) Attack vector (network, adjacent, local, physical). (2) Attack complexity (low/high). (3) Privileges required (none/low/high). (4) User interaction (none/required). (5) Impact on confidentiality, integrity, and availability. (6) Scope (whether the vulnerability affects components beyond the vulnerable one). Critical (9.0-10.0) = remote code execution, no auth required. High (7.0-8.9) = significant impact. Medium (4.0-6.9) = moderate. Low (0.1-3.9) = minimal. Temporal and environmental scores adjust based on exploit availability and your specific environment. CVSS helps prioritize remediation but should not be the only factor — asset criticality and exposure matter too.",
-      "explanation_wrong_common": "Option B is incorrect — CVSS scores severity, not prevalence. A vulnerability affecting one system can score 10.0 if it's easily exploitable with full impact. Option C is wrong — CVSS is a scoring framework, not a patching tool. Scores inform prioritization but don't automate remediation. Option D is wrong — CVSS has nothing to do with malware signatures; it's a vulnerability assessment standard, not an antivirus database."
+      "answer": "SAML (Security Assertion Markup Language), which uses XML-based assertions to convey authentication and authorization data",
+      "explanation_correct": "SAML is the dominant protocol for enterprise SSO. It uses XML-based security assertions to communicate authentication status, user attributes, and authorization decisions between an identity provider (IdP) and a service provider (SP). When a user authenticates to the IdP, it generates a SAML assertion (often a signed XML token) that the SP trusts to grant access.",
+      "explanation_wrong_common": "SMTP is for email, FTP is for file transfer, and DHCP is for IP assignment — none of these are authentication or federation protocols. SAML is specifically designed for exchanging authentication and authorization data in XML format between trusted parties."
     },
     {
-      "card_id": "vuln_013",
-      "topic": "Vulnerability Types and Management",
+      "card_id": "sso_023",
+      "topic": "Single Sign-On and Federation",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A vulnerability scan reports 200 vulnerabilities across a company's infrastructure. The security team has limited resources and can only remediate 30 this month. Which prioritization approach correctly considers BOTH CVSS score AND real-world exploitability?",
+      "question_text": "A user logs into their corporate identity provider and then accesses a third-party SaaS application without entering new credentials. The SaaS application receives a signed token from the IdP containing the user's identity and attributes. Which protocol is most likely being used, and what is the token format?",
       "choices": [
-        "Cross-reference each vulnerability with: (1) CVSS score for severity. (2) CISA KEV (Known Exploited Vulnerabilities) catalog for active exploitation. (3) EPSS (Exploit Prediction Scoring System) for likelihood of exploitation. (4) Asset criticality and exposure (internet-facing vs. internal). Prioritize vulnerabilities that are high-CVSS, in the KEV catalog, with high EPSS, on internet-facing critical assets",
-        "Remediate the 30 vulnerabilities with the highest CVSS scores, regardless of other factors",
-        "Remediate the 30 vulnerabilities on the oldest systems first, since older systems are more likely to be exploited",
-        "Remediate the 30 vulnerabilities that are easiest to fix (require the least effort), to maximize the number patched"
+        "OAuth 2.0 / OpenID Connect, using JWT (JSON Web Token) format for the ID token",
+        "SAML 2.0, using XML-based assertions for the authentication statement",
+        "Kerberos, using ticket-granting tickets (TGTs) for service access",
+        "LDAP, using distinguished name (DN) bindings for directory authentication"
       ],
-      "answer": "Cross-reference each vulnerability with: (1) CVSS score for severity. (2) CISA KEV (Known Exploited Vulnerabilities) catalog for active exploitation. (3) EPSS (Exploit Prediction Scoring System) for likelihood of exploitation. (4) Asset criticality and exposure (internet-facing vs. internal). Prioritize vulnerabilities that are high-CVSS, in the KEV catalog, with high EPSS, on internet-facing critical assets",
-      "explanation_correct": "Risk-based vulnerability management (RBVM) goes beyond CVSS alone. (1) CVSS tells you how bad it COULD be, not how likely it is to be exploited. (2) CISA KEV lists vulnerabilities actively exploited in the wild — these are the most urgent. (3) EPSS uses machine learning to predict the probability of exploitation within 30 days, based on historical data. (4) Context matters: a CVSS 9.0 on an isolated test VM is lower priority than a CVSS 7.5 on a public-facing payment system. Combining these factors creates a prioritized list that maximizes risk reduction per remediation effort. This approach has been shown to reduce risk significantly more than CVSS-only prioritization.",
-      "explanation_wrong_common": "Option B (CVSS-only) ignores real-world exploitability — a CVSS 9.8 with no public exploit on an internal system is lower risk than a CVSS 7.5 with active exploitation on a public server. Option C is flawed — age of the system doesn't correlate well with exploitation priority; a newer system with a critical, actively-exploited vulnerability is higher priority than an old system with low-severity issues. Option D optimizes for quantity over impact — patching 30 easy, low-risk vulnerabilities may reduce less risk than patching 5 hard, critical ones."
+      "answer": "OAuth 2.0 / OpenID Connect, using JWT (JSON Web Token) format for the ID token",
+      "explanation_correct": "OpenID Connect (OIDC), built on top of OAuth 2.0, is the modern standard for federated SSO in SaaS applications. It uses JWT (JSON Web Token) as the ID token format — a compact, signed JSON-based token that contains claims about the user's identity and attributes. SaaS applications commonly implement OIDC because it is lighter than SAML and works well with mobile/SPA applications.",
+      "explanation_wrong_common": "SAML uses XML assertions, not JSON tokens — it is more common in legacy enterprise web apps. Kerberos uses symmetric-key tickets and is typically used within a single domain/AD environment, not for SaaS federation. LDAP is a directory access protocol, not a federation/SSO token protocol. The signed JSON token points to OIDC/JWT."
     },
     {
-      "card_id": "vuln_014",
-      "topic": "Vulnerability Types and Management",
+      "card_id": "sso_024",
+      "topic": "Single Sign-On and Federation",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company discovers a misconfiguration in their AWS S3 bucket: it was set to public-read instead of private, exposing 100,000 customer records including names, emails, and phone numbers for 3 months. The bucket was created by a developer who left the company. No breach has been detected, but the company cannot confirm whether anyone accessed the data. What is the MOST appropriate incident response, and what configuration management failure caused this?",
+      "question_text": "In a SAML SSO flow, what happens when a user attempts to access a service provider (SP) without an active session?",
       "choices": [
-        "Response: (1) Immediately set the bucket to private. (2) Enable S3 access logging and review logs for unauthorized access during the exposure period. (3) Notify affected customers per data breach notification laws (GDPR 72h, state laws vary). (4) Conduct a full audit of all cloud resources. Root cause: lack of Infrastructure as Code (IaC) with security policies, no cloud security posture management (CSPM), and no automated guardrails preventing public S3 buckets",
-        "Response: Delete the S3 bucket and all data immediately, then recreate it properly configured. No notification needed since no confirmed breach",
-        "Response: Fire the developer who created the bucket, even though they left the company. No other action needed",
-        "Response: Do nothing since no breach was detected — if nobody accessed the data, there is no incident"
+        "The SP redirects the user to the identity provider (IdP) for authentication, then the IdP sends a SAML assertion back to the SP after successful login",
+        "The SP creates a local account for the user and asks them to set a new password before granting access",
+        "The SP denies access immediately and requires the user to contact the IT help desk for manual provisioning",
+        "The SP sends the user's credentials to the IdP for verification via an encrypted channel"
       ],
-      "answer": "Response: (1) Immediately set the bucket to private. (2) Enable S3 access logging and review logs for unauthorized access during the exposure period. (3) Notify affected customers per data breach notification laws (GDPR 72h, state laws vary). (4) Conduct a full audit of all cloud resources. Root cause: lack of Infrastructure as Code (IaC) with security policies, no cloud security posture management (CSPM), and no automated guardrails preventing public S3 buckets",
-      "explanation_correct": "Cloud misconfiguration is the #1 cause of cloud data breaches. The response follows incident handling: (1) Containment — immediately restrict access (set bucket private). (2) Investigation — review S3 access logs, CloudTrail logs, and any analytics to determine if data was accessed. (3) Notification — many regulations (GDPR, CCPA, state breach laws) require notification when PII was exposed, even if unauthorized access can't be confirmed. The exposure itself constitutes a reportable event in many jurisdictions. (4) Remediation — audit ALL cloud resources for similar misconfigurations. Root cause: the developer manually configured the bucket (no IaC), there was no CSPM tool to detect public buckets, and no AWS Service Control Policy (SCP) or config rule to prevent/flag public S3 buckets. Fixes: IaC with security policies (Terraform + policy-as-code), CSPM tools (AWS Config, Prisma Cloud), automated guardrails (SCPs blocking public S3 creation), and least-privilege IAM.",
-      "explanation_wrong_common": "Option B is wrong — deleting the bucket destroys evidence needed for the investigation and doesn't address notification obligations. You must preserve evidence and determine what was accessed. Option C is punitive and ineffective — the developer already left, and the problem is systemic (lack of guardrails), not individual. Option D is dangerous — the exposure of PII is itself a notifiable event under many data protection laws, regardless of confirmed access. Waiting for confirmation of a breach can violate legal notification deadlines (GDPR: 72 hours)."
+"answer": "The SP redirects the user to the identity provider (IdP) for authentication, then the IdP sends a SAML assertion back to the SP after successful login",
+      "explanation_correct": "In SAML SSO (SP-initiated flow), when a user accesses the SP without a session, the SP generates a SAML AuthnRequest and redirects the user to the IdP. If the user has no IdP session, they authenticate there. The IdP then generates a signed SAML assertion and redirects back to the SP, which validates the assertion and creates a local session.",
+      "explanation_wrong_common": "The SP does not create local accounts or set passwords — that defeats SSO. The SP does not deny access or require help desk intervention — it redirects to the IdP. The SP never sends credentials to the IdP — the user authenticates directly at the IdP. The redirect-to-IdP-then-assertion-back flow is the core SAML mechanism."
     },
     {
-      "card_id": "vuln_015",
-      "topic": "Vulnerability Types and Management",
+      "card_id": "sso_025",
+      "topic": "Single Sign-On and Federation",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A large enterprise has a mature vulnerability management program: they run weekly scans, have a 30-day patch SLA for critical vulnerabilities, and use CVSS for prioritization. However, analysis shows that 40% of their breaches in the past year came from vulnerabilities that were scored Medium (CVSS 4.0-6.9) and were NOT prioritized for patching within the SLA. These vulnerabilities were on internet-facing systems and were exploited using publicly available PoC exploits within 14 days of disclosure. The CISO asks: what is wrong with the current vulnerability management strategy, and what changes would reduce breach risk while maintaining operational feasibility?",
+      "question_text": "A company uses SAML-based SSO with a central IdP. An attacker steals the IdP's signing private key and forges SAML assertions to access multiple SPs as arbitrary users. The security team discovers the breach. What is the most critical immediate remediation step, and what additional measure should be taken to prevent recurrence?",
       "choices": [
-        "The strategy relies solely on CVSS base scores, which don't account for real-world exploitability or asset exposure. Changes: (1) Add EPSS (Exploit Prediction Scoring System) to identify Medium-CVSS vulnerabilities with high exploitation probability. (2) Add CISA KEV catalog checks — any KEV-listed vulnerability gets critical SLA regardless of CVSS. (3) Factor in asset exposure — internet-facing systems get shorter SLAs than internal systems. (4) Implement exposure-based SLAs: Critical/KEV = 7 days, High+EPSS>0.5+internet-facing = 14 days, Medium+EPSS>0.2 = 30 days, Low = 90 days. (5) Deploy virtual patching (WAF/IPS) for vulnerabilities that can't be patched within SLA",
-        "The strategy is correct — Medium vulnerabilities should not be prioritized. The breaches were bad luck. No changes needed; just increase the critical patch SLA to 15 days to reduce workload",
-        "The problem is that the scan frequency is too low. Switch to daily scans and patch every vulnerability regardless of score. The 30-day SLA should apply to ALL vulnerabilities",
-        "The strategy should be replaced entirely — abandon CVSS and use only the CISA KEV catalog. If a vulnerability is not in KEV, don't patch it at all"
+        "Immediately rotate/revoke the compromised signing key at the IdP and issue a new key pair; additionally implement SAML assertion short validity windows and replay protection (assertion IDs with one-time use tracking)",
+        "Immediately disable all SSO and require every user to set a new password on each application individually",
+        "Immediately block all external IP addresses from accessing the IdP and require VPN for all authentication",
+        "Immediately switch from SAML to OAuth 2.0, since OAuth is immune to signing key compromise"
       ],
-      "answer": "The strategy relies solely on CVSS base scores, which don't account for real-world exploitability or asset exposure. Changes: (1) Add EPSS (Exploit Prediction Scoring System) to identify Medium-CVSS vulnerabilities with high exploitation probability. (2) Add CISA KEV catalog checks — any KEV-listed vulnerability gets critical SLA regardless of CVSS. (3) Factor in asset exposure — internet-facing systems get shorter SLAs than internal systems. (4) Implement exposure-based SLAs: Critical/KEV = 7 days, High+EPSS>0.5+internet-facing = 14 days, Medium+EPSS>0.2 = 30 days, Low = 90 days. (5) Deploy virtual patching (WAF/IPS) for vulnerabilities that can't be patched within SLA",
-      "explanation_correct": "This is a classic case of CVSS-only prioritization failing. The problem: CVSS measures theoretical severity, not real-world risk. A Medium (5.5) vulnerability with a public PoC exploit on an internet-facing web server is far more dangerous than a Critical (9.0) on an isolated internal system. The solution is risk-based vulnerability management (RBVM): (1) EPSS predicts exploitation probability — a Medium-CVSS vulnerability with EPSS > 0.5 is more likely to be exploited than a High-CVSS with EPSS < 0.05. (2) CISA KEV means active exploitation — these should always get the shortest SLA regardless of CVSS. (3) Asset context (exposure, criticality, data sensitivity) must factor into prioritization. (4) Tiered SLAs based on combined risk allow feasible remediation timelines while addressing the highest-risk items first. (5) Virtual patching (WAF/IPS rules) buys time when patches can't be deployed immediately (change windows, testing, legacy systems). This approach has been proven to reduce breach risk more effectively than CVSS-only strategies.",
-      "explanation_wrong_common": "Option B is complacent — 40% of breaches from Medium-CVSS vulnerabilities is a systemic failure, not bad luck. Extending the critical SLA to 15 days makes things worse, not better. Option C is infeasible — daily scans and patching every vulnerability regardless of score would overwhelm any IT team, cause excessive downtime, and isn't risk-based. Not all vulnerabilities are exploitable or on exposed systems. Option D is the opposite extreme — KEV only catches vulnerabilities that are ALREADY being exploited, missing those that will be exploited next. It's a valuable signal but not a complete strategy; you'd miss emerging threats and medium-risk issues that compound over time."
+      "answer": "Immediately rotate/revoke the compromised signing key at the IdP and issue a new key pair; additionally implement SAML assertion short validity windows and replay protection (assertion IDs with one-time use tracking)",
+      "explanation_correct": "The immediate priority is to invalidate the attacker's ability to forge assertions by rotating the IdP's signing key — forged assertions signed with the old key will fail verification at SPs. Long-term, short assertion validity windows reduce the window of opportunity for replayed assertions, and tracking assertion IDs as one-time-use prevents replay attacks. Key rotation + assertion hardening address both the current breach and recurrence.",
+      "explanation_wrong_common": "Disabling all SSO is excessively disruptive and does not fix the root cause (key compromise). IP blocking does not stop forged assertions from working within trusted networks. Switching to OAuth does not make the system immune to key compromise — OAuth tokens can also be forged if signing keys are stolen. Only key rotation + replay protection directly addresses the attack vector."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "threat_011", "next_due_at": "2026-09-19" },
-    { "card_id": "threat_012", "next_due_at": "2026-09-19" },
-    { "card_id": "threat_013", "next_due_at": "2026-09-20" },
-    { "card_id": "threat_014", "next_due_at": "2026-09-20" },
-    { "card_id": "threat_015", "next_due_at": "2026-09-21" },
-    { "card_id": "malware_011", "next_due_at": "2026-09-19" },
-    { "card_id": "malware_012", "next_due_at": "2026-09-19" },
-    { "card_id": "malware_013", "next_due_at": "2026-09-20" },
-    { "card_id": "malware_014", "next_due_at": "2026-09-20" },
-    { "card_id": "malware_015", "next_due_at": "2026-09-21" },
-    { "card_id": "attack_011", "next_due_at": "2026-09-19" },
-    { "card_id": "attack_012", "next_due_at": "2026-09-19" },
-    { "card_id": "attack_013", "next_due_at": "2026-09-20" },
-    { "card_id": "attack_014", "next_due_at": "2026-09-20" },
-    { "card_id": "attack_015", "next_due_at": "2026-09-21" },
-    { "card_id": "vuln_011", "next_due_at": "2026-09-19" },
-    { "card_id": "vuln_012", "next_due_at": "2026-09-19" },
-    { "card_id": "vuln_013", "next_due_at": "2026-09-20" },
-    { "card_id": "vuln_014", "next_due_at": "2026-09-20" },
-    { "card_id": "vuln_015", "next_due_at": "2026-09-21" }
+    { "card_id": "iam_021", "next_due_at": "2026-10-03" },
+    { "card_id": "iam_022", "next_due_at": "2026-10-03" },
+    { "card_id": "iam_023", "next_due_at": "2026-10-04" },
+    { "card_id": "iam_024", "next_due_at": "2026-10-04" },
+    { "card_id": "iam_025", "next_due_at": "2026-10-04" },
+    { "card_id": "iam_026", "next_due_at": "2026-10-03" },
+    { "card_id": "iam_027", "next_due_at": "2026-10-03" },
+    { "card_id": "iam_028", "next_due_at": "2026-10-04" },
+    { "card_id": "iam_029", "next_due_at": "2026-10-04" },
+    { "card_id": "iam_030", "next_due_at": "2026-10-04" },
+    { "card_id": "mfa_021", "next_due_at": "2026-10-03" },
+    { "card_id": "mfa_022", "next_due_at": "2026-10-03" },
+    { "card_id": "mfa_023", "next_due_at": "2026-10-04" },
+    { "card_id": "mfa_024", "next_due_at": "2026-10-04" },
+    { "card_id": "mfa_025", "next_due_at": "2026-10-04" },
+    { "card_id": "sso_021", "next_due_at": "2026-10-03" },
+    { "card_id": "sso_022", "next_due_at": "2026-10-03" },
+    { "card_id": "sso_023", "next_due_at": "2026-10-04" },
+    { "card_id": "sso_024", "next_due_at": "2026-10-04" },
+    { "card_id": "sso_025", "next_due_at": "2026-10-04" }
   ]
 }
