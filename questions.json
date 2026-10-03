@@ -1,346 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "iam_021",
-      "topic": "Authentication Methods",
+      "card_id": "framework_021",
+      "topic": "Security Frameworks and Standards",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What are the three categories of authentication factors, and what is an example of each?",
+      "question_text": "What is the primary purpose of the NIST Cybersecurity Framework (CSF)?",
       "choices": [
-        "Something you know (password), something you have (smart card), something you are (fingerprint)",
-        "Something you type (username), something you show (ID badge), something you remember (PIN)",
-        "Something you own (laptop), something you control (email account), something you trust (certificate)",
-        "Something you learn (security question), something you build (firewall rule), something you test (pen test)"
+        "To provide a voluntary framework of standards, guidelines, and best practices for managing cybersecurity risk",
+        "To mandate specific encryption algorithms that all US organizations must use",
+        "To certify products as secure through laboratory testing and validation",
+        "To provide a legally binding set of regulations for data breach notification"
       ],
-      "answer": "Something you know (password), something you have (smart card), something you are (fingerprint)",
-      "explanation_correct": "The three standard authentication factor categories are knowledge (something you know, like a password or PIN), possession (something you have, like a token or smart card), and inherence (something you are, like a biometric trait). Multi-factor authentication combines factors from at least two different categories.",
-      "explanation_wrong_common": "The other options invent non-standard categories. Username is an identifier, not an authentication factor. Trust and learning are not recognized factor categories. The key distinction is that factors must come from different categories — two passwords do not constitute multi-factor."
+      "answer": "To provide a voluntary framework of standards, guidelines, and best practices for managing cybersecurity risk",
+      "explanation_correct": "The NIST CSF is a voluntary framework that provides organizations with standards, guidelines, and best practices to manage and reduce cybersecurity risk. It organizes security activities into five core functions: Identify, Protect, Detect, Respond, and Recover. It is not a legal mandate or a product certification — it is a risk management guidance document.",
+      "explanation_wrong_common": "The NIST CSF does not mandate specific algorithms, certify products (that is FIPS/Common Criteria), or create legal regulations. Its defining characteristic is that it is voluntary guidance for improving cybersecurity risk management across any organization, regardless of size or sector."
     },
     {
-      "card_id": "iam_022",
-      "topic": "Authentication Methods",
+      "card_id": "framework_022",
+      "topic": "Security Frameworks and Standards",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between authentication and authorization?",
+      "question_text": "What is the difference between ISO 27001 and ISO 27002?",
       "choices": [
-        "Authentication verifies who you are; authorization determines what you are allowed to do",
-        "Authentication determines what you can access; authorization verifies your identity",
-        "Authentication encrypts your credentials; authorization decrypts the access token",
-        "Authentication is handled by the OS; authorization is handled by the application only"
+        "ISO 27001 defines the requirements for an Information Security Management System (ISMS); ISO 27002 provides a code of practice with detailed security controls",
+        "ISO 27001 covers physical security; ISO 27002 covers network security",
+        "ISO 27001 is for governments; ISO 27002 is for private companies",
+        "ISO 27001 is the European version; ISO 27002 is the American version"
       ],
-      "answer": "Authentication verifies who you are; authorization determines what you are allowed to do",
-      "explanation_correct": "Authentication is the process of proving identity (e.g., logging in with a password). Authorization is the process of determining what resources and actions an authenticated identity is permitted to access. They are sequential — you must be authenticated before authorization decisions can be applied.",
-      "explanation_wrong_common": "Swapping the definitions is the most common error. Authentication is always about identity verification, and authorization is always about permissions. Neither concept is inherently tied to encryption/decryption, and authorization is not limited to the application layer."
+      "answer": "ISO 27001 defines the requirements for an Information Security Management System (ISMS); ISO 27002 provides a code of practice with detailed security controls",
+      "explanation_correct": "ISO/IEC 27001 is the international standard that specifies the requirements for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS). It is certifiable — organizations can be audited against it. ISO/IEC 27002 is a companion standard that provides a code of practice listing detailed security controls (Annex A controls) and guidance on how to implement them.",
+      "explanation_wrong_common": "The distinction is not about physical vs network, government vs private, or regional versions. ISO 27001 is the management system standard (requirements, certifiable), while ISO 27002 is the operational guidance (how to implement controls). Together they form a complementary pair — 27001 tells you what to do, 27002 tells you how."
     },
     {
-      "card_id": "iam_023",
-      "topic": "Authentication Methods",
+      "card_id": "framework_023",
+      "topic": "Security Frameworks and Standards",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company implements a system where employees log in with a password and then receive a push notification on their phone to approve the login. What type of authentication is this, and what is its main advantage?",
+      "question_text": "A company wants to benchmark its security posture against a prioritized set of actionable controls and measure improvement over time. Which framework is best suited for this purpose, and why?",
       "choices": [
-        "Multi-factor authentication using knowledge + possession factors; reduces risk of credential-only compromise",
-        "Single sign-on using a federated identity; reduces the number of passwords employees must remember",
-        "Biometric authentication using inherence factor; eliminates the need for passwords entirely",
-        "Token-based authentication using a hardware key; provides the strongest cryptographic proof of identity"
+        "CIS Controls, because they provide a prioritized, actionable list of security best practices organized into Implementation Groups (IG1, IG2, IG3) based on organizational risk profile",
+        "PCI DSS, because it provides universal security requirements applicable to all industries",
+        "ITIL, because it focuses on IT service management rather than security",
+        "COBIT, because it is primarily a financial auditing framework"
       ],
-      "answer": "Multi-factor authentication using knowledge + possession factors; reduces risk of credential-only compromise",
-      "explanation_correct": "The password is a knowledge factor and the phone push notification is a possession factor, making this multi-factor authentication (MFA). The main advantage is that even if the password is stolen, an attacker cannot complete authentication without also having the registered phone, significantly reducing credential-only compromise risk.",
-      "explanation_wrong_common": "This is not SSO (which is about one login across multiple systems), not biometric (no biometric trait is used), and not a hardware key (a phone is not a dedicated hardware token). The defining feature is the combination of two different factor types."
+      "answer": "CIS Controls, because they provide a prioritized, actionable list of security best practices organized into Implementation Groups (IG1, IG2, IG3) based on organizational risk profile",
+      "explanation_correct": "The CIS (Center for Internet Security) Controls are a prioritized set of actionable security best practices that organizations can implement to defend against common threats. They are organized into three Implementation Groups (IG1 for basic cyber hygiene, IG2 for mature organizations, IG3 for sophisticated defenders), allowing organizations to benchmark and incrementally improve. The prioritized, actionable nature makes them ideal for measuring security posture improvement.",
+      "explanation_wrong_common": "PCI DSS is specific to payment card data, not universal. ITIL is IT service management, not cybersecurity. COBIT is IT governance, not specifically security benchmarking. Only the CIS Controls combine prioritization, actionability, and tiered implementation groups specifically designed for security posture measurement."
     },
     {
-      "card_id": "iam_024",
-      "topic": "Authentication Methods",
+      "card_id": "framework_024",
+      "topic": "Security Frameworks and Standards",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team wants to eliminate password reuse across services. They implement a system where users authenticate once to a central identity provider and are then granted access to multiple applications without re-entering credentials. What is this called?",
+      "question_text": "A security team is mapping adversary tactics, techniques, and procedures (TTPs) to understand how attackers operate and to improve detection capabilities. Which framework should they use?",
       "choices": [
-        "Single sign-on (SSO) using federated identity management",
-        "Multi-factor authentication with a hardware token",
-        "Role-based access control with privilege escalation",
-        "Network access control with 802.1X authentication"
+        "MITRE ATT&CK, a globally accessible knowledge base of adversary tactics and techniques based on real-world observations",
+        "NIST CSF, because it categorizes security activities into five core functions",
+        "ISO 27001, because it defines ISMS requirements for certification",
+        "OWASP Top 10, because it lists the most critical web application security risks"
       ],
-      "answer": "Single sign-on (SSO) using federated identity management",
-      "explanation_correct": "Single sign-on (SSO) allows a user to authenticate once to a central identity provider and access multiple applications without re-entering credentials. This is typically implemented using federated identity protocols like SAML or OAuth. It directly addresses password reuse by reducing the number of credentials a user must manage.",
-      "explanation_wrong_common": "MFA adds factors but does not eliminate re-authentication across services. RBAC is about authorization, not authentication consolidation. 802.1X is network-level port authentication, not application-level SSO. The key feature is one login → multiple services."
+      "answer": "MITRE ATT&CK, a globally accessible knowledge base of adversary tactics and techniques based on real-world observations",
+      "explanation_correct": "MITRE ATT&CK is a curated knowledge base that documents adversary tactics, techniques, and procedures (TTPs) observed in real-world attacks. It organizes techniques into a matrix of tactics (the 'why' — objectives like initial access, persistence, exfiltration) and techniques (the 'how' — specific methods). Security teams use it to map detections, test defenses, and understand adversary behavior patterns.",
+      "explanation_wrong_common": "NIST CSF organizes security functions (Identify, Protect, Detect, Respond, Recover) but does not catalog adversary TTPs. ISO 27001 is an ISMS standard, not a threat intelligence framework. OWASP Top 10 covers web app vulnerabilities, not broad adversary tactics. Only MITRE ATT&CK specifically catalogs real-world adversary behaviors."
     },
     {
-      "card_id": "iam_025",
-      "topic": "Authentication Methods",
+      "card_id": "framework_025",
+      "topic": "Security Frameworks and Standards",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A healthcare organization uses password-only logins for its EHR system. After a phishing attack compromises several clinician accounts, the CISO mandates MFA. Clinicians resist hardware tokens as too cumbersome during emergency patient care. Which solution best balances security and usability while still achieving multi-factor authentication?",
+      "question_text": "A mid-sized financial services company must comply with multiple requirements: they process credit cards, operate under a regulatory framework requiring formal ISMS certification, and want to benchmark their security controls against industry best practices. Which combination of frameworks should they adopt, and what is each one's role?",
       "choices": [
-        "Deploy mobile push-notification MFA with a PIN backup, allowing clinicians to approve logins from their phones with a fallback code if the phone is unavailable",
-        "Require longer passwords (20+ characters) and enforce quarterly password changes to reduce compromise likelihood",
-        "Implement fingerprint scanners on all workstations, removing passwords entirely so no second factor is needed",
-        "Restrict EHR access to on-site IP ranges only, trusting the physical building security as the second factor"
+        "PCI DSS for payment card compliance, ISO 27001 for ISMS certification, and CIS Controls for benchmarking security posture — each addresses a different need",
+        "NIST CSF alone, because it covers all compliance, certification, and benchmarking requirements in a single framework",
+        "COBIT for everything, because it is the most comprehensive IT governance framework",
+        "MITRE ATT&CK for compliance and ISO 27001 for benchmarking, since both are certifiable standards"
       ],
-      "answer": "Deploy mobile push-notification MFA with a PIN backup, allowing clinicians to approve logins from their phones with a fallback code if the phone is unavailable",
-      "explanation_correct": "Mobile push-notification MFA with a PIN backup provides a possession factor (the phone) combined with the existing knowledge factor (password). It is less cumbersome than hardware tokens, and the PIN/backup code ensures clinicians can still authenticate during emergencies if the phone is temporarily unavailable. This satisfies MFA requirements while addressing usability concerns in a clinical setting.",
-      "explanation_wrong_common": "Longer passwords alone do not constitute MFA — it is still a single knowledge factor. Fingerprint-only is a single inherence factor (not multi-factor). IP restriction is network-level control, not an authentication factor, and does not verify identity. Only the push-notification solution combines two different factor types with a practical fallback."
+      "answer": "PCI DSS for payment card compliance, ISO 27001 for ISMS certification, and CIS Controls for benchmarking security posture — each addresses a different need",
+      "explanation_correct": "No single framework covers all needs. PCI DSS is mandatory for organizations processing credit cards and specifies payment data security requirements. ISO 27001 provides a certifiable ISMS framework that satisfies regulatory requirements for formal security management. CIS Controls provide prioritized, actionable security best practices for benchmarking and improving posture. Using all three ensures compliance, certification, and practical improvement are each addressed.",
+      "explanation_wrong_common": "No single framework is comprehensive enough — NIST CSF is voluntary guidance, not certifiable or PCI-compliant. COBIT is IT governance, not security-specific. MITRE ATT&CK is threat intelligence, not a compliance or certification framework. The correct approach combines purpose-built frameworks: regulatory compliance (PCI DSS), management certification (ISO 27001), and operational benchmarking (CIS Controls)."
     },
     {
-      "card_id": "iam_026",
-      "topic": "Access Control Models",
+      "card_id": "risk_021",
+      "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "In role-based access control (RBAC), how are permissions assigned to users?",
+      "question_text": "What is the difference between a threat and a vulnerability?",
       "choices": [
-        "Permissions are assigned to roles, and users are assigned to roles — users inherit the permissions of their role",
-        "Permissions are assigned directly to each user based on their individual identity",
-        "Permissions are assigned based on the user's current location and time of access",
-        "Permissions are assigned by the operating system automatically when a user logs in"
+        "A threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that could allow a threat to cause harm",
+        "A threat is a weakness in a system; a vulnerability is an active attack in progress",
+        "A threat is always external; a vulnerability is always internal",
+        "A threat is a security control; a vulnerability is the absence of encryption"
       ],
-      "answer": "Permissions are assigned to roles, and users are assigned to roles — users inherit the permissions of their role",
-      "explanation_correct": "In RBAC, permissions are grouped and assigned to predefined roles (e.g., 'admin', 'manager', 'read-only'). Users are then placed into roles, inheriting all permissions associated with that role. This simplifies administration because changing a role's permissions affects all users in that role, and user onboarding only requires role assignment rather than individual permission configuration.",
-      "explanation_wrong_common": "Direct per-user assignment describes discretionary access control (DAC) or an ACL-based model, not RBAC. Location/time-based assignment describes attribute-based access control (ABAC). Automatic OS assignment is not a recognized access control model — permissions must be explicitly defined and managed."
+      "answer": "A threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that could allow a threat to cause harm",
+      "explanation_correct": "A threat is any potential danger or event that could exploit a vulnerability to compromise security (e.g., a hacker, malware, natural disaster). A vulnerability is a weakness, flaw, or gap in a system's security that a threat could exploit (e.g., unpatched software, misconfiguration, weak password). Risk exists when a threat has the capability and opportunity to exploit a vulnerability — risk = threat × vulnerability × impact.",
+      "explanation_wrong_common": "Threats and vulnerabilities are not the same thing, nor are they defined by internal/external origin. A threat is not a control, and a vulnerability is not specifically about encryption. The key relationship is: threats exploit vulnerabilities to create risk. Without a vulnerability, a threat cannot cause harm, and without a threat, a vulnerability is merely a latent weakness."
     },
     {
-      "card_id": "iam_027",
-      "topic": "Access Control Models",
+      "card_id": "risk_022",
+      "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between mandatory access control (MAC) and discretionary access control (DAC)?",
+      "question_text": "What is residual risk?",
       "choices": [
-        "MAC uses security labels enforced by the system; DAC allows the resource owner to decide who gets access",
-        "MAC requires biometric authentication; DAC requires password authentication",
-        "MAC is used in cloud environments; DAC is used in on-premises environments",
-        "MAC is always more secure than DAC; DAC is always easier to use than MAC"
+        "The risk that remains after security controls have been implemented and risk treatment measures applied",
+        "The risk that was present before any security controls were implemented",
+        "The risk that only affects residual systems like legacy hardware",
+        "The risk associated with deleting old data and residual files"
       ],
-      "answer": "MAC uses security labels enforced by the system; DAC allows the resource owner to decide who gets access",
-      "explanation_correct": "In MAC, access decisions are enforced by the operating system based on security labels (e.g., classification levels like Secret, Top Secret) assigned to both subjects and objects. Users cannot override these decisions. In DAC, the owner of a resource decides who can access it, typically through ACLs or permissions. MAC is used in high-security environments (military, government) while DAC is common in commercial systems.",
-      "explanation_wrong_common": "The distinction is not about authentication method, deployment environment, or a simple 'more secure vs easier' trade-off. MAC and DAC differ fundamentally in who controls access decisions — the system (MAC) vs the resource owner (DAC). The security/usability comparison is context-dependent, not absolute."
+      "answer": "The risk that remains after security controls have been implemented and risk treatment measures applied",
+      "explanation_correct": "Residual risk is the portion of risk that remains after all risk treatment measures (controls, mitigations, transfers, etc.) have been applied. No security control eliminates 100% of risk — there is always some remaining risk. Management must formally accept residual risk as part of the risk management process. The formula is: residual risk = inherent risk - risk reduction from controls.",
+      "explanation_wrong_common": "Residual risk is not the risk before controls (that is inherent risk), not specific to legacy systems, and not about data deletion. The term 'residual' refers to what remains after treatment. Understanding residual risk is critical because management must decide whether the remaining risk is acceptable or if additional controls are needed."
     },
     {
-      "card_id": "iam_028",
-      "topic": "Access Control Models",
+      "card_id": "risk_023",
+      "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A financial institution needs an access control model where access decisions depend on the user's department, the time of day, the transaction amount, and whether the request originates from a trusted IP range. Which model best fits this requirement?",
+      "question_text": "A company identifies a vulnerability in its web application that could lead to data exposure. The risk score is calculated as High. However, fixing the vulnerability requires taking the application offline for 8 hours during peak business season, causing significant revenue loss. The CISO decides to accept the risk for now and schedule the fix during the next maintenance window. What risk treatment strategy is this?",
       "choices": [
-        "Attribute-based access control (ABAC), because it evaluates multiple attributes of the subject, resource, and environment",
-        "Role-based access control (RBAC), because roles can be defined for each combination of department and transaction type",
-        "Mandatory access control (MAC), because security labels can encode all of these constraints",
-        "Discretionary access control (DAC), because resource owners can set permissions per scenario"
+        "Risk acceptance — the organization acknowledges the risk and chooses to tolerate it temporarily without additional controls",
+        "Risk mitigation — the organization reduces the risk by scheduling a fix",
+        "Risk transference — the organization transfers the risk to the maintenance team",
+        "Risk avoidance — the organization avoids the risk by not fixing it"
       ],
-      "answer": "Attribute-based access control (ABAC), because it evaluates multiple attributes of the subject, resource, and environment",
-      "explanation_correct": "ABAC makes access decisions by evaluating attributes of the subject (department), resource (transaction amount), and environment (time of day, IP range) against policy rules. This dynamic, context-aware approach is ideal when access decisions depend on multiple variable conditions rather than static role assignments.",
-      "explanation_wrong_common": "RBAC would require an impractical number of roles to cover every combination of department, time, amount, and IP — causing role explosion. MAC labels cannot easily encode time-based or transaction-amount conditions. DAC relies on owner discretion, not policy-driven attribute evaluation. ABAC is the only model designed for multi-attribute, context-aware decisions."
+      "answer": "Risk acceptance — the organization acknowledges the risk and chooses to tolerate it temporarily without additional controls",
+      "explanation_correct": "Risk acceptance is a risk treatment strategy where the organization formally acknowledges that a risk exists and decides to tolerate it, typically because the cost of mitigation exceeds the potential impact, or because business priorities make immediate remediation impractical. In this case, the CISO accepts the risk temporarily due to the business cost of downtime. Risk acceptance should always be a documented, formal management decision, not an informal choice.",
+      "explanation_wrong_common": "This is not mitigation (no control is reducing the risk now), not transference (no insurance or third party is absorbing the risk), and not avoidance (avoidance would mean eliminating the activity that creates the risk, e.g., shutting down the application). Scheduling a future fix does not constitute mitigation in the present — the current decision is to accept the risk until the maintenance window."
     },
     {
-      "card_id": "iam_029",
-      "topic": "Access Control Models",
+      "card_id": "risk_024",
+      "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization uses RBAC. An employee in the 'Finance Analyst' role transfers to the IT department. What is the correct access control procedure?",
+      "question_text": "An organization purchases a cybersecurity insurance policy that covers data breach response costs, legal fees, and regulatory fines up to $5 million. Which risk treatment strategy is being applied, and what is its key limitation?",
       "choices": [
-        "Remove the employee from the 'Finance Analyst' role and assign them to the appropriate IT role — permissions update automatically through role membership",
-        "Delete the employee's account and create a new one with IT permissions to avoid any residual access",
-        "Manually revoke each individual permission the employee had under Finance and manually grant each IT permission",
-        "Keep the Finance role and add the IT role so the employee retains access to both sets of permissions"
+        "Risk transference — the financial impact is transferred to the insurer, but the reputational and operational damage remains with the organization",
+        "Risk mitigation — the insurance policy reduces the likelihood of a breach occurring",
+        "Risk avoidance — by having insurance, the organization avoids all breach consequences",
+        "Risk acceptance — the organization accepts that breaches will happen and does nothing else"
       ],
-      "answer": "Remove the employee from the 'Finance Analyst' role and assign them to the appropriate IT role — permissions update automatically through role membership",
-      "explanation_correct": "In RBAC, the correct procedure is to change the user's role assignment. Removing them from 'Finance Analyst' automatically revokes all Finance permissions, and assigning them to the IT role automatically grants the appropriate IT permissions. This is the primary administrative advantage of RBAC — no need to manage individual permissions.",
-      "explanation_wrong_common": "Deleting and recreating accounts is unnecessary and disruptive. Manually revoking individual permissions defeats the purpose of RBAC. Keeping both roles violates least privilege — the employee should not retain Finance access after transferring to IT. Only role reassignment is correct."
+      "answer": "Risk transference — the financial impact is transferred to the insurer, but the reputational and operational damage remains with the organization",
+      "explanation_correct": "Risk transference (or sharing) shifts the financial burden of a risk to a third party, typically through insurance or contracts. Cybersecurity insurance transfers the financial costs of a breach (response, legal, fines) to the insurer. However, the key limitation is that insurance only covers financial impact — reputational damage, loss of customer trust, operational disruption, and regulatory scrutiny remain with the organization. Transference does not reduce likelihood or eliminate all consequences.",
+      "explanation_wrong_common": "Insurance does not mitigate (it does not reduce likelihood or impact of the breach itself — it only covers costs after the fact). It is not avoidance (the organization still faces the risk) and not acceptance (active steps are taken to transfer financial risk). The critical distinction is that transference moves financial consequences but cannot transfer reputational or operational impacts."
     },
     {
-      "card_id": "iam_030",
-      "topic": "Access Control Models",
+      "card_id": "risk_025",
+      "topic": "Risk Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A defense contractor operates a classified network where documents are labeled 'Confidential', 'Secret', and 'Top Secret'. Users have clearances at corresponding levels. A user with 'Secret' clearance attempts to access a 'Top Secret' document. Under mandatory access control with the Bell-LaPadula model, what happens and why?",
+      "question_text": "A hospital's risk assessment identifies that an outdated MRI scheduling system has a critical unpatched vulnerability. The system cannot be patched because the vendor no longer supports it, replacing it costs $800K and takes 6 months, and the vulnerability could allow an attacker to alter patient appointment data (integrity risk). The hospital operates 24/7 and cannot take the MRI scheduling system offline. Which combination of risk treatments provides the best immediate risk reduction while planning for long-term remediation?",
       "choices": [
-        "Access is denied because the Bell-LaPadula model enforces 'no read up' — a subject cannot read an object at a higher security level than their clearance",
-        "Access is granted because the user has a valid security clearance and the system trusts authenticated users",
-        "Access is denied because the Bell-LaPadula model enforces 'no write down' — users cannot write to lower-level objects",
-        "Access is prompted for supervisor approval, since the model allows discretionary overrides for urgent requests"
+        "Implement compensating controls (network segmentation to isolate the system, strict firewall rules, enhanced logging and monitoring) now, transfer residual risk via cyber insurance, and plan system replacement as a long-term mitigation project",
+        "Accept the risk entirely since the system cannot be patched and the hospital cannot go offline",
+        "Avoid the risk by immediately decommissioning the MRI scheduling system and reverting to paper-based scheduling",
+        "Transfer the risk entirely to the vendor by threatening legal action for end-of-life support"
       ],
-      "answer": "Access is denied because the Bell-LaPadula model enforces 'no read up' — a subject cannot read an object at a higher security level than their clearance",
-      "explanation_correct": "The Bell-LaPadula model enforces the 'no read up' (simple security) property: a subject at a given security level cannot read an object at a higher level. A user with Secret clearance cannot read a Top Secret document because Top Secret > Secret. The model also enforces 'no write down' (the *-property) to prevent data leakage to lower levels. There are no discretionary overrides in MAC.",
-      "explanation_wrong_common": "Valid clearance does not mean universal access — clearance level must dominate the object's classification. 'No write down' is the *-property, not the read rule, and does not apply to this read attempt. MAC does not support discretionary overrides — access decisions are system-enforced based on labels, not supervisor approval."
+      "answer": "Implement compensating controls (network segmentation to isolate the system, strict firewall rules, enhanced logging and monitoring) now, transfer residual risk via cyber insurance, and plan system replacement as a long-term mitigation project",
+      "explanation_correct": "When a vulnerability cannot be directly remediated (no patch available) and the system cannot be taken offline, compensating controls provide the best immediate risk reduction. Network segmentation isolates the vulnerable system from the broader network, firewall rules restrict access to only necessary traffic, and enhanced logging/monitoring enables rapid detection of exploitation attempts. Cyber insurance transfers the residual financial risk. The long-term mitigation (system replacement) addresses the root cause. This multi-layered approach combines compensating controls (reduce), transference (share), and mitigation (eliminate) appropriately.",
+      "explanation_wrong_common": "Full risk acceptance is irresponsible when compensating controls can reduce the risk. Decommissioning the system (avoidance) would severely disrupt patient care — a worse outcome than the security risk. Legal threats against the vendor do not transfer the operational risk and do not protect the system. Only the combination of compensating controls + transference + planned remediation provides layered, practical risk reduction for an irreplaceable legacy system."
     },
     {
-      "card_id": "mfa_021",
-      "topic": "Multi-Factor Authentication",
+      "card_id": "threat_021",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which of the following is NOT a valid example of multi-factor authentication?",
+      "question_text": "What distinguishes an Advanced Persistent Threat (APT) from other types of threat actors?",
       "choices": [
-        "Entering a password and then a PIN sent to your phone",
-        "Scanning your fingerprint and entering a one-time code from a hardware token",
-        "Entering your password and then answering a security question you set up",
-        "Swiping a smart card and entering a PIN associated with that card"
+        "APTs are well-resourced, highly skilled actors (often nation-state sponsored) who maintain long-term, stealthy access to a target network to exfiltrate data over time",
+        "APTs are amateur hackers who use automated tools to scan for vulnerable systems",
+        "APTs are insider threats who already have legitimate access to the network",
+        "APTs are opportunistic criminals who deploy ransomware for quick financial gain"
       ],
-      "answer": "Entering your password and then answering a security question you set up",
-      "explanation_correct": "Both a password and a security question are 'something you know' (knowledge factor). Multi-factor authentication requires factors from at least two different categories. Two knowledge factors constitute multi-step authentication, not multi-factor authentication. The other options each combine two different factor categories (knowledge+possession, inherence+possession, possession+knowledge).",
-      "explanation_wrong_common": "A password + phone PIN combines knowledge with possession (the phone). Fingerprint + hardware token combines inherence with possession. Smart card + PIN combines possession with knowledge. Only the password + security question pair uses the same factor category twice, which is the trap — it feels like MFA but is not."
+      "answer": "APTs are well-resourced, highly skilled actors (often nation-state sponsored) who maintain long-term, stealthy access to a target network to exfiltrate data over time",
+      "explanation_correct": "An Advanced Persistent Threat (APT) is characterized by three key attributes: Advanced (using sophisticated techniques and zero-day exploits), Persistent (maintaining long-term, stealthy access to the target), and Threat (a well-resourced, organized adversary, often nation-state or state-sponsored). APTs prioritize stealth and data exfiltration over immediate disruption — their goal is typically espionage, intellectual property theft, or long-term surveillance rather than quick financial gain.",
+      "explanation_wrong_common": "APTs are not amateurs (that describes script kiddies), not insiders (though APTs may recruit insiders), and not opportunistic criminals seeking quick payouts (that describes typical ransomware operators). The defining characteristics are sophistication, stealth, persistence, and a long-term strategic objective — not speed or opportunism."
     },
     {
-      "card_id": "mfa_022",
-      "topic": "Multi-Factor Authentication",
+      "card_id": "threat_022",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a TOTP (Time-based One-Time Password), and how does it differ from an SMS-based OTP?",
+      "question_text": "What is the difference between a hacktivist and a cybercriminal in terms of motivation?",
       "choices": [
-        "TOTP is generated by an authenticator app using a shared secret and the current time; SMS OTP is sent via text message to the user's phone",
-        "TOTP is sent via email; SMS OTP is sent via text message — both use the same generation method",
-        "TOTP is a permanent password that changes monthly; SMS OTP is a temporary code that expires in 30 seconds",
-        "TOTP requires a biometric scan to generate; SMS OTP requires only the phone number"
+        "Hacktivists are motivated by political, social, or ideological causes; cybercriminals are motivated by financial gain",
+        "Hacktivists are motivated by financial gain; cybercriminals are motivated by political causes",
+        "Hacktivists and cybercriminals have identical motivations — both seek profit",
+        "Hacktivists are always nation-state actors; cybercriminals are always lone individuals"
       ],
-      "answer": "TOTP is generated by an authenticator app using a shared secret and the current time; SMS OTP is sent via text message to the user's phone",
-      "explanation_correct": "TOTP (Time-based One-Time Password, per RFC 6238) is generated locally by an authenticator app using a shared secret key and the current time as inputs to a hash function. It does not require network connectivity. SMS OTP is sent over the cellular network as a text message, making it vulnerable to SIM swapping and interception. TOTP is generally considered more secure than SMS OTP.",
-      "explanation_wrong_common": "TOTP is not email-based, not permanent, and does not require biometrics. The critical distinction is that TOTP is generated locally (offline) using a cryptographic algorithm, while SMS OTP depends on the cellular network for delivery, introducing interception risks."
+      "answer": "Hacktivists are motivated by political, social, or ideological causes; cybercriminals are motivated by financial gain",
+      "explanation_correct": "Hacktivists (hacker + activist) use cyber attacks to advance political, social, or ideological causes. Their attacks often involve website defacement, DDoS attacks, or data leaks meant to embarrass or disrupt their targets (e.g., Anonymous, Lizard Squad). Cybercriminals are motivated primarily by financial gain — they steal data for sale, deploy ransomware, or commit fraud for monetary profit. Understanding motivation helps predict attack methods and targets.",
+      "explanation_wrong_common": "The motivations are not reversed, nor are they identical. While there can be overlap (a hacktivist may also profit), the primary distinguishing factor is motivation: ideology (hacktivist) vs profit (cybercriminal). Neither is exclusively nation-state or lone individual — both can operate in groups. Motivation is the key differentiator, not skill level or organization size."
     },
     {
-      "card_id": "mfa_023",
-      "topic": "Multi-Factor Authentication",
+      "card_id": "threat_023",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An attacker calls a mobile carrier's customer support, impersonates a victim using stolen personal information, and convinces the carrier to port the victim's phone number to a new SIM card. The attacker then intercepts SMS-based MFA codes to access the victim's accounts. What is this attack called, and how could it have been prevented?",
+      "question_text": "A disgruntled former system administrator, whose access was supposed to be revoked on their last day, uses a backdoor account they created before leaving to log into the company's customer database and download sensitive records. What type of threat actor is this, and what was the failure in the offboarding process?",
       "choices": [
-        "SIM swapping attack; could be prevented by using app-based TOTP or hardware security keys instead of SMS for MFA",
-        "Phishing attack; could be prevented by training users to recognize suspicious emails",
-        "Man-in-the-browser attack; could be prevented by installing endpoint antivirus software",
-        "Brute force attack; could be prevented by enforcing account lockout after failed attempts"
+        "Insider threat (malicious insider); the failure was incomplete access revocation — dormant/backdoor accounts were not identified and disabled during offboarding",
+        "External threat actor; the failure was a weak firewall that allowed the attacker through",
+        "APT; the failure was lack of zero-day exploit detection",
+        "Hacktivist; the failure was not monitoring the company's social media for ideological threats"
       ],
-      "answer": "SIM swapping attack; could be prevented by using app-based TOTP or hardware security keys instead of SMS for MFA",
-      "explanation_correct": "SIM swapping (or SIM hijacking) is an attack where the attacker transfers the victim's phone number to a SIM card they control, allowing them to intercept SMS messages including MFA codes. The best prevention is to use MFA methods that do not rely on SMS — such as TOTP authenticator apps or FIDO2 hardware security keys — which are not vulnerable to SIM port-out attacks.",
-      "explanation_wrong_common": "This is not phishing (no deceptive email is involved), not a man-in-the-browser attack (no browser malware), and not brute force (no password guessing). The attack targets the MFA delivery channel itself, so only changing the MFA method away from SMS addresses the root cause."
+      "answer": "Insider threat (malicious insider); the failure was incomplete access revocation — dormant/backdoor accounts were not identified and disabled during offboarding",
+      "explanation_correct": "This is a malicious insider threat — the attacker was a former employee with legitimate knowledge of the systems who used unauthorized access they pre-positioned. The offboarding failure was incomplete access revocation: the official account was disabled, but the backdoor account (created covertly) was not discovered. Proper offboarding should include auditing for unauthorized accounts, reviewing recently created accounts, and revoking all access including SSH keys, VPN credentials, and API tokens — not just the primary user account.",
+      "explanation_wrong_common": "This is not an external attacker (the threat actor had insider knowledge and pre-positioned access), not an APT (the attacker is a known former employee, not a sophisticated nation-state group), and not a hacktivist (the motivation appears to be personal grievance, not ideology). The root cause is an offboarding process gap — backdoor account detection — not a network perimeter failure."
     },
     {
-      "card_id": "mfa_024",
-      "topic": "Multi-Factor Authentication",
+      "card_id": "threat_024",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company wants to implement phishing-resistant MFA for privileged administrator accounts. Which solution provides the strongest protection against phishing, including attacks where users are tricked into entering MFA codes on fake websites?",
+      "question_text": "A security analyst notices a series of phishing emails targeting the company's finance department. The emails appear to come from the CEO and urgently request wire transfers to a 'new vendor.' The sender addresses are lookalike domains (e.g., ceo@company-lnvoice.com instead of ceo@company-invoice.com). What attack vector and social engineering technique is being used?",
       "choices": [
-        "FIDO2/WebAuthn hardware security keys, which use public-key cryptography and origin binding to prevent credential entry on fake sites",
-        "SMS-based OTP, because the code changes every 60 seconds and cannot be reused",
-        "Email-based OTP, because email accounts require their own authentication as an additional layer",
-        "Security questions combined with passwords, because the answers are personal and hard to guess"
+        "Spear phishing using CEO fraud (whaling) with domain typosquatting — targeting specific individuals in finance with authority to authorize transfers",
+        "Mass phishing using generic emails sent to all employees regardless of role",
+        "Smishing (SMS phishing) targeting employees' personal phones",
+        "Watering hole attack targeting a website the finance team frequently visits"
       ],
-      "answer": "FIDO2/WebAuthn hardware security keys, which use public-key cryptography and origin binding to prevent credential entry on fake sites",
-      "explanation_correct": "FIDO2/WebAuthn security keys are phishing-resistant because they use public-key cryptography with origin binding — the key only authenticates to the legitimate domain registered during enrollment. Even if a user is tricked into visiting a fake login page, the security key will not authenticate to the attacker's domain. The private key never leaves the device, so no code can be intercepted or entered on a fake site.",
-      "explanation_wrong_common": "SMS OTP is vulnerable to SIM swapping and phishing — users can be tricked into entering the code on a fake site. Email OTP has the same phishing weakness plus email account compromise risk. Security questions are a knowledge factor, not MFA, and are easily bypassed via social engineering. Only FIDO2/WebAuthn provides cryptographic origin binding."
+      "answer": "Spear phishing using CEO fraud (whaling) with domain typosquatting — targeting specific individuals in finance with authority to authorize transfers",
+      "explanation_correct": "This is a spear phishing attack using whaling (CEO fraud) — a targeted social engineering attack where the attacker impersonates a high-ranking executive (the CEO) to pressure employees with financial authority into making wire transfers. The lookalike domain (typosquatting/homoglyph attack) makes the email appear legitimate at a glance. Spear phishing is targeted (specific finance employees, not mass), and whaling specifically targets high-value victims or impersonates executives. Business Email Compromise (BEC) is the broader category for this attack type.",
+      "explanation_wrong_common": "This is not mass phishing (the emails are targeted at the finance department specifically), not smishing (email, not SMS), and not a watering hole attack (no compromised website is involved). The combination of executive impersonation + lookalike domains + targeting employees with transfer authority is the hallmark of whaling/CEO fraud via spear phishing."
     },
     {
-      "card_id": "mfa_025",
-      "topic": "Multi-Factor Authentication",
+      "card_id": "threat_025",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "An organization uses push-notification MFA. Attackers repeatedly trigger MFA prompts by attempting logins with compromised passwords, hoping a frustrated user will tap 'Approve' to stop the notifications. This is known as MFA fatigue (push bombing). Which combination of controls best mitigates this attack?",
+      "question_text": "A defense contractor discovers that an APT group has been embedded in their network for 14 months. The attackers entered through a spear phishing email to an engineer, established persistence via scheduled tasks, moved laterally using stolen credentials obtained via Mimikatz, and exfiltrated classified design documents through DNS tunneling to evade DLP controls. Which sequence of attack phases best describes this intrusion, and what defensive control would have been most effective at the earliest stage?",
       "choices": [
-        "Implement number-matching MFA (display a number on the login screen that the user must match on their phone) and rate-limit MFA prompts per account",
-        "Switch to SMS-based OTP, since text messages cannot be sent in rapid succession",
-        "Disable MFA for all accounts and rely solely on complex password policies",
-        "Require users to change passwords after every MFA prompt is received"
+        "Phishing (initial access) → Persistence (scheduled tasks) → Credential theft (Mimikatz) → Lateral movement → Data exfiltration (DNS tunneling); security awareness training + email filtering would have been most effective at the initial access stage",
+        "Network scan → Brute force → Malware deployment → Data destruction; a firewall would have been most effective",
+        "Physical breach → Hardware tampering → Data theft; biometric access controls would have been most effective",
+        "Insider collusion → Data copy → Physical removal; badge logging would have been most effective"
       ],
-      "answer": "Implement number-matching MFA (display a number on the login screen that the user must match on their phone) and rate-limit MFA prompts per account",
-      "explanation_correct": "Number-matching MFA defeats push bombing because the user must see and enter the matching number from the legitimate login screen — a blind 'Approve' tap is no longer sufficient. Rate-limiting MFA prompts prevents attackers from flooding the user with notifications. Together, these controls make MFA fatigue impractical while maintaining the usability of push-based MFA.",
-      "explanation_wrong_common": "SMS OTP is also vulnerable to rapid triggering and introduces SIM-swap risk. Disabling MFA removes the protection entirely. Forcing password changes after each prompt is operationally absurd and does not address the push bombing vector. Number-matching + rate-limiting directly targets the attack mechanism."
+      "answer": "Phishing (initial access) → Persistence (scheduled tasks) → Credential theft (Mimikatz) → Lateral movement → Data exfiltration (DNS tunneling); security awareness training + email filtering would have been most effective at the initial access stage",
+      "explanation_correct": "This intrusion follows the classic APT kill chain: spear phishing for initial access, scheduled tasks for persistence, Mimikatz for credential theft, lateral movement using those credentials, and DNS tunneling for covert exfiltration. The earliest and most effective intervention point is the initial access stage — robust email filtering (to block the phishing email) and security awareness training (so the engineer recognizes and reports the phishing attempt) would have prevented the entire chain. Each subsequent phase becomes harder to detect and stop, making prevention at initial access the highest-impact control.",
+      "explanation_wrong_common": "This was not a network scan/brute force (the entry was via phishing), not a physical breach (it was a remote intrusion), and not insider collusion (the engineer was an unwitting victim). The kill chain begins with social engineering, not technical exploitation. While controls at every stage matter (EDR for persistence detection, credential guarding for Mimikatz, network monitoring for lateral movement, DNS analysis for tunneling), prevention at initial access has the highest return on investment because it stops the chain before it starts."
     },
     {
-      "card_id": "sso_021",
-      "topic": "Single Sign-On and Federation",
+      "card_id": "arch_021",
+      "topic": "Security Architecture",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between SSO and federation?",
+      "question_text": "What is the Zero Trust security model, and how does it differ from a traditional perimeter-based security model?",
       "choices": [
-        "SSO allows one login to access multiple applications within an organization; federation extends this trust across separate organizations",
-        "SSO encrypts credentials at rest; federation encrypts credentials in transit",
-        "SSO is used for cloud applications; federation is used for on-premises applications",
-        "SSO requires biometric authentication; federation requires password authentication"
+        "Zero Trust assumes no user or device is trusted by default, requiring continuous authentication and authorization for every access request regardless of network location; traditional perimeter security trusts everything inside the network boundary",
+        "Zero Trust requires zero security controls, trusting users to self-regulate; perimeter security uses firewalls only",
+        "Zero Trust encrypts all data at rest; perimeter security encrypts data in transit",
+        "Zero Trust only applies to cloud environments; perimeter security only applies to on-premises networks"
       ],
-      "answer": "SSO allows one login to access multiple applications within an organization; federation extends this trust across separate organizations",
-      "explanation_correct": "SSO enables a user to authenticate once and access multiple applications within a single organization's domain. Federation extends this concept across organizational boundaries — a user authenticated by one organization (identity provider) can access services at another organization (service provider) without separate credentials, based on established trust between the parties.",
-      "explanation_wrong_common": "The distinction is not about encryption, deployment model, or authentication method. SSO is intra-organization; federation is inter-organization. Both can use various authentication methods. The key difference is the scope of the trust relationship — internal vs cross-organization."
+      "answer": "Zero Trust assumes no user or device is trusted by default, requiring continuous authentication and authorization for every access request regardless of network location; traditional perimeter security trusts everything inside the network boundary",
+      "explanation_correct": "Zero Trust is a security model based on the principle 'never trust, always verify.' It eliminates implicit trust based on network location — even users and devices inside the corporate network must authenticate and be authorized for every access request. Core principles include identity-based access, least privilege, micro-segmentation, and continuous monitoring. Traditional perimeter security (castle-and-moat) assumes that anything inside the network boundary is trustworthy, which fails once an attacker breaches the perimeter.",
+      "explanation_wrong_common": "Zero Trust does not mean 'zero controls' (it requires more controls, just applied differently). It is not about encryption location, and it is not limited to cloud or on-premises — it is an architectural philosophy applicable to any environment. The fundamental shift is from location-based trust (inside = trusted) to identity-based trust (verify every request, regardless of location)."
     },
     {
-      "card_id": "sso_022",
-      "topic": "Single Sign-On and Federation",
+      "card_id": "arch_022",
+      "topic": "Security Architecture",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which protocol is commonly used for SSO in enterprise web applications, and what does it use to convey authentication information?",
+      "question_text": "What is defense in depth, and why is it important in cybersecurity?",
       "choices": [
-        "SAML (Security Assertion Markup Language), which uses XML-based assertions to convey authentication and authorization data",
-        "SMTP (Simple Mail Transfer Protocol), which sends authentication tokens via email",
-        "FTP (File Transfer Protocol), which transfers credential files between servers",
-        "DHCP (Dynamic Host Configuration Protocol), which assigns authentication IP addresses"
+        "Defense in depth is a strategy that uses multiple layers of security controls so that if one layer fails, others remain to protect the system; it is important because no single control is 100% effective",
+        "Defense in depth means using only encryption to protect data at all depths of the network",
+        "Defense in depth is a military strategy unrelated to cybersecurity",
+        "Defense in depth means deploying a single very strong firewall deep in the network core"
       ],
-      "answer": "SAML (Security Assertion Markup Language), which uses XML-based assertions to convey authentication and authorization data",
-      "explanation_correct": "SAML is the dominant protocol for enterprise SSO. It uses XML-based security assertions to communicate authentication status, user attributes, and authorization decisions between an identity provider (IdP) and a service provider (SP). When a user authenticates to the IdP, it generates a SAML assertion (often a signed XML token) that the SP trusts to grant access.",
-      "explanation_wrong_common": "SMTP is for email, FTP is for file transfer, and DHCP is for IP assignment — none of these are authentication or federation protocols. SAML is specifically designed for exchanging authentication and authorization data in XML format between trusted parties."
+      "answer": "Defense in depth is a strategy that uses multiple layers of security controls so that if one layer fails, others remain to protect the system; it is important because no single control is 100% effective",
+      "explanation_correct": "Defense in depth is a layered security approach where multiple independent controls protect assets at different levels — physical security, network perimeter (firewall), network segmentation, host security (hardening, EDR), application security, and data security (encryption). If one control fails or is bypassed, other layers continue to provide protection. It is important because every security control has weaknesses, and attackers often find ways around individual controls — layering reduces the probability of a complete breach.",
+      "explanation_wrong_common": "Defense in depth is not about encryption alone, not exclusive to the military (though the concept originated there, it is a core cybersecurity principle), and not about a single strong control. The essence is redundancy and layering — diverse control types across multiple layers so that the failure of any single control does not result in total compromise."
     },
     {
-      "card_id": "sso_023",
-      "topic": "Single Sign-On and Federation",
+      "card_id": "arch_023",
+      "topic": "Security Architecture",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A user logs into their corporate identity provider and then accesses a third-party SaaS application without entering new credentials. The SaaS application receives a signed token from the IdP containing the user's identity and attributes. Which protocol is most likely being used, and what is the token format?",
+      "question_text": "A company hosts its public-facing web server in a DMZ (demilitarized zone) and its internal database server on the internal network. The web server needs to query the database. A security architect recommends that only the web server's IP can connect to the database on port 3306, and the database server has no direct internet access. Which security architecture principles are being applied?",
       "choices": [
-        "OAuth 2.0 / OpenID Connect, using JWT (JSON Web Token) format for the ID token",
-        "SAML 2.0, using XML-based assertions for the authentication statement",
-        "Kerberos, using ticket-granting tickets (TGTs) for service access",
-        "LDAP, using distinguished name (DN) bindings for directory authentication"
+        "Network segmentation with a DMZ, principle of least privilege (only the web server can access the database on a specific port), and attack surface reduction (no direct internet access for the database)",
+        "Zero Trust architecture with continuous authentication for every database query",
+        "Defense in depth using only encryption to protect database traffic",
+        "Risk transference by placing the database in the DMZ alongside the web server"
       ],
-      "answer": "OAuth 2.0 / OpenID Connect, using JWT (JSON Web Token) format for the ID token",
-      "explanation_correct": "OpenID Connect (OIDC), built on top of OAuth 2.0, is the modern standard for federated SSO in SaaS applications. It uses JWT (JSON Web Token) as the ID token format — a compact, signed JSON-based token that contains claims about the user's identity and attributes. SaaS applications commonly implement OIDC because it is lighter than SAML and works well with mobile/SPA applications.",
-      "explanation_wrong_common": "SAML uses XML assertions, not JSON tokens — it is more common in legacy enterprise web apps. Kerberos uses symmetric-key tickets and is typically used within a single domain/AD environment, not for SaaS federation. LDAP is a directory access protocol, not a federation/SSO token protocol. The signed JSON token points to OIDC/JWT."
+      "answer": "Network segmentation with a DMZ, principle of least privilege (only the web server can access the database on a specific port), and attack surface reduction (no direct internet access for the database)",
+      "explanation_correct": "Three principles are at work: (1) Network segmentation — the DMZ isolates public-facing servers from the internal network, limiting what an attacker can reach if the web server is compromised. (2) Least privilege — the firewall rule restricts database access to only the web server's IP on a specific port, not any internal host. (3) Attack surface reduction — the database has no internet route, meaning external attackers cannot reach it directly. Together these controls ensure that even if the web server is breached, the database is not directly exposed to the internet and is only reachable from one known host.",
+      "explanation_wrong_common": "This is not Zero Trust (which would require continuous identity verification for every query, not just network-level IP filtering). It is not defense in depth via encryption alone (segmentation, not encryption, is the primary control described). The database is NOT in the DMZ (it is on the internal network), so this is not risk transference. The scenario specifically demonstrates segmentation + least privilege + attack surface reduction."
     },
     {
-      "card_id": "sso_024",
-      "topic": "Single Sign-On and Federation",
+      "card_id": "arch_024",
+      "topic": "Security Architecture",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "In a SAML SSO flow, what happens when a user attempts to access a service provider (SP) without an active session?",
+      "question_text": "An organization is implementing Zero Trust architecture. They want to ensure that a user accessing a sensitive financial application from their laptop is continuously evaluated for access. Which combination of controls best implements the Zero Trust principle of continuous verification?",
       "choices": [
-        "The SP redirects the user to the identity provider (IdP) for authentication, then the IdP sends a SAML assertion back to the SP after successful login",
-        "The SP creates a local account for the user and asks them to set a new password before granting access",
-        "The SP denies access immediately and requires the user to contact the IT help desk for manual provisioning",
-        "The SP sends the user's credentials to the IdP for verification via an encrypted channel"
+        "Multi-factor authentication at login, device posture checking (is the laptop managed, patched, and running EDR?), contextual access policies (user role, location, time), and continuous session monitoring with re-authentication for sensitive actions",
+        "A strong firewall at the network perimeter and VPN access for all remote users",
+        "Single sign-on with a long session timeout (8 hours) so users do not need to re-authenticate frequently",
+        "Network segmentation alone, placing the financial application on an isolated VLAN"
       ],
-"answer": "The SP redirects the user to the identity provider (IdP) for authentication, then the IdP sends a SAML assertion back to the SP after successful login",
-      "explanation_correct": "In SAML SSO (SP-initiated flow), when a user accesses the SP without a session, the SP generates a SAML AuthnRequest and redirects the user to the IdP. If the user has no IdP session, they authenticate there. The IdP then generates a signed SAML assertion and redirects back to the SP, which validates the assertion and creates a local session.",
-      "explanation_wrong_common": "The SP does not create local accounts or set passwords — that defeats SSO. The SP does not deny access or require help desk intervention — it redirects to the IdP. The SP never sends credentials to the IdP — the user authenticates directly at the IdP. The redirect-to-IdP-then-assertion-back flow is the core SAML mechanism."
+      "answer": "Multi-factor authentication at login, device posture checking (is the laptop managed, patched, and running EDR?), contextual access policies (user role, location, time), and continuous session monitoring with re-authentication for sensitive actions",
+      "explanation_correct": "Zero Trust requires continuous verification using multiple signals: who the user is (MFA), the health/trust of their device (posture checking), contextual factors (role, location, time of access), and ongoing session monitoring with step-up authentication for sensitive operations. This multi-signal approach means access is never granted permanently — it is continuously re-evaluated. If any signal degrades (e.g., device becomes non-compliant, user changes location), access can be revoked or restricted in real time.",
+      "explanation_wrong_common": "A firewall + VPN is traditional perimeter security, not Zero Trust (it grants broad network access after a single authentication). A long SSO session timeout is the opposite of continuous verification (it reduces re-authentication). VLAN segmentation alone is a network control, not identity-centric verification. Zero Trust is about continuous, multi-factor evaluation of every access request — not a single network boundary or session."
     },
     {
-      "card_id": "sso_025",
-      "topic": "Single Sign-On and Federation",
+      "card_id": "arch_025",
+      "topic": "Security Architecture",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company uses SAML-based SSO with a central IdP. An attacker steals the IdP's signing private key and forges SAML assertions to access multiple SPs as arbitrary users. The security team discovers the breach. What is the most critical immediate remediation step, and what additional measure should be taken to prevent recurrence?",
+      "question_text": "A cloud-native company hosts microservices across multiple cloud providers. An attacker compromises a single microservice via a vulnerable API endpoint. Under a traditional flat network architecture, this compromise could allow lateral movement to all other microservices. Under a Zero Trust architecture with micro-segmentation, what prevents this lateral movement, and what trade-offs does the organization face?",
       "choices": [
-        "Immediately rotate/revoke the compromised signing key at the IdP and issue a new key pair; additionally implement SAML assertion short validity windows and replay protection (assertion IDs with one-time use tracking)",
-        "Immediately disable all SSO and require every user to set a new password on each application individually",
-        "Immediately block all external IP addresses from accessing the IdP and require VPN for all authentication",
-        "Immediately switch from SAML to OAuth 2.0, since OAuth is immune to signing key compromise"
+        "Each microservice is in its own micro-segment with its own identity and access policies — services must mutually authenticate (e.g., via mTLS) and be explicitly authorized to communicate; trade-offs include increased operational complexity, performance overhead from per-connection authentication, and difficulty in troubleshooting service-to-service connectivity",
+        "A single centralized firewall blocks all lateral movement automatically with no trade-offs",
+        "Encryption of all traffic prevents the attacker from understanding other services, with no performance trade-offs",
+        "Moving all services to a single cloud provider eliminates lateral movement risk entirely"
       ],
-      "answer": "Immediately rotate/revoke the compromised signing key at the IdP and issue a new key pair; additionally implement SAML assertion short validity windows and replay protection (assertion IDs with one-time use tracking)",
-      "explanation_correct": "The immediate priority is to invalidate the attacker's ability to forge assertions by rotating the IdP's signing key — forged assertions signed with the old key will fail verification at SPs. Long-term, short assertion validity windows reduce the window of opportunity for replayed assertions, and tracking assertion IDs as one-time-use prevents replay attacks. Key rotation + assertion hardening address both the current breach and recurrence.",
-      "explanation_wrong_common": "Disabling all SSO is excessively disruptive and does not fix the root cause (key compromise). IP blocking does not stop forged assertions from working within trusted networks. Switching to OAuth does not make the system immune to key compromise — OAuth tokens can also be forged if signing keys are stolen. Only key rotation + replay protection directly addresses the attack vector."
+      "answer": "Each microservice is in its own micro-segment with its own identity and access policies — services must mutually authenticate (e.g., via mTLS) and be explicitly authorized to communicate; trade-offs include increased operational complexity, performance overhead from per-connection authentication, and difficulty in troubleshooting service-to-service connectivity",
+      "explanation_correct": "In a Zero Trust micro-segmented architecture, each microservice operates in its own isolated segment with a unique identity. Services must mutually authenticate (typically via mutual TLS / mTLS) and be explicitly authorized before communicating — there is no implicit trust based on network co-location. If one service is compromised, the attacker cannot reach other services without separately authenticating to each one. The trade-offs are real: per-connection authentication adds latency, managing hundreds of service identities and policies increases operational complexity, and debugging service mesh connectivity issues is significantly harder than in a flat network. The security benefit (blast radius containment) must be weighed against these costs.",
+      "explanation_wrong_common": "No single firewall automatically prevents all lateral movement without trade-offs — micro-segmentation requires identity-level controls, not just network rules. Encryption alone prevents eavesdropping but does not prevent an authenticated attacker from moving between services. Consolidating to one cloud provider does not eliminate lateral movement — the risk exists within any shared environment. Only micro-segmentation with mutual authentication contains the blast radius, and the trade-offs (complexity, performance, troubleshooting) are an inherent part of the architecture."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "iam_021", "next_due_at": "2026-10-03" },
-    { "card_id": "iam_022", "next_due_at": "2026-10-03" },
-    { "card_id": "iam_023", "next_due_at": "2026-10-04" },
-    { "card_id": "iam_024", "next_due_at": "2026-10-04" },
-    { "card_id": "iam_025", "next_due_at": "2026-10-04" },
-    { "card_id": "iam_026", "next_due_at": "2026-10-03" },
-    { "card_id": "iam_027", "next_due_at": "2026-10-03" },
-    { "card_id": "iam_028", "next_due_at": "2026-10-04" },
-    { "card_id": "iam_029", "next_due_at": "2026-10-04" },
-    { "card_id": "iam_030", "next_due_at": "2026-10-04" },
-    { "card_id": "mfa_021", "next_due_at": "2026-10-03" },
-    { "card_id": "mfa_022", "next_due_at": "2026-10-03" },
-    { "card_id": "mfa_023", "next_due_at": "2026-10-04" },
-    { "card_id": "mfa_024", "next_due_at": "2026-10-04" },
-    { "card_id": "mfa_025", "next_due_at": "2026-10-04" },
-    { "card_id": "sso_021", "next_due_at": "2026-10-03" },
-    { "card_id": "sso_022", "next_due_at": "2026-10-03" },
-    { "card_id": "sso_023", "next_due_at": "2026-10-04" },
-    { "card_id": "sso_024", "next_due_at": "2026-10-04" },
-    { "card_id": "sso_025", "next_due_at": "2026-10-04" }
+    { "card_id": "framework_021", "next_due_at": "2026-10-04" },
+    { "card_id": "framework_022", "next_due_at": "2026-10-04" },
+    { "card_id": "framework_023", "next_due_at": "2026-10-05" },
+    { "card_id": "framework_024", "next_due_at": "2026-10-05" },
+    { "card_id": "framework_025", "next_due_at": "2026-10-05" },
+    { "card_id": "risk_021", "next_due_at": "2026-10-04" },
+    { "card_id": "risk_022", "next_due_at": "2026-10-04" },
+    { "card_id": "risk_023", "next_due_at": "2026-10-05" },
+    { "card_id": "risk_024", "next_due_at": "2026-10-05" },
+    { "card_id": "risk_025", "next_due_at": "2026-10-05" },
+    { "card_id": "threat_021", "next_due_at": "2026-10-04" },
+    { "card_id": "threat_022", "next_due_at": "2026-10-04" },
+    { "card_id": "threat_023", "next_due_at": "2026-10-05" },
+    { "card_id": "threat_024", "next_due_at": "2026-10-05" },
+    { "card_id": "threat_025", "next_due_at": "2026-10-05" },
+    { "card_id": "arch_021", "next_due_at": "2026-10-04" },
+    { "card_id": "arch_022", "next_due_at": "2026-10-04" },
+    { "card_id": "arch_023", "next_due_at": "2026-10-05" },
+    { "card_id": "arch_024", "next_due_at": "2026-10-05" },
+    { "card_id": "arch_025", "next_due_at": "2026-10-05" }
   ]
 }
