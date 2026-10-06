@@ -1,346 +1,406 @@
 {
   "cards": [
     {
-      "card_id": "framework_021",
+      "card_id": "framework_026",
       "topic": "Security Frameworks and Standards",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the primary purpose of the NIST Cybersecurity Framework (CSF)?",
+      "question_text": "What is COBIT and what is its primary focus in an organization?",
       "choices": [
-        "To provide a voluntary framework of standards, guidelines, and best practices for managing cybersecurity risk",
-        "To mandate specific encryption algorithms that all US organizations must use",
-        "To certify products as secure through laboratory testing and validation",
-        "To provide a legally binding set of regulations for data breach notification"
+        "COBIT is an IT governance and management framework that aligns IT goals with business objectives, focusing on governance, risk management, and compliance",
+        "COBIT is a network security protocol for encrypting traffic between data centers",
+        "COBIT is a malware detection framework that uses behavioral analysis",
+        "COBIT is a physical security standard for data center access control"
       ],
-      "answer": "To provide a voluntary framework of standards, guidelines, and best practices for managing cybersecurity risk",
-      "explanation_correct": "The NIST CSF is a voluntary framework that provides organizations with standards, guidelines, and best practices to manage and reduce cybersecurity risk. It organizes security activities into five core functions: Identify, Protect, Detect, Respond, and Recover. It is not a legal mandate or a product certification — it is a risk management guidance document.",
-      "explanation_wrong_common": "The NIST CSF does not mandate specific algorithms, certify products (that is FIPS/Common Criteria), or create legal regulations. Its defining characteristic is that it is voluntary guidance for improving cybersecurity risk management across any organization, regardless of size or sector."
+      "answer": "COBIT is an IT governance and management framework that aligns IT goals with business objectives, focusing on governance, risk management, and compliance",
+      "explanation_correct": "COBIT (Control Objectives for Information and Related Technologies) is a framework developed by ISACA for IT governance and management. It provides a comprehensive set of controls, processes, and metrics to help organizations align IT with business goals, manage IT-related risks, and ensure compliance. COBIT's strength is bridging technical IT issues with business-level governance \u2014 it answers 'what should we do?' at the executive level, complementing frameworks like ISO 27001 (how to secure) and NIST CSF (how to manage risk).",
+      "explanation_wrong_common": "COBIT is not a network protocol, malware framework, or physical security standard. It is specifically an IT governance framework \u2014 its purpose is to ensure that IT supports business objectives, risks are managed, and resources are used responsibly. The most common confusion is mixing up COBIT (governance) with ISO 27001 (security management) or NIST CSF (risk management). COBIT is broader \u2014 it covers all of IT governance, not just cybersecurity."
     },
     {
-      "card_id": "framework_022",
+      "card_id": "framework_027",
       "topic": "Security Frameworks and Standards",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between ISO 27001 and ISO 27002?",
+      "question_text": "What is PCI DSS, and which organizations are required to comply with it?",
       "choices": [
-        "ISO 27001 defines the requirements for an Information Security Management System (ISMS); ISO 27002 provides a code of practice with detailed security controls",
-        "ISO 27001 covers physical security; ISO 27002 covers network security",
-        "ISO 27001 is for governments; ISO 27002 is for private companies",
-        "ISO 27001 is the European version; ISO 27002 is the American version"
+        "PCI DSS is the Payment Card Industry Data Security Standard \u2014 any organization that stores, processes, or transmits credit card data must comply",
+        "PCI DSS is a voluntary security standard for e-commerce websites that want to display a trust badge",
+        "PCI DSS is a government regulation that applies only to banks and financial institutions chartered in the United States",
+        "PCI DSS is a network encryption protocol used by payment processors for card transactions"
       ],
-      "answer": "ISO 27001 defines the requirements for an Information Security Management System (ISMS); ISO 27002 provides a code of practice with detailed security controls",
-      "explanation_correct": "ISO/IEC 27001 is the international standard that specifies the requirements for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS). It is certifiable — organizations can be audited against it. ISO/IEC 27002 is a companion standard that provides a code of practice listing detailed security controls (Annex A controls) and guidance on how to implement them.",
-      "explanation_wrong_common": "The distinction is not about physical vs network, government vs private, or regional versions. ISO 27001 is the management system standard (requirements, certifiable), while ISO 27002 is the operational guidance (how to implement controls). Together they form a complementary pair — 27001 tells you what to do, 27002 tells you how."
+      "answer": "PCI DSS is the Payment Card Industry Data Security Standard \u2014 any organization that stores, processes, or transmits credit card data must comply",
+      "explanation_correct": "PCI DSS is an information security standard administered by the PCI Security Standards Council (founded by Visa, Mastercard, American Express, Discover, and JCB). It applies to ANY organization \u2014 regardless of size or industry \u2014 that stores, processes, or transmits payment card data. Compliance is mandated by the card brands and acquiring banks, not by law (though many jurisdictions incorporate PCI DSS into their breach notification laws). It has 12 requirements covering network security, cardholder data protection, vulnerability management, access control, monitoring, and an information security policy.",
+      "explanation_wrong_common": "PCI DSS is not voluntary (non-compliance can result in fines, higher transaction fees, or loss of card processing privileges), not limited to US banks (it is a global standard), and not an encryption protocol. The most common mistake is thinking PCI DSS only applies to large companies \u2014 it applies to any merchant handling card data, from small businesses to enterprises, with different compliance levels based on transaction volume."
     },
     {
-      "card_id": "framework_023",
+      "card_id": "framework_028",
       "topic": "Security Frameworks and Standards",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company wants to benchmark its security posture against a prioritized set of actionable controls and measure improvement over time. Which framework is best suited for this purpose, and why?",
+      "question_text": "An organization is implementing the NIST Cybersecurity Framework and begins by inventorying all hardware and software assets, identifying cybersecurity risks to those assets, and mapping their supply chain dependencies. Which NIST CSF core function are they working in, and what is the purpose of this function?",
       "choices": [
-        "CIS Controls, because they provide a prioritized, actionable list of security best practices organized into Implementation Groups (IG1, IG2, IG3) based on organizational risk profile",
-        "PCI DSS, because it provides universal security requirements applicable to all industries",
-        "ITIL, because it focuses on IT service management rather than security",
-        "COBIT, because it is primarily a financial auditing framework"
+        "The Identify function \u2014 it develops an organizational understanding of cybersecurity risk to systems, assets, data, and capabilities, enabling prioritization of protection efforts",
+        "The Protect function \u2014 it implements safeguards to limit or contain the impact of cybersecurity events",
+        "The Detect function \u2014 it identifies the occurrence of cybersecurity events through continuous monitoring",
+        "The Respond function \u2014 it takes action regarding a detected cybersecurity incident to minimize impact"
       ],
-      "answer": "CIS Controls, because they provide a prioritized, actionable list of security best practices organized into Implementation Groups (IG1, IG2, IG3) based on organizational risk profile",
-      "explanation_correct": "The CIS (Center for Internet Security) Controls are a prioritized set of actionable security best practices that organizations can implement to defend against common threats. They are organized into three Implementation Groups (IG1 for basic cyber hygiene, IG2 for mature organizations, IG3 for sophisticated defenders), allowing organizations to benchmark and incrementally improve. The prioritized, actionable nature makes them ideal for measuring security posture improvement.",
-      "explanation_wrong_common": "PCI DSS is specific to payment card data, not universal. ITIL is IT service management, not cybersecurity. COBIT is IT governance, not specifically security benchmarking. Only the CIS Controls combine prioritization, actionability, and tiered implementation groups specifically designed for security posture measurement."
+      "answer": "The Identify function \u2014 it develops an organizational understanding of cybersecurity risk to systems, assets, data, and capabilities, enabling prioritization of protection efforts",
+      "explanation_correct": "The NIST CSF consists of five core functions: Identify, Protect, Detect, Respond, and Recover. Asset inventory, risk assessment, and supply chain mapping all fall under the Identify function. Identify is foundational \u2014 you cannot protect what you do not know exists. It develops organizational understanding of cybersecurity risk to systems, people, assets, data, and capabilities. This understanding enables the organization to focus and prioritize its efforts consistent with its risk management strategy and business needs. The other functions build upon the knowledge gained during Identify.",
+      "explanation_wrong_common": "Asset inventory and risk identification are not Protect (which implements safeguards), not Detect (which monitors for events), and not Respond (which handles incidents after detection). The common error is confusing Identify with Protect \u2014 Protect is about implementing controls, while Identify is about understanding what you have and what risks you face. Without Identify, protection efforts are unfocused and may miss critical assets."
     },
     {
-      "card_id": "framework_024",
+      "card_id": "framework_029",
       "topic": "Security Frameworks and Standards",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team is mapping adversary tactics, techniques, and procedures (TTPs) to understand how attackers operate and to improve detection capabilities. Which framework should they use?",
+      "question_text": "A company needs to choose between pursuing ISO 27001 certification and adopting the NIST Cybersecurity Framework. Their primary goal is to demonstrate to external clients and regulators that they have a formally audited security management system. Which framework should they choose, and what is the key distinguishing factor?",
       "choices": [
-        "MITRE ATT&CK, a globally accessible knowledge base of adversary tactics and techniques based on real-world observations",
-        "NIST CSF, because it categorizes security activities into five core functions",
-        "ISO 27001, because it defines ISMS requirements for certification",
-        "OWASP Top 10, because it lists the most critical web application security risks"
+        "ISO 27001, because it is a certifiable standard \u2014 organizations can undergo formal third-party audits and receive a certificate, providing external assurance of their ISMS",
+        "NIST CSF, because it is a certifiable standard recognized by the US government",
+        "Both frameworks offer identical certification \u2014 the choice does not matter",
+        "Neither framework is certifiable \u2014 they should use PCI DSS instead for certification"
       ],
-      "answer": "MITRE ATT&CK, a globally accessible knowledge base of adversary tactics and techniques based on real-world observations",
-      "explanation_correct": "MITRE ATT&CK is a curated knowledge base that documents adversary tactics, techniques, and procedures (TTPs) observed in real-world attacks. It organizes techniques into a matrix of tactics (the 'why' — objectives like initial access, persistence, exfiltration) and techniques (the 'how' — specific methods). Security teams use it to map detections, test defenses, and understand adversary behavior patterns.",
-      "explanation_wrong_common": "NIST CSF organizes security functions (Identify, Protect, Detect, Respond, Recover) but does not catalog adversary TTPs. ISO 27001 is an ISMS standard, not a threat intelligence framework. OWASP Top 10 covers web app vulnerabilities, not broad adversary tactics. Only MITRE ATT&CK specifically catalogs real-world adversary behaviors."
+      "answer": "ISO 27001, because it is a certifiable standard \u2014 organizations can undergo formal third-party audits and receive a certificate, providing external assurance of their ISMS",
+      "explanation_correct": "ISO 27001 is a certifiable standard \u2014 an organization can be formally audited by an accredited certification body and receive an ISO 27001 certificate, which serves as externally recognized proof of their Information Security Management System (ISMS). NIST CSF is a voluntary framework that provides guidance for managing cybersecurity risk but does not offer a formal certification process. If the goal is external assurance (for clients, regulators, partners), ISO 27001 certification is the right choice. NIST CSF can complement ISO 27001 for internal risk management improvement.",
+      "explanation_wrong_common": "NIST CSF is not certifiable \u2014 it is voluntary guidance, so it cannot provide the external assurance the company needs. The frameworks are not identical in certification capability. PCI DSS is certifiable but specific to payment card data, not a general ISMS. The key distinction is certifiability: ISO 27001 can be audited and certified; NIST CSF cannot. This is why organizations seeking to prove their security posture to external parties typically pursue ISO 27001 or SOC 2, not NIST CSF alone."
     },
     {
-      "card_id": "framework_025",
+      "card_id": "framework_030",
       "topic": "Security Frameworks and Standards",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A mid-sized financial services company must comply with multiple requirements: they process credit cards, operate under a regulatory framework requiring formal ISMS certification, and want to benchmark their security controls against industry best practices. Which combination of frameworks should they adopt, and what is each one's role?",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A security team maps their existing security controls against the MITRE ATT&CK framework and discovers that they have detection coverage for only 40% of the techniques listed under the 'Credential Access' tactic. What is this process called, and what is its primary value to the organization?",
       "choices": [
-        "PCI DSS for payment card compliance, ISO 27001 for ISMS certification, and CIS Controls for benchmarking security posture — each addresses a different need",
-        "NIST CSF alone, because it covers all compliance, certification, and benchmarking requirements in a single framework",
-        "COBIT for everything, because it is the most comprehensive IT governance framework",
-        "MITRE ATT&CK for compliance and ISO 27001 for benchmarking, since both are certifiable standards"
+        "ATT&CK mapping / gap analysis \u2014 it reveals specific detection gaps, allowing the team to prioritize which new detection capabilities to build or acquire",
+        "Threat modeling \u2014 it identifies vulnerabilities in the organization's software development lifecycle",
+        "Penetration testing \u2014 it validates that existing controls can stop simulated attacks",
+        "Compliance auditing \u2014 it verifies that the organization meets regulatory requirements for credential management"
       ],
-      "answer": "PCI DSS for payment card compliance, ISO 27001 for ISMS certification, and CIS Controls for benchmarking security posture — each addresses a different need",
-      "explanation_correct": "No single framework covers all needs. PCI DSS is mandatory for organizations processing credit cards and specifies payment data security requirements. ISO 27001 provides a certifiable ISMS framework that satisfies regulatory requirements for formal security management. CIS Controls provide prioritized, actionable security best practices for benchmarking and improving posture. Using all three ensures compliance, certification, and practical improvement are each addressed.",
-      "explanation_wrong_common": "No single framework is comprehensive enough — NIST CSF is voluntary guidance, not certifiable or PCI-compliant. COBIT is IT governance, not security-specific. MITRE ATT&CK is threat intelligence, not a compliance or certification framework. The correct approach combines purpose-built frameworks: regulatory compliance (PCI DSS), management certification (ISO 27001), and operational benchmarking (CIS Controls)."
+      "answer": "ATT&CK mapping / gap analysis \u2014 it reveals specific detection gaps, allowing the team to prioritize which new detection capabilities to build or acquire",
+      "explanation_correct": "Mapping existing detections against the MITRE ATT&CK framework is called ATT&CK mapping or coverage/gap analysis. By comparing what techniques their current tools can detect against the full ATT&CK matrix, the team identifies specific gaps \u2014 in this case, 60% of Credential Access techniques have no detection. This is valuable because it transforms vague 'we need better security' into a specific, prioritized list: 'we cannot detect OS credential dumping (T1003) or kerberoasting (T1558.003), so we should deploy EDR rule X and add Y to our SIEM.' It enables data-driven security investment.",
+      "explanation_wrong_common": "This is not threat modeling (which focuses on application architecture and design-level risks), not penetration testing (which actively tests controls with simulated attacks), and not compliance auditing (which checks regulatory requirements). ATT&CK mapping is a defensive assessment technique \u2014 it evaluates detection and response capabilities against known adversary behaviors. The primary value is prioritization: instead of guessing what to improve, the team knows exactly which techniques they cannot detect and can invest accordingly."
     },
     {
-      "card_id": "risk_021",
+      "card_id": "risk_026",
       "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a threat and a vulnerability?",
+      "question_text": "What is the difference between qualitative and quantitative risk analysis?",
       "choices": [
-        "A threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that could allow a threat to cause harm",
-        "A threat is a weakness in a system; a vulnerability is an active attack in progress",
-        "A threat is always external; a vulnerability is always internal",
-        "A threat is a security control; a vulnerability is the absence of encryption"
+        "Qualitative risk analysis uses descriptive categories (low/medium/high, likelihood scales) to rank risks; quantitative risk analysis uses numerical values and monetary figures (ALE, SLE, ARO) to calculate risk",
+        "Qualitative risk analysis uses mathematical formulas; quantitative risk analysis uses subjective opinions",
+        "Qualitative risk analysis is always more accurate than quantitative risk analysis",
+        "Qualitative risk analysis is used for technical risks; quantitative risk analysis is used for physical risks only"
       ],
-      "answer": "A threat is a potential danger that can exploit a vulnerability; a vulnerability is a weakness that could allow a threat to cause harm",
-      "explanation_correct": "A threat is any potential danger or event that could exploit a vulnerability to compromise security (e.g., a hacker, malware, natural disaster). A vulnerability is a weakness, flaw, or gap in a system's security that a threat could exploit (e.g., unpatched software, misconfiguration, weak password). Risk exists when a threat has the capability and opportunity to exploit a vulnerability — risk = threat × vulnerability × impact.",
-      "explanation_wrong_common": "Threats and vulnerabilities are not the same thing, nor are they defined by internal/external origin. A threat is not a control, and a vulnerability is not specifically about encryption. The key relationship is: threats exploit vulnerabilities to create risk. Without a vulnerability, a threat cannot cause harm, and without a threat, a vulnerability is merely a latent weakness."
+      "answer": "Qualitative risk analysis uses descriptive categories (low/medium/high, likelihood scales) to rank risks; quantitative risk analysis uses numerical values and monetary figures (ALE, SLE, ARO) to calculate risk",
+      "explanation_correct": "Qualitative risk analysis ranks risks using subjective, descriptive scales \u2014 typically labels like low/medium/high or critical, and likelihood ratings of unlikely/possible/likely/certain. It is faster, easier, and useful when precise financial data is unavailable. Quantitative risk analysis assigns numerical values: SLE (Single Loss Expectancy = asset value x exposure factor), ARO (Annualized Rate of Occurrence), and ALE (Annualized Loss Expectancy = SLE x ARO). Quantitative analysis is more precise but requires reliable data and is more time-consuming. Organizations often use both \u2014 qualitative for initial screening, quantitative for high-priority risks.",
+      "explanation_wrong_common": "The terms are not reversed \u2014 qualitative uses categories, quantitative uses numbers. Qualitative is not inherently more accurate (it is simpler but less precise). Neither method is limited to a specific risk type. The key distinction is the output format: qualitative produces ranked categories, quantitative produces monetary values and probabilities. Both are valid; the choice depends on available data, time, and the audience for the risk assessment."
     },
     {
-      "card_id": "risk_022",
+      "card_id": "risk_027",
       "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is residual risk?",
+      "question_text": "What is a risk register, and what role does it play in an organization's risk management process?",
       "choices": [
-        "The risk that remains after security controls have been implemented and risk treatment measures applied",
-        "The risk that was present before any security controls were implemented",
-        "The risk that only affects residual systems like legacy hardware",
-        "The risk associated with deleting old data and residual files"
+        "A risk register is a centralized document or database that records all identified risks, their assessments, treatment plans, owners, and status \u2014 it serves as the single source of truth for risk management",
+        "A risk register is a legal document that registers an organization's security compliance with government regulators",
+        "A risk register is a log of all security incidents that have occurred in the past 12 months",
+        "A risk register is a hardware device that scans the network for vulnerabilities automatically"
       ],
-      "answer": "The risk that remains after security controls have been implemented and risk treatment measures applied",
-      "explanation_correct": "Residual risk is the portion of risk that remains after all risk treatment measures (controls, mitigations, transfers, etc.) have been applied. No security control eliminates 100% of risk — there is always some remaining risk. Management must formally accept residual risk as part of the risk management process. The formula is: residual risk = inherent risk - risk reduction from controls.",
-      "explanation_wrong_common": "Residual risk is not the risk before controls (that is inherent risk), not specific to legacy systems, and not about data deletion. The term 'residual' refers to what remains after treatment. Understanding residual risk is critical because management must decide whether the remaining risk is acceptable or if additional controls are needed."
+      "answer": "A risk register is a centralized document or database that records all identified risks, their assessments, treatment plans, owners, and status \u2014 it serves as the single source of truth for risk management",
+      "explanation_correct": "A risk register is a comprehensive repository that documents every identified risk along with its key attributes: description, category, likelihood, impact, risk score, treatment strategy (mitigate, transfer, accept, avoid), risk owner, mitigation plan, current status, and review date. It is a living document \u2014 risks are added, updated, and closed as conditions change. The risk register enables tracking over time, ensures accountability (each risk has an owner), supports prioritization, and provides visibility for management and auditors. It is a core artifact of any formal risk management program.",
+      "explanation_wrong_common": "A risk register is not a compliance registration, not an incident log (it tracks risks, not past incidents), and not a hardware device. The most common misconception is confusing a risk register with an incident log \u2014 incidents are events that have already occurred; risks are potential future events. The register is a management tool for tracking and treating risks throughout their lifecycle, from identification to closure."
     },
     {
-      "card_id": "risk_023",
+      "card_id": "risk_028",
       "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company identifies a vulnerability in its web application that could lead to data exposure. The risk score is calculated as High. However, fixing the vulnerability requires taking the application offline for 8 hours during peak business season, causing significant revenue loss. The CISO decides to accept the risk for now and schedule the fix during the next maintenance window. What risk treatment strategy is this?",
+      "question_text": "A company's risk analysis determines that a specific type of server failure would cause $200,000 in damages per occurrence (SLE). Based on historical data, this failure occurs approximately once every two years (ARO = 0.5). What is the Annualized Loss Expectancy (ALE), and how should the organization use this figure?",
       "choices": [
-        "Risk acceptance — the organization acknowledges the risk and chooses to tolerate it temporarily without additional controls",
-        "Risk mitigation — the organization reduces the risk by scheduling a fix",
-        "Risk transference — the organization transfers the risk to the maintenance team",
-        "Risk avoidance — the organization avoids the risk by not fixing it"
+        "ALE = $100,000 (SLE $200,000 x ARO 0.5) \u2014 the organization should compare this annual loss figure against the cost of mitigation controls to determine if implementing controls is cost-justified",
+        "ALE = $400,000 \u2014 the organization should spend up to $400,000 per year on controls to prevent this risk",
+        "ALE = $200,000 \u2014 this is the one-time cost the organization should budget for when the failure occurs",
+        "ALE = $100,000 \u2014 the organization must spend exactly $100,000 on insurance to cover this risk"
       ],
-      "answer": "Risk acceptance — the organization acknowledges the risk and chooses to tolerate it temporarily without additional controls",
-      "explanation_correct": "Risk acceptance is a risk treatment strategy where the organization formally acknowledges that a risk exists and decides to tolerate it, typically because the cost of mitigation exceeds the potential impact, or because business priorities make immediate remediation impractical. In this case, the CISO accepts the risk temporarily due to the business cost of downtime. Risk acceptance should always be a documented, formal management decision, not an informal choice.",
-      "explanation_wrong_common": "This is not mitigation (no control is reducing the risk now), not transference (no insurance or third party is absorbing the risk), and not avoidance (avoidance would mean eliminating the activity that creates the risk, e.g., shutting down the application). Scheduling a future fix does not constitute mitigation in the present — the current decision is to accept the risk until the maintenance window."
+      "answer": "ALE = $100,000 (SLE $200,000 x ARO 0.5) \u2014 the organization should compare this annual loss figure against the cost of mitigation controls to determine if implementing controls is cost-justified",
+      "explanation_correct": "ALE (Annualized Loss Expectancy) = SLE x ARO = $200,000 x 0.5 = $100,000. This means the organization can expect to lose approximately $100,000 per year on average from this risk. The primary use of ALE is cost-benefit analysis: if a mitigation control costs $80,000/year and reduces the ALE to $20,000 (saving $80,000), it breaks even. If it costs $40,000/year and reduces ALE to $20,000, the control saves $40,000/year and is clearly justified. ALE enables data-driven decisions about whether to mitigate, transfer, or accept risk based on financial impact.",
+      "explanation_wrong_common": "ALE is not $400,000 (that would be dividing instead of multiplying). It is not the one-time cost (ALE is annualized). The organization should not spend exactly the ALE on insurance (ALE is a decision-making metric, not a budget mandate). The correct calculation is SLE x ARO = $200,000 x 0.5 = $100,000, and the value is in comparing control cost vs. risk reduction to make economically sound security investment decisions."
     },
     {
-      "card_id": "risk_024",
+      "card_id": "risk_029",
       "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization purchases a cybersecurity insurance policy that covers data breach response costs, legal fees, and regulatory fines up to $5 million. Which risk treatment strategy is being applied, and what is its key limitation?",
+      "question_text": "During a risk assessment, a phishing risk is rated as: likelihood = likely, impact = moderate. The security team implements MFA and security awareness training. After implementation, likelihood drops to unlikely while impact remains moderate. What risk treatment was applied, and what happened to the overall risk rating?",
       "choices": [
-        "Risk transference — the financial impact is transferred to the insurer, but the reputational and operational damage remains with the organization",
-        "Risk mitigation — the insurance policy reduces the likelihood of a breach occurring",
-        "Risk avoidance — by having insurance, the organization avoids all breach consequences",
-        "Risk acceptance — the organization accepts that breaches will happen and does nothing else"
+        "Risk mitigation \u2014 the control reduced the likelihood of the risk materializing, lowering the overall risk rating from elevated to moderate even though impact stayed the same",
+        "Risk avoidance \u2014 the organization eliminated the activity that caused the phishing risk",
+        "Risk transference \u2014 the likelihood was transferred to the security awareness training vendor",
+        "Risk acceptance \u2014 the organization accepted that phishing will happen and did nothing meaningful"
       ],
-      "answer": "Risk transference — the financial impact is transferred to the insurer, but the reputational and operational damage remains with the organization",
-      "explanation_correct": "Risk transference (or sharing) shifts the financial burden of a risk to a third party, typically through insurance or contracts. Cybersecurity insurance transfers the financial costs of a breach (response, legal, fines) to the insurer. However, the key limitation is that insurance only covers financial impact — reputational damage, loss of customer trust, operational disruption, and regulatory scrutiny remain with the organization. Transference does not reduce likelihood or eliminate all consequences.",
-      "explanation_wrong_common": "Insurance does not mitigate (it does not reduce likelihood or impact of the breach itself — it only covers costs after the fact). It is not avoidance (the organization still faces the risk) and not acceptance (active steps are taken to transfer financial risk). The critical distinction is that transference moves financial consequences but cannot transfer reputational or operational impacts."
+      "answer": "Risk mitigation \u2014 the control reduced the likelihood of the risk materializing, lowering the overall risk rating from elevated to moderate even though impact stayed the same",
+      "explanation_correct": "Risk mitigation reduces the likelihood and/or impact of a risk by implementing controls. MFA and security awareness training are mitigation controls \u2014 MFA reduces the chance that a successful phishing attack leads to account compromise (reducing likelihood), and training reduces the chance employees click phishing links (also reducing likelihood). The overall risk rating is a function of both likelihood and impact. By reducing likelihood from 'likely' to 'unlikely' while impact remains 'moderate', the overall risk rating drops. Note that mitigation does not eliminate risk entirely \u2014 residual risk remains, but it is lower than the inherent risk.",
+      "explanation_wrong_common": "This is not avoidance (the organization did not stop using email or eliminate the activity), not transference (no third party is absorbing the risk \u2014 training and MFA are internal controls), and not acceptance (active steps were taken to reduce risk). Mitigation specifically means reducing likelihood or impact through controls. In this case, likelihood was reduced. The risk still exists (residual risk) but at a lower level, which is the goal of mitigation."
     },
     {
-      "card_id": "risk_025",
+      "card_id": "risk_030",
       "topic": "Risk Management",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A hospital's risk assessment identifies that an outdated MRI scheduling system has a critical unpatched vulnerability. The system cannot be patched because the vendor no longer supports it, replacing it costs $800K and takes 6 months, and the vulnerability could allow an attacker to alter patient appointment data (integrity risk). The hospital operates 24/7 and cannot take the MRI scheduling system offline. Which combination of risk treatments provides the best immediate risk reduction while planning for long-term remediation?",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "An organization's risk appetite statement declares that any risk rated 'critical' requires executive board approval before acceptance. A vulnerability scan reveals a critical-rated risk in a legacy accounting system. The CISO recommends mitigation, but the system owner argues for acceptance because the system is being replaced in six months. According to the risk appetite policy, who has the authority to approve risk acceptance, and what should happen next?",
       "choices": [
-        "Implement compensating controls (network segmentation to isolate the system, strict firewall rules, enhanced logging and monitoring) now, transfer residual risk via cyber insurance, and plan system replacement as a long-term mitigation project",
-        "Accept the risk entirely since the system cannot be patched and the hospital cannot go offline",
-        "Avoid the risk by immediately decommissioning the MRI scheduling system and reverting to paper-based scheduling",
-        "Transfer the risk entirely to the vendor by threatening legal action for end-of-life support"
+        "The executive board must approve the acceptance \u2014 the system owner cannot unilaterally accept a critical risk; the CISO should escalate to the board with a recommendation and timeline for either mitigation or temporary compensating controls pending replacement",
+        "The system owner can accept the risk since they own the system and know it is being replaced",
+        "The CISO has final authority over all risk decisions regardless of the risk appetite statement",
+        "The vulnerability scanner automatically accepts the risk since the system is legacy"
       ],
-      "answer": "Implement compensating controls (network segmentation to isolate the system, strict firewall rules, enhanced logging and monitoring) now, transfer residual risk via cyber insurance, and plan system replacement as a long-term mitigation project",
-      "explanation_correct": "When a vulnerability cannot be directly remediated (no patch available) and the system cannot be taken offline, compensating controls provide the best immediate risk reduction. Network segmentation isolates the vulnerable system from the broader network, firewall rules restrict access to only necessary traffic, and enhanced logging/monitoring enables rapid detection of exploitation attempts. Cyber insurance transfers the residual financial risk. The long-term mitigation (system replacement) addresses the root cause. This multi-layered approach combines compensating controls (reduce), transference (share), and mitigation (eliminate) appropriately.",
-      "explanation_wrong_common": "Full risk acceptance is irresponsible when compensating controls can reduce the risk. Decommissioning the system (avoidance) would severely disrupt patient care — a worse outcome than the security risk. Legal threats against the vendor do not transfer the operational risk and do not protect the system. Only the combination of compensating controls + transference + planned remediation provides layered, practical risk reduction for an irreplaceable legacy system."
+      "answer": "The executive board must approve the acceptance \u2014 the system owner cannot unilaterally accept a critical risk; the CISO should escalate to the board with a recommendation and timeline for either mitigation or temporary compensating controls pending replacement",
+      "explanation_correct": "A risk appetite statement defines the level of risk an organization is willing to accept and who has authority to approve risk at each level. In this case, the policy explicitly requires executive board approval for critical risks. The system owner \u2014 regardless of their knowledge of the replacement timeline \u2014 does not have the authority to accept a critical risk. The CISO should escalate to the board, present the risk details, and recommend a course of action: either mitigate now, implement compensating controls (e.g., network isolation, enhanced monitoring) during the six-month transition, or formally accept with board approval. This ensures critical risks are managed at the appropriate governance level.",
+      "explanation_wrong_common": "The system owner cannot bypass the risk appetite policy \u2014 ownership of a system does not grant authority to accept risks above the defined threshold. The CISO does not have unilateral authority (the policy reserves critical risk acceptance for the board). A vulnerability scanner is a tool, not a decision-maker. The key principle is that risk acceptance must follow the organization's defined governance structure \u2014 higher-risk decisions require higher-level approval."
     },
     {
-      "card_id": "threat_021",
+      "card_id": "threat_026",
       "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What distinguishes an Advanced Persistent Threat (APT) from other types of threat actors?",
+      "question_text": "What is the key difference between a virus and a worm in terms of how they spread?",
       "choices": [
-        "APTs are well-resourced, highly skilled actors (often nation-state sponsored) who maintain long-term, stealthy access to a target network to exfiltrate data over time",
-        "APTs are amateur hackers who use automated tools to scan for vulnerable systems",
-        "APTs are insider threats who already have legitimate access to the network",
-        "APTs are opportunistic criminals who deploy ransomware for quick financial gain"
+        "A virus requires a host file or program to attach to and spreads when the host is executed; a worm is self-replicating and can spread across networks without user interaction or a host file",
+        "A virus spreads automatically across networks; a worm requires a user to open an infected file",
+        "A virus and a worm are identical \u2014 both are self-replicating network malware",
+        "A virus only affects mobile devices; a worm only affects desktop computers"
       ],
-      "answer": "APTs are well-resourced, highly skilled actors (often nation-state sponsored) who maintain long-term, stealthy access to a target network to exfiltrate data over time",
-      "explanation_correct": "An Advanced Persistent Threat (APT) is characterized by three key attributes: Advanced (using sophisticated techniques and zero-day exploits), Persistent (maintaining long-term, stealthy access to the target), and Threat (a well-resourced, organized adversary, often nation-state or state-sponsored). APTs prioritize stealth and data exfiltration over immediate disruption — their goal is typically espionage, intellectual property theft, or long-term surveillance rather than quick financial gain.",
-      "explanation_wrong_common": "APTs are not amateurs (that describes script kiddies), not insiders (though APTs may recruit insiders), and not opportunistic criminals seeking quick payouts (that describes typical ransomware operators). The defining characteristics are sophistication, stealth, persistence, and a long-term strategic objective — not speed or opportunism."
+      "answer": "A virus requires a host file or program to attach to and spreads when the host is executed; a worm is self-replicating and can spread across networks without user interaction or a host file",
+      "explanation_correct": "A virus is a type of malware that attaches itself to a legitimate host file or program. It cannot execute or spread on its own \u2014 it requires a user to run the infected host file, at which point the virus code executes and can infect other files. A worm is standalone malware that self-replicates and spreads across networks without needing a host file or user action. Worms exploit network vulnerabilities, email systems, or removable media to propagate automatically. This distinction matters because worms can spread much faster (e.g., Conficker infected millions of systems in days) while viruses spread more slowly but can be harder to detect since they hide in legitimate files.",
+      "explanation_wrong_common": "The descriptions are not reversed \u2014 viruses need a host and user action; worms are self-propagating. They are not identical (the spreading mechanism is the key differentiator). Neither is limited to a specific device type. The fundamental difference is autonomy: a worm spreads independently, while a virus depends on host file execution. This is why worms are typically more dangerous in terms of speed of spread, while viruses are more persistent and harder to fully eradicate."
     },
     {
-      "card_id": "threat_022",
+      "card_id": "threat_027",
       "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a hacktivist and a cybercriminal in terms of motivation?",
+      "question_text": "What is social engineering, and why is it effective even when strong technical security controls are in place?",
       "choices": [
-        "Hacktivists are motivated by political, social, or ideological causes; cybercriminals are motivated by financial gain",
-        "Hacktivists are motivated by financial gain; cybercriminals are motivated by political causes",
-        "Hacktivists and cybercriminals have identical motivations — both seek profit",
-        "Hacktivists are always nation-state actors; cybercriminals are always lone individuals"
+        "Social engineering manipulates human psychology (trust, authority, urgency, fear) to trick people into revealing information or performing actions that bypass technical controls \u2014 it targets the human element, which cannot be patched like software",
+        "Social engineering is a technical attack that exploits software vulnerabilities in social media platforms",
+        "Social engineering is a type of encryption attack that breaks social network authentication",
+        "Social engineering is a network-level attack that manipulates social protocol traffic"
       ],
-      "answer": "Hacktivists are motivated by political, social, or ideological causes; cybercriminals are motivated by financial gain",
-      "explanation_correct": "Hacktivists (hacker + activist) use cyber attacks to advance political, social, or ideological causes. Their attacks often involve website defacement, DDoS attacks, or data leaks meant to embarrass or disrupt their targets (e.g., Anonymous, Lizard Squad). Cybercriminals are motivated primarily by financial gain — they steal data for sale, deploy ransomware, or commit fraud for monetary profit. Understanding motivation helps predict attack methods and targets.",
-      "explanation_wrong_common": "The motivations are not reversed, nor are they identical. While there can be overlap (a hacktivist may also profit), the primary distinguishing factor is motivation: ideology (hacktivist) vs profit (cybercriminal). Neither is exclusively nation-state or lone individual — both can operate in groups. Motivation is the key differentiator, not skill level or organization size."
+      "answer": "Social engineering manipulates human psychology (trust, authority, urgency, fear) to trick people into revealing information or performing actions that bypass technical controls \u2014 it targets the human element, which cannot be patched like software",
+      "explanation_correct": "Social engineering is the art of manipulating people into performing actions or divulging confidential information. It exploits fundamental human traits: the tendency to trust authority figures, the desire to be helpful, the response to urgency or fear, and curiosity. It is effective against technical controls because no firewall, encryption, or antivirus can stop a user who voluntarily gives away their credentials or clicks a link. The human is often the weakest link \u2014 you can patch software, but you cannot 'patch' human psychology. This is why security awareness training, MFA (which limits the value of stolen credentials), and least-privilege access are critical defenses alongside technical controls.",
+      "explanation_wrong_common": "Social engineering is not a technical attack on social media platforms, not an encryption attack, and not a network protocol attack. It is fundamentally a human-targeted attack. The reason it bypasses technical controls is that the attacker gets the legitimate user to perform the action \u2014 the system sees an authorized user doing something they're allowed to do. Common techniques include phishing, pretexting, baiting, tailgating, and quid pro quo. The defense is a combination of training, processes (verification procedures), and technical controls that limit the damage of successful social engineering."
     },
     {
-      "card_id": "threat_023",
+      "card_id": "threat_028",
       "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A disgruntled former system administrator, whose access was supposed to be revoked on their last day, uses a backdoor account they created before leaving to log into the company's customer database and download sensitive records. What type of threat actor is this, and what was the failure in the offboarding process?",
+      "question_text": "An attacker sends emails with a malicious PDF attachment to 10,000 employees across multiple companies. The PDF exploits a known vulnerability in a popular PDF reader. This is an example of what type of attack, and what is the single most effective preventative control?",
       "choices": [
-        "Insider threat (malicious insider); the failure was incomplete access revocation — dormant/backdoor accounts were not identified and disabled during offboarding",
-        "External threat actor; the failure was a weak firewall that allowed the attacker through",
-        "APT; the failure was lack of zero-day exploit detection",
-        "Hacktivist; the failure was not monitoring the company's social media for ideological threats"
+        "Mass phishing with a known exploit \u2014 the most effective preventative control is timely patch management of the PDF reader combined with email filtering to block malicious attachments",
+        "Spear phishing \u2014 the most effective control is blocking all email from external senders",
+        "Watering hole attack \u2014 the most effective control is DNS filtering",
+        "Supply chain attack \u2014 the most effective control is vendor security assessments"
       ],
-      "answer": "Insider threat (malicious insider); the failure was incomplete access revocation — dormant/backdoor accounts were not identified and disabled during offboarding",
-      "explanation_correct": "This is a malicious insider threat — the attacker was a former employee with legitimate knowledge of the systems who used unauthorized access they pre-positioned. The offboarding failure was incomplete access revocation: the official account was disabled, but the backdoor account (created covertly) was not discovered. Proper offboarding should include auditing for unauthorized accounts, reviewing recently created accounts, and revoking all access including SSH keys, VPN credentials, and API tokens — not just the primary user account.",
-      "explanation_wrong_common": "This is not an external attacker (the threat actor had insider knowledge and pre-positioned access), not an APT (the attacker is a known former employee, not a sophisticated nation-state group), and not a hacktivist (the motivation appears to be personal grievance, not ideology). The root cause is an offboarding process gap — backdoor account detection — not a network perimeter failure."
+      "answer": "Mass phishing with a known exploit \u2014 the most effective preventative control is timely patch management of the PDF reader combined with email filtering to block malicious attachments",
+      "explanation_correct": "This is mass phishing (not targeted) using a known vulnerability (not a zero-day) in a PDF reader. The email is sent broadly to 10,000 employees across multiple companies, which is the hallmark of mass phishing. The key detail is 'known vulnerability' \u2014 since the vulnerability is already known, a patch exists. The most effective prevention is patch management (update the PDF reader to eliminate the vulnerability) combined with email filtering (block or quarantine the malicious attachment before it reaches users). Security awareness training is a secondary defense, but since the exploit is in the PDF reader (not user behavior \u2014 merely opening a PDF is a normal action), patching is the primary control.",
+      "explanation_wrong_common": "This is not spear phishing (which is targeted at specific individuals, not 10,000 random employees). It is not a watering hole attack (which compromises a website, not email). It is not a supply chain attack (which targets software vendors or suppliers). The critical insight is that the vulnerability is 'known' \u2014 meaning a patch is available. If it were a zero-day, patching would not help and defense-in-depth (sandboxing, EDR) would be more critical. With a known vulnerability, patch management is the highest-impact control."
     },
     {
-      "card_id": "threat_024",
+      "card_id": "threat_029",
       "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security analyst notices a series of phishing emails targeting the company's finance department. The emails appear to come from the CEO and urgently request wire transfers to a 'new vendor.' The sender addresses are lookalike domains (e.g., ceo@company-lnvoice.com instead of ceo@company-invoice.com). What attack vector and social engineering technique is being used?",
+      "question_text": "A security team discovers that a popular industry news website frequently visited by their employees has been compromised. Attackers injected an exploit kit into the site that automatically targets unpatched browser vulnerabilities when employees visit. What attack vector is this, and what combination of defenses should the organization deploy?",
       "choices": [
-        "Spear phishing using CEO fraud (whaling) with domain typosquatting — targeting specific individuals in finance with authority to authorize transfers",
-        "Mass phishing using generic emails sent to all employees regardless of role",
-        "Smishing (SMS phishing) targeting employees' personal phones",
-        "Watering hole attack targeting a website the finance team frequently visits"
+        "Watering hole attack \u2014 deploy browser patch management, URL/web content filtering, network segmentation, and EDR to detect browser exploitation attempts",
+        "Spear phishing \u2014 deploy email filtering and security awareness training",
+        "DNS poisoning \u2014 deploy DNSSEC and change DNS providers",
+        "Insider threat \u2014 deploy user behavior analytics and access reviews"
       ],
-      "answer": "Spear phishing using CEO fraud (whaling) with domain typosquatting — targeting specific individuals in finance with authority to authorize transfers",
-      "explanation_correct": "This is a spear phishing attack using whaling (CEO fraud) — a targeted social engineering attack where the attacker impersonates a high-ranking executive (the CEO) to pressure employees with financial authority into making wire transfers. The lookalike domain (typosquatting/homoglyph attack) makes the email appear legitimate at a glance. Spear phishing is targeted (specific finance employees, not mass), and whaling specifically targets high-value victims or impersonates executives. Business Email Compromise (BEC) is the broader category for this attack type.",
-      "explanation_wrong_common": "This is not mass phishing (the emails are targeted at the finance department specifically), not smishing (email, not SMS), and not a watering hole attack (no compromised website is involved). The combination of executive impersonation + lookalike domains + targeting employees with transfer authority is the hallmark of whaling/CEO fraud via spear phishing."
+      "answer": "Watering hole attack \u2014 deploy browser patch management, URL/web content filtering, network segmentation, and EDR to detect browser exploitation attempts",
+      "explanation_correct": "A watering hole attack is when an attacker compromises a website that the target audience frequently visits, then uses it to deliver exploits or malware to those visitors. The attacker does not target the victims directly \u2014 they 'poison the watering hole' and wait for victims to come to it. Defenses include: (1) browser patch management to eliminate known vulnerabilities the exploit kit targets, (2) URL/web content filtering to block or alert on access to compromised sites, (3) network segmentation to limit lateral movement if a browser is exploited, and (4) EDR to detect and respond to browser exploitation. The challenge is that employees visit the site legitimately, so outright blocking may disrupt business \u2014 a layered approach is essential.",
+      "explanation_wrong_common": "This is not spear phishing (no direct email targeting), not DNS poisoning (the website itself is compromised, not the DNS resolution), and not an insider threat (the attacker is external). The defining characteristic of a watering hole attack is that the attacker compromises a trusted third-party resource that the targets naturally visit. This makes it harder to defend than phishing because the user is visiting a legitimate site they have reason to trust. Defense requires both preventing exploitation (patching) and detecting it (EDR, monitoring)."
     },
     {
-      "card_id": "threat_025",
+      "card_id": "threat_030",
       "topic": "Threat Actors and Attack Vectors",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A defense contractor discovers that an APT group has been embedded in their network for 14 months. The attackers entered through a spear phishing email to an engineer, established persistence via scheduled tasks, moved laterally using stolen credentials obtained via Mimikatz, and exfiltrated classified design documents through DNS tunneling to evade DLP controls. Which sequence of attack phases best describes this intrusion, and what defensive control would have been most effective at the earliest stage?",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A security team notices unusual outbound DNS traffic: queries to a domain with long, seemingly random subdomain strings, occurring at regular intervals with low volume. No other anomalous traffic is detected. What attack technique is most likely being used, and what should the team investigate to confirm it?",
       "choices": [
-        "Phishing (initial access) → Persistence (scheduled tasks) → Credential theft (Mimikatz) → Lateral movement → Data exfiltration (DNS tunneling); security awareness training + email filtering would have been most effective at the initial access stage",
-        "Network scan → Brute force → Malware deployment → Data destruction; a firewall would have been most effective",
-        "Physical breach → Hardware tampering → Data theft; biometric access controls would have been most effective",
-        "Insider collusion → Data copy → Physical removal; badge logging would have been most effective"
+        "DNS tunneling for data exfiltration \u2014 the team should analyze the DNS query patterns, decode the subdomain strings (which may contain encoded stolen data), check DNS response sizes (which may contain command-and-control instructions), and review what process is generating the DNS queries",
+        "DNS amplification DDoS \u2014 the team should block all outbound DNS traffic immediately",
+        "Normal DNS behavior \u2014 long subdomains are common in CDN traffic and require no investigation",
+        "Malware spreading via DNS records \u2014 the team should disable the internal DNS server"
       ],
-      "answer": "Phishing (initial access) → Persistence (scheduled tasks) → Credential theft (Mimikatz) → Lateral movement → Data exfiltration (DNS tunneling); security awareness training + email filtering would have been most effective at the initial access stage",
-      "explanation_correct": "This intrusion follows the classic APT kill chain: spear phishing for initial access, scheduled tasks for persistence, Mimikatz for credential theft, lateral movement using those credentials, and DNS tunneling for covert exfiltration. The earliest and most effective intervention point is the initial access stage — robust email filtering (to block the phishing email) and security awareness training (so the engineer recognizes and reports the phishing attempt) would have prevented the entire chain. Each subsequent phase becomes harder to detect and stop, making prevention at initial access the highest-impact control.",
-      "explanation_wrong_common": "This was not a network scan/brute force (the entry was via phishing), not a physical breach (it was a remote intrusion), and not insider collusion (the engineer was an unwitting victim). The kill chain begins with social engineering, not technical exploitation. While controls at every stage matter (EDR for persistence detection, credential guarding for Mimikatz, network monitoring for lateral movement, DNS analysis for tunneling), prevention at initial access has the highest return on investment because it stops the chain before it starts."
+      "answer": "DNS tunneling for data exfiltration \u2014 the team should analyze the DNS query patterns, decode the subdomain strings (which may contain encoded stolen data), check DNS response sizes (which may contain command-and-control instructions), and review what process is generating the DNS queries",
+      "explanation_correct": "DNS tunneling encodes data within DNS queries and responses to bypass firewalls and DLP controls. Stolen data is encoded into the subdomain portion of DNS queries (e.g., stolenfile-base64encoded.attackerdomain.com), and C2 instructions can be returned in TXT or CNAME records in the DNS response. The indicators \u2014 long random subdomains, regular intervals, low volume \u2014 are classic DNS tunneling signatures. To confirm: analyze query patterns (are subdomains consistent length/encoding?), attempt to decode subdomain strings, check response sizes (tunneling responses are typically larger than normal), and identify the originating process. DNS tunneling is popular because DNS is almost always allowed through firewalls.",
+      "explanation_wrong_common": "This is not a DNS amplification DDoS (which involves large inbound traffic using spoofed source IPs, not outbound low-volume queries). It is not normal CDN behavior (CDN subdomains follow patterns, not random strings at regular intervals). Disabling the DNS server would disrupt business. The key indicators pointing to tunneling are: (1) long random subdomains = encoded data, (2) regular intervals = scheduled exfiltration, (3) low volume = stealth. DNS tunneling exploits the fact that DNS is rarely blocked, making it an attractive covert channel for data theft and C2 communication."
     },
     {
-      "card_id": "arch_021",
+      "card_id": "arch_026",
       "topic": "Security Architecture",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the Zero Trust security model, and how does it differ from a traditional perimeter-based security model?",
+      "question_text": "What is a honeypot, and how does it contribute to an organization's security architecture?",
       "choices": [
-        "Zero Trust assumes no user or device is trusted by default, requiring continuous authentication and authorization for every access request regardless of network location; traditional perimeter security trusts everything inside the network boundary",
-        "Zero Trust requires zero security controls, trusting users to self-regulate; perimeter security uses firewalls only",
-        "Zero Trust encrypts all data at rest; perimeter security encrypts data in transit",
-        "Zero Trust only applies to cloud environments; perimeter security only applies to on-premises networks"
+        "A honeypot is a decoy system or resource designed to attract attackers, gather intelligence about their methods, and divert them from real assets \u2014 it serves as an early warning and research tool",
+        "A honeypot is a type of encryption algorithm used to protect databases",
+        "A honeypot is a firewall rule that blocks all incoming traffic by default",
+        "A honeypot is a backup system that creates honey copies of critical data"
       ],
-      "answer": "Zero Trust assumes no user or device is trusted by default, requiring continuous authentication and authorization for every access request regardless of network location; traditional perimeter security trusts everything inside the network boundary",
-      "explanation_correct": "Zero Trust is a security model based on the principle 'never trust, always verify.' It eliminates implicit trust based on network location — even users and devices inside the corporate network must authenticate and be authorized for every access request. Core principles include identity-based access, least privilege, micro-segmentation, and continuous monitoring. Traditional perimeter security (castle-and-moat) assumes that anything inside the network boundary is trustworthy, which fails once an attacker breaches the perimeter.",
-      "explanation_wrong_common": "Zero Trust does not mean 'zero controls' (it requires more controls, just applied differently). It is not about encryption location, and it is not limited to cloud or on-premises — it is an architectural philosophy applicable to any environment. The fundamental shift is from location-based trust (inside = trusted) to identity-based trust (verify every request, regardless of location)."
+      "answer": "A honeypot is a decoy system or resource designed to attract attackers, gather intelligence about their methods, and divert them from real assets \u2014 it serves as an early warning and research tool",
+      "explanation_correct": "A honeypot is a security decoy \u2014 a system, service, or data resource that appears legitimate and valuable but has no real production purpose. Any interaction with a honeypot is by definition suspicious (since no legitimate user should ever access it). Honeypots serve multiple purposes: (1) early warning \u2014 an alert from a honeypot means an attacker is probing the network, (2) intelligence gathering \u2014 logging attacker techniques, tools, and behaviors helps improve defenses, (3) diversion \u2014 attackers waste time on the decoy instead of real systems. Types include research honeypots (high-interaction, for studying attackers) and production honeypots (low-interaction, for detecting intrusions). Honeypots are part of a deception-based defense strategy.",
+      "explanation_wrong_common": "A honeypot is not an encryption algorithm, not a firewall rule, and not a backup system. The name 'honeypot' is metaphorical \u2014 like a pot of honey that attracts bears, the decoy attracts attackers. The key principle is that any traffic to a honeypot is inherently malicious (no legitimate reason to access a fake system), making it a high-fidelity detection tool with very low false positive rates. Honeypots complement but do not replace traditional security controls."
     },
     {
-      "card_id": "arch_022",
+      "card_id": "arch_027",
       "topic": "Security Architecture",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is defense in depth, and why is it important in cybersecurity?",
+      "question_text": "What is the principle of least privilege, and how does it apply to both user accounts and system processes?",
       "choices": [
-        "Defense in depth is a strategy that uses multiple layers of security controls so that if one layer fails, others remain to protect the system; it is important because no single control is 100% effective",
-        "Defense in depth means using only encryption to protect data at all depths of the network",
-        "Defense in depth is a military strategy unrelated to cybersecurity",
-        "Defense in depth means deploying a single very strong firewall deep in the network core"
+        "Least privilege grants users and processes only the minimum access rights and permissions needed to perform their legitimate tasks \u2014 nothing more \u2014 reducing the attack surface and limiting damage from compromise",
+        "Least privilege means giving all users the lowest possible security clearance regardless of their job role",
+        "Least privilege means users must prove their identity with at least one authentication factor",
+        "Least privilege means storing the least sensitive data on the most secure servers"
       ],
-      "answer": "Defense in depth is a strategy that uses multiple layers of security controls so that if one layer fails, others remain to protect the system; it is important because no single control is 100% effective",
-      "explanation_correct": "Defense in depth is a layered security approach where multiple independent controls protect assets at different levels — physical security, network perimeter (firewall), network segmentation, host security (hardening, EDR), application security, and data security (encryption). If one control fails or is bypassed, other layers continue to provide protection. It is important because every security control has weaknesses, and attackers often find ways around individual controls — layering reduces the probability of a complete breach.",
-      "explanation_wrong_common": "Defense in depth is not about encryption alone, not exclusive to the military (though the concept originated there, it is a core cybersecurity principle), and not about a single strong control. The essence is redundancy and layering — diverse control types across multiple layers so that the failure of any single control does not result in total compromise."
+      "answer": "Least privilege grants users and processes only the minimum access rights and permissions needed to perform their legitimate tasks \u2014 nothing more \u2014 reducing the attack surface and limiting damage from compromise",
+      "explanation_correct": "The principle of least privilege (PoLP) states that every user, process, program, or system should have only the minimum privileges necessary to accomplish its legitimate purpose. For users: a marketing employee does not need access to the financial database; a developer does not need domain admin rights. For processes: a web server should not run as root/administrator \u2014 it should run as a limited service account. PoLP reduces risk in two ways: (1) attack surface reduction \u2014 fewer permissions mean fewer ways to exploit, and (2) blast radius limitation \u2014 if an account or process is compromised, the attacker only has limited access. Implementation includes role-based access control (RBAC), just-in-time privilege elevation, and regular access reviews.",
+      "explanation_wrong_common": "Least privilege does not mean giving everyone the lowest clearance (it means the minimum needed for their specific role \u2014 which varies). It is not about authentication factors (that is AAA/MFA). It is not about data classification. The core concept is 'minimum necessary' \u2014 not 'minimum possible.' A system administrator legitimately needs admin rights, but only on the systems they manage, only when performing admin tasks, and not on systems outside their scope. Over-privilege (giving more access than needed) is one of the most common security gaps."
     },
     {
-      "card_id": "arch_023",
+      "card_id": "arch_028",
       "topic": "Security Architecture",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company hosts its public-facing web server in a DMZ (demilitarized zone) and its internal database server on the internal network. The web server needs to query the database. A security architect recommends that only the web server's IP can connect to the database on port 3306, and the database server has no direct internet access. Which security architecture principles are being applied?",
+      "question_text": "A company deploys a reverse proxy with a Web Application Firewall (WAF) in front of their public-facing web application. The WAF inspects incoming HTTP requests and blocks SQL injection and XSS attempts. What security architecture concept does this represent, and what additional benefit does the reverse proxy provide beyond security filtering?",
       "choices": [
-        "Network segmentation with a DMZ, principle of least privilege (only the web server can access the database on a specific port), and attack surface reduction (no direct internet access for the database)",
-        "Zero Trust architecture with continuous authentication for every database query",
-        "Defense in depth using only encryption to protect database traffic",
-        "Risk transference by placing the database in the DMZ alongside the web server"
+        "Defense in depth \u2014 the WAF adds a security layer (application-layer filtering) distinct from network firewalls; the reverse proxy also hides the real IP of the backend web server, provides SSL/TLS termination, and can load balance across multiple backend servers",
+        "Zero Trust \u2014 the WAF authenticates every user before granting access to the web application",
+        "Network segmentation \u2014 the WAF creates a VLAN between the internet and the web server",
+        "Risk transference \u2014 the reverse proxy transfers security responsibility to the WAF vendor"
       ],
-      "answer": "Network segmentation with a DMZ, principle of least privilege (only the web server can access the database on a specific port), and attack surface reduction (no direct internet access for the database)",
-      "explanation_correct": "Three principles are at work: (1) Network segmentation — the DMZ isolates public-facing servers from the internal network, limiting what an attacker can reach if the web server is compromised. (2) Least privilege — the firewall rule restricts database access to only the web server's IP on a specific port, not any internal host. (3) Attack surface reduction — the database has no internet route, meaning external attackers cannot reach it directly. Together these controls ensure that even if the web server is breached, the database is not directly exposed to the internet and is only reachable from one known host.",
-      "explanation_wrong_common": "This is not Zero Trust (which would require continuous identity verification for every query, not just network-level IP filtering). It is not defense in depth via encryption alone (segmentation, not encryption, is the primary control described). The database is NOT in the DMZ (it is on the internal network), so this is not risk transference. The scenario specifically demonstrates segmentation + least privilege + attack surface reduction."
+      "answer": "Defense in depth \u2014 the WAF adds a security layer (application-layer filtering) distinct from network firewalls; the reverse proxy also hides the real IP of the backend web server, provides SSL/TLS termination, and can load balance across multiple backend servers",
+      "explanation_correct": "A WAF represents defense in depth \u2014 it adds a dedicated application-layer security control that complements (not replaces) network firewalls, host security, and secure coding practices. Network firewalls filter by IP/port (layers 3-4), while a WAF inspects HTTP content (layer 7) for SQL injection, XSS, and other application attacks. The reverse proxy provides additional benefits: (1) IP hiding \u2014 the backend server's real IP is never exposed to the internet, (2) SSL/TLS termination \u2014 the proxy handles encryption, offloading CPU work from backend servers, (3) load balancing \u2014 distributing traffic across multiple backend instances for availability and performance. These are infrastructure benefits layered on top of the security function.",
+      "explanation_wrong_common": "This is not Zero Trust (the WAF does not authenticate users \u2014 it filters requests; Zero Trust requires identity-based verification). It is not network segmentation (though the proxy does sit between internet and backend, the primary concept is defense in depth at the application layer). It is not risk transference (no third party is absorbing risk \u2014 the WAF is a control the organization operates). The key insight is that a WAF addresses a different layer than network firewalls \u2014 that layering of controls at different levels is the essence of defense in depth."
     },
     {
-      "card_id": "arch_024",
+      "card_id": "arch_029",
       "topic": "Security Architecture",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization is implementing Zero Trust architecture. They want to ensure that a user accessing a sensitive financial application from their laptop is continuously evaluated for access. Which combination of controls best implements the Zero Trust principle of continuous verification?",
+      "question_text": "An organization deploys a bastion host (jump server) for system administrators to access internal servers. All SSH connections to internal servers must route through the bastion host, which requires MFA, records full session logs, and restricts which internal servers each admin can reach. What combination of security principles does this architecture implement?",
       "choices": [
-        "Multi-factor authentication at login, device posture checking (is the laptop managed, patched, and running EDR?), contextual access policies (user role, location, time), and continuous session monitoring with re-authentication for sensitive actions",
-        "A strong firewall at the network perimeter and VPN access for all remote users",
-        "Single sign-on with a long session timeout (8 hours) so users do not need to re-authenticate frequently",
-        "Network segmentation alone, placing the financial application on an isolated VLAN"
+        "Least privilege (per-admin server access restrictions), defense in depth (MFA + logging + network path restriction), attack surface reduction (only one exposed entry point instead of all servers), and non-repudiation (session logging ties actions to authenticated admins)",
+        "Zero Trust (the bastion host continuously verifies every packet)",
+        "Risk avoidance (by not allowing any remote access at all)",
+        "Network segmentation only (the bastion host creates a DMZ)"
       ],
-      "answer": "Multi-factor authentication at login, device posture checking (is the laptop managed, patched, and running EDR?), contextual access policies (user role, location, time), and continuous session monitoring with re-authentication for sensitive actions",
-      "explanation_correct": "Zero Trust requires continuous verification using multiple signals: who the user is (MFA), the health/trust of their device (posture checking), contextual factors (role, location, time of access), and ongoing session monitoring with step-up authentication for sensitive operations. This multi-signal approach means access is never granted permanently — it is continuously re-evaluated. If any signal degrades (e.g., device becomes non-compliant, user changes location), access can be revoked or restricted in real time.",
-      "explanation_wrong_common": "A firewall + VPN is traditional perimeter security, not Zero Trust (it grants broad network access after a single authentication). A long SSO session timeout is the opposite of continuous verification (it reduces re-authentication). VLAN segmentation alone is a network control, not identity-centric verification. Zero Trust is about continuous, multi-factor evaluation of every access request — not a single network boundary or session."
+      "answer": "Least privilege (per-admin server access restrictions), defense in depth (MFA + logging + network path restriction), attack surface reduction (only one exposed entry point instead of all servers), and non-repudiation (session logging ties actions to authenticated admins)",
+      "explanation_correct": "A bastion host architecture implements multiple security principles simultaneously. Least privilege: each admin can only reach specific servers they're authorized for, not the entire network. Defense in depth: multiple controls layer \u2014 MFA (authentication), network routing (only via bastion), session logging (monitoring), and access restrictions (authorization). Attack surface reduction: instead of exposing all internal servers to remote access (each is a potential entry point), only the bastion host is exposed \u2014 a single hardened, monitored chokepoint. Non-repudiation: session logs tied to MFA-authenticated sessions mean admin actions are attributable \u2014 an admin cannot deny having performed actions recorded under their authenticated session.",
+      "explanation_wrong_common": "This is not purely Zero Trust (though it has Zero Trust elements like MFA and per-request authorization, the primary architecture is a bastion host implementing multiple classical security principles). It is not risk avoidance (remote access is still permitted, just controlled \u2014 avoidance would mean no remote access at all). It is more than just network segmentation (the bastion provides authentication, logging, and access control beyond simple network isolation). The value of a bastion host is that it concentrates access through a single, hardened, monitored point \u2014 making it both easier to secure and easier to audit."
     },
     {
-      "card_id": "arch_025",
+      "card_id": "arch_030",
       "topic": "Security Architecture",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A cloud-native company hosts microservices across multiple cloud providers. An attacker compromises a single microservice via a vulnerable API endpoint. Under a traditional flat network architecture, this compromise could allow lateral movement to all other microservices. Under a Zero Trust architecture with micro-segmentation, what prevents this lateral movement, and what trade-offs does the organization face?",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company is transitioning from a traditional perimeter firewall architecture to Zero Trust. Their security team argues the existing firewall should be removed because Zero Trust makes it obsolete. How should the firewall be treated in a Zero Trust environment, and what role does it still play?",
       "choices": [
-        "Each microservice is in its own micro-segment with its own identity and access policies — services must mutually authenticate (e.g., via mTLS) and be explicitly authorized to communicate; trade-offs include increased operational complexity, performance overhead from per-connection authentication, and difficulty in troubleshooting service-to-service connectivity",
-        "A single centralized firewall blocks all lateral movement automatically with no trade-offs",
-        "Encryption of all traffic prevents the attacker from understanding other services, with no performance trade-offs",
-        "Moving all services to a single cloud provider eliminates lateral movement risk entirely"
+        "The firewall should be retained and integrated into Zero Trust as one of multiple enforcement points \u2014 it still provides network-layer filtering, traffic segmentation, and a first line of defense, but should no longer be the sole trust boundary; Zero Trust adds identity-based verification on top of network controls rather than replacing them",
+        "The firewall must be completely removed \u2014 Zero Trust makes all network-layer controls obsolete",
+        "The firewall should become the only authentication mechanism for Zero Trust",
+        "The firewall should be replaced with a VPN, which is the foundation of Zero Trust"
       ],
-      "answer": "Each microservice is in its own micro-segment with its own identity and access policies — services must mutually authenticate (e.g., via mTLS) and be explicitly authorized to communicate; trade-offs include increased operational complexity, performance overhead from per-connection authentication, and difficulty in troubleshooting service-to-service connectivity",
-      "explanation_correct": "In a Zero Trust micro-segmented architecture, each microservice operates in its own isolated segment with a unique identity. Services must mutually authenticate (typically via mutual TLS / mTLS) and be explicitly authorized before communicating — there is no implicit trust based on network co-location. If one service is compromised, the attacker cannot reach other services without separately authenticating to each one. The trade-offs are real: per-connection authentication adds latency, managing hundreds of service identities and policies increases operational complexity, and debugging service mesh connectivity issues is significantly harder than in a flat network. The security benefit (blast radius containment) must be weighed against these costs.",
-      "explanation_wrong_common": "No single firewall automatically prevents all lateral movement without trade-offs — micro-segmentation requires identity-level controls, not just network rules. Encryption alone prevents eavesdropping but does not prevent an authenticated attacker from moving between services. Consolidating to one cloud provider does not eliminate lateral movement — the risk exists within any shared environment. Only micro-segmentation with mutual authentication contains the blast radius, and the trade-offs (complexity, performance, troubleshooting) are an inherent part of the architecture."
+      "answer": "The firewall should be retained and integrated into Zero Trust as one of multiple enforcement points \u2014 it still provides network-layer filtering, traffic segmentation, and a first line of defense, but should no longer be the sole trust boundary; Zero Trust adds identity-based verification on top of network controls rather than replacing them",
+      "explanation_correct": "Zero Trust does not eliminate the firewall \u2014 it changes the firewall's role. In a traditional model, the firewall is the primary trust boundary: if traffic passes the firewall, it is trusted. In Zero Trust, the firewall becomes one enforcement point among many. It still provides valuable functions: network-layer filtering (blocking known-bad IPs, port restrictions), traffic segmentation (limiting lateral movement), and rate limiting. Zero Trust adds identity-based verification (who is the user, what is the device posture, is the request contextually appropriate) on top of these network controls. Defense in depth teaches us that controls should complement, not replace, each other. Removing the firewall would eliminate a valuable layer.",
+      "explanation_wrong_common": "The firewall should not be removed \u2014 Zero Trust is additive, not subtractive. Network-layer controls remain valuable even in a Zero Trust environment. The firewall should not become the sole authentication mechanism (Zero Trust requires identity-based verification from identity providers, not just network rules). A VPN is NOT the foundation of Zero Trust \u2014 in fact, a VPN grants broad network access after a single authentication, which is the opposite of Zero Trust's per-request, least-privilege model. The firewall transitions from 'the trust boundary' to 'one of many enforcement points,' working alongside identity, device posture, and application-level controls."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "framework_021", "next_due_at": "2026-10-04" },
-    { "card_id": "framework_022", "next_due_at": "2026-10-04" },
-    { "card_id": "framework_023", "next_due_at": "2026-10-05" },
-    { "card_id": "framework_024", "next_due_at": "2026-10-05" },
-    { "card_id": "framework_025", "next_due_at": "2026-10-05" },
-    { "card_id": "risk_021", "next_due_at": "2026-10-04" },
-    { "card_id": "risk_022", "next_due_at": "2026-10-04" },
-    { "card_id": "risk_023", "next_due_at": "2026-10-05" },
-    { "card_id": "risk_024", "next_due_at": "2026-10-05" },
-    { "card_id": "risk_025", "next_due_at": "2026-10-05" },
-    { "card_id": "threat_021", "next_due_at": "2026-10-04" },
-    { "card_id": "threat_022", "next_due_at": "2026-10-04" },
-    { "card_id": "threat_023", "next_due_at": "2026-10-05" },
-    { "card_id": "threat_024", "next_due_at": "2026-10-05" },
-    { "card_id": "threat_025", "next_due_at": "2026-10-05" },
-    { "card_id": "arch_021", "next_due_at": "2026-10-04" },
-    { "card_id": "arch_022", "next_due_at": "2026-10-04" },
-    { "card_id": "arch_023", "next_due_at": "2026-10-05" },
-    { "card_id": "arch_024", "next_due_at": "2026-10-05" },
-    { "card_id": "arch_025", "next_due_at": "2026-10-05" }
+    {
+      "card_id": "framework_026",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "framework_027",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "framework_028",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "framework_029",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "framework_030",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "risk_026",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "risk_027",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "risk_028",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "risk_029",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "risk_030",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "threat_026",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "threat_027",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "threat_028",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "threat_029",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "threat_030",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "arch_026",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "arch_027",
+      "next_due_at": "2026-10-07"
+    },
+    {
+      "card_id": "arch_028",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "arch_029",
+      "next_due_at": "2026-10-08"
+    },
+    {
+      "card_id": "arch_030",
+      "next_due_at": "2026-10-08"
+    }
   ]
 }
