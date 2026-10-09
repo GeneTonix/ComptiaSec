@@ -1,406 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "framework_026",
-      "topic": "Security Frameworks and Standards",
+      "card_id": "crypto_031",
+      "topic": "Cryptography and Encryption",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is COBIT and what is its primary focus in an organization?",
+      "question_text": "What is the fundamental difference between symmetric and asymmetric encryption?",
       "choices": [
-        "COBIT is an IT governance and management framework that aligns IT goals with business objectives, focusing on governance, risk management, and compliance",
-        "COBIT is a network security protocol for encrypting traffic between data centers",
-        "COBIT is a malware detection framework that uses behavioral analysis",
-        "COBIT is a physical security standard for data center access control"
+        "Symmetric encryption uses the same key for both encryption and decryption; asymmetric encryption uses a pair of keys — a public key for encryption and a private key for decryption",
+        "Symmetric encryption uses two keys; asymmetric encryption uses only one key",
+        "Symmetric encryption is only used for email; asymmetric encryption is only used for file storage",
+        "Symmetric encryption is slower but more secure; asymmetric encryption is faster but less secure"
       ],
-      "answer": "COBIT is an IT governance and management framework that aligns IT goals with business objectives, focusing on governance, risk management, and compliance",
-      "explanation_correct": "COBIT (Control Objectives for Information and Related Technologies) is a framework developed by ISACA for IT governance and management. It provides a comprehensive set of controls, processes, and metrics to help organizations align IT with business goals, manage IT-related risks, and ensure compliance. COBIT's strength is bridging technical IT issues with business-level governance \u2014 it answers 'what should we do?' at the executive level, complementing frameworks like ISO 27001 (how to secure) and NIST CSF (how to manage risk).",
-      "explanation_wrong_common": "COBIT is not a network protocol, malware framework, or physical security standard. It is specifically an IT governance framework \u2014 its purpose is to ensure that IT supports business objectives, risks are managed, and resources are used responsibly. The most common confusion is mixing up COBIT (governance) with ISO 27001 (security management) or NIST CSF (risk management). COBIT is broader \u2014 it covers all of IT governance, not just cybersecurity."
+      "answer": "Symmetric encryption uses the same key for both encryption and decryption; asymmetric encryption uses a pair of keys — a public key for encryption and a private key for decryption",
+      "explanation_correct": "Symmetric encryption (e.g., AES, DES) uses a single shared secret key — both sender and receiver must have the same key, which creates a key distribution problem. It is fast and efficient for bulk data encryption. Asymmetric encryption (e.g., RSA, ECC) uses a mathematically related key pair: the public key can be freely shared and used to encrypt, while the private key is kept secret and used to decrypt. This solves the key distribution problem but is computationally slower. In practice, systems use hybrid encryption: asymmetric to exchange a symmetric key, then symmetric for the actual data.",
+      "explanation_wrong_common": "The key counts are not reversed — symmetric = one key, asymmetric = two keys. Neither is restricted to a specific use case. Symmetric is actually faster (not slower) because it uses simpler operations, while asymmetric is slower (not faster) due to complex mathematical operations. The tradeoff is speed vs. key distribution convenience, not security level. Both can be equally secure with appropriate key lengths."
     },
     {
-      "card_id": "framework_027",
-      "topic": "Security Frameworks and Standards",
+      "card_id": "crypto_032",
+      "topic": "Cryptography and Encryption",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is PCI DSS, and which organizations are required to comply with it?",
+      "question_text": "What is a cryptographic hash function, and what are its key properties?",
       "choices": [
-        "PCI DSS is the Payment Card Industry Data Security Standard \u2014 any organization that stores, processes, or transmits credit card data must comply",
-        "PCI DSS is a voluntary security standard for e-commerce websites that want to display a trust badge",
-        "PCI DSS is a government regulation that applies only to banks and financial institutions chartered in the United States",
-        "PCI DSS is a network encryption protocol used by payment processors for card transactions"
+        "A hash function takes input of any size and produces a fixed-size output (digest) that is deterministic, one-way (irreversible), and collision-resistant — small changes in input produce drastically different outputs",
+        "A hash function encrypts data using a secret key so it can be decrypted later",
+        "A hash function compresses files to save storage space while preserving the ability to restore the original",
+        "A hash function generates random numbers for use as encryption keys"
       ],
-      "answer": "PCI DSS is the Payment Card Industry Data Security Standard \u2014 any organization that stores, processes, or transmits credit card data must comply",
-      "explanation_correct": "PCI DSS is an information security standard administered by the PCI Security Standards Council (founded by Visa, Mastercard, American Express, Discover, and JCB). It applies to ANY organization \u2014 regardless of size or industry \u2014 that stores, processes, or transmits payment card data. Compliance is mandated by the card brands and acquiring banks, not by law (though many jurisdictions incorporate PCI DSS into their breach notification laws). It has 12 requirements covering network security, cardholder data protection, vulnerability management, access control, monitoring, and an information security policy.",
-      "explanation_wrong_common": "PCI DSS is not voluntary (non-compliance can result in fines, higher transaction fees, or loss of card processing privileges), not limited to US banks (it is a global standard), and not an encryption protocol. The most common mistake is thinking PCI DSS only applies to large companies \u2014 it applies to any merchant handling card data, from small businesses to enterprises, with different compliance levels based on transaction volume."
+      "answer": "A hash function takes input of any size and produces a fixed-size output (digest) that is deterministic, one-way (irreversible), and collision-resistant — small changes in input produce drastically different outputs",
+      "explanation_correct": "A cryptographic hash function (e.g., SHA-256, SHA-3) maps data of arbitrary size to a fixed-size bit string. Key properties: (1) Deterministic — same input always produces same output. (2) One-way (pre-image resistance) — you cannot derive the input from the hash output. (3) Collision-resistant — it is computationally infeasible to find two different inputs that produce the same hash. (4) Avalanche effect — changing one bit of input changes roughly half the output bits. Hashes are used for integrity verification, password storage, digital signatures, and blockchain.",
+      "explanation_wrong_common": "A hash is not encryption — it is one-way and cannot be decrypted (no key, no reversal). It is not file compression (the original cannot be restored from a hash). It is not a random number generator (it is deterministic). The critical distinction is irreversibility: encryption is reversible with a key; hashing is not reversible at all. This is why hashes are used for password storage — even if the hash is stolen, the password cannot be directly recovered."
     },
     {
-      "card_id": "framework_028",
-      "topic": "Security Frameworks and Standards",
+      "card_id": "crypto_033",
+      "topic": "Cryptography and Encryption",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization is implementing the NIST Cybersecurity Framework and begins by inventorying all hardware and software assets, identifying cybersecurity risks to those assets, and mapping their supply chain dependencies. Which NIST CSF core function are they working in, and what is the purpose of this function?",
+      "question_text": "A security team needs to verify that a firmware image downloaded from a vendor's website has not been tampered with during transit. The vendor publishes a SHA-256 hash of the legitimate firmware alongside the download. What should the team do, and what security property does this verify?",
       "choices": [
-        "The Identify function \u2014 it develops an organizational understanding of cybersecurity risk to systems, assets, data, and capabilities, enabling prioritization of protection efforts",
-        "The Protect function \u2014 it implements safeguards to limit or contain the impact of cybersecurity events",
-        "The Detect function \u2014 it identifies the occurrence of cybersecurity events through continuous monitoring",
-        "The Respond function \u2014 it takes action regarding a detected cybersecurity incident to minimize impact"
+        "Compute the SHA-256 hash of the downloaded firmware and compare it to the vendor's published hash — if they match, the file has not been altered, verifying integrity",
+        "Decrypt the firmware using the SHA-256 hash as a decryption key to verify it is legitimate",
+        "Encrypt the downloaded firmware with SHA-256 and send it back to the vendor for verification",
+        "Check if the firmware file size matches the vendor's published file size — if sizes match, integrity is confirmed"
       ],
-      "answer": "The Identify function \u2014 it develops an organizational understanding of cybersecurity risk to systems, assets, data, and capabilities, enabling prioritization of protection efforts",
-      "explanation_correct": "The NIST CSF consists of five core functions: Identify, Protect, Detect, Respond, and Recover. Asset inventory, risk assessment, and supply chain mapping all fall under the Identify function. Identify is foundational \u2014 you cannot protect what you do not know exists. It develops organizational understanding of cybersecurity risk to systems, people, assets, data, and capabilities. This understanding enables the organization to focus and prioritize its efforts consistent with its risk management strategy and business needs. The other functions build upon the knowledge gained during Identify.",
-      "explanation_wrong_common": "Asset inventory and risk identification are not Protect (which implements safeguards), not Detect (which monitors for events), and not Respond (which handles incidents after detection). The common error is confusing Identify with Protect \u2014 Protect is about implementing controls, while Identify is about understanding what you have and what risks you face. Without Identify, protection efforts are unfocused and may miss critical assets."
+      "answer": "Compute the SHA-256 hash of the downloaded firmware and compare it to the vendor's published hash — if they match, the file has not been altered, verifying integrity",
+      "explanation_correct": "Hashing provides integrity verification. The vendor computes SHA-256 of the original firmware and publishes it. The team downloads the firmware, computes their own SHA-256 hash, and compares. If the hashes match, the file is byte-for-byte identical to the original — no tampering occurred. SHA-256's collision resistance means an attacker cannot create a different firmware that produces the same hash. This is a core integrity control used for software downloads, evidence handling (chain of custody), and file transfer verification. Note: hashing verifies integrity but NOT authenticity — the team should also verify the hash itself came from the genuine vendor (e.g., via digital signature or HTTPS).",
+      "explanation_wrong_common": "SHA-256 is a hash, not an encryption key — you cannot decrypt with it. You do not encrypt with a hash and send it back. File size alone is insufficient — an attacker can modify content while preserving file size. The key concept is that a hash digest serves as a fingerprint: any change to the data changes the fingerprint. Matching fingerprints = unchanged data. This is why hashes are fundamental to integrity verification in security."
     },
     {
-      "card_id": "framework_029",
-      "topic": "Security Frameworks and Standards",
+      "card_id": "crypto_034",
+      "topic": "Cryptography and Encryption",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company needs to choose between pursuing ISO 27001 certification and adopting the NIST Cybersecurity Framework. Their primary goal is to demonstrate to external clients and regulators that they have a formally audited security management system. Which framework should they choose, and what is the key distinguishing factor?",
+      "question_text": "An organization stores user passwords in a database. A breach exposes the database, and attackers obtain the password file. If the passwords were stored using bcrypt with a per-user salt, what protections does this provide, and what must attackers do to recover the original passwords?",
       "choices": [
-        "ISO 27001, because it is a certifiable standard \u2014 organizations can undergo formal third-party audits and receive a certificate, providing external assurance of their ISMS",
-        "NIST CSF, because it is a certifiable standard recognized by the US government",
-        "Both frameworks offer identical certification \u2014 the choice does not matter",
-        "Neither framework is certifiable \u2014 they should use PCI DSS instead for certification"
+        "Bcrypt is a slow, adaptive hashing algorithm with a built-in salt — attackers must brute-force each password individually using bcrypt's slow hashing, making large-scale cracking computationally expensive and effectively preventing rainbow table attacks",
+        "Bcrypt encrypts passwords with a master key — attackers need the master key to decrypt all passwords at once",
+        "Bcrypt stores passwords in reversible form — attackers can simply reverse the hash to get plaintext passwords",
+        "Bcrypt provides no additional protection over plain SHA-256 — attackers can use precomputed rainbow tables to crack all passwords instantly"
       ],
-      "answer": "ISO 27001, because it is a certifiable standard \u2014 organizations can undergo formal third-party audits and receive a certificate, providing external assurance of their ISMS",
-      "explanation_correct": "ISO 27001 is a certifiable standard \u2014 an organization can be formally audited by an accredited certification body and receive an ISO 27001 certificate, which serves as externally recognized proof of their Information Security Management System (ISMS). NIST CSF is a voluntary framework that provides guidance for managing cybersecurity risk but does not offer a formal certification process. If the goal is external assurance (for clients, regulators, partners), ISO 27001 certification is the right choice. NIST CSF can complement ISO 27001 for internal risk management improvement.",
-      "explanation_wrong_common": "NIST CSF is not certifiable \u2014 it is voluntary guidance, so it cannot provide the external assurance the company needs. The frameworks are not identical in certification capability. PCI DSS is certifiable but specific to payment card data, not a general ISMS. The key distinction is certifiability: ISO 27001 can be audited and certified; NIST CSF cannot. This is why organizations seeking to prove their security posture to external parties typically pursue ISO 27001 or SOC 2, not NIST CSF alone."
+      "answer": "Bcrypt is a slow, adaptive hashing algorithm with a built-in salt — attackers must brute-force each password individually using bcrypt's slow hashing, making large-scale cracking computationally expensive and effectively preventing rainbow table attacks",
+      "explanation_correct": "Bcrypt is specifically designed for password storage. Key protections: (1) Slow hashing — bcrypt is deliberately slow (work factor/cost parameter can be increased over time as hardware improves), so each guess takes significantly longer than with fast hashes like SHA-256. (2) Per-user salt — each password gets a unique random salt, meaning attackers cannot use precomputed rainbow tables and must crack each password individually. (3) Adaptive cost — the work factor can be tuned to keep cracking expensive as CPUs/GPUs get faster. Even with the hash file, attackers must try each candidate password through bcrypt's slow process for each user — making mass cracking economically impractical for strong passwords.",
+      "explanation_wrong_common": "Bcrypt does not encrypt (it hashes — one-way, no decryption). It is not reversible. It provides significantly more protection than plain SHA-256: SHA-256 is fast (millions of hashes/second), making it vulnerable to GPU brute-forcing; bcrypt is slow by design (thousands of hashes/second or fewer). The salt prevents rainbow tables. The common mistake is thinking all hashes provide equal protection — the algorithm choice matters enormously for password storage. Bcrypt, scrypt, argon2, and PBKDF2 are purpose-built for passwords."
     },
     {
-      "card_id": "framework_030",
-      "topic": "Security Frameworks and Standards",
-      "difficulty": "medium",
+      "card_id": "crypto_035",
+      "topic": "Cryptography and Encryption",
+      "difficulty": "hard",
       "question_type": "scenario_mcq",
-      "question_text": "A security team maps their existing security controls against the MITRE ATT&CK framework and discovers that they have detection coverage for only 40% of the techniques listed under the 'Credential Access' tactic. What is this process called, and what is its primary value to the organization?",
+      "question_text": "A company uses TLS 1.3 for securing web traffic. During the handshake, the client and server perform a key exchange using ECDHE, then switch to AES-256-GCM for bulk data encryption. What is the purpose of this hybrid approach, and why not use ECDHE for all data encryption?",
       "choices": [
-        "ATT&CK mapping / gap analysis \u2014 it reveals specific detection gaps, allowing the team to prioritize which new detection capabilities to build or acquire",
-        "Threat modeling \u2014 it identifies vulnerabilities in the organization's software development lifecycle",
-        "Penetration testing \u2014 it validates that existing controls can stop simulated attacks",
-        "Compliance auditing \u2014 it verifies that the organization meets regulatory requirements for credential management"
+        "ECDHE (asymmetric) establishes a shared secret securely over an untrusted channel, then AES-256-GCM (symmetric) encrypts the actual data because symmetric encryption is vastly faster for bulk data — the hybrid model leverages asymmetric's key distribution strength and symmetric's speed",
+        "ECDHE encrypts all web traffic directly because it is faster than AES",
+        "AES-256-GCM is used for the handshake and ECDHE for data encryption, since AES cannot be used over networks",
+        "The hybrid approach exists because neither ECDHE nor AES alone is secure — both must be combined to achieve any confidentiality"
       ],
-      "answer": "ATT&CK mapping / gap analysis \u2014 it reveals specific detection gaps, allowing the team to prioritize which new detection capabilities to build or acquire",
-      "explanation_correct": "Mapping existing detections against the MITRE ATT&CK framework is called ATT&CK mapping or coverage/gap analysis. By comparing what techniques their current tools can detect against the full ATT&CK matrix, the team identifies specific gaps \u2014 in this case, 60% of Credential Access techniques have no detection. This is valuable because it transforms vague 'we need better security' into a specific, prioritized list: 'we cannot detect OS credential dumping (T1003) or kerberoasting (T1558.003), so we should deploy EDR rule X and add Y to our SIEM.' It enables data-driven security investment.",
-      "explanation_wrong_common": "This is not threat modeling (which focuses on application architecture and design-level risks), not penetration testing (which actively tests controls with simulated attacks), and not compliance auditing (which checks regulatory requirements). ATT&CK mapping is a defensive assessment technique \u2014 it evaluates detection and response capabilities against known adversary behaviors. The primary value is prioritization: instead of guessing what to improve, the team knows exactly which techniques they cannot detect and can invest accordingly."
+      "answer": "ECDHE (asymmetric) establishes a shared secret securely over an untrusted channel, then AES-256-GCM (symmetric) encrypts the actual data because symmetric encryption is vastly faster for bulk data — the hybrid model leverages asymmetric's key distribution strength and symmetric's speed",
+      "explanation_correct": "TLS 1.3 uses a hybrid encryption model. ECDHE (Elliptic Curve Diffie-Hellman Ephemeral) is an asymmetric key exchange that allows client and server to agree on a shared secret over an untrusted channel without prior key sharing — solving the key distribution problem. However, asymmetric operations are computationally expensive (100-1000x slower than symmetric). AES-256-GCM is symmetric encryption that is extremely fast in hardware and provides both confidentiality (encryption) and authenticity (GCM mode includes authentication). The shared secret from ECDHE is used to derive symmetric AES keys, which then encrypt all subsequent data. This gives the best of both worlds: secure key exchange + fast bulk encryption. GCM also provides forward secrecy because ECDHE uses ephemeral keys.",
+      "explanation_wrong_common": "ECDHE is NOT faster than AES — it is much slower, which is why it's only used for key exchange, not bulk data. The roles are not reversed (ECDHE for handshake, AES for data). Both ECDHE and AES are individually secure; the hybrid approach is about performance optimization and key distribution, not about compensating for weaknesses. This pattern (asymmetric key exchange + symmetric bulk encryption) is universal in modern protocols including TLS, SSH, and IPsec."
     },
     {
-      "card_id": "risk_026",
-      "topic": "Risk Management",
+      "card_id": "pki_031",
+      "topic": "PKI and Digital Certificates",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between qualitative and quantitative risk analysis?",
+      "question_text": "What is a digital certificate, and what role does it play in establishing trust on the internet?",
       "choices": [
-        "Qualitative risk analysis uses descriptive categories (low/medium/high, likelihood scales) to rank risks; quantitative risk analysis uses numerical values and monetary figures (ALE, SLE, ARO) to calculate risk",
-        "Qualitative risk analysis uses mathematical formulas; quantitative risk analysis uses subjective opinions",
-        "Qualitative risk analysis is always more accurate than quantitative risk analysis",
-        "Qualitative risk analysis is used for technical risks; quantitative risk analysis is used for physical risks only"
+        "A digital certificate is an electronic document that binds a public key to an identity (person, organization, or device) and is signed by a trusted Certificate Authority (CA), enabling verification that a public key belongs to the claimed owner",
+        "A digital certificate is a password that encrypts web traffic between a browser and server",
+        "A digital certificate is a license that allows a company to sell software online",
+        "A digital certificate is a hardware token that stores private keys on a physical device"
       ],
-      "answer": "Qualitative risk analysis uses descriptive categories (low/medium/high, likelihood scales) to rank risks; quantitative risk analysis uses numerical values and monetary figures (ALE, SLE, ARO) to calculate risk",
-      "explanation_correct": "Qualitative risk analysis ranks risks using subjective, descriptive scales \u2014 typically labels like low/medium/high or critical, and likelihood ratings of unlikely/possible/likely/certain. It is faster, easier, and useful when precise financial data is unavailable. Quantitative risk analysis assigns numerical values: SLE (Single Loss Expectancy = asset value x exposure factor), ARO (Annualized Rate of Occurrence), and ALE (Annualized Loss Expectancy = SLE x ARO). Quantitative analysis is more precise but requires reliable data and is more time-consuming. Organizations often use both \u2014 qualitative for initial screening, quantitative for high-priority risks.",
-      "explanation_wrong_common": "The terms are not reversed \u2014 qualitative uses categories, quantitative uses numbers. Qualitative is not inherently more accurate (it is simpler but less precise). Neither method is limited to a specific risk type. The key distinction is the output format: qualitative produces ranked categories, quantitative produces monetary values and probabilities. Both are valid; the choice depends on available data, time, and the audience for the risk assessment."
+      "answer": "A digital certificate is an electronic document that binds a public key to an identity (person, organization, or device) and is signed by a trusted Certificate Authority (CA), enabling verification that a public key belongs to the claimed owner",
+      "explanation_correct": "A digital certificate (X.509 format) solves the problem of trusting public keys. Without certificates, anyone could distribute a fake public key claiming to be someone else. A Certificate Authority (CA) verifies the identity of the certificate requester, then signs their public key (along with identity information, validity period, and other metadata) using the CA's own private key. When a user receives a certificate, they can verify the CA's signature using the CA's public key (which is pre-installed in their browser/OS as a trusted root). This chain of trust allows users to confidently use the certificate's public key for encrypted communication, knowing it belongs to the claimed identity.",
+      "explanation_wrong_common": "A certificate is not a password, not a business license, and not a hardware token. It is a cryptographic document that binds identity to a public key. The key insight is that asymmetric encryption alone doesn't solve trust — anyone can generate a key pair. The certificate, backed by a trusted CA, is what provides assurance that a particular public key belongs to a specific entity. This is the foundation of TLS/HTTPS, code signing, email signing (S/MIME), and VPN authentication."
     },
     {
-      "card_id": "risk_027",
-      "topic": "Risk Management",
+      "card_id": "pki_032",
+      "topic": "PKI and Digital Certificates",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a risk register, and what role does it play in an organization's risk management process?",
+      "question_text": "What is a Certificate Authority (CA), and what is its role in Public Key Infrastructure (PKI)?",
       "choices": [
-        "A risk register is a centralized document or database that records all identified risks, their assessments, treatment plans, owners, and status \u2014 it serves as the single source of truth for risk management",
-        "A risk register is a legal document that registers an organization's security compliance with government regulators",
-        "A risk register is a log of all security incidents that have occurred in the past 12 months",
-        "A risk register is a hardware device that scans the network for vulnerabilities automatically"
+        "A CA is a trusted third party that issues digital certificates after verifying the identity of the requester, maintaining the trust chain that allows parties who don't know each other to trust each other's public keys",
+        "A CA is a government agency that regulates encryption standards and approves which algorithms can be used",
+        "A CA is a type of firewall that inspects SSL/TLS traffic and blocks suspicious certificates",
+        "A CA is a database that stores all private keys for an organization in a centralized location"
       ],
-      "answer": "A risk register is a centralized document or database that records all identified risks, their assessments, treatment plans, owners, and status \u2014 it serves as the single source of truth for risk management",
-      "explanation_correct": "A risk register is a comprehensive repository that documents every identified risk along with its key attributes: description, category, likelihood, impact, risk score, treatment strategy (mitigate, transfer, accept, avoid), risk owner, mitigation plan, current status, and review date. It is a living document \u2014 risks are added, updated, and closed as conditions change. The risk register enables tracking over time, ensures accountability (each risk has an owner), supports prioritization, and provides visibility for management and auditors. It is a core artifact of any formal risk management program.",
-      "explanation_wrong_common": "A risk register is not a compliance registration, not an incident log (it tracks risks, not past incidents), and not a hardware device. The most common misconception is confusing a risk register with an incident log \u2014 incidents are events that have already occurred; risks are potential future events. The register is a management tool for tracking and treating risks throughout their lifecycle, from identification to closure."
+      "answer": "A CA is a trusted third party that issues digital certificates after verifying the identity of the requester, maintaining the trust chain that allows parties who don't know each other to trust each other's public keys",
+      "explanation_correct": "A Certificate Authority is the cornerstone of PKI. Its role is to validate identities and bind them to public keys via signed certificates. The CA verifies identity through various methods: domain validation (proving control of a domain), organization validation (verifying business registration), or extended validation (rigorous legal and operational checks). Once identity is verified, the CA signs the certificate using its private key. Browsers and operating systems ship with a set of trusted root CA certificates. When a website presents its certificate, the browser verifies the signature chain back to a trusted root CA. This trust chain — root CA → intermediate CA → end-entity certificate — is what enables secure communication between strangers on the internet.",
+      "explanation_wrong_common": "A CA is not a regulator of encryption standards (NIST does that). It is not a firewall (it doesn't inspect traffic). It does NOT store private keys (it only deals with public keys and identity binding — storing private keys would defeat the purpose of asymmetric cryptography). The common misconception is confusing the CA's role with other security functions. The CA's sole purpose is identity verification and certificate issuance — it is a trust anchor, not a security appliance or key repository."
     },
     {
-      "card_id": "risk_028",
-      "topic": "Risk Management",
+      "card_id": "pki_033",
+      "topic": "PKI and Digital Certificates",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company's risk analysis determines that a specific type of server failure would cause $200,000 in damages per occurrence (SLE). Based on historical data, this failure occurs approximately once every two years (ARO = 0.5). What is the Annualized Loss Expectancy (ALE), and how should the organization use this figure?",
+      "question_text": "A user visits a banking website and their browser displays a padlock icon with 'Bank of Example' in the address bar, indicating an Extended Validation (EV) certificate. How does an EV certificate differ from a standard Domain Validation (DV) certificate, and what additional assurance does it provide?",
       "choices": [
-        "ALE = $100,000 (SLE $200,000 x ARO 0.5) \u2014 the organization should compare this annual loss figure against the cost of mitigation controls to determine if implementing controls is cost-justified",
-        "ALE = $400,000 \u2014 the organization should spend up to $400,000 per year on controls to prevent this risk",
-        "ALE = $200,000 \u2014 this is the one-time cost the organization should budget for when the failure occurs",
-        "ALE = $100,000 \u2014 the organization must spend exactly $100,000 on insurance to cover this risk"
+        "EV certificates require rigorous verification of the organization's legal identity, physical location, and operational existence — providing high assurance that the site belongs to the named organization; DV certificates only verify domain control, providing no assurance about who operates the site",
+        "EV certificates use stronger encryption (AES-256) while DV certificates use weaker encryption (AES-128)",
+        "EV certificates never expire while DV certificates expire every year",
+        "EV certificates are issued instantly while DV certificates take weeks to obtain"
       ],
-      "answer": "ALE = $100,000 (SLE $200,000 x ARO 0.5) \u2014 the organization should compare this annual loss figure against the cost of mitigation controls to determine if implementing controls is cost-justified",
-      "explanation_correct": "ALE (Annualized Loss Expectancy) = SLE x ARO = $200,000 x 0.5 = $100,000. This means the organization can expect to lose approximately $100,000 per year on average from this risk. The primary use of ALE is cost-benefit analysis: if a mitigation control costs $80,000/year and reduces the ALE to $20,000 (saving $80,000), it breaks even. If it costs $40,000/year and reduces ALE to $20,000, the control saves $40,000/year and is clearly justified. ALE enables data-driven decisions about whether to mitigate, transfer, or accept risk based on financial impact.",
-      "explanation_wrong_common": "ALE is not $400,000 (that would be dividing instead of multiplying). It is not the one-time cost (ALE is annualized). The organization should not spend exactly the ALE on insurance (ALE is a decision-making metric, not a budget mandate). The correct calculation is SLE x ARO = $200,000 x 0.5 = $100,000, and the value is in comparing control cost vs. risk reduction to make economically sound security investment decisions."
+      "answer": "EV certificates require rigorous verification of the organization's legal identity, physical location, and operational existence — providing high assurance that the site belongs to the named organization; DV certificates only verify domain control, providing no assurance about who operates the site",
+      "explanation_correct": "The difference is in identity verification depth, not encryption strength. DV (Domain Validation): the CA only verifies that the applicant controls the domain (e.g., by responding to an email sent to the domain or adding a DNS TXT record). Any attacker who controls a domain can get a DV certificate — it proves domain ownership, not organizational identity. EV (Extended Validation): the CA performs extensive verification — confirming legal existence, physical address, operational status, and that the requester is authorized to act for the organization. This involves human verification of government records, business registrations, and phone callbacks. EV certificates historically displayed the organization name in the browser (though modern browsers have changed this UI). The encryption is identical — the difference is trust level in the identity binding.",
+      "explanation_wrong_common": "EV and DV certificates use the same encryption — the certificate validation level does not affect cryptographic strength. EV certificates DO expire (typically 1-2 years). DV certificates are actually issued faster (minutes) while EV takes days to weeks due to the verification process. The critical distinction is identity assurance: DV proves you control a domain; EV proves who you are as an organization. This is why banks and financial institutions historically used EV — to assure customers they are on the legitimate site, not a lookalike phishing domain with a DV certificate."
     },
     {
-      "card_id": "risk_029",
-      "topic": "Risk Management",
+      "card_id": "pki_034",
+      "topic": "PKI and Digital Certificates",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "During a risk assessment, a phishing risk is rated as: likelihood = likely, impact = moderate. The security team implements MFA and security awareness training. After implementation, likelihood drops to unlikely while impact remains moderate. What risk treatment was applied, and what happened to the overall risk rating?",
+      "question_text": "A company's internal PKI uses a root CA (kept offline) that signs an intermediate CA, which in turn signs end-entity certificates for internal servers. An intermediate CA's private key is compromised. What is the appropriate response, and why is the root CA kept offline?",
       "choices": [
-        "Risk mitigation \u2014 the control reduced the likelihood of the risk materializing, lowering the overall risk rating from elevated to moderate even though impact stayed the same",
-        "Risk avoidance \u2014 the organization eliminated the activity that caused the phishing risk",
-        "Risk transference \u2014 the likelihood was transferred to the security awareness training vendor",
-        "Risk acceptance \u2014 the organization accepted that phishing will happen and did nothing meaningful"
+        "Revoke the compromised intermediate CA's certificate using the root CA's CRL or OCSP, re-issue end-entity certificates under a new intermediate CA — the root CA is kept offline to minimize the risk of its private key being compromised, since compromising the root would invalidate the entire PKI trust chain",
+        "Immediately shut down all servers and rebuild the entire PKI from scratch, including generating a new root CA",
+        "Do nothing — the root CA will automatically detect the compromise and revoke the intermediate CA",
+        "Publish the root CA's private key so all parties can verify certificates themselves"
       ],
-      "answer": "Risk mitigation \u2014 the control reduced the likelihood of the risk materializing, lowering the overall risk rating from elevated to moderate even though impact stayed the same",
-      "explanation_correct": "Risk mitigation reduces the likelihood and/or impact of a risk by implementing controls. MFA and security awareness training are mitigation controls \u2014 MFA reduces the chance that a successful phishing attack leads to account compromise (reducing likelihood), and training reduces the chance employees click phishing links (also reducing likelihood). The overall risk rating is a function of both likelihood and impact. By reducing likelihood from 'likely' to 'unlikely' while impact remains 'moderate', the overall risk rating drops. Note that mitigation does not eliminate risk entirely \u2014 residual risk remains, but it is lower than the inherent risk.",
-      "explanation_wrong_common": "This is not avoidance (the organization did not stop using email or eliminate the activity), not transference (no third party is absorbing the risk \u2014 training and MFA are internal controls), and not acceptance (active steps were taken to reduce risk). Mitigation specifically means reducing likelihood or impact through controls. In this case, likelihood was reduced. The risk still exists (residual risk) but at a lower level, which is the goal of mitigation."
+      "answer": "Revoke the compromised intermediate CA's certificate using the root CA's CRL or OCSP, re-issue end-entity certificates under a new intermediate CA — the root CA is kept offline to minimize the risk of its private key being compromised, since compromising the root would invalidate the entire PKI trust chain",
+      "explanation_correct": "PKI uses a hierarchical trust model precisely for this scenario. The root CA (offline, in an air-gapped HSM) signs intermediate CAs, which sign end-entity certificates. If an intermediate CA key is compromised: (1) The root CA revokes the intermediate's certificate (via CRL or OCSP), invalidating all certificates it issued. (2) A new intermediate CA is created and signed by the root. (3) End-entity certificates are re-issued under the new intermediate. The root CA stays offline because if its key is compromised, EVERY certificate in the entire PKI is untrusted — you'd need to rebuild from scratch and re-issue everything. This hierarchical design limits the blast radius of key compromise to one intermediate CA's subtree, not the entire infrastructure.",
+      "explanation_wrong_common": "You do NOT need to rebuild the entire PKI (only the compromised intermediate's subtree). The root CA does not auto-detect compromises — revocation is a manual process. Publishing the root's private key would be catastrophic (anyone could forge certificates). The key concepts are: defense in depth (offline root), blast radius limitation (intermediate isolation), and revocation mechanisms (CRL/OCSP). This is why large organizations and public CAs always use a two-tier or three-tier hierarchy rather than a single CA signing everything directly."
     },
     {
-      "card_id": "risk_030",
-      "topic": "Risk Management",
-      "difficulty": "medium",
+      "card_id": "pki_035",
+      "topic": "PKI and Digital Certificates",
+      "difficulty": "hard",
       "question_type": "scenario_mcq",
-      "question_text": "An organization's risk appetite statement declares that any risk rated 'critical' requires executive board approval before acceptance. A vulnerability scan reveals a critical-rated risk in a legacy accounting system. The CISO recommends mitigation, but the system owner argues for acceptance because the system is being replaced in six months. According to the risk appetite policy, who has the authority to approve risk acceptance, and what should happen next?",
+      "question_text": "A security analyst discovers that a web server's TLS certificate expired yesterday. Users are seeing browser warnings. The server uses OCSP stapling. What does OCSP stapling do, and what happens when the certificate expires despite stapling?",
       "choices": [
-        "The executive board must approve the acceptance \u2014 the system owner cannot unilaterally accept a critical risk; the CISO should escalate to the board with a recommendation and timeline for either mitigation or temporary compensating controls pending replacement",
-        "The system owner can accept the risk since they own the system and know it is being replaced",
-        "The CISO has final authority over all risk decisions regardless of the risk appetite statement",
-        "The vulnerability scanner automatically accepts the risk since the system is legacy"
+        "OCSP stapling means the server periodically fetches a signed OCSP response from the CA and includes ('staples') it with the certificate during the TLS handshake — but when the certificate expires, the stapled OCSP response becomes irrelevant because the certificate itself is no longer valid; the browser rejects it regardless of the stapled status",
+        "OCSP stapling automatically renews expired certificates without administrator intervention",
+        "OCSP stapling means the browser checks the CA's OCSP server directly for every connection, adding latency but ensuring real-time revocation status",
+        "OCSP stapling bypasses certificate expiration entirely — the stapled response overrides the validity period"
       ],
-      "answer": "The executive board must approve the acceptance \u2014 the system owner cannot unilaterally accept a critical risk; the CISO should escalate to the board with a recommendation and timeline for either mitigation or temporary compensating controls pending replacement",
-      "explanation_correct": "A risk appetite statement defines the level of risk an organization is willing to accept and who has authority to approve risk at each level. In this case, the policy explicitly requires executive board approval for critical risks. The system owner \u2014 regardless of their knowledge of the replacement timeline \u2014 does not have the authority to accept a critical risk. The CISO should escalate to the board, present the risk details, and recommend a course of action: either mitigate now, implement compensating controls (e.g., network isolation, enhanced monitoring) during the six-month transition, or formally accept with board approval. This ensures critical risks are managed at the appropriate governance level.",
-      "explanation_wrong_common": "The system owner cannot bypass the risk appetite policy \u2014 ownership of a system does not grant authority to accept risks above the defined threshold. The CISO does not have unilateral authority (the policy reserves critical risk acceptance for the board). A vulnerability scanner is a tool, not a decision-maker. The key principle is that risk acceptance must follow the organization's defined governance structure \u2014 higher-risk decisions require higher-level approval."
+      "answer": "OCSP stapling means the server periodically fetches a signed OCSP response from the CA and includes ('staples') it with the certificate during the TLS handshake — but when the certificate expires, the stapled OCSP response becomes irrelevant because the certificate itself is no longer valid; the browser rejects it regardless of the stapled status",
+      "explanation_correct": "OCSP (Online Certificate Status Protocol) checks whether a certificate has been revoked. Without stapling, the browser would query the CA's OCSP responder directly for every connection — adding latency, leaking browsing habits to the CA, and failing if the OCSP server is unreachable. OCSP stapling solves this: the server fetches the OCSP response from the CA on a regular schedule and 'staples' (attaches) it to the certificate during the TLS handshake. The browser verifies the CA-signed OCSP response locally. However, OCSP only checks revocation status — it does NOT override the certificate's validity period. An expired certificate is invalid regardless of its revocation status. The stapled OCSP response says 'not revoked' but the certificate's notAfter date has passed, so the browser rejects it. The fix is to renew/reissue the certificate.",
+      "explanation_wrong_common": "OCSP stapling does NOT auto-renew certificates — expiration and revocation are separate concepts. Stapling does NOT mean the browser checks the CA directly (that's the opposite — stapling eliminates the browser-to-CA query). OCSP stapling does NOT override expiration — the validity period is a hard limit encoded in the certificate. The key distinction: revocation (revoked before expiry) vs. expiration (validity period ended). OCSP addresses revocation only. An expired-but-not-revoked certificate is still rejected because its validity period has passed."
     },
     {
-      "card_id": "threat_026",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_031",
+      "topic": "Identity and Access Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the key difference between a virus and a worm in terms of how they spread?",
+      "question_text": "What is the difference between authentication and authorization in the context of access control?",
       "choices": [
-        "A virus requires a host file or program to attach to and spreads when the host is executed; a worm is self-replicating and can spread across networks without user interaction or a host file",
-        "A virus spreads automatically across networks; a worm requires a user to open an infected file",
-        "A virus and a worm are identical \u2014 both are self-replicating network malware",
-        "A virus only affects mobile devices; a worm only affects desktop computers"
+        "Authentication verifies WHO you are (proving identity via credentials, biometrics, or tokens); authorization determines WHAT you are allowed to do (permissions and access rights granted to the authenticated identity)",
+        "Authentication determines what permissions you have; authorization verifies your identity",
+        "Authentication and authorization are the same thing — both verify identity and grant access simultaneously",
+        "Authentication is only used for network access; authorization is only used for application access"
       ],
-      "answer": "A virus requires a host file or program to attach to and spreads when the host is executed; a worm is self-replicating and can spread across networks without user interaction or a host file",
-      "explanation_correct": "A virus is a type of malware that attaches itself to a legitimate host file or program. It cannot execute or spread on its own \u2014 it requires a user to run the infected host file, at which point the virus code executes and can infect other files. A worm is standalone malware that self-replicates and spreads across networks without needing a host file or user action. Worms exploit network vulnerabilities, email systems, or removable media to propagate automatically. This distinction matters because worms can spread much faster (e.g., Conficker infected millions of systems in days) while viruses spread more slowly but can be harder to detect since they hide in legitimate files.",
-      "explanation_wrong_common": "The descriptions are not reversed \u2014 viruses need a host and user action; worms are self-propagating. They are not identical (the spreading mechanism is the key differentiator). Neither is limited to a specific device type. The fundamental difference is autonomy: a worm spreads independently, while a virus depends on host file execution. This is why worms are typically more dangerous in terms of speed of spread, while viruses are more persistent and harder to fully eradicate."
+      "answer": "Authentication verifies WHO you are (proving identity via credentials, biometrics, or tokens); authorization determines WHAT you are allowed to do (permissions and access rights granted to the authenticated identity)",
+      "explanation_correct": "Authentication and authorization are distinct but sequential steps in access control. Authentication (AuthN) proves identity — are you who you claim to be? Methods include passwords (something you know), tokens/smart cards (something you have), and biometrics (something you are). Authorization (AuthZ) determines privileges — now that we know who you are, what are you allowed to access and what actions can you perform? Authorization is typically implemented through access control models: RBAC (role-based), ABAC (attribute-based), or MAC (mandatory access control). Authentication always happens first — you cannot authorize an unknown identity. Together they form the core of the AAA framework (Authentication, Authorization, Accounting).",
+      "explanation_wrong_common": "The definitions are not reversed — authentication = identity verification, authorization = permission determination. They are NOT the same thing — a user can be authenticated (proven identity) but not authorized to access a specific resource (insufficient privileges). Neither is limited to a specific layer (both apply across network, application, and physical security). The common error is conflating the two because they often happen in quick succession, but they answer fundamentally different questions: 'who are you?' vs. 'what can you do?'"
     },
     {
-      "card_id": "threat_027",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_032",
+      "topic": "Identity and Access Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is social engineering, and why is it effective even when strong technical security controls are in place?",
+      "question_text": "What is multi-factor authentication (MFA), and why is it more secure than single-factor authentication?",
       "choices": [
-        "Social engineering manipulates human psychology (trust, authority, urgency, fear) to trick people into revealing information or performing actions that bypass technical controls \u2014 it targets the human element, which cannot be patched like software",
-        "Social engineering is a technical attack that exploits software vulnerabilities in social media platforms",
-        "Social engineering is a type of encryption attack that breaks social network authentication",
-        "Social engineering is a network-level attack that manipulates social protocol traffic"
+        "MFA requires two or more independent authentication factors from different categories (something you know, something you have, something you are) — if one factor is compromised, the attacker still cannot authenticate without the other factors",
+        "MFA requires the same password entered twice to reduce typing errors",
+        "MFA uses two different passwords instead of one, making brute-force attacks twice as difficult",
+        "MFA encrypts the password with two different algorithms for double protection"
       ],
-      "answer": "Social engineering manipulates human psychology (trust, authority, urgency, fear) to trick people into revealing information or performing actions that bypass technical controls \u2014 it targets the human element, which cannot be patched like software",
-      "explanation_correct": "Social engineering is the art of manipulating people into performing actions or divulging confidential information. It exploits fundamental human traits: the tendency to trust authority figures, the desire to be helpful, the response to urgency or fear, and curiosity. It is effective against technical controls because no firewall, encryption, or antivirus can stop a user who voluntarily gives away their credentials or clicks a link. The human is often the weakest link \u2014 you can patch software, but you cannot 'patch' human psychology. This is why security awareness training, MFA (which limits the value of stolen credentials), and least-privilege access are critical defenses alongside technical controls.",
-      "explanation_wrong_common": "Social engineering is not a technical attack on social media platforms, not an encryption attack, and not a network protocol attack. It is fundamentally a human-targeted attack. The reason it bypasses technical controls is that the attacker gets the legitimate user to perform the action \u2014 the system sees an authorized user doing something they're allowed to do. Common techniques include phishing, pretexting, baiting, tailgating, and quid pro quo. The defense is a combination of training, processes (verification procedures), and technical controls that limit the damage of successful social engineering."
+      "answer": "MFA requires two or more independent authentication factors from different categories (something you know, something you have, something you are) — if one factor is compromised, the attacker still cannot authenticate without the other factors",
+      "explanation_correct": "MFA combines factors from different categories: (1) Something you know — password, PIN, security question. (2) Something you have — smartphone (TOTP app, SMS), hardware token (YubiKey), smart card. (3) Something you are — fingerprint, face scan, iris scan, voice recognition. The key security benefit is independence: compromising one factor does not grant access. Even if an attacker steals your password (phishing, breach), they still need your phone or biometric. Common implementations: TOTP (Google Authenticator, time-based codes), push notifications (approve/deny on phone), hardware security keys (FIDO2/WebAuthn), and SMS codes (weakest due to SIM swapping). MFA dramatically reduces account takeover risk — Microsoft reports MFA blocks 99.9% of automated account attacks.",
+      "explanation_wrong_common": "MFA is NOT entering the same password twice (that's confirmation, not multi-factor). It is NOT two passwords (those are both 'something you know' — same factor category, so compromising one likely compromises both). It is NOT double encryption. The critical concept is factor independence: factors must come from DIFFERENT categories. Two passwords = single factor (something you know x2). A password + a phone code = true multi-factor (something you know + something you have). This independence is what makes MFA effective against credential theft."
     },
     {
-      "card_id": "threat_028",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_033",
+      "topic": "Identity and Access Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An attacker sends emails with a malicious PDF attachment to 10,000 employees across multiple companies. The PDF exploits a known vulnerability in a popular PDF reader. This is an example of what type of attack, and what is the single most effective preventative control?",
+      "question_text": "A company implements Role-Based Access Control (RBAC). A new employee joins the marketing department. The IT administrator assigns the employee to the 'Marketing Team' role, which automatically grants access to the marketing shared drive, email distribution lists, and the social media management platform. What is the primary advantage of this approach?",
       "choices": [
-        "Mass phishing with a known exploit \u2014 the most effective preventative control is timely patch management of the PDF reader combined with email filtering to block malicious attachments",
-        "Spear phishing \u2014 the most effective control is blocking all email from external senders",
-        "Watering hole attack \u2014 the most effective control is DNS filtering",
-        "Supply chain attack \u2014 the most effective control is vendor security assessments"
+        "RBAC simplifies administration by assigning permissions to roles rather than individuals — adding/removing users from roles automatically grants/revokes all associated permissions, reducing errors and ensuring consistency across the department",
+        "RBAC ensures every employee has access to every system in the company, eliminating access requests entirely",
+        "RBAC authenticates users based on their job title without requiring any credentials",
+        "RBAC encrypts all marketing data so only marketing role members can read it, even if data is stolen"
       ],
-      "answer": "Mass phishing with a known exploit \u2014 the most effective preventative control is timely patch management of the PDF reader combined with email filtering to block malicious attachments",
-      "explanation_correct": "This is mass phishing (not targeted) using a known vulnerability (not a zero-day) in a PDF reader. The email is sent broadly to 10,000 employees across multiple companies, which is the hallmark of mass phishing. The key detail is 'known vulnerability' \u2014 since the vulnerability is already known, a patch exists. The most effective prevention is patch management (update the PDF reader to eliminate the vulnerability) combined with email filtering (block or quarantine the malicious attachment before it reaches users). Security awareness training is a secondary defense, but since the exploit is in the PDF reader (not user behavior \u2014 merely opening a PDF is a normal action), patching is the primary control.",
-      "explanation_wrong_common": "This is not spear phishing (which is targeted at specific individuals, not 10,000 random employees). It is not a watering hole attack (which compromises a website, not email). It is not a supply chain attack (which targets software vendors or suppliers). The critical insight is that the vulnerability is 'known' \u2014 meaning a patch is available. If it were a zero-day, patching would not help and defense-in-depth (sandboxing, EDR) would be more critical. With a known vulnerability, patch management is the highest-impact control."
+      "answer": "RBAC simplifies administration by assigning permissions to roles rather than individuals — adding/removing users from roles automatically grants/revokes all associated permissions, reducing errors and ensuring consistency across the department",
+      "explanation_correct": "RBAC (Role-Based Access Control) assigns permissions to roles, and users are assigned to roles. The advantage: when a new marketing employee joins, the admin simply adds them to the 'Marketing Team' role — all permissions (shared drive, distribution lists, social media platform) are inherited automatically. When an employee leaves or transfers, removing them from the role revokes all permissions at once. This reduces administrative overhead, ensures consistency (all marketing team members have identical access), minimizes errors (no forgotten permissions), and simplifies auditing (you can review role definitions rather than individual user permissions). RBAC is the most common access control model in enterprise environments because it scales well with organizational structure.",
+      "explanation_wrong_common": "RBAC does NOT give everyone access to everything (that would violate least privilege). It does NOT replace authentication (users still must prove identity before role-based permissions apply). It does NOT encrypt data (it controls access, not data-at-rest encryption). The key benefit is administrative efficiency through role-based permission grouping. The common mistake is confusing RBAC with other models: MAC (mandatory, clearance-based), DAC (discretionary, owner-controlled), and ABAC (attribute-based, context-aware). RBAC is role/job-function-based."
     },
     {
-      "card_id": "threat_029",
-      "topic": "Threat Actors and Attack Vectors",
+      "card_id": "iam_034",
+      "topic": "Identity and Access Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team discovers that a popular industry news website frequently visited by their employees has been compromised. Attackers injected an exploit kit into the site that automatically targets unpatched browser vulnerabilities when employees visit. What attack vector is this, and what combination of defenses should the organization deploy?",
+      "question_text": "An organization wants to implement access control where access decisions are based on multiple attributes: the user's department, their security clearance level, the data classification of the requested resource, the time of day, and the device's compliance status. Which access control model should they use, and how does it differ from RBAC?",
       "choices": [
-        "Watering hole attack \u2014 deploy browser patch management, URL/web content filtering, network segmentation, and EDR to detect browser exploitation attempts",
-        "Spear phishing \u2014 deploy email filtering and security awareness training",
-        "DNS poisoning \u2014 deploy DNSSEC and change DNS providers",
-        "Insider threat \u2014 deploy user behavior analytics and access reviews"
+        "Attribute-Based Access Control (ABAC) — it evaluates multiple attributes (user, resource, environment, action) dynamically to make access decisions, whereas RBAC only considers the user's role; ABAC is more granular and context-aware but more complex to administer",
+        "Mandatory Access Control (MAC) — it uses security clearance labels and data classification labels, but does not consider time of day or device compliance",
+        "Discretionary Access Control (DAC) — the resource owner decides who gets access based on their personal judgment",
+        "Rule-Based Access Control — it applies firewall-style rules to network traffic, not user access decisions"
       ],
-      "answer": "Watering hole attack \u2014 deploy browser patch management, URL/web content filtering, network segmentation, and EDR to detect browser exploitation attempts",
-      "explanation_correct": "A watering hole attack is when an attacker compromises a website that the target audience frequently visits, then uses it to deliver exploits or malware to those visitors. The attacker does not target the victims directly \u2014 they 'poison the watering hole' and wait for victims to come to it. Defenses include: (1) browser patch management to eliminate known vulnerabilities the exploit kit targets, (2) URL/web content filtering to block or alert on access to compromised sites, (3) network segmentation to limit lateral movement if a browser is exploited, and (4) EDR to detect and respond to browser exploitation. The challenge is that employees visit the site legitimately, so outright blocking may disrupt business \u2014 a layered approach is essential.",
-      "explanation_wrong_common": "This is not spear phishing (no direct email targeting), not DNS poisoning (the website itself is compromised, not the DNS resolution), and not an insider threat (the attacker is external). The defining characteristic of a watering hole attack is that the attacker compromises a trusted third-party resource that the targets naturally visit. This makes it harder to defend than phishing because the user is visiting a legitimate site they have reason to trust. Defense requires both preventing exploitation (patching) and detecting it (EDR, monitoring)."
+      "answer": "Attribute-Based Access Control (ABAC) — it evaluates multiple attributes (user, resource, environment, action) dynamically to make access decisions, whereas RBAC only considers the user's role; ABAC is more granular and context-aware but more complex to administer",
+      "explanation_correct": "ABAC (Attribute-Based Access Control) is the most flexible access control model. It evaluates attributes across four categories: (1) User attributes — department, clearance, job title. (2) Resource attributes — data classification, sensitivity, owner. (3) Environment attributes — time of day, location, network. (4) Action attributes — read, write, delete. Access decisions are made by evaluating policies against these attributes (e.g., 'allow IF user.clearance >= resource.classification AND user.department = resource.department AND environment.time = business_hours AND device.compliant = true'). Unlike RBAC (which only checks role membership), ABAC considers context — a user with the right role might be denied access outside business hours or from a non-compliant device. ABAC is used in Zero Trust architectures and high-security environments. The tradeoff: ABAC is more granular and dynamic but significantly more complex to design, implement, and debug than RBAC.",
+      "explanation_wrong_common": "MAC does use clearance labels but does NOT consider time of day or device compliance — it's label-based, not context-based. DAC is owner-controlled and lacks the systematic policy evaluation described. Rule-Based Access Control (sometimes confused with ABAC) typically applies static rules, not dynamic multi-attribute evaluation. The scenario specifically describes multiple attributes from different categories being evaluated together — that is ABAC. Many organizations use RBAC as a base with ABAC for additional context-aware restrictions (a hybrid approach)."
     },
     {
-      "card_id": "threat_030",
-      "topic": "Threat Actors and Attack Vectors",
-      "difficulty": "medium",
+      "card_id": "iam_035",
+      "topic": "Identity and Access Management",
+      "difficulty": "hard",
       "question_type": "scenario_mcq",
-      "question_text": "A security team notices unusual outbound DNS traffic: queries to a domain with long, seemingly random subdomain strings, occurring at regular intervals with low volume. No other anomalous traffic is detected. What attack technique is most likely being used, and what should the team investigate to confirm it?",
+      "question_text": "A company uses Single Sign-On (SSO) with SAML 2.0 for their web applications. A user authenticates once to the Identity Provider (IdP) and can then access multiple Service Providers (SPs) without re-entering credentials. What security risk does SSO introduce, and what compensating control is most critical?",
       "choices": [
-        "DNS tunneling for data exfiltration \u2014 the team should analyze the DNS query patterns, decode the subdomain strings (which may contain encoded stolen data), check DNS response sizes (which may contain command-and-control instructions), and review what process is generating the DNS queries",
-        "DNS amplification DDoS \u2014 the team should block all outbound DNS traffic immediately",
-        "Normal DNS behavior \u2014 long subdomains are common in CDN traffic and require no investigation",
-        "Malware spreading via DNS records \u2014 the team should disable the internal DNS server"
+        "SSO creates a single point of failure — if the IdP is compromised or the user's SSO session is hijacked, an attacker gains access to ALL connected applications; MFA at the IdP is the most critical compensating control because it protects the single authentication point that gates all applications",
+        "SSO is inherently insecure because it transmits passwords in plaintext between the IdP and SPs",
+        "SSO introduces no additional risk — it is purely a convenience feature with identical security to individual logins",
+        "SSO requires each application to store a copy of the user's password, increasing breach exposure"
       ],
-      "answer": "DNS tunneling for data exfiltration \u2014 the team should analyze the DNS query patterns, decode the subdomain strings (which may contain encoded stolen data), check DNS response sizes (which may contain command-and-control instructions), and review what process is generating the DNS queries",
-      "explanation_correct": "DNS tunneling encodes data within DNS queries and responses to bypass firewalls and DLP controls. Stolen data is encoded into the subdomain portion of DNS queries (e.g., stolenfile-base64encoded.attackerdomain.com), and C2 instructions can be returned in TXT or CNAME records in the DNS response. The indicators \u2014 long random subdomains, regular intervals, low volume \u2014 are classic DNS tunneling signatures. To confirm: analyze query patterns (are subdomains consistent length/encoding?), attempt to decode subdomain strings, check response sizes (tunneling responses are typically larger than normal), and identify the originating process. DNS tunneling is popular because DNS is almost always allowed through firewalls.",
-      "explanation_wrong_common": "This is not a DNS amplification DDoS (which involves large inbound traffic using spoofed source IPs, not outbound low-volume queries). It is not normal CDN behavior (CDN subdomains follow patterns, not random strings at regular intervals). Disabling the DNS server would disrupt business. The key indicators pointing to tunneling are: (1) long random subdomains = encoded data, (2) regular intervals = scheduled exfiltration, (3) low volume = stealth. DNS tunneling exploits the fact that DNS is rarely blocked, making it an attractive covert channel for data theft and C2 communication."
+      "answer": "SSO creates a single point of failure — if the IdP is compromised or the user's SSO session is hijacked, an attacker gains access to ALL connected applications; MFA at the IdP is the most critical compensating control because it protects the single authentication point that gates all applications",
+      "explanation_correct": "SSO's convenience comes with a concentrated risk: the Identity Provider (IdP) becomes the keys to the kingdom. If an attacker compromises the IdP or hijacks a user's SSO session (e.g., via session token theft), they can access every application the user is authorized for — no additional credentials needed. SAML 2.0 uses signed XML assertions (not passwords) passed between IdP and SPs, so passwords are NOT transmitted to SPs. The most critical compensating control is MFA at the IdP: since all authentication flows through the IdP, protecting it with MFA ensures that even if a password is stolen, the attacker cannot establish an SSO session. Other important controls include short session timeouts, IdP hardening, monitoring for anomalous access patterns, and federation metadata security. The risk is acceptable because MFA at the IdP is easier to enforce than MFA on dozens of individual applications.",
+      "explanation_wrong_common": "SAML SSO does NOT transmit passwords in plaintext to SPs — the user authenticates to the IdP, and the IdP sends signed assertions (tokens) to SPs. SSO does NOT require applications to store passwords (that's the opposite of what SSO does — it eliminates per-app passwords). SSO is NOT risk-free — it concentrates risk at the IdP. The tradeoff is clear: SSO reduces password fatigue and enables centralized MFA enforcement, but the IdP becomes a high-value target. Properly secured with MFA and monitoring, SSO is generally MORE secure than separate passwords per app."
     },
     {
-      "card_id": "arch_026",
-      "topic": "Security Architecture",
+      "card_id": "netsec_031",
+      "topic": "Network Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a honeypot, and how does it contribute to an organization's security architecture?",
+      "question_text": "What is a VPN (Virtual Private Network), and what are its primary security functions?",
       "choices": [
-        "A honeypot is a decoy system or resource designed to attract attackers, gather intelligence about their methods, and divert them from real assets \u2014 it serves as an early warning and research tool",
-        "A honeypot is a type of encryption algorithm used to protect databases",
-        "A honeypot is a firewall rule that blocks all incoming traffic by default",
-        "A honeypot is a backup system that creates honey copies of critical data"
+        "A VPN creates an encrypted tunnel over a public network (like the internet), providing confidentiality for data in transit, authentication of endpoints, and hiding the data from intermediate network devices — it extends a private network across a public network securely",
+        "A VPN is a type of antivirus software that scans network traffic for malware",
+        "A VPN is a physical cable that connects two offices together for direct communication",
+        "A VPN is a website that anonymizes web traffic by proxying all requests through a single server"
       ],
-      "answer": "A honeypot is a decoy system or resource designed to attract attackers, gather intelligence about their methods, and divert them from real assets \u2014 it serves as an early warning and research tool",
-      "explanation_correct": "A honeypot is a security decoy \u2014 a system, service, or data resource that appears legitimate and valuable but has no real production purpose. Any interaction with a honeypot is by definition suspicious (since no legitimate user should ever access it). Honeypots serve multiple purposes: (1) early warning \u2014 an alert from a honeypot means an attacker is probing the network, (2) intelligence gathering \u2014 logging attacker techniques, tools, and behaviors helps improve defenses, (3) diversion \u2014 attackers waste time on the decoy instead of real systems. Types include research honeypots (high-interaction, for studying attackers) and production honeypots (low-interaction, for detecting intrusions). Honeypots are part of a deception-based defense strategy.",
-      "explanation_wrong_common": "A honeypot is not an encryption algorithm, not a firewall rule, and not a backup system. The name 'honeypot' is metaphorical \u2014 like a pot of honey that attracts bears, the decoy attracts attackers. The key principle is that any traffic to a honeypot is inherently malicious (no legitimate reason to access a fake system), making it a high-fidelity detection tool with very low false positive rates. Honeypots complement but do not replace traditional security controls."
+      "answer": "A VPN creates an encrypted tunnel over a public network (like the internet), providing confidentiality for data in transit, authentication of endpoints, and hiding the data from intermediate network devices — it extends a private network across a public network securely",
+      "explanation_correct": "A VPN (Virtual Private Network) creates an encrypted tunnel between two endpoints over an untrusted network. Security functions: (1) Confidentiality — encryption (e.g., AES) protects data from eavesdropping on the public network. (2) Authentication — endpoints authenticate each other (e.g., via certificates or pre-shared keys) to prevent man-in-the-middle attacks. (3) Integrity — hash functions ensure data is not modified in transit. Common VPN protocols: IPsec (network layer, site-to-site and remote access), TLS/SSL (application layer, often used for remote access portals), and WireGuard (modern, lightweight). VPNs are used for remote worker access, connecting branch offices (site-to-site), and privacy. They encapsulate packets — the original packet is encrypted and wrapped in a new packet with VPN headers.",
+      "explanation_wrong_common": "A VPN is not antivirus (it doesn't scan for malware — it encrypts traffic). It is not a physical cable (it's a virtual/logical tunnel over existing networks). It is not just a proxy website (a proxy relays traffic but may not encrypt it; a VPN provides encryption and tunneling). The key concept is tunneling + encryption: the VPN creates a secure passage through an insecure medium, allowing private communication over public infrastructure. Note: while consumer VPNs emphasize privacy/anonymity, enterprise VPNs focus on secure remote access to internal resources."
     },
     {
-      "card_id": "arch_027",
-      "topic": "Security Architecture",
+      "card_id": "netsec_032",
+      "topic": "Network Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the principle of least privilege, and how does it apply to both user accounts and system processes?",
+      "question_text": "What is network segmentation, and what security benefits does it provide?",
       "choices": [
-        "Least privilege grants users and processes only the minimum access rights and permissions needed to perform their legitimate tasks \u2014 nothing more \u2014 reducing the attack surface and limiting damage from compromise",
-        "Least privilege means giving all users the lowest possible security clearance regardless of their job role",
-        "Least privilege means users must prove their identity with at least one authentication factor",
-        "Least privilege means storing the least sensitive data on the most secure servers"
+        "Network segmentation divides a network into smaller isolated segments (subnets, VLANs, zones) using switches, firewalls, or routers — it limits lateral movement, contains breaches to one segment, reduces attack surface, and enables targeted security policies per segment",
+        "Network segmentation is the process of cutting network cables to physically disconnect unused ports",
+        "Network segmentation means encrypting different parts of the network with different encryption keys",
+        "Network segmentation is a monitoring technique that watches network traffic for suspicious patterns"
       ],
-      "answer": "Least privilege grants users and processes only the minimum access rights and permissions needed to perform their legitimate tasks \u2014 nothing more \u2014 reducing the attack surface and limiting damage from compromise",
-      "explanation_correct": "The principle of least privilege (PoLP) states that every user, process, program, or system should have only the minimum privileges necessary to accomplish its legitimate purpose. For users: a marketing employee does not need access to the financial database; a developer does not need domain admin rights. For processes: a web server should not run as root/administrator \u2014 it should run as a limited service account. PoLP reduces risk in two ways: (1) attack surface reduction \u2014 fewer permissions mean fewer ways to exploit, and (2) blast radius limitation \u2014 if an account or process is compromised, the attacker only has limited access. Implementation includes role-based access control (RBAC), just-in-time privilege elevation, and regular access reviews.",
-      "explanation_wrong_common": "Least privilege does not mean giving everyone the lowest clearance (it means the minimum needed for their specific role \u2014 which varies). It is not about authentication factors (that is AAA/MFA). It is not about data classification. The core concept is 'minimum necessary' \u2014 not 'minimum possible.' A system administrator legitimately needs admin rights, but only on the systems they manage, only when performing admin tasks, and not on systems outside their scope. Over-privilege (giving more access than needed) is one of the most common security gaps."
+      "answer": "Network segmentation divides a network into smaller isolated segments (subnets, VLANs, zones) using switches, firewalls, or routers — it limits lateral movement, contains breaches to one segment, reduces attack surface, and enables targeted security policies per segment",
+      "explanation_correct": "Network segmentation divides a flat network into isolated zones. Common approaches: VLANs (Layer 2 separation), subnets with router ACLs (Layer 3), firewall zones (DMZ, internal, trusted, untrusted), and micro-segmentation (per-workload isolation in software-defined networking). Security benefits: (1) Limits lateral movement — if an attacker compromises one segment, they cannot freely access other segments without breaching additional controls. (2) Contains breaches — damage is confined to the compromised segment. (3) Reduces attack surface — each segment exposes only necessary services. (4) Enables granular policies — the DMZ can have strict internet-facing rules while the database segment is isolated. A common architecture: Internet → DMZ (web servers) → Internal (users) → Restricted (databases, sensitive data). This is a core defense-in-depth technique.",
+      "explanation_wrong_common": "Segmentation is not physical cable cutting (it's logical/functional network division). It is not different encryption per segment (though segments CAN have different encryption, that's not what segmentation means). It is not monitoring (that's IDS/IPS — segmentation is about access control between network zones). The critical concept is containment: in a flat network, compromising one host gives an attacker a launchpad to attack all others. Segmentation puts walls between zones, forcing the attacker to breach each wall separately — buying time for detection and response."
     },
     {
-      "card_id": "arch_028",
-      "topic": "Security Architecture",
+      "card_id": "netsec_033",
+      "topic": "Network Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company deploys a reverse proxy with a Web Application Firewall (WAF) in front of their public-facing web application. The WAF inspects incoming HTTP requests and blocks SQL injection and XSS attempts. What security architecture concept does this represent, and what additional benefit does the reverse proxy provide beyond security filtering?",
+      "question_text": "A company deploys a network architecture with three zones: a DMZ containing public-facing web servers, an internal zone with employee workstations, and a restricted zone with databases containing customer PII. Firewalls control traffic between zones. The web servers in the DMZ need to query the databases in the restricted zone. Following least privilege and defense-in-depth principles, how should firewall rules be configured?",
       "choices": [
-        "Defense in depth \u2014 the WAF adds a security layer (application-layer filtering) distinct from network firewalls; the reverse proxy also hides the real IP of the backend web server, provides SSL/TLS termination, and can load balance across multiple backend servers",
-        "Zero Trust \u2014 the WAF authenticates every user before granting access to the web application",
-        "Network segmentation \u2014 the WAF creates a VLAN between the internet and the web server",
-        "Risk transference \u2014 the reverse proxy transfers security responsibility to the WAF vendor"
+        "Allow only specific DMZ web server IPs to connect to specific database server IPs on specific database ports (e.g., 1433/3306) — deny all other inter-zone traffic, with the internal zone able to reach the restricted zone only through a bastion host with MFA and logging",
+        "Allow all traffic between all zones since the firewalls provide sufficient protection through inspection",
+        "Allow the DMZ to access the restricted zone on all ports for flexibility, but block the internal zone from the restricted zone entirely",
+        "Allow the internal zone to access the DMZ and restricted zone on all ports, since employees need full access to all systems"
       ],
-      "answer": "Defense in depth \u2014 the WAF adds a security layer (application-layer filtering) distinct from network firewalls; the reverse proxy also hides the real IP of the backend web server, provides SSL/TLS termination, and can load balance across multiple backend servers",
-      "explanation_correct": "A WAF represents defense in depth \u2014 it adds a dedicated application-layer security control that complements (not replaces) network firewalls, host security, and secure coding practices. Network firewalls filter by IP/port (layers 3-4), while a WAF inspects HTTP content (layer 7) for SQL injection, XSS, and other application attacks. The reverse proxy provides additional benefits: (1) IP hiding \u2014 the backend server's real IP is never exposed to the internet, (2) SSL/TLS termination \u2014 the proxy handles encryption, offloading CPU work from backend servers, (3) load balancing \u2014 distributing traffic across multiple backend instances for availability and performance. These are infrastructure benefits layered on top of the security function.",
-      "explanation_wrong_common": "This is not Zero Trust (the WAF does not authenticate users \u2014 it filters requests; Zero Trust requires identity-based verification). It is not network segmentation (though the proxy does sit between internet and backend, the primary concept is defense in depth at the application layer). It is not risk transference (no third party is absorbing risk \u2014 the WAF is a control the organization operates). The key insight is that a WAF addresses a different layer than network firewalls \u2014 that layering of controls at different levels is the essence of defense in depth."
+      "answer": "Allow only specific DMZ web server IPs to connect to specific database server IPs on specific database ports (e.g., 1433/3306) — deny all other inter-zone traffic, with the internal zone able to reach the restricted zone only through a bastion host with MFA and logging",
+      "explanation_correct": "This configuration applies least privilege (only necessary traffic, to specific IPs, on specific ports) and defense in depth (multiple controls: firewalls between every zone, bastion host for internal access). The DMZ web servers need database access, so the rule allows ONLY those specific server IPs to reach ONLY the database IPs on ONLY the database port (e.g., TCP 3306 for MySQL or TCP 1433 for SQL Server). All other DMZ-to-restricted traffic is denied. The internal zone (employees) does NOT get direct database access — they must use a bastion host with MFA and session logging, ensuring accountability. If a web server is compromised, the attacker can only reach the database on the database port (not RDP, SSH, or other services), limiting their attack options. This layered approach means an attacker must breach multiple controls to reach the PII data.",
+      "explanation_wrong_common": "Allowing all traffic between zones defeats the purpose of segmentation entirely. Allowing DMZ-to-restricted on ALL ports is extremely dangerous — a compromised web server could attack the database server via any service (RDP, SMB, SSH). Giving employees unrestricted access to all zones violates least privilege. The key principles: (1) default deny (everything not explicitly allowed is blocked), (2) specific allow (IP-to-IP, port-specific), (3) layered controls (firewall + bastion + MFA + logging). Overly permissive firewall rules are one of the most common causes of breach expansion."
     },
     {
-      "card_id": "arch_029",
-      "topic": "Security Architecture",
+      "card_id": "netsec_034",
+      "topic": "Network Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization deploys a bastion host (jump server) for system administrators to access internal servers. All SSH connections to internal servers must route through the bastion host, which requires MFA, records full session logs, and restricts which internal servers each admin can reach. What combination of security principles does this architecture implement?",
+      "question_text": "A network engineer is configuring a new firewall and must decide between a stateful inspection firewall and a next-generation firewall (NGFW). The organization wants to block specific applications (e.g., social media, file sharing) regardless of port, inspect SSL/TLS traffic for threats, and integrate with threat intelligence feeds. Which firewall type should they choose and why?",
       "choices": [
-        "Least privilege (per-admin server access restrictions), defense in depth (MFA + logging + network path restriction), attack surface reduction (only one exposed entry point instead of all servers), and non-repudiation (session logging ties actions to authenticated admins)",
-        "Zero Trust (the bastion host continuously verifies every packet)",
-        "Risk avoidance (by not allowing any remote access at all)",
-        "Network segmentation only (the bastion host creates a DMZ)"
+        "NGFW — it performs deep packet inspection at the application layer (Layer 7), identifies applications by their behavior rather than port number, decrypts and inspects SSL/TLS traffic, and integrates threat intelligence feeds for real-time blocking of known-bad IPs/domains",
+        "Stateful firewall — it tracks connection state and can identify applications by port number, which is sufficient for application-level blocking",
+        "Both are identical in capability — the choice does not matter",
+        "Stateful firewall — it can inspect SSL/TLS traffic natively without additional configuration, which NGFWs cannot do"
       ],
-      "answer": "Least privilege (per-admin server access restrictions), defense in depth (MFA + logging + network path restriction), attack surface reduction (only one exposed entry point instead of all servers), and non-repudiation (session logging ties actions to authenticated admins)",
-      "explanation_correct": "A bastion host architecture implements multiple security principles simultaneously. Least privilege: each admin can only reach specific servers they're authorized for, not the entire network. Defense in depth: multiple controls layer \u2014 MFA (authentication), network routing (only via bastion), session logging (monitoring), and access restrictions (authorization). Attack surface reduction: instead of exposing all internal servers to remote access (each is a potential entry point), only the bastion host is exposed \u2014 a single hardened, monitored chokepoint. Non-repudiation: session logs tied to MFA-authenticated sessions mean admin actions are attributable \u2014 an admin cannot deny having performed actions recorded under their authenticated session.",
-      "explanation_wrong_common": "This is not purely Zero Trust (though it has Zero Trust elements like MFA and per-request authorization, the primary architecture is a bastion host implementing multiple classical security principles). It is not risk avoidance (remote access is still permitted, just controlled \u2014 avoidance would mean no remote access at all). It is more than just network segmentation (the bastion provides authentication, logging, and access control beyond simple network isolation). The value of a bastion host is that it concentrates access through a single, hardened, monitored point \u2014 making it both easier to secure and easier to audit."
+      "answer": "NGFW — it performs deep packet inspection at the application layer (Layer 7), identifies applications by their behavior rather than port number, decrypts and inspects SSL/TLS traffic, and integrates threat intelligence feeds for real-time blocking of known-bad IPs/domains",
+      "explanation_correct": "A Next-Generation Firewall (NGFW) combines traditional firewall capabilities with advanced features: (1) Application awareness — identifies applications by their traffic patterns and behavior, not just port numbers. This matters because applications can use non-standard ports (e.g., SSH on port 443 to bypass port-based rules). NGFWs can identify and block 'Facebook' or 'BitTorrent' regardless of what port they use. (2) SSL/TLS decryption — NGFWs can terminate SSL, inspect the decrypted traffic for threats (malware, data exfiltration), then re-encrypt — though this requires careful privacy and certificate considerations. (3) Threat intelligence integration — real-time feeds of known malicious IPs, domains, and file hashes enable proactive blocking. (4) IPS/IDS integration — built-in intrusion prevention. (5) User identity awareness — can apply policies based on user, not just IP. A stateful firewall only tracks connection state and filters by IP/port (Layers 3-4) — it cannot identify applications by behavior, inspect encrypted traffic, or use threat intelligence.",
+      "explanation_wrong_common": "A stateful firewall CANNOT identify applications by port reliably (applications can use any port) and cannot inspect SSL/TLS traffic (it only sees encrypted bytes). The two types are NOT identical — NGFWs add significant Layer 7 capabilities that stateful firewalls lack. It is the NGFW (not the stateful firewall) that handles SSL decryption. The common mistake is underestimating how much applications evade port-based blocking — modern apps use HTTP/HTTPS on standard ports, tunnel through other protocols, or use dynamic ports. Only application-layer inspection (NGFW) can reliably identify and control them."
     },
     {
-      "card_id": "arch_030",
-      "topic": "Security Architecture",
-      "difficulty": "medium",
+      "card_id": "netsec_035",
+      "topic": "Network Security",
+      "difficulty": "hard",
       "question_type": "scenario_mcq",
-      "question_text": "A company is transitioning from a traditional perimeter firewall architecture to Zero Trust. Their security team argues the existing firewall should be removed because Zero Trust makes it obsolete. How should the firewall be treated in a Zero Trust environment, and what role does it still play?",
+      "question_text": "An organization is implementing a Zero Trust network architecture. They currently use a traditional VPN that grants full network access upon authentication. The security team proposes replacing the VPN with a Zero Trust Network Access (ZTNA) solution. How does ZTNA fundamentally differ from a traditional VPN, and what is the security improvement?",
       "choices": [
-        "The firewall should be retained and integrated into Zero Trust as one of multiple enforcement points \u2014 it still provides network-layer filtering, traffic segmentation, and a first line of defense, but should no longer be the sole trust boundary; Zero Trust adds identity-based verification on top of network controls rather than replacing them",
-        "The firewall must be completely removed \u2014 Zero Trust makes all network-layer controls obsolete",
-        "The firewall should become the only authentication mechanism for Zero Trust",
-        "The firewall should be replaced with a VPN, which is the foundation of Zero Trust"
+        "ZTNA grants access on a per-application basis after verifying user identity AND device posture for each request — it never puts the user on the network (no IP-level access), whereas a VPN grants broad network-level access after a single authentication, exposing the entire internal network to the authenticated user",
+        "ZTNA encrypts traffic more strongly than VPNs by using AES-256 instead of AES-128",
+        "ZTNA is identical to a VPN but includes an additional password prompt for each application",
+        "ZTNA replaces network segmentation entirely by allowing all users to access all applications without restrictions"
       ],
-      "answer": "The firewall should be retained and integrated into Zero Trust as one of multiple enforcement points \u2014 it still provides network-layer filtering, traffic segmentation, and a first line of defense, but should no longer be the sole trust boundary; Zero Trust adds identity-based verification on top of network controls rather than replacing them",
-      "explanation_correct": "Zero Trust does not eliminate the firewall \u2014 it changes the firewall's role. In a traditional model, the firewall is the primary trust boundary: if traffic passes the firewall, it is trusted. In Zero Trust, the firewall becomes one enforcement point among many. It still provides valuable functions: network-layer filtering (blocking known-bad IPs, port restrictions), traffic segmentation (limiting lateral movement), and rate limiting. Zero Trust adds identity-based verification (who is the user, what is the device posture, is the request contextually appropriate) on top of these network controls. Defense in depth teaches us that controls should complement, not replace, each other. Removing the firewall would eliminate a valuable layer.",
-      "explanation_wrong_common": "The firewall should not be removed \u2014 Zero Trust is additive, not subtractive. Network-layer controls remain valuable even in a Zero Trust environment. The firewall should not become the sole authentication mechanism (Zero Trust requires identity-based verification from identity providers, not just network rules). A VPN is NOT the foundation of Zero Trust \u2014 in fact, a VPN grants broad network access after a single authentication, which is the opposite of Zero Trust's per-request, least-privilege model. The firewall transitions from 'the trust boundary' to 'one of many enforcement points,' working alongside identity, device posture, and application-level controls."
+      "answer": "ZTNA grants access on a per-application basis after verifying user identity AND device posture for each request — it never puts the user on the network (no IP-level access), whereas a VPN grants broad network-level access after a single authentication, exposing the entire internal network to the authenticated user",
+      "explanation_correct": "The fundamental difference is the trust model and access granularity. A traditional VPN authenticates the user once, then places their device on the internal network with an IP address — they can potentially reach any host on the network, limited only by network ACLs. If their device is compromised or their session is hijacked, the attacker has a foothold on the internal network for lateral movement. ZTNA (Zero Trust Network Access) operates differently: (1) Per-application access — the user connects to specific applications, not the network. There is no IP-level network access. (2) Continuous verification — user identity AND device posture (is the device managed, patched, compliant?) are checked for each access request, not just once. (3) Brokers connections — a trusted broker mediates between user and application, hiding the application from the network (the app is 'dark' to unauthorized users). (4) No implicit trust — VPNs trust authenticated users by giving them network access; ZTNA never trusts, always verifies. This reduces lateral movement risk, limits blast radius, and enables granular access control.",
+      "explanation_wrong_common": "ZTNA is NOT about stronger encryption (both VPNs and ZTNA can use AES-256 — encryption is not the differentiator). It is NOT just an extra password prompt (it changes the entire access model from network-level to application-level). It does NOT remove all restrictions (it is MORE restrictive, not less). The critical shift is from 'authenticate once, access the network' (VPN) to 'verify continuously, access specific applications only' (ZTNA). This is why ZTNA is a core component of Zero Trust architectures — it eliminates the concept of a trusted internal network where authenticated users can roam freely."
     }
   ],
   "scheduling_updates": [
-    {
-      "card_id": "framework_026",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "framework_027",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "framework_028",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "framework_029",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "framework_030",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "risk_026",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "risk_027",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "risk_028",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "risk_029",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "risk_030",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "threat_026",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "threat_027",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "threat_028",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "threat_029",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "threat_030",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "arch_026",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "arch_027",
-      "next_due_at": "2026-10-07"
-    },
-    {
-      "card_id": "arch_028",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "arch_029",
-      "next_due_at": "2026-10-08"
-    },
-    {
-      "card_id": "arch_030",
-      "next_due_at": "2026-10-08"
-    }
+    { "card_id": "crypto_031", "next_due_at": "2026-10-10" },
+    { "card_id": "crypto_032", "next_due_at": "2026-10-10" },
+    { "card_id": "crypto_033", "next_due_at": "2026-10-11" },
+    { "card_id": "crypto_034", "next_due_at": "2026-10-11" },
+    { "card_id": "crypto_035", "next_due_at": "2026-10-12" },
+    { "card_id": "pki_031", "next_due_at": "2026-10-10" },
+    { "card_id": "pki_032", "next_due_at": "2026-10-10" },
+    { "card_id": "pki_033", "next_due_at": "2026-10-11" },
+    { "card_id": "pki_034", "next_due_at": "2026-10-11" },
+    { "card_id": "pki_035", "next_due_at": "2026-10-12" },
+    { "card_id": "iam_031", "next_due_at": "2026-10-10" },
+    { "card_id": "iam_032", "next_due_at": "2026-10-10" },
+    { "card_id": "iam_033", "next_due_at": "2026-10-11" },
+    { "card_id": "iam_034", "next_due_at": "2026-10-11" },
+    { "card_id": "iam_035", "next_due_at": "2026-10-12" },
+    { "card_id": "netsec_031", "next_due_at": "2026-10-10" },
+    { "card_id": "netsec_032", "next_due_at": "2026-10-10" },
+    { "card_id": "netsec_033", "next_due_at": "2026-10-11" },
+    { "card_id": "netsec_034", "next_due_at": "2026-10-11" },
+    { "card_id": "netsec_035", "next_due_at": "2026-10-12" }
   ]
 }
