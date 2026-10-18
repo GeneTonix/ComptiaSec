@@ -1,346 +1,406 @@
 {
   "cards": [
     {
-      "card_id": "social_071",
-      "topic": "Social Engineering",
+      "card_id": "ir_081",
+      "topic": "Incident Response",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is social engineering in the context of cybersecurity, and why is it effective despite technical security controls?",
+      "question_text": "What are the phases of the incident response process as defined by NIST SP 800-61?",
       "choices": [
-        "Social engineering manipulates human psychology (trust, fear, curiosity, urgency) to trick people into revealing information or performing actions that bypass technical controls — it is effective because humans are the weakest link and no firewall can stop a willing action by an authorized user",
-        "Social engineering is a type of network attack that exploits software vulnerabilities automatically",
-        "Social engineering is the process of training employees to use security tools properly",
-        "Social engineering is a method for engineers to design more secure network architectures"
+        "Preparation, Detection & Analysis, Containment/eradication/recovery, Post-incident activity",
+        "Plan, Do, Check, Act",
+        "Identify, Protect, Detect, Respond, Recover",
+        "Initiate, Investigate, Isolate, Eradicate, Document"
       ],
-      "answer": "Social engineering manipulates human psychology (trust, fear, curiosity, urgency) to trick people into revealing information or performing actions that bypass technical controls — it is effective because humans are the weakest link and no firewall can stop a willing action by an authorized user",
-      "explanation_correct": "Social engineering attacks target the human element rather than technical systems. Attackers exploit cognitive biases: authority (impersonating a boss), urgency (account will be closed), curiosity (interesting attachment), trust (pretending to be IT support), or fear (legal threat). These attacks bypass firewalls, encryption, and access controls because the victim voluntarily performs the action — the system sees an authorized user doing something they're permitted to do. This is why security awareness training is a critical compensating control. Even with perfect technical security, a user who willingly gives their password to someone they believe is IT support has bypassed everything.",
-      "explanation_wrong_common": "Social engineering is NOT a network/software attack (it targets people, not systems). It is NOT security training (it is the attack itself). It is NOT about designing architectures. The critical concept is that social engineering bypasses technical controls by exploiting human behavior — the attacker gets the authorized user to do the work for them. This is why MFA alone is insufficient; attackers use MFA fatigue (repeated push notifications until the user approves) or relay attacks. Defense requires both technical controls AND user awareness."
+      "answer": "Preparation, Detection & Analysis, Containment/eradication/recovery, Post-incident activity",
+      "explanation_correct": "NIST SP 800-61 defines four phases: (1) Preparation \u2014 building the IR plan, training, tools, contacts before an incident; (2) Detection & Analysis \u2014 identifying incidents from alerts/logs and determining scope; (3) Containment, Eradication & Recovery \u2014 stopping the spread, removing the threat, restoring systems; (4) Post-incident activity \u2014 lessons learned, documentation, improving the process. The NIST lifecycle is cyclic \u2014 post-incident feeds back into preparation. This is distinct from the SANS PICERL model (Preparation, Identification, Containment, Eradication, Recovery, Lessons Learned), which maps closely but uses different terminology.",
+      "explanation_wrong_common": "Plan-Do-Check-Act is the Deming cycle (quality management, not IR). Identify-Protect-Detect-Respond-Recover is the NIST CSF (a framework, not the IR process lifecycle). The last option mixes terms that aren't a recognized standard. The common mistake is confusing the NIST CSF functions with the NIST SP 800-61 IR phases \u2014 they're related but different documents. IR is specifically about handling incidents after detection; CSF is a broader risk-management framework."
     },
     {
-      "card_id": "social_072",
-      "topic": "Social Engineering",
+      "card_id": "ir_082",
+      "topic": "Incident Response",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is phishing, and how does it differ from spear phishing and whaling?",
+      "question_text": "What is a chain of custody, and why is it critical during incident response and digital forensics?",
       "choices": [
-        "Phishing sends mass fraudulent emails/links hoping anyone clicks; spear phishing targets specific individuals after research; whaling targets high-profile victims (CEOs, executives) for larger payouts — the difference is targeting specificity and victim value",
-        "Phishing attacks only mobile phones; spear phishing attacks only desktop computers; whaling attacks only servers",
-        "Phishing, spear phishing, and whaling are all the same attack with different names",
-        "Phishing uses phone calls; spear phishing uses emails; whaling uses physical mail"
+        "A documented record of who handled, accessed, and transferred evidence at every step \u2014 it preserves evidence integrity and admissibility in legal proceedings",
+        "A list of network links connecting the attacker's machines to the victim",
+        "A sequence of commands used by the attacker during the intrusion",
+        "A backup chain storing copies of evidence on multiple drives"
       ],
-      "answer": "Phishing sends mass fraudulent emails/links hoping anyone clicks; spear phishing targets specific individuals after research; whaling targets high-profile victims (CEOs, executives) for larger payouts — the difference is targeting specificity and victim value",
-      "explanation_correct": "Phishing is a numbers game — send millions of fake emails (fake bank alerts, package delivery notices, password reset links) and hope a small percentage click. Spear phishing is targeted: the attacker researches the victim (LinkedIn, company website, social media) and crafts a personalized email — e.g., 'Hi Sarah, please review the Q3 financial report attached' sent to a specific CFO. Whaling is spear phishing aimed at C-suite executives ('whales') — the potential payoff is huge (wire fraud, access to corporate credentials, stock manipulation). BEC (Business Email Compromise) is a related attack where attackers impersonate executives to trick employees into wire transfers. The trend: as targeting gets more specific, success rates increase but effort per attack also increases.",
-      "explanation_wrong_common": "The delivery channel is NOT the differentiator — all three typically use email (though vishing uses voice, smishing uses SMS). They are NOT the same attack — the key difference is targeting: broad (phishing) vs. individual (spear) vs. high-value individual (whaling). The common mistake is thinking phishing is just 'fake emails' without understanding the targeting spectrum. Defense: email filtering (anti-spam/DMARC), security awareness training, verification procedures for financial transactions, and MFA."
+      "answer": "A documented record of who handled, accessed, and transferred evidence at every step \u2014 it preserves evidence integrity and admissibility in legal proceedings",
+      "explanation_correct": "Chain of custody is the chronological documentation showing the custody, control, transfer, analysis, and disposition of evidence. Every person who touches the evidence, when, why, and where must be recorded. Without it, opposing counsel can argue the evidence was tampered with, making it inadmissible in court. It typically uses evidence bags with tamper-evident seals, signed forms, and timestamps. Hashing (e.g., MD5/SHA-256) at collection time proves the data hasn't changed. This matters even for internal incidents because HR/disciplinary actions or law-enforcement referral may require defensible evidence.",
+      "explanation_wrong_common": "Chain of custody is NOT about network topology, attacker command sequences, or backups. It's a legal/forensic concept about evidence handling. The common mistake is thinking digital evidence is self-proving \u2014 it isn't. If you can't prove the evidence hasn't been altered from collection to presentation, it's worthless in court. Even imaging a drive without recording who did it and when breaks the chain."
     },
     {
-      "card_id": "social_073",
-      "topic": "Social Engineering",
+      "card_id": "ir_083",
+      "topic": "Incident Response",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An employee receives a call from someone claiming to be from the IT helpdesk. The caller says there is a urgent security issue with the employee's account and they need their password to 'verify and fix it immediately.' The caller sounds professional, knows the employee's name and department, and creates a sense of urgency. What type of attack is this, and what should the employee do?",
+      "question_text": "A security analyst detects a ransomware infection on a file server. Several workstations are also showing encryption activity. The incident is actively spreading. Following NIST IR guidance, what should the response team do FIRST in the containment phase?",
       "choices": [
-        "This is vishing (voice phishing) — the employee should refuse to share credentials, verify independently by calling the IT helpdesk using the official number from the company intranet, and report the incident to the security team",
-        "This is a legitimate IT call — the employee should provide their password since the caller knows their name and department",
-        "This is a physical security breach — the employee should lock their office door and call building security",
-        "This is a DDoS attack — the employee should disconnect their computer from the network immediately"
+        "Isolate the infected systems from the network (segment/disconnect) to stop lateral spread, while preserving evidence in memory before powering off \u2014 then eradicate and recover",
+        "Immediately power off all infected machines to stop the encryption",
+        "Pay the ransom to decrypt the files as quickly as possible",
+        "Send a company-wide email asking employees to not open suspicious attachments"
       ],
-      "answer": "This is vishing (voice phishing) — the employee should refuse to share credentials, verify independently by calling the IT helpdesk using the official number from the company intranet, and report the incident to the security team",
-      "explanation_correct": "Vishing (voice phishing) uses phone calls to trick victims. The attacker gathered the employee's name and department from public sources (LinkedIn, company website) to build credibility. The sense of urgency ('fix it immediately') is a classic social engineering pressure tactic designed to prevent the victim from thinking critically. Legitimate IT support NEVER asks for passwords — they can reset passwords through administrative tools without needing the current one. The correct response: (1) Never share credentials by phone, email, or any channel. (2) Verify independently — hang up and call the known IT helpdesk number. (3) Report the incident so security can warn other employees. This is why organizations publish verification procedures and train staff to recognize authority/urgency manipulation.",
-      "explanation_wrong_common": "Knowing someone's name and department is NOT proof of legitimacy — that information is publicly available. IT support never needs your password (they have admin tools). This is NOT a physical security issue or DDoS — it is social engineering via phone. The critical lesson: urgency + authority + credential request = social engineering attack. The common mistake is trusting the caller because they 'know things' about you — but that information is easily obtained from OSINT (open-source intelligence). Always verify through an independent, trusted channel."
+      "answer": "Isolate the infected systems from the network (segment/disconnect) to stop lateral spread, while preserving evidence in memory before powering off \u2014 then eradicate and recover",
+      "explanation_correct": "Short-term containment = isolate infected hosts (disconnect network, VLAN segmentation) to halt lateral movement WITHOUT destroying volatile evidence. Memory contents (running processes, encryption keys, network connections) are lost on power-off, so memory should be captured first. Powering off destroys evidence and can trigger anti-forensic logic in some malware. Eradication (removing malware, patching the entry vector) and recovery (restoring from clean backups) come AFTER containment. Paying the ransom is discouraged (no guarantee, funds crime, may violate OFAC sanctions). Email warnings are part of preparation/communication, not containment.",
+      "explanation_wrong_common": "Powering off is the classic mistake \u2014 it destroys volatile evidence (RAM) and some malware is programmed to delete itself or trigger worse behavior on shutdown. Paying the ransom is a last-resort business decision, never a first step, and law enforcement discourages it. Emailing staff doesn't contain an active technical threat. The key concept: contain first (isolate), preserve evidence (memory capture), THEN eradicate and recover. Order matters."
     },
     {
-      "card_id": "social_074",
-      "topic": "Social Engineering",
+      "card_id": "ir_084",
+      "topic": "Incident Response",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An attacker walks into a corporate office building wearing a delivery uniform and carrying a large box. They follow an employee through a secure door (which requires badge access) by walking close behind them. The employee holds the door open out of courtesy. What is this attack called, and what controls would prevent it?",
+      "question_text": "During a post-incident review (lessons learned), the team discusses a phishing attack that led to credential theft. The root cause was an employee clicking a link despite having completed security awareness training. Which statement best reflects the purpose of this review?",
       "choices": [
-        "This is tailgating (piggybacking) — prevented by security awareness training (educate staff not to hold doors), physical turnstiles or mantraps that allow only one person per authentication event, and badge+PIN or badge+biometric dual authentication at entry points",
-        "This is a DDoS attack — prevented by firewall rules and rate limiting",
-        "This is phishing — prevented by email filtering and spam detection",
-        "This is a supply chain attack — prevented by vendor security assessments"
+        "To identify what went wrong and improve processes, controls, and training \u2014 not to assign blame to individuals; the goal is systemic improvement so the same incident doesn't recur",
+        "To fire the employee who clicked the phishing link as a deterrent to others",
+        "To determine how much the incident cost and bill the responsible employee",
+        "To document the incident for compliance and then close the case without changing anything"
       ],
-      "answer": "This is tailgating (piggybacking) — prevented by security awareness training (educate staff not to hold doors), physical turnstiles or mantraps that allow only one person per authentication event, and badge+PIN or badge+biometric dual authentication at entry points",
-      "explanation_correct": "Tailgating (also called piggybacking) exploits human courtesy and social norms — people naturally hold doors for others, especially someone carrying a heavy box or wearing a legitimate-looking uniform. The attacker bypasses physical access controls without needing a badge. Prevention requires both technical and human controls: (1) Mantraps — a small vestibule with two interlocking doors; only one person can enter, authenticate, pass through the inner door, and only then can the next person enter. (2) Turnstiles — physical barriers that allow one person per badge tap. (3) Security guards who verify identity. (4) Awareness training — teach employees that 'courtesy' can compromise security and to politely direct visitors to the reception desk. (5) Badge+PIN or badge+biometric — ensures the authenticated person is actually the badge owner. Note: piggybacking sometimes implies the attacker has no authorization at all, while tailgating may involve an authorized person helping an unauthorized one.",
-      "explanation_wrong_common": "This is NOT a network attack (DDoS, phishing, supply chain) — it is a physical security bypass. The key insight is that physical access controls are only effective if each authentication event corresponds to exactly one person. The common mistake is thinking badge readers alone are sufficient — they're not if people share doors. Social engineering exploits politeness, so the defense must address human behavior, not just add more technology. The delivery uniform is a pretext — a fabricated scenario that makes the attacker's presence seem normal."
+      "answer": "To identify what went wrong and improve processes, controls, and training \u2014 not to assign blame to individuals; the goal is systemic improvement so the same incident doesn't recur",
+      "explanation_correct": "Post-incident activity (lessons learned) is a no-blame, blameless postmortem. The objective is to improve the organization's security posture: Was the phishing filter adequate? Was the training effective or does it need redesign? Should we add MFA? Were detection alerts timely? Blaming individuals creates a culture of fear where people hide incidents, making future breaches worse. The review should produce actionable improvements (new controls, updated playbooks, additional training) and feed back into the Preparation phase of the next cycle. This is why mature teams run blameless retrospectives.",
+      "explanation_wrong_common": "Punitive responses (firing, billing) destroy trust and ensure future incidents go unreported \u2014 the worst outcome for security. Documentation-only reviews that change nothing waste the exercise. The common mistake is treating lessons learned as a fault-finding exercise rather than a process-improvement opportunity. A blameless culture surfaces more incidents and more learning; a blame culture hides them."
     },
     {
-      "card_id": "social_075",
-      "topic": "Social Engineering",
+      "card_id": "ir_085",
+      "topic": "Incident Response",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company has implemented MFA, email filtering (DMARC/SPF/DKIM), security awareness training, and a reporting button for suspicious emails. Despite this, an attacker successfully compromises an executive's account by: (1) sending a convincing spear-phishing email that passes email filters, (2) the executive enters credentials on a fake login page, (3) when the MFA push notification appears, the attacker sends repeated MFA prompts until the frustrated executive approves one to stop the notifications. What is this MFA attack called, and what additional control would best prevent it?",
+      "question_text": "A manufacturing company's ICS/SCADA network is hit by a wiper malware that has destroyed historian data and is propagating to engineering workstations. The SOC wants to contain it, but operations cannot tolerate unplanned downtime of the production line. The CISO, plant manager, and legal are on a call. Describe the correct containment approach balancing safety, evidence, and continuity, and explain why simply pulling the plug on the PLCs is wrong.",
       "choices": [
-        "This is MFA fatigue (MFA bombing/push bombing) — the attacker floods the victim with MFA push notifications until they approve one out of frustration or habit; the best prevention is number-matching MFA (the user must match a number shown on their screen to the one on their phone) or phishing-resistant MFA like FIDO2/WebAuthn hardware keys that require cryptographic proof of origin",
-        "This is a brute-force attack on the MFA system — prevented by stronger password complexity rules",
-        "This is a man-in-the-middle attack on the VPN — prevented by changing the VPN protocol",
-        "This is a privilege escalation attack — prevented by patching the operating system"
+        "Use network segmentation/isolation of affected engineering workstations and the historian from the rest of the network while keeping the PLCs running if safe; capture memory and logs from isolated hosts; coordinate containment timing with operations to minimize production impact; do NOT power off PLCs because abrupt shutdowns can cause physical damage or safety hazards in industrial processes, and volatile PLC state may be needed for root-cause analysis",
+        "Immediately power off all PLCs and the SCADA network to stop the malware, accepting production loss \u2014 safety always means total shutdown",
+        "Do nothing and let the malware run its course since the production line must keep running regardless",
+        "Reimage all PLCs from backup immediately without preserving any evidence or logs"
       ],
-      "answer": "This is MFA fatigue (MFA bombing/push bombing) — the attacker floods the victim with MFA push notifications until they approve one out of frustration or habit; the best prevention is number-matching MFA (the user must match a number shown on their screen to the one on their phone) or phishing-resistant MFA like FIDO2/WebAuthn hardware keys that require cryptographic proof of origin",
-      "explanation_correct": "MFA fatigue (also called MFA bombing or push bombing) is a real-world attack that has compromised major organizations (notably the 2022 Uber breach). Having stolen credentials via phishing, the attacker repeatedly triggers MFA push notifications — sometimes dozens in a row, sometimes at 2 AM. The victim, annoyed or confused, eventually taps 'Approve' to stop the notifications. Defense in depth failed here because each control was bypassed individually: email filters passed the spear-phish, training didn't prevent the credential entry, and MFA push was defeated by fatigue. The best mitigations: (1) Number-matching MFA — the login page shows a number (e.g., '48'), and the phone app asks the user to select the matching number from options — a fatigued user can't accidentally approve because they must actively read and match. (2) FIDO2/WebAuthn hardware keys (YubiKey) — these are phishing-resistant because they cryptographically bind to the legitimate origin URL; a fake login page cannot trigger the key. (3) Rate limiting MFA attempts and alerting on repeated failures. (4) Context-aware prompts that show location/IP so the user can identify suspicious login attempts.",
-      "explanation_wrong_common": "This is NOT brute-force (the attacker already has the password from phishing — they're bypassing MFA, not guessing passwords). It is NOT a VPN MITM or privilege escalation. The critical insight is that push-based MFA, while better than no MFA, has a human-factor weakness: users can be manipulated into approving. Number-matching and FIDO2 eliminate this by requiring active, context-aware interaction that can't be done on autopilot. The broader lesson: security controls must be evaluated for their own attack surface — MFA itself can be social-engineered."
+      "answer": "Use network segmentation/isolation of affected engineering workstations and the historian from the rest of the network while keeping the PLCs running if safe; capture memory and logs from isolated hosts; coordinate containment timing with operations to minimize production impact; do NOT power off PLCs because abrupt shutdowns can cause physical damage or safety hazards in industrial processes, and volatile PLC state may be needed for root-cause analysis",
+      "explanation_correct": "In OT/ICS environments, containment must account for physical safety and process continuity, not just data integrity. The principle: isolate at the network layer (firewall rules, VLAN isolation) to cut the malware's communication path while allowing the physical process to continue safely. Engineering workstations and the historian (IT-side) can be isolated and forensically imaged. PLCs should NOT be abruptly powered off because (1) industrial processes (chemical reactions, pressure vessels, conveyors) may require controlled shutdown sequences \u2014 abrupt power loss can cause explosions, spills, or equipment damage; (2) PLC volatile state and logic may be needed to determine what the attacker changed; (3) some PLCs fail-open or fail-dangerous on power loss. Containment timing is a joint decision (CISO + plant manager + safety officer) following the IR plan. This reflects the NIST SP 800-82 guidance for ICS and the reality that OT incident response differs fundamentally from IT.",
+      "explanation_wrong_common": "Total shutdown is NOT always safer in OT \u2014 uncontrolled shutdowns can themselves be the hazard (e.g., a valve that must close in sequence). Doing nothing lets the attacker destroy more. Reimaging without evidence preservation destroys the forensic record and may reintroduce the vulnerability. The common mistake is applying IT incident response instincts (power off, reimage) to OT \u2014 where availability and safety often take priority over confidentiality, the inverse of the IT CIA triad. OT IR requires cross-functional coordination and process-aware containment."
     },
     {
-      "card_id": "vuln_071",
-      "topic": "Vulnerability Management",
+      "card_id": "crypto_081",
+      "topic": "Cryptography",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is vulnerability management, and how does it differ from a one-time vulnerability scan?",
+      "question_text": "What is the difference between symmetric and asymmetric encryption?",
       "choices": [
-        "Vulnerability management is a continuous lifecycle process of identifying, evaluating, treating, and reporting vulnerabilities across all assets — a scan is just one step (identification) within that lifecycle; management includes prioritization, remediation, verification, and ongoing monitoring",
-        "Vulnerability management is the same as a vulnerability scan but done more frequently",
-        "Vulnerability management only applies to network devices, while scanning applies to all systems",
-        "Vulnerability management is an automated process that requires no human decision-making"
+        "Symmetric uses one shared secret key for both encryption and decryption (fast, good for bulk data); asymmetric uses a key pair \u2014 public key encrypts, private key decrypts (slower, good for key exchange and authentication)",
+        "Symmetric uses two keys; asymmetric uses one key",
+        "Symmetric is only for files; asymmetric is only for network traffic",
+        "Symmetric is unbreakable; asymmetric can be broken easily"
       ],
-      "answer": "Vulnerability management is a continuous lifecycle process of identifying, evaluating, treating, and reporting vulnerabilities across all assets — a scan is just one step (identification) within that lifecycle; management includes prioritization, remediation, verification, and ongoing monitoring",
-      "explanation_correct": "Vulnerability management is a lifecycle, not a single action. The phases: (1) Discover — inventory all assets (you can't protect what you don't know exists). (2) Assess/Scan — use vulnerability scanners (Nessus, OpenVAS, Qualys) to identify known vulnerabilities (CVEs, misconfigurations, missing patches). (3) Prioritize — rank vulnerabilities by risk (CVSS score, exploitability, asset criticality, business impact) — not all vulnerabilities need immediate fixing. (4) Treat — remediate (patch), mitigate (compensating control), or accept (documented risk acceptance). (5) Verify — re-scan to confirm remediation worked. (6) Report — track metrics for stakeholders and compliance. This cycle repeats continuously because new vulnerabilities are discovered daily. A scan without prioritization and remediation is just a list of problems — management turns that list into action.",
-      "explanation_wrong_common": "Vulnerability management is NOT just frequent scanning — scanning is only the identification step. It is NOT limited to network devices (it covers servers, endpoints, applications, cloud, containers). It is NOT fully automated — prioritization and risk acceptance require human judgment (is the vulnerability exploitable in YOUR environment? is the asset critical?). The common mistake is running scans but never remediating findings. The 'scan and ignore' pattern gives a false sense of security — you know about vulnerabilities but haven't fixed them. Effective programs close the loop: scan → prioritize → fix → verify."
+      "answer": "Symmetric uses one shared secret key for both encryption and decryption (fast, good for bulk data); asymmetric uses a key pair \u2014 public key encrypts, private key decrypts (slower, good for key exchange and authentication)",
+      "explanation_correct": "Symmetric encryption (AES, ChaCha20, 3DES) uses a single shared key \u2014 both parties need the same key, so key distribution is the challenge. It's fast and suited for encrypting large amounts of data. Asymmetric encryption (RSA, ECC) uses a mathematically related key pair: the public key can be shared openly and encrypts data; only the private key (kept secret) can decrypt. It's computationally expensive, so in practice systems use asymmetric to exchange a symmetric session key, then use symmetric for the actual data (this is what TLS/HTTPS does). Asymmetric also enables digital signatures (private key signs, public key verifies).",
+      "explanation_wrong_common": "The number of keys isn't 'two vs one' in the simplistic sense \u2014 symmetric needs one key shared by both parties (a distribution problem), asymmetric needs a pair per user. It's not about files vs network. Neither is 'unbreakable' \u2014 security depends on key length and algorithm strength; symmetric and asymmetric face different attack models. The common mistake is missing the key-distribution advantage of asymmetric and why hybrid systems (TLS) combine both."
     },
     {
-      "card_id": "vuln_072",
-      "topic": "Vulnerability Management",
+      "card_id": "crypto_082",
+      "topic": "Cryptography",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is CVSS (Common Vulnerability Scoring System), and how is it used in vulnerability management?",
+      "question_text": "What is a hash function in cryptography, and how does it differ from encryption?",
       "choices": [
-        "CVSS is a standardized scoring system (0.0-10.0) that rates the severity of vulnerabilities based on exploitability, impact, and scope — it helps organizations prioritize which vulnerabilities to fix first (Critical 9.0-10.0, High 7.0-8.9, Medium 4.0-6.9, Low 0.1-3.9)",
-        "CVSS is a tool that automatically patches vulnerabilities based on their score",
-        "CVSS is a database of all known vulnerabilities maintained by MITRE",
-        "CVSS is a firewall rule set that blocks traffic matching known vulnerability signatures"
+        "A hash is a one-way function that maps data of any size to a fixed-length digest \u2014 it cannot be reversed (no key, no decryption); encryption is two-way (reversible with a key)",
+        "A hash is a type of encryption that uses a secret key to scramble data",
+        "A hash and encryption are the same thing with different names",
+        "A hash is a two-way function that can be decrypted with the right password"
       ],
-      "answer": "CVSS is a standardized scoring system (0.0-10.0) that rates the severity of vulnerabilities based on exploitability, impact, and scope — it helps organizations prioritize which vulnerabilities to fix first (Critical 9.0-10.0, High 7.0-8.9, Medium 4.0-6.9, Low 0.1-3.9)",
-      "explanation_correct": "CVSS (Common Vulnerability Scoring System, maintained by FIRST.org) provides a consistent way to rate vulnerability severity. The Base Score (0-10) considers: Attack Vector (network/adjacent/local/physical — network is easiest to exploit), Attack Complexity, Privileges Required, User Interaction, and Impact on Confidentiality/Integrity/Availability. For example, a remotely exploitable vulnerability requiring no authentication and allowing full system compromise scores 9.8 (Critical). CVSS helps prioritize: fix Critical/High first, especially on internet-facing or critical assets. However, CVSS alone is insufficient — a Critical vulnerability on an isolated internal test server may be lower risk than a Medium on a public-facing e-commerce server. Context matters: EPSS (Exploit Prediction Scoring System) adds probability of exploitation, and organizations should factor in asset criticality and exposure. CVE (Common Vulnerabilities and Exposures) is the identifier; CVSS is the severity score.",
-      "explanation_wrong_common": "CVSS does NOT auto-patch (it scores, it doesn't fix). CVSS is NOT a vulnerability database — CVE (maintained by MITRE) is the database of identifiers; CVSS is the scoring system applied to CVEs. It is NOT a firewall ruleset. The common confusion is between CVE (the ID, like CVE-2021-44228) and CVSS (the score, like 9.8). CVSS is a prioritization tool, not a complete risk assessment — it doesn't account for your specific environment, compensating controls, or business context. Organizations that fix strictly by CVSS score without context waste resources on irrelevant Criticals while missing environment-specific risks."
+      "answer": "A hash is a one-way function that maps data of any size to a fixed-length digest \u2014 it cannot be reversed (no key, no decryption); encryption is two-way (reversible with a key)",
+      "explanation_correct": "A cryptographic hash (SHA-256, SHA-3, MD5\u2014now broken) takes arbitrary input and produces a fixed-size output (digest). Properties: deterministic (same input \u2192 same output), one-way (infeasible to recover input from digest), collision-resistant (hard to find two inputs with the same hash), avalanche effect (tiny input change \u2192 completely different hash). Uses: integrity verification (file checksums), password storage (store hash, not password\u2014ideally with salt+pepper via bcrypt/Argon2), digital signatures (sign the hash, not the whole document). Unlike encryption, there's no key and no reversal \u2014 you can't 'decrypt' a hash, only compare hashes.",
+      "explanation_wrong_common": "Hashing is NOT encryption \u2014 it has no key and is not reversible. Calling it 'encryption with a key' or 'two-way' is fundamentally wrong. The common mistake is conflating hashing with encryption because both 'scramble' data. Encryption is for confidentiality (hide data, recover later); hashing is for integrity/authentication (detect changes, verify identity). Storing passwords encrypted (reversible) instead of hashed is a serious vulnerability \u2014 if the key leaks, all passwords are exposed."
     },
     {
-      "card_id": "vuln_073",
-      "topic": "Vulnerability Management",
+      "card_id": "crypto_083",
+      "topic": "Cryptography",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A vulnerability scan identifies 500 vulnerabilities across a company's infrastructure: 10 Critical, 50 High, 200 Medium, and 240 Low. The security team has limited resources and can only remediate 30 vulnerabilities this month. How should they prioritize, and what additional information do they need beyond CVSS scores?",
+      "question_text": "A web application stores user passwords in a database. The developer hashes them with SHA-256. A breach exposes the database, and attackers crack many passwords within hours using rainbow tables. What went wrong, and what is the correct approach?",
       "choices": [
-        "Prioritize by combining CVSS severity with asset criticality and exposure: fix Critical/High vulnerabilities on internet-facing and business-critical assets first (e.g., public web servers, domain controllers, databases with PII) — they also need to know which vulnerabilities have known public exploits (using threat intel/EPSS), whether compensating controls reduce risk, and the asset's business value",
-        "Fix all 10 Critical vulnerabilities first regardless of which assets they're on, then 20 High vulnerabilities chosen randomly",
-        "Fix the 240 Low vulnerabilities first because there are the most of them",
-        "Fix vulnerabilities alphabetically by CVE ID to ensure fairness across all systems"
+        "SHA-256 is a fast general-purpose hash, making it trivial to brute-force/rainbow-table; passwords should be hashed with a slow, salted key-stretching algorithm like bcrypt, scrypt, or Argon2 \u2014 the salt defeats rainbow tables and the slowness defeats brute force",
+        "SHA-256 is broken and should never be used for anything",
+        "The passwords should have been encrypted with AES instead of hashed",
+        "The database should not store passwords at all \u2014 the app should ask the user each time"
       ],
-      "answer": "Prioritize by combining CVSS severity with asset criticality and exposure: fix Critical/High vulnerabilities on internet-facing and business-critical assets first (e.g., public web servers, domain controllers, databases with PII) — they also need to know which vulnerabilities have known public exploits (using threat intel/EPSS), whether compensating controls reduce risk, and the asset's business value",
-      "explanation_correct": "Effective vulnerability prioritization requires context beyond CVSS. The formula is: Risk = Severity × Exposure × Asset Value × Exploit Likelihood. A Critical (9.8) on an isolated test server behind a firewall with no sensitive data is lower priority than a High (7.5) on a public-facing e-commerce server processing payments. Key factors: (1) Exposure — is the asset internet-facing? Internal-only? Behind a WAF? (2) Asset criticality — domain controllers, databases with PII, and public-facing apps are high-value targets. (3) Active exploitation — check threat intelligence feeds (CISA KEV catalog, EPSS scores) for vulnerabilities being actively exploited in the wild — these jump the queue. (4) Compensating controls — if a WAF blocks the attack pattern, the vulnerability may be mitigated temporarily. (5) Business impact — downtime cost, regulatory consequences. This risk-based approach ensures limited resources address the most dangerous combinations, not just the highest raw scores.",
-      "explanation_wrong_common": "Blindly fixing all Criticals first ignores context — a Critical on a non-production, isolated server wastes resources while a High on a public server remains exploitable. Fixing Lows first is backwards (lowest severity, lowest impact). Alphabetical by CVE is nonsensical (CVE IDs are chronological, not risk-ordered). The common mistake is treating CVSS as the sole prioritization factor — it's a starting point, not the complete picture. Risk-based prioritization (CVSS + context) is the industry standard and what Security+ tests. The CISA Known Exploited Vulnerabilities (KEV) catalog is particularly important — vulnerabilities on it are being actively exploited and should be remediated immediately."
+      "answer": "SHA-256 is a fast general-purpose hash, making it trivial to brute-force/rainbow-table; passwords should be hashed with a slow, salted key-stretching algorithm like bcrypt, scrypt, or Argon2 \u2014 the salt defeats rainbow tables and the slowness defeats brute force",
+      "explanation_correct": "SHA-256 is designed to be fast (for integrity checks), which is exactly wrong for passwords \u2014 attackers can compute billions of SHA-256 hashes/sec on GPUs. Without a salt, identical passwords produce identical hashes, enabling rainbow tables (precomputed hash databases). The fix: (1) Use a password-specific KDF (bcrypt, scrypt, Argon2, PBKDF2) that's deliberately slow and memory-hard, limiting attack speed. (2) Use a unique per-user salt (random, stored alongside the hash) so identical passwords hash differently and rainbow tables are useless. (3) Optionally a pepper (server-side secret) so a DB-only leak still can't crack offline. Argon2id is the current OWASP-recommended choice.",
+      "explanation_wrong_common": "SHA-256 isn't 'broken' \u2014 it's fine for integrity, just wrong for passwords due to speed. Encrypting passwords (AES) is worse \u2014 reversible, and a key leak exposes all passwords. 'Don't store anything' breaks authentication (you must verify against something). The common mistake: thinking 'hashed = secure' without considering hash speed and salting. A fast unsalted hash is nearly as bad as plaintext after a breach."
     },
     {
-      "card_id": "vuln_074",
-      "topic": "Vulnerability Management",
+      "card_id": "crypto_084",
+      "topic": "Cryptography",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company wants to validate their security posture beyond automated vulnerability scanning. They hire an external firm to simulate real-world attacks against their network, including attempting to exploit identified vulnerabilities, escalate privileges, and exfiltrate data. What type of assessment is this, and how does it differ from a vulnerability scan?",
+      "question_text": "Two parties want to verify a downloaded file's integrity and authenticity. The publisher provides the file, a SHA-256 hash of the file on their HTTPS website, and a digital signature created with the publisher's private key. Which combination actually proves BOTH integrity AND authenticity (that it came from the publisher, unmodified)?",
       "choices": [
-        "This is a penetration test (pentest) — it goes beyond identification by actively exploiting vulnerabilities to determine real-world impact, verify attack paths, and test detection/response capabilities; a vulnerability scan only identifies and catalogs potential vulnerabilities without exploitation",
-        "This is a vulnerability scan performed by an external party — identical to an internal scan but done by consultants",
-        "This is a risk assessment — a paper-based exercise that evaluates theoretical risks without testing systems",
-        "This is a compliance audit — checking whether the company meets regulatory requirements"
+        "Verify the digital signature using the publisher's public key (the signature covers the hash of the file) \u2014 this proves both integrity (any change invalidates the signature) and authenticity (only the private key holder could have signed it); comparing the SHA-256 hash alone only proves integrity, not authenticity, since anyone can post a hash",
+        "Compare the SHA-256 hash only \u2014 that proves both integrity and authenticity",
+        "Download over HTTPS only \u2014 TLS guarantees the file is authentic and unmodified",
+        "Check the file size \u2014 if it matches the published size, the file is authentic"
       ],
-      "answer": "This is a penetration test (pentest) — it goes beyond identification by actively exploiting vulnerabilities to determine real-world impact, verify attack paths, and test detection/response capabilities; a vulnerability scan only identifies and catalogs potential vulnerabilities without exploitation",
-      "explanation_correct": "A penetration test (pentest) is an authorized simulated attack. Key differences from vulnerability scanning: (1) Depth — a scanner finds vulnerabilities; a pentester exploits them to prove impact (e.g., 'I found SQL injection AND used it to extract 10,000 customer records'). (2) Attack paths — pentesters chain multiple vulnerabilities (e.g., phishing → credential theft → lateral movement → domain admin) to show real-world risk. (3) Detection testing — pentests evaluate whether the SOC/IDS detects the attack (purple team exercises combine red and blue). (4) Scope — pentests are scoped (black box = no prior knowledge, white box = full knowledge, gray box = partial). Types: external (from outside the network), internal (from inside, simulating insider or compromised host), wireless, social engineering, physical. Pentests are periodic (annual/quarterly), while vulnerability scanning is continuous. Both are needed: scanning for breadth (find everything), pentesting for depth (prove what matters).",
-      "explanation_wrong_common": "A pentest is NOT just an external vulnerability scan — the exploitation and attack-chain verification are the key differentiators. It is NOT a paper-based risk assessment (it involves actual system testing). It is NOT a compliance audit (though pentests may satisfy compliance requirements like PCI DSS). The common confusion is between 'vulnerability assessment' (scan + report) and 'penetration test' (scan + exploit + attack chain + impact analysis). Vulnerability assessments answer 'what's wrong?'; pentests answer 'so what? what's the real impact?' Both are essential — scanning finds the 500 vulnerabilities; pentesting proves which 3 could actually compromise the business."
+      "answer": "Verify the digital signature using the publisher's public key (the signature covers the hash of the file) \u2014 this proves both integrity (any change invalidates the signature) and authenticity (only the private key holder could have signed it); comparing the SHA-256 hash alone only proves integrity, not authenticity, since anyone can post a hash",
+      "explanation_correct": "A hash alone proves integrity (file unchanged) IF you trust the source of the hash \u2014 but an attacker who replaces the file can also replace the hash on a compromised page. A digital signature ties the hash to a cryptographic identity: the publisher hashes the file and encrypts that hash with their private key. You verify by decrypting the signature with their public key and comparing to your computed hash. Match = the file is unmodified (integrity) AND only someone with the private key could have produced it (authenticity/non-repudiation). HTTPS protects data in transit but not end-state authenticity (a compromised server can serve tampered files over valid TLS). This is why package managers (apt, npm, Sigstore) verify signatures, not just hashes.",
+      "explanation_wrong_common": "Hash \u2260 authenticity \u2014 it has no identity component. HTTPS \u2260 file authenticity \u2014 it only secures the channel, not the origin's intent. File size is trivially spoofed. The common mistake is confusing integrity (unchanged) with authenticity (from whom) and non-repudiation (can't deny). Signatures give all three; hashes give only integrity; TLS gives confidentiality + integrity-in-transit but not signed-origin guarantees."
     },
     {
-      "card_id": "vuln_075",
-      "topic": "Vulnerability Management",
+      "card_id": "crypto_085",
+      "topic": "Cryptography",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A zero-day vulnerability (CVE-2026-1234, CVSS 9.8) is publicly announced for a widely-used web server software. There is no patch available yet. The vulnerability allows remote code execution from the internet with no authentication. Your company runs 50 public-facing web servers using this software, processing customer transactions. What is the MOST appropriate immediate response, and what is the long-term remediation plan?",
+      "question_text": "An application team wants to retire RSA-2048 and move to 'quantum-safe' cryptography. They propose switching all TLS to a post-quantum algorithm they found in a research repo, disabling RSA entirely next week, and storing long-term keys in a plain config file. As a security reviewer, identify the problems with this plan and the correct approach.",
       "choices": [
-        "Immediate: implement virtual patching via WAF rules to block the exploit pattern, restrict access to the web servers (IP allowlisting for critical APIs), increase monitoring/SIEM alerts for exploitation indicators, and prepare a rollback plan. Long-term: apply the vendor patch as soon as it is released, verify with a re-scan, update the golden image/configuration baseline, and review why the vulnerable software was internet-exposed",
-        "Immediate: shut down all 50 web servers immediately and wait for the patch, accepting total business downtime",
-        "Immediate: do nothing since there is no patch available — wait for the vendor to release a fix before taking action",
-        "Immediate: publish details of the vulnerability on the company blog to inform customers"
+        "Problems: (1) using an unvetted/research-grade PQ algorithm risks implementation flaws and the algorithm may not be standardized; (2) a hard cutover disabling RSA breaks compatibility with existing clients and removes a fallback if the PQ algorithm has a flaw (no crypto agility); (3) storing long-term keys in plaintext config is a key-management failure. Correct approach: adopt NIST-standardized PQ algorithms (e.g., ML-KEM/Kyber, ML-DSA/Dilithium) once finalized, run hybrid mode (classical + PQ together) during transition for agility and fallback, use an HSM or managed KMS for long-term key storage, and phase the migration with compatibility testing",
+        "The plan is fine \u2014 switching to post-quantum crypto immediately is the safest option and plaintext key storage is acceptable if the server is hardened",
+        "Keep RSA-2048 forever because quantum computing is a hoax and post-quantum cryptography doesn't exist",
+        "Switch everything to MD5 since it's fast and widely supported"
       ],
-      "answer": "Immediate: implement virtual patching via WAF rules to block the exploit pattern, restrict access to the web servers (IP allowlisting for critical APIs), increase monitoring/SIEM alerts for exploitation indicators, and prepare a rollback plan. Long-term: apply the vendor patch as soon as it is released, verify with a re-scan, update the golden image/configuration baseline, and review why the vulnerable software was internet-exposed",
-      "explanation_correct": "Zero-day vulnerabilities (no patch available) require compensating controls. The strategy: (1) Virtual patching — a WAF (Web Application Firewall) can block the specific attack pattern (e.g., malformed HTTP headers, specific URI patterns) before it reaches the vulnerable server, buying time until a real patch exists. (2) Network-level restrictions — IP allowlisting, geo-blocking, or rate limiting reduce the attack surface. (3) Enhanced monitoring — configure SIEM alerts for indicators of exploitation (specific HTTP response codes, unusual process execution on web servers). (4) Incident response readiness — prepare the IR team and rollback plan in case exploitation occurs. (5) Vendor escalation — pressure the vendor for an emergency patch. Long-term: once the patch is released, test it in a non-production environment, deploy rapidly (given the Critical severity), verify with a re-scan, update baseline configurations, and conduct a post-incident review: should this service have been internet-exposed? Could a reverse proxy or API gateway have reduced exposure? This scenario tests the ability to act when the ideal fix (patching) isn't available.",
-      "explanation_wrong_common": "Shutting down all servers causes total business disruption — unacceptable when compensating controls can mitigate risk. Doing nothing is negligence — a CVSS 9.8 RCE with public exploit details WILL be attacked within hours. Publishing vulnerability details aids attackers. The key concept is 'virtual patching' — using existing security controls (WAF, IPS, network segmentation) to block known exploit patterns when a software patch isn't available. The common mistake is thinking 'no patch = nothing we can do' — there are always compensating controls. The broader lesson: defense in depth means you have multiple layers to fall back on when one layer (patching) is temporarily unavailable."
+      "answer": "Problems: (1) using an unvetted/research-grade PQ algorithm risks implementation flaws and the algorithm may not be standardized; (2) a hard cutover disabling RSA breaks compatibility with existing clients and removes a fallback if the PQ algorithm has a flaw (no crypto agility); (3) storing long-term keys in plaintext config is a key-management failure. Correct approach: adopt NIST-standardized PQ algorithms (e.g., ML-KEM/Kyber, ML-DSA/Dilithium) once finalized, run hybrid mode (classical + PQ together) during transition for agility and fallback, use an HSM or managed KMS for long-term key storage, and phase the migration with compatibility testing",
+      "explanation_correct": "This tests several crypto-architecture principles: (1) Standardization \u2014 only use vetted, standardized algorithms (NIST's PQC standardization produced FIPS 203/204/205 for ML-KEM/ML-DSA/SLH-DSA in 2024); research repos are for experimentation, not production. (2) Crypto agility \u2014 the ability to swap algorithms without redesign; a hard cutover with no fallback is dangerous because if the PQ algorithm is later found flawed (as SIKE was broken in 2022), you have no safety net. Hybrid key exchange (e.g., X25519 + ML-KEM) means an attacker must break BOTH to compromise the session. (3) Key management \u2014 long-term keys belong in an HSM/KMS (AWS KMS, Azure Key Vault, HashiCorp Vault), never plaintext config files (exposed in backups, version control, memory dumps). Phased migration with testing avoids breaking the ecosystem.",
+      "explanation_wrong_common": "'Switch immediately to anything labeled post-quantum' ignores maturity and compatibility \u2014 security comes from vetted standards and careful migration, not novelty. Plaintext key storage is never acceptable regardless of host hardening (backups, logs, container escapes). Dismissing quantum risk entirely is also wrong \u2014 harvest-now-decrypt-later is a real threat for long-lived secrets. MD5 is broken (collisions trivial). The common mistake is treating crypto as a drop-in upgrade rather than a managed, phased, standards-based lifecycle."
     },
     {
-      "card_id": "siem_071",
-      "topic": "Security Monitoring",
+      "card_id": "iam_081",
+      "topic": "Identity and Account Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a SIEM (Security Information and Event Management) system, and what are its core functions?",
+      "question_text": "What is the difference between authentication and authorization?",
       "choices": [
-        "A SIEM collects, aggregates, correlates, and analyzes log data from across the organization (firewalls, servers, endpoints, applications) in real time to detect security incidents, alert on threats, and support investigation — core functions are log collection, normalization, correlation, alerting, and reporting",
-        "A SIEM is a type of firewall that inspects network traffic in real time",
-        "A SIEM is an antivirus platform that scans endpoints for malware signatures",
-        "A SIEM is a backup system that creates encrypted copies of security logs"
+        "Authentication verifies WHO you are (proving identity, e.g., password/MFA); authorization determines WHAT you can do (permissions/access rights granted to that identity)",
+        "Authentication and authorization are the same thing \u2014 both check your password",
+        "Authentication grants permissions; authorization checks your password",
+        "Authentication is for users; authorization is only for administrators"
       ],
-      "answer": "A SIEM collects, aggregates, correlates, and analyzes log data from across the organization (firewalls, servers, endpoints, applications) in real time to detect security incidents, alert on threats, and support investigation — core functions are log collection, normalization, correlation, alerting, and reporting",
-      "explanation_correct": "SIEM (pronounced 'sim') is the central nervous system of security monitoring. Core functions: (1) Log collection — gathers logs from firewalls, IDS/IPS, servers, endpoints, applications, cloud services, and authentication systems via agents or syslog/API. (2) Normalization — converts disparate log formats into a common schema so events can be compared (a firewall 'deny' and an IPS 'block' are normalized consistently). (3) Correlation — applies rules to connect related events across systems (e.g., 5 failed logins on a VPN + successful login from a new country + data exfiltration alert = probable credential compromise). (4) Alerting — triggers alerts when correlation rules match, prioritized by severity. (5) Dashboards/reporting — visualizes security posture for analysts and compliance reporting. (6) Threat intelligence integration — enriches events with IOCs (known-bad IPs, domains, hashes). Popular SIEMs: Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security. SIEM is reactive (detects after the fact) but enables rapid response.",
-      "explanation_wrong_common": "A SIEM is NOT a firewall (it doesn't block traffic — it analyzes logs). It is NOT antivirus (it doesn't scan for malware — it correlates security events). It is NOT a backup system (it's for detection and analysis, not data preservation). The key concept is correlation — a single log entry is rarely actionable, but correlating events across systems reveals attack patterns. The common mistake is deploying a SIEM without tuning — an untuned SIEM generates alert fatigue (thousands of low-value alerts), causing analysts to miss real threats. Effective SIEM requires continuous rule tuning, false-positive reduction, and contextual enrichment."
+      "answer": "Authentication verifies WHO you are (proving identity, e.g., password/MFA); authorization determines WHAT you can do (permissions/access rights granted to that identity)",
+      "explanation_correct": "Authentication (AuthN) answers 'are you who you claim to be?' \u2014 validated via factors: something you know (password), have (token/phone), are (biometric). Authorization (AuthZ) answers 'now that we know who you are, what are you allowed to access/do?' \u2014 enforced via ACLs, RBAC, ABAC, or policy engines. They're sequential and distinct: you authenticate first, then the system authorizes based on your identity's attributes/roles. A user may authenticate successfully but have zero authorization (a valid account with no permissions). Confusing them leads to broken access control \u2014 e.g., authenticating a user but failing to restrict their actions (the #1 OWASP risk: broken access control).",
+      "explanation_wrong_common": "They are NOT the same and do NOT both check passwords. The reversed definition (authN grants permissions, authZ checks password) is exactly backwards. Authorization isn't admin-only \u2014 every authenticated subject (users, services, devices) is subject to authorization. The common mistake: assuming 'logged in = allowed everything.' Authentication establishes identity; authorization is the separate, critical gate on actions. Many breaches occur because authN works but authZ is broken (IDOR, privilege escalation)."
     },
     {
-      "card_id": "siem_072",
-      "topic": "Security Monitoring",
+      "card_id": "iam_082",
+      "topic": "Identity and Account Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between an IDS (Intrusion Detection System) and an IPS (Intrusion Prevention System)?",
+      "question_text": "What is the principle of least privilege (PoLP), and how should it be applied to user accounts?",
       "choices": [
-        "An IDS passively monitors network/host traffic and alerts on suspicious activity but does NOT block it; an IPS actively inspects traffic and can block/drop malicious packets in real time — the difference is passive detection vs. active prevention",
-        "An IDS blocks attacks; an IPS only logs them for later review",
-        "An IDS monitors network traffic; an IPS monitors host-based activity only",
-        "An IDS and IPS are identical systems with different marketing names"
+        "Give users only the minimum access rights needed to perform their job functions \u2014 and no more; apply via RBAC/ABAC, time-limited/just-in-time elevation, and periodic access reviews to remove unused permissions",
+        "Give every user administrator rights so they can fix their own problems quickly",
+        "Give all users the same default access level regardless of role",
+        "Give users full access but log everything they do, since monitoring replaces access control"
       ],
-      "answer": "An IDS passively monitors network/host traffic and alerts on suspicious activity but does NOT block it; an IPS actively inspects traffic and can block/drop malicious packets in real time — the difference is passive detection vs. active prevention",
-      "explanation_correct": "IDS vs IPS is about response capability: IDS (Intrusion Detection System) is passive — it watches traffic (via port mirroring/span port or network taps) and generates alerts when it detects suspicious patterns, but it does not intervene. It's like a security camera that records and alerts but doesn't stop the crime. IPS (Intrusion Prevention System) is active — it sits inline (traffic flows through it) and can drop malicious packets, reset connections, or block source IPs in real time. It's like a security guard who stops the intruder. Both use signature-based (known attack patterns) and anomaly-based (deviation from baseline) detection. Placement differs: IDS is typically deployed off a SPAN port (out-of-band), while IPS is inline at network boundaries. Organizations often use both: IPS for immediate blocking of known threats, IDS for broader monitoring and detection of novel attacks without risking false-positive blocking of legitimate traffic.",
-      "explanation_wrong_common": "The roles are NOT reversed — IDS detects, IPS prevents. Both can monitor network and host activity (NIDS/NIPS for network, HIDS/HIPS for host). They are NOT identical — the inline vs. out-of-band deployment and block vs. alert-only capability are the key differences. The common tradeoff: IPS is more protective but riskier (a false positive blocks legitimate traffic, causing business disruption), while IDS is safer (false positives are just noise) but allows attacks to proceed. This is why IPS rules are more conservatively tuned than IDS rules. Some organizations start with IDS (observe) and transition to IPS (block) once rules are validated."
+      "answer": "Give users only the minimum access rights needed to perform their job functions \u2014 and no more; apply via RBAC/ABAC, time-limited/just-in-time elevation, and periodic access reviews to remove unused permissions",
+      "explanation_correct": "Least privilege (PoLP / Principle of Least Privilege) is a foundational security principle (from Saltzer & Schroeder, 1975): every subject (user, process, system) should operate using the least set of privileges necessary to complete its task. Implementation: role-based access control (RBAC) or attribute-based (ABAC) to grant role-appropriate rights; just-in-time / time-bound elevation (e.g., PIM tools) so admins get privileged access only for the duration needed; separation of duties (SoD) so no single person can complete a sensitive transaction alone; regular access reviews / recertification to revoke accumulated ('privilege creep') or stale permissions. Default-deny posture: start with no access, grant explicitly. Applies to service accounts and processes too, not just humans.",
+      "explanation_wrong_common": "Universal admin rights, uniform access, and monitoring-as-substitute all violate least privilege. Logging detects misuse but doesn't prevent it \u2014 a compromised admin account does damage before logs are reviewed. The common mistake is granting broad access for 'convenience' (privilege creep over time as people change roles). Least privilege must be actively maintained through reviews and automated revocation, not set once. Service accounts are frequently over-privileged and overlooked."
     },
     {
-      "card_id": "siem_073",
-      "topic": "Security Monitoring",
+      "card_id": "iam_083",
+      "topic": "Identity and Account Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A SIEM generates the following correlated alert: 'User jsmith authenticated to VPN from Singapore at 2:00 AM, then authenticated to the CRM database from a Russian IP address 5 minutes later, then attempted to download the entire customer database.' The SIEM correlated VPN logs, database access logs, and network flow data. What type of attack does this pattern indicate, and what should the SOC team do immediately?",
+      "question_text": "An organization uses shared admin accounts (one credential for the whole IT team) for convenience. A breach occurs and logs show unauthorized admin actions, but the team cannot determine which person performed them. Which identity practice would have prevented this accountability failure?",
       "choices": [
-        "This indicates credential compromise with possible session hijacking or token theft — the SOC should immediately disable jsmith's account, revoke active sessions/tokens, force password reset, block the Russian IP, preserve logs for forensic investigation, and notify jsmith and management",
-        "This is normal behavior — jsmith may be traveling internationally and accessing the CRM from different locations",
-        "This is a SIEM false positive — VPN and CRM logins from different countries within 5 minutes is a common configuration error",
-        "This is a scheduled data backup — the database download is an automated nightly backup process"
+        "Use individual named admin accounts for each administrator (unique credentials per person) plus privileged access management (PAM) that checks out shared resource credentials with per-session attribution \u2014 this provides non-repudiation and accountability in logs",
+        "Install more cameras in the office to see who was at the keyboard",
+        "Require admins to email a manager before each administrative action",
+        "Disable all logging since it's not helping identify the person anyway"
       ],
-      "answer": "This indicates credential compromise with possible session hijacking or token theft — the SOC should immediately disable jsmith's account, revoke active sessions/tokens, force password reset, block the Russian IP, preserve logs for forensic investigation, and notify jsmith and management",
-      "explanation_correct": "The correlation reveals a classic credential compromise pattern: (1) VPN login from Singapore (possibly the legitimate user or initial phishing compromise). (2) CRM access from Russia 5 minutes later — geographically impossible for a single human to travel from Singapore to Russia in 5 minutes, indicating two different actors using the same credentials, or session token theft being used from a second location. (3) Bulk customer database download — data exfiltration, the attacker's objective. The 5-minute gap + two countries = impossible travel anomaly, a strong indicator of compromise. Immediate response (containment): disable the account to stop further access, revoke all sessions (OAuth tokens, VPN sessions, web sessions) to kick the attacker out, block the malicious IP. Investigation: preserve all logs (chain of custody), determine how credentials were stolen (phishing? breach? malware?), check what data was accessed/exfiltrated, and assess breach notification obligations (GDPR, PDPA, etc.). Recovery: force password reset + MFA re-enrollment, review all recent actions by the account, and implement impossible-travel detection rules if not already active.",
-      "explanation_wrong_common": "This is NOT normal travel behavior — 5 minutes between Singapore and Russia is physically impossible. This is NOT a false positive — the correlation across VPN, database, and network logs is a high-confidence alert. This is NOT a backup (backups don't originate from foreign IPs using user credentials). The key concept is 'impossible travel' or 'anomalous geo-velocity' — a common SIEM detection rule. The common mistake is dismissing geo-anomaly alerts without investigation. Even if jsmith IS traveling, the second login from a different continent within minutes is objectively suspicious. The SOC should always investigate impossible-travel alerts before dismissing them — the cost of a false alarm is far lower than the cost of a data breach."
+      "answer": "Use individual named admin accounts for each administrator (unique credentials per person) plus privileged access management (PAM) that checks out shared resource credentials with per-session attribution \u2014 this provides non-repudiation and accountability in logs",
+      "explanation_correct": "Shared credentials destroy accountability/non-repudiation \u2014 if five people use one account, logs can't attribute actions to a person, and a compromised shared credential implicates everyone. The fix: (1) Each admin gets a unique named admin account (separate from their daily-use account) so actions are attributed to a person. (2) For unavoidable shared resources, use a PAM/PIM tool (CyberArk, BeyondTrust, Azure PIM) that checks out credentials on demand, ties each session to the requesting user, and rotates the password after checkout. (3) Enforce MFA on all privileged access. This preserves the convenience of shared infrastructure credentials while restoring per-person attribution and non-repudiation.",
+      "explanation_wrong_common": "Cameras and email approvals are administrative workarounds that don't solve digital attribution and don't scale. Disabling logging makes it worse \u2014 you lose detection entirely. The common mistake is valuing convenience (one shared password) over accountability, then being unable to investigate an incident. Shared admin accounts also make it impossible to revoke access for a departing employee without disrupting everyone else \u2014 another operational risk."
     },
     {
-      "card_id": "siem_074",
-      "topic": "Security Monitoring",
+      "card_id": "iam_084",
+      "topic": "Identity and Account Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security team is overwhelmed by their SIEM generating over 5,000 alerts per day, with 95% being false positives. Analysts are experiencing alert fatigue and missing real threats. What strategies should they implement to improve the signal-to-noise ratio?",
+      "question_text": "A company wants to reduce password fatigue and improve security. An analyst proposes single sign-on (SSO) with SAML to one IdP, plus MFA enforced at the IdP. A second analyst worries that if the IdP is compromised, all apps are exposed. Which statement is correct about this SSO design and its risk?",
       "choices": [
-        "Tune correlation rules to reduce false positives, implement alert prioritization/scoring (risk-based), enrich alerts with asset context and threat intelligence, suppress known-benign patterns, implement SOAR for automated triage of common alerts, and establish a baseline of normal activity to improve anomaly detection thresholds",
-        "Disable all SIEM alerts and rely solely on manual log review to avoid false positives",
-        "Increase the number of alerts to ensure no threat is missed, hiring more analysts to handle the volume",
-        "Replace the SIEM with a new vendor — the current product is clearly defective"
+        "SSO with a trusted IdP and MFA is a strong design that reduces password reuse and centralizes MFA enforcement; the residual risk (IdP compromise = access to all federated apps) is real and must be mitigated by hardening the IdP (MFA, conditional access, monitoring, phishing-resistant MFA like FIDO2/WebAuthn) and maintaining break-glass accounts \u2014 the trade-off is generally worth it versus many independent weak passwords",
+        "SSO is inherently insecure and should never be used because it creates a single point of failure",
+        "SSO eliminates the need for MFA because users only log in once",
+        "SSO means each application stores its own copy of the user's password for verification"
       ],
-      "answer": "Tune correlation rules to reduce false positives, implement alert prioritization/scoring (risk-based), enrich alerts with asset context and threat intelligence, suppress known-benign patterns, implement SOAR for automated triage of common alerts, and establish a baseline of normal activity to improve anomaly detection thresholds",
-      "explanation_correct": "Alert fatigue is a top SIEM challenge — when everything is an alert, nothing is an alert. Remediation strategies: (1) Rule tuning — review the top false-positive generators and add conditions to reduce noise (e.g., exclude backup servers from off-hours login alerts, exclude vulnerability scanners from port-scan alerts). (2) Risk-based prioritization — score alerts by severity × asset criticality × threat intel (a login anomaly on a domain controller scores higher than on a test box). (3) Context enrichment — automatically add asset inventory data, user role, and threat intel (is the source IP known-bad?) so analysts don't waste time looking up context. (4) Suppression — create allowlists for known-good behaviors (scheduled tasks, legitimate admin activity). (5) SOAR (Security Orchestration, Automation, and Response) — automate triage of common alert types (e.g., auto-investigate phishing reports, auto-block IOCs, auto-enrich alerts). (6) Baselining — establish normal network/user behavior so anomaly detection triggers on real deviations, not static thresholds. This is an ongoing process — SIEM tuning is never 'done'.",
-      "explanation_wrong_common": "Disabling all alerts is dangerous — you lose detection capability entirely. Simply increasing alerts and hiring more people is unsustainable (alert volume grows faster than headcount). Replacing the SIEM vendor rarely helps — alert fatigue is a configuration/tuning problem, not a product problem; the new SIEM will generate the same noise without proper tuning. The common mistake is treating SIEM deployment as a 'set it and forget it' project. SIEM requires continuous lifecycle management: tune rules, review metrics, adjust thresholds, retire stale rules, and add new detection content as threats evolve. A well-tuned SIEM might generate 50-100 actionable alerts per day instead of 5,000 — quality over quantity."
+      "answer": "SSO with a trusted IdP and MFA is a strong design that reduces password reuse and centralizes MFA enforcement; the residual risk (IdP compromise = access to all federated apps) is real and must be mitigated by hardening the IdP (MFA, conditional access, monitoring, phishing-resistant MFA like FIDO2/WebAuthn) and maintaining break-glass accounts \u2014 the trade-off is generally worth it versus many independent weak passwords",
+      "explanation_correct": "SSO (SAML, OIDC) via a central Identity Provider (Okta, Entra ID, Ping) lets users authenticate once and access multiple apps without per-app passwords \u2014 reducing password fatigue, reuse, and sprawl, and centralizing MFA, conditional access, and session policies. The valid concern: the IdP becomes a high-value single point of failure (the 'keys to the kingdom'). Mitigations: phishing-resistant MFA (FIDO2/WebAuthn security keys \u2014 not SMS/PUSH which are phishable), conditional access (device posture, location, risk-based step-up), IdP monitoring/alerting, privileged access management, and break-glass accounts (emergency access, stored securely, monitored) for IdP outage. The trade-off is favorable because the alternative (many independent credentials) is weaker overall \u2014 but only if the IdP is rigorously hardened.",
+      "explanation_wrong_common": "SSO is NOT inherently insecure \u2014 used correctly it improves security posture by reducing weak passwords and centralizing controls. SSO does NOT eliminate MFA \u2014 MFA at the IdP is the critical control, and SSO actually makes enforcing MFA everywhere easier. SSO does NOT share passwords to apps (that's a password manager's model, not SSO) \u2014 apps trust assertions/tokens from the IdP, never seeing the user's password. The common mistake is either dismissing SSO due to SPOF fear without mitigating it, or adopting SSO without hardening the IdP."
     },
     {
-      "card_id": "siem_075",
-      "topic": "Security Monitoring",
+      "card_id": "iam_085",
+      "topic": "Identity and Account Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company has deployed SIEM, EDR, IDS, and a WAF, but their SOC operates 24/7 with a Mean Time to Detect (MTTD) of 4 hours and Mean Time to Respond (MTTR) of 6 hours. A recent breach investigation revealed that the SIEM generated the correct alert within 15 minutes of the attacker's initial access, but analysts didn't investigate it for 3.5 hours because it was buried among 200 other low-priority alerts. What should the company implement to reduce both MTTD and MTTR, and how do these technologies work together?",
+      "question_text": "A cloud application uses API keys (long-lived, embedded in client code) to authenticate service-to-service calls. A developer committed a key to a public GitHub repo. The team wants to prevent recurrence and improve the identity model. Recommend a complete remediation covering detection, rotation, and a better service-identity design.",
       "choices": [
-        "Implement SOAR (Security Orchestration, Automation, and Response) to automatically triage, enrich, and prioritize alerts; integrate threat intelligence platforms (TIP) for automatic IOC enrichment; use UEBA (User and Entity Behavior Analytics) to score anomaly severity; and establish automated response playbooks for common attack patterns (e.g., auto-isolate compromised endpoints via EDR, block malicious IPs via firewall API) — SOAR orchestrates the existing SIEM/EDR/IDS/WAF tools to act as a coordinated system rather than isolated silos",
-        "Replace all existing security tools with a single unified platform that handles everything automatically",
-        "Fire the SOC analysts and replace them with AI — human analysts are the bottleneck",
-        "Turn off all low-priority alerts so analysts only see high-priority ones, accepting the risk of missing subtle attacks"
+        "Detection: scan repos/secrets (e.g., GitHub secret scanning, gitleaks) and monitor API key usage for anomalies; Rotation: immediately revoke/rotate the exposed key everywhere it's used (treat all committed keys as compromised); Better design: replace long-lived static API keys with short-lived OAuth2/OIDC tokens issued by an IdP, use workload identity federation (e.g., AWS IAM Roles for Service Accounts, GCP Workload Identity, SPIFFE/SPIRE) so services authenticate via cryptographic identity rather than embedded secrets, enforce least privilege per service, and gate deploys with secret-scanning CI checks to prevent future leaks",
+        "Just delete the public repo and the key will be forgotten \u2014 attackers only check active repos",
+        "Rotate the key once and keep embedding API keys in client code, but add a comment saying 'do not share'",
+        "Switch to basic authentication (username/password) instead of API keys, which is more secure"
       ],
-      "answer": "Implement SOAR (Security Orchestration, Automation, and Response) to automatically triage, enrich, and prioritize alerts; integrate threat intelligence platforms (TIP) for automatic IOC enrichment; use UEBA (User and Entity Behavior Analytics) to score anomaly severity; and establish automated response playbooks for common attack patterns (e.g., auto-isolate compromised endpoints via EDR, block malicious IPs via firewall API) — SOAR orchestrates the existing SIEM/EDR/IDS/WAF tools to act as a coordinated system rather than isolated silos",
-      "explanation_correct": "The problem isn't detection capability (the SIEM detected the attack in 15 minutes) — it's triage and response workflow. SOAR addresses this: (1) Automated triage — when an alert fires, SOAR automatically gathers context from all tools: queries EDR for endpoint telemetry, checks threat intel for IOC reputation, looks up asset criticality from CMDB, and enriches the alert with all relevant data — saving analysts 15-30 minutes per alert. (2) Prioritization — SOAR applies risk scoring (alert severity × asset value × threat intel confidence) to surface the most critical alerts first, preventing the 'buried alert' problem. (3) Automated response playbooks — for common scenarios (phishing, malware detection, brute force), SOAR executes predefined actions: isolate the endpoint via EDR API, block the source IP via firewall API, disable the user account via AD, create a ticket, and notify the SOC — reducing MTTR from hours to minutes. (4) UEBA (User and Entity Behavior Analytics) — uses machine learning to establish behavioral baselines and score deviations, reducing false positives. (5) Integration — SOAR connects tools via APIs, creating a coordinated security ecosystem. The result: MTTD drops (critical alerts surface immediately with context) and MTTR drops (automated containment actions execute in seconds).",
-      "explanation_wrong_common": "Replacing all tools with one platform is unrealistic — best-of-breed tools are often better than a single monolith, and SOAR specifically exists to integrate them. Firing analysts is wrong — SOAR augments analysts by handling repetitive tasks, freeing them for complex investigation that requires human judgment. Turning off low-priority alerts risks missing subtle, multi-stage attacks where low-priority events are early indicators. The key insight: the tools were working (SIEM detected, EDR had telemetry), but the workflow was broken — analysts couldn't process alerts fast enough. SOAR fixes the workflow by automating the repetitive parts of triage and response. This is the evolution from SIEM (detect) to SOAR (detect + orchestrate + respond)."
+      "answer": "Detection: scan repos/secrets (e.g., GitHub secret scanning, gitleaks) and monitor API key usage for anomalies; Rotation: immediately revoke/rotate the exposed key everywhere it's used (treat all committed keys as compromised); Better design: replace long-lived static API keys with short-lived OAuth2/OIDC tokens issued by an IdP, use workload identity federation (e.g., AWS IAM Roles for Service Accounts, GCP Workload Identity, SPIFFE/SPIRE) so services authenticate via cryptographic identity rather than embedded secrets, enforce least privilege per service, and gate deploys with secret-scanning CI checks to prevent future leaks",
+      "explanation_correct": "This is a real-world cloud identity failure pattern. (1) Detection: automated secret scanning (GitHub Advanced Security, gitleaks, truffleHog) catches committed secrets; API usage monitoring/anomaly detection catches active abuse. (2) Rotation: any committed secret must be treated as compromised and revoked immediately \u2014 attackers scrape git history, so deletion alone is ineffective. Rotate across all environments and update consumers. (3) Better design: long-lived embedded keys are the anti-pattern. Workload identity federation lets a service prove its identity cryptographically (e.g., a Kubernetes service account token exchanged for cloud credentials via OIDC federation) \u2014 no static secrets to leak, automatic rotation, least-privilege per workload. SPIFFE/SPIRE provides a general SVID framework. Short-lived OAuth2/OIDC tokens limit blast radius. CI secret-scanning gates prevent recurrence. This aligns with zero-trust and cloud-native identity best practices.",
+      "explanation_wrong_common": "Deleting the repo doesn't help \u2014 git is distributed and attackers/scrapers already cached it; secrets in history persist. 'Rotate once and keep the pattern' leaves the root cause (static embedded secrets) intact. Basic auth (username/password) is weaker than API keys and also a static secret \u2014 it's a downgrade. The common mistake is treating the leak as a one-time incident rather than a systemic identity-model flaw. The fix is eliminating static secrets via workload identity, not just rotating them."
     },
     {
-      "card_id": "data_071",
-      "topic": "Data Security",
+      "card_id": "net_081",
+      "topic": "Network Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is data classification, and why is it a foundational control in information security?",
+      "question_text": "What is a firewall, and what is the difference between a stateful inspection firewall and a stateless (packet-filtering) firewall?",
       "choices": [
-        "Data classification is the process of categorizing data by sensitivity level (e.g., Public, Internal, Confidential, Restricted) so that appropriate security controls can be applied proportionally — it ensures high-sensitivity data gets strong protection while low-sensitivity data isn't over-protected, enabling efficient resource allocation",
-        "Data classification is the process of sorting data alphabetically for faster retrieval",
-        "Data classification is a backup strategy that creates different copies based on file type",
-        "Data classification is a compliance requirement that has no practical security benefit"
+        "A firewall is a network security device/ software that filters traffic based on rules. A stateless firewall filters each packet independently against static rules (fast but context-blind); a stateful firewall tracks the state of connections (established, related) and allows return traffic for approved sessions \u2014 more secure, understands context",
+        "A firewall is an antivirus program that scans files for malware",
+        "A firewall encrypts all network traffic to keep it confidential",
+        "A stateful firewall is slower and less secure than a stateless one"
       ],
-      "answer": "Data classification is the process of categorizing data by sensitivity level (e.g., Public, Internal, Confidential, Restricted) so that appropriate security controls can be applied proportionally — it ensures high-sensitivity data gets strong protection while low-sensitivity data isn't over-protected, enabling efficient resource allocation",
-      "explanation_correct": "Data classification is the foundation of data security because you can't protect what you don't understand. Common classification levels: (1) Public — approved for public release (marketing materials, public website). Minimal controls. (2) Internal — for internal use only (company policies, internal memos). Basic access controls. (3) Confidential — sensitive business data (financial reports, customer lists, source code). Access restricted to authorized personnel, encryption at rest/in transit, audit logging. (4) Restricted/Secret — highly sensitive data (PII, PHI, payment card data, trade secrets). Strongest controls: encryption, MFA, DLP, strict need-to-know access, detailed auditing. Classification drives control selection: a Public document needs no encryption; a Restricted database needs AES-256, MFA, DLP monitoring, and restricted network access. Without classification, organizations either over-protect everything (wasteful, hinders productivity) or under-protect everything (data breaches). Classification also supports compliance — GDPR, HIPAA, and PCI DSS require specific protections for specific data types.",
-      "explanation_wrong_common": "Classification is NOT alphabetical sorting (it's sensitivity-based categorization). It is NOT a backup strategy. It is NOT just compliance paperwork — it has direct security value by driving proportional protection. The common mistake is implementing classification as a labeling exercise without tying it to actual security controls. Labels without enforcement are useless — if 'Confidential' data sits on an open share with no access controls, the classification is meaningless. Effective classification requires: clear definitions, automated labeling tools (e.g., Microsoft Purview), DLP enforcement (prevent Restricted data from being emailed externally), and regular audits to verify labels match actual data."
+      "answer": "A firewall is a network security device/ software that filters traffic based on rules. A stateless firewall filters each packet independently against static rules (fast but context-blind); a stateful firewall tracks the state of connections (established, related) and allows return traffic for approved sessions \u2014 more secure, understands context",
+      "explanation_correct": "A firewall enforces an access control policy between network segments (e.g., internet \u2194 DMZ \u2194 internal) by permitting/denying traffic per rules. Stateless (packet-filtering) firewalls examine each packet in isolation \u2014 source/dest IP, port, protocol \u2014 without memory of prior packets. Fast but can't distinguish a legitimate response from a spoofed one. Stateful firewalls maintain a state table of active connections; they know a packet is part of an established session and allow return traffic automatically (the 'established/related' rule), while blocking unsolicited inbound traffic. Next-gen firewalls (NGFW) add deep packet inspection, app-awareness, and IPS. Stateful is the modern baseline; stateless survives in simple routers/ACLs.",
+      "explanation_wrong_common": "A firewall is NOT antivirus (different layer \u2014 network vs file). It does NOT encrypt traffic (that's VPN/TLS). Stateful is MORE secure than stateless, not less \u2014 the 'slower' perception is outdated; modern stateful inspection is hardware-accelerated. The common mistake is thinking packet filtering alone is sufficient \u2014 stateless firewalls can't properly handle protocols that use dynamic ports (FTP, SIP) because they can't relate the data channel to the control session. State tracking solves this."
     },
     {
-      "card_id": "data_072",
-      "topic": "Data Security",
+      "card_id": "net_082",
+      "topic": "Network Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is DLP (Data Loss Prevention), and what are the three primary deployment types?",
+      "question_text": "What is a DMZ (demilitarized zone) in network architecture, and what is its purpose?",
       "choices": [
-        "DLP is a set of tools and processes that identify, monitor, and protect sensitive data from unauthorized exfiltration or exposure — the three deployment types are: network DLP (monitors traffic in/out of the network), endpoint DLP (monitors activities on individual devices), and cloud DLP (monitors data in cloud services/SaaS applications)",
-        "DLP is a type of firewall that blocks all outbound network traffic",
-        "DLP is a data backup system that creates encrypted copies of sensitive files",
-        "DLP is a password management tool that prevents users from sharing credentials"
+        "A perimeter network segment that hosts public-facing services (web, email, DNS) so that if those services are compromised, the attacker is contained in the DMZ and doesn't have direct access to the internal/trusted network",
+        "A zone where all network traffic is encrypted end-to-end",
+        "A backup network used only when the main network fails",
+        "A wireless network reserved for guest access with no security controls"
       ],
-      "answer": "DLP is a set of tools and processes that identify, monitor, and protect sensitive data from unauthorized exfiltration or exposure — the three deployment types are: network DLP (monitors traffic in/out of the network), endpoint DLP (monitors activities on individual devices), and cloud DLP (monitors data in cloud services/SaaS applications)",
-      "explanation_correct": "DLP prevents sensitive data (PII, credit cards, intellectual property, health records) from leaving the organization or reaching unauthorized locations. How it works: (1) Discovery — scans file shares, databases, endpoints, and cloud storage to locate sensitive data (using pattern matching — e.g., credit card numbers match Luhn algorithm, SSN format matching, keyword dictionaries). (2) Monitoring — watches data in use (endpoint: copy to USB, print, screenshot), data in motion (network: email, web uploads, FTP), and data at rest (storage: file shares, databases, cloud). (3) Enforcement — blocks, encrypts, quarantines, or alerts based on policies. Deployment types: Network DLP — sensors at network egress points inspect SMTP, HTTP, FTP traffic for sensitive data leaving the network. Endpoint DLP — agents on laptops/desktops monitor USB transfers, printing, clipboard copy, screenshots, and application uploads. Cloud DLP — integrates with SaaS (Office 365, Google Workspace, Salesforce) to scan and protect cloud-stored data, including CASB functionality. Effective DLP combines all three for comprehensive coverage.",
-      "explanation_wrong_common": "DLP is NOT a firewall (it inspects data content, not network packets). It is NOT a backup system (it prevents data loss via exfiltration, not via hardware failure). It is NOT password management. The key concept is content-aware monitoring — DLP understands what the data IS (a credit card number, a Social Security number, a confidential document) and applies policies based on content, not just file names or traffic patterns. The common mistake is deploying DLP in monitor-only mode indefinitely without transitioning to enforcement — monitoring tells you about problems; enforcement fixes them. Start in monitor mode to establish baselines, then progressively enable blocking policies."
+      "answer": "A perimeter network segment that hosts public-facing services (web, email, DNS) so that if those services are compromised, the attacker is contained in the DMZ and doesn't have direct access to the internal/trusted network",
+      "explanation_correct": "A DMZ is a buffered subnet between the untrusted internet and the trusted internal LAN, enforced by firewalls (often two: external firewall internet\u2194DMZ, internal firewall DMZ\u2194internal). Public-facing servers (web, mail, external DNS) live in the DMZ because they must accept internet connections and are therefore higher-risk. If an attacker compromises a DMZ host, they still face the internal firewall to reach corporate resources \u2014 segmentation buys defense-in-depth. Rules: DMZ hosts should NOT initiate connections inbound to the internal net; internal users can access DMZ; internet can access only specific DMZ ports. This is a core defense-in-depth / segmentation pattern; modern equivalents use cloud security groups and zero-trust microsegmentation.",
+      "explanation_wrong_common": "DMZ is not an encryption zone, a backup network, or an open guest Wi-Fi. The guest network is separate (and should still be isolated from internal). The common mistake is placing internal-only services in the DMZ (unnecessary exposure) or, worse, allowing DMZ hosts to talk freely to the internal network (defeats the containment purpose). The DMZ's value is containment via segmentation \u2014 if compromised services have a clear path inward, the DMZ is theater."
     },
     {
-      "card_id": "data_073",
-      "topic": "Data Security",
+      "card_id": "net_083",
+      "topic": "Network Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company stores customer PII (names, addresses, national ID numbers) in a production database. Developers need realistic data for testing new application features in a non-production environment. What is the BEST approach to provide test data while protecting PII?",
+      "question_text": "A company deploys a traditional network-based IDS (NIDS) at the internet edge. It sees encrypted TLS traffic entering the network and can only inspect packet headers, not payload. Many modern attacks hide in encrypted channels. Which approach best addresses this blind spot without breaking encryption for users?",
       "choices": [
-        "Use data masking/tokenization to replace real PII with realistic but fake values in the non-production environment — original PII is replaced with format-preserving synthetic data or tokens that maintain referential integrity for testing but cannot be reverse-engineered to reveal actual customer data",
-        "Copy the production database directly to the test environment since it's on the internal network and only developers can access it",
-        "Encrypt the production database and give developers the decryption key for the test environment",
-        "Generate completely random strings for all test data fields, ignoring data format and referential relationships"
+        "Deploy TLS inspection (SSL/TLS decryption) at a forward proxy or next-gen firewall with a trusted root CA deployed to clients \u2014 the appliance decrypts, inspects for threats, then re-encrypts onward; combined with EDR for endpoint visibility. Consider privacy/compliance (inspect only where justified, exclude banking/health sites via bypass rules)",
+        "Block all encrypted traffic so everything is plaintext and inspectable",
+        "Disable TLS on the company website to let the IDS see traffic",
+        "Rely solely on the IDS headers since encrypted attacks are rare"
       ],
-      "answer": "Use data masking/tokenization to replace real PII with realistic but fake values in the non-production environment — original PII is replaced with format-preserving synthetic data or tokens that maintain referential integrity for testing but cannot be reverse-engineered to reveal actual customer data",
-      "explanation_correct": "Data masking (also called obfuscation or de-identification) replaces sensitive data with non-sensitive equivalents that preserve the data's structural and functional characteristics. Techniques: (1) Static masking — creates a sanitized copy of the database where PII is replaced with fake but format-consistent values (e.g., real NRIC S1234567D becomes S7654321X). (2) Tokenization — replaces sensitive values with tokens (random mappings); the real data is stored in a separate token vault, and only authorized systems can detokenize. (3) Format-preserving encryption — encrypts data while maintaining the original format (a 16-digit card number remains 16 digits). (4) Shuffling — swaps values between records so the data distribution is preserved but no record contains real associated PII. (5) Nulling/blanking — replaces with NULL or default values. Key requirements for test data: referential integrity (foreign keys still work), format consistency (phone numbers look like phone numbers), and realistic volume/distribution for performance testing. This approach satisfies privacy regulations (GDPR, PDPA) because no real PII exists in non-production environments — even if the test database is breached, no customer data is exposed.",
-      "explanation_wrong_common": "Copying production data to test is a major security violation — internal network access is NOT sufficient justification (developers don't need real customer NRIC numbers to test a search function). Encryption with key sharing doesn't help — the developer can decrypt it, so PII is still exposed. Completely random data breaks testing — if phone numbers are 'XQZ123!!' instead of '+65-6123-4567', validation logic, formatting tests, and UI rendering tests will fail. The common mistake is treating non-production environments as inherently safe — they typically have weaker access controls, monitoring, and encryption than production, making them attractive targets. The principle is 'least data privilege': give developers the minimum data they need, sanitized of anything sensitive."
+      "answer": "Deploy TLS inspection (SSL/TLS decryption) at a forward proxy or next-gen firewall with a trusted root CA deployed to clients \u2014 the appliance decrypts, inspects for threats, then re-encrypts onward; combined with EDR for endpoint visibility. Consider privacy/compliance (inspect only where justified, exclude banking/health sites via bypass rules)",
+      "explanation_correct": "With ~80%+ of web traffic encrypted, a NIDS that only sees headers misses payloads (malware C2, exfiltration, exploits). TLS inspection (aka SSL decryption) uses a forward proxy/NGFW that holds a trusted CA certificate installed on endpoints; it performs a man-in-the-middle: decrypts inbound TLS, runs IPS/malware inspection, then re-encrypts to the destination. Critical considerations: (1) Deploy a trusted root CA to managed devices. (2) Privacy/compliance \u2014 bypass categories like banking/health/government to avoid violating regulations or employee privacy; log per policy. (3) Some apps use certificate pinning (mobile banking) and will fail \u2014 exclude them. (4) Supplement with EDR (endpoint detection) which sees decrypted payload at the endpoint, covering blind spots where inspection isn't feasible. TLS inspection is the standard enterprise solution but must be deployed with legal/HR awareness.",
+      "explanation_wrong_common": "Blocking all encrypted traffic or disabling TLS destroys confidentiality and breaks the modern web (and your own site's security) \u2014 unacceptable. 'Encrypted attacks are rare' is false \u2014 attackers deliberately use TLS to evade IDS. The common mistake is accepting the encrypted blind spot as unfixable; TLS inspection is mature and widely deployed. The second mistake is inspecting everything without privacy controls, which creates legal/HR liability \u2014 selective bypass is part of a responsible deployment."
     },
     {
-      "card_id": "data_074",
-      "topic": "Data Security",
+      "card_id": "net_084",
+      "topic": "Network Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company is decommissioning 200 old hard drives that contained confidential customer data. The IT manager suggests formatting the drives and donating them to a local school. A security analyst objects, citing data remanence concerns. What is the analyst concerned about, and what are the appropriate data sanitization methods?",
+      "question_text": "A network engineer is configuring a VPN for remote workers. They propose using PPTP because it's built into old Windows clients and 'just works.' As a security reviewer, what do you advise, and what VPN protocol should be used instead?",
       "choices": [
-        "Data remanence is the residual data that remains on storage media after standard deletion/formatting — standard formatting only removes the file allocation table, not the actual data, which can be recovered with forensic tools. Appropriate sanitization: secure wipe/overwrite (multiple passes of random data) for HDDs, cryptographic erasure (delete encryption keys) for self-encrypting drives, or physical destruction (shredding/crushing) for highly sensitive data — the drives should be sanitized to the data's classification level before disposal",
-        "Data remanence is a type of malware that infects hard drives — the drives should be scanned with antivirus software before donation",
-        "Data remanence is not a real concern — modern formatting tools completely and permanently erase all data",
-        "Data remanence refers to the physical wear on hard drives — old drives should be replaced, not donated, because they might fail"
+        "Reject PPTP \u2014 it uses weak MS-CHAPv2 authentication and broken encryption (MPPE), exploitable in minutes; use IPsec (strong, standardized, native support) or WireGuard (modern, fast, simple, strong crypto) or TLS-based VPN (OpenVPN) instead, with MFA enforced on VPN access",
+        "PPTP is fine for internal use since it's behind a firewall",
+        "Use L2TP without encryption since it's widely supported",
+        "VPN protocols don't matter as long as users have strong passwords"
       ],
-      "answer": "Data remanence is the residual data that remains on storage media after standard deletion/formatting — standard formatting only removes the file allocation table, not the actual data, which can be recovered with forensic tools. Appropriate sanitization: secure wipe/overwrite (multiple passes of random data) for HDDs, cryptographic erasure (delete encryption keys) for self-encrypting drives, or physical destruction (shredding/crushing) for highly sensitive data — the drives should be sanitized to the data's classification level before disposal",
-      "explanation_correct": "Data remanence is a critical security concern. When you 'delete' a file or 'format' a drive, the data isn't erased — the OS simply marks the space as available. The actual magnetic data (on HDDs) or charge states (on SSDs) remain until overwritten. Forensic tools (like EnCase, FTK, or even free tools like PhotoRec) can recover this data. Sanitization methods by media type: (1) HDDs — secure wipe/overwrite (e.g., DoD 5220.22-M: 3-pass overwrite, or NIST SP 800-88 Clear: single-pass overwrite with verification). (2) SSDs — overwrite is less reliable due to wear-leveling (data is spread across blocks unpredictably); cryptographic erasure is preferred: if the drive is encrypted (self-encrypting drive/SED), delete the encryption key — the data becomes instantly unreadable. (3) Physical destruction — shredding (drives are shredded into small fragments), crushing, or degaussing (powerful magnetic field destroys magnetic data) — used for highly classified data or when reuse isn't needed. (4) NIST SP 800-88 defines three levels: Clear (logical sanitization, suitable for reuse within same org), Purge (strongest logical/physical, suitable for reuse outside org), Destroy (physical, no reuse possible). Always verify sanitization with sampling/testing.",
-      "explanation_wrong_common": "Data remanence is NOT malware (it's a physical property of storage media). Modern formatting does NOT permanently erase data — quick format only clears the file system index; even full format on older Windows didn't overwrite all data. It's NOT about drive wear. The common mistake is assuming 'format' = 'erase' — it doesn't. This has caused numerous data breaches when organizations donated, sold, or recycled drives containing recoverable sensitive data. The key principle: the sanitization method must match the data's classification — Public data may only need a format, but Confidential/Restricted data requires secure wipe, cryptographic erasure, or physical destruction. Document the sanitization process for audit trails and compliance."
+      "answer": "Reject PPTP \u2014 it uses weak MS-CHAPv2 authentication and broken encryption (MPPE), exploitable in minutes; use IPsec (strong, standardized, native support) or WireGuard (modern, fast, simple, strong crypto) or TLS-based VPN (OpenVPN) instead, with MFA enforced on VPN access",
+      "explanation_correct": "PPTP is obsolete and insecure: MS-CHAPv2 is crackable in minutes (Moxie Marlinspike demonstrated this), and MPPE encryption uses weak RC4 keys derived from the weak auth. It should never be used in production, even 'internally' (a compromised VPN tunnel reaches the internal network). Recommended: (1) IPsec/IKEv2 \u2014 the enterprise standard, strong, natively supported on most OSes, good mobile reconnection. (2) WireGuard \u2014 modern, minimal attack surface, state-of-the-art crypto (ChaCha20, Curve25519), fast, but newer. (3) OpenVPN (TLS-based) \u2014 mature, widely supported, configurable. Regardless of protocol, enforce MFA on VPN (it's an internet-exposed auth point) and apply least privilege (split-tunnel only needed routes, not full corporate network by default).",
+      "explanation_wrong_common": "PPTP isn't saved by being 'behind a firewall' \u2014 the VPN itself is internet-facing for authentication, and weak crypto means the tunnel can be broken. L2TP without encryption is just a tunneling protocol with no confidentiality \u2014 useless alone (L2TP/IPsec pairs it). 'Protocols don't matter' is wrong \u2014 protocol choice determines the cryptographic strength of the tunnel. The common mistake is prioritizing convenience/legacy compatibility over security; PPTP's 'just works' quality is precisely because it's old and weak."
     },
     {
-      "card_id": "data_075",
-      "topic": "Data Security",
+      "card_id": "net_085",
+      "topic": "Network Security",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A healthcare company stores patient records (Protected Health Information, PHI) in a cloud-hosted database. They must comply with data sovereignty laws (data must remain within Singapore), prevent unauthorized access, detect data exfiltration, and ensure data is recoverable after a ransomware attack. Design a comprehensive data security architecture that addresses all four requirements.",
+      "question_text": "An enterprise is moving from a traditional perimeter model (firewall + DMZ, trust inside) to Zero Trust. A junior architect proposes 'just remove the firewall and put MFA on everything.' Explain why this is insufficient and describe the core Zero Trust principles and the network/identity controls actually required.",
       "choices": [
-        "Data sovereignty: deploy in a Singapore cloud region with data residency guarantees, use customer-managed encryption keys (CMK) stored in Singapore. Prevent unauthorized access: encrypt data at rest (AES-256, CMK via KMS) and in transit (TLS 1.3), implement RBAC + ABAC with least privilege, MFA for all access, database activity monitoring (DAM). Detect exfiltration: deploy DLP (cloud) to monitor bulk queries and exports, SIEM with UEBA for anomalous access patterns, network flow monitoring. Recoverability: automated encrypted backups (daily incremental + weekly full) stored in a separate Singapore region with immutable storage (WORM — cannot be modified/deleted even by admin), tested disaster recovery with RTO/RPO targets",
-        "Data sovereignty: store data anywhere in the cloud since all cloud providers are secure. Prevent access: use a strong password for the database. Detect exfiltration: review logs manually once a month. Recoverability: keep a single backup copy on the same server",
-        "Data sovereignty: use on-premises servers only, no cloud. Prevent access: air-gap the database. Detect exfiltration: not needed if air-gapped. Recoverability: print patient records on paper as backup",
-        "Data sovereignty: encrypt the data and it can be stored anywhere since encrypted data is not subject to data residency laws"
+        "Removing the firewall is not Zero Trust \u2014 ZT doesn't remove controls, it removes implicit trust. Core principles: (1) verify explicitly per-request (identity + device posture + context), never trust based on network location; (2) least-privilege access via policy (RBAC/ABAC, JIT elevation); (3) assume breach \u2014 microsegmentation, continuous monitoring, encrypt all traffic (even internal), inspect and log all access. Required controls: strong identity (IdP + phishing-resistant MFA), device health/compliance attestation (MDM/EDR), policy engine (ZTNA, service mesh), microsegmentation (per-workload firewalls), continuous telemetry/analytics, and identity-aware proxies replacing flat network trust. Firewalls/segmentation still exist but become granular and policy-driven, not a single trusted/untrusted boundary",
+        "Zero Trust means trusting nothing and therefore having no network at all \u2014 disconnect everything",
+        "Zero Trust is just MFA plus VPN, which is what the company already has",
+        "Zero Trust requires buying one specific vendor's product and it will handle everything automatically"
       ],
-      "answer": "Data sovereignty: deploy in a Singapore cloud region with data residency guarantees, use customer-managed encryption keys (CMK) stored in Singapore. Prevent unauthorized access: encrypt data at rest (AES-256, CMK via KMS) and in transit (TLS 1.3), implement RBAC + ABAC with least privilege, MFA for all access, database activity monitoring (DAM). Detect exfiltration: deploy DLP (cloud) to monitor bulk queries and exports, SIEM with UEBA for anomalous access patterns, network flow monitoring. Recoverability: automated encrypted backups (daily incremental + weekly full) stored in a separate Singapore region with immutable storage (WORM — cannot be modified/deleted even by admin), tested disaster recovery with RTO/RPO targets",
-      "explanation_correct": "This architecture applies defense in depth across all four requirements: (1) Data Sovereignty — choose a cloud provider with a Singapore region (AWS ap-southeast-1, Azure Southeast Asia, GCP asia-southeast1) and configure data residency policies that prevent data replication to other regions. Use customer-managed keys (CMK) via a cloud KMS (Key Management Service) with keys stored in Singapore — even if a cloud provider engineer accesses the storage, they can't decrypt without the CMK, which the customer controls. (2) Unauthorized Access Prevention — encryption at rest (AES-256 with CMK) protects against physical/media theft; TLS 1.3 protects data in transit; RBAC ensures users only access what their role requires; ABAC adds context (time, location, device); MFA prevents credential compromise; DAM (Database Activity Monitoring) tracks every query for audit. (3) Exfiltration Detection — cloud DLP monitors for bulk data exports (e.g., SELECT * FROM patients with no LIMIT), large result sets, or unusual query patterns; SIEM + UEBA correlates database access with user behavior baselines (a nurse suddenly accessing 10,000 records at 3 AM triggers an alert); network flow monitoring detects large outbound transfers. (4) Recoverability — automated backup schedule (incremental daily for minimal RPO, full weekly); backups encrypted and stored in a separate Singapore availability zone/region for fault tolerance; immutable storage (Write Once Read Many, e.g., AWS S3 Object Lock) prevents ransomware from encrypting/deleting backups — even an admin with full credentials cannot modify immutable objects until the retention period expires; DR plan with defined RTO (Recovery Time Objective — how fast to restore) and RPO (Recovery Point Objective — maximum acceptable data loss), tested regularly. This is how Security+ expects you to think — layered controls addressing each threat vector.",
-      "explanation_wrong_common": "Storing data anywhere because 'the cloud is secure' violates data sovereignty laws (PDPA, MAS TRM, etc. require data to stay in Singapore). A strong password alone is insufficient (credential theft, insider threats). Manual monthly log review cannot detect exfiltration in time. A single backup on the same server is destroyed by ransomware. Air-gapping on-prem is impractical for modern healthcare (doctors need real-time access). Encryption does NOT exempt data from residency laws — encrypted data containing PHI is still subject to regulation. The common mistake is addressing only one or two requirements instead of designing a comprehensive architecture. Security+ case study questions test your ability to integrate multiple controls into a coherent security posture. Each layer (encryption, access control, monitoring, backup) addresses a different threat — removing any layer creates a gap."
+      "answer": "Removing the firewall is not Zero Trust \u2014 ZT doesn't remove controls, it removes implicit trust. Core principles: (1) verify explicitly per-request (identity + device posture + context), never trust based on network location; (2) least-privilege access via policy (RBAC/ABAC, JIT elevation); (3) assume breach \u2014 microsegmentation, continuous monitoring, encrypt all traffic (even internal), inspect and log all access. Required controls: strong identity (IdP + phishing-resistant MFA), device health/compliance attestation (MDM/EDR), policy engine (ZTNA, service mesh), microsegmentation (per-workload firewalls), continuous telemetry/analytics, and identity-aware proxies replacing flat network trust. Firewalls/segmentation still exist but become granular and policy-driven, not a single trusted/untrusted boundary",
+      "explanation_correct": "Zero Trust (NIST SP 800-207) is a paradigm shift: never trust, always verify \u2014 based on identity and context, not network location. The 'trust the inside' assumption of the castle-and-moat model fails because lateral movement after a breach has no internal barriers. ZT principles: (1) Verify explicitly \u2014 every access request is authenticated and authorized against identity + device posture + behavioral/context signals, per-request, not per-session. (2) Least-privilege access \u2014 JIT, JEA, RBAC/ABAC, minimize standing privilege. (3) Assume breach \u2014 microsegmentation (per-workload or per-segment firewalls), encrypt all traffic (mTLS internally), continuous monitoring and analytics, and inspect/log all access. Controls: an IdP with phishing-resistant MFA (FIDO2), device compliance via MDM/EDR, a policy decision point (ZTNA, service mesh like Istio, or Cloudflare Access), microsegmentation (host-based firewalls, NSGs), and SIEM/analytics for continuous trust evaluation. Critically, firewalls and segmentation are NOT removed \u2014 they're made granular and dynamic, replacing the binary trusted/untrusted boundary with per-request policy. 'Remove the firewall + MFA' is a caricature that loses segmentation while adding only one control.",
+      "explanation_wrong_common": "Zero Trust is NOT 'no network' or 'disconnect everything' \u2014 it's a more rigorous, identity-driven network model, not abolition. It's NOT 'MFA + VPN' \u2014 VPN extends the trusted perimeter (the opposite of ZT); ZTNA replaces VPN with per-app, identity-aware access without network-level trust. It's NOT a single product \u2014 ZT is an architecture spanning identity, device, network, and monitoring; vendors sell pieces, not 'Zero Trust in a box.' The common mistakes: (a) treating ZT as a product purchase rather than an architecture; (b) removing perimeter controls without replacing them with microsegmentation (you end up LESS secure); (c) keeping flat internal networks and just adding MFA at the gate \u2014 that's not ZT, that's castle-and-moat with a stronger door. Real ZT requires verifying every request, segmenting every workload, and assuming the adversary is already inside."
     }
   ],
   "scheduling_updates": [
-    { "card_id": "social_071", "next_due_at": "2026-10-14" },
-    { "card_id": "social_072", "next_due_at": "2026-10-14" },
-    { "card_id": "social_073", "next_due_at": "2026-10-15" },
-    { "card_id": "social_074", "next_due_at": "2026-10-15" },
-    { "card_id": "social_075", "next_due_at": "2026-10-15" },
-    { "card_id": "vuln_071", "next_due_at": "2026-10-14" },
-    { "card_id": "vuln_072", "next_due_at": "2026-10-14" },
-    { "card_id": "vuln_073", "next_due_at": "2026-10-15" },
-    { "card_id": "vuln_074", "next_due_at": "2026-10-15" },
-    { "card_id": "vuln_075", "next_due_at": "2026-10-15" },
-    { "card_id": "siem_071", "next_due_at": "2026-10-14" },
-    { "card_id": "siem_072", "next_due_at": "2026-10-14" },
-    { "card_id": "siem_073", "next_due_at": "2026-10-15" },
-    { "card_id": "siem_074", "next_due_at": "2026-10-15" },
-    { "card_id": "siem_075", "next_due_at": "2026-10-15" },
-    { "card_id": "data_071", "next_due_at": "2026-10-14" },
-    { "card_id": "data_072", "next_due_at": "2026-10-14" },
-    { "card_id": "data_073", "next_due_at": "2026-10-15" },
-    { "card_id": "data_074", "next_due_at": "2026-10-15" },
-    { "card_id": "data_075", "next_due_at": "2026-10-15" }
+    {
+      "card_id": "ir_081",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "ir_082",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "ir_083",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "ir_084",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "ir_085",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "crypto_081",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "crypto_082",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "crypto_083",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "crypto_084",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "crypto_085",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "iam_081",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "iam_082",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "iam_083",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "iam_084",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "iam_085",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "net_081",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "net_082",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "net_083",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "net_084",
+      "next_due_at": "2026-10-19"
+    },
+    {
+      "card_id": "net_085",
+      "next_due_at": "2026-10-19"
+    }
   ]
 }
