@@ -1,406 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "gc_141",
-      "topic": "Security Controls",
+      "card_id": "gc_161",
+      "topic": "Risk Management",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What are the four standard risk treatment options in cybersecurity risk management?",
+      "choices": [
+        "Mitigate, Transfer, Accept, Avoid",
+        "Prevent, Detect, Respond, Recover",
+        "Identify, Assess, Treat, Monitor",
+        "Encrypt, Authenticate, Authorize, Audit"
+      ],
+      "answer": "Mitigate, Transfer, Accept, Avoid",
+      "explanation_correct": "The four risk treatment options are: (1) Mitigate — implement controls to reduce the likelihood or impact of the risk (e.g., installing a firewall). (2) Transfer — shift the risk to a third party (e.g., buying cybersecurity insurance or outsourcing to a managed security provider). (3) Accept — acknowledge the risk and choose not to act, typically because the cost of mitigation exceeds the potential loss or the risk is very low. (4) Avoid — eliminate the risk entirely by discontinuing the activity that introduces it (e.g., not deploying a vulnerable service). These are defined in NIST SP 800-30 and ISO 27005.",
+      "explanation_wrong_common": "Prevent/Detect/Respond/Recover are NIST CSF functions, not risk treatments. Identify/Assess/Treat/Monitor describes the risk management process flow, not treatment options. Encrypt/Authenticate/Authorize/Audit are security controls, not risk treatment strategies. The common mistake is confusing the risk management process steps with the specific treatment decisions you make after assessing a risk."
+    },
+    {
+      "card_id": "gc_162",
+      "topic": "Risk Management",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the difference between inherent risk and residual risk?",
+      "choices": [
+        "Inherent risk is the risk level before controls are applied; residual risk is the risk that remains after controls are in place",
+        "Inherent risk is risk from internal threats; residual risk is risk from external threats",
+        "Inherent risk is measured quantitatively; residual risk is measured qualitatively",
+        "Inherent risk is the organization's total risk; residual risk is the risk transferred to insurers"
+      ],
+      "answer": "Inherent risk is the risk level before controls are applied; residual risk is the risk that remains after controls are in place",
+      "explanation_correct": "Inherent risk is the raw, unmitigated level of risk — the exposure that exists if no controls were in place at all. It reflects the natural combination of threats, vulnerabilities, and assets. Residual risk is what remains after you implement security controls. No control eliminates risk completely — there's always some leftover exposure due to control limitations, unknown threats, or deliberate acceptance. Management is responsible for deciding whether residual risk is acceptable. If not, additional controls are needed or the activity should be avoided.",
+      "explanation_wrong_common": "Inherent/residual don't split by internal vs external threats — both consider all threat sources. Both can be measured quantitatively or qualitatively. Residual risk is NOT just transferred risk — it includes all remaining exposure. The common mistake is thinking controls eliminate risk entirely; they only reduce it. The gap between inherent and residual risk shows how effective your controls are."
+    },
+    {
+      "card_id": "gc_163",
+      "topic": "Risk Management",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company discovers a legacy application running on unsupported Windows Server 2008 that processes customer payments. Patching is impossible (vendor no longer supports it), and replacing the app will cost $500K over 12 months. The estimated annual loss expectancy from a breach is $120K. The CISO recommends isolating the server on a segmented VLAN with strict firewall rules and an IDS. Which risk treatment strategy is this?",
+      "choices": [
+        "Mitigate — the segmented VLAN, firewall, and IDS reduce likelihood and impact without eliminating the vulnerable system",
+        "Transfer — the firewall shifts risk to the network team",
+        "Avoid — the company is eliminating the risk by isolating the server",
+        "Accept — the company is accepting the $120K annual loss"
+      ],
+      "answer": "Mitigate — the segmented VLAN, firewall, and IDS reduce likelihood and impact without eliminating the vulnerable system",
+      "explanation_correct": "This is risk mitigation. The vulnerable system still exists and still processes payments — the risk hasn't been avoided (the app is still running), transferred (no insurance or outsourcing), or accepted (controls are being added). The VLAN segmentation, firewall rules, and IDS are compensating controls that reduce both the likelihood of exploitation (harder to reach the server) and the impact (IDS detects intrusion, segmentation limits lateral movement). The residual risk is lower than the inherent risk but not zero. If the company also purchased cyber insurance, that would be transfer. If they decommissioned the app, that would be avoid.",
+      "explanation_wrong_common": "Avoid would mean shutting down the application entirely — it's still running. Transfer requires shifting risk to a third party (insurance, outsourcing) — a firewall doesn't do that. Accept means doing nothing and acknowledging the risk — they're adding controls. The common mistake is confusing isolation with avoidance; isolation reduces exposure but doesn't eliminate the vulnerable asset."
+    },
+    {
+      "card_id": "gc_164",
+      "topic": "Risk Management",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A risk analyst calculates: a data breach has a 25% chance of occurring per year (ALE frequency), and if it occurs, the estimated loss is $400,000. The analyst also identifies that an existing SIEM reduces the impact by 40% by enabling faster detection. What is the current Annualized Loss Expectancy (ALE)?",
+      "choices": [
+        "$60,000",
+        "$100,000",
+        "$160,000",
+        "$400,000"
+      ],
+      "answer": "$60,000",
+      "explanation_correct": "ALE = SLE × ARO (Single Loss Expectancy × Annualized Rate of Occurrence). First, calculate the reduced SLE: the original loss is $400,000, but the SIEM reduces impact by 40%, so the reduction is $400,000 × 0.40 = $160,000. The residual SLE = $400,000 - $160,000 = $240,000. Then ALE = $240,000 × 0.25 = $60,000. Note: if the SIEM reduced likelihood instead of impact, the ARO would change. Here the question specifies it reduces impact (faster detection limits damage), so SLE is adjusted. This is a quantitative risk assessment calculation per NIST SP 800-30.",
+      "explanation_wrong_common": "$100,000 is $400,000 × 0.25 without accounting for the SIEM's impact reduction — that's the inherent ALE, not the residual. $160,000 incorrectly applies the 40% reduction to the ALE directly. $400,000 is the SLE, not the ALE. The common mistake is forgetting to apply the control's effect before multiplying by ARO, or confusing which factor (SLE vs ARO) the control affects."
+    },
+    {
+      "card_id": "gc_165",
+      "topic": "Risk Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A hospital's IT team deploys: (1) badge readers on all doors, (2) an automated patch management system, (3) a policy requiring annual security awareness training, (4) a SIEM with automated alerting, (5) UPS backup power for the data center. Classify EACH control as preventive/detective/corrective/deterrent AND as technical/managerial/operational. Explain any controls that serve multiple categories.",
+      "question_text": "A healthcare startup handles patient records (HIPAA-regulated) and accepts online payments (PCI DSS-regulated). Their risk register lists: (A) Ransomware attack on patient database — likelihood HIGH, impact CRITICAL. (B) Employee phishing leading to credential theft — likelihood MEDIUM, impact HIGH. (C) Payment card skimming on web checkout — likelihood LOW, impact HIGH. (D) Physical office break-in — likelihood LOW, impact LOW. For each risk, recommend the most appropriate treatment option and justify why. Identify which risk(s) require treatment regardless of cost due to regulatory obligations.",
       "choices": [
-        "Door badge readers = Preventive + Technical (stops unauthorized physical access before it happens). Patch management = Corrective + Technical (fixes vulnerabilities after discovery). Awareness training = Preventive + Managerial (a policy-driven control that prevents mistakes before they occur). SIEM alerting = Detective + Technical (identifies incidents after they occur). UPS backup = Corrective + Operational (restores normal operations after a power failure). Badge readers also serve a Deterrent function — visible security discourages attempts. SIEM could be considered Detective + Managerial if its rules are policy-driven.",
-        "All controls are Preventive + Technical because they use technology to prevent attacks.",
-        "Badge readers = Detective, patches = Preventive, training = Deterrent, SIEM = Corrective, UPS = Preventive.",
-        "All controls are Operational because they require staff to manage them daily."
+        "(A) Mitigate via backups, EDR, and network segmentation — HIGH×CRITICAL on patient data requires action under HIPAA. (B) Mitigate via MFA, security awareness training, and email filtering. (C) Mitigate via PCI DSS compliance (tokenization, network segmentation of cardholder data environment) — required regardless of low likelihood due to PCI obligations. (D) Accept — LOW×LOW doesn't justify costly controls; basic physical locks suffice. (A) and (C) require treatment regardless of cost due to HIPAA and PCI DSS regulatory mandates.",
+        "(A) Accept — the startup can't afford enterprise security. (B) Transfer — buy insurance. (C) Accept — likelihood is low. (D) Avoid — close the office.",
+        "(A) Avoid — stop storing patient data. (B) Mitigate. (C) Transfer. (D) Transfer.",
+        "All risks should be transferred to a cybersecurity insurance provider — insurance covers all regulatory penalties and breach costs."
       ],
-      "answer": "Door badge readers = Preventive + Technical (stops unauthorized physical access before it happens). Patch management = Corrective + Technical (fixes vulnerabilities after discovery). Awareness training = Preventive + Managerial (a policy-driven control that prevents mistakes before they occur). SIEM alerting = Detective + Technical (identifies incidents after they occur). UPS backup = Corrective + Operational (restores normal operations after a power failure). Badge readers also serve a Deterrent function — visible security discourages attempts. SIEM could be considered Detective + Managerial if its rules are policy-driven.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing preventive with detective — preventive stops an event BEFORE it occurs; detective identifies it AFTER. (2) Forgetting that controls can serve multiple functions (e.g., badge readers are both preventive and deterrent). (3) Misclassifying patch management as preventive — it's corrective because it remediates an existing vulnerability. (4) Confusing managerial vs operational — managerial controls are policies/procedures; operational controls are day-to-day practices by people."
+      "answer": "(A) Mitigate via backups, EDR, and network segmentation — HIGH×CRITICAL on patient data requires action under HIPAA. (B) Mitigate via MFA, security awareness training, and email filtering. (C) Mitigate via PCI DSS compliance (tokenization, network segmentation of cardholder data environment) — required regardless of low likelihood due to PCI obligations. (D) Accept — LOW×LOW doesn't justify costly controls; basic physical locks suffice. (A) and (C) require treatment regardless of cost due to HIPAA and PCI DSS regulatory mandates.",
+      "explanation_correct": "Risk treatment must consider both the risk matrix (likelihood × impact) and regulatory obligations. (A) Ransomware on patient data is HIGH×CRITICAL — top priority. HIPAA's Security Rule requires safeguards for electronic Protected Health Information (ePHI), so this must be mitigated, not accepted. Backups (for recovery), EDR (for detection/remediation), and segmentation (for containment) are appropriate. (B) Phishing is MEDIUM×HIGH — mitigation with MFA (reduces credential theft impact), training (reduces likelihood), and email filtering (reduces likelihood) is cost-effective. (C) Card skimming is LOW×HIGH but PCI DSS mandates specific controls (Req 3: protect stored cardholder data, Req 4: encrypt transmission, tokenization) regardless of likelihood — non-compliance means fines and loss of card processing privileges. (D) LOW×LOW physical break-in — acceptance with basic locks is reasonable; the cost of advanced physical security exceeds the expected loss. Insurance can complement but not replace required controls.",
+      "explanation_wrong_common": "Accepting risk on regulated data (A, C) violates HIPAA and PCI DSS — regulatory compliance is not optional regardless of budget. Avoiding patient data storage means the startup can't operate its core business. Insurance does not cover regulatory fines (PCI DSS fines, HIPAA penalties) and doesn't satisfy compliance requirements — it's a supplement, not a substitute for controls. The common mistake is treating risk purely as a financial calculation without considering legal/regulatory obligations that mandate specific controls."
     },
     {
-      "card_id": "gc_142",
-      "topic": "CIA Triad",
-      "difficulty": "hard",
+      "card_id": "gc_166",
+      "topic": "Compliance and Frameworks",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the primary purpose of a cybersecurity compliance framework?",
+      "choices": [
+        "To provide a structured set of guidelines, controls, and best practices that organizations follow to meet regulatory requirements and manage security risk systematically",
+        "To guarantee that an organization will never experience a data breach",
+        "To replace the need for internal security policies and procedures",
+        "To serve as a legal contract between an organization and its customers"
+      ],
+      "answer": "To provide a structured set of guidelines, controls, and best practices that organizations follow to meet regulatory requirements and manage security risk systematically",
+      "explanation_correct": "A compliance framework (e.g., NIST CSF, ISO 27001, PCI DSS, CIS Controls) provides a structured approach to security. It defines a set of controls, processes, and best practices that organizations implement to meet legal/regulatory obligations (laws, industry standards, contractual requirements) and to manage risk in a consistent, auditable way. Frameworks offer a common language and measurable benchmarks — they don't guarantee immunity from breaches but significantly reduce risk and demonstrate due diligence. Compliance ≠ security, but compliance drives security maturity.",
+      "explanation_wrong_common": "No framework guarantees zero breaches — security is about risk reduction, not elimination. Frameworks don't replace internal policies; they inform and structure them. A framework is not a legal contract — it's a guideline or standard. The common mistake is equating compliance with security: compliance is the minimum baseline (what you must do), while security is the broader practice (what you should do to actually protect assets)."
+    },
+    {
+      "card_id": "gc_167",
+      "topic": "Compliance and Frameworks",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "Which regulation protects personal data of EU residents and requires organizations to implement appropriate technical and organizational measures for data protection?",
+      "choices": [
+        "GDPR (General Data Protection Regulation)",
+        "HIPAA (Health Insurance Portability and Accountability Act)",
+        "PCI DSS (Payment Card Industry Data Security Standard)",
+        "SOX (Sarbanes-Oxley Act)"
+      ],
+      "answer": "GDPR (General Data Protection Regulation)",
+      "explanation_correct": "The General Data Protection Regulation (GDPR) is an EU regulation (effective May 25, 2018) that governs the processing of personal data of individuals within the EU/EEA. It requires organizations to implement 'appropriate technical and organizational measures' (Article 32) to ensure data security, including encryption, pseudonymization, confidentiality, integrity, availability, and resilience. Key principles include data minimization, purpose limitation, consent, and the right to be forgotten. Non-compliance can result in fines up to €20 million or 4% of global annual revenue. GDPR applies to any organization processing EU residents' data, regardless of where the organization is based (extraterritorial reach).",
+      "explanation_wrong_common": "HIPAA protects health information in the US, not EU personal data. PCI DSS governs payment card data globally but is an industry standard, not a regulation. SOX governs financial reporting of US public companies. The common mistake is confusing data protection regulations by scope — GDPR is about personal data privacy in the EU, HIPAA is about healthcare data in the US, and PCI DSS is about cardholder data. They can overlap (a company may need to comply with all three) but serve different regulatory purposes."
+    },
+    {
+      "card_id": "gc_168",
+      "topic": "Compliance and Frameworks",
+      "difficulty": "medium",
+      "question_type": "definition",
+      "question_text": "What are the core functions of the NIST Cybersecurity Framework (CSF) 2.0?",
+      "choices": [
+        "Govern, Identify, Protect, Detect, Respond, Recover",
+        "Plan, Do, Check, Act",
+        "Identify, Protect, Detect, Respond, Recover",
+        "Assess, Implement, Monitor, Audit, Improve"
+      ],
+      "answer": "Govern, Identify, Protect, Detect, Respond, Recover",
+      "explanation_correct": "NIST CSF 2.0 (released February 2024) defines six core functions: Govern, Identify, Protect, Detect, Respond, Recover. Govern (new in 2.0) focuses on organizational context, risk management strategy, roles, and policy — it's the overarching function that informs all others. Identify covers asset management, risk assessment, and supply chain. Protect includes access control, awareness, data security. Detect covers continuous monitoring and anomaly detection. Respond includes incident response planning and communication. Recover covers recovery planning and improvements. The original CSF 1.0/1.1 had only five functions (without Govern). CompTIA Security+ SY0-701 aligns with CSF 2.0.",
+      "explanation_wrong_common": "Plan-Do-Check-Act is the Deming cycle (ISO 27001 continuous improvement model), not the NIST CSF. The five-function answer (without Govern) is the older CSF 1.1 — correct for older exams but outdated for SY0-701. Assess/Implement/Monitor/Audit/Improve is not a recognized framework structure. The common mistake is answering with only the five original functions and missing Govern, which was added in CSF 2.0."
+    },
+    {
+      "card_id": "gc_169",
+      "topic": "Compliance and Frameworks",
+      "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An attacker compromises a company's public web server and defaces the homepage with a political message. No customer data was stolen or modified in the backend database. Which CIA triad principle(s) were violated, and which were NOT?",
+      "question_text": "A multinational SaaS company wants to demonstrate to enterprise customers that it has a robust Information Security Management System (ISMS). The company operates in the US, EU, and Asia-Pacific. Which certification would be most globally recognized and appropriate for this goal?",
       "choices": [
-        "Confidentiality was NOT violated (no data was accessed or stolen). Integrity WAS violated (the homepage content was unauthorizedly modified). Availability is debatable — if the defaced page replaced the legitimate content, users could not access the original information, so availability was also impacted. The primary violation is Integrity, with a secondary Availability impact.",
-        "Only Confidentiality was violated because the attacker gained access to the server.",
-        "Only Availability was violated because the website was changed.",
-        "All three principles were violated because the server was compromised."
+        "ISO/IEC 27001 certification — an internationally recognized standard for establishing, implementing, and certifying an ISMS through accredited third-party audit",
+        "FedRAMP authorization — a US government-specific cloud security assessment",
+        "SOC 2 Type I report — a US-focused audit of controls at a point in time",
+        "PCI DSS compliance — a payment card industry standard"
       ],
-      "answer": "Confidentiality was NOT violated (no data was accessed or stolen). Integrity WAS violated (the homepage content was unauthorizedly modified). Availability is debatable — if the defaced page replaced the legitimate content, users could not access the original information, so availability was also impacted. The primary violation is Integrity, with a secondary Availability impact.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistake: assuming any compromise = confidentiality breach. Confidentiality specifically means unauthorized access to DATA. Defacing a public webpage is an integrity violation (unauthorized modification), not confidentiality. Server compromise alone doesn't mean data confidentiality was breached."
+      "answer": "ISO/IEC 27001 certification — an internationally recognized standard for establishing, implementing, and certifying an ISMS through accredited third-party audit",
+      "explanation_correct": "ISO/IEC 27001 is the globally recognized standard for Information Security Management Systems (ISMS). It provides a risk-based approach to managing people, processes, and technology. Certification requires an accredited third-party audit (e.g., BSI, TÜV, DNV) verifying compliance with Annex A controls and the ISMS requirements. It's recognized across the US, EU, Asia-Pacific, and beyond — making it ideal for a multinational SaaS company. Unlike SOC 2 (US-focused, no formal certification), ISO 27001 provides a certifiable standard. Unlike FedRAMP (US government only), it's globally applicable. Unlike PCI DSS (payment-specific), ISO 27001 covers the entire ISMS scope. Many enterprise contracts require ISO 27001 as a baseline.",
+      "explanation_wrong_common": "FedRAMP is US government cloud authorization — not globally recognized and not needed unless serving US federal agencies. SOC 2 (Type I = point-in-time, Type II = period) is a controls audit report, not a certification, and is primarily recognized in North America. PCI DSS only addresses cardholder data. The common mistake is confusing SOC 2 with ISO 27001: SOC 2 produces a report (not a certification), is based on AICPA Trust Services Criteria (not ISO controls), and has different geographic recognition."
     },
     {
-      "card_id": "gc_143",
-      "topic": "Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A company requires employees to digitally sign all purchase orders using individual PKI certificates issued by the company's internal CA. An employee later denies authorizing a $50,000 purchase order, claiming their account was hacked. The digital signature on the PO was verified as valid and matches the employee's certificate, which was NOT reported stolen or compromised. What does non-repudiation mean in this context, and can the employee successfully repudiate the transaction?",
-      "choices": [
-        "Non-repudiation means the sender cannot deny having sent/authorized the message. A valid digital signature created with the employee's private key — which only they should possess — provides strong non-repudiation. Since the certificate was not reported stolen or compromised, the employee cannot successfully repudiate the transaction. The burden is on the employee to prove their private key was compromised BEFORE the transaction. Digital signatures provide non-repudiation because the private key is uniquely tied to the individual, unlike symmetric encryption or simple passwords which can be shared.",
-        "The employee can repudiate the transaction because they claim they were hacked, and the company cannot prove otherwise.",
-        "Non-repudiation means the message was encrypted, so the employee can deny it since encryption doesn't prove identity.",
-        "Non-repudiation only applies to physical signatures, not digital ones, so the employee can deny it."
-      ],
-      "answer": "Non-repudiation means the sender cannot deny having sent/authorized the message. A valid digital signature created with the employee's private key — which only they should possess — provides strong non-repudiation. Since the certificate was not reported stolen or compromised, the employee cannot successfully repudiate the transaction. The burden is on the employee to prove their private key was compromised BEFORE the transaction. Digital signatures provide non-repudiation because the private key is uniquely tied to the individual, unlike symmetric encryption or simple passwords which can be shared.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing non-repudiation with authentication — authentication proves WHO you are; non-repudiation proves you CANNOT DENY an action. (2) Thinking a claim of hacking automatically invalidates non-repudiation — the key holder must prove the key was compromised. (3) Confusing digital signatures with encryption — signatures prove origin/integrity, not secrecy."
-    },
-    {
-      "card_id": "gc_144",
-      "topic": "AAA",
+      "card_id": "gc_170",
+      "topic": "Compliance and Frameworks",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "You are designing AAA for a cloud-based SaaS platform with 10,000 users across 50 client organizations. Requirements: (1) Users should log in once and access multiple integrated services. (2) Each organization's admin controls what their users can access. (3) All actions must be logged for compliance. (4) Passwords alone are insufficient. Propose an AAA architecture addressing Authentication, Authorization, and Accounting, naming specific technologies/protocols for each.",
+      "question_text": "A US-based online retailer accepts credit cards, stores customer health preferences for personalized recommendations, and operates a mobile app used by EU customers. They have $50M annual revenue. Identify which regulations/standards apply, what each requires, and the consequences of non-compliance for each. Then recommend a prioritized compliance roadmap.",
       "choices": [
-        "Authentication: SAML 2.0 or OIDC (OpenID Connect) for SSO — users authenticate once through their organization's IdP (Identity Provider, e.g., Okta/Azure AD) and receive assertions/tokens for all integrated services. Enforce MFA (e.g., TOTP or FIDO2) as a second factor. Authorization: RBAC (Role-Based Access Control) with organization-scoped roles — each org admin defines roles and assigns users within their tenant. Use OAuth 2.0 scopes for fine-grained API access. ABAC (Attribute-Based Access Control) can supplement for complex policies (e.g., time-of-day, location). Accounting: Centralized logging to a SIEM — every authentication event, authorization decision, and user action is logged with timestamps, user ID, source IP, and resource accessed. Use syslog or cloud-native logging (e.g., CloudTrail) forwarded to SIEM for compliance audit trails.",
-        "Authentication: use a simple username/password form for each service separately. Authorization: give all users admin access. Accounting: print logs to the console.",
-        "Authentication: RADIUS for all users. Authorization: DACL on each server. Accounting: manual spreadsheets updated weekly.",
-        "Authentication: Kerberos for all cloud access. Authorization: MAC based on clearance levels. Accounting: not needed for a SaaS platform."
+        "PCI DSS (processes credit cards — requires CDE segmentation, encryption, quarterly scans; non-compliance: fines $5K-$100K/month, loss of processing privileges). GDPR (EU customer data — requires consent, DPO if large-scale monitoring, data subject rights, breach notification within 72h; non-compliance: up to €20M or 4% global revenue). HIPAA may apply if health preferences constitute PHI (unlikely for retail preferences, but if they partner with health providers it could). State privacy laws (CCPA/CPRA for California residents — applies at >$25M revenue). Roadmap: (1) PCI DSS first — immediate revenue risk; (2) GDPR — highest financial penalty exposure; (3) CCPA/CPRA — state-level compliance; (4) ISO 27001 — proactive baseline covering multiple requirements.",
+        "Only PCI DSS applies because they process credit cards. Ignore GDPR because the company is US-based.",
+        "GDPR is the only applicable regulation. PCI DSS is optional for online retailers.",
+        "No regulations apply because the company is under $100M revenue."
       ],
-      "answer": "Authentication: SAML 2.0 or OIDC (OpenID Connect) for SSO — users authenticate once through their organization's IdP (Identity Provider, e.g., Okta/Azure AD) and receive assertions/tokens for all integrated services. Enforce MFA (e.g., TOTP or FIDO2) as a second factor. Authorization: RBAC (Role-Based Access Control) with organization-scoped roles — each org admin defines roles and assigns users within their tenant. Use OAuth 2.0 scopes for fine-grained API access. ABAC (Attribute-Based Access Control) can supplement for complex policies (e.g., time-of-day, location). Accounting: Centralized logging to a SIEM — every authentication event, authorization decision, and user action is logged with timestamps, user ID, source IP, and resource accessed. Use syslog or cloud-native logging (e.g., CloudTrail) forwarded to SIEM for compliance audit trails.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing authentication with authorization — authentication verifies identity; authorization determines what you can do. (2) Forgetting accounting/logging entirely — AAA's third A is often neglected. (3) Proposing per-service logins when SSO is required. (4) Using RADIUS (network access) instead of SAML/OIDC (web/SSO). (5) Confusing RBAC (roles) with ABAC (attributes) or MAC (mandatory/clearance)."
+      "answer": "PCI DSS (processes credit cards — requires CDE segmentation, encryption, quarterly scans; non-compliance: fines $5K-$100K/month, loss of processing privileges). GDPR (EU customer data — requires consent, DPO if large-scale monitoring, data subject rights, breach notification within 72h; non-compliance: up to €20M or 4% global revenue). HIPAA may apply if health preferences constitute PHI (unlikely for retail preferences, but if they partner with health providers it could). State privacy laws (CCPA/CPRA for California residents — applies at >$25M revenue). Roadmap: (1) PCI DSS first — immediate revenue risk; (2) GDPR — highest financial penalty exposure; (3) CCPA/CPRA — state-level compliance; (4) ISO 27001 — proactive baseline covering multiple requirements.",
+      "explanation_correct": "Multiple regulations apply simultaneously. PCI DSS is mandatory for any merchant storing/processing/transmitting cardholder data — non-compliance risks fines and losing the ability to accept cards (business-ending for an online retailer). GDPR applies extraterritorially: any company processing EU residents' personal data must comply regardless of where the company is based — a common misconception is that US companies are exempt. GDPR fines are severe (up to 4% of global revenue = $2M for this company). Health preferences in retail likely don't constitute PHI under HIPAA (which covers covered entities and business associates in healthcare), but if they partner with health providers or process actual medical data, HIPAA applies. CCPA/CPRA applies to companies with >$25M revenue serving California residents — this company qualifies at $50M. The roadmap prioritizes by immediate business risk: PCI DSS (can't process payments without it), then GDPR (highest fines), then state laws, then ISO 27001 as a strategic investment that satisfies multiple frameworks at once.",
+      "explanation_wrong_common": "GDPR absolutely applies to US-based companies processing EU residents' data — this is the extraterritorial principle (Article 3). PCI DSS is not optional for credit card merchants. Revenue thresholds don't exempt companies from PCI DSS or GDPR (CCPA has a $25M threshold, which this company exceeds). The common mistake is thinking a company only needs to comply with regulations in its home country — data protection laws apply based on whose data you process and where those individuals are located, not where your company is incorporated."
     },
     {
-      "card_id": "gc_145",
-      "topic": "Social Engineering",
+      "card_id": "gc_171",
+      "topic": "Business Continuity and Disaster Recovery",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Explain the difference between phishing, spear phishing, and whaling. Why is whaling particularly dangerous for an organization?",
+      "question_text": "What is the difference between a Business Continuity Plan (BCP) and a Disaster Recovery Plan (DRP)?",
       "choices": [
-        "Phishing is a broad, untargeted social engineering attack — mass emails sent to thousands of recipients hoping a few will click. Spear phishing is TARGETED: the attacker researches specific individuals (e.g., employees of a specific company) and crafts personalized emails using their name, role, or known details. Whaling is a subset of spear phishing that targets high-profile victims — C-suite executives (CEO, CFO), who have access to sensitive data and authorization for large wire transfers. Whaling is especially dangerous because: (1) executives have elevated access, (2) successful attacks can result in large financial transfers or disclosure of confidential company data, (3) attackers craft highly convincing messages using public info (LinkedIn, press releases), (4) executives may bypass normal verification procedures due to their authority.",
-        "Phishing, spear phishing, and whaling are all the same thing — just different words for sending fake emails.",
-        "Phishing targets individuals, spear phishing targets groups, and whaling targets fish — it's not a cyber attack.",
-        "Whaling is less dangerous than phishing because executives are more security-aware than regular employees."
+        "A BCP ensures the organization can continue critical business operations during a disruption; a DRP focuses specifically on restoring IT systems and infrastructure after a disaster",
+        "A BCP covers only natural disasters; a DRP covers only cyber attacks",
+        "A BCP is for small businesses; a DRP is for enterprises",
+        "A BCP is a subset of the DRP focused on communication"
       ],
-      "answer": "Phishing is a broad, untargeted social engineering attack — mass emails sent to thousands of recipients hoping a few will click. Spear phishing is TARGETED: the attacker researches specific individuals (e.g., employees of a specific company) and crafts personalized emails using their name, role, or known details. Whaling is a subset of spear phishing that targets high-profile victims — C-suite executives (CEO, CFO), who have access to sensitive data and authorization for large wire transfers. Whaling is especially dangerous because: (1) executives have elevated access, (2) successful attacks can result in large financial transfers or disclosure of confidential company data, (3) attackers craft highly convincing messages using public info (LinkedIn, press releases), (4) executives may bypass normal verification procedures due to their authority.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Thinking spear phishing and whaling are the same — whaling specifically targets executives. (2) Believing phishing is always targeted — phishing is BROADCAST/untargeted by definition. (3) Underestimating whaling danger because 'executives know better' — executives are targeted precisely because of their access and authority."
+      "answer": "A BCP ensures the organization can continue critical business operations during a disruption; a DRP focuses specifically on restoring IT systems and infrastructure after a disaster",
+      "explanation_correct": "A Business Continuity Plan (BCP) is broader — it addresses maintaining all critical business functions (not just IT) during any disruption: natural disasters, pandemics, supply chain failures, key personnel loss, cyber incidents. It covers alternate work locations, manual workarounds, communication plans, and prioritization of business operations. A Disaster Recovery Plan (DRP) is a subset of BCP that specifically addresses restoring IT systems, networks, data, and applications after a disaster. The DRP includes backup restoration procedures, failover to DR sites, system recovery priorities, and technical step-by-step procedures. BCP = 'how does the business keep running?'; DRP = 'how do we get the technology back up?'",
+      "explanation_wrong_common": "Both BCP and DRP cover all types of disasters — they're not limited by disaster type. Both apply to organizations of any size. A DRP is a subset of BCP, not the other way around. The common mistake is thinking BCP is only about IT — it's about the entire business. A company can have a great DRP (systems recover fast) but a poor BCP (no one knows how to process orders manually while systems are down), or vice versa."
     },
     {
-      "card_id": "gc_146",
-      "topic": "Social Engineering",
+      "card_id": "gc_172",
+      "topic": "Business Continuity and Disaster Recovery",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a watering hole attack? How does it differ from phishing, and what makes it difficult to detect?",
+      "question_text": "What do RTO (Recovery Time Objective) and RPO (Recovery Point Objective) measure?",
       "choices": [
-        "A watering hole attack targets a website that the attacker knows the victim(s) frequent — like a trade association forum, software download site, or industry news site. The attacker compromises that trusted site and injects malware or exploits. When the target visits the legitimate site they already trust, they get infected. It differs from phishing because: phishing sends malicious content TO the victim (push), while a watering hole attack places malicious content on a site the victim voluntarily visits (pull). It's difficult to detect because: (1) the victim is visiting a legitimate, trusted site — no suspicious email or link, (2) the compromised site looks normal to the user, (3) it can infect many targets from a single compromise, (4) the attack bypasses email security controls entirely. Named after predators waiting at a watering hole where prey naturally comes to drink.",
-        "A watering hole attack is when an attacker sends emails pretending to be a water company.",
-        "A watering hole attack is the same as phishing — both involve sending fake emails to victims.",
-        "A watering hole attack targets the victim's water supply infrastructure to cause physical damage."
+        "RTO = maximum acceptable downtime before business impact; RPO = maximum acceptable data loss measured in time",
+        "RTO = time to detect an incident; RPO = time to report an incident",
+        "RTO = total recovery cost; RPO = percentage of data recoverable",
+        "RTO = number of systems to recover; RPO = number of backup copies retained"
       ],
-      "answer": "A watering hole attack targets a website that the attacker knows the victim(s) frequent — like a trade association forum, software download site, or industry news site. The attacker compromises that trusted site and injects malware or exploits. When the target visits the legitimate site they already trust, they get infected. It differs from phishing because: phishing sends malicious content TO the victim (push), while a watering hole attack places malicious content on a site the victim voluntarily visits (pull). It's difficult to detect because: (1) the victim is visiting a legitimate, trusted site — no suspicious email or link, (2) the compromised site looks normal to the user, (3) it can infect many targets from a single compromise, (4) the attack bypasses email security controls entirely. Named after predators waiting at a watering hole where prey naturally comes to drink.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing watering hole with phishing — phishing pushes content to victims; watering hole pulls victims to compromised trusted sites. (2) Thinking it's an infrastructure/physical attack. (3) Not understanding WHY it's hard to detect (trusted site, no email trail)."
+      "answer": "RTO = maximum acceptable downtime before business impact; RPO = maximum acceptable data loss measured in time",
+      "explanation_correct": "Recovery Time Objective (RTO) is the maximum amount of time a system can be down before the business suffers unacceptable consequences — it drives how fast you need to recover. For example, an RTO of 4 hours means the system must be back online within 4 hours. Recovery Point Objective (RPO) is the maximum acceptable amount of data loss measured in time — it drives your backup frequency. For example, an RPO of 1 hour means you can lose at most 1 hour of data, so you need backups at least every hour. RTO is forward-looking (how long until we're back?), RPO is backward-looking (how much data did we lose?). Together they define the requirements for backup strategy, DR site type, and failover mechanisms.",
+      "explanation_wrong_common": "RTO/RPO are not about detection or reporting time. RTO is not a cost metric. RPO is not about backup count. The common mistake is confusing which one measures downtime (RTO) vs data loss (RPO). A helpful mnemonic: RTO = 'Time to recover' (downtime tolerance), RPO = 'Point in time to recover to' (data loss tolerance). A system with RPO=1h and RTO=4h needs hourly backups and must be restored within 4 hours of the disaster."
     },
     {
-      "card_id": "gc_147",
-      "topic": "Social Engineering",
+      "card_id": "gc_173",
+      "topic": "Business Continuity and Disaster Recovery",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Your CFO receives an email from 'ceo@yourcompany-support.com' (note: your real domain is yourcompany.com) urgently requesting a $45,000 wire transfer to a new vendor for a confidential acquisition. The email says the CEO is in a board meeting and cannot be reached by phone, and the deal must close today. What type of attack is this, what red flags are present, and what should the CFO do?",
+      "question_text": "An e-commerce company has an RPO of 15 minutes for its order database and an RTO of 2 hours for the entire platform. They currently do nightly full backups at 2 AM. During a ransomware attack at 10 AM, all servers are encrypted. How much data is lost, and does the current backup strategy meet the RPO and RTO requirements?",
       "choices": [
-        "This is a whaling/BEC (Business Email Compromise) attack. Red flags: (1) Lookalike domain 'yourcompany-support.com' vs real 'yourcompany.com' — a typosquat/homograph domain. (2) Urgency and time pressure ('must close today') — classic social engineering tactic to bypass verification. (3) Authority impersonation (claiming to be CEO) targeting a CFO (whaling). (4) Unusual request channel — large financial transfer via email without normal procurement process. (5) Instruction not to call ('in a board meeting') — designed to prevent verification. The CFO should: NOT wire the funds, verify through an out-of-band channel (walk to the CEO's office, call their known direct number — NOT any number in the email), report to IT security, and follow the established financial verification policy (dual authorization for wire transfers).",
-        "This is a legitimate business request — the CFO should process the wire transfer immediately since it's from the CEO.",
-        "This is a standard phishing email — the CFO should just delete it and not report it since no harm was done.",
-        "This is a ransomware attack — the CFO should pay the $45,000 to prevent data encryption."
+        "Up to 8 hours of data is lost (from 2 AM to 10 AM) — the nightly backup fails the RPO of 15 minutes. The RTO of 2 hours may also be missed because restoring from a full backup takes time, and the 8-hour-old data must be reconciled. The strategy needs synchronous or near-real-time replication (e.g., database mirroring or log shipping every 15 minutes) to meet the RPO.",
+        "No data is lost because they have nightly backups. RPO is met.",
+        "Only 15 minutes of data is lost because that's the RPO. Both RPO and RTO are met.",
+        "Data loss is 2 hours because that's the RTO. Both requirements are met."
       ],
-      "answer": "This is a whaling/BEC (Business Email Compromise) attack. Red flags: (1) Lookalike domain 'yourcompany-support.com' vs real 'yourcompany.com' — a typosquat/homograph domain. (2) Urgency and time pressure ('must close today') — classic social engineering tactic to bypass verification. (3) Authority impersonation (claiming to be CEO) targeting a CFO (whaling). (4) Unusual request channel — large financial transfer via email without normal procurement process. (5) Instruction not to call ('in a board meeting') — designed to prevent verification. The CFO should: NOT wire the funds, verify through an out-of-band channel (walk to the CEO's office, call their known direct number — NOT any number in the email), report to IT security, and follow the established financial verification policy (dual authorization for wire transfers).",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Not spotting the lookalike domain — always compare sender domain carefully. (2) Succumbing to urgency — time pressure is the #1 social engineering red flag. (3) Verifying via the same channel (replying to the email) instead of out-of-band. (4) Not recognizing this as whaling/BEC specifically (executive targeting for financial fraud)."
+      "answer": "Up to 8 hours of data is lost (from 2 AM to 10 AM) — the nightly backup fails the RPO of 15 minutes. The RTO of 2 hours may also be missed because restoring from a full backup takes time, and the 8-hour-old data must be reconciled. The strategy needs synchronous or near-real-time replication (e.g., database mirroring or log shipping every 15 minutes) to meet the RPO.",
+      "explanation_correct": "The RPO of 15 minutes means the company can tolerate at most 15 minutes of data loss. With nightly backups at 2 AM, the last good backup is from 2 AM. The attack at 10 AM means all orders placed between 2 AM and 10 AM (8 hours) are lost — far exceeding the 15-minute RPO. The backup strategy must change: either database transaction log shipping every 15 minutes, synchronous replication to a DR site, or continuous data protection (CDP). For the RTO: restoring a full nightly backup, verifying integrity, and bringing the platform online within 2 hours is tight but possible if the DR infrastructure is pre-provisioned. However, the 8-hour data gap means manual reconciliation of lost orders, likely pushing actual recovery beyond 2 hours. The ransomware scenario also highlights the need for immutable/offline backups — if backups are on the same network, they'd be encrypted too.",
+      "explanation_wrong_common": "The nightly backup does NOT meet the RPO — 8 hours of potential data loss vs 15 minutes allowed. RPO is not automatically met by having any backup. The RTO is not the data loss amount — RTO is downtime tolerance. The common mistake is confusing RPO and RPO, or assuming that having backups at all satisfies the RPO. The RPO dictates backup frequency, not the other way around."
     },
     {
-      "card_id": "gc_148",
-      "topic": "Social Engineering",
+      "card_id": "gc_174",
+      "topic": "Business Continuity and Disaster Recovery",
       "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "An attacker calls your company's IT help desk at 6 PM when only one junior technician is on shift. The caller claims to be a senior VP who is locked out of their account before an important international call in 10 minutes. They sound stressed, know the VP's real name and employee ID (found on LinkedIn), and demand an urgent password reset. Which social engineering principles are being exploited, and what should the technician do?",
+      "question_type": "definition",
+      "question_text": "What are the differences between cold, warm, and hot disaster recovery sites?",
       "choices": [
-        "Principles exploited: (1) Authority — impersonating a senior VP to leverage hierarchy/pressure on a junior technician. (2) Urgency/scarcity — 'important call in 10 minutes' creates time pressure to bypass procedures. (3) Intimidation — VP status implies consequences for refusing. (4) Familiarity/liking — knowing the VP's name and employee ID creates false credibility (pretexting). The technician should: NOT reset the password, politely but firmly follow the standard identity verification procedure (e.g., callback to the VP's registered phone number, manager approval, ticket verification), explain that the process exists to protect the VP's account, and escalate to a senior engineer if the caller pushes back. No legitimate VP would object to standard security procedures — an attacker will pressure to bypass them.",
-        "The technician should reset the password immediately — the caller is a VP and knows their employee ID, so it must be legitimate.",
-        "The technician should refuse and hang up without offering any alternative — security comes first.",
-        "The technician should reset the password but also email the VP to confirm afterwards."
+        "Cold site: empty facility with power and cooling, no hardware — cheapest, longest recovery. Warm site: hardware and network pre-installed but no current data — moderate cost, moderate recovery. Hot site: fully operational replica with real-time data replication — most expensive, near-instant recovery.",
+        "Cold site: fully operational with real-time data. Warm site: partially operational. Hot site: empty room.",
+        "Cold site: used in winter. Warm site: used in spring. Hot site: used in summer.",
+        "Cold site: cloud-based. Warm site: on-premise. Hot site: hybrid."
       ],
-      "answer": "Principles exploited: (1) Authority — impersonating a senior VP to leverage hierarchy/pressure on a junior technician. (2) Urgency/scarcity — 'important call in 10 minutes' creates time pressure to bypass procedures. (3) Intimidation — VP status implies consequences for refusing. (4) Familiarity/liking — knowing the VP's name and employee ID creates false credibility (pretexting). The technician should: NOT reset the password, politely but firmly follow the standard identity verification procedure (e.g., callback to the VP's registered phone number, manager approval, ticket verification), explain that the process exists to protect the VP's account, and escalate to a senior engineer if the caller pushes back. No legitimate VP would object to standard security procedures — an attacker will pressure to bypass them.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Complying because of authority/urgency — these are exactly what attackers exploit. (2) Thinking knowing a name + employee ID = verified identity (OSINT is easy). (3) Resetting first and verifying later — by then the attacker has access. (4) Not recognizing this as pretexting combined with authority/urgency principles (Cialdini)."
+      "answer": "Cold site: empty facility with power and cooling, no hardware — cheapest, longest recovery. Warm site: hardware and network pre-installed but no current data — moderate cost, moderate recovery. Hot site: fully operational replica with real-time data replication — most expensive, near-instant recovery.",
+      "explanation_correct": "A cold site is a basic facility with power, cooling, physical security, and network connectivity but no hardware — you must procure, install, and configure servers during a disaster. Recovery takes days to weeks. It's the cheapest option, suitable for low-priority systems with long RTOs. A warm site has hardware, network infrastructure, and possibly software pre-installed, but data is not current — you need to restore from backups. Recovery takes hours to a day. It balances cost and speed for medium-priority systems. A hot site is a fully operational replica of the production environment with real-time or near-real-time data replication. Recovery takes minutes to hours (sometimes automatic failover). It's the most expensive, suitable for mission-critical systems with very short RTOs. The choice depends on RTO/RPO requirements vs budget.",
+      "explanation_wrong_common": "The names are reversed in the wrong answer — cold is NOT fully operational. Temperature metaphors are wrong. Cloud/on-premise/hybrid is about deployment model, not DR site type. The common mistake is confusing which site type has the fastest recovery. Mnemonic: 'cold' = slow start (nothing there), 'hot' = ready to go (fully running). Cost and recovery speed increase from cold to warm to hot."
     },
     {
-      "card_id": "gc_149",
-      "topic": "Vulnerability Management",
+      "card_id": "gc_175",
+      "topic": "Business Continuity and Disaster Recovery",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "A financial services firm has three critical systems with the following requirements: System A (trading platform) — RTO 15 min, RPO 0 (zero data loss). System B (customer portal) — RTO 4 hours, RPO 1 hour. System C (internal reporting) — RTO 24 hours, RPO 24 hours. Design a BCDR strategy for each system including backup type, DR site type, replication method, and failover mechanism. Justify your choices and identify cost trade-offs.",
+      "choices": [
+        "System A: Hot site with synchronous replication (storage replication or database mirroring), automatic failover, continuous data protection. RPO=0 requires synchronous replication (data written to both sites before commit acknowledged). Justification: zero data loss and 15-min recovery mandate real-time replication and automated failover — highest cost but trading platforms cannot tolerate data loss. System B: Warm site with transaction log shipping every hour, semi-automated failover. RPO=1h met by hourly log backups; RTO=4h allows manual restore. Moderate cost. System C: Cold site or cloud IaaS with nightly full backups, manual failover. RPO/RTO of 24h allows slow recovery from off-site backups. Lowest cost. Trade-off: System A's synchronous replication adds latency to every transaction (writes must complete at both sites) — acceptable for trading if sites are geographically close (low latency link).",
+        "All three systems should use a cold site with nightly backups to minimize cost.",
+        "All three systems should use a hot site with synchronous replication to maximize availability.",
+        "System A should use a warm site with hourly backups; System C should use a hot site with real-time replication."
+      ],
+      "answer": "System A: Hot site with synchronous replication (storage replication or database mirroring), automatic failover, continuous data protection. RPO=0 requires synchronous replication (data written to both sites before commit acknowledged). Justification: zero data loss and 15-min recovery mandate real-time replication and automated failover — highest cost but trading platforms cannot tolerate data loss. System B: Warm site with transaction log shipping every hour, semi-automated failover. RPO=1h met by hourly log backups; RTO=4h allows manual restore. Moderate cost. System C: Cold site or cloud IaaS with nightly full backups, manual failover. RPO/RTO of 24h allows slow recovery from off-site backups. Lowest cost. Trade-off: System A's synchronous replication adds latency to every transaction (writes must complete at both sites) — acceptable for trading if sites are geographically close (low latency link).",
+      "explanation_correct": "Each system's BCDR strategy is driven by its RTO and RPO. System A (RPO=0, RTO=15min) demands the highest tier: a hot site with synchronous replication ensures every transaction is committed to both primary and DR before acknowledging — guaranteeing zero data loss. Automatic failover (via clustering or orchestration tools) meets the 15-minute RTO. The trade-off is cost (duplicate infrastructure + bandwidth) and latency (synchronous writes add round-trip delay), mitigated by placing sites within low-latency distance. System B (RPO=1h, RTO=4h) can use a warm site: pre-provisioned hardware with hourly transaction log shipping (asynchronous). The 4-hour RTO allows time for log restore and manual cutover. System C (RPO=24h, RTO=24h) only needs nightly backups to off-site storage (cloud or cold site) — the 24-hour window allows procurement, restore, and manual recovery. This tiered approach optimizes cost: spending the most on the most critical system while minimizing spend on low-priority systems.",
+      "explanation_wrong_common": "Using the same DR strategy for all systems is wasteful — System C doesn't need a hot site (wastes money), and System A can't use a cold site (fails RTO/RPO). The wrong answers reverse the priorities (cold for trading, hot for reporting). The common mistake is not aligning DR investment with business criticality — BCDR is about right-sizing: spend more to protect what matters most, spend less on what can wait. Also, RPO=0 specifically requires synchronous replication; asynchronous methods (log shipping, async mirroring) inherently have some data loss window."
+    },
+    {
+      "card_id": "gc_176",
+      "topic": "Cloud Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is CVSS (Common Vulnerability Scoring System)? Explain what a CVSS score of 9.8 means and how it differs from a CVSS score of 3.5 in terms of urgency.",
+      "question_text": "What are the three primary cloud service models, and what level of control does the customer have in each?",
       "choices": [
-        "CVSS (Common Vulnerability Scoring System) is a standardized framework for rating the severity of security vulnerabilities on a scale of 0.0 to 10.0. It considers factors like attack vector (network/adjacent/local/physical), attack complexity, privileges required, user interaction, and impact on confidentiality/integrity/availability. A score of 9.8 is CRITICAL — near-maximum severity, typically meaning: remotely exploitable (network vector), low complexity, no privileges required, no user interaction, and high impact on all three CIA elements. This demands immediate patching (within 48-72 hours, sooner if internet-facing). A score of 3.5 is LOW — likely requires local access, high complexity, or specific conditions, with limited impact. This can be patched on a normal schedule (e.g., monthly). CVSS helps prioritize remediation but should be combined with business context (asset criticality, exposure).",
-        "CVSS is a antivirus scoring system that rates how dangerous a malware strain is on a scale of 0-10.",
-        "CVSS 9.8 and 3.5 are equally urgent — all vulnerabilities should be patched immediately regardless of score.",
-        "CVSS is a proprietary tool sold by vulnerability scanner vendors — there is no open standard."
+        "IaaS: customer manages OS, apps, and data; provider manages hardware. PaaS: customer manages apps and data; provider manages OS, runtime, and hardware. SaaS: customer manages data only; provider manages everything else (apps, OS, runtime, hardware).",
+        "IaaS: customer manages nothing; provider manages everything. PaaS: customer manages hardware; provider manages apps. SaaS: customer manages OS; provider manages data.",
+        "IaaS: customer manages apps only. PaaS: customer manages hardware. SaaS: customer manages everything.",
+        "IaaS, PaaS, and SaaS all give the customer the same level of control"
       ],
-      "answer": "CVSS (Common Vulnerability Scoring System) is a standardized framework for rating the severity of security vulnerabilities on a scale of 0.0 to 10.0. It considers factors like attack vector (network/adjacent/local/physical), attack complexity, privileges required, user interaction, and impact on confidentiality/integrity/availability. A score of 9.8 is CRITICAL — near-maximum severity, typically meaning: remotely exploitable (network vector), low complexity, no privileges required, no user interaction, and high impact on all three CIA elements. This demands immediate patching (within 48-72 hours, sooner if internet-facing). A score of 3.5 is LOW — likely requires local access, high complexity, or specific conditions, with limited impact. This can be patched on a normal schedule (e.g., monthly). CVSS helps prioritize remediation but should be combined with business context (asset criticality, exposure).",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing CVSS with antivirus malware scoring — CVSS rates VULNERABILITIES, not malware. (2) Treating all vulnerabilities as equally urgent — this causes alert fatigue and ensures nothing gets patched well. (3) Not knowing the severity bands: Low (0.1-3.9), Medium (4.0-6.9), High (7.0-8.9), Critical (9.0-10.0). (4) Using CVSS alone without context — a 9.8 on an isolated test server is less urgent than a 7.5 on an internet-facing production server."
+      "answer": "IaaS: customer manages OS, apps, and data; provider manages hardware. PaaS: customer manages apps and data; provider manages OS, runtime, and hardware. SaaS: customer manages data only; provider manages everything else (apps, OS, runtime, hardware).",
+      "explanation_correct": "The three cloud service models form a spectrum of shared responsibility: IaaS (Infrastructure as a Service, e.g., AWS EC2, Azure VMs) — the provider manages physical servers, storage, and networking; the customer is responsible for the OS, middleware, applications, and data. This gives maximum control and flexibility. PaaS (Platform as a Service, e.g., AWS Elastic Beanstalk, Azure App Service) — the provider manages infrastructure AND OS, runtime, and middleware; the customer manages only applications and data. This simplifies operations but limits OS-level control. SaaS (Software as a Service, e.g., Microsoft 365, Salesforce, Gmail) — the provider manages everything except data; the customer only manages user access and data configuration. The model determines the security shared responsibility boundary.",
+      "explanation_wrong_common": "The levels of control are reversed or mixed in the wrong answers. IaaS gives the MOST customer control, not the least. SaaS gives the LEAST customer control. The common mistake is not understanding the inverse relationship: more provider management = less customer control. This matters for security — in IaaS you must patch the OS; in SaaS you can't (and don't need to). Misunderstanding this leads to security gaps (assuming the provider patches your IaaS OS when they don't)."
     },
     {
-      "card_id": "gc_150",
-      "topic": "Vulnerability Management",
+      "card_id": "gc_177",
+      "topic": "Cloud Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between credentialed and non-credentialed vulnerability scans? When would you use each, and what are the trade-offs?",
+      "question_text": "What is the cloud shared responsibility model?",
       "choices": [
-        "Non-credentialed scans examine systems from the outside — like an attacker would. They identify visible open ports, services, and externally detectable vulnerabilities. They're faster, less intrusive, and don't require providing credentials to the scanner, but they MISS many vulnerabilities (unpatched software, missing patches on services not externally visible, weak configurations). Credentialed scans log into the target system using provided credentials (SSH, Windows admin, etc.) and inspect from the inside — installed software versions, registry settings, patch levels, file permissions, local configuration. They're more thorough and accurate but slower, require credential management/security, and may be seen as more intrusive. Use non-credentialed for quick external attack-surface assessment; use credentialed for comprehensive internal audits and compliance. Best practice: run both — non-credentialed to see what attackers see, credentialed for full coverage.",
-        "Credentialed scans are when you scan with your own username and password. Non-credentialed is when you scan without permission.",
-        "There is no difference — all vulnerability scans work the same way regardless of credentials.",
-        "Non-credentialed scans are always better because they don't require sharing passwords with the scanner."
+        "A framework defining which security responsibilities belong to the cloud provider and which belong to the customer, varying by service model (IaaS, PaaS, SaaS)",
+        "A legal contract where the cloud provider takes full responsibility for all security",
+        "An agreement where customers share their data with the provider for security analysis",
+        "A model where multiple cloud providers share responsibility for a single customer's infrastructure"
       ],
-      "answer": "Non-credentialed scans examine systems from the outside — like an attacker would. They identify visible open ports, services, and externally detectable vulnerabilities. They're faster, less intrusive, and don't require providing credentials to the scanner, but they MISS many vulnerabilities (unpatched software, missing patches on services not externally visible, weak configurations). Credentialed scans log into the target system using provided credentials (SSH, Windows admin, etc.) and inspect from the inside — installed software versions, registry settings, patch levels, file permissions, local configuration. They're more thorough and accurate but slower, require credential management/security, and may be seen as more intrusive. Use non-credentialed for quick external attack-surface assessment; use credentialed for comprehensive internal audits and compliance. Best practice: run both — non-credentialed to see what attackers see, credentialed for full coverage.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Thinking non-credentialed = unauthorized — it just means the scanner doesn't log in. (2) Assuming non-credentialed scans are comprehensive — they miss internal/unpatched software vulnerabilities. (3) Never running credentialed scans because of credential security concerns — use a dedicated scanner service account with least privilege. (4) Not understanding that credentialed scans find significantly more vulnerabilities."
+      "answer": "A framework defining which security responsibilities belong to the cloud provider and which belong to the customer, varying by service model (IaaS, PaaS, SaaS)",
+      "explanation_correct": "The shared responsibility model is a fundamental cloud security concept. The cloud provider is ALWAYS responsible for the security OF the cloud (physical security, host OS, network infrastructure, virtualization layer). The customer is ALWAYS responsible for security IN the cloud (data, identity/access, applications, configurations). The boundary shifts by service model: in IaaS, the customer manages most layers (OS up); in PaaS, the provider takes OS and runtime, customer manages apps and data; in SaaS, the provider manages almost everything, customer manages data and access. This model is defined by all major providers (AWS, Azure, GCP) and is critical for compliance — a customer cannot blame the provider for an unpatched IaaS OS or a misconfigured S3 bucket, because those are customer responsibilities.",
+      "explanation_wrong_common": "The provider does NOT take full responsibility — that's the most dangerous misconception. Even in SaaS, the customer is responsible for data protection, access control, and configuration. The model is not about data sharing or multi-provider scenarios. The common mistake is assuming 'we're in the cloud, so security is the provider's problem' — this leads to misconfigured storage (public S3 buckets), weak IAM policies, and unpatched systems. Security is always shared; the question is WHERE the line is drawn."
     },
     {
-      "card_id": "gc_151",
-      "topic": "Vulnerability Management",
+      "card_id": "gc_178",
+      "topic": "Cloud Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Your vulnerability scanner reports 50 CVEs on a critical production database server. 3 are Critical (CVSS 9+), 12 are High, 25 are Medium, 10 are Low. The database cannot be taken offline during business hours (8 AM - 8 PM). A public exploit exists for one of the Critical CVEs. Describe your patch prioritization and deployment strategy.",
+      "question_text": "A company migrates its web application to AWS EC2 instances behind an Application Load Balancer, stores user-uploaded files in S3 buckets, and uses RDS for the database. After migration, they discover their S3 bucket containing customer documents is publicly accessible. Who is responsible for this security failure under the shared responsibility model?",
       "choices": [
-        "Prioritization: (1) The Critical CVE with a public exploit is the #1 priority — it's internet-exploitable (if exposed) or could be used by an insider. Apply the patch during the next maintenance window (after 8 PM tonight) or implement a virtual patch/WAF rule immediately as an interim control. (2) The other 2 Critical CVEs — patch in the same or next maintenance window. (3) The 12 High CVEs — schedule within 1-2 weeks during maintenance windows. (4) Medium and Low — batch into the regular monthly patch cycle. Deployment strategy: Test patches on a staging replica of the database first. Schedule maintenance windows after 8 PM. Take a backup/snapshot before patching. Apply patches incrementally with rollback capability. If the database is clustered, do rolling patches (patch one node at a time while others serve traffic). For the public-exploit CVE, consider compensating controls NOW (firewall rules restricting access, IPS signatures, WAF rules) until the patch can be applied.",
-        "Patch all 50 CVEs at once during business hours — speed is more important than uptime.",
-        "Ignore the Critical CVEs since the server is internal and not directly internet-facing.",
-        "Only patch the Low CVEs first because they're easiest, then work up to Critical."
+        "The customer — S3 bucket configuration, access policies, and permissions are the customer's responsibility. AWS provides the storage infrastructure but the customer configures access controls, bucket policies, and encryption settings.",
+        "AWS — because they host the S3 service, they are responsible for all configuration",
+        "Both equally — the shared responsibility model means 50/50 liability",
+        "The Application Load Balancer vendor — because traffic routes through it"
       ],
-      "answer": "Prioritization: (1) The Critical CVE with a public exploit is the #1 priority — it's internet-exploitable (if exposed) or could be used by an insider. Apply the patch during the next maintenance window (after 8 PM tonight) or implement a virtual patch/WAF rule immediately as an interim control. (2) The other 2 Critical CVEs — patch in the same or next maintenance window. (3) The 12 High CVEs — schedule within 1-2 weeks during maintenance windows. (4) Medium and Low — batch into the regular monthly patch cycle. Deployment strategy: Test patches on a staging replica of the database first. Schedule maintenance windows after 8 PM. Take a backup/snapshot before patching. Apply patches incrementally with rollback capability. If the database is clustered, do rolling patches (patch one node at a time while others serve traffic). For the public-exploit CVE, consider compensating controls NOW (firewall rules restricting access, IPS signatures, WAF rules) until the patch can be applied.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Not factoring in exploit availability — a Critical CVE with a public exploit is far more urgent than one without. (2) Patching everything at once without testing — patches can break production. (3) Ignoring Critical CVEs because 'it's internal' — lateral movement from a compromised workstation can reach internal servers. (4) Not having a rollback plan. (5) Not using compensating controls as a bridge until patching is possible."
+      "answer": "The customer — S3 bucket configuration, access policies, and permissions are the customer's responsibility. AWS provides the storage infrastructure but the customer configures access controls, bucket policies, and encryption settings.",
+      "explanation_correct": "Under the shared responsibility model, AWS is responsible for the security OF the cloud (physical infrastructure, S3 service operation, resilience, patching of the S3 platform). The customer is responsible for security IN the cloud — including S3 bucket policies, access control lists (ACLs), IAM permissions, encryption settings, and public/private configuration. A publicly accessible S3 bucket is a customer misconfiguration, not an AWS failure. AWS provides the tools (bucket policies, Block Public Access, IAM) but the customer must configure them correctly. This is one of the most common cloud security incidents — millions of records have been exposed through misconfigured S3 buckets. AWS has since added Block Public Access as a default, but the customer must still manage it.",
+      "explanation_wrong_common": "AWS is not responsible for customer misconfigurations — they provide the platform and security tools, but configuration is the customer's job. Shared responsibility is not 50/50 liability — it's a clear division by layer. The ALB is irrelevant to S3 bucket access. The common mistake is blaming the provider for configuration errors. This is why cloud security training and CSPM (Cloud Security Posture Management) tools are critical."
     },
     {
-      "card_id": "gc_152",
-      "topic": "Vulnerability Management",
+      "card_id": "gc_179",
+      "topic": "Cloud Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "After running a credentialed scan, you notice the scanner reports 200 vulnerabilities on Server A but only 5 on Server B — even though both servers run the same OS and applications. The IT team says Server B is 'definitely more secure.' What are possible explanations, and how would you verify which server actually has more vulnerabilities?",
+      "question_text": "A startup deploys a microservices application using Docker containers on a managed Kubernetes service (EKS). They want to minimize their security management overhead. Which approach best reduces their responsibility while maintaining security, and what security tasks remain their responsibility?",
       "choices": [
-        "Possible explanations: (1) Scanner credentials for Server B may have insufficient privileges — if the scanner can't log in as admin, it can only do a non-credentialed scan and will miss most vulnerabilities. (2) Server B may have a host-based firewall blocking scanner traffic. (3) Server B's scanner agent may be outdated or malfunctioning. (4) Server B may actually be more recently patched/hardened — but this needs verification, not assumption. (5) Server B may be running a different configuration (e.g., different services enabled, different patch baseline) despite 'same OS.' To verify: (a) Check scanner logs for Server B — did it authenticate successfully? Were there access-denied errors? (b) Run a manual credentialed scan with verbose logging on Server B. (c) Compare patch levels manually (e.g., 'apt list --upgradable' or Windows update history) on both servers. (d) Compare running services and open ports. (e) Ensure scanner credentials have local admin/root on Server B. Never assume fewer findings = more secure without verifying scan completeness.",
-        "Server B is definitely more secure — the scanner said so. No further investigation needed.",
-        "Server A must be infected with malware causing false positive vulnerability reports.",
-        "The scanner is broken — replace it with a different vendor's product immediately."
+        "Use a managed Kubernetes service (EKS/GKE/AKS) where the provider manages the control plane — the customer still secures container images, pod-level RBAC, network policies, runtime security, and application code, but doesn't patch the Kubernetes control plane or etcd. Moving to serverless (Fargate/Lambda) further reduces responsibility by eliminating node OS management.",
+        "Run Kubernetes on self-managed EC2 instances for maximum control and security",
+        "Use SaaS-only services to eliminate all security responsibility",
+        "Deploy containers on bare metal servers for best performance and security"
       ],
-      "answer": "Possible explanations: (1) Scanner credentials for Server B may have insufficient privileges — if the scanner can't log in as admin, it can only do a non-credentialed scan and will miss most vulnerabilities. (2) Server B may have a host-based firewall blocking scanner traffic. (3) Server B's scanner agent may be outdated or malfunctioning. (4) Server B may actually be more recently patched/hardened — but this needs verification, not assumption. (5) Server B may be running a different configuration (e.g., different services enabled, different patch baseline) despite 'same OS.' To verify: (a) Check scanner logs for Server B — did it authenticate successfully? Were there access-denied errors? (b) Run a manual credentialed scan with verbose logging on Server B. (c) Compare patch levels manually (e.g., 'apt list --upgradable' or Windows update history) on both servers. (d) Compare running services and open ports. (e) Ensure scanner credentials have local admin/root on Server B. Never assume fewer findings = more secure without verifying scan completeness.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Trusting scan results blindly without verifying scan coverage/completeness. (2) Not checking whether the scanner actually authenticated to Server B. (3) Assuming 'same OS' means 'same configuration' — patch levels, services, and hardening can differ wildly. (4) Not investigating discrepancies between similar systems. A low finding count often means the scan didn't work properly, not that the system is secure."
+      "answer": "Use a managed Kubernetes service (EKS/GKE/AKS) where the provider manages the control plane — the customer still secures container images, pod-level RBAC, network policies, runtime security, and application code, but doesn't patch the Kubernetes control plane or etcd. Moving to serverless (Fargate/Lambda) further reduces responsibility by eliminating node OS management.",
+      "explanation_correct": "A managed Kubernetes service shifts the control plane security (API server, etcd, scheduler, controller manager) to the provider — the customer doesn't patch or secure those components. However, the customer remains responsible for: (1) Container image security — scanning for vulnerabilities, using trusted base images, minimizing image size. (2) Pod security — RBAC, security contexts, service accounts, pod security policies/standards. (3) Network policies — controlling pod-to-pod communication. (4) Runtime security — detecting container escape, suspicious process execution. (5) Application code — secure coding, input validation, secrets management. (6) Node security (if self-managed nodes) — OS patching, CIS benchmarks. Moving to serverless containers (AWS Fargate, GKE Autopilot) eliminates node OS management entirely, further reducing the customer's scope. This is the PaaS model applied to containers.",
+      "explanation_wrong_common": "Self-managing Kubernetes on EC2 INCREASES responsibility (you patch the control plane, etcd, AND nodes). SaaS doesn't eliminate all responsibility — you still manage data and access. Bare metal gives the most responsibility, not the least. The common mistake is thinking more control equals better security — in cloud, reducing your management scope (while the provider handles infrastructure) often improves security because the provider has dedicated security teams and automated patching."
     },
     {
-      "card_id": "gc_153",
-      "topic": "Security Monitoring",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is SOAR (Security Orchestration, Automation, and Response)? How does it complement a SIEM, and what are its key capabilities?",
+      "card_id": "gc_180",
+      "topic": "Cloud Security",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An enterprise adopts a multi-cloud strategy: AWS for compute, Azure for identity (Entra ID / Azure AD), and GCP for data analytics (BigQuery). Data flows between all three clouds. Design a security architecture addressing: (1) identity management across clouds, (2) data encryption in transit and at rest, (3) network connectivity, (4) compliance auditing. Identify the key risks of multi-cloud and how to mitigate them.",
       "choices": [
-        "SOAR (Security Orchestration, Automation, and Response) is a technology platform that automates and orchestrates security operations workflows. While a SIEM collects and correlates logs to detect threats, SOAR takes ACTION on those threats. Key capabilities: (1) Orchestration — connects and integrates multiple security tools (SIEM, firewalls, EDR, ticketing, threat intel platforms) into automated workflows called playbooks. (2) Automation — executes repetitive tasks automatically (e.g., enriching an alert with threat intel, blocking an IP on the firewall, creating a ticket, isolating a host). (3) Response — takes containment/remediation actions based on predefined rules (e.g., quarantine a compromised endpoint, disable a user account). SOAR complements SIEM by turning SIEM detections into automated responses, reducing analyst workload (especially for L1 triage), ensuring consistent response, and reducing mean time to respond (MTTR). Analysts handle complex investigations while SOAR handles high-volume, well-defined tasks.",
-        "SOAR is another name for SIEM — they are the same technology.",
-        "SOAR is a type of firewall that automatically blocks all suspicious traffic without human input.",
-        "SOAR is an antivirus product that scans for malware on endpoints."
+        "(1) Identity: Federate Entra ID as the single IdP using SAML/OIDC to AWS IAM and GCP IAM — one identity, SSO across all clouds, centralized MFA. Avoid creating separate users per cloud. (2) Encryption: TLS 1.2+ for all inter-cloud data in transit; KMS per cloud (AWS KMS, Azure Key Vault, GCP KMS) or a centralized HSM for encryption keys; encrypt all data at rest by default. (3) Network: Private connectivity via AWS Direct Connect, Azure ExpressRoute, GCP Cloud Interconnect — avoid public internet for data transfer; use transit gateways and VPC peering within each cloud. (4) Auditing: Centralize logs in a SIEM (e.g., Splunk, Sentinel) collecting CloudTrail (AWS), Azure Monitor/Log Analytics (Azure), and Cloud Audit Logs (GCP); use CSPM tools for continuous compliance scanning. Key risks: configuration drift across clouds, inconsistent IAM, increased attack surface, vendor lock-in for security tooling. Mitigate with Infrastructure as Code (Terraform), unified policy-as-code (OPA/Sentinel), and a cloud security posture management (CSPM) platform covering all three clouds.",
+        "Use a single cloud provider to eliminate complexity — multi-cloud is always a bad idea",
+        "Manage separate identities in each cloud for maximum security isolation",
+        "Use public internet for all inter-cloud traffic with TLS — private connections are unnecessary"
       ],
-      "answer": "SOAR (Security Orchestration, Automation, and Response) is a technology platform that automates and orchestrates security operations workflows. While a SIEM collects and correlates logs to detect threats, SOAR takes ACTION on those threats. Key capabilities: (1) Orchestration — connects and integrates multiple security tools (SIEM, firewalls, EDR, ticketing, threat intel platforms) into automated workflows called playbooks. (2) Automation — executes repetitive tasks automatically (e.g., enriching an alert with threat intel, blocking an IP on the firewall, creating a ticket, isolating a host). (3) Response — takes containment/remediation actions based on predefined rules (e.g., quarantine a compromised endpoint, disable a user account). SOAR complements SIEM by turning SIEM detections into automated responses, reducing analyst workload (especially for L1 triage), ensuring consistent response, and reducing mean time to respond (MTTR). Analysts handle complex investigations while SOAR handles high-volume, well-defined tasks.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing SOAR with SIEM — SIEM detects, SOAR acts. (2) Thinking SOAR replaces analysts — it augments them by handling repetitive tasks. (3) Not understanding orchestration (connecting tools) vs automation (running tasks). (4) Assuming SOAR can handle complex novel threats autonomously — playbooks are for well-defined scenarios."
-    },
-    {
-      "card_id": "gc_154",
-      "topic": "Security Monitoring",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is a honeypot/honeynet? Explain its purpose, how it works, and the difference between a honeypot and a honeynet.",
-      "choices": [
-        "A honeypot is a decoy system designed to attract and trap attackers — it appears to be a legitimate, valuable target but contains no real data and is isolated from the production network. Its purposes: (1) Detection — alerts security teams when an attacker interacts with it (since no legitimate user should ever access it, ANY interaction is suspicious). (2) Intelligence gathering — observes attacker techniques, tools, and TTPs (Tactics, Techniques, and Procedures) to improve defenses. (3) Diversion — wastes attacker time and resources away from real systems. How it works: deployed as a fake server/service (e.g., a fake database, SSH server, or web app) with monitoring/logging. When an attacker probes or exploits it, the honeypot logs everything and alerts the SOC. A honeynet is a NETWORK of interconnected honeypots — simulating an entire network environment (multiple servers, routers, services) to capture more complex attack patterns, lateral movement, and multi-stage attacks. Honeypot = single decoy; honeynet = network of decoys. High-interaction honeypots (real OS/services) gather more intel but carry more risk; low-interaction honeypots (simulated services) are safer but less informative.",
-        "A honeypot is a type of encryption used to protect databases.",
-        "A honeypot is a password storage mechanism that uses hashing to store credentials securely.",
-        "A honeypot is a network performance monitoring tool that measures latency between servers."
-      ],
-      "answer": "A honeypot is a decoy system designed to attract and trap attackers — it appears to be a legitimate, valuable target but contains no real data and is isolated from the production network. Its purposes: (1) Detection — alerts security teams when an attacker interacts with it (since no legitimate user should ever access it, ANY interaction is suspicious). (2) Intelligence gathering — observes attacker techniques, tools, and TTPs (Tactics, Techniques, and Procedures) to improve defenses. (3) Diversion — wastes attacker time and resources away from real systems. How it works: deployed as a fake server/service (e.g., a fake database, SSH server, or web app) with monitoring/logging. When an attacker probes or exploits it, the honeypot logs everything and alerts the SOC. A honeynet is a NETWORK of interconnected honeypots — simulating an entire network environment (multiple servers, routers, services) to capture more complex attack patterns, lateral movement, and multi-stage attacks. Honeypot = single decoy; honeynet = network of decoys. High-interaction honeypots (real OS/services) gather more intel but carry more risk; low-interaction honeypots (simulated services) are safer but less informative.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing honeypots with real production security controls — they're decoys, not primary defenses. (2) Not understanding that ANY interaction with a honeypot is suspicious by definition. (3) Confusing honeypot (single) with honeynet (network). (4) Deploying high-interaction honeypots without proper isolation — a compromised honeypot can become a launchpad for attacks on real systems."
-    },
-    {
-      "card_id": "gc_155",
-      "topic": "Security Monitoring",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "Your SIEM generates an alert: a user account 'jsmith' is authenticating to the VPN from Singapore at 2 PM, and 30 minutes later the same account authenticates from an IP in Russia. Both authentications used valid credentials and MFA. What type of detection is this, what are possible explanations, and what should the SOC analyst do?",
-      "choices": [
-        "This is an anomaly-based detection (impossible travel / geographically impossible login). Possible explanations: (1) Account compromise — an attacker has stolen jsmith's credentials AND MFA token (via SIM swap, MFA fatigue/push bombing, or stolen session cookie). This is the most likely and most dangerous scenario. (2) Legitimate user traveling — jsmith could be using a VPN/proxy that routes through Russia, or could have a compromised device. (3) Shared credentials — jsmith shared their login with a colleague in Russia (policy violation). The analyst should: (a) Immediately suspend/disable jsmith's account to prevent further access. (b) Contact jsmith via an out-of-band channel (phone, not email/Slack which may be compromised) to verify. (c) Review session logs — what did the Russian IP access? Was data exfiltrated? (d) Force password reset and re-enroll MFA. (e) Check for MFA fatigue attacks (multiple push notifications before the Russian login). (f) If compromise confirmed, escalate to IR and check what data was accessed/exfiltrated.",
-        "This is normal — the user probably has a VPN. No action needed.",
-        "This is a false positive because both logins used valid credentials and MFA, so it must be the real user.",
-        "Block all VPN access for all users until the issue is resolved."
-      ],
-      "answer": "This is an anomaly-based detection (impossible travel / geographically impossible login). Possible explanations: (1) Account compromise — an attacker has stolen jsmith's credentials AND MFA token (via SIM swap, MFA fatigue/push bombing, or stolen session cookie). This is the most likely and most dangerous scenario. (2) Legitimate user traveling — jsmith could be using a VPN/proxy that routes through Russia, or could have a compromised device. (3) Shared credentials — jsmith shared their login with a colleague in Russia (policy violation). The analyst should: (a) Immediately suspend/disable jsmith's account to prevent further access. (b) Contact jsmith via an out-of-band channel (phone, not email/Slack which may be compromised) to verify. (c) Review session logs — what did the Russian IP access? Was data exfiltrated? (d) Force password reset and re-enroll MFA. (e) Check for MFA fatigue attacks (multiple push notifications before the Russian login). (f) If compromise confirmed, escalate to IR and check what data was accessed/exfiltrated.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Dismissing the alert because MFA was used — MFA can be bypassed (SIM swap, push fatigue, session token theft). (2) Not recognizing impossible travel as a high-priority indicator. (3) Contacting the user via potentially compromised channels (email/chat). (4) Not disabling the account first — containment before investigation. (5) Assuming it's a VPN — even if it is, that needs verification, not assumption."
-    },
-    {
-      "card_id": "gc_156",
-      "topic": "Security Monitoring",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "Your File Integrity Monitoring (FIM) tool alerts that critical system files on a web server were modified at 3:47 AM — /etc/passwd, /etc/shadow, and /usr/sbin/sshd were all changed. No maintenance was scheduled. The web server is internet-facing. Walk through your investigation steps and explain why FIM is important in this scenario.",
-      "choices": [
-        "FIM (File Integrity Monitoring) detects unauthorized changes to files by comparing current file state (hashes, permissions, timestamps) against a known-good baseline. It's critical here because these changes could indicate a rootkit installation, backdoor insertion, or privilege escalation. Investigation steps: (1) ISOLATE — immediately isolate the web server from the network (it's internet-facing and may be compromised). Do NOT shut down (preserve volatile memory for forensics). (2) VERIFY — check if the modifications were authorized (was there an emergency patch? Check change management records and with the sysadmin team). (3) ANALYZE — examine what changed in the files: were new users added to /etc/passwd? Were password hashes modified in /etc/shadow? Was sshd replaced with a trojanized version? Compare current file hashes against package manager's known-good hashes (e.g., 'rpm -V' or 'debsums'). (4) TIMELINE — review logs around 3:47 AM — what IP connected? Was there a web exploit? Check access logs, auth logs, and SIEM. (5) SCOPE — check if other servers were similarly modified. (6) RESPONSE — if compromise confirmed: preserve evidence, rebuild from clean image, restore from known-good backup, patch the exploited vulnerability, conduct full IR. FIM is important because file modifications to system binaries/configs are a strong indicator of compromise that might otherwise go undetected for months.",
-        "Ignore the alert — file modifications happen all the time during normal system operation.",
-        "Reboot the server immediately to fix the issue.",
-        "Reinstall the modified files from backup and don't investigate further — the problem is solved."
-      ],
-      "answer": "FIM (File Integrity Monitoring) detects unauthorized changes to files by comparing current file state (hashes, permissions, timestamps) against a known-good baseline. It's critical here because these changes could indicate a rootkit installation, backdoor insertion, or privilege escalation. Investigation steps: (1) ISOLATE — immediately isolate the web server from the network (it's internet-facing and may be compromised). Do NOT shut down (preserve volatile memory for forensics). (2) VERIFY — check if the modifications were authorized (was there an emergency patch? Check change management records and with the sysadmin team). (3) ANALYZE — examine what changed in the files: were new users added to /etc/passwd? Were password hashes modified in /etc/shadow? Was sshd replaced with a trojanized version? Compare current file hashes against package manager's known-good hashes (e.g., 'rpm -V' or 'debsums'). (4) TIMELINE — review logs around 3:47 AM — what IP connected? Was there a web exploit? Check access logs, auth logs, and SIEM. (5) SCOPE — check if other servers were similarly modified. (6) RESPONSE — if compromise confirmed: preserve evidence, rebuild from clean image, restore from known-good backup, patch the exploited vulnerability, conduct full IR. FIM is important because file modifications to system binaries/configs are a strong indicator of compromise that might otherwise go undetected for months.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Ignoring FIM alerts — modifications to /etc/passwd, /etc/shadow, and sshd are extremely high priority. (2) Shutting down instead of isolating — destroys volatile forensic evidence (memory, network connections). (3) Just restoring files without investigating HOW the attacker got in — they'll come back through the same vulnerability. (4) Not checking the scope — if one server is compromised, check all similar servers. (5) Not understanding that FIM detects changes but doesn't prevent them — it's a detective control."
-    },
-    {
-      "card_id": "gc_157",
-      "topic": "Data Security",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "Explain the difference between hashing and encryption. When would you use each, and why is hashing (not encryption) used for password storage?",
-      "choices": [
-        "Encryption is a TWO-WAY function: data is encrypted with a key into ciphertext, and can be DECRYPTED back to the original plaintext using the same key (symmetric) or a paired key (asymmetric). Use encryption when you need to recover the original data — e.g., protecting a database, securing communications (TLS), encrypting files on disk. Hashing is a ONE-WAY function: input data is transformed into a fixed-length hash/digest that CANNOT be reversed back to the original. Use hashing for integrity verification — e.g., verifying file integrity (compare hashes), digital signatures, and password storage. Passwords are HASHED (not encrypted) because: (1) If the password database is stolen, the attacker should NOT be able to recover the original passwords — encryption would allow decryption with the right key. (2) Hashing is irreversible — even if the hash is stolen, the attacker must brute-force/guess. (3) Proper password hashing uses slow, salted algorithms (bcrypt, Argon2, PBKDF2) to make brute-force computationally expensive. Hashing + salting (unique random value per password) prevents rainbow table attacks.",
-        "Hashing and encryption are the same thing — both can be reversed to get the original data back.",
-        "Encryption is one-way and hashing is two-way — encryption can't be reversed but hashing can.",
-        "Passwords should be encrypted, not hashed, so that the system can recover them when users forget them."
-      ],
-      "answer": "Encryption is a TWO-WAY function: data is encrypted with a key into ciphertext, and can be DECRYPTED back to the original plaintext using the same key (symmetric) or a paired key (asymmetric). Use encryption when you need to recover the original data — e.g., protecting a database, securing communications (TLS), encrypting files on disk. Hashing is a ONE-WAY function: input data is transformed into a fixed-length hash/digest that CANNOT be reversed back to the original. Use hashing for integrity verification — e.g., verifying file integrity (compare hashes), digital signatures, and password storage. Passwords are HASHED (not encrypted) because: (1) If the password database is stolen, the attacker should NOT be able to recover the original passwords — encryption would allow decryption with the right key. (2) Hashing is irreversible — even if the hash is stolen, the attacker must brute-force/guess. (3) Proper password hashing uses slow, salted algorithms (bcrypt, Argon2, PBKDF2) to make brute-force computationally expensive. Hashing + salting (unique random value per password) prevents rainbow table attacks.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing one-way (hashing) with two-way (encryption). (2) Thinking passwords should be encrypted so they can be 'recovered' — passwords should NEVER be recoverable; reset them instead. (3) Using fast hash functions (MD5, SHA-256) for passwords without salt/work factor — use bcrypt/Argon2/PBKDF2 instead. (4) Not understanding salting — without unique salts, identical passwords produce identical hashes, enabling rainbow table attacks."
-    },
-    {
-      "card_id": "gc_158",
-      "topic": "Data Security",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is tokenization? How does it differ from encryption, and in what scenarios is tokenization preferred over encryption for data protection?",
-      "choices": [
-        "Tokenization replaces sensitive data (like credit card numbers, SSNs) with a non-sensitive substitute called a token — a random, meaningless value. The mapping between token and original data is stored in a secure, isolated tokenization vault/database. The token has no mathematical relationship to the original data — it's just a random reference. Difference from encryption: encryption transforms data using a mathematical algorithm and key (ciphertext can be decrypted back); tokenization SWAPS the data for a random token (no algorithmic relationship, original data is stored separately in the vault). Tokenization is preferred when: (1) The sensitive data must be retained for business purposes but shouldn't be stored in the application database — e.g., payment processing (PCI DSS compliance — tokenization reduces PCI audit scope by removing card data from internal systems). (2) Repeated access to the original data is needed via the token vault without exposing the real data to applications. (3) Regulatory compliance requires reducing where sensitive data is stored. (4) Performance — tokenization lookups are faster than encryption/decryption. Key limitation: the tokenization vault itself becomes a high-value target and must be heavily secured.",
-        "Tokenization is the same as encryption — both use mathematical algorithms to transform data reversibly.",
-        "Tokenization permanently destroys the original data — there is no way to retrieve it once tokenized.",
-        "Tokenization is only used for cryptocurrency and has no application in data security."
-      ],
-      "answer": "Tokenization replaces sensitive data (like credit card numbers, SSNs) with a non-sensitive substitute called a token — a random, meaningless value. The mapping between token and original data is stored in a secure, isolated tokenization vault/database. The token has no mathematical relationship to the original data — it's just a random reference. Difference from encryption: encryption transforms data using a mathematical algorithm and key (ciphertext can be decrypted back); tokenization SWAPS the data for a random token (no algorithmic relationship, original data is stored separately in the vault). Tokenization is preferred when: (1) The sensitive data must be retained for business purposes but shouldn't be stored in the application database — e.g., payment processing (PCI DSS compliance — tokenization reduces PCI audit scope by removing card data from internal systems). (2) Repeated access to the original data is needed via the token vault without exposing the real data to applications. (3) Regulatory compliance requires reducing where sensitive data is stored. (4) Performance — tokenization lookups are faster than encryption/decryption. Key limitation: the tokenization vault itself becomes a high-value target and must be heavily secured.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Confusing tokenization with encryption — encryption is reversible with a key; tokens are random references with no algorithmic relationship. (2) Thinking tokenized data can't be retrieved — the vault stores the mapping, so authorized systems can detokenize. (3) Not understanding the PCI DSS compliance benefit — reducing cardholder data environment scope. (4) Forgetting that the token vault is now the crown jewel and needs strong protection."
-    },
-    {
-      "card_id": "gc_159",
-      "topic": "Data Security",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "Your company handles customer payment cards and must comply with PCI DSS. The development team wants to store full credit card numbers in the application database for 'faster repeat checkouts.' As the security advisor, what do you recommend and why? Describe the architecture that balances user convenience with PCI DSS compliance.",
-      "choices": [
-        "Recommend AGAINST storing full credit card numbers (PAN - Primary Account Number) in the application database. Storing PANs expands the PCI DSS Cardholder Data Environment (CDE) scope to include the entire application, database, and supporting infrastructure — dramatically increasing compliance cost, audit complexity, and breach risk. Recommended architecture: (1) Use a PCI-compliant third-party payment processor/tokenization service (e.g., Stripe, Braintree). (2) When a customer enters their card, the payment processor handles storage in their PCI-compliant vault and returns a TOKEN. (3) Store only the token in the application database. (4) For repeat checkouts, send the token to the processor to charge the stored card — the application never touches the real PAN. (5) This descope's the application from PCI DSS — the app database contains only tokens (meaningless without the processor's vault). (6) If recurring billing is needed, use the processor's recurring billing API. This architecture provides the same user convenience (fast repeat checkout) while minimizing PCI scope to just the payment redirect/iframe, not the entire application stack.",
-        "Store the credit card numbers encrypted in the database — encryption makes it PCI DSS compliant.",
-        "Store the full card numbers but only in a separate database table — that satisfies PCI DSS requirements.",
-        "Don't offer repeat checkout at all — it's impossible to do securely while complying with PCI DSS."
-      ],
-      "answer": "Recommend AGAINST storing full credit card numbers (PAN - Primary Account Number) in the application database. Storing PANs expands the PCI DSS Cardholder Data Environment (CDE) scope to include the entire application, database, and supporting infrastructure — dramatically increasing compliance cost, audit complexity, and breach risk. Recommended architecture: (1) Use a PCI-compliant third-party payment processor/tokenization service (e.g., Stripe, Braintree). (2) When a customer enters their card, the payment processor handles storage in their PCI-compliant vault and returns a TOKEN. (3) Store only the token in the application database. (4) For repeat checkouts, send the token to the processor to charge the stored card — the application never touches the real PAN. (5) This descope's the application from PCI DSS — the app database contains only tokens (meaningless without the processor's vault). (6) If recurring billing is needed, use the processor's recurring billing API. This architecture provides the same user convenience (fast repeat checkout) while minimizing PCI scope to just the payment redirect/iframe, not the entire application stack.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Thinking encryption alone satisfies PCI DSS — encryption helps but doesn't eliminate CDE scope. (2) Not understanding PCI DSS scope — storing PANs anywhere in your infrastructure makes EVERYTHING in that scope auditable. (3) Underestimating the cost/complexity of full PCI DSS compliance vs. tokenization. (4) Believing convenience requires storing card data — tokenization provides the same convenience with far less risk."
-    },
-    {
-      "card_id": "gc_160",
-      "topic": "Data Security",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A startup stores customer data in AWS S3 buckets. An external security researcher reports they can access one of your S3 buckets publicly without authentication. The bucket contains customer profiles with names, emails, phone numbers, and partial credit card numbers (first 6 + last 4 digits). What steps do you take to respond, and what data security principles were violated?",
-      "choices": [
-        "Immediate response: (1) SECURE THE BUCKET — immediately change the bucket ACL/policy to block public access (enable S3 Block Public Access, remove any public-read ACLs, apply a bucket policy denying all except authorized principals). (2) ASSESS — review CloudTrail/S3 access logs to determine WHO accessed the bucket publicly and WHAT data was exposed. Determine the exposure window (how long was it public?). (3) NOTIFY — if customer PII was exposed, you likely have a breach notification obligation under GDPR, CCPA, or Singapore's PDPA (depending on jurisdiction and risk level). Consult legal/compliance. (4) REMEDIATE — move sensitive data out of S3 or encrypt it (enable S3 SSE-KMS encryption with restricted KMS key policy). Implement least-privilege IAM policies. Set up S3 public access alerts. (5) PREVENT — implement AWS Config rules to detect public S3 buckets automatically. Conduct a full audit of ALL S3 buckets for public exposure. Principles violated: (a) Least privilege — the bucket was publicly accessible instead of restricted to authorized users. (b) Data classification — customer PII and financial data was stored without appropriate access controls. (c) Defense in depth — relying on a single layer (bucket policy) with no monitoring/alerting. (d) Encryption at rest — data was apparently unencrypted or accessible without decryption controls. Partial card numbers (first 6 + last 4) alone are generally not PCI-sensitive, but combined with PII they increase breach impact.",
-        "Ignore the report — partial credit card numbers (first 6 + last 4) are not sensitive, so there's no breach.",
-        "Delete the bucket and all its contents immediately without investigating who accessed it.",
-        "Just add a password to the S3 bucket — that's sufficient to fix the security issue."
-      ],
-      "answer": "Immediate response: (1) SECURE THE BUCKET — immediately change the bucket ACL/policy to block public access (enable S3 Block Public Access, remove any public-read ACLs, apply a bucket policy denying all except authorized principals). (2) ASSESS — review CloudTrail/S3 access logs to determine WHO accessed the bucket publicly and WHAT data was exposed. Determine the exposure window (how long was it public?). (3) NOTIFY — if customer PII was exposed, you likely have a breach notification obligation under GDPR, CCPA, or Singapore's PDPA (depending on jurisdiction and risk level). Consult legal/compliance. (4) REMEDIATE — move sensitive data out of S3 or encrypt it (enable S3 SSE-KMS encryption with restricted KMS key policy). Implement least-privilege IAM policies. Set up S3 public access alerts. (5) PREVENT — implement AWS Config rules to detect public S3 buckets automatically. Conduct a full audit of ALL S3 buckets for public exposure. Principles violated: (a) Least privilege — the bucket was publicly accessible instead of restricted to authorized users. (b) Data classification — customer PII and financial data was stored without appropriate access controls. (c) Defense in depth — relying on a single layer (bucket policy) with no monitoring/alerting. (d) Encryption at rest — data was apparently unencrypted or accessible without decryption controls. Partial card numbers (first 6 + last 4) alone are generally not PCI-sensitive, but combined with PII they increase breach impact.",
-      "explanation_correct": "See the correct answer above for the full explanation.",
-      "explanation_wrong_common": "Common mistakes: (1) Not treating public S3 exposure as an incident — it's a data breach requiring investigation and potential notification. (2) Fixing the bucket without checking access logs — you need to know if data was actually accessed. (3) Ignoring breach notification obligations — PDPA/GDPR/CCPA may require notifying affected individuals and regulators. (4) Not auditing other buckets — if one was misconfigured, others likely are too. (5) Not implementing preventive controls (Config rules, alerts) to catch future misconfigurations."
+      "answer": "(1) Identity: Federate Entra ID as the single IdP using SAML/OIDC to AWS IAM and GCP IAM — one identity, SSO across all clouds, centralized MFA. Avoid creating separate users per cloud. (2) Encryption: TLS 1.2+ for all inter-cloud data in transit; KMS per cloud (AWS KMS, Azure Key Vault, GCP KMS) or a centralized HSM for encryption keys; encrypt all data at rest by default. (3) Network: Private connectivity via AWS Direct Connect, Azure ExpressRoute, GCP Cloud Interconnect — avoid public internet for data transfer; use transit gateways and VPC peering within each cloud. (4) Auditing: Centralize logs in a SIEM (e.g., Splunk, Sentinel) collecting CloudTrail (AWS), Azure Monitor/Log Analytics (Azure), and Cloud Audit Logs (GCP); use CSPM tools for continuous compliance scanning. Key risks: configuration drift across clouds, inconsistent IAM, increased attack surface, vendor lock-in for security tooling. Mitigate with Infrastructure as Code (Terraform), unified policy-as-code (OPA/Sentinel), and a cloud security posture management (CSPM) platform covering all three clouds.",
+      "explanation_correct": "Multi-cloud security requires a unified architecture. Identity federation is the foundation — using Entra ID (Azure AD) as the single identity provider with SAML/OIDC federation to AWS and GCP means users authenticate once with centralized MFA, and access is provisioned/deprovisioned from one place. This eliminates shadow identities and ensures consistent access policies. Encryption must be layered: TLS for transit (mandatory for inter-cloud), cloud-native KMS for at-rest encryption (or a centralized key management solution for regulatory requirements like BYOK). Private connectivity (Direct Connect/ExpressRoute/Interconnect) avoids exposing data to the public internet and provides predictable latency. Centralized logging into a SIEM provides a single pane of glass for threat detection across all clouds — each cloud's native audit logs feed into it. CSPM tools detect misconfigurations consistently. The biggest multi-cloud risks are: configuration drift (different teams configure differently), inconsistent IAM (orphaned accounts), expanded attack surface (more entry points), and tooling complexity. IaC (Terraform/Pulumi), policy-as-code, and CSPM mitigate these by enforcing consistent configurations programmatically.",
+      "explanation_wrong_common": "Avoiding multi-cloud entirely ignores valid business drivers (best-of-breed services, avoiding vendor lock-in, regulatory data residency). Separate identities per cloud INCREASES risk (orphaned accounts, inconsistent MFA, credential sprawl). Public internet for inter-cloud traffic is risky even with TLS — it exposes traffic to interception, adds latency, and makes compliance harder. The common mistake is treating each cloud as an independent silo — multi-cloud security requires a unified identity, logging, and policy layer that spans all providers."
     }
   ],
   "scheduling_updates": [
-    {
-      "card_id": "gc_141",
-      "next_due_at": "2026-11-20"
-    },
-    {
-      "card_id": "gc_142",
-      "next_due_at": "2026-11-20"
-    },
-    {
-      "card_id": "gc_143",
-      "next_due_at": "2026-11-20"
-    },
-    {
-      "card_id": "gc_144",
-      "next_due_at": "2026-11-20"
-    },
-    {
-      "card_id": "gc_145",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_146",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_147",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_148",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_149",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_150",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_151",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_152",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_153",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_154",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_155",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_156",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_157",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_158",
-      "next_due_at": "2026-11-18"
-    },
-    {
-      "card_id": "gc_159",
-      "next_due_at": "2026-11-19"
-    },
-    {
-      "card_id": "gc_160",
-      "next_due_at": "2026-11-19"
-    }
+    {"card_id": "gc_161", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_162", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_163", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_164", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_165", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_166", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_167", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_168", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_169", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_170", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_171", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_172", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_173", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_174", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_175", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_176", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_177", "next_due_at": "2026-11-19T00:00:00+08:00"},
+    {"card_id": "gc_178", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_179", "next_due_at": "2026-11-20T00:00:00+08:00"},
+    {"card_id": "gc_180", "next_due_at": "2026-11-20T00:00:00+08:00"}
   ]
 }
