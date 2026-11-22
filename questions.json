@@ -1,406 +1,406 @@
 {
   "cards": [
     {
-      "card_id": "gc_181",
-      "topic": "Cryptography",
+      "card_id": "gc_201",
+      "topic": "Security Automation and Orchestration",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the fundamental difference between symmetric and asymmetric encryption?",
+      "question_text": "What is SOAR (Security Orchestration, Automation, and Response) and what are its three primary capabilities?",
       "choices": [
-        "Symmetric encryption uses a single shared key for both encryption and decryption; asymmetric encryption uses a key pair — a public key to encrypt and a private key to decrypt",
-        "Symmetric encryption is more secure than asymmetric encryption",
-        "Asymmetric encryption uses the same key for both operations; symmetric uses two different keys",
-        "Symmetric encryption can only encrypt small amounts of data; asymmetric has no size limit"
+        "A protocol for encrypting traffic between security sensors and the SIEM",
+        "A platform that aggregates and prioritizes alerts, automates repetitive tasks via playbooks, and orchestrates responses across multiple security tools",
+        "A hardware appliance that blocks malicious IPs at the network perimeter",
+        "A database standard for storing forensic evidence"
       ],
-      "answer": "Symmetric encryption uses a single shared key for both encryption and decryption; asymmetric encryption uses a key pair — a public key to encrypt and a private key to decrypt",
-      "explanation_correct": "Symmetric encryption (e.g., AES, DES, ChaCha20) uses one shared secret key — both sender and receiver must have the same key. It's fast and efficient for bulk data encryption. The challenge is key distribution: how do you securely share the key with the other party? Asymmetric encryption (e.g., RSA, ECC) uses a mathematically linked key pair: the public key can be shared openly and is used to encrypt data, while the private key is kept secret and used to decrypt. This solves the key distribution problem. In practice, asymmetric encryption is slow and limited in data size, so it's typically used to exchange symmetric keys (hybrid encryption), which are then used for bulk data encryption. HTTPS/TLS uses this hybrid approach.",
-      "explanation_wrong_common": "The security comparison isn't about symmetric vs asymmetric — both can be strong with proper key lengths. Asymmetric does NOT use the same key for both operations (that's symmetric). The data size limitation applies to asymmetric, not symmetric — RSA can only encrypt data smaller than its key size, while AES can encrypt arbitrary amounts. The common mistake is confusing which encryption type uses one key vs two keys, and which has size limitations."
+      "answer": "A platform that aggregates and prioritizes alerts, automates repetitive tasks via playbooks, and orchestrates responses across multiple security tools",
+      "explanation_correct": "SOAR combines orchestration, automation, and response. It aggregates alerts from many sources, executes predefined playbooks to automate repetitive investigation/remediation, and coordinates actions across disparate security tools.",
+      "explanation_wrong_common": "SOAR is a software platform for automating and orchestrating security operations workflows — not a protocol, appliance, or storage standard."
     },
     {
-      "card_id": "gc_182",
-      "topic": "Cryptography",
+      "card_id": "gc_202",
+      "topic": "Security Automation and Orchestration",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What cryptographic function does a hash perform, and what are three key properties of a secure hash?",
+      "question_text": "What is the difference between a playbook and a runbook in security operations?",
       "choices": [
-        "A hash converts input data of any size into a fixed-size output (digest). Key properties: (1) deterministic — same input always produces same output, (2) one-way — infeasible to reverse the output to get the input, (3) collision-resistant — infeasible to find two different inputs that produce the same hash",
-        "A hash encrypts data using a secret key to produce a fixed-size ciphertext",
-        "A hash converts fixed-size input into variable-size output for compression",
-        "A hash is a two-way function that can be reversed with the correct password"
+        "They are identical terms used interchangeably",
+        "A playbook is a higher-level workflow that may invoke multiple runbooks; a runbook is a detailed set of procedural steps for a specific task",
+        "A runbook handles incident response while a playbook only covers compliance auditing",
+        "A playbook is always automated and a runbook is always manual"
       ],
-      "answer": "A hash converts input data of any size into a fixed-size output (digest). Key properties: (1) deterministic — same input always produces same output, (2) one-way — infeasible to reverse the output to get the input, (3) collision-resistant — infeasible to find two different inputs that produce the same hash",
-      "explanation_correct": "A cryptographic hash function (e.g., SHA-256, SHA-3, BLAKE2) takes arbitrary-length input and produces a fixed-size digest (e.g., 256 bits for SHA-256). Deterministic means the same input always yields the same hash — essential for verification. One-way (pre-image resistance) means you cannot derive the input from the hash — this is why password hashing works (store the hash, never the plaintext). Collision resistance means it's computationally infeasible to find two different inputs that hash to the same value. Hashes are used for integrity verification (file checksums), password storage (with salt), digital signatures (hash the document, sign the hash), and blockchain. Common algorithms: MD5 (broken, don't use), SHA-1 (broken), SHA-256 (current standard), SHA-3 (newest).",
-      "explanation_wrong_common": "A hash does NOT encrypt — encryption is reversible with a key, hashing is not. Hashes don't compress data in the traditional sense — the output is fixed-size but you can't recover the original. A hash is NOT a two-way function — it's one-way by design. The common mistake is confusing hashing with encryption: encryption is reversible (decrypt), hashing is irreversible. You can verify data integrity by comparing hashes, but you cannot recover the original data from a hash."
+      "answer": "A playbook is a higher-level workflow that may invoke multiple runbooks; a runbook is a detailed set of procedural steps for a specific task",
+      "explanation_correct": "A playbook is a structured, often automated workflow for handling a category of incident and may call multiple runbooks. A runbook documents the specific step-by-step procedure for a single operational task.",
+      "explanation_wrong_common": "Confusing the hierarchy: runbooks are granular procedures; playbooks are the broader orchestrating workflows that may chain runbooks together."
     },
     {
-      "card_id": "gc_183",
-      "topic": "Cryptography",
+      "card_id": "gc_203",
+      "topic": "Security Automation and Orchestration",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company needs to securely exchange a large volume of data (500 GB) with a partner over the internet. They also need to verify the partner's identity and ensure non-repudiation. Which cryptographic approach should they use, and in what order should the steps be applied?",
+      "question_text": "A SOC receives 5,000 alerts daily but can triage only 500. Alerts for a known banking trojan require analysts to manually query 4 tools, enrich IOCs, and file a ticket — 15 minutes each. What is the BEST use of SOAR?",
       "choices": [
-        "Step 1: Use asymmetric encryption (e.g., RSA/ECDH) to authenticate the partner via digital certificates and exchange a symmetric session key. Step 2: Use the symmetric key (e.g., AES-256) to encrypt the 500 GB of data in bulk. Step 3: Hash the data and sign the hash with the sender's private key for non-repudiation. This is the hybrid encryption model used by TLS.",
-        "Use only asymmetric encryption (RSA) to encrypt the entire 500 GB directly — it's the most secure option",
-        "Use only symmetric encryption (AES) and share the key via email to the partner",
-        "Hash the data with SHA-256 and send it unencrypted — the hash provides confidentiality"
+        "Replace the SIEM with SOAR so fewer alerts are generated",
+        "Build a playbook that automatically queries the 4 tools, enriches IOCs, correlates with threat intel, and opens tickets for confirmed trojan alerts",
+        "Disable all low-severity alerts to reduce volume to 500",
+        "Hire more analysts until capacity matches alert volume"
       ],
-      "answer": "Step 1: Use asymmetric encryption (e.g., RSA/ECDH) to authenticate the partner via digital certificates and exchange a symmetric session key. Step 2: Use the symmetric key (e.g., AES-256) to encrypt the 500 GB of data in bulk. Step 3: Hash the data and sign the hash with the sender's private key for non-repudiation. This is the hybrid encryption model used by TLS.",
-      "explanation_correct": "This is the standard hybrid encryption approach. Asymmetric encryption is computationally expensive and has data size limits (RSA-2048 can only encrypt ~245 bytes), so encrypting 500 GB directly with RSA is impractical. Instead, use asymmetric crypto to solve the key distribution problem: authenticate the partner via their digital certificate (verified by a CA), then use key exchange (RSA or ECDH) to agree on a shared symmetric key. AES-256 is then used for bulk encryption — it's fast, hardware-accelerated, and handles arbitrary data sizes. For non-repudiation, hash the data (SHA-256) and sign the hash with the sender's private key — the recipient verifies with the sender's public key. This is exactly how TLS/HTTPS works: handshake (asymmetric) → key exchange → bulk encryption (symmetric) → MAC/signature for integrity.",
-      "explanation_wrong_common": "RSA cannot practically encrypt 500 GB — it has a strict data size limit and is ~1000x slower than AES. Sending a symmetric key via email is insecure — email is not encrypted by default and the key would be exposed. A hash alone provides integrity but NOT confidentiality — anyone can read the data. The common mistake is not understanding the complementary roles: asymmetric for key exchange/auth, symmetric for bulk encryption, hashing for integrity, digital signatures for non-repudiation."
+      "answer": "Build a playbook that automatically queries the 4 tools, enriches IOCs, correlates with threat intel, and opens tickets for confirmed trojan alerts",
+      "explanation_correct": "SOAR's value is automating repetitive, multi-tool workflows. A playbook executes enrichment, correlation, and ticketing automatically for a known threat class, freeing analysts for genuine investigation. It works alongside the SIEM, not replacing it.",
+      "explanation_wrong_common": "Suppressing alerts or adding headcount doesn't fix the workflow bottleneck; SOAR complements (not replaces) the SIEM by automating the response workflow."
     },
     {
-      "card_id": "gc_184",
-      "topic": "Cryptography",
+      "card_id": "gc_204",
+      "topic": "Security Automation and Orchestration",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization stores user passwords in a database. The security team recommends using bcrypt with a per-user random salt and a work factor of 12. A junior developer suggests using SHA-256 with a salt instead, arguing it's faster. Why is bcrypt the better choice for password storage, and what is the purpose of the salt?",
+      "question_text": "An organization integrates SOAR with its EDR, firewall, and identity provider. When a playbook detects a compromised endpoint, which automated response sequence BEST follows least-privilege and minimizes business disruption?",
       "choices": [
-        "bcrypt is a slow, adaptive key-derivation function designed specifically for password hashing — its configurable work factor (cost) makes brute-force attacks computationally expensive, and it can be increased as hardware improves. The salt is a unique random value per user that prevents rainbow table attacks and ensures identical passwords produce different hashes. SHA-256 is a general-purpose hash — it's fast, which is great for file integrity but terrible for passwords because attackers can try billions of candidates per second.",
-        "SHA-256 with a salt is actually more secure because it produces a longer hash than bcrypt",
-        "bcrypt and SHA-256 with salt are equivalent for password storage — choose whichever is faster",
-        "The salt encrypts the password before hashing, adding a layer of encryption"
+        "Immediately shut down the entire corporate network",
+        "Isolate the affected endpoint via EDR, block the attacker's C2 IP on the firewall, and disable the compromised user's account in the IdP",
+        "Send an email to all users warning them not to click links",
+        "Reformat every machine in the same subnet as the endpoint"
       ],
-      "answer": "bcrypt is a slow, adaptive key-derivation function designed specifically for password hashing — its configurable work factor (cost) makes brute-force attacks computationally expensive, and it can be increased as hardware improves. SHA-256 is a general-purpose hash — it's fast, which is great for file integrity but terrible for passwords because attackers can try billions of candidates per second.",
-      "explanation_correct": "Password hashing has a unique requirement: you want it to be SLOW. bcrypt, scrypt, Argon2, and PBKDF2 are key-dereration functions (KDFs) deliberately designed to be computationally expensive. bcrypt's work factor (e.g., 12 = 2^12 = 4,096 iterations) controls how slow each hash computation is — you can increase it as CPUs/GPUs get faster. SHA-256 is optimized for speed — a modern GPU can compute billions of SHA-256 hashes per second, making offline brute-force attacks feasible if the database is stolen. The salt (unique per user) prevents: (1) rainbow table attacks — precomputed tables are useless because each password has a different salt, (2) hash collisions revealing identical passwords — two users with 'password123' get different hashes. The salt doesn't need to be secret — it just needs to be unique. bcrypt embeds the salt and cost in the output hash automatically.",
-      "explanation_wrong_common": "Hash length doesn't determine security for passwords — computational cost does. SHA-256 (256-bit output) isn't more secure than bcrypt (184-bit output) for passwords because SHA-256's speed is a vulnerability, not a feature, in this context. They are NOT equivalent — bcrypt's slowness is its key advantage. The salt doesn't encrypt — it's concatenated with the password before hashing to ensure uniqueness. The common mistake is treating all hashes as equal; password hashing requires deliberately slow functions, not fast general-purpose hashes."
+      "answer": "Isolate the affected endpoint via EDR, block the attacker's C2 IP on the firewall, and disable the compromised user's account in the IdP",
+      "explanation_correct": "A scoped, least-privilege response: isolate only the affected endpoint, block only the malicious IP, and disable only the compromised account — containing the threat with minimal disruption to unaffected systems.",
+      "explanation_wrong_common": "Overly broad responses (network shutdown, mass reformatting) cause unnecessary business impact; email warnings alone don't contain the threat."
     },
     {
-      "card_id": "gc_185",
-      "topic": "Cryptography",
+      "card_id": "gc_205",
+      "topic": "Security Automation and Orchestration",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company's PKI infrastructure uses RSA-2048 for key exchange and AES-128-GCM for bulk encryption in their TLS 1.2 connections. The CISO wants to migrate to TLS 1.3 and is considering switching to ECC (Elliptic Curve Cryptography) with P-256 curves and ChaCha20-Poly1305 for encryption. Analyze the security and performance implications of this migration. What are the trade-offs, and what steps must be taken to ensure backward compatibility with legacy clients that only support TLS 1.2?",
+      "question_text": "A company deploys SOAR playbooks for phishing. Triage time drops 80%, but 12% of automated 'benign' verdicts later prove to be real attacks, and analysts now ignore the queue because 'SOAR handles it.' Identify the two biggest problems and the correct fix.",
       "choices": [
-        "Security: ECC P-256 provides equivalent security to RSA-3072 with a 256-bit key — same security level, dramatically smaller keys (256-bit vs 3072-bit), faster handshakes, lower CPU/bandwidth. ChaCha20-Poly1305 is a stream cipher + AEAD that's faster than AES-GCM on devices without AES hardware acceleration (mobile/IoT) and equally secure with AES hardware. TLS 1.3 removes vulnerable algorithms (RSA key exchange, CBC mode, SHA-1, static DH), mandates forward secrecy (ephemeral keys only), and reduces handshake round-trips (1-RTT vs 2-RTT, with 0-RTT option). Trade-offs: ECC implementation complexity, patent concerns (minimal now), and ecosystem support. For backward compatibility: run a dual-stack TLS configuration — TLS 1.3 for modern clients, TLS 1.2 with ECDHE-RSA-AES-256-GCM-SHA384 for legacy clients. Disable TLS 1.0/1.1 entirely (deprecated). Use server-side cipher suite ordering to prefer TLS 1.3. Monitor client support and phase out TLS 1.2 once legacy clients are upgraded. Ensure ECC certificates are issued by a CA that supports them, and maintain RSA certificates for fallback.",
-        "ECC is always faster and more secure than RSA in all scenarios — migrate everything immediately with no fallback",
-        "TLS 1.3 is incompatible with all existing infrastructure and requires completely replacing all servers",
-        "ChaCha20-Poly1305 is weaker than AES-128-GCM because it uses a smaller key size"
+        "Problem 1: high false-negative rate from over-tuned auto-close logic. Problem 2: analyst complacency from over-automation. Fix: tighten playbook thresholds, require human confirmation for auto-close, and retain analyst review of high-risk verdicts.",
+        "Problem 1: SOAR is too slow. Problem 2: too few alerts. Fix: increase alert volume.",
+        "Problem 1: analysts are lazy. Problem 2: SOAR is perfect. Fix: fire the analysts.",
+        "Problem 1: phishing cannot be automated. Problem 2: EDR is broken. Fix: remove SOAR."
       ],
-      "answer": "Security: ECC P-256 provides equivalent security to RSA-3072 with a 256-bit key — same security level, dramatically smaller keys (256-bit vs 3072-bit), faster handshakes, lower CPU/bandwidth. ChaCha20-Poly1305 is a stream cipher + AEAD that's faster than AES-GCM on devices without AES hardware acceleration (mobile/IoT) and equally secure with AES hardware. TLS 1.3 removes vulnerable algorithms (RSA key exchange, CBC mode, SHA-1, static DH), mandates forward secrecy (ephemeral keys only), and reduces handshake round-trips (1-RTT vs 2-RTT, with 0-RTT option). Trade-offs: ECC implementation complexity, patent concerns (minimal now), and ecosystem support. For backward compatibility: run a dual-stack TLS configuration — TLS 1.3 for modern clients, TLS 1.2 with ECDHE-RSA-AES-256-GCM-SHA384 for legacy clients. Disable TLS 1.0/1.1 entirely (deprecated). Use server-side cipher suite ordering to prefer TLS 1.3. Monitor client support and phase out TLS 1.2 once legacy clients are upgraded. Ensure ECC certificates are issued by a CA that supports them, and maintain RSA certificates for fallback.",
-      "explanation_correct": "ECC P-256 offers ~128-bit security (equivalent to RSA-3072 and AES-128) with a 256-bit key vs RSA's 3072-bit key — this means smaller certificates, faster handshake computations, and less bandwidth. ChaCha20-Poly1305 (256-bit key) is actually a 256-bit cipher — it's faster than AES-GCM on platforms without AES-NI hardware (ARM, older CPUs) and provides authenticated encryption (AEAD) like AES-GCM. TLS 1.3 is a significant security improvement: it eliminates RSA key exchange (which lacks forward secrecy if the private key is compromised, all past traffic can be decrypted), removes CBC mode (vulnerable to padding oracle attacks like POODLE/Lucky13), drops SHA-1, and mandates ephemeral key exchange (DHE/ECDHE) for perfect forward secrecy. The 1-RTT handshake (vs 2-RTT in TLS 1.2) reduces latency by one round-trip. 0-RTT allows resumption with zero round-trips but is vulnerable to replay attacks — must be used carefully (idempotent requests only). The dual-stack approach ensures no client is broken during migration.",
-      "explanation_wrong_common": "ECC is not universally faster — on hardware with AES-NI, AES-GCM can outperform ChaCha20. Immediate migration without fallback would break legacy clients. TLS 1.3 doesn't require replacing servers — it's a protocol negotiation, and most modern servers (nginx, Apache, HAProxy) support it via configuration. ChaCha20-Poly1305 uses a 256-bit key, same or larger than AES-128-GCM — it's not weaker. The common mistake is thinking security is binary (one algorithm is 'always better'); the right answer involves understanding trade-offs and migration strategies."
+      "answer": "Problem 1: high false-negative rate from over-tuned auto-close logic. Problem 2: analyst complacency from over-automation. Fix: tighten playbook thresholds, require human confirmation for auto-close, and retain analyst review of high-risk verdicts.",
+      "explanation_correct": "The 12% false-negative rate shows auto-classification thresholds are too permissive, closing real attacks as benign. Analyst disengagement is a cultural/operational risk of over-automation. The fix recalibrates thresholds and keeps a human in the loop for ambiguous, high-risk cases.",
+      "explanation_wrong_common": "This is a tuning and human-factors problem, not a tool-removal or staffing problem. SOAR needs continuous threshold calibration and should augment, not replace, analyst judgment on ambiguous cases."
     },
     {
-      "card_id": "gc_186",
-      "topic": "Identity and Access Management",
+      "card_id": "gc_206",
+      "topic": "Logging and Monitoring",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What are the three components of AAA (Authentication, Authorization, and Accounting), and how do they differ?",
+      "question_text": "What is the difference between a log, a metric, and a trace in observability?",
       "choices": [
-        "Authentication verifies identity (who are you?); Authorization determines permissions (what can you do?); Accounting tracks activity (what did you do, when, and from where?)",
-        "Authentication assigns permissions; Authorization verifies identity; Accounting encrypts data",
-        "Authentication, Authorization, and Accounting are all the same process performed in sequence",
-        "Authentication manages passwords; Authorization manages firewalls; Accounting manages backups"
+        "They are three names for the same event record",
+        "A log is a discrete event record with a timestamp; a metric is a numeric measurement aggregated over time (e.g., CPU %); a trace follows a single request across distributed service boundaries",
+        "A log measures performance, a metric stores files, and a trace blocks traffic",
+        "Logs are only for security, metrics only for billing, and traces only for audits"
       ],
-      "answer": "Authentication verifies identity (who are you?); Authorization determines permissions (what can you do?); Accounting tracks activity (what did you do, when, and from where?)",
-      "explanation_correct": "AAA is the foundation of access control. Authentication proves you are who you claim to be — methods include passwords, biometrics, tokens, certificates, MFA. It answers 'who are you?' Authorization determines what an authenticated user is allowed to do — implemented via ACLs, RBAC (Role-Based Access Control), ABAC (Attribute-Based Access Control), or policy engines. It answers 'what can you access/modify?' Accounting (sometimes called Auditing) records user activity for accountability, billing, forensics, and compliance — logs include who, what, when, where, and duration. Together: you log in (authentication), the system checks your permissions (authorization), and every action you take is logged (accounting). Protocols like RADIUS and TACACS+ implement AAA. RADIUS combines all three; TACACS+ separates them (useful when you want different authorization without changing authentication).",
-      "explanation_wrong_common": "The three are distinct processes, not the same. Authentication does NOT assign permissions — that's authorization. Authorization does NOT verify identity — that's authentication. Accounting is not encryption or backups — it's activity logging. The common mistake is conflating authentication with authorization: being authenticated (logged in) doesn't mean you can access everything — you're only authorized for what your role/permissions allow."
+      "answer": "A log is a discrete event record with a timestamp; a metric is a numeric measurement aggregated over time (e.g., CPU %); a trace follows a single request across distributed service boundaries",
+      "explanation_correct": "Logs capture discrete events with context and timestamps. Metrics are time-series numeric values (counters/gauges) for trends. Traces track a request's path through distributed services via spans, showing where time is spent across boundaries.",
+      "explanation_wrong_common": "These are distinct telemetry types — logs (events), metrics (aggregated numbers), traces (request journeys) — not synonyms or role-locked categories."
     },
     {
-      "card_id": "gc_187",
-      "topic": "Identity and Access Management",
+      "card_id": "gc_207",
+      "topic": "Logging and Monitoring",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is multi-factor authentication (MFA), and what are the three authentication factor categories?",
+      "question_text": "What is log aggregation, and why is centralized collection important for security monitoring?",
       "choices": [
-        "MFA requires verification using two or more different factor categories: (1) Something you know (knowledge — password, PIN, security question), (2) Something you have (possession — hardware token, smartphone app, smart card), (3) Something you are (inherence — fingerprint, face scan, iris, voice). Factors from the same category (e.g., password + PIN) do not constitute MFA.",
-        "MFA means using two passwords instead of one for extra security",
-        "MFA requires three passwords: one for each factor category",
-        "MFA is when you authenticate with a username and email confirmation"
+        "Compressing logs to save disk space on each individual server",
+        "Collecting logs from many systems into a central repository for correlation, retention, and analysis, enabling detection of attacks that span multiple hosts",
+        "Deleting old logs automatically to free up storage",
+        "Encrypting logs so only the original server can read them"
       ],
-      "answer": "MFA requires verification using two or more different factor categories: (1) Something you know (knowledge — password, PIN, security question), (2) Something you have (possession — hardware token, smartphone app, smart card), (3) Something you are (inherence — fingerprint, face scan, iris, voice). Factors from the same category (e.g., password + PIN) do not constitute MFA.",
-      "explanation_correct": "MFA significantly improves security because an attacker would need to compromise multiple factor categories to gain access. The three categories: (1) Knowledge factors — passwords, PINs, passphrases, security questions. These can be guessed, phished, or stolen via data breaches. (2) Possession factors — hardware tokens (YubiKey), authenticator apps (Google Authenticator, Authy), SMS codes, smart cards/CAC, security keys. These require physical access to the device. (3) Inherence factors — biometrics (fingerprint, facial recognition, iris scan, voiceprint). These are unique to the individual but cannot be changed if compromised. A true MFA implementation uses factors from at least two different categories — a password (know) plus an authenticator app code (have) is MFA; a password plus a PIN (both know) is NOT MFA. Some frameworks add location (somewhere you are) and time (somewhen you are) as contextual factors.",
-      "explanation_wrong_common": "Two passwords are NOT MFA — they're both 'something you know.' MFA doesn't require exactly three factors — it requires two or more from DIFFERENT categories. A username and email confirmation isn't MFA — email is knowledge-based (the email account is accessed with a password). The common mistake is counting factors from the same category as multi-factor. A password + security question is 2FA in name only — both are 'something you know,' so it's really single-factor."
+      "answer": "Collecting logs from many systems into a central repository for correlation, retention, and analysis, enabling detection of attacks that span multiple hosts",
+      "explanation_correct": "Log aggregation forwards logs from disparate systems to a central platform (e.g., a SIEM). Centralization enables cross-host correlation, consistent retention/compliance, and detection of distributed attacks that individual host logs would miss.",
+      "explanation_wrong_common": "Aggregation is about central collection and correlation, not compression, deletion, or encryption-only access — though retention and integrity controls also matter."
     },
     {
-      "card_id": "gc_188",
-      "topic": "Identity and Access Management",
+      "card_id": "gc_208",
+      "topic": "Logging and Monitoring",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company with 500 employees uses Active Directory for identity management. Currently, every user is assigned permissions individually. The IT team is overwhelmed with permission requests and struggles to audit access during compliance reviews. They decide to implement Role-Based Access Control (RBAC). Describe how RBAC would change their access management and what steps they should take to implement it correctly.",
+      "question_text": "A security analyst must ensure that if an attacker compromises a web server, the attacker cannot wipe the audit logs of their activity. Which control BEST achieves this?",
       "choices": [
-        "RBAC assigns permissions to roles (job functions), not individuals. Users are assigned to roles, and roles inherit the role's permissions. Implementation: (1) Inventory all current permissions and map them to job functions, (2) Define roles (e.g., 'Finance Analyst,' 'HR Manager,' 'IT Admin') with minimum necessary permissions (least privilege), (3) Assign users to appropriate roles, (4) Remove all individual permission grants, (5) Implement a role request/approval workflow, (6) Periodically review role assignments (access recertification). Benefits: 500 users map to ~20-30 roles instead of 500 individual permission sets; auditing checks role membership, not individual permissions; adding/removing permissions for a job function updates one role, not dozens of users.",
-        "RBAC assigns permissions to each user individually based on their role description — it's the same as current but with better naming",
-        "RBAC means every user gets the same permissions as everyone else in their department regardless of specific job function",
-        "RBAC eliminates the need for access reviews because roles are automatically correct"
+        "Store logs locally on the web server with full admin access",
+        "Forward logs in real time to a central, access-restricted log server the web server cannot modify, and enforce WORM/append-only retention",
+        "Disable logging on the web server so there is nothing to wipe",
+        "Keep logs in the same database as the application data"
       ],
-      "answer": "RBAC assigns permissions to roles (job functions), not individuals. Users are assigned to roles, and roles inherit the role's permissions. Implementation: (1) Inventory all current permissions and map them to job functions, (2) Define roles (e.g., 'Finance Analyst,' 'HR Manager,' 'IT Admin') with minimum necessary permissions (least privilege), (3) Assign users to appropriate roles, (4) Remove all individual permission grants, (5) Implement a role request/approval workflow, (6) Periodically review role assignments (access recertification). Benefits: 500 users map to ~20-30 roles instead of 500 individual permission sets; auditing checks role membership, not individual permissions; adding/removing permissions for a job function updates one role, not dozens of users.",
-      "explanation_correct": "RBAC is an abstraction layer between users and permissions. Instead of User → Permission (direct), it's User → Role → Permission. This dramatically reduces management overhead: a change to the 'Finance Analyst' role instantly affects all 200 finance analysts, rather than updating 200 individual permission sets. Key implementation steps: role mining (analyzing current access patterns to identify natural roles), role definition (creating roles with least-privilege permission sets), role assignment (mapping users to roles), cleanup (removing direct grants), and governance (periodic access reviews to ensure users still need their roles — people change jobs but keep old access). RBAC is most effective when job functions are well-defined and relatively stable. For more dynamic environments, ABAC (Attribute-Based Access Control) adds context (time, location, device posture) to authorization decisions.",
-      "explanation_wrong_common": "RBAC does NOT assign permissions to individuals — that's the opposite of what it does. It doesn't mean everyone in a department gets the same access — roles should be granular enough to reflect different job functions within a department. RBAC doesn't eliminate access reviews — periodic recertification is still needed because users accumulate roles over time (role sprawl). The common mistake is thinking RBAC is just a renaming exercise; proper RBAC requires analyzing actual access patterns, defining least-privilege roles, and implementing governance."
+      "answer": "Forward logs in real time to a central, access-restricted log server the web server cannot modify, and enforce WORM/append-only retention",
+      "explanation_correct": "Forwarding logs to a separate, hardened, access-restricted system the compromised host cannot write to or delete prevents an attacker from covering their tracks. Append-only/WORM storage adds tamper-evidence.",
+      "explanation_wrong_common": "Local-only or co-located logs are exactly what a compromised host can wipe; disabling logging eliminates evidence entirely."
     },
     {
-      "card_id": "gc_189",
-      "topic": "Identity and Access Management",
+      "card_id": "gc_209",
+      "topic": "Logging and Monitoring",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization wants to implement Single Sign-On (SSO) across multiple cloud applications (Salesforce, Microsoft 365, Slack, Zoom) and one on-premise application. They use Azure AD (Entra ID) as their identity provider. Which protocol should they use for the cloud apps, and how should they handle the on-premise app that only supports SAML 1.1?",
+      "question_text": "An organization wants to detect lateral movement but currently logs only authentication events from domain controllers. Which additional log source would add the MOST detection value?",
       "choices": [
-        "For cloud apps: Use SAML 2.0 or OIDC (OpenID Connect) federated through Entra ID as the IdP — users authenticate once to Entra ID and gain access to all integrated apps without re-entering credentials. For the on-prem app supporting only SAML 1.1: Deploy Entra ID Application Proxy or a SAML relay middleware that translates SAML 2.0 (from Entra ID) to SAML 1.1 (for the legacy app), acting as a protocol bridge. Alternatively, upgrade the on-prem app to support SAML 2.0 if the vendor offers it.",
-        "Use LDAP for all applications — it's the simplest protocol for SSO",
-        "Use Kerberos for all applications since the organization uses Active Directory on-premise",
-        "Implement SSO by storing all passwords in a central database and auto-filling login forms"
+        "Endpoint DNS queries and workstation authentication logs across all endpoints",
+        "The CEO's personal email account",
+        "Server room temperature sensor logs",
+        "Marketing website visitor analytics"
       ],
-      "answer": "For cloud apps: Use SAML 2.0 or OIDC (OpenID Connect) federated through Entra ID as the IdP — users authenticate once to Entra ID and gain access to all integrated apps without re-entering credentials. For the on-prem app supporting only SAML 1.1: Deploy Entra ID Application Proxy or a SAML relay middleware that translates SAML 2.0 (from Entra ID) to SAML 1.1 (for the legacy app), acting as a protocol bridge. Alternatively, upgrade the on-prem app to support SAML 2.0 if the vendor offers it.",
-      "explanation_correct": "SSO allows one authentication event to grant access to multiple applications through federation. Entra ID (Azure AD) acts as the Identity Provider (IdP); the cloud apps are Service Providers (SPs). SAML 2.0 is the industry standard for web SSO — the user accesses the SP, is redirected to the IdP for authentication, and receives a signed SAML assertion (token) that grants access. OIDC is a newer, lighter protocol built on OAuth 2.0, commonly used by modern web/mobile apps. Both work with Entra ID. For the SAML 1.1 legacy app: SAML 1.1 is obsolete and not supported by modern IdPs. Solutions include: (1) Entra ID Application Proxy — provides remote access to on-prem apps and can handle legacy auth, (2) A SAML proxy/relay (like Azure AD App Proxy with a custom connector, or a third-party SAML gateway) that accepts SAML 2.0 from Entra ID and translates to SAML 1.1, (3) Upgrading the app if possible. LDAP and Kerberos are not SSO federation protocols — LDAP is a directory access protocol, Kerberos is for internal domain auth (doesn't work across internet boundaries without special configuration).",
-      "explanation_wrong_common": "LDAP is a directory protocol, not an SSO protocol — it doesn't provide web-based federation. Kerberos works within a domain but doesn't naturally extend to cloud apps across the internet (requires complex trust relationships). Storing passwords centrally and auto-filling forms is not SSO — it's a password manager approach that doesn't provide true federation or eliminate password risks. The common mistake is confusing directory protocols (LDAP), internal auth (Kerberos), and federation protocols (SAML, OIDC) — they serve different purposes in the identity stack."
+      "answer": "Endpoint DNS queries and workstation authentication logs across all endpoints",
+      "explanation_correct": "Lateral movement shows up as unusual authentication patterns across workstations and anomalous DNS lookups (to internal hosts or C2 domains). Adding endpoint auth + DNS logs to DC logs reveals host-to-host movement that DC-only logging misses.",
+      "explanation_wrong_common": "Irrelevant sources (personal email, HVAC, marketing analytics) don't reveal lateral movement; the gap is endpoint-side activity and DNS."
     },
     {
-      "card_id": "gc_190",
-      "topic": "Identity and Access Management",
+      "card_id": "gc_210",
+      "topic": "Logging and Monitoring",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A financial institution has the following access control requirements: (1) Traders need access to trading systems only during market hours (9 AM–5 PM SGT, Mon–Fri) from the office network or approved VPN. (2) Compliance officers need read-only access to all transaction logs at any time from any location. (3) Contractors need access to specific project resources for 90 days, then access must be automatically revoked. (4) All access must be logged with user identity, timestamp, resource accessed, and action taken. Design an access control architecture that satisfies all four requirements. Which access control model(s) would you use, and what technologies would implement each requirement?",
+      "question_text": "A SOC ships 50 GB/day of logs but analysts say useful detections are buried in noise. Review shows: 60% of volume is debug-level app logs, retention is 90 days hot, no log-level policy exists, and two detection gaps occurred because a critical service had logging disabled. Recommend a three-part improvement plan.",
       "choices": [
-        "(1) ABAC (Attribute-Based Access Control) — attributes: user role (trader), time (9–5 Mon–Fri), network location (office/VPN). Enforced via a policy engine (e.g., Cisco ISE, OPA, Azure Conditional Access) that evaluates context at access time. (2) RBAC with a 'Compliance Officer' role granted read-only permissions to log repositories; location/time unrestricted per requirement. (3) RBAC with time-limited role assignment — automated via an identity governance tool (e.g., SailPoint, Entra ID Governance) that sets a 90-day expiration on the contractor's role assignment and auto-revokes. (4) Accounting via SIEM (e.g., Splunk, Sentinel) collecting authentication logs, access logs, and audit trails from all systems — unified logging with user ID, timestamp, resource, action. Overall: hybrid RBAC+ABAC model — RBAC for baseline role assignments, ABAC for contextual constraints (time, location, device).",
-        "Use RBAC for everything — assign traders, compliance officers, and contractors to roles with appropriate permissions",
-        "Use MAC (Mandatory Access Control) with security clearance levels — traders get 'Secret,' compliance gets 'Top Secret,' contractors get 'Confidential'",
-        "Use DAC (Discretionary Access Control) where each resource owner decides who gets access"
+        "1) Define a log-level policy (warn+ for production, debug only on-demand). 2) Enable and standardize logging on all critical services with required event fields. 3) Right-size retention (short hot window, compressed cold archive) to cut cost while keeping compliance coverage.",
+        "1) Stop all logging. 2) Buy a bigger SIEM. 3) Outsource everything to a vendor.",
+        "1) Keep debug on everything. 2) Extend hot retention to 2 years. 3) Disable the missing service entirely.",
+        "1) Delete old logs weekly. 2) Log only successful logins. 3) Encrypt all logs with the application key."
       ],
-      "answer": "(1) ABAC (Attribute-Based Access Control) — attributes: user role (trader), time (9–5 Mon–Fri), network location (office/VPN). Enforced via a policy engine (e.g., Cisco ISE, OPA, Azure Conditional Access) that evaluates context at access time. (2) RBAC with a 'Compliance Officer' role granted read-only permissions to log repositories; location/time unrestricted per requirement. (3) RBAC with time-limited role assignment — automated via an identity governance tool (e.g., SailPoint, Entra ID Governance) that sets a 90-day expiration on the contractor's role assignment and auto-revokes. (4) Accounting via SIEM (e.g., Splunk, Sentinel) collecting authentication logs, access logs, and audit trails from all systems — unified logging with user ID, timestamp, resource, action. Overall: hybrid RBAC+ABAC model — RBAC for baseline role assignments, ABAC for contextual constraints (time, location, device).",
-      "explanation_correct": "This scenario requires a hybrid approach because different requirements demand different models. RBAC alone can't enforce time-based or location-based restrictions (requirement 1) — that needs ABAC, which evaluates attributes (subject attributes like role, environment attributes like time/network location, resource attributes like sensitivity) at access decision time. ABAC is more granular than RBAC but more complex to manage. For traders: RBAC assigns the 'Trader' role (what they can access), ABAC adds contextual constraints (when and from where). For compliance: pure RBAC suffices — role-based access with read-only permissions, no contextual restrictions. For contractors: RBAC with IGA (Identity Governance and Administration) automation — modern IGA tools support lifecycle management with automatic expiration, access reviews, and role mining. For accounting: a SIEM aggregates logs from all systems (authentication, authorization decisions, resource access) into a centralized, tamper-resistant audit trail — this satisfies regulatory requirements (MAS, FINRA, SOX) for activity monitoring. MAC (Mandatory Access Control) uses security labels/clearances — appropriate for military/intelligence, not commercial banking. DAC lets resource owners control access — too decentralized for regulated financial environments.",
-      "explanation_wrong_common": "RBAC alone can't enforce time/location constraints — it only knows roles, not context. MAC is overkill for a commercial environment and doesn't map to the requirements (clearance levels don't align with 'traders vs compliance vs contractors'). DAC is too loose for regulated financial data — individual resource owners shouldn't decide who accesses transaction logs. The common mistake is thinking one access control model fits all scenarios; real-world enterprise security typically uses a hybrid of RBAC (for role assignment), ABAC (for contextual policies), and IGA (for lifecycle automation)."
+      "answer": "1) Define a log-level policy (warn+ for production, debug only on-demand). 2) Enable and standardize logging on all critical services with required event fields. 3) Right-size retention (short hot window, compressed cold archive) to cut cost while keeping compliance coverage.",
+      "explanation_correct": "A log-level policy reduces noise (drop debug in prod), enabling/standardizing critical-service logging closes detection gaps with consistent fields, and tiered retention (short hot + compressed cold archive) controls cost while meeting compliance — improving signal-to-noise and coverage together.",
+      "explanation_wrong_common": "More logging/more retention increases noise and cost; less logging creates blind spots. The fix is policy-driven level control, coverage enforcement, and tiered retention."
     },
     {
-      "card_id": "gc_191",
-      "topic": "Secure Protocols",
+      "card_id": "gc_211",
+      "topic": "Mobile and IoT Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between TLS (Transport Layer Security) and SSL (Secure Sockets Layer), and why is SSL no longer used?",
+      "question_text": "What is MDM (Mobile Device Management) and what are two core security functions it provides?",
       "choices": [
-        "TLS is the successor to SSL. SSL (versions 1.0–3.0) was developed by Netscape in the 1990s and had fundamental cryptographic flaws. TLS (1.0–1.3) is the IETF standard that replaced SSL. SSL 3.0 was deprecated in 2015 (POODLE attack), TLS 1.0/1.1 deprecated in 2020, TLS 1.2 is current minimum, TLS 1.3 is the latest. Despite the name change, people still say 'SSL certificate' colloquially — modern certificates are actually TLS certificates.",
-        "TLS and SSL are the same protocol with different names",
-        "SSL is newer and more secure than TLS",
-        "TLS is used for web traffic; SSL is used for email encryption"
+        "A mobile web browser for secure internet access",
+        "A centralized platform for managing mobile devices, providing functions like enforcing security policies (passcode/encryption), remote wipe, and app distribution",
+        "A protocol for charging phones over Wi-Fi",
+        "An app store exclusively for games"
       ],
-      "answer": "TLS is the successor to SSL. SSL (versions 1.0–3.0) was developed by Netscape in the 1990s and had fundamental cryptographic flaws. TLS (1.0–1.3) is the IETF standard that replaced SSL. SSL 3.0 was deprecated in 2015 (POODLE attack), TLS 1.0/1.1 deprecated in 2020, TLS 1.2 is current minimum, TLS 1.3 is the latest. Despite the name change, people still say 'SSL certificate' colloquially — modern certificates are actually TLS certificates.",
-      "explanation_correct": "SSL (Secure Sockets Layer) was Netscape's protocol for encrypting web traffic, with versions 1.0 (unreleased), 2.0 (1995), and 3.0 (1996). Each had vulnerabilities: SSL 2.0 had weak key exchange and MAC flaws; SSL 3.0 was vulnerable to the POODLE attack (padding oracle on downgraded legacy encryption). TLS (Transport Layer Security) is the IETF's standardized successor: TLS 1.0 (1999, essentially SSL 3.1), TLS 1.1 (2006), TLS 1.2 (2008), TLS 1.3 (2018). TLS 1.0 and 1.1 were formally deprecated in 2020 (RFC 8996) due to weak cipher suites and SHA-1 usage. TLS 1.2 is the current minimum standard; TLS 1.3 is the latest with major improvements (mandatory forward secrecy, removal of weak algorithms, 1-RTT handshake). The term 'SSL certificate' persists in marketing/colloquial usage but technically refers to X.509 certificates used in TLS. All major browsers and servers have disabled SSL and TLS 1.0/1.1.",
-      "explanation_wrong_common": "TLS and SSL are NOT the same — TLS is the standardized replacement for SSL. SSL is NOT newer — it's the older, deprecated protocol. SSL is not specific to email — both SSL and TLS can secure any TCP-based protocol (HTTP, SMTP, FTP, etc.). The common mistake is using 'SSL' and 'TLS' interchangeably as if they're the same thing; while TLS evolved from SSL, they are distinct protocols with different versions, cipher suites, and security properties."
+      "answer": "A centralized platform for managing mobile devices, providing functions like enforcing security policies (passcode/encryption), remote wipe, and app distribution",
+      "explanation_correct": "MDM centrally enrolls, configures, and manages mobile devices. Core security functions include policy enforcement (passcodes, encryption, OS version), remote lock/wipe, app allow/deny listing, and configuration profile deployment.",
+      "explanation_wrong_common": "MDM is a management/security platform, not a browser, charging protocol, or app store — it enforces policy across enrolled devices."
     },
     {
-      "card_id": "gc_192",
-      "topic": "Secure Protocols",
+      "card_id": "gc_212",
+      "topic": "Mobile and IoT Security",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is IPsec, and what are its two main modes of operation?",
+      "question_text": "Why do IoT devices present a disproportionate security risk compared to traditional endpoints?",
       "choices": [
-        "IPsec (Internet Protocol Security) is a suite of protocols that authenticates and encrypts IP packets at the network layer (Layer 3). Its two modes are: (1) Tunnel mode — the entire original IP packet (header + payload) is encrypted and encapsulated inside a new IP packet with a new header. Used for site-to-site VPNs. (2) Transport mode — only the IP payload is encrypted; the original IP header remains visible. Used for host-to-host (end-to-end) communication.",
-        "IPsec is a web application firewall that filters HTTP traffic at Layer 7",
-        "IPsec operates in encryption mode and decryption mode",
-        "IPsec has only one mode: tunnel mode, which is used for all VPN connections"
+        "They are physically larger and therefore easier to attack",
+        "They often run embedded firmware with hard-coded credentials, receive rare patching, ship with weak default configs, and sit on networks with broad access yet lack management agents",
+        "They cannot connect to any network at all",
+        "They always use unbreakable encryption"
       ],
-      "answer": "IPsec (Internet Protocol Security) is a suite of protocols that authenticates and encrypts IP packets at the network layer (Layer 3). Its two modes are: (1) Tunnel mode — the entire original IP packet (header + payload) is encrypted and encapsulated inside a new IP packet with a new header. Used for site-to-site VPNs. (2) Transport mode — only the IP payload is encrypted; the original IP header remains visible. Used for host-to-host (end-to-end) communication.",
-      "explanation_correct": "IPsec operates at Layer 3 (Network layer), making it transparent to applications — any IP-based traffic (HTTP, FTP, SMB, etc.) is automatically encrypted without app modifications. It uses two main protocols: AH (Authentication Header) provides integrity and authentication but NOT encryption; ESP (Encapsulating Security Payload) provides integrity, authentication, AND encryption. IKE (Internet Key Exchange) handles the negotiation of security associations (SAs) and key exchange using Diffie-Hellman. In Tunnel mode, the entire original packet is wrapped in a new IP header — this hides internal IP addresses, making it ideal for site-to-site VPNs (e.g., connecting branch office to HQ). In Transport mode, only the payload is encrypted while the original IP header is preserved — this is used for end-to-end encryption between two specific hosts. IPsec is the foundation of most enterprise VPN solutions (Cisco, Fortinet, Palo Alto) and is also used in L2TP/IPsec remote access VPNs.",
-      "explanation_wrong_common": "IPsec is not a WAF — it operates at Layer 3, not Layer 7. It doesn't have 'encryption mode and decryption mode' — those are operations, not modes. Transport mode is a real and important mode, not just tunnel mode. The common mistake is confusing IPsec's modes with its protocols (AH/ESP), or thinking IPsec only works in tunnel mode. The mode determines what gets encrypted (entire packet vs payload only), which affects use cases (VPN gateway vs direct host communication)."
+      "answer": "They often run embedded firmware with hard-coded credentials, receive rare patching, ship with weak default configs, and sit on networks with broad access yet lack management agents",
+      "explanation_correct": "IoT devices frequently ship with default/hard-coded credentials, get infrequent firmware updates, lack centralized management, and deploy in bulk across networks — giving attackers easy footholds and lateral movement paths.",
+      "explanation_wrong_common": "The risk comes from weak defaults, poor patching, and unmanaged deployment — not size, and not strong encryption (which most IoT lacks)."
     },
     {
-      "card_id": "gc_193",
-      "topic": "Secure Protocols",
+      "card_id": "gc_213",
+      "topic": "Mobile and IoT Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company needs to securely replace Telnet and FTP, which are currently used for managing network devices and transferring configuration files. The network team also needs to transfer files using a protocol that supports both interactive sessions and file transfers over a single secure connection. Which protocols should they implement, and what security improvements do they provide over the legacy protocols?",
+      "question_text": "A hospital connects 200 medical IoT monitors to its clinical network. Several run unsupported OS versions that cannot be patched. What is the BEST risk-mitigation approach?",
       "choices": [
-        "Replace Telnet with SSH (Secure Shell) — SSH encrypts all traffic (including credentials) using strong ciphers, supports key-based authentication, port forwarding, and provides interactive shell access. Replace FTP with SFTP (SSH File Transfer Protocol) — SFTP runs over SSH (port 22), encrypts both authentication and data, supports file operations (list, upload, download, delete), and maintains a single secure connection for commands and data. Alternative for file transfer: SCP (Secure Copy) also runs over SSH. Avoid FTPS (FTP over TLS) if a single connection is required — FTPS uses separate control (21) and data (20) channels, which complicates firewall/NAT traversal.",
-        "Replace Telnet with HTTPS and FTP with FTPS — both use TLS for encryption",
-        "Replace Telnet with RDP and FTP with WebDAV over HTTPS",
-        "Keep Telnet but change the default port to avoid detection, and use FTP with a strong password"
+        "Ignore the risk because they are medical devices",
+        "Segment the IoT devices into an isolated VLAN with strict firewall rules, monitor their traffic, and restrict communication to only required clinical systems",
+        "Connect them directly to the internet so the vendor can push updates",
+        "Replace all staff laptops instead"
       ],
-      "answer": "Replace Telnet with SSH (Secure Shell) — SSH encrypts all traffic (including credentials) using strong ciphers, supports key-based authentication, port forwarding, and provides interactive shell access. Replace FTP with SFTP (SSH File Transfer Protocol) — SFTP runs over SSH (port 22), encrypts both authentication and data, supports file operations (list, upload, download, delete), and maintains a single secure connection for commands and data. Alternative for file transfer: SCP (Secure Copy) also runs over SSH. Avoid FTPS (FTP over TLS) if a single connection is required — FTPS uses separate control (21) and data (20) channels, which complicates firewall/NAT traversal.",
-      "explanation_correct": "Telnet sends everything — including usernames and passwords — in plaintext over the network. Anyone with a packet sniffer on the same network segment can capture credentials. Telnet has no encryption, no integrity checking, and no strong authentication. FTP has the same problem — credentials and data are sent in plaintext, and it uses separate control and data channels (ports 21 and 20), which complicates firewall rules. SSH (port 22) solves all of Telnet's problems: encrypted transport, public key authentication (eliminating password-only auth), port forwarding (tunneling other protocols through SSH), and secure file transfer via SFTP and SCP. SFTP is NOT FTP over SSH — it's a completely different protocol that runs as a subsystem of SSH. It uses a single connection (port 22) for both commands and data, unlike FTP/FTPS which need two channels. This makes SFTP much easier to configure through firewalls and NAT. FTPS (FTP over TLS) encrypts FTP but still uses two channels — the data channel may use dynamic ports, requiring firewall rules for a range of ports. For network device management specifically, SSH is the industry standard.",
-      "explanation_wrong_common": "HTTPS is for web servers, not network device management — it doesn't provide interactive shell access. RDP is for Windows remote desktop, not CLI device management. WebDAV is for web-based file management, not a replacement for FTP in network operations. Changing the Telnet port is 'security by obscurity' — port scanning will find it, and traffic is still unencrypted. The common mistake is confusing SFTP with FTPS: SFTP runs over SSH (single connection, port 22), while FTPS is FTP over TLS (dual connection, ports 21+20 or passive mode ports). They are entirely different protocols despite similar names."
+      "answer": "Segment the IoT devices into an isolated VLAN with strict firewall rules, monitor their traffic, and restrict communication to only required clinical systems",
+      "explanation_correct": "When patching is impossible, segmentation is the primary control: place unpatchable IoT on an isolated VLAN, allow only necessary communications via firewall allowlisting, and monitor for anomalous traffic — limiting exploit impact without disrupting clinical function.",
+      "explanation_wrong_common": "Ignoring or internet-exposing unpatchable devices increases risk; the lever is network isolation and least-communication, not replacing unrelated endpoints."
     },
     {
-      "card_id": "gc_194",
-      "topic": "Secure Protocols",
+      "card_id": "gc_214",
+      "topic": "Mobile and IoT Security",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A DNS administrator discovers that their organization's DNS queries are being monitored by an ISP, and attackers are attempting DNS cache poisoning. The organization uses Active Directory-integrated DNS internally and forwards external queries to a public DNS resolver. What DNS security extensions and protocols should they implement to protect against eavesdropping and cache poisoning, and how does each work?",
+      "question_text": "A BYOD policy lets employees access corporate email on personal phones. The company must protect corporate data but cannot wipe employees' personal photos. Which MDM/MAM capability BEST satisfies this?",
       "choices": [
-        "Implement: (1) DNSSEC (DNS Security Extensions) — adds cryptographic digital signatures to DNS records, allowing resolvers to verify that responses are authentic and unmodified. It prevents cache poisoning and spoofing but does NOT encrypt queries. (2) DNS over HTTPS (DoH) or DNS over TLS (DoT) — encrypts DNS queries between the client/stub resolver and the DNS server, preventing eavesdropping and manipulation by ISPs or network attackers. DoH uses HTTPS (port 443), making DNS traffic blend with web traffic; DoT uses TLS (port 853), which is easier to firewall/audit. (3) Keep AD-integrated DNS with secure dynamic updates (Kerberos-authenticated) for internal zones. DNSSEC protects integrity/authentication; DoH/DoT protects confidentiality. Both are needed for comprehensive DNS security.",
-        "Use only DNSSEC — it encrypts DNS queries and prevents all DNS attacks",
-        "Use only DNS over HTTPS — it provides authentication and prevents cache poisoning",
-        "Switch to a private DNS server and block all external DNS traffic — isolation is sufficient security"
+        "Full device wipe on any policy violation",
+        "Application-level containerization (MAM) — wrapping corporate apps and data in an encrypted, separately managed container that can be selectively wiped without touching personal data",
+        "Banning all personal apps on the phone",
+        "Permanently disabling the phone's camera"
       ],
-      "answer": "Implement: (1) DNSSEC (DNS Security Extensions) — adds cryptographic digital signatures to DNS records, allowing resolvers to verify that responses are authentic and unmodified. It prevents cache poisoning and spoofing but does NOT encrypt queries. (2) DNS over HTTPS (DoH) or DNS over TLS (DoT) — encrypts DNS queries between the client/stub resolver and the DNS server, preventing eavesdropping and manipulation by ISPs or network attackers. DoH uses HTTPS (port 443), making DNS traffic blend with web traffic; DoT uses TLS (port 853), which is easier to firewall/audit. (3) Keep AD-integrated DNS with secure dynamic updates (Kerberos-authenticated) for internal zones. DNSSEC protects integrity/authentication; DoH/DoT protects confidentiality. Both are needed for comprehensive DNS security.",
-      "explanation_correct": "DNS was designed without security — queries and responses are plaintext, and there's no authentication of responses, enabling cache poisoning (attacker injects false DNS records into the resolver's cache, redirecting users to malicious sites). DNSSEC solves the authentication/integrity problem: it adds RRSIG (Resource Record Signature) records — digital signatures over DNS record sets, verified using a chain of trust from the root zone (.), through TLDs (.com), to the domain. The resolver can cryptographically verify that a DNS response is genuine and unmodified. However, DNSSEC does NOT encrypt — the queries are still visible to network observers. That's where DoH/DoT come in: they wrap DNS queries in TLS encryption, preventing eavesdropping and manipulation between the client and resolver. DoH (RFC 8484) sends DNS queries as HTTPS messages — indistinguishable from normal web traffic, making it harder to block or monitor. DoT (RFC 7858) uses a dedicated TLS connection on port 853 — easier for enterprise firewalls to identify, allow, and audit DNS traffic. For the organization: DNSSEC on their public zones (sign the zone, publish DS records in parent), DoT for internal-to-external forwarding (enterprise-friendly, auditable), and AD-integrated DNS with secure dynamic updates for internal zones. Active Directory DNS already uses Kerberos for dynamic update authentication, preventing unauthorized record modifications.",
-      "explanation_wrong_common": "DNSSEC does NOT encrypt — it only provides authenticity and integrity via digital signatures. DoH/DoT do NOT provide authentication of DNS data — they encrypt the transport but don't verify the response content (that's DNSSEC's job). Blocking all external DNS is impractical — users need to resolve external domains. The common mistake is thinking one DNS security mechanism covers everything: DNSSEC = integrity/authentication, DoH/DoT = confidentiality. They complement each other — you need both for comprehensive DNS security."
+      "answer": "Application-level containerization (MAM) — wrapping corporate apps and data in an encrypted, separately managed container that can be selectively wiped without touching personal data",
+      "explanation_correct": "MAM/containerization creates an encrypted, managed workspace for corporate apps/data that can be selectively wiped while leaving personal data untouched — the standard BYOD privacy-preserving control.",
+      "explanation_wrong_common": "Full-device wipe violates personal privacy and BYOD trust; banning personal apps/camera is impractical and exceeds the requirement."
     },
     {
-      "card_id": "gc_195",
-      "topic": "Secure Protocols",
+      "card_id": "gc_215",
+      "topic": "Mobile and IoT Security",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "An organization's security audit reveals: (A) Internal email uses SMTP without encryption between mail servers. (B) Remote workers connect via a vendor VPN that uses PPTP with MS-CHAPv2 authentication. (C) The web application uses TLS 1.0 with RC4 cipher suites. (D) SNMP v2c is used for network monitoring with community string 'public'. For each finding, identify the vulnerability, the recommended replacement protocol/standard, and the specific security improvements the replacement provides.",
+      "question_text": "An enterprise deploys smart-building IoT (HVAC, cameras, badge readers) on the same flat network as finance workstations. After an incident, investigators find attackers pivoted from a compromised IP camera to finance systems. Describe the root architectural flaw and a three-step remediation plan.",
       "choices": [
-        "(A) SMTP without encryption: Vulnerability — emails (including credentials in SMTP AUTH) traverse the network in plaintext, subject to interception. Replace with SMTPS (SMTP over TLS, port 587 STARTTLS or port 465 implicit TLS) and enforce TLS for server-to-server relay (MTA-to-MTA). Improvement — encrypts email content and authentication in transit. (B) PPTP with MS-CHAPv2: Vulnerability — PPTP is fundamentally broken; MS-CHAPv2 can be cracked in ~1 day with cloud GPU, and PPTP's encryption (MPPE) is weak. Replace with IPsec (IKEv2) or WireGuard VPN. Improvement — strong encryption (AES-256), modern key exchange (ECDH), forward secrecy, mutual certificate authentication. (C) TLS 1.0 with RC4: Vulnerability — TLS 1.0 is deprecated (BEAST, POODLE attacks); RC4 is broken (biases in keystream enable plaintext recovery). Replace with TLS 1.2 minimum (prefer TLS 1.3), use AES-GCM or ChaCha20-Poly1305 cipher suites. Improvement — eliminates known vulnerabilities, mandates AEAD encryption, provides forward secrecy. (D) SNMP v2c with 'public' community string: Vulnerability — v2c sends community strings in plaintext (no encryption), and 'public' is the default read-only string that reveals device info to anyone. Replace with SNMP v3 with authPriv mode (authentication + encryption). Improvement — user-based authentication (HMAC-SHA), encryption (AES/DES), and message integrity.",
-        "Replace everything with HTTPS — it's the only secure protocol needed",
-        "Keep the current protocols but add a firewall rule to block external access",
-        "Upgrade PPTP to L2TP and leave the other protocols unchanged"
+        "Flaw: a flat network allowed east-west movement from IoT to finance. Steps: 1) Move IoT to a dedicated segmented VLAN. 2) Apply deny-by-default firewall rules allowing IoT only to its required controller. 3) Add IoT asset inventory, default-credential rotation, and monitoring of IoT traffic.",
+        "Flaw: cameras are illegal. Steps: 1) remove cameras 2) remove HVAC 3) remove badge readers",
+        "Flaw: finance workstations are too fast. Steps: 1) slow them down 2) add more cameras 3) disable firewalls",
+        "Flaw: IoT should be on the public internet. Steps: 1) expose all IoT 2) remove passwords 3) disable logging"
       ],
-      "answer": "(A) SMTP without encryption: Vulnerability — emails (including credentials in SMTP AUTH) traverse the network in plaintext, subject to interception. Replace with SMTPS (SMTP over TLS, port 587 STARTTLS or port 465 implicit TLS) and enforce TLS for server-to-server relay (MTA-to-MTA). Improvement — encrypts email content and authentication in transit. (B) PPTP with MS-CHAPv2: Vulnerability — PPTP is fundamentally broken; MS-CHAPv2 can be cracked in ~1 day with cloud GPU, and PPTP's encryption (MPPE) is weak. Replace with IPsec (IKEv2) or WireGuard VPN. Improvement — strong encryption (AES-256), modern key exchange (ECDH), forward secrecy, mutual certificate authentication. (C) TLS 1.0 with RC4: Vulnerability — TLS 1.0 is deprecated (BEAST, POODLE attacks); RC4 is broken (biases in keystream enable plaintext recovery). Replace with TLS 1.2 minimum (prefer TLS 1.3), use AES-GCM or ChaCha20-Poly1305 cipher suites. Improvement — eliminates known vulnerabilities, mandates AEAD encryption, provides forward secrecy. (D) SNMP v2c with 'public' community string: Vulnerability — v2c sends community strings in plaintext (no encryption), and 'public' is the default read-only string that reveals device info to anyone. Replace with SNMP v3 with authPriv mode (authentication + encryption). Improvement — user-based authentication (HMAC-SHA), encryption (AES/DES), and message integrity.",
-      "explanation_correct": "Each finding represents a deprecated or insecure protocol that should have been replaced years ago. (A) SMTP relay between mail servers is often overlooked — while client-to-server may use TLS (port 587), server-to-server relay (port 25) frequently runs without encryption, exposing emails in transit. STARTTLS opportunistically upgrades to TLS but is vulnerable to downgrade attacks unless MTA-STS or DANE is enforced. (B) PPTP is a 1990s Microsoft protocol with well-documented flaws: the MS-CHAPv2 handshake can be captured and brute-forced offline (Moxie Marlinspike demonstrated cracking it in under 24 hours using cloud GPUs), and MPPE (Microsoft Point-to-Point Encryption) uses RC4 with a key derived from the MS-CHAPv2 handshake — when the auth is broken, the encryption is too. IKEv2/IPsec is the enterprise standard; WireGuard is a modern, audited alternative with a smaller codebase. (C) TLS 1.0 has been formally deprecated (RFC 8996, 2021) due to vulnerabilities including BEAST (CBC mode attack), POODLE (padding oracle), and weak MAC (SHA-1). RC4 was prohibited in TLS by RFC 7465 (2015) due to statistical biases in its keystream that allow plaintext recovery with enough traffic. TLS 1.3 is the gold standard: no RSA key exchange (forward secrecy mandatory), no CBC mode, no RC4/MD5/SHA-1, AEAD-only ciphers. (D) SNMP v2c uses community strings as passwords — sent in plaintext, no per-user authentication, no encryption. 'public' is the universally known default read-only community string; 'private' is the default read-write string. SNMP v3 adds USM (User-based Security Model) with HMAC authentication and AES/DES encryption, and VACM (View-based Access Control Model) for fine-grained access control.",
-      "explanation_wrong_common": "HTTPS only secures HTTP traffic — it doesn't help with SMTP, VPN, or SNMP, which are different protocols at different network layers. A firewall doesn't fix protocol-level vulnerabilities — the traffic is still unencrypted within the network and vulnerable to insider threats or lateral movement after a breach. L2TP without IPsec (L2TP/IPsec) provides no encryption — L2TP alone only tunnels, it doesn't encrypt. Upgrading only the VPN while leaving deprecated TLS and SNMP leaves critical vulnerabilities unaddressed. The common mistake is applying one solution to all problems or addressing only the most obvious finding while ignoring systemic protocol weaknesses."
+      "answer": "Flaw: a flat network allowed east-west movement from IoT to finance. Steps: 1) Move IoT to a dedicated segmented VLAN. 2) Apply deny-by-default firewall rules allowing IoT only to its required controller. 3) Add IoT asset inventory, default-credential rotation, and monitoring of IoT traffic.",
+      "explanation_correct": "The root flaw is placing unmanaged, lower-trust IoT on the same flat segment as high-value finance systems, enabling east-west pivot. Remediation: dedicated IoT VLAN, strict deny-by-default firewalling to required controllers only, and IoT governance (inventory, credential rotation, traffic monitoring).",
+      "explanation_wrong_common": "The problem is trust segmentation, not the existence of IoT; removing controls or exposing devices worsens exposure."
     },
     {
-      "card_id": "gc_196",
-      "topic": "Incident Response",
+      "card_id": "gc_216",
+      "topic": "Third-Party Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What are the six phases of the incident response lifecycle as defined by NIST SP 800-61?",
+      "question_text": "What is a vendor risk assessment, and what three areas does it typically evaluate?",
       "choices": [
-        "1. Preparation — establish IR policies, tools, team roles, and training before an incident. 2. Detection & Analysis — identify potential incidents via alerts, logs, or reports and analyze to confirm. 3. Containment — limit the scope and impact (short-term: isolate affected systems; long-term: sustained containment). 4. Eradication — remove the root cause (malware, attacker access, vulnerabilities). 5. Recovery — restore systems from clean backups, validate functionality, monitor for reinfection. 6. Lessons Learned — post-incident review to improve processes, update controls, and prevent recurrence.",
-        "1. Detect, 2. Report, 3. Fix, 4. Test, 5. Close, 6. Archive",
-        "1. Prevention, 2. Detection, 3. Response, 4. Recovery, 5. Reporting, 6. Compliance",
-        "1. Alert, 2. Investigate, 3. Block, 4. Delete, 5. Reboot, 6. Document"
+        "A marketing review of a vendor's logo and brand identity",
+        "An evaluation of a third party's security posture before and during a relationship, typically covering security controls, compliance/certifications, and data handling/privacy practices",
+        "A check of whether the vendor's office has nice furniture",
+        "A test of how fast the vendor responds to sales emails"
       ],
-      "answer": "1. Preparation — establish IR policies, tools, team roles, and training before an incident. 2. Detection & Analysis — identify potential incidents via alerts, logs, or reports and analyze to confirm. 3. Containment — limit the scope and impact (short-term: isolate affected systems; long-term: sustained containment). 4. Eradication — remove the root cause (malware, attacker access, vulnerabilities). 5. Recovery — restore systems from clean backups, validate functionality, monitor for reinfection. 6. Lessons Learned — post-incident review to improve processes, update controls, and prevent recurrence.",
-      "explanation_correct": "NIST SP 800-61 (Computer Security Incident Handling Guide) defines a structured, repeatable IR process. Preparation is the most important phase — it happens before any incident and includes building the IR team, establishing communication channels, deploying monitoring tools, creating runbooks/playbooks, and conducting tabletop exercises. Detection & Analysis is often the hardest phase because alerts can be ambiguous — the team must distinguish real incidents from false positives. Containment has two sub-phases: short-term (immediate isolation to stop the bleeding, e.g., disconnecting a compromised host) and long-term (sustained containment allowing business operations to continue while the incident is fully resolved). Eradication removes the threat completely — deleting malware, closing backdoors, revoking compromised credentials, patching vulnerabilities. Recovery restores affected systems to normal operation, often from known-good backups, with enhanced monitoring to detect reinfection. Lessons Learned is frequently skipped but critical — it's where the organization improves: updating playbooks, adding monitoring rules, addressing root causes, and training staff.",
-      "explanation_wrong_common": "The simplified 4-6 step variants (detect/fix/test) miss critical phases like Preparation (which happens before incidents) and Lessons Learned (which happens after). Prevention is part of Preparation, not a separate phase. Reporting and Compliance are activities within phases, not phases themselves. The common mistake is treating IR as a linear 'find and fix' process rather than a structured lifecycle that includes proactive preparation and post-incident improvement."
+      "answer": "An evaluation of a third party's security posture before and during a relationship, typically covering security controls, compliance/certifications, and data handling/privacy practices",
+      "explanation_correct": "A vendor risk assessment evaluates a third party's security controls (e.g., encryption, access management), compliance posture (SOC 2, ISO 27001), and how it handles/protects/retains your data, plus contractual obligations.",
+      "explanation_wrong_common": "It is a security and compliance evaluation tied to data exposure — not marketing, facilities, or sales responsiveness."
     },
     {
-      "card_id": "gc_197",
-      "topic": "Incident Response",
+      "card_id": "gc_217",
+      "topic": "Third-Party Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between an event, an alert, and an incident in cybersecurity operations?",
+      "question_text": "What is the supply chain risk that CompTIA emphasizes, and why is it hard to eliminate?",
       "choices": [
-        "An event is any observable occurrence in a system or network (e.g., a user login, a firewall rule trigger, a file download). An alert is a notification generated by a security tool when an event matches a detection rule or threshold (e.g., SIEM generates an alert for 5 failed logins in 1 minute). An incident is a confirmed event (or group of events) that violates security policy and negatively impacts the organization — requiring a response. Not all events trigger alerts; not all alerts are incidents.",
-        "An event, an alert, and an incident are all the same thing — different teams just use different names",
-        "An alert is the most serious; an event is moderate; an incident is minor",
-        "An incident is any time a user reports a problem, regardless of whether it's security-related"
+        "The risk that suppliers deliver products late",
+        "The risk that a compromise in a supplier (or their sub-supplier) introduces vulnerabilities into your environment via software/hardware you trust — hard to eliminate because you depend on components you cannot fully inspect",
+        "The risk that suppliers charge too much",
+        "The risk that suppliers are located in a different time zone"
       ],
-      "answer": "An event is any observable occurrence in a system or network (e.g., a user login, a firewall rule trigger, a file download). An alert is a notification generated by a security tool when an event matches a detection rule or threshold (e.g., SIEM generates an alert for 5 failed logins in 1 minute). An incident is a confirmed event (or group of events) that violates security policy and negatively impacts the organization — requiring a response. Not all events trigger alerts; not all alerts are incidents.",
-      "explanation_correct": "This is a critical distinction in security operations. Events are constant — millions occur daily (logins, network connections, process executions). Most are benign. Security tools (IDS, SIEM, EDR) apply detection rules to events and generate alerts when something looks suspicious. However, many alerts are false positives (legitimate activity flagged as suspicious) or low-severity. The SOC analyst triages alerts to determine if they represent a real threat. When an alert is confirmed as a genuine security violation (unauthorized access, malware infection, data exfiltration, policy breach), it's escalated to an incident. The incident triggers the IR process. This funnel — events → alerts → incidents — is why alert fatigue is a major challenge: too many false-positive alerts overwhelm analysts, potentially causing them to miss real incidents. Effective alert tuning, threat intelligence integration, and automated triage (SOAR) help manage this volume.",
-      "explanation_wrong_common": "They are NOT the same — they represent progressively confirmed levels of severity and response. An alert is not more serious than an incident — an incident is a CONFIRMED alert that requires response. A user reporting a slow computer is an event/report, not necessarily a security incident. The common mistake is treating every alert as an incident (leading to alert fatigue and wasted resources) or ignoring alerts because 'most are false positives' (leading to missed incidents). The triage process — converting alerts to confirmed incidents — is the core function of a SOC."
+      "answer": "The risk that a compromise in a supplier (or their sub-supplier) introduces vulnerabilities into your environment via software/hardware you trust — hard to eliminate because you depend on components you cannot fully inspect",
+      "explanation_correct": "Supply chain risk is a trusted dependency: a compromised vendor, library, or component (and its sub-suppliers) can inject malware/backdoors into software or hardware you then ingest. It's hard to eliminate because you cannot fully audit every transitive dependency.",
+      "explanation_wrong_common": "Supply chain security risk is about trusted-component compromise, not pricing, delivery timing, or geography."
     },
     {
-      "card_id": "gc_198",
-      "topic": "Incident Response",
+      "card_id": "gc_218",
+      "topic": "Third-Party Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A SOC analyst receives an alert from the EDR indicating that a workstation is making outbound connections to a known C2 (Command and Control) server on port 443. The affected workstation belongs to a finance department employee. The IR team's playbook says to contain first, then investigate. However, the CISO wants to 'let it run for a while to gather intelligence on the attacker.' Evaluate both approaches and recommend the correct course of action.",
+      "question_text": "A SaaS vendor will process customer PII for your company. The contract as drafted has no security clauses. Which contractual additions MOST reduce your third-party risk?",
       "choices": [
-        "Contain immediately — isolate the workstation from the network (via EDR network containment or VLAN isolation) while keeping it powered on for forensic analysis. Letting a C2 connection continue risks the attacker escalating privileges, moving laterally to other finance systems, exfiltrating sensitive data, or deploying ransomware. Intelligence gathering on active C2 can be done through retrospective log analysis, threat intelligence feeds, and forensic imaging — without leaving a live connection open. The CISO's approach ('let it run') is only appropriate in a deliberate, controlled honeypot/threat hunting operation with legal approval, not as an ad-hoc decision during an active incident on a production finance workstation.",
-        "Follow the CISO's advice — let the connection continue to learn what the attacker wants, then contain after gathering enough intelligence",
-        "Immediately shut down the workstation to stop the attack — this preserves evidence and stops the threat",
-        "Disconnect the entire finance VLAN from the network to ensure no lateral movement is possible"
+        "A discount clause and a longer payment term",
+        "Right-to-audit, breach notification timelines, data-processing/handling restrictions, encryption requirements, and defined liability/indemnification",
+        "A clause requiring the vendor to send holiday gifts",
+        "A clause stating the vendor has no security obligations"
       ],
-      "answer": "Contain immediately — isolate the workstation from the network (via EDR network containment or VLAN isolation) while keeping it powered on for forensic analysis. Letting a C2 connection continue risks the attacker escalating privileges, moving laterally to other finance systems, exfiltrating sensitive data, or deploying ransomware. Intelligence gathering on active C2 can be done through retrospective log analysis, threat intelligence feeds, and forensic imaging — without leaving a live connection open. The CISO's approach ('let it run') is only appropriate in a deliberate, controlled honeypot/threat hunting operation with legal approval, not as an ad-hoc decision during an active incident on a production finance workstation.",
-      "explanation_correct": "This is a classic containment vs. intelligence-gathering tension. The IR playbook's approach (contain first) is correct for this scenario because: (1) The workstation is in the finance department — high-value target with access to financial systems and sensitive data. (2) Active C2 means the attacker has real-time control — they can push new commands at any moment (deploy ransomware, dump credentials, exfiltrate data, pivot to other systems). (3) The risk of continued operation far outweighs the intelligence value — you can gather C2 intelligence through network logs (PCAP), threat intelligence on the C2 server, and forensic analysis of the workstation after isolation. (4) Modern EDR tools can isolate a host from the network while maintaining the agent's command channel — allowing forensic collection without giving the attacker network access. The CISO's approach is not inherently wrong — threat hunting and intelligence gathering are valuable — but it requires: a controlled environment (not a production finance workstation), legal/management authorization, monitoring capabilities to detect escalation, and a clear exit criteria. Ad-hoc 'let's watch the attacker' on a production system is reckless. Shutting down the workstation would destroy volatile evidence (RAM contents, running processes, network connections) — always isolate, don't power off, during active investigation.",
-      "explanation_wrong_common": "Letting C2 run on a production finance workstation is dangerous — the attacker controls the pace and can act faster than the team can monitor. Shutting down destroys volatile evidence (RAM, running processes, network state) — isolation preserves the system for forensic analysis while cutting network access. Disconnecting the entire finance VLAN is over-containment — it disrupts business operations for all finance users, not just the affected workstation. The common mistake is either over-reacting (shutting down, disconnecting entire VLANs) or under-reacting (watching the attacker on a production system). The correct response is surgical: isolate the specific compromised host, preserve evidence, then investigate."
+      "answer": "Right-to-audit, breach notification timelines, data-processing/handling restrictions, encryption requirements, and defined liability/indemnification",
+      "explanation_correct": "Core risk-reducing contract terms: right-to-audit, mandatory breach notification within defined timelines, data handling/processing limits, encryption standards, and clear liability/indemnification — bounding and enforcing the vendor's security obligations for your data.",
+      "explanation_wrong_common": "Commercial clauses (discounts, gifts, terms) don't address data risk; explicitly disclaiming security obligations increases it."
     },
     {
-      "card_id": "gc_199",
-      "topic": "Incident Response",
+      "card_id": "gc_219",
+      "topic": "Third-Party Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "During a ransomware incident, the IR team discovers that the backup server was also encrypted because it was on the same network segment as the file servers. The organization has no offline or immutable backups. The ransomware group demands $500K in cryptocurrency and threatens to publish stolen data. What should the IR team do in the immediate term, and what backup strategy should be implemented to prevent this scenario from recurring?",
+      "question_text": "Your company uses a critical SaaS CRM. The vendor announces a breach affecting your data but took 45 days to notify you, delaying your incident response. What is the BEST preventive control to avoid a repeat?",
       "choices": [
-        "Immediate: (1) Isolate all affected systems and stop the spread (containment). (2) Preserve evidence — image affected systems, capture logs, document the timeline. (3) Engage IR retainer firm and legal counsel. (4) Report to authorities (e.g., Singapore PDPC if personal data is involved, CSA for critical infrastructure). (5) Assess whether data was exfiltrated (double extortion). (6) Evaluate recovery options — can systems be rebuilt from scratch? Are there any overlooked backups (cloud snapshots, shadow copies, third-party SaaS backups)? Do NOT pay ransom as first option — payment doesn't guarantee decryption, funds criminal activity, and may violate sanctions. Prevention: Implement 3-2-1 backup rule (3 copies, 2 different media, 1 offsite) PLUS immutable/air-gapped backups (offline tapes, immutable cloud storage with WORM/object lock), network-isolated backup repository, and regular backup restore testing.",
-        "Pay the ransom immediately — it's the fastest way to recover and $500K is less than the cost of downtime",
-        "Reformat all servers and reinstall from scratch — no need for backups if you rebuild everything",
-        "Shut down the entire network and wait for the ransomware group to contact you with instructions"
+        "Stop using all SaaS products",
+        "Contractually require breach notification within a defined short window (e.g., 24-72 hours), monitor the vendor's security posture, and maintain a tested vendor-incident response playbook",
+        "Wait even longer before responding next time",
+        "Send the vendor a single angry email"
       ],
-      "answer": "Immediate: (1) Isolate all affected systems and stop the spread (containment). (2) Preserve evidence — image affected systems, capture logs, document the timeline. (3) Engage IR retainer firm and legal counsel. (4) Report to authorities (e.g., Singapore PDPC if personal data is involved, CSA for critical infrastructure). (5) Assess whether data was exfiltrated (double extortion). (6) Evaluate recovery options — can systems be rebuilt from scratch? Are there any overlooked backups (cloud snapshots, shadow copies, third-party SaaS backups)? Do NOT pay ransom as first option — payment doesn't guarantee decryption, funds criminal activity, and may violate sanctions. Prevention: Implement 3-2-1 backup rule (3 copies, 2 different media, 1 offsite) PLUS immutable/air-gapped backups (offline tapes, immutable cloud storage with WORM/ object lock), network-isolated backup repository, and regular backup restore testing.",
-      "explanation_correct": "This scenario — backup servers encrypted alongside production — is the most devastating ransomware outcome because it eliminates the primary recovery path. The root cause is poor backup architecture: backups were on the same network segment, making them reachable by the ransomware's lateral movement. Immediate actions follow the IR lifecycle: containment (stop spread), evidence preservation (for forensic analysis, insurance claims, and law enforcement), stakeholder engagement (IR firm, legal, authorities, cyber insurance), and recovery assessment. In Singapore, the Personal Data Protection Act (PDPA) requires breach notification to PDPC if personal data is compromised and causes significant harm. The Cyber Security Act requires CIIs to report to CSA. Paying ransom should be the last resort: (1) No guarantee — attackers may not provide the decryptor, or it may not work. (2) Legal risks — paying sanctioned entities (e.g., ransomware groups in OFAC-sanctioned countries) violates sanctions law. (3) Target painting — organizations that pay are known to pay and may be targeted again. (4) Funds crime — payment funds further attacks. Prevention requires the 3-2-1 rule PLUS immutability: (1) 3 copies of data, (2) 2 different media types, (3) 1 copy offsite. Add: immutable backups (cloud object storage with Object Lock/WORM — Write Once Read Many — that even admins can't delete during the lock period), air-gapped backups (offline media physically disconnected), network segmentation (backup network isolated from production with firewalls), and critically: regular restore testing (backups you can't restore are not backups).",
-      "explanation_wrong_common": "Paying ransom immediately is the wrong first response — it encourages further attacks, may not work, and may be illegal. Reformatting without backups means permanent data loss and no evidence for investigation/legal requirements. Shutting down the network is over-containment that prevents investigation and recovery. The common mistake is treating ransomware as a 'pay or lose data' binary; proper IR involves containment, evidence preservation, stakeholder engagement, and exploring all recovery options before considering payment. The backup failure highlights why immutable/air-gapped backups are essential — backups connected to the production network are not true backups."
+      "answer": "Contractually require breach notification within a defined short window (e.g., 24-72 hours), monitor the vendor's security posture, and maintain a tested vendor-incident response playbook",
+      "explanation_correct": "The gap was notification timing and preparedness. The fix: a contractual notification SLA (24-72h), ongoing vendor posture monitoring, and a pre-tested playbook so your IR activates immediately upon notification.",
+      "explanation_wrong_common": "Abandoning SaaS is impractical; delayed response or a single email doesn't fix the notification/execution gap."
     },
     {
-      "card_id": "gc_200",
-      "topic": "Incident Response",
+      "card_id": "gc_220",
+      "topic": "Third-Party Risk Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A mid-sized company (200 employees, SaaS-based infrastructure) experiences a Business Email Compromise (BEC) attack. An attacker gained access to the CFO's email account via a phishing campaign that bypassed the email filter. Over 3 weeks, the attacker monitored email patterns, created a forwarding rule to hide sent items, and then sent a wire transfer request to the AP department impersonating a known vendor, resulting in a $280K fraudulent transfer to an overseas account. The AP clerk processed it because the email appeared legitimate (correct sender address, vendor name, invoice format). Design a comprehensive incident response plan covering all six NIST IR phases for this specific scenario, including technical containment, business recovery, and preventive measures.",
+      "question_text": "A startup integrates 12 third-party APIs and a managed hosting provider into its product with no central oversight. An audit finds: 4 APIs have no contracts, 2 vendors were never risk-assessed, and no one knows which vendor can access customer data. Propose a three-step third-party risk program.",
       "choices": [
-        "Preparation (pre-incident baseline): BEC-specific playbook, email security training for finance/AP, wire transfer verification policy (call-back verification for any change in banking details or urgent transfer requests), email DLP and forwarding rule monitoring. Detection & Analysis: Identify unauthorized email forwarding rules in CFO's mailbox, correlate login logs for impossible travel/anomalous locations, confirm the fraudulent transfer with AP and the bank. Containment: (1) Disable CFO's compromised account and revoke all sessions/tokens, (2) Remove malicious forwarding rules, (3) Contact the bank immediately to recall/reverse the wire transfer (SWIFT recall within 24-48 hours has ~50% success rate), (4) Block attacker's IP/email addresses, (5) Force password reset and MFA re-enrollment for CFO. Eradication: (1) Scan all mailboxes for similar forwarding rules (attacker may have compromised others), (2) Review all recent vendor payment changes for additional fraud, (3) Patch the email security gap that allowed phishing (improve email filtering, implement DMARC/SPF/DKIM enforcement), (4) Remove any persisted backdoor access (OAuth app tokens, mailbox delegates). Recovery: (1) Restore CFO's mailbox access with MFA, (2) Verify vendor banking details through independent call-back for all pending payments, (3) Monitor for further BEC attempts, (4) File cyber insurance claim and police report. Lessons Learned: (1) Implement mandatory call-back verification for ALL wire transfers (not just changes), (2) Deploy email security that flags external emails impersonating internal users, (3) Implement mailbox forwarding rule alerts (alert SOC when new forwarding rules are created), (4) Conduct BEC-specific phishing simulation for finance/AP staff, (5) Require MFA for all email accounts (not just executives), (6) Implement vendor payment detail change verification workflow (dual-approval + call-back), (7) Review and tighten email security gateway rules.",
-        "Report to police and wait for them to investigate before taking any technical action",
-        "Reset the CFO's password and consider the incident resolved — the attacker no longer has access",
-        "Switch to a different email provider to prevent future BEC attacks"
+        "1) Build a vendor inventory/register mapping each vendor, its data access, and risk tier. 2) Require risk assessments + contracts (with security/privacy/breach-notice clauses) for all data-handling vendors, prioritized by risk tier. 3) Establish ongoing monitoring (posture, SOC reports) and a vendor offboarding process that revokes access and retrieves data.",
+        "1) Delete all APIs 2) fire the audit team 3) ignore vendors",
+        "1) Buy more vendors 2) give all vendors admin access 3) remove all contracts",
+        "1) Keep no records 2) share data with everyone 3) disable monitoring"
       ],
-      "answer": "Preparation (pre-incident baseline): BEC-specific playbook, email security training for finance/AP, wire transfer verification policy (call-back verification for any change in banking details or urgent transfer requests), email DLP and forwarding rule monitoring. Detection & Analysis: Identify unauthorized email forwarding rules in CFO's mailbox, correlate login logs for impossible travel/anomalous locations, confirm the fraudulent transfer with AP and the bank. Containment: (1) Disable CFO's compromised account and revoke all sessions/tokens, (2) Remove malicious forwarding rules, (3) Contact the bank immediately to recall/reverse the wire transfer (SWIFT recall within 24-48 hours has ~50% success rate), (4) Block attacker's IP/email addresses, (5) Force password reset and MFA re-enrollment for CFO. Eradication: (1) Scan all mailboxes for similar forwarding rules (attacker may have compromised others), (2) Review all recent vendor payment changes for additional fraud, (3) Patch the email security gap that allowed phishing (improve email filtering, implement DMARC/SPF/DKIM enforcement), (4) Remove any persisted backdoor access (OAuth app tokens, mailbox delegates). Recovery: (1) Restore CFO's mailbox access with MFA, (2) Verify vendor banking details through independent call-back for all pending payments, (3) Monitor for further BEC attempts, (4) File cyber insurance claim and police report. Lessons Learned: (1) Implement mandatory call-back verification for ALL wire transfers (not just changes), (2) Deploy email security that flags external emails impersonating internal users, (3) Implement mailbox forwarding rule alerts (alert SOC when new forwarding rules are created), (4) Conduct BEC-specific phishing simulation for finance/AP staff, (5) Require MFA for all email accounts (not just executives), (6) Implement vendor payment detail change verification workflow (dual-approval + call-back), (7) Review and tighten email security gateway rules.",
-      "explanation_correct": "BEC is one of the most financially damaging cybercrime categories — the FBI reports billions in losses annually. This scenario illustrates a sophisticated multi-stage BEC: (1) Initial access via phishing (bypassed email filter), (2) Dormancy — attacker monitors email patterns for 3 weeks to learn vendor names, invoice formats, and communication styles, (3) Persistence — forwarding rule hides the fraudulent sent emails from the CFO's view, (4) Execution — impersonation email to AP with a convincing wire transfer request. The IR plan must address both the technical compromise (email account) and the business impact (fraudulent financial transfer). Time is critical: bank wire recalls are most successful within 24-48 hours. The containment phase must prioritize the bank recall alongside account remediation — every hour reduces the chance of fund recovery. The eradication phase must go beyond the CFO's account — BEC attackers often compromise multiple accounts or install OAuth app backdoors that survive password resets. Scanning all mailboxes for forwarding rules is essential. The lessons learned phase addresses the root cause: BEC succeeds because of process weaknesses (no call-back verification), not just technical failures. The single most effective BEC prevention is a mandatory call-back verification policy: for any wire transfer request or change in vendor banking details, the AP team must call the vendor (using a known phone number, not one from the email) to verify. DMARC/SPF/DKIM email authentication helps prevent domain spoofing but doesn't stop compromised account BEC (where the email genuinely comes from the CFO's real account).",
-      "explanation_wrong_common": "Waiting for police before taking technical action wastes critical time — bank recalls must happen within hours, and the attacker retains access throughout. Resetting the password alone doesn't resolve the incident — forwarding rules, OAuth tokens, mailbox delegates, and other persistence mechanisms may survive a password reset. Switching email providers doesn't address the process vulnerability (lack of call-back verification) that enabled the fraud. The common mistake is treating BEC as a purely technical incident (email compromise) when it's equally a business process failure (wire transfer fraud). Both the technical compromise AND the financial controls must be addressed."
+      "answer": "1) Build a vendor inventory/register mapping each vendor, its data access, and risk tier. 2) Require risk assessments + contracts (with security/privacy/breach-notice clauses) for all data-handling vendors, prioritized by risk tier. 3) Establish ongoing monitoring (posture, SOC reports) and a vendor offboarding process that revokes access and retrieves data.",
+      "explanation_correct": "A mature third-party risk program: (1) a vendor register with data-access and risk-tier mapping, (2) risk assessments + security contracts for all data-handling vendors prioritized by tier, and (3) continuous monitoring plus formal offboarding that revokes access and recovers data.",
+      "explanation_wrong_common": "Ignoring, over-sharing, or removing oversight magnifies risk; the program is about visibility, contractual control, and lifecycle management."
     }
   ],
   "scheduling_updates": [
     {
-      "card_id": "gc_181",
+      "card_id": "gc_201",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_182",
+      "card_id": "gc_202",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_183",
+      "card_id": "gc_203",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_204",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_205",
+      "next_due_at": "2026-11-26T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_206",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_184",
+      "card_id": "gc_207",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_185",
+      "card_id": "gc_208",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_209",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_210",
+      "next_due_at": "2026-11-26T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_211",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_186",
+      "card_id": "gc_212",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_187",
+      "card_id": "gc_213",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_214",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_215",
+      "next_due_at": "2026-11-26T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_216",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_188",
+      "card_id": "gc_217",
       "next_due_at": "2026-11-24T00:00:00+08:00"
     },
     {
-      "card_id": "gc_189",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_190",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_191",
+      "card_id": "gc_218",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_192",
+      "card_id": "gc_219",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_193",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_194",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_195",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_196",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_197",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_198",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_199",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_200",
-      "next_due_at": "2026-11-25T00:00:00+08:00"
+      "card_id": "gc_220",
+      "next_due_at": "2026-11-26T00:00:00+08:00"
     }
   ]
 }
