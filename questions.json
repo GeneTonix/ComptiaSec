@@ -1,406 +1,406 @@
 {
   "cards": [
     {
-      "card_id": "gc_201",
-      "topic": "Security Automation and Orchestration",
+      "card_id": "gc_221",
+      "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is SOAR (Security Orchestration, Automation, and Response) and what are its three primary capabilities?",
+      "question_text": "In quantitative risk analysis, what is the relationship between Single Loss Expectancy (SLE), Annualized Rate of Occurrence (ARO), and Annualized Loss Expectancy (ALE)?",
       "choices": [
-        "A protocol for encrypting traffic between security sensors and the SIEM",
-        "A platform that aggregates and prioritizes alerts, automates repetitive tasks via playbooks, and orchestrates responses across multiple security tools",
-        "A hardware appliance that blocks malicious IPs at the network perimeter",
-        "A database standard for storing forensic evidence"
+        "ALE = SLE + ARO",
+        "ALE = SLE × ARO",
+        "SLE = ALE × ARO",
+        "ARO = SLE + ALE"
       ],
-      "answer": "A platform that aggregates and prioritizes alerts, automates repetitive tasks via playbooks, and orchestrates responses across multiple security tools",
-      "explanation_correct": "SOAR combines orchestration, automation, and response. It aggregates alerts from many sources, executes predefined playbooks to automate repetitive investigation/remediation, and coordinates actions across disparate security tools.",
-      "explanation_wrong_common": "SOAR is a software platform for automating and orchestrating security operations workflows — not a protocol, appliance, or storage standard."
+      "answer": "ALE = SLE × ARO",
+      "explanation_correct": "SLE is the monetary loss from a single occurrence. ARO is how many times per year the event is expected. ALE is the total expected yearly loss: ALE = SLE × ARO. This lets you compare the cost of a control against the annualized risk it reduces.",
+      "explanation_wrong_common": "Mixing up the operators or reversing the operands. SLE and ARO are inputs; ALE is always their product, never their sum or a reversed multiplication."
     },
     {
-      "card_id": "gc_202",
-      "topic": "Security Automation and Orchestration",
+      "card_id": "gc_222",
+      "topic": "Risk Management",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a playbook and a runbook in security operations?",
+      "question_text": "An organization decides not to implement any new controls for a low-impact risk because the cost of mitigation exceeds the potential loss. Which risk response strategy is this?",
       "choices": [
-        "They are identical terms used interchangeably",
-        "A playbook is a higher-level workflow that may invoke multiple runbooks; a runbook is a detailed set of procedural steps for a specific task",
-        "A runbook handles incident response while a playbook only covers compliance auditing",
-        "A playbook is always automated and a runbook is always manual"
+        "Risk mitigation",
+        "Risk transference",
+        "Risk acceptance",
+        "Risk avoidance"
       ],
-      "answer": "A playbook is a higher-level workflow that may invoke multiple runbooks; a runbook is a detailed set of procedural steps for a specific task",
-      "explanation_correct": "A playbook is a structured, often automated workflow for handling a category of incident and may call multiple runbooks. A runbook documents the specific step-by-step procedure for a single operational task.",
-      "explanation_wrong_common": "Confusing the hierarchy: runbooks are granular procedures; playbooks are the broader orchestrating workflows that may chain runbooks together."
+      "answer": "Risk acceptance",
+      "explanation_correct": "Risk acceptance means acknowledging a risk exists and choosing not to reduce it, typically because the impact is low or the cost of controls exceeds the benefit. The risk remains but is documented and knowingly tolerated.",
+      "explanation_wrong_common": "Confusing acceptance with avoidance (eliminating the activity that causes the risk) or transference (shifting the risk to a third party like insurance). Acceptance = do nothing, but do it deliberately."
     },
     {
-      "card_id": "gc_203",
-      "topic": "Security Automation and Orchestration",
+      "card_id": "gc_223",
+      "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A SOC receives 5,000 alerts daily but can triage only 500. Alerts for a known banking trojan require analysts to manually query 4 tools, enrich IOCs, and file a ticket — 15 minutes each. What is the BEST use of SOAR?",
+      "question_text": "A company's risk register lists a medium-likelihood, high-impact risk from outdated firewall firmware. The CFO suggests purchasing cyber insurance to cover potential breach costs instead of updating the firmware. The security team warns that insurance will not cover regulatory fines from knowingly running vulnerable equipment. What is the best risk response?",
       "choices": [
-        "Replace the SIEM with SOAR so fewer alerts are generated",
-        "Build a playbook that automatically queries the 4 tools, enriches IOCs, correlates with threat intel, and opens tickets for confirmed trojan alerts",
-        "Disable all low-severity alerts to reduce volume to 500",
-        "Hire more analysts until capacity matches alert volume"
+        "Transfer the risk entirely to the insurer and keep the current firmware",
+        "Mitigate the risk by updating the firmware, and use insurance as a supplementary transfer for residual risk",
+        "Accept the risk since insurance will cover most costs",
+        "Avoid the risk by decommissioning the firewall entirely and going without perimeter protection"
       ],
-      "answer": "Build a playbook that automatically queries the 4 tools, enriches IOCs, correlates with threat intel, and opens tickets for confirmed trojan alerts",
-      "explanation_correct": "SOAR's value is automating repetitive, multi-tool workflows. A playbook executes enrichment, correlation, and ticketing automatically for a known threat class, freeing analysts for genuine investigation. It works alongside the SIEM, not replacing it.",
-      "explanation_wrong_common": "Suppressing alerts or adding headcount doesn't fix the workflow bottleneck; SOAR complements (not replaces) the SIEM by automating the response workflow."
+      "answer": "Mitigate the risk by updating the firmware, and use insurance as a supplementary transfer for residual risk",
+      "explanation_correct": "Updating firmware directly reduces the likelihood and impact (mitigation). Insurance can then cover residual risk that remains after mitigation. Relying solely on insurance ignores that insurers may deny claims for known, unpatched vulnerabilities and that regulatory fines may be uninsurable.",
+      "explanation_wrong_common": "Choosing pure transference when mitigation is feasible and cost-effective. Insurance is a complement to controls, not a replacement — and it won't cover deliberate negligence or regulatory penalties."
     },
     {
-      "card_id": "gc_204",
-      "topic": "Security Automation and Orchestration",
+      "card_id": "gc_224",
+      "topic": "Risk Management",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization integrates SOAR with its EDR, firewall, and identity provider. When a playbook detects a compromised endpoint, which automated response sequence BEST follows least-privilege and minimizes business disruption?",
+      "question_text": "A SaaS company calculates ALE for a DDoS attack at $120,000 (SLE = $400,000, ARO = 0.3). A cloud DDoS mitigation service costs $50,000/year and would reduce ARO to 0.05. What is the control's value, and should the company invest?",
       "choices": [
-        "Immediately shut down the entire corporate network",
-        "Isolate the affected endpoint via EDR, block the attacker's C2 IP on the firewall, and disable the compromised user's account in the IdP",
-        "Send an email to all users warning them not to click links",
-        "Reformat every machine in the same subnet as the endpoint"
+        "New ALE is $20,000; savings = $100,000; control costs $50,000 — invest, net benefit $50,000",
+        "New ALE is $20,000; savings = $100,000; control costs $50,000 — do not invest, net loss $50,000",
+        "New ALE is $60,000; savings = $60,000; control costs $50,000 — invest, net benefit $10,000",
+        "New ALE is $400,000; the control has no effect on SLE so do not invest"
       ],
-      "answer": "Isolate the affected endpoint via EDR, block the attacker's C2 IP on the firewall, and disable the compromised user's account in the IdP",
-      "explanation_correct": "A scoped, least-privilege response: isolate only the affected endpoint, block only the malicious IP, and disable only the compromised account — containing the threat with minimal disruption to unaffected systems.",
-      "explanation_wrong_common": "Overly broad responses (network shutdown, mass reformatting) cause unnecessary business impact; email warnings alone don't contain the threat."
+      "answer": "New ALE is $20,000; savings = $100,000; control costs $50,000 — invest, net benefit $50,000",
+      "explanation_correct": "New ALE = SLE × new ARO = $400,000 × 0.05 = $20,000. Risk reduction = old ALE − new ALE = $120,000 − $20,000 = $100,000. Control cost = $50,000. Net benefit = $100,000 − $50,000 = $50,000. The control is cost-effective.",
+      "explanation_wrong_common": "Errors include recalculating SLE instead of ALE, confusing ARO reduction with SLE reduction, or subtracting the control cost from SLE instead of from the risk savings."
     },
     {
-      "card_id": "gc_205",
-      "topic": "Security Automation and Orchestration",
+      "card_id": "gc_225",
+      "topic": "Risk Management",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company deploys SOAR playbooks for phishing. Triage time drops 80%, but 12% of automated 'benign' verdicts later prove to be real attacks, and analysts now ignore the queue because 'SOAR handles it.' Identify the two biggest problems and the correct fix.",
+      "question_text": "A hospital's risk assessment identifies three risks: (1) Ransomware on patient records — likelihood High, impact Critical. (2) Insider data exfiltration by a disgruntled nurse — likelihood Low, impact High. (3) UPS failure in the server room — likelihood Medium, impact Medium. Budget allows funding only two mitigation projects this quarter. The CISO proposes mitigating risks 1 and 3, accepting risk 2. The CIO argues risk 2 should be mitigated instead of 3 because the impact of insider exfiltration includes HIPAA violation fines. Which approach best aligns with risk prioritization principles?",
       "choices": [
-        "Problem 1: high false-negative rate from over-tuned auto-close logic. Problem 2: analyst complacency from over-automation. Fix: tighten playbook thresholds, require human confirmation for auto-close, and retain analyst review of high-risk verdicts.",
-        "Problem 1: SOAR is too slow. Problem 2: too few alerts. Fix: increase alert volume.",
-        "Problem 1: analysts are lazy. Problem 2: SOAR is perfect. Fix: fire the analysts.",
-        "Problem 1: phishing cannot be automated. Problem 2: EDR is broken. Fix: remove SOAR."
+        "Mitigate risk 1 and risk 2; accept risk 3 — highest combined impact (Critical + High with regulatory consequences) outweighs the Medium/Medium UPS risk",
+        "Mitigate risk 1 and risk 3; accept risk 2 — the CISO's original plan is correct because High likelihood × Critical impact produces the highest ALE",
+        "Mitigate all three by spreading the budget thinly across all projects",
+        "Transfer risk 2 to a cyber insurance policy and mitigate risks 1 and 3 with the remaining budget"
       ],
-      "answer": "Problem 1: high false-negative rate from over-tuned auto-close logic. Problem 2: analyst complacency from over-automation. Fix: tighten playbook thresholds, require human confirmation for auto-close, and retain analyst review of high-risk verdicts.",
-      "explanation_correct": "The 12% false-negative rate shows auto-classification thresholds are too permissive, closing real attacks as benign. Analyst disengagement is a cultural/operational risk of over-automation. The fix recalibrates thresholds and keeps a human in the loop for ambiguous, high-risk cases.",
-      "explanation_wrong_common": "This is a tuning and human-factors problem, not a tool-removal or staffing problem. SOAR needs continuous threshold calibration and should augment, not replace, analyst judgment on ambiguous cases."
+      "answer": "Mitigate risk 1 and risk 3; accept risk 2; the CISO's original plan is correct because High likelihood × Critical impact produces the highest ALE",
+      "explanation_correct": "Risk prioritization weights both likelihood and impact. Risk 1 (High × Critical) has the highest inherent risk. Risk 3 (Medium × Medium) has moderate likelihood and impact. Risk 2, while high impact, has Low likelihood — its expected value (ALE) is lower than risk 3's. Mitigating risks 1 and 3 reduces the greatest expected annual loss. Risk 2 can be accepted with monitoring or addressed next quarter. The CIO's argument about regulatory fines is valid but doesn't override the quantitative likelihood-weighted analysis — the hospital should document risk 2 acceptance with compensating detective controls.",
+      "explanation_wrong_common": "Prioritizing solely by impact while ignoring likelihood, which leads to over-investing in rare events. Also, spreading budget across all three projects typically results in none being adequately mitigated."
     },
     {
-      "card_id": "gc_206",
-      "topic": "Logging and Monitoring",
+      "card_id": "gc_226",
+      "topic": "Security Governance",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a log, a metric, and a trace in observability?",
+      "question_text": "What is the difference between a security policy, a security standard, and a security procedure?",
       "choices": [
-        "They are three names for the same event record",
-        "A log is a discrete event record with a timestamp; a metric is a numeric measurement aggregated over time (e.g., CPU %); a trace follows a single request across distributed service boundaries",
-        "A log measures performance, a metric stores files, and a trace blocks traffic",
-        "Logs are only for security, metrics only for billing, and traces only for audits"
+        "They are interchangeable terms that all describe the same documentation",
+        "A policy is a high-level mandatory rule; a standard is a mandatory technical or operational requirement; a procedure is a step-by-step instruction for performing a task",
+        "A policy is a step-by-step guide; a standard is a high-level rule; a procedure is a technical requirement",
+        "A policy is optional guidance; a standard is mandatory; a procedure is a recommendation"
       ],
-      "answer": "A log is a discrete event record with a timestamp; a metric is a numeric measurement aggregated over time (e.g., CPU %); a trace follows a single request across distributed service boundaries",
-      "explanation_correct": "Logs capture discrete events with context and timestamps. Metrics are time-series numeric values (counters/gauges) for trends. Traces track a request's path through distributed services via spans, showing where time is spent across boundaries.",
-      "explanation_wrong_common": "These are distinct telemetry types — logs (events), metrics (aggregated numbers), traces (request journeys) — not synonyms or role-locked categories."
+      "answer": "A policy is a high-level mandatory rule; a standard is a mandatory technical or operational requirement; a procedure is a step-by-step instruction for performing a task",
+      "explanation_correct": "Policies are high-level, mandatory statements of intent approved by senior management. Standards define mandatory specific requirements (e.g., 'passwords must be 12+ characters'). Procedures provide detailed step-by-step instructions for operational tasks. Together they form a hierarchy: policy → standard → procedure.",
+      "explanation_wrong_common": "Confusing the hierarchy or treating them as interchangeable. Policies set direction, standards set specifics, procedures set actions. Guidelines, by contrast, are optional recommendations."
     },
     {
-      "card_id": "gc_207",
-      "topic": "Logging and Monitoring",
+      "card_id": "gc_227",
+      "topic": "Security Governance",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is log aggregation, and why is centralized collection important for security monitoring?",
+      "question_text": "Which governance role is ultimately accountable for an organization's information security program?",
       "choices": [
-        "Compressing logs to save disk space on each individual server",
-        "Collecting logs from many systems into a central repository for correlation, retention, and analysis, enabling detection of attacks that span multiple hosts",
-        "Deleting old logs automatically to free up storage",
-        "Encrypting logs so only the original server can read them"
+        "The CISO, because they manage the security team",
+        "The Board of Directors or senior leadership, because accountability cannot be delegated even if implementation is",
+        "The IT Department, because they operate the systems",
+        "The external auditor, because they verify compliance"
       ],
-      "answer": "Collecting logs from many systems into a central repository for correlation, retention, and analysis, enabling detection of attacks that span multiple hosts",
-      "explanation_correct": "Log aggregation forwards logs from disparate systems to a central platform (e.g., a SIEM). Centralization enables cross-host correlation, consistent retention/compliance, and detection of distributed attacks that individual host logs would miss.",
-      "explanation_wrong_common": "Aggregation is about central collection and correlation, not compression, deletion, or encryption-only access — though retention and integrity controls also matter."
+      "answer": "The Board of Directors or senior leadership, because accountability cannot be delegated even if implementation is",
+      "explanation_correct": "Under governance frameworks, the Board or senior leadership holds ultimate accountability for security. They may delegate implementation to a CISO or security team, but accountability for outcomes remains with leadership. This is a core principle of security governance — responsibility can be delegated, accountability cannot.",
+      "explanation_wrong_common": "Confusing accountability with responsibility. The CISO is responsible for executing the security program, but the Board is accountable for its effectiveness. Auditors verify compliance but do not own accountability."
     },
     {
-      "card_id": "gc_208",
-      "topic": "Logging and Monitoring",
+      "card_id": "gc_228",
+      "topic": "Security Governance",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A security analyst must ensure that if an attacker compromises a web server, the attacker cannot wipe the audit logs of their activity. Which control BEST achieves this?",
+      "question_text": "A rapidly growing startup has an informal security approach — the CTO makes ad-hoc security decisions based on current priorities. There is no written security policy, no defined roles, and security spending is reactive. The company just landed a government contract that requires compliance with NIST 800-171. What governance changes are most urgently needed?",
       "choices": [
-        "Store logs locally on the web server with full admin access",
-        "Forward logs in real time to a central, access-restricted log server the web server cannot modify, and enforce WORM/append-only retention",
-        "Disable logging on the web server so there is nothing to wipe",
-        "Keep logs in the same database as the application data"
+        "Purchase a SIEM tool immediately to demonstrate security capability",
+        "Establish a formal security policy, assign a security owner (CISO or designated lead), define roles and responsibilities, and create a documented compliance roadmap for NIST 800-171",
+        "Hire an external consultant to handle all security decisions going forward",
+        "Wait until the contract starts, then address security requirements as they arise during audits"
       ],
-      "answer": "Forward logs in real time to a central, access-restricted log server the web server cannot modify, and enforce WORM/append-only retention",
-      "explanation_correct": "Forwarding logs to a separate, hardened, access-restricted system the compromised host cannot write to or delete prevents an attacker from covering their tracks. Append-only/WORM storage adds tamper-evidence.",
-      "explanation_wrong_common": "Local-only or co-located logs are exactly what a compromised host can wipe; disabling logging eliminates evidence entirely."
+      "answer": "Establish a formal security policy, assign a security owner (CISO or designated lead), define roles and responsibilities, and create a documented compliance roadmap for NIST 800-171",
+      "explanation_correct": "Governance starts with formal structure: a written policy provides direction, a designated owner provides accountability, defined roles clarify responsibilities, and a compliance roadmap ensures NIST 800-171 requirements are systematically addressed. Tools like SIEMs are operational controls that come after governance is in place.",
+      "explanation_wrong_common": "Jumping straight to tools or outsourcing without establishing governance structure. A SIEM without policies is unmanaged; a consultant without an internal owner leaves an accountability gap."
     },
     {
-      "card_id": "gc_209",
-      "topic": "Logging and Monitoring",
+      "card_id": "gc_229",
+      "topic": "Security Governance",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An organization wants to detect lateral movement but currently logs only authentication events from domain controllers. Which additional log source would add the MOST detection value?",
+      "question_text": "An organization's security policy states 'All sensitive data must be encrypted in transit and at rest.' The standard specifies 'AES-256 for data at rest, TLS 1.3 for data in transit.' However, a legacy application uses TLS 1.1 because it cannot be upgraded. The application owner has submitted no exception request. Which governance process has failed?",
       "choices": [
-        "Endpoint DNS queries and workstation authentication logs across all endpoints",
-        "The CEO's personal email account",
-        "Server room temperature sensor logs",
-        "Marketing website visitor analytics"
+        "The standard is too strict and should be lowered to TLS 1.1 globally",
+        "The exception management process has failed — the deviation should have been formally documented, risk-assessed, and approved with a compensating control and remediation timeline",
+        "The policy itself is flawed for not listing every protocol version",
+        "No governance failure occurred — the standard is a guideline, not a requirement"
       ],
-      "answer": "Endpoint DNS queries and workstation authentication logs across all endpoints",
-      "explanation_correct": "Lateral movement shows up as unusual authentication patterns across workstations and anomalous DNS lookups (to internal hosts or C2 domains). Adding endpoint auth + DNS logs to DC logs reveals host-to-host movement that DC-only logging misses.",
-      "explanation_wrong_common": "Irrelevant sources (personal email, HVAC, marketing analytics) don't reveal lateral movement; the gap is endpoint-side activity and DNS."
+      "answer": "The exception management process has failed — the deviation should have been formally documented, risk-assessed, and approved with a compensating control and remediation timeline",
+      "explanation_correct": "Governance frameworks require a formal exception process when systems cannot meet standards. The owner should document the deviation, perform a risk assessment, implement compensating controls (e.g., network segmentation), obtain management approval, and set a remediation deadline. Unreported deviations are governance failures, not acceptable alternatives.",
+      "explanation_wrong_common": "Lowering standards to accommodate non-compliance, or treating standards as optional. Standards are mandatory; non-compliance requires formal exception management, not silent deviation."
     },
     {
-      "card_id": "gc_210",
-      "topic": "Logging and Monitoring",
+      "card_id": "gc_230",
+      "topic": "Security Governance",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A SOC ships 50 GB/day of logs but analysts say useful detections are buried in noise. Review shows: 60% of volume is debug-level app logs, retention is 90 days hot, no log-level policy exists, and two detection gaps occurred because a critical service had logging disabled. Recommend a three-part improvement plan.",
+      "question_text": "A multinational corporation has separate security programs in each region: North America follows NIST CSF, Europe follows ISO 27001, and Asia-Pacific has no formal framework. Regional CISOs report to regional CIOs, not to the global CISO. After a cross-region breach, the incident response was uncoordinated — each region used different severity classifications, escalation thresholds, and notification timelines. The global CISO has no authority to mandate changes. What governance restructuring would most effectively address these issues?",
       "choices": [
-        "1) Define a log-level policy (warn+ for production, debug only on-demand). 2) Enable and standardize logging on all critical services with required event fields. 3) Right-size retention (short hot window, compressed cold archive) to cut cost while keeping compliance coverage.",
-        "1) Stop all logging. 2) Buy a bigger SIEM. 3) Outsource everything to a vendor.",
-        "1) Keep debug on everything. 2) Extend hot retention to 2 years. 3) Disable the missing service entirely.",
-        "1) Delete old logs weekly. 2) Log only successful logins. 3) Encrypt all logs with the application key."
+        "Replace all regional frameworks with a single global standard immediately",
+        "Establish a unified governance model with a common baseline framework (e.g., NIST CSF or ISO 27001 as the global standard), map regional regulations to it, create a global security council with regional CISOs reporting to the global CISO, and standardize incident severity classifications and escalation procedures globally",
+        "Give the global CISO direct control over all regional IT operations and dissolve regional CISO roles",
+        "Require each region to adopt all three frameworks simultaneously to ensure maximum coverage"
       ],
-      "answer": "1) Define a log-level policy (warn+ for production, debug only on-demand). 2) Enable and standardize logging on all critical services with required event fields. 3) Right-size retention (short hot window, compressed cold archive) to cut cost while keeping compliance coverage.",
-      "explanation_correct": "A log-level policy reduces noise (drop debug in prod), enabling/standardizing critical-service logging closes detection gaps with consistent fields, and tiered retention (short hot + compressed cold archive) controls cost while meeting compliance — improving signal-to-noise and coverage together.",
-      "explanation_wrong_common": "More logging/more retention increases noise and cost; less logging creates blind spots. The fix is policy-driven level control, coverage enforcement, and tiered retention."
+      "answer": "Establish a unified governance model with a common baseline framework (e.g., NIST CSF or ISO 27001 as the global standard), map regional regulations to it, create a global security council with regional CISOs reporting to the global CISO, and standardize incident severity classifications and escalation procedures globally",
+      "explanation_correct": "A unified governance model solves the core issues: a single baseline framework ensures consistent controls, regulatory mapping handles regional differences, reporting to the global CISO provides authority and coordination, and standardized incident classifications ensure consistent response across regions. This balances global consistency with regional compliance needs.",
+      "explanation_wrong_common": "Extreme approaches like dissolving regional roles or adopting all frameworks create unnecessary complexity. The solution is a federated model with a unified baseline, not a rigid single standard that ignores regional regulations."
     },
     {
-      "card_id": "gc_211",
-      "topic": "Mobile and IoT Security",
+      "card_id": "gc_231",
+      "topic": "Security Audits and Assessments",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is MDM (Mobile Device Management) and what are two core security functions it provides?",
+      "question_text": "What is the key difference between a vulnerability scan and a penetration test?",
       "choices": [
-        "A mobile web browser for secure internet access",
-        "A centralized platform for managing mobile devices, providing functions like enforcing security policies (passcode/encryption), remote wipe, and app distribution",
-        "A protocol for charging phones over Wi-Fi",
-        "An app store exclusively for games"
+        "A vulnerability scan exploits vulnerabilities; a penetration test only identifies them",
+        "A vulnerability scan automatically identifies potential weaknesses; a penetration test goes further by actively exploiting vulnerabilities to determine real-world impact",
+        "They are identical processes with different names",
+        "A penetration test is automated; a vulnerability scan is manual"
       ],
-      "answer": "A centralized platform for managing mobile devices, providing functions like enforcing security policies (passcode/encryption), remote wipe, and app distribution",
-      "explanation_correct": "MDM centrally enrolls, configures, and manages mobile devices. Core security functions include policy enforcement (passcodes, encryption, OS version), remote lock/wipe, app allow/deny listing, and configuration profile deployment.",
-      "explanation_wrong_common": "MDM is a management/security platform, not a browser, charging protocol, or app store — it enforces policy across enrolled devices."
+      "answer": "A vulnerability scan automatically identifies potential weaknesses; a penetration test goes further by actively exploiting vulnerabilities to determine real-world impact",
+      "explanation_correct": "Vulnerability scans use automated tools to identify known weaknesses (missing patches, misconfigurations, weak configs). Penetration testing goes beyond identification — it actively exploits vulnerabilities to demonstrate what an attacker could achieve, including lateral movement and data exfiltration.",
+      "explanation_wrong_common": "Reversing the definitions or treating them as identical. Scanning is identification-only and typically automated; pentesting involves exploitation and is largely manual with automated assists."
     },
     {
-      "card_id": "gc_212",
-      "topic": "Mobile and IoT Security",
+      "card_id": "gc_232",
+      "topic": "Security Audits and Assessments",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Why do IoT devices present a disproportionate security risk compared to traditional endpoints?",
+      "question_text": "What is the difference between a SOC 2 Type I and a SOC 2 Type II report?",
       "choices": [
-        "They are physically larger and therefore easier to attack",
-        "They often run embedded firmware with hard-coded credentials, receive rare patching, ship with weak default configs, and sit on networks with broad access yet lack management agents",
-        "They cannot connect to any network at all",
-        "They always use unbreakable encryption"
+        "Type I covers financial controls; Type II covers security controls",
+        "Type I evaluates control design at a point in time; Type II evaluates control operating effectiveness over a period (typically 6–12 months)",
+        "Type I is for small organizations; Type II is for large organizations",
+        "Type I is performed internally; Type II is performed by an external auditor"
       ],
-      "answer": "They often run embedded firmware with hard-coded credentials, receive rare patching, ship with weak default configs, and sit on networks with broad access yet lack management agents",
-      "explanation_correct": "IoT devices frequently ship with default/hard-coded credentials, get infrequent firmware updates, lack centralized management, and deploy in bulk across networks — giving attackers easy footholds and lateral movement paths.",
-      "explanation_wrong_common": "The risk comes from weak defaults, poor patching, and unmanaged deployment — not size, and not strong encryption (which most IoT lacks)."
+      "answer": "Type I evaluates control design at a point in time; Type II evaluates control operating effectiveness over a period (typically 6–12 months)",
+      "explanation_correct": "SOC 2 Type I assesses whether controls are suitably designed to meet trust services criteria as of a specific date. SOC 2 Type II goes further, testing whether those controls actually operated effectively over a sustained period, providing stronger assurance that controls work in practice.",
+      "explanation_wrong_common": "Confusing SOC 2 with SOC 1 (which focuses on financial reporting controls), or thinking the types differ by organization size. Both SOC 2 types focus on security/availability/processing integrity/confidentiality/privacy — the difference is point-in-time vs. period-of-time."
     },
     {
-      "card_id": "gc_213",
-      "topic": "Mobile and IoT Security",
+      "card_id": "gc_233",
+      "topic": "Security Audits and Assessments",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A hospital connects 200 medical IoT monitors to its clinical network. Several run unsupported OS versions that cannot be patched. What is the BEST risk-mitigation approach?",
+      "question_text": "A company conducts an annual penetration test using the same external firm, with the same scope and methodology each year. The most recent test found zero critical findings — the same result as the previous two years. Internal staff suspect the testers are not trying hard because the contract is guaranteed. What is the best way to improve assessment effectiveness?",
       "choices": [
-        "Ignore the risk because they are medical devices",
-        "Segment the IoT devices into an isolated VLAN with strict firewall rules, monitor their traffic, and restrict communication to only required clinical systems",
-        "Connect them directly to the internet so the vendor can push updates",
-        "Replace all staff laptops instead"
+        "Continue with the same firm but increase the scope to include new systems",
+        "Rotate to a different testing firm or use multiple firms, introduce a purple team approach where internal staff validate findings, and vary the test scope and methodology annually",
+        "Stop external testing and rely on internal vulnerability scans instead",
+        "Require the current firm to exploit at least three vulnerabilities per test to prove effort"
       ],
-      "answer": "Segment the IoT devices into an isolated VLAN with strict firewall rules, monitor their traffic, and restrict communication to only required clinical systems",
-      "explanation_correct": "When patching is impossible, segmentation is the primary control: place unpatchable IoT on an isolated VLAN, allow only necessary communications via firewall allowlisting, and monitor for anomalous traffic — limiting exploit impact without disrupting clinical function.",
-      "explanation_wrong_common": "Ignoring or internet-exposing unpatchable devices increases risk; the lever is network isolation and least-communication, not replacing unrelated endpoints."
+      "answer": "Rotate to a different testing firm or use multiple firms, introduce a purple team approach where internal staff validate findings, and vary the test scope and methodology annually",
+      "explanation_correct": "Rotating firms prevents complacency and brings fresh perspectives. Varying scope and methodology prevents testers from optimizing for a fixed target. Purple teaming (attacker + defender collaboration) validates findings and improves detection capabilities. Requiring a minimum number of exploits creates perverse incentives to fabricate or exaggerate findings.",
+      "explanation_wrong_common": "Simply expanding scope with the same complacent firm doesn't fix the effort problem. Dropping external testing entirely removes independent validation. Mandating exploit quotas incentivizes fabricated results."
     },
     {
-      "card_id": "gc_214",
-      "topic": "Mobile and IoT Security",
+      "card_id": "gc_234",
+      "topic": "Security Audits and Assessments",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A BYOD policy lets employees access corporate email on personal phones. The company must protect corporate data but cannot wipe employees' personal photos. Which MDM/MAM capability BEST satisfies this?",
+      "question_text": "An internal audit reveals that 40% of the organization's servers are running unsupported operating systems. The IT manager argues these are isolated legacy systems that cannot be upgraded. The auditor classifies this as a high-risk finding. The IT manager asks the CISO to downgrade it to medium since 'nothing has happened yet.' What should the CISO do?",
       "choices": [
-        "Full device wipe on any policy violation",
-        "Application-level containerization (MAM) — wrapping corporate apps and data in an encrypted, separately managed container that can be selectively wiped without touching personal data",
-        "Banning all personal apps on the phone",
-        "Permanently disabling the phone's camera"
+        "Downgrade the finding to medium to maintain a good relationship with IT",
+        "Keep the finding as high-risk, document the unsupported OS count in the risk register, require formal exception requests with compensating controls and remediation timelines for each system, and escalate to senior management if IT does not respond",
+        "Remove the finding from the audit report since the systems are isolated",
+        "Reclassify as low-risk because the systems are on an isolated network segment"
       ],
-      "answer": "Application-level containerization (MAM) — wrapping corporate apps and data in an encrypted, separately managed container that can be selectively wiped without touching personal data",
-      "explanation_correct": "MAM/containerization creates an encrypted, managed workspace for corporate apps/data that can be selectively wiped while leaving personal data untouched — the standard BYOD privacy-preserving control.",
-      "explanation_wrong_common": "Full-device wipe violates personal privacy and BYOD trust; banning personal apps/camera is impractical and exceeds the requirement."
+      "answer": "Keep the finding as high-risk, document the unsupported OS count in the risk register, require formal exception requests with compensating controls and remediation timelines for each system, and escalate to senior management if IT does not respond",
+      "explanation_correct": "Unsupported OSs receive no security patches and have known exploitable vulnerabilities — this is objectively high-risk regardless of past incidents. The CISO must maintain audit integrity, document the risk formally, and use the governance exception process. 'Nothing has happened yet' is not a risk argument — likelihood is not zero just because an event hasn't occurred.",
+      "explanation_wrong_common": "Downgrading findings to appease colleagues compromises audit independence. Isolation reduces but does not eliminate risk — lateral movement, insider threats, and supply chain attacks can reach isolated systems."
     },
     {
-      "card_id": "gc_215",
-      "topic": "Mobile and IoT Security",
+      "card_id": "gc_235",
+      "topic": "Security Audits and Assessments",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "An enterprise deploys smart-building IoT (HVAC, cameras, badge readers) on the same flat network as finance workstations. After an incident, investigators find attackers pivoted from a compromised IP camera to finance systems. Describe the root architectural flaw and a three-step remediation plan.",
+      "question_text": "A cloud-hosted fintech company undergoes three separate assessments annually: a PCI DSS audit, a SOC 2 Type II audit, and an internal red team exercise. The PCI auditor requires segmented cardholder data environments. The SOC 2 auditor evaluates the entire infrastructure against trust services criteria. The red team found that an S3 bucket containing PCI-related reports was publicly accessible due to a misconfigured IAM policy — a finding the PCI audit missed because it only reviewed the in-scope cardholder environment, not adjacent storage. What does this reveal about the assessment strategy, and what should change?",
       "choices": [
-        "Flaw: a flat network allowed east-west movement from IoT to finance. Steps: 1) Move IoT to a dedicated segmented VLAN. 2) Apply deny-by-default firewall rules allowing IoT only to its required controller. 3) Add IoT asset inventory, default-credential rotation, and monitoring of IoT traffic.",
-        "Flaw: cameras are illegal. Steps: 1) remove cameras 2) remove HVAC 3) remove badge readers",
-        "Flaw: finance workstations are too fast. Steps: 1) slow them down 2) add more cameras 3) disable firewalls",
-        "Flaw: IoT should be on the public internet. Steps: 1) expose all IoT 2) remove passwords 3) disable logging"
+        "The PCI audit was poorly performed and the firm should be replaced",
+        "The assessments have scope gaps — PCI scoped narrowly to cardholder data missed adjacent infrastructure. The company should adopt a unified control framework, map PCI and SOC 2 requirements to it, ensure the red team scope explicitly includes data adjacency and boundary testing, and integrate findings across all three assessments into a single remediation tracker",
+        "The red team was out of scope and its finding should be disregarded since it wasn't part of the compliance audits",
+        "The company should merge all three assessments into a single annual audit to reduce complexity"
       ],
-      "answer": "Flaw: a flat network allowed east-west movement from IoT to finance. Steps: 1) Move IoT to a dedicated segmented VLAN. 2) Apply deny-by-default firewall rules allowing IoT only to its required controller. 3) Add IoT asset inventory, default-credential rotation, and monitoring of IoT traffic.",
-      "explanation_correct": "The root flaw is placing unmanaged, lower-trust IoT on the same flat segment as high-value finance systems, enabling east-west pivot. Remediation: dedicated IoT VLAN, strict deny-by-default firewalling to required controllers only, and IoT governance (inventory, credential rotation, traffic monitoring).",
-      "explanation_wrong_common": "The problem is trust segmentation, not the existence of IoT; removing controls or exposing devices worsens exposure."
+      "answer": "The assessments have scope gaps — PCI scoped narrowly to cardholder data missed adjacent infrastructure. The company should adopt a unified control framework, map PCI and SOC 2 requirements to it, ensure the red team scope explicitly includes data adjacency and boundary testing, and integrate findings across all three assessments into a single remediation tracker",
+      "explanation_correct": "Each assessment had a different scope, creating blind spots at the boundaries. PCI DSS intentionally scopes to cardholder data, so the adjacent S3 bucket fell outside its review. The solution is a unified control framework that maps overlapping requirements, explicit boundary/adjacency testing in red team scope, and integrated remediation tracking so findings from any assessment are visible and actionable across all compliance contexts.",
+      "explanation_wrong_common": "Blaming individual auditors misses the systemic scoping issue. Merging assessments isn't feasible since each has different regulatory drivers. Disregarding red team findings because they're 'out of scope' ignores real security risk."
     },
     {
-      "card_id": "gc_216",
-      "topic": "Third-Party Risk Management",
+      "card_id": "gc_236",
+      "topic": "Security Awareness Training",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is a vendor risk assessment, and what three areas does it typically evaluate?",
+      "question_text": "What is the difference between security awareness training and security education?",
       "choices": [
-        "A marketing review of a vendor's logo and brand identity",
-        "An evaluation of a third party's security posture before and during a relationship, typically covering security controls, compliance/certifications, and data handling/privacy practices",
-        "A check of whether the vendor's office has nice furniture",
-        "A test of how fast the vendor responds to sales emails"
+        "They are the same thing with different names",
+        "Awareness training provides broad, general knowledge to change behavior (e.g., 'recognize phishing'); education provides deep, formal knowledge to build expertise (e.g., a degree in cybersecurity)",
+        "Awareness training is for managers; education is for technical staff",
+        "Awareness training is mandatory; education is optional"
       ],
-      "answer": "An evaluation of a third party's security posture before and during a relationship, typically covering security controls, compliance/certifications, and data handling/privacy practices",
-      "explanation_correct": "A vendor risk assessment evaluates a third party's security controls (e.g., encryption, access management), compliance posture (SOC 2, ISO 27001), and how it handles/protects/retains your data, plus contractual obligations.",
-      "explanation_wrong_common": "It is a security and compliance evaluation tied to data exposure — not marketing, facilities, or sales responsiveness."
+      "answer": "Awareness training provides broad, general knowledge to change behavior (e.g., 'recognize phishing'); education provides deep, formal knowledge to build expertise (e.g., a degree in cybersecurity)",
+      "explanation_correct": "Awareness training targets all employees with general security practices to reduce risky behavior — it's about recognition and response. Education goes deeper, providing formal, structured learning that builds professional expertise and qualifications. Training changes habits; education builds careers.",
+      "explanation_wrong_common": "Confusing the two or attributing them to different job roles. Both can apply to anyone; the difference is depth and intent, not audience."
     },
     {
-      "card_id": "gc_217",
-      "topic": "Third-Party Risk Management",
+      "card_id": "gc_237",
+      "topic": "Security Awareness Training",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the supply chain risk that CompTIA emphasizes, and why is it hard to eliminate?",
+      "question_text": "What role does executive leadership play in the success of a security awareness program?",
       "choices": [
-        "The risk that suppliers deliver products late",
-        "The risk that a compromise in a supplier (or their sub-supplier) introduces vulnerabilities into your environment via software/hardware you trust — hard to eliminate because you depend on components you cannot fully inspect",
-        "The risk that suppliers charge too much",
-        "The risk that suppliers are located in a different time zone"
+        "Executives only need to approve the budget; their personal participation is irrelevant",
+        "Visible executive participation and endorsement signal that security is an organizational priority, increasing employee engagement and compliance",
+        "Executives should be exempt from training due to their busy schedules",
+        "Executives should personally deliver all training sessions to demonstrate commitment"
       ],
-      "answer": "The risk that a compromise in a supplier (or their sub-supplier) introduces vulnerabilities into your environment via software/hardware you trust — hard to eliminate because you depend on components you cannot fully inspect",
-      "explanation_correct": "Supply chain risk is a trusted dependency: a compromised vendor, library, or component (and its sub-suppliers) can inject malware/backdoors into software or hardware you then ingest. It's hard to eliminate because you cannot fully audit every transitive dependency.",
-      "explanation_wrong_common": "Supply chain security risk is about trusted-component compromise, not pricing, delivery timing, or geography."
+      "answer": "Visible executive participation and endorsement signal that security is an organizational priority, increasing employee engagement and compliance",
+      "explanation_correct": "Tone from the top is critical. When executives visibly participate in training, complete phishing simulations, and publicly endorse security practices, employees understand that security is a real organizational priority — not just an IT checkbox. This dramatically improves engagement and behavior change.",
+      "explanation_wrong_common": "Underestimating the influence of leadership behavior. Budget approval alone doesn't create culture. Exempting executives sends the opposite message — that security is for subordinates, not leadership."
     },
     {
-      "card_id": "gc_218",
-      "topic": "Third-Party Risk Management",
+      "card_id": "gc_238",
+      "topic": "Security Awareness Training",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A SaaS vendor will process customer PII for your company. The contract as drafted has no security clauses. Which contractual additions MOST reduce your third-party risk?",
+      "question_text": "A company's annual security awareness training consists of a 45-minute online module that all employees complete in one sitting. Phishing simulation results show no improvement — click rates remain at 25%. The HR director says 'employees are completing the training, so the problem is the employees.' What is actually wrong, and what should change?",
       "choices": [
-        "A discount clause and a longer payment term",
-        "Right-to-audit, breach notification timelines, data-processing/handling restrictions, encryption requirements, and defined liability/indemnification",
-        "A clause requiring the vendor to send holiday gifts",
-        "A clause stating the vendor has no security obligations"
+        "Fire employees who click on phishing simulations to set an example",
+        "The training method is ineffective — replace the single annual session with short, frequent microlearning modules, role-specific training for high-risk groups, real-time coaching after failed phishing simulations, and regular fresh content to combat habituation",
+        "Increase the annual training to 90 minutes to cover more material",
+        "Require employees to pass a written exam with 90% to prove they learned the material"
       ],
-      "answer": "Right-to-audit, breach notification timelines, data-processing/handling restrictions, encryption requirements, and defined liability/indemnification",
-      "explanation_correct": "Core risk-reducing contract terms: right-to-audit, mandatory breach notification within defined timelines, data handling/processing limits, encryption standards, and clear liability/indemnification — bounding and enforcing the vendor's security obligations for your data.",
-      "explanation_wrong_common": "Commercial clauses (discounts, gifts, terms) don't address data risk; explicitly disclaiming security obligations increases it."
+      "answer": "The training method is ineffective — replace the single annual session with short, frequent microlearning modules, role-specific training for high-risk groups, real-time coaching after failed phishing simulations, and regular fresh content to combat habituation",
+      "explanation_correct": "Annual single-session training suffers from the forgetting curve — employees retain little after weeks. Effective awareness programs use spaced repetition (microlearning), contextual training (immediate coaching after a failed simulation), role-based content (finance gets BEC training, devs get secure coding), and fresh scenarios to prevent habituation. The problem is the method, not the people.",
+      "explanation_wrong_common": "Punitive approaches create fear and underreporting. Longer sessions don't improve retention. Written exams test memorization, not behavioral change — clicking a phishing link is a reflex, not a knowledge gap that exams solve."
     },
     {
-      "card_id": "gc_219",
-      "topic": "Third-Party Risk Management",
+      "card_id": "gc_239",
+      "topic": "Security Awareness Training",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Your company uses a critical SaaS CRM. The vendor announces a breach affecting your data but took 45 days to notify you, delaying your incident response. What is the BEST preventive control to avoid a repeat?",
+      "question_text": "An organization's phishing simulation program has been running for two years. Click rates dropped from 30% to 5%, and reporting rates rose to 60%. However, the simulations only use generic 'password expiry' and 'package delivery' templates. A real attacker uses a highly targeted spear-phishing email referencing a specific internal project, a real colleague's name, and a fake SharePoint link. The click rate for this real attack is 40%. What does this reveal about the simulation program?",
       "choices": [
-        "Stop using all SaaS products",
-        "Contractually require breach notification within a defined short window (e.g., 24-72 hours), monitor the vendor's security posture, and maintain a tested vendor-incident response playbook",
-        "Wait even longer before responding next time",
-        "Send the vendor a single angry email"
+        "The simulation program has failed and should be discontinued",
+        "The simulations lack realism and diversity — they train employees to recognize generic phishing patterns but not sophisticated, context-aware spear-phishing. The program should add targeted, personalized simulation templates that mimic real attacker TTPs, including spear-phishing with organizational context",
+        "Employees need to be retrained from scratch since they have not learned anything",
+        "The 5% click rate on simulations proves the program works; the real attack was an isolated incident"
       ],
-      "answer": "Contractually require breach notification within a defined short window (e.g., 24-72 hours), monitor the vendor's security posture, and maintain a tested vendor-incident response playbook",
-      "explanation_correct": "The gap was notification timing and preparedness. The fix: a contractual notification SLA (24-72h), ongoing vendor posture monitoring, and a pre-tested playbook so your IR activates immediately upon notification.",
-      "explanation_wrong_common": "Abandoning SaaS is impractical; delayed response or a single email doesn't fix the notification/execution gap."
+      "answer": "The simulations lack realism and diversity — they train employees to recognize generic phishing patterns but not sophisticated, context-aware spear-phishing. The program should add targeted, personalized simulation templates that mimic real attacker TTPs, including spear-phishing with organizational context",
+      "explanation_correct": "Employees learned to spot generic phishing signals (urgent password prompts, package notifications) but not sophisticated spear-phishing that uses real internal context. The program achieved a false sense of security. Adding realistic, varied templates that mirror actual attacker techniques — including spear-phishing with project names, colleague impersonation, and branded cloud links — closes the gap.",
+      "explanation_wrong_common": "Declaring the program a failure or success based on one metric. The 5% rate on generic templates is real progress, but the 40% on targeted attacks reveals a training blind spot. Discontinuing or restarting ignores what worked; the fix is expanding simulation diversity."
     },
     {
-      "card_id": "gc_220",
-      "topic": "Third-Party Risk Management",
+      "card_id": "gc_240",
+      "topic": "Security Awareness Training",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A startup integrates 12 third-party APIs and a managed hosting provider into its product with no central oversight. An audit finds: 4 APIs have no contracts, 2 vendors were never risk-assessed, and no one knows which vendor can access customer data. Propose a three-step third-party risk program.",
+      "question_text": "A global company with 5,000 employees across 15 countries implemented a security awareness program 18 months ago. The program includes annual training, quarterly phishing simulations, and a gamified reporting system. Metrics show: overall phishing click rate at 6%, reporting rate at 55%, but the finance department in one regional office has a 22% click rate — 3x the company average. The finance team handles wire transfers and has been targeted by BEC attacks twice in the past year. The regional manager says 'our team is too busy for extra training.' What is the most effective approach to address this specific risk?",
       "choices": [
-        "1) Build a vendor inventory/register mapping each vendor, its data access, and risk tier. 2) Require risk assessments + contracts (with security/privacy/breach-notice clauses) for all data-handling vendors, prioritized by risk tier. 3) Establish ongoing monitoring (posture, SOC reports) and a vendor offboarding process that revokes access and retrieves data.",
-        "1) Delete all APIs 2) fire the audit team 3) ignore vendors",
-        "1) Buy more vendors 2) give all vendors admin access 3) remove all contracts",
-        "1) Keep no records 2) share data with everyone 3) disable monitoring"
+        "Mandate the entire finance department complete additional generic security awareness training monthly",
+        "Implement a targeted, role-specific intervention for the high-risk finance group: BEC-focused simulations with wire transfer scenarios, mandatory dual-authorization for wire transfers above a threshold, out-of-band verification procedures for payment changes, weekly 5-minute finance-specific microlearning, and escalate to the regional executive if the manager continues to block training time",
+        "Transfer the finance team's email security to an external managed service provider",
+        "Accept the risk since the overall company click rate is only 6%"
       ],
-      "answer": "1) Build a vendor inventory/register mapping each vendor, its data access, and risk tier. 2) Require risk assessments + contracts (with security/privacy/breach-notice clauses) for all data-handling vendors, prioritized by risk tier. 3) Establish ongoing monitoring (posture, SOC reports) and a vendor offboarding process that revokes access and retrieves data.",
-      "explanation_correct": "A mature third-party risk program: (1) a vendor register with data-access and risk-tier mapping, (2) risk assessments + security contracts for all data-handling vendors prioritized by tier, and (3) continuous monitoring plus formal offboarding that revokes access and recovers data.",
-      "explanation_wrong_common": "Ignoring, over-sharing, or removing oversight magnifies risk; the program is about visibility, contractual control, and lifecycle management."
+      "answer": "Implement a targeted, role-specific intervention for the high-risk finance group: BEC-focused simulations with wire transfer scenarios, mandatory dual-authorization for wire transfers above a threshold, out-of-band verification procedures for payment changes, weekly 5-minute finance-specific microlearning, and escalate to the regional executive if the manager continues to block training time",
+      "explanation_correct": "The risk is concentrated and specific — a finance group handling wire transfers, targeted by BEC, with 3x the click rate. Generic training won't address BEC-specific techniques. The response combines targeted awareness (BEC simulations, microlearning), procedural controls (dual-authorization, out-of-band verification), and governance escalation (if the manager blocks training, the risk must be elevated to leadership). This layers human, process, and governance controls for a high-risk group.",
+      "explanation_wrong_common": "More generic training doesn't address BEC-specific attack patterns. Outsourcing email security doesn't fix the human element. Accepting risk based on an aggregate metric ignores that the highest-risk group is where a breach will actually occur — averages mask localized danger."
     }
   ],
   "scheduling_updates": [
     {
-      "card_id": "gc_201",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_202",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_203",
+      "card_id": "gc_221",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_204",
+      "card_id": "gc_222",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_205",
-      "next_due_at": "2026-11-26T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_206",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_207",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_208",
+      "card_id": "gc_223",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_209",
+      "card_id": "gc_224",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_210",
-      "next_due_at": "2026-11-26T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_211",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_212",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_213",
+      "card_id": "gc_225",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_214",
+      "card_id": "gc_226",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_215",
-      "next_due_at": "2026-11-26T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_216",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_217",
-      "next_due_at": "2026-11-24T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_218",
+      "card_id": "gc_227",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_219",
+      "card_id": "gc_228",
       "next_due_at": "2026-11-25T00:00:00+08:00"
     },
     {
-      "card_id": "gc_220",
-      "next_due_at": "2026-11-26T00:00:00+08:00"
+      "card_id": "gc_229",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_230",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_231",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_232",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_233",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_234",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_235",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_236",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_237",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_238",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_239",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
+    },
+    {
+      "card_id": "gc_240",
+      "next_due_at": "2026-11-25T00:00:00+08:00"
     }
   ]
 }
