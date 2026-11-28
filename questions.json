@@ -1,406 +1,346 @@
 {
   "cards": [
     {
-      "card_id": "gc_261",
-      "topic": "Cryptographic Concepts",
+      "card_id": "gc_281",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the fundamental difference between symmetric and asymmetric cryptography in terms of key usage?",
+      "question_text": "What distinguishes an APT (Advanced Persistent Threat) from a typical opportunistic attacker?",
       "choices": [
-        "Symmetric uses one shared key for both encryption and decryption; asymmetric uses a mathematically linked key pair where one key encrypts and the other decrypts",
-        "Symmetric uses two keys; asymmetric uses one key",
-        "Symmetric is always slower than asymmetric",
-        "Asymmetric cannot provide confidentiality, only authentication"
+        "An APT uses only automated tools and strikes randomly",
+        "An APT is a well-resourced, highly skilled adversary (often nation-state or organized crime) that maintains long-term, stealthy persistence in a target network, typically for espionage or data exfiltration rather than immediate disruption",
+        "An APT always uses ransomware as its primary weapon",
+        "An APT only targets individual home users, not organizations"
       ],
-      "answer": "Symmetric uses one shared key for both encryption and decryption; asymmetric uses a mathematically linked key pair where one key encrypts and the other decrypts",
-      "explanation_correct": "Symmetric cryptography (e.g., AES) is fast and uses a single shared secret for both operations, which creates a key-distribution problem. Asymmetric cryptography (e.g., RSA, ECC) uses a public/private key pair — what one key encrypts, the other decrypts — solving key distribution at the cost of speed. In practice they are combined: asymmetric to exchange a symmetric session key, then symmetric for bulk data.",
-      "explanation_wrong_common": "Reversing the key counts, or assuming asymmetric is faster (it is far slower per byte). Also confusing the roles: asymmetric can provide both confidentiality (encrypt with recipient's public key) and authentication (encrypt/sign with sender's private key)."
+      "answer": "An APT is a well-resourced, highly skilled adversary (often nation-state or organized crime) that maintains long-term, stealthy persistence in a target network, typically for espionage or data exfiltration rather than immediate disruption",
+      "explanation_correct": "APTs are characterized by sophistication, resources, and persistence. They establish and maintain covert access over extended periods, often using custom malware, zero-day exploits, and living-off-the-land techniques to avoid detection. Their goals are typically data theft, intellectual property exfiltration, or establishing a foothold for future operations, not immediate destruction. Attribution is difficult due to false-flag techniques.",
+      "explanation_wrong_common": "Confusing APTs with opportunistic or automated attackers. APTs are not defined by a specific tool (like ransomware) but by their persistent, stealthy, well-funded nature. They target organizations and governments, not individual home users."
     },
     {
-      "card_id": "gc_262",
-      "topic": "Cryptographic Concepts",
+      "card_id": "gc_282",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "Which set of properties correctly describes a cryptographic hash function?",
+      "question_text": "What is the difference between a hacktivist and a state-sponsored threat actor in terms of motivation?",
       "choices": [
-        "Reversible, random-length output, key-dependent",
-        "One-way (irreversible), deterministic, fixed-length output, and resistant to collisions",
-        "Two-way, variable output, uses a shared secret",
-        "Reversible only with the public key, variable-length output"
+        "Both are motivated purely by financial gain",
+        "A hacktivist is driven by political, social, or ideological causes and typically seeks disruption or publicity, while a state-sponsored actor operates on behalf of a government to advance national interests through espionage, sabotage, or cyber warfare",
+        "A hacktivist works for a government; a state-sponsored actor works alone",
+        "There is no difference; the terms are interchangeable"
       ],
-      "answer": "One-way (irreversible), deterministic, fixed-length output, and resistant to collisions",
-      "explanation_correct": "A hash (e.g., SHA-256) takes arbitrary input and produces a fixed-length digest deterministically (same input always yields same output). It is one-way — the input cannot be recovered from the digest. Strong hashes resist collisions (two inputs producing the same digest) and preimage attacks. Hashes provide integrity, not confidentiality.",
-      "explanation_wrong_common": "Thinking hashes are reversible or use a key (that describes encryption or HMAC, not a plain hash). Hashes are not encryption; you do not 'decrypt' a hash. A keyed hash (HMAC) adds a secret for authentication but the underlying hash remains one-way."
+      "answer": "A hacktivist is driven by political, social, or ideological causes and typically seeks disruption or publicity, while a state-sponsored actor operates on behalf of a government to advance national interests through espionage, sabotage, or cyber warfare",
+      "explanation_correct": "Hacktivists (e.g., Anonymous) use hacking to promote political or social agendas — their goals include defacement, DDoS, data dumps for publicity, and embarrassment of targets. State-sponsored actors have the backing of a nation-state, operate with significant resources, and pursue strategic objectives like intelligence gathering, critical infrastructure disruption, or influencing foreign policy. Understanding motive helps predict targets and methods.",
+      "explanation_wrong_common": "Treating all threat actors as financially motivated. While some hacktivists and state actors do cause financial damage, their primary motivations are ideological and strategic respectively, not direct monetary gain."
     },
     {
-      "card_id": "gc_263",
-      "topic": "Cryptographic Concepts",
+      "card_id": "gc_283",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "An application must encrypt 500 GB of database backups at rest for performance-critical nightly jobs. The security team suggests RSA. What is the best recommendation?",
+      "question_text": "A security team notices that an attacker is systematically scanning their public-facing web servers, trying commonly exploited vulnerabilities without targeting any specific organization. The attacker appears to be using automated tools and will exploit whatever they find. Which type of threat actor best describes this?",
       "choices": [
-        "Use RSA-4096 for the full 500 GB; it is the most secure option",
-        "Use a symmetric algorithm such as AES-256 for bulk encryption; reserve RSA only for protecting/exchanging the AES key",
-        "Use SHA-256 to hash the backups instead of encrypting them",
-        "Use Diffie-Hellman to encrypt the data directly"
+        "Nation-state APT conducting targeted espionage",
+        "Script kiddie or opportunistic attacker using automated tools to scan and exploit any vulnerable target they find, without a specific organizational goal",
+        "Insider threat with legitimate credentials",
+        "A competitor conducting corporate espionage"
       ],
-      "answer": "Use a symmetric algorithm such as AES-256 for bulk encryption; reserve RSA only for protecting/exchanging the AES key",
-      "explanation_correct": "Asymmetric algorithms like RSA are computationally expensive and impractical for large bulk data — encrypting 500 GB with RSA would be prohibitively slow. The standard pattern is hybrid encryption: AES-256 (fast, strong) encrypts the data, and RSA encrypts the AES session key so only the holder of the matching private key can recover it. This gives performance plus secure key distribution.",
-      "explanation_wrong_common": "Assuming 'RSA is strongest so use it everywhere.' RSA's strength is key exchange/signing, not bulk encryption. Hashing backups (SHA) only proves integrity, not confidentiality. Diffie-Hellman establishes shared secrets; it does not bulk-encrypt data."
+      "answer": "Script kiddie or opportunistic attacker using automated tools to scan and exploit any vulnerable target they find, without a specific organizational goal",
+      "explanation_correct": "Script kiddies and opportunistic attackers use pre-built tools and exploits created by others. They scan broadly, looking for low-hanging fruit — unpatched systems, default credentials, known vulnerabilities — rather than conducting targeted reconnaissance against a specific organization. While individually less sophisticated, they can still cause significant damage by exploiting neglected systems. Defense focuses on patching, hardening, and basic hygiene.",
+      "explanation_wrong_common": "Assuming all attacks are targeted or sophisticated. Many attacks are opportunistic — the attacker found you, not chose you. This distinction matters because it changes the defense strategy: for opportunistic attacks, basic hygiene (patching, strong passwords, closing unnecessary ports) is often sufficient."
     },
     {
-      "card_id": "gc_264",
-      "topic": "Cryptographic Concepts",
-      "difficulty": "easy",
-      "question_type": "definition",
-      "question_text": "What is the purpose of a salt in password storage, and how does it differ from encryption?",
-      "choices": [
-        "A salt encrypts the password so it can be decrypted later by administrators",
-        "A salt is a random value added to each password before hashing so identical passwords produce different digests, defeating rainbow tables; it is not encryption and the password is not recoverable",
-        "A salt is a shorter password used as a backup",
-        "A salt compresses the password to save storage space"
-      ],
-      "answer": "A salt is a random value added to each password before hashing so identical passwords produce different digests, defeating rainbow tables; it is not encryption and the password is not recoverable",
-      "explanation_correct": "Salting prepends or appends a unique random value to each plaintext password before hashing. Even if two users choose 'password123', their stored hashes differ because their salts differ. This defeats precomputed rainbow tables and makes brute-forcing each hash individually necessary. The salt is stored alongside the hash (it is not secret). Salting is hashing, not encryption — the original password cannot be recovered.",
-      "explanation_wrong_common": "Believing a salt is secret or that it allows decryption. A salt is not a key and is not encrypted itself. Also confusing salting with peppering (a pepper is a server-side secret added on top of a salt)."
-    },
-    {
-      "card_id": "gc_265",
-      "topic": "Cryptographic Concepts",
+      "card_id": "gc_284",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "Two parties who have never met need to agree on a shared secret over an insecure channel where an attacker can eavesdrop but not modify messages. Which mechanism is designed for this?",
+      "question_text": "An organization discovers that a former sysadmin who was terminated last month is still accessing internal systems using a backdoor account they created before leaving. The ex-employee is downloading customer data. What type of threat is this, and what should be the immediate response?",
       "choices": [
-        "RSA digital signatures",
-        "Diffie-Hellman key exchange",
-        "AES-CBC with a pre-shared key",
-        "SHA-256 hashing of a shared file"
+        "External APT — deploy new firewalls immediately",
+        "Insider threat (malicious) — immediately disable all accounts and access belonging to the former employee, revoke any credentials/certificates, remove the backdoor account, and begin forensic investigation of what was accessed",
+        "Script kiddie — ignore it since the attacker is already gone",
+        "Hacktivist — negotiate with the former employee"
       ],
-      "answer": "Diffie-Hellman key exchange",
-      "explanation_correct": "Diffie-Hellman allows two parties to jointly compute a shared secret over an insecure channel without the secret ever being transmitted, even if an attacker observes all traffic. It relies on the difficulty of the discrete logarithm problem. Note: basic DH provides no authentication, so without authentication an active man-in-the-middle could intercept — but the scenario specifies eavesdrop-only, so DH is correct.",
-      "explanation_wrong_common": "Choosing AES (it requires a pre-shared key, which is the problem DH solves) or SHA (hashing produces no shared secret). Digital signatures authenticate, they do not establish a shared symmetric secret by themselves."
+      "answer": "Insider threat (malicious) — immediately disable all accounts and access belonging to the former employee, revoke any credentials/certificates, remove the backdoor account, and begin forensic investigation of what was accessed",
+      "explanation_correct": "A malicious insider threat involves someone with legitimate inside knowledge and access who uses it maliciously. Former employees are a classic insider threat vector — they may have created backdoor accounts, retained credentials, or left logic bombs. The immediate response is to cut all access (accounts, VPN, SSH keys, API tokens), remove any unauthorized accounts, and investigate the scope of data access. Offboarding procedures should always include comprehensive access revocation.",
+      "explanation_wrong_common": "Treating this as an external attack. The key indicator is that the attacker had prior legitimate access and inside knowledge. Deploying firewalls won't help if the attacker has valid credentials. Prevention requires robust offboarding processes and monitoring for unauthorized account creation."
     },
     {
-      "card_id": "gc_266",
-      "topic": "Cryptographic Concepts",
+      "card_id": "gc_285",
+      "topic": "Threat Actors and Attack Vectors",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A startup must protect a high-volume API: it needs confidentiality for payload data, integrity to detect tampering, authentication of the server to clients, and high throughput. They want to avoid managing per-session pre-shared keys. Propose the best cryptographic design.",
+      "question_text": "A defense contractor detects unusual outbound DNS traffic to an unfamiliar domain. Investigation reveals a sophisticated implant that uses DNS tunneling for command-and-control, has been active for 6 months, and exfiltrates small amounts of design data nightly. The malware uses legitimate administrative tools (PowerShell, WMI) to move laterally and shows no signs in traditional AV scans. Which threat actor profile and attack characteristics best describe this scenario?",
       "choices": [
-        "Use RSA to encrypt every API payload and SHA-1 hashes for integrity; no shared keys needed",
-        "Establish a TLS 1.3 session using the server's certificate (asymmetric handshake authenticates the server and negotiates a key), then use AES-GCM (an AEAD cipher) for confidentiality + integrity of payloads at high speed, avoiding per-session pre-shared keys",
-        "Use MD5 to sign each payload and distribute one AES key to all clients",
-        "Use Diffie-Hellman with no authentication and AES-CBC without integrity checks"
+        "Script kiddie using a publicly available RAT — deploy AV updates and block the domain",
+        "Nation-state APT using living-off-the-land techniques, custom malware with DNS-based C2, and long-term persistence for industrial espionage — requires coordinated incident response, threat hunting, and likely government notification",
+        "Opportunistic ransomware gang — pay the ransom and restore from backups",
+        "Insider threat using their daily administrative access — revoke the admin's credentials"
       ],
-      "answer": "Establish a TLS 1.3 session using the server's certificate (asymmetric handshake authenticates the server and negotiates a key), then use AES-GCM (an AEAD cipher) for confidentiality + integrity of payloads at high speed, avoiding per-session pre-shared keys",
-      "explanation_correct": "TLS 1.3 performs an asymmetric handshake using the server's X.509 certificate, authenticating the server and deriving a fresh symmetric session key without pre-shared keys. AES-GCM is an Authenticated Encryption with Associated Data (AEAD) mode — it provides confidentiality and integrity in one efficient operation at high throughput, satisfying all four requirements. This is the industry-standard pattern for securing APIs.",
-      "explanation_wrong_common": "Using RSA for every payload (catastrophic performance) or SHA-1/MD5 (both broken for collision resistance). Distributing one shared AES key to all clients destroys isolation and compounds key-management risk. DH without authentication is vulnerable to man-in-the-middle, and AES-CBC without a MAC offers no integrity."
+      "answer": "Nation-state APT using living-off-the-land techniques, custom malware with DNS-based C2, and long-term persistence for industrial espionage — requires coordinated incident response, threat hunting, and likely government notification",
+      "explanation_correct": "This scenario has all the hallmarks of an APT: 6-month persistence (advanced and persistent), DNS tunneling for covert C2 (sophisticated evasion), exfiltration of design data (targeted espionage, not opportunistic), living-off-the-land via PowerShell/WMI (evasion of traditional AV), and targeting a defense contractor (high-value strategic target). The response must go beyond basic remediation: engage threat hunting teams, preserve forensic evidence, notify relevant government/industry partners (e.g., CISA, law enforcement), and conduct a comprehensive sweep for additional implants.",
+      "explanation_wrong_common": "Underestimating the threat. AV updates and domain blocking are insufficient — the attacker has already established multiple footholds using legitimate tools that AV cannot detect. Paying ransom is irrelevant (this is espionage, not ransomware). This is not an insider threat despite the use of admin tools — the tools are being used by external malware, not a legitimate admin."
     },
     {
-      "card_id": "gc_267",
-      "topic": "Public Key Infrastructure",
+      "card_id": "gc_286",
+      "topic": "Social Engineering Attacks",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the primary role of a Certificate Authority (CA) in a Public Key Infrastructure?",
+      "question_text": "What is pretexting in the context of social engineering, and how does it differ from simple phishing?",
       "choices": [
-        "To encrypt all user data with a single master key",
-        "To verify identity and bind a public key to an identity by issuing and digitally signing certificates",
-        "To store users' private keys for safekeeping",
-        "To act as the network firewall for encrypted traffic"
+        "Pretexting and phishing are identical techniques",
+        "Pretexting involves creating a fabricated scenario or identity (the pretext) to establish trust and manipulate the victim into divulging information, whereas phishing is a broader term for fraudulent communications (often email) that attempt to steal credentials or install malware",
+        "Pretexting only works on technical systems, not humans",
+        "Phishing is more sophisticated than pretexting"
       ],
-      "answer": "To verify identity and bind a public key to an identity by issuing and digitally signing certificates",
-      "explanation_correct": "A CA is a trusted third party that validates the identity of an applicant and issues an X.509 certificate binding that identity to a public key. The CA digitally signs the certificate with its private key, so anyone trusting the CA's public key can trust the binding. CAs never generate or store the subject's private key. The chain of trust extends from a root CA through intermediate CAs to end-entity certificates.",
-      "explanation_wrong_common": "Believing the CA holds private keys (this would break the entire trust model — only the key owner should ever possess their private key). Also confusing the CA with an encryption service or firewall; the CA's job is identity binding and certification."
+      "answer": "Pretexting involves creating a fabricated scenario or identity (the pretext) to establish trust and manipulate the victim into divulging information, whereas phishing is a broader term for fraudulent communications (often email) that attempt to steal credentials or install malware",
+      "explanation_correct": "Pretexting is a form of social engineering where the attacker creates a convincing false narrative — pretending to be an IT auditor, a bank fraud investigator, a delivery driver, etc. — to build trust and justify their request for sensitive information. Phishing is the delivery mechanism (fraudulent emails/messages); pretexting is the psychological manipulation technique. Pretexting can occur over phone (vishing), in person, or via email, and is often a component of spear-phishing campaigns.",
+      "explanation_wrong_common": "Confusing the two terms or thinking they are mutually exclusive. Pretexting is often used within phishing attacks — a phishing email might contain a pretext (e.g., 'Your account will be locked unless you verify your identity'). Pretexting focuses on the story/scenario; phishing focuses on the fraudulent communication channel."
     },
     {
-      "card_id": "gc_268",
-      "topic": "Public Key Infrastructure",
+      "card_id": "gc_287",
+      "topic": "Social Engineering Attacks",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the difference between a Certificate Revocation List (CRL) and OCSP in certificate validation?",
+      "question_text": "What is tailgating (piggybacking) and how does it exploit physical security controls?",
       "choices": [
-        "They are identical; both encrypt certificates",
-        "A CRL is a published list of revoked certificates a client downloads; OCSP is a real-time protocol where a client queries a responder for the status of one specific certificate",
-        "CRL issues new certificates; OCSP revokes them",
-        "OCSP is a list; CRL is a real-time query protocol"
+        "Tailgating is a network attack that follows a legitimate data packet",
+        "Tailgating is a physical social engineering technique where an unauthorized person follows closely behind an authorized person through a secure door, exploiting the authorized person's courtesy or reluctance to confront them, bypassing badge/card reader controls",
+        "Tailgating is a type of phishing that targets executives specifically",
+        "Tailgating is an automated tool that scans for open doors"
       ],
-      "answer": "A CRL is a published list of revoked certificates a client downloads; OCSP is a real-time protocol where a client queries a responder for the status of one specific certificate",
-      "explanation_correct": "A CRL is a time-stamped, CA-signed list of revoked (not-yet-expired) certificate serial numbers that clients fetch and cache; it can grow large and become stale between downloads. OCSP (Online Certificate Status Protocol) lets a client ask an OCSP responder for the current good/revoked/unknown status of a single certificate in real time, reducing latency and staleness. OCSP Stapling pushes the OCSP response to the client from the server, improving privacy and performance.",
-      "explanation_wrong_common": "Reversing the two, or thinking either issues certificates. Both are revocation-status mechanisms only. A common operational pitfall: relying solely on CRLs for high-value validation where real-time OCSP is more appropriate."
+      "answer": "Tailgating is a physical social engineering technique where an unauthorized person follows closely behind an authorized person through a secure door, exploiting the authorized person's courtesy or reluctance to confront them, bypassing badge/card reader controls",
+      "explanation_correct": "Tailgating (also called piggybacking) exploits human behavior — politeness, social norms, or the desire to avoid confrontation. An attacker waits near a secured entrance and follows an authorized person through the door before it closes, avoiding the need to badge in. Some distinguish piggybacking (the authorized person knowingly allows it) from tailgating (done without explicit consent), but the terms are often used interchangeably. Controls include mantraps, security guards, anti-passback systems, and security awareness training.",
+      "explanation_wrong_common": "Confusing tailgating with a cyber-only attack. Tailgating is a physical security breach enabled by social engineering. Also, thinking technical controls alone solve it — the human element (courtesy, avoiding awkwardness) is the core vulnerability, so training and culture are essential mitigations."
     },
     {
-      "card_id": "gc_269",
-      "topic": "Public Key Infrastructure",
+      "card_id": "gc_288",
+      "topic": "Social Engineering Attacks",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A mobile banking app hard-codes the expected public key/hash of its backend server certificate and refuses connections if the presented certificate does not match, bypassing normal CA validation. What is this technique and its main purpose?",
+      "question_text": "An employee in the finance department receives a phone call from someone claiming to be from the CEO's office, saying the CEO is in an urgent meeting and needs the employee to immediately wire $50,000 to a new vendor account. The caller knows the CEO's name, the employee's name, and mentions a recent company project. The caller insists on urgency and secrecy. What attack is this and what is the best defense?",
       "choices": [
-        "Certificate chaining — to speed up TLS",
-        "Certificate pinning — to prevent man-in-the-middle attacks even if a trusted CA is compromised or a rogue certificate is issued",
-        "OCSP stapling — to reduce revocation latency",
-        "Key escrow — to allow law enforcement access"
+        "Generic phishing — train employees to check spam folders",
+        "Business Email Compromise (BEC) / whaling via voice (vishing) — a spear-phishing variant targeting specific individuals with authority-impersonation; defense requires verification procedures (call back the CEO via known number), dual-authorization for wire transfers, and employee training on urgency-based social engineering",
+        "Tailgating — install a mantrap at the finance office",
+        "Ransomware — disconnect the finance computer from the network"
       ],
-      "answer": "Certificate pinning — to prevent man-in-the-middle attacks even if a trusted CA is compromised or a rogue certificate is issued",
-      "explanation_correct": "Certificate pinning embeds a known-good certificate or public key hash in the client. The client only accepts that pinned credential (or its backup pins) regardless of what CA chain says. This protects against rogue/compromised CAs and MITM using fraudulently issued certificates. The trade-off: if the server key rotates and the pin isn't updated, the app breaks, so pins must be managed carefully with backup pins.",
-      "explanation_wrong_common": "Confusing pinning with chaining (chain of trust is normal CA validation, the opposite of pinning's bypass). Pinning does not speed TLS or reduce revocation latency; it adds a strict identity check."
+      "answer": "Business Email Compromise (BEC) / whaling via voice (vishing) — a spear-phishing variant targeting specific individuals with authority-impersonation; defense requires verification procedures (call back the CEO via known number), dual-authorization for wire transfers, and employee training on urgency-based social engineering",
+      "explanation_correct": "This is a BEC-style attack delivered via voice (vishing) rather than email. The attacker uses pretexting (impersonating the CEO's office), authority (CEO name), urgency ('immediate'), secrecy ('don't discuss'), and reconnaissance (knows names and projects) to manipulate the employee. BEC/whaling attacks target high-value individuals or those with financial authority. Key defenses: always verify out-of-band (call back on a known number), require dual authorization for wire transfers, implement policies that override urgency claims, and train staff to recognize authority-based social engineering.",
+      "explanation_wrong_common": "Treating this as generic phishing or a non-social-engineering attack. The sophistication (reconnaissance, targeted impersonation) distinguishes it from mass phishing. Spam filters won't catch a phone call. The defense is process-based (verification, dual authorization), not purely technical."
     },
     {
-      "card_id": "gc_270",
-      "topic": "Public Key Infrastructure",
+      "card_id": "gc_289",
+      "topic": "Social Engineering Attacks",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A browser validates a website's certificate. The certificate is signed by Intermediate CA B, which is signed by Root CA A (in the browser trust store). What establishes the chain of trust, and why is the root kept offline?",
+      "question_text": "During a penetration test, the tester drops USB drives labeled 'Q4 Salary Adjustments - Confidential' in the company parking lot and employee break room. Within hours, an employee plugs one into their workstation, which executes a payload that establishes a reverse shell. What principle does this exploit, and what combination of controls best mitigates it?",
       "choices": [
-        "The chain is arbitrary; only the leaf certificate matters. Roots are online for speed",
-        "Each signature link (leaf←Intermediate←Root) is cryptographically verified back to a trusted root in the store; roots are kept offline to minimize the risk of the root private key being compromised, which would undermine the entire PKI hierarchy",
-        "The browser trusts the intermediate directly; roots are irrelevant",
-        "The CA signs the browser, not the certificates"
+        "It exploits a software vulnerability — patch the USB drivers",
+        "It exploits human curiosity and trust (social engineering) combined with lack of technical controls; mitigation requires USB device control (whitelist-only devices via GPO/MDM), disabling autorun, endpoint EDR to detect malicious execution, and security awareness training so employees report rather than plug in found devices",
+        "It exploits a network firewall gap — add a new firewall rule",
+        "It exploits physical door locks — replace all building locks"
       ],
-      "answer": "Each signature link (leaf←Intermediate←Root) is cryptographically verified back to a trusted root in the store; roots are kept offline to minimize the risk of the root private key being compromised, which would undermine the entire PKI hierarchy",
-      "explanation_correct": "Trust flows from the root (self-signed and pre-installed in the trust store) down through intermediate CAs to the end-entity (leaf) certificate. The browser verifies each signature up the chain until it reaches a root it already trusts. Root CA private keys are kept offline (often on hardware HSMs in air-gapped vaults) and used only to sign intermediates, because compromise of a root key lets an attacker forge certificates trusted by everyone — catastrophic for the whole hierarchy.",
-      "explanation_wrong_common": "Thinking only the leaf matters, or that intermediates are trusted directly (they are trusted only via the root). Roots being 'online for speed' is the opposite of correct practice."
+      "answer": "It exploits human curiosity and trust (social engineering) combined with lack of technical controls; mitigation requires USB device control (whitelist-only devices via GPO/MDM), disabling autorun, endpoint EDR to detect malicious execution, and security awareness training so employees report rather than plug in found devices",
+      "explanation_correct": "This is a classic 'USB drop' social engineering attack. The decoy label ('Salary Adjustments') exploits curiosity and the tendency to investigate seemingly important items. The attack succeeds because of a combination of human weakness and missing technical controls. Defense in depth is key: technical controls (USB device whitelisting, disabled autorun, EDR monitoring) reduce the attack surface, while awareness training addresses the human element — employees should know to never plug in found USB devices and to report them to IT/security.",
+      "explanation_wrong_common": "Focusing only on one layer. Patching USB drivers won't stop a user from voluntarily opening a file. Firewall rules don't apply to a locally-executed payload. The most effective defense combines technical controls (device management, EDR) with human training — neither alone is sufficient."
     },
     {
-      "card_id": "gc_271",
-      "topic": "Public Key Infrastructure",
+      "card_id": "gc_290",
+      "topic": "Social Engineering Attacks",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "An enterprise runs an internal private CA to issue certificates to intranet servers. Security discovers the private CA signing key was exfiltrated, and forged certificates for internal services have already appeared. What is the correct sequence of response actions?",
+      "question_text": "An attacker targets a large enterprise over 3 months. They start by scraping LinkedIn for employees in the IT and finance departments, then craft personalized spear-phishing emails referencing real projects and managers. Some emails use a lookalike domain (company-internal.com vs company.com) with a fake Microsoft 365 login page that captures credentials and session tokens. After compromising one IT admin, they use the access to deploy a callback MFA bypass (capturing MFA tokens via a reverse proxy). What is the overall attack chain, and what layered defenses would have been most effective at each stage?",
       "choices": [
-        "Quietly rotate the CA key and reissue certificates over several months",
-        "Immediately revoke all certificates issued by the compromised CA, revoke/remove the compromised CA root from all trust stores, generate a new CA key pair, reissue and distribute new certificates, and forensically investigate scope",
-        "Disable TLS on all intranet servers until next year's budget cycle",
-        "Add the compromised key to a CRL and continue using the same CA"
+        "Simple phishing — spam filters would have stopped everything",
+        "A multi-stage social engineering + credential harvesting + MFA bypass chain: (1) OSINT/recon via LinkedIn, control by limiting employee data exposure and monitoring for lookalike domains; (2) Spear-phishing with lookalike domain, email authentication (DMARC/SPF/DKIM), domain monitoring, user training; (3) Credential phishing via fake login, FIDO2 hardware keys (phishing-resistant MFA), conditional access policies; (4) MFA bypass via reverse proxy, FIDO2/WebAuthn (not susceptible to token relay), session monitoring, anomaly detection",
+        "Ransomware — just restore from backups",
+        "Insider threat — fire all IT staff and rehire"
       ],
-      "answer": "Immediately revoke all certificates issued by the compromised CA, revoke/remove the compromised CA root from all trust stores, generate a new CA key pair, reissue and distribute new certificates, and forensically investigate scope",
-      "explanation_correct": "A compromised CA private key lets an attacker forge valid-looking certificates for any identity, breaking all trust in that hierarchy. The correct response: treat it as a total trust failure — revoke every issued certificate, remove the compromised CA root from clients' trust stores (a CRL alone is insufficient because the signing key itself is compromised, so forged certs not in any CRL would still validate), stand up a new CA with a fresh key pair, reissue certificates, and investigate how the key was stolen. This is severe and time-critical.",
-      "explanation_wrong_common": "Treating it like a single revoked certificate (CRL) — that fails because the attacker can mint new forged certificates the CRL doesn't list. Slow rotation or ignoring TLS gives attackers a persistent foothold."
+      "answer": "A multi-stage social engineering + credential harvesting + MFA bypass chain: (1) OSINT/recon via LinkedIn, control by limiting employee data exposure and monitoring for lookalike domains; (2) Spear-phishing with lookalike domain, email authentication (DMARC/SPF/DKIM), domain monitoring, user training; (3) Credential phishing via fake login, FIDO2 hardware keys (phishing-resistant MFA), conditional access policies; (4) MFA bypass via reverse proxy, FIDO2/WebAuthn (not susceptible to token relay), session monitoring, anomaly detection",
+      "explanation_correct": "This is a sophisticated, multi-stage attack combining OSINT, spear-phishing, credential harvesting, and MFA bypass (via an AiTM/reverse proxy like Evilginx). The key insight is that traditional MFA (SMS, TOTP) can be relayed through a reverse proxy — the attacker captures both credentials and the MFA token in real-time. FIDO2/WebAuthn hardware keys are phishing-resistant because they cryptographically bind authentication to the origin domain, making reverse-proxy relay impossible. Defense in depth at each stage is critical: DMARC for email, conditional access for login, FIDO2 for MFA, and behavioral monitoring for post-compromise activity.",
+      "explanation_wrong_common": "Believing spam filters or any single control would stop a determined, multi-stage attacker. The critical lesson is that SMS/TOTP MFA is no longer sufficient against modern phishing — FIDO2/WebAuthn is the gold standard for phishing-resistant authentication. Also, this is not ransomware or an insider threat; it's an external social engineering-driven compromise."
     },
     {
-      "card_id": "gc_272",
-      "topic": "Digital Signatures and Non-repudiation",
-      "difficulty": "medium",
-      "question_type": "definition",
-      "question_text": "In an asymmetric digital signature, what exact sequence of operations creates the signature, and what does the recipient verify?",
-      "choices": [
-        "Sender encrypts the message with the recipient's public key; recipient decrypts with their private key",
-        "Sender hashes the message, then encrypts the hash with their own private key to create the signature; the recipient hashes the message, decrypts the signature with the sender's public key, and compares the two hashes",
-        "Sender hashes the message with a shared secret; recipient compares hashes",
-        "Sender encrypts the message with their public key; recipient decrypts with the sender's private key"
-      ],
-      "answer": "Sender hashes the message, then encrypts the hash with their own private key to create the signature; the recipient hashes the message, decrypts the signature with the sender's public key, and compares the two hashes",
-      "explanation_correct": "Digital signing is the inverse of confidentiality encryption. The sender creates a digest of the message and encrypts that digest with their private key — the result is the signature. Anyone can verify by hashing the received message, decrypting the signature with the sender's public key, and comparing. Matching hashes prove integrity (message unchanged) and authenticity/non-repudiation (only the private key holder could have produced the signature). The message itself may or may not be separately encrypted.",
-      "explanation_wrong_common": "Confusing signing with confidentiality (encrypting with the recipient's public key). A signature uses the SENDER's private key, not the recipient's. Also, the whole message is not 'encrypted with a private key' — only the hash is, for performance."
-    },
-    {
-      "card_id": "gc_273",
-      "topic": "Digital Signatures and Non-repudiation",
-      "difficulty": "medium",
-      "question_type": "scenario_mcq",
-      "question_text": "A system uses HMAC with a shared secret between two parties to protect message integrity. A dispute arises and one party claims they never sent the message. Why does HMAC not provide non-repudiation, while a digital signature does?",
-      "choices": [
-        "HMAC is weaker, so it cannot prove anything",
-        "Because the HMAC key is shared, either party could have produced the MAC, so a third party cannot prove which one sent it; a digital signature uses a private key only the signer possesses, so only they could have created it, providing non-repudiation",
-        "HMAC provides stronger non-repudiation than signatures",
-        "Non-repudiation depends on key length, not key ownership"
-      ],
-      "answer": "Because the HMAC key is shared, either party could have produced the MAC, so a third party cannot prove which one sent it; a digital signature uses a private key only the signer possesses, so only they could have created it, providing non-repudiation",
-      "explanation_correct": "Non-repudiation requires that only the claimed sender could have produced the authenticator. An HMAC uses a shared secret — both sender and receiver know it, so either could compute a valid MAC, and a third party cannot distinguish who produced it. A digital signature relies on a private key that only the signer holds; therefore only the signer could have signed, and they cannot later deny it. Integrity/authentication (HMAC) and non-repudiation (signature) are distinct properties.",
-      "explanation_wrong_common": "Equating 'authenticated/integrity-checked' with 'non-repudiable.' They are different. Strength of the algorithm or key length does not create non-repudiation — exclusive key possession does."
-    },
-    {
-      "card_id": "gc_274",
-      "topic": "Digital Signatures and Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "scenario_mcq",
-      "question_text": "A government agency requires encrypted communications where, if needed, a trusted third party can recover encrypted data, so they mandate key escrow of each user's PRIVATE signing key. What security property does this directly undermine?",
-      "choices": [
-        "Confidentiality only",
-        "Non-repudiation — because the escrow agent (or anyone who compromises it) holds a copy of the private signing key, the true owner can legitimately claim 'someone else signed this,' and signatures can no longer be attributed to the owner",
-        "Integrity of network packets",
-        "Availability of the CA"
-      ],
-      "answer": "Non-repudiation — because the escrow agent (or anyone who compromises it) holds a copy of the private signing key, the true owner can legitimately claim 'someone else signed this,' and signatures can no longer be attributed to the owner",
-      "explanation_correct": "Non-repudiation depends on exclusive possession of the private signing key. Escrowing (copying) a private signing key breaks exclusivity: the escrow agent can produce indistinguishable signatures, and a compromise of the escrow means any signature is plausibly forged. The owner can truthfully deny having signed. Note: escrowing ENCRYPTION private keys (for confidentiality recovery) is a separate, more defensible practice — but private SIGNING keys should never be escrowed if non-repudiation is required.",
-      "explanation_wrong_common": "Confusing encryption keys with signing keys. Key escrow of encryption keys affects confidentiality/recoverability; escrow of signing keys specifically destroys non-repudiation. This distinction is a classic Security+ exam point."
-    },
-    {
-      "card_id": "gc_275",
-      "topic": "Digital Signatures and Non-repudiation",
-      "difficulty": "hard",
-      "question_type": "case_study",
-      "question_text": "A vendor and a client dispute a $2M contract. The vendor claims the signed PDF the client holds is a forgery they never agreed to. The PDF was digitally signed with a certificate issued by a trusted CA, the signature validates against the vendor's current public key, the signing certificate was valid (not revoked) at signing time per a time-stamped OCSP response, and the document includes a trusted timestamp. How should the dispute be resolved from a cryptographic-evidence standpoint?",
-      "choices": [
-        "In favor of the vendor, because they deny signing",
-        "In favor of the client: a valid signature over the exact document content, bound to the vendor's CA-issued key, with a trusted timestamp and valid-at-signing-time OCSP status, constitutes strong non-repudiation evidence that the vendor's private key signed that document at that time",
-        "It cannot be determined without a witness",
-        "In favor of the vendor, because digital signatures can always be repudiated"
-      ],
-      "answer": "In favor of the client: a valid signature over the exact document content, bound to the vendor's CA-issued key, with a trusted timestamp and valid-at-signing-time OCSP status, constitutes strong non-repudiation evidence that the vendor's private key signed that document at that time",
-      "explanation_correct": "Non-repudiation rests on: (1) the signature mathematically validates against the vendor's public key → only their private key could have produced it; (2) the certificate was CA-issued and not revoked at signing time (proven by the time-stamped OCSP response) → the binding was trustworthy then; (3) a trusted timestamp proves when it was signed, preventing backdating disputes; (4) the signature covers the exact document bytes → no tampering. Unless the vendor proves their private key was compromised before signing time, the cryptographic evidence favors the client. Denial alone does not override verifiable signatures.",
-      "explanation_wrong_common": "Treating a verbal denial as overriding cryptographic proof, or believing signatures are always contestable. The vendor's only viable defense is demonstrating key compromise predating the timestamp — absent that, the evidence holds."
-    },
-    {
-      "card_id": "gc_276",
-      "topic": "Secure Protocols",
+      "card_id": "gc_291",
+      "topic": "Malware and Malicious Code",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "What is the primary purpose of TLS (Transport Layer Security)?",
+      "question_text": "What is the difference between a virus and a worm?",
       "choices": [
-        "To route packets faster across the internet",
-        "To provide confidentiality, integrity, and (optionally) authentication for data in transit between two endpoints, typically between a client and a server",
-        "To store passwords securely in a database",
-        "To compress web pages for faster loading"
+        "A virus and a worm are the same thing with different names",
+        "A virus attaches itself to a host file or program and requires user execution to spread, while a worm is self-replicating and can spread across networks autonomously without requiring a host file or user action",
+        "A worm only affects mobile devices; a virus only affects desktops",
+        "A virus is always more dangerous than a worm"
       ],
-      "answer": "To provide confidentiality, integrity, and (optionally) authentication for data in transit between two endpoints, typically between a client and a server",
-      "explanation_correct": "TLS encrypts data in transit (confidentiality), includes MAC/AEAD to detect tampering (integrity), and uses certificates to authenticate the server and optionally the client. It succeeds SSL and underpins HTTPS. TLS secures the transport channel, not data at rest. TLS 1.3 is the modern recommended version; older SSL and early TLS versions are deprecated due to known weaknesses.",
-      "explanation_wrong_common": "Confusing TLS with routing, storage, or compression. TLS protects data in motion only — once data reaches the application it is decrypted, so at-rest protection requires separate encryption."
+      "answer": "A virus attaches itself to a host file or program and requires user execution to spread, while a worm is self-replicating and can spread across networks autonomously without requiring a host file or user action",
+      "explanation_correct": "A virus is parasitic — it embeds itself in a legitimate file or program and activates when the host is executed by the user. It requires a host and human action to propagate. A worm is standalone malware that self-propagates across networks by exploiting vulnerabilities in services or protocols, without needing a host file or user interaction. Worms can spread extremely fast (e.g., Conficker, WannaCry's worm component) because they do not wait for user behavior. Both can carry destructive payloads.",
+      "explanation_wrong_common": "Confusing the two or thinking they are identical. The key distinction is autonomy: worms self-propagate without user action, viruses need a host file and user execution. This matters for defense — worms require network-level controls (segmentation, patching), while viruses require endpoint controls (AV, user awareness, file integrity monitoring)."
     },
     {
-      "card_id": "gc_277",
-      "topic": "Secure Protocols",
+      "card_id": "gc_292",
+      "topic": "Malware and Malicious Code",
       "difficulty": "easy",
       "question_type": "definition",
-      "question_text": "In IPsec, what is the difference between the AH (Authentication Header) and ESP (Encapsulating Security Payload) protocols?",
+      "question_text": "What is a Trojan horse in cybersecurity, and why is it effective despite not self-replicating?",
       "choices": [
-        "AH encrypts payloads; ESP only authenticates",
-        "AH provides authentication and integrity (no confidentiality); ESP provides confidentiality (encryption) plus optional authentication and integrity",
-        "AH and ESP are identical",
-        "AH is for email; ESP is for web"
+        "A Trojan is a self-replicating network worm",
+        "A Trojan is malware disguised as legitimate software, tricking users into voluntarily installing it; it does not self-replicate but is effective because it exploits user trust and bypasses security by appearing benign",
+        "A Trojan only infects the BIOS and cannot be detected",
+        "A Trojan is a type of antivirus software"
       ],
-      "answer": "AH provides authentication and integrity (no confidentiality); ESP provides confidentiality (encryption) plus optional authentication and integrity",
-      "explanation_correct": "IPsec uses two protocols: AH authenticates the entire packet (header + payload, with mutable fields zeroed) and provides integrity but NOT encryption. ESP encrypts the payload for confidentiality and can optionally also authenticate/integrity-protect it. ESP is far more common because confidentiality is usually required. IPsec operates in transport mode (payload only) or tunnel mode (entire original packet encapsulated — used for VPNs).",
-      "explanation_wrong_common": "Reversing the two. Remember: ESP = Encapsulating Security Payload = Encryption (confidentiality). AH = Authentication Header = Authentication only, no encryption."
+      "answer": "A Trojan is malware disguised as legitimate software, tricking users into voluntarily installing it; it does not self-replicate but is effective because it exploits user trust and bypasses security by appearing benign",
+      "explanation_correct": "Named after the mythical Trojan horse, this malware disguises itself as or embeds within legitimate-looking software (games, utilities, cracked apps, email attachments). The user voluntarily installs it, unknowingly granting the malware access. Trojans do not self-replicate (unlike viruses and worms) but often create backdoors, steal data, or download additional payloads (RATs, ransomware). Their effectiveness comes from social engineering — the user's trust is the exploit. Examples include remote access Trojans (RATs) and banking Trojans like ZeuS.",
+      "explanation_wrong_common": "Thinking Trojans self-replicate (they don't — that's what distinguishes them from viruses/worms). Also, thinking Trojans are less dangerous because they don't spread autonomously. In practice, Trojans are the primary delivery mechanism for many serious infections because they exploit the human element, which is often the weakest link."
     },
     {
-      "card_id": "gc_278",
-      "topic": "Secure Protocols",
+      "card_id": "gc_293",
+      "topic": "Malware and Malicious Code",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A legacy industrial control system still uses Telnet for remote administration. The security team must remediate this. What is the best replacement and the key security improvements it provides?",
+      "question_text": "A user's workstation begins encrypting files on network shares and appends a '.locky' extension. A ransom note appears demanding payment in cryptocurrency. The same malware is rapidly spreading to other machines on the network via SMB (port 445). Which type of malware is this, and what is the most critical immediate containment action?",
       "choices": [
-        "Replace Telnet with HTTP for web-based access",
-        "Replace Telnet with SSH (Secure Shell), which encrypts the session (confidentiality), provides strong authentication (public key/MFA), and ensures integrity, whereas Telnet transmits everything including credentials in cleartext",
-        "Replace Telnet with FTP",
-        "Keep Telnet but change the default port to obscure it"
+        "It is a logic bomb — wait for it to detonate and restore from backup",
+        "It is ransomware with a worm component (self-propagating via SMB) — immediately isolate infected machines from the network (disable SMB, quarantine hosts), identify the variant, and begin recovery from offline backups; do not pay the ransom without consulting authorities",
+        "It is a traditional virus — run a full antivirus scan on each machine",
+        "It is adware — close the pop-up and continue working"
       ],
-      "answer": "Replace Telnet with SSH (Secure Shell), which encrypts the session (confidentiality), provides strong authentication (public key/MFA), and ensures integrity, whereas Telnet transmits everything including credentials in cleartext",
-      "explanation_correct": "Telnet sends all traffic — usernames, passwords, commands — unencrypted, so anyone sniffing the network can capture credentials. SSH (port 22) encrypts the entire session, supports public-key and multifactor authentication, and provides integrity. For OT/ICS environments, SSH (ideally with key-based auth and restricted access via a jump host) is the standard secure remote-administration replacement. Changing the port ('security through obscurity') does not encrypt anything and is not a control.",
-      "explanation_wrong_common": "Substituting another cleartext protocol (HTTP/FTP) or relying on port obfuscation. The fix must provide encryption and strong authentication, which SSH does."
+      "answer": "It is ransomware with a worm component (self-propagating via SMB) — immediately isolate infected machines from the network (disable SMB, quarantine hosts), identify the variant, and begin recovery from offline backups; do not pay the ransom without consulting authorities",
+      "explanation_correct": "This describes self-propagating ransomware (like WannaCry) that combines file encryption (ransomware payload) with autonomous network spreading (worm behavior via SMB/EternalBlue). The most critical immediate action is containment — isolate infected and at-risk machines to stop lateral spread. Disable SMB v1, quarantine hosts via network segmentation or VLAN isolation, and identify the variant (some have kill switches). Recovery should use offline/immutable backups. Paying ransom is discouraged (no guarantee of recovery, funds criminal activity) unless business survival is at stake and authorities are consulted.",
+      "explanation_wrong_common": "Underestimating the urgency. Running AV scans is too slow when a worm is actively spreading. Waiting or treating it as adware/logic bomb misses the severity. The worm component means this is a network emergency — every minute of delay means more encrypted machines. Network isolation is the top priority."
     },
     {
-      "card_id": "gc_279",
-      "topic": "Secure Protocols",
+      "card_id": "gc_294",
+      "topic": "Malware and Malicious Code",
       "difficulty": "medium",
       "question_type": "scenario_mcq",
-      "question_text": "A company uses TLS to secure email in transit between mail servers and between clients and the server. An executive asks why they also need S/MIME. What is the correct distinction?",
+      "question_text": "Security analysts discover a keylogger on an executive's laptop. The malware captures keystrokes and screenshots, periodically sending data to a C2 server via HTTPS. The executive uses the laptop for both corporate email and personal banking. What is the scope of compromise, and what actions should be taken?",
       "choices": [
-        "TLS and S/MIME do the same thing; only one is needed",
-        "TLS protects email only while in transit over the network (hop-by-hop), so a compromised mail server could read messages; S/MIME provides end-to-end encryption and digital signatures on the message content itself, protecting it at rest and across all hops",
-        "S/MIME replaces TLS for all email",
-        "TLS encrypts email at rest; S/MIME encrypts it in transit"
+        "Only corporate email is at risk — change the email password",
+        "The scope includes all typed credentials, sensitive messages, financial information, and any data viewed on screen (screenshots); actions include immediately isolating the laptop, performing forensic imaging before wiping, changing ALL credentials the executive may have typed (corporate, banking, personal), monitoring for identity theft, and investigating how the malware was installed",
+        "Only banking credentials are at risk — notify the bank only",
+        "The keylogger only captures passwords, not other data — just run antivirus"
       ],
-      "answer": "TLS protects email only while in transit over the network (hop-by-hop), so a compromised mail server could read messages; S/MIME provides end-to-end encryption and digital signatures on the message content itself, protecting it at rest and across all hops",
-      "explanation_correct": "TLS secures the transport channel between two points (client-to-server or server-to-server). Each mail relay terminates and re-establishes TLS, so messages are readable on each intermediate server and at rest on the server. S/MIME encrypts and signs the message body itself using the sender/recipient's certificates — end-to-end protection that persists regardless of how many hops the message traverses or where it is stored. They are complementary: TLS for transport, S/MIME for content-level confidentiality and non-repudiation.",
-      "explanation_wrong_common": "Reversing the two, or believing TLS alone gives end-to-end email security. TLS is hop-by-hop; S/MIME is end-to-end. Both together is the robust design."
+      "answer": "The scope includes all typed credentials, sensitive messages, financial information, and any data viewed on screen (screenshots); actions include immediately isolating the laptop, performing forensic imaging before wiping, changing ALL credentials the executive may have typed (corporate, banking, personal), monitoring for identity theft, and investigating how the malware was installed",
+      "explanation_correct": "A keylogger with screenshot capture compromises everything typed AND everything visible on screen. Given the executive uses the laptop for corporate and personal activities, the exposure spans corporate credentials, email content, strategic discussions, banking credentials, financial data, and potentially MFA codes typed or displayed. Response: isolate the device (prevent further exfiltration), forensically image it (preserve evidence for investigation and potential legal action), then wipe and rebuild. Change ALL potentially compromised credentials across all services. Investigate the infection vector (was it a phishing email, malicious download, USB?) to prevent recurrence.",
+      "explanation_wrong_common": "Narrowing the scope to just one type of credential. Keyloggers capture everything typed, and screenshot capture expands the scope to anything visible. The dual-use (corporate + personal) means both domains are compromised. Simply running AV without forensics destroys evidence and misses the root cause."
     },
     {
-      "card_id": "gc_280",
-      "topic": "Secure Protocols",
+      "card_id": "gc_295",
+      "topic": "Malware and Malicious Code",
       "difficulty": "hard",
       "question_type": "case_study",
-      "question_text": "A company must let 500 remote employees securely reach an internal network from untrusted networks (home Wi-Fi, hotels). Requirements: strong mutual authentication (certificate + MFA), full network-layer access to internal subnets, protection against a malicious actor on the same public network, and minimal client configuration overhead. Compare IPsec VPN vs SSL/TLS VPN and recommend the best fit.",
+      "question_text": "An organization faces a sophisticated attack: Stage 1 — a phishing email delivers a macro-enabled document that, when opened, drops a lightweight loader. Stage 2 — the loader contacts a C2 server and downloads a fileless RAT that runs entirely in memory (PowerShell reflectively loaded into a legitimate process). Stage 3 — the RAT uses legitimate admin tools (Living off the Land) for lateral movement via WMI and steals credentials from LSASS memory using a custom tool. Stage 4 — exfiltration occurs via DNS tunneling. Why is this attack particularly difficult to detect with traditional security tools, and what modern defenses are needed?",
       "choices": [
-        "Use a basic GRE tunnel with no encryption — simplest to configure",
-        "Use an IPsec VPN in tunnel mode: it provides network-layer encryption and integrity across untrusted networks, supports certificate-based mutual auth plus MFA via IKEv2/EAP, gives full subnet access, and with a managed client keeps configuration overhead low",
-        "Use Telnet over the public internet for maximum compatibility",
-        "Use SSL/TLS VPN but disable authentication to reduce overhead"
+        "It is easy to detect — just update antivirus signatures and the RAT will be caught",
+        "It is difficult because: fileless malware leaves no disk artifacts (memory-only, reflective loading), LotL uses legitimate tools that AV whitelists, DNS tunneling blends with normal traffic, and credential theft from LSASS is subtle. Defenses needed: EDR with behavioral/memory scanning, application whitelisting (AppLocker/WDAC), PowerShell constrained language mode, credential guard (LSASS protection), DNS analytics/monitoring, and network segmentation to limit lateral movement",
+        "A firewall would stop everything since the traffic is blocked at the perimeter",
+        "The attack is impossible to detect, so no defenses are effective"
       ],
-      "answer": "Use an IPsec VPN in tunnel mode: it provides network-layer encryption and integrity across untrusted networks, supports certificate-based mutual auth plus MFA via IKEv2/EAP, gives full subnet access, and with a managed client keeps configuration overhead low",
-      "explanation_correct": "IPsec in tunnel mode encapsulates and encrypts entire packets at the network layer, ideal for site-to-site or full remote-access VPNs requiring broad internal subnet access. IKEv2 supports certificate-based mutual authentication and EAP methods for MFA. It protects against eavesdroppers and tampering on public networks. A managed client distribution model minimizes per-user configuration. SSL/TLS VPNs (clientless/browser-based) are convenient for limited app-specific access but are less suited to full network-layer access for 500 users. GRE alone has no encryption; Telnet is entirely insecure.",
-      "explanation_wrong_common": "Picking an unencrypted option (GRE/Telnet), or disabling authentication 'for convenience' — authentication is the core control here. The key trade-off: IPsec for full network access + strong mutual auth; SSL/TLS VPN for lightweight, app-scoped remote access."
+      "answer": "It is difficult because: fileless malware leaves no disk artifacts (memory-only, reflective loading), LotL uses legitimate tools that AV whitelists, DNS tunneling blends with normal traffic, and credential theft from LSASS is subtle. Defenses needed: EDR with behavioral/memory scanning, application whitelisting (AppLocker/WDAC), PowerShell constrained language mode, credential guard (LSASS protection), DNS analytics/monitoring, and network segmentation to limit lateral movement",
+      "explanation_correct": "This multi-stage fileless attack evades traditional signature-based AV at every stage: (1) no malicious files on disk (memory-only execution via reflective DLL loading), (2) PowerShell and WMI are legitimate administrative tools that AV doesn't flag, (3) DNS tunneling uses a protocol that most firewalls allow outbound, (4) LSASS credential dumping is a subtle in-memory operation. Modern defenses: EDR (behavioral analysis, memory scanning, process tree monitoring), Windows Defender Credential Guard (isolates LSASS credentials in virtualization-based security), WDAC/AppLocker (restrict what can run), PowerShell Constrained Language Mode, DNS filtering/analytics, and Zero Trust network segmentation to contain lateral movement.",
+      "explanation_wrong_common": "Believing signature-based AV or firewalls alone are sufficient. Fileless and LotL attacks specifically evade signature-based detection by operating in memory and abusing legitimate tools. The defense paradigm must shift from 'block known bad' to 'allow known good + behavioral analysis + least privilege.' No single tool is a silver bullet — layered, modern defenses are essential."
+    },
+    {
+      "card_id": "gc_296",
+      "topic": "Vulnerability Types and Mitigation",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is the difference between a vulnerability and an exploit?",
+      "choices": [
+        "They are the same thing — both refer to an attack on a system",
+        "A vulnerability is a weakness or flaw in a system that could be exploited; an exploit is the specific technique, code, or method used to take advantage of that vulnerability",
+        "A vulnerability is an attack; an exploit is a defense",
+        "An exploit is a type of software update, and a vulnerability is the fix"
+      ],
+      "answer": "A vulnerability is a weakness or flaw in a system that could be exploited; an exploit is the specific technique, code, or method used to take advantage of that vulnerability",
+      "explanation_correct": "A vulnerability is the condition — a flaw in design, implementation, or configuration that creates a security gap (e.g., a buffer overflow in a web server, a misconfigured firewall, a default password). An exploit is the action — the code or procedure that leverages that vulnerability to achieve an attacker's goal (e.g., a crafted input that triggers the buffer overflow to execute arbitrary code). Vulnerabilities are classified by CVE IDs; exploits may be public or private. A system can have vulnerabilities that have not yet been exploited (zero-day when unknown to the vendor).",
+      "explanation_wrong_common": "Confusing the two terms. The vulnerability is the 'lock that is broken'; the exploit is 'the technique used to open it.' Understanding the distinction is fundamental: you patch vulnerabilities to prevent exploits. Risk = Vulnerability x Threat x Impact."
+    },
+    {
+      "card_id": "gc_297",
+      "topic": "Vulnerability Types and Mitigation",
+      "difficulty": "easy",
+      "question_type": "definition",
+      "question_text": "What is a zero-day vulnerability, and why is it particularly dangerous?",
+      "choices": [
+        "A zero-day is a vulnerability that was patched zero days ago — it is already fixed",
+        "A zero-day is a vulnerability that is unknown to the vendor or for which no patch exists yet, meaning there are zero days of protection available; it is dangerous because defenders have no patch, no signature, and often no knowledge of the flaw until it is actively exploited",
+        "A zero-day is an exploit that only works at midnight",
+        "A zero-day is a type of antivirus that detects threats on the first day"
+      ],
+      "answer": "A zero-day is a vulnerability that is unknown to the vendor or for which no patch exists yet, meaning there are zero days of protection available; it is dangerous because defenders have no patch, no signature, and often no knowledge of the flaw until it is actively exploited",
+      "explanation_correct": "The term 'zero-day' refers to the number of days the vendor has had to fix the vulnerability — zero. Since the flaw is unknown or unpatched, traditional signature-based defenses cannot detect the exploit, and no patch is available. Zero-days are highly valuable in both criminal markets and nation-state operations. Defense relies on behavioral detection (EDR/anomaly detection), exploit mitigation technologies (ASLR, DEP, sandboxing), network segmentation, and the principle of least privilege to limit the impact of successful exploitation.",
+      "explanation_wrong_common": "Thinking a zero-day is already patched (the opposite is true). The 'zero' refers to the vendor's lack of advance warning, not the patch status. Also, zero-days are not time-of-day dependent. They are called 'zero-day' because the vendor has had zero days to prepare a fix."
+    },
+    {
+      "card_id": "gc_298",
+      "topic": "Vulnerability Types and Mitigation",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A web application accepts user input in a search field and directly incorporates it into a SQL query without sanitization. An attacker enters: '; DROP TABLE users; --. What type of vulnerability is this, and what is the most effective mitigation?",
+      "choices": [
+        "Cross-site scripting (XSS) — use input validation only",
+        "SQL Injection (SQLi) — the attacker manipulates the query to execute arbitrary SQL; the most effective mitigation is parameterized queries (prepared statements) that separate code from data, plus input validation and least-privilege database accounts as defense in depth",
+        "Buffer overflow — increase the input field size",
+        "CSRF — add a CSRF token to the form"
+      ],
+      "answer": "SQL Injection (SQLi) — the attacker manipulates the query to execute arbitrary SQL; the most effective mitigation is parameterized queries (prepared statements) that separate code from data, plus input validation and least-privilege database accounts as defense in depth",
+      "explanation_correct": "SQL Injection occurs when unsanitized user input is concatenated into a SQL query, allowing the attacker to alter the query's logic. The example ('; DROP TABLE users; --) terminates the original query and adds a destructive statement. The primary defense is parameterized queries (prepared statements) — the SQL structure is fixed and user input is treated strictly as data values, never as executable code. Additional layers: input validation/sanitization, ORM frameworks, least-privilege database accounts (so even if injected, the DB user can't DROP tables), and WAF rules. This is one of the most common and damaging web vulnerabilities (OWASP Top 10).",
+      "explanation_wrong_common": "Confusing SQLi with XSS (which injects client-side scripts, not database queries) or CSRF (which exploits authenticated sessions, not input). Simply increasing field size doesn't prevent injection. Input validation alone is insufficient — parameterized queries are the gold standard because they fundamentally prevent code/data confusion."
+    },
+    {
+      "card_id": "gc_299",
+      "topic": "Vulnerability Types and Mitigation",
+      "difficulty": "medium",
+      "question_type": "scenario_mcq",
+      "question_text": "A company's vulnerability scan reports 500 findings ranging from critical to informational. The security team has limited resources. Using CVSS scores and business context, which findings should be prioritized for remediation first?",
+      "choices": [
+        "Fix all 500 findings alphabetically by CVE ID",
+        "Prioritize critical and high CVSS vulnerabilities on internet-facing systems that handle sensitive data or are critical to business operations, then medium findings on internal systems, and batch low/informational findings for routine maintenance windows",
+        "Fix only the informational findings since they are easiest",
+        "Ignore the scan results and wait for an actual breach before acting"
+      ],
+      "answer": "Prioritize critical and high CVSS vulnerabilities on internet-facing systems that handle sensitive data or are critical to business operations, then medium findings on internal systems, and batch low/informational findings for routine maintenance windows",
+      "explanation_correct": "Effective vulnerability management requires risk-based prioritization, not just CVSS scores alone. The formula is: Risk = Vulnerability severity x Exposure (internet-facing vs internal) x Asset value/criticality x Threat likelihood. A critical CVE on an internet-facing payment system is far higher risk than a critical CVE on an isolated test server. Context-aware prioritization (using frameworks like EPSS for exploit prediction, or threat intelligence to identify actively exploited CVEs) maximizes remediation impact with limited resources. This is the core of continuous vulnerability management.",
+      "explanation_wrong_common": "Treating all findings equally or using only CVSS scores without context. CVSS measures technical severity, not business risk. A high-CVSS vulnerability on an isolated, non-critical system is lower priority than a medium-CVSS vulnerability on a public-facing revenue-generating application. Risk = severity x context."
+    },
+    {
+      "card_id": "gc_300",
+      "topic": "Vulnerability Types and Mitigation",
+      "difficulty": "hard",
+      "question_type": "case_study",
+      "question_text": "An organization must establish a vulnerability management program. Their environment includes: 200 on-prem servers, 50 cloud VMs, 1000 endpoints, 20 network devices, and a legacy ICS/OT network running Windows 7. The CISO wants monthly scans but the OT team says scanning could crash legacy systems. Compliance requires 30-day remediation for critical findings. Propose a risk-based vulnerability management strategy that balances thoroughness, operational safety, and compliance.",
+      "choices": [
+        "Scan everything weekly with aggressive credentialed scans including the OT network — speed is more important than safety",
+        "A tiered strategy: (1) IT estate (servers, cloud, endpoints): automated weekly authenticated scans, 30-day SLA for critical/high, 60-day for medium; (2) Network devices: quarterly credentialed scans with vendor-specific templates; (3) ICS/OT: passive asset discovery and monitoring (no active scanning), vendor-supplied patches tested in a staging mirror, isolated network segmentation, and compensating controls documented for compliance exceptions; (4) Use threat intelligence and EPSS to prioritize actively exploited CVEs for accelerated remediation regardless of tier",
+        "Skip the OT network entirely and only scan IT assets to avoid any risk",
+        "Scan only once a year to minimize operational impact and reduce compliance burden"
+      ],
+      "answer": "A tiered strategy: (1) IT estate (servers, cloud, endpoints): automated weekly authenticated scans, 30-day SLA for critical/high, 60-day for medium; (2) Network devices: quarterly credentialed scans with vendor-specific templates; (3) ICS/OT: passive asset discovery and monitoring (no active scanning), vendor-supplied patches tested in a staging mirror, isolated network segmentation, and compensating controls documented for compliance exceptions; (4) Use threat intelligence and EPSS to prioritize actively exploited CVEs for accelerated remediation regardless of tier",
+      "explanation_correct": "A mature vulnerability management program recognizes that different asset classes require different approaches. IT assets can tolerate aggressive authenticated scanning with rapid patch SLAs. Network devices need careful, vendor-aware scanning to avoid disruption. ICS/OT environments (running Windows 7, fragile protocols) require passive discovery (no active probing that could crash PLCs/HMI), segmentation from IT networks, vendor-tested patches applied during maintenance windows, and documented compensating controls to satisfy compliance when direct patching is unsafe. Integrating threat intelligence (CISA KEV catalog, EPSS) accelerates remediation for CVEs being actively exploited, ensuring resources target the highest real-world risk.",
+      "explanation_wrong_common": "Applying a one-size-fits-all scanning strategy. Active scanning of OT systems can cause physical damage or process disruption (real-world incidents have caused plant shutdowns). Conversely, skipping OT entirely leaves blind spots and compliance gaps. The mature approach is risk-based: aggressive where safe, passive where necessary, with compensating controls and exceptions properly documented for auditors."
     }
   ],
   "scheduling_updates": [
-    {
-      "card_id": "gc_261",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_262",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_263",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_264",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_265",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_266",
-      "next_due_at": "2026-11-30T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_267",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_268",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_269",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_270",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_271",
-      "next_due_at": "2026-11-30T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_272",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_273",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_274",
-      "next_due_at": "2026-11-30T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_275",
-      "next_due_at": "2026-11-30T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_276",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_277",
-      "next_due_at": "2026-11-28T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_278",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_279",
-      "next_due_at": "2026-11-29T00:00:00+08:00"
-    },
-    {
-      "card_id": "gc_280",
-      "next_due_at": "2026-11-30T00:00:00+08:00"
-    }
+    { "card_id": "gc_281", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_282", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_283", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_284", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_285", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_286", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_287", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_288", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_289", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_290", "next_due_at": "2026-12-02T00:00:00+08:00" },
+    { "card_id": "gc_291", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_292", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_293", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_294", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_295", "next_due_at": "2026-12-02T00:00:00+08:00" },
+    { "card_id": "gc_296", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_297", "next_due_at": "2026-11-30T00:00:00+08:00" },
+    { "card_id": "gc_298", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_299", "next_due_at": "2026-12-01T00:00:00+08:00" },
+    { "card_id": "gc_300", "next_due_at": "2026-12-02T00:00:00+08:00" }
   ]
 }
